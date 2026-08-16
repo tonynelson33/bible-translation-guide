@@ -14,6 +14,9 @@ export default function Tooltip({ text, children }: { text: string; children: Re
     null,
   );
 
+  const TOOLTIP_WIDTH = 224; // w-56
+  const VIEWPORT_MARGIN = 8;
+
   function show() {
     const rect = triggerRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -21,7 +24,14 @@ export default function Tooltip({ text, children }: { text: string; children: Re
     // sitting close to the top of the viewport) so the popup never runs off-screen.
     const placement = rect.top < 70 ? "below" : "above";
     const top = placement === "above" ? rect.top - 8 : rect.bottom + 8;
-    setPos({ top, left: rect.left + rect.width / 2, placement });
+    // Clamp horizontally so the popup never runs off the left/right edge of the screen.
+    const halfWidth = TOOLTIP_WIDTH / 2;
+    const idealLeft = rect.left + rect.width / 2;
+    const left = Math.min(
+      Math.max(idealLeft, halfWidth + VIEWPORT_MARGIN),
+      window.innerWidth - halfWidth - VIEWPORT_MARGIN,
+    );
+    setPos({ top, left, placement });
   }
 
   function hide() {

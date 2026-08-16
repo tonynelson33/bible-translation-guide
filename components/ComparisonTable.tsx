@@ -37,11 +37,13 @@ const columns: ColumnDef[] = [
     label: "Translation",
     sortValue: (t) => t.name,
     align: "left",
-    minWidth: "6rem",
+    minWidth: "13rem",
     render: (t) => (
       <Link href={`/translations/${t.id}`} className="block">
-        <span className="block text-base font-extrabold text-brand-900">{t.abbreviation}</span>
-        <span className="block text-xs text-neutral-500">{t.name}</span>
+        <span className="block whitespace-nowrap text-base font-extrabold text-brand-900">
+          {t.abbreviation}
+        </span>
+        <span className="block whitespace-nowrap text-xs text-neutral-500">{t.name}</span>
       </Link>
     ),
   },
@@ -49,14 +51,14 @@ const columns: ColumnDef[] = [
     key: "firstPublishedYear",
     label: "First Published",
     sortValue: (t) => t.firstPublishedYear,
-    minWidth: "5.5rem",
+    minWidth: "7rem",
     render: (t) => <span className="text-neutral-700">{t.firstPublishedYear}</span>,
   },
   {
     key: "latestRevisionYear",
     label: "Latest Revision",
     sortValue: (t) => t.latestRevisionYear,
-    minWidth: "5.5rem",
+    minWidth: "6.5rem",
     render: (t) => <span className="font-normal text-neutral-700">{t.latestRevisionYear}</span>,
   },
   {
@@ -72,10 +74,17 @@ const columns: ColumnDef[] = [
     ),
   },
   {
+    key: "textualBasis",
+    label: "NT Textual Basis",
+    sortValue: (t) => t.textualBasis,
+    minWidth: "7rem",
+    render: (t) => <span>{t.textualBasis}</span>,
+  },
+  {
     key: "philosophy",
     label: "Translation Philosophy",
     sortValue: (t) => t.philosophy,
-    minWidth: "7rem",
+    minWidth: "8.5rem",
     render: (t) => (
       <Tooltip text={philosophyGlossary[t.philosophy].description}>
         <span
@@ -87,11 +96,24 @@ const columns: ColumnDef[] = [
     ),
   },
   {
-    key: "textualBasis",
-    label: "NT Textual Basis",
-    sortValue: (t) => t.textualBasis,
-    minWidth: "7rem",
-    render: (t) => <span>{t.textualBasis}</span>,
+    key: "genderApproach",
+    label: (
+      <span className="inline-flex items-center">
+        Gender Language Approach
+        <InfoTooltip text="This column is an editorial characterization — more subjective than the other fields, based on publisher preface language and general reception." />
+      </span>
+    ),
+    sortValue: (t) => t.genderApproach,
+    minWidth: "8.5rem",
+    render: (t) => (
+      <Tooltip text={genderApproachGlossary[t.genderApproach].description}>
+        <span
+          className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${genderApproachGlossary[t.genderApproach].className}`}
+        >
+          {t.genderApproachLabel ?? t.genderApproach}
+        </span>
+      </Tooltip>
+    ),
   },
   {
     key: "publisher",
@@ -104,7 +126,7 @@ const columns: ColumnDef[] = [
     key: "quoteLimit",
     label: "Quote Limit w/o Permission",
     sortValue: (t) => quoteLimitSortValue(t.quoteLimit),
-    minWidth: "7rem",
+    minWidth: "7.5rem",
     render: (t) => (
       <span>
         {t.quoteLimit}
@@ -113,31 +135,11 @@ const columns: ColumnDef[] = [
     ),
   },
   {
-    key: "genderApproach",
-    label: (
-      <span className="inline-flex items-center">
-        Gender Language Approach
-        <InfoTooltip text="This column is an editorial characterization — more subjective than the other fields, based on publisher preface language and general reception." />
-      </span>
-    ),
-    sortValue: (t) => t.genderApproach,
-    minWidth: "7rem",
-    render: (t) => (
-      <Tooltip text={genderApproachGlossary[t.genderApproach].description}>
-        <span
-          className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${genderApproachGlossary[t.genderApproach].className}`}
-        >
-          {t.genderApproachLabel ?? t.genderApproach}
-        </span>
-      </Tooltip>
-    ),
-  },
-  {
     key: "redLetter",
     label: "Red Letter Edition",
     sortValue: (t) => t.redLetter,
     align: "center",
-    minWidth: "4.5rem",
+    minWidth: "6rem",
     render: (t) => <YesNoIcon value={t.redLetter} label="Red letter edition available" />,
   },
   {
@@ -145,7 +147,7 @@ const columns: ColumnDef[] = [
     label: "Marks OT Quotations in NT",
     sortValue: (t) => t.otMarking.marks,
     align: "center",
-    minWidth: "6rem",
+    minWidth: "8rem",
     render: (t) => (
       <div className="flex flex-col items-center">
         <YesNoIcon value={t.otMarking.marks} label="Marks OT quotations in NT" />
@@ -160,7 +162,7 @@ const columns: ColumnDef[] = [
     label: "Italicizes Translator-Supplied Words",
     sortValue: (t) => t.italicizesTranslatorWords,
     align: "center",
-    minWidth: "4.5rem",
+    minWidth: "8.5rem",
     render: (t) => (
       <YesNoIcon value={t.italicizesTranslatorWords} label="Italicizes translator-supplied words" />
     ),
@@ -170,7 +172,7 @@ const columns: ColumnDef[] = [
     label: "Capitalizes Deity Pronouns",
     sortValue: (t) => t.capitalizesDeityPronouns,
     align: "center",
-    minWidth: "4.5rem",
+    minWidth: "8rem",
     render: (t) => (
       <YesNoIcon value={t.capitalizesDeityPronouns} label="Capitalizes deity pronouns" />
     ),
@@ -180,7 +182,7 @@ const columns: ColumnDef[] = [
     label: "Uses Quotation Marks for Dialogue",
     sortValue: (t) => t.quotationMarksForDialogue,
     align: "center",
-    minWidth: "4.5rem",
+    minWidth: "7.5rem",
     render: (t) => (
       <YesNoIcon value={t.quotationMarksForDialogue} label="Uses quotation marks for dialogue" />
     ),
@@ -213,8 +215,8 @@ export default function ComparisonTable({ translations }: { translations: Transl
   }
 
   return (
-    <div className="max-h-[calc(100vh-15rem)] w-full min-w-0 overflow-auto rounded-lg border border-neutral-200">
-      <table className="min-w-full border-collapse text-sm">
+    <div className="w-full min-w-0 overflow-x-auto rounded-lg border border-neutral-200">
+      <table className="min-w-full table-fixed border-collapse text-sm">
         <thead>
           <tr className="bg-neutral-50">
             {columns.map((col, i) => {
@@ -224,19 +226,19 @@ export default function ComparisonTable({ translations }: { translations: Transl
                 <th
                   key={col.key}
                   scope="col"
-                  style={col.minWidth ? { minWidth: col.minWidth } : undefined}
-                  className={`sticky top-0 border-b border-neutral-200 px-2 py-2 text-left align-bottom text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:px-3 ${
+                  style={col.minWidth ? { width: col.minWidth } : undefined}
+                  className={`border-b border-neutral-200 px-2 py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
                     isSticky
-                      ? "left-0 z-30 bg-neutral-50 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]"
-                      : "z-20 bg-neutral-50"
+                      ? "sticky left-0 z-20 bg-neutral-50 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]"
+                      : ""
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => handleSort(col.key)}
-                    className="flex items-center gap-1 normal-case tracking-normal text-neutral-600 hover:text-brand-800"
+                    className="flex w-full items-center gap-1 normal-case tracking-normal text-neutral-600 hover:text-brand-800"
                   >
-                    <span className="text-xs font-semibold uppercase leading-tight tracking-wide">
+                    <span className="min-w-0 flex-1 break-words text-xs font-bold uppercase leading-tight tracking-wide">
                       {col.label}
                     </span>
                     <span className="flex h-3 w-3 flex-shrink-0 flex-col justify-center text-[8px] leading-none text-neutral-400">
