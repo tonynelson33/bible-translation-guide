@@ -4,7 +4,11 @@ export function parseLeadingNumber(value: string): number | null {
 }
 
 export function gradeLevelSortValue(gradeLevel: string): number {
-  return parseLeadingNumber(gradeLevel) ?? 0;
+  // Average the bounds of a range (e.g. "7-8" -> 7.5) so a range sorts as harder
+  // than its own lower bound alone (e.g. "7-8" sorts after plain "7").
+  const nums = gradeLevel.match(/\d+(\.\d+)?/g)?.map(Number) ?? [];
+  if (nums.length === 0) return 0;
+  return nums.reduce((sum, n) => sum + n, 0) / nums.length;
 }
 
 export function quoteLimitSortValue(quoteLimit: string): number {

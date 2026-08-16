@@ -8,7 +8,7 @@ export default function YesNoIcon({ value, label }: { value: boolean; label?: st
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"
-          className="h-5 w-5 text-brand-700"
+          className="h-5 w-5 text-emerald-600"
         >
           <path
             fillRule="evenodd"

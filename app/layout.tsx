@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="flex min-h-screen flex-col bg-white font-sans text-neutral-900 antialiased">
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>
