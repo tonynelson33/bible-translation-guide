@@ -6,7 +6,7 @@ import { useState } from "react";
 import { translations } from "@/lib/data";
 
 const primaryLinks = [
-  { href: "/", label: "Compare" },
+  { href: "/", label: "Home" },
   { href: "/verses", label: "Sample Verses" },
   { href: "/rankings", label: "Rankings" },
   { href: "/blog", label: "Blog" },
