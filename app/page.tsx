@@ -10,7 +10,7 @@ export default function HomePage() {
 
       <ComparisonTable translations={translations} />
 
-      <p className="mt-3 max-w-3xl text-sm text-neutral-500">
+      <p className="mt-3 text-sm text-neutral-500">
         <sup className="text-brand-600">†</sup> Quote limits and some fields marked &ldquo;verify&rdquo;
         should be confirmed against current publisher documentation before relying on them.
       </p>

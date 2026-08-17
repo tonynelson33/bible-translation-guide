@@ -14,6 +14,10 @@ const primaryLinks = [
   { href: "/buy", label: "Buy" },
 ];
 
+const sortedTranslations = [...translations].sort((a, b) =>
+  a.abbreviation.localeCompare(b.abbreviation),
+);
+
 export default function Nav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -71,12 +75,12 @@ export default function Nav() {
               </svg>
             </button>
             {translationsOpen && (
-              <div className="absolute left-0 top-full w-56 rounded-md border border-neutral-200 bg-white py-2 shadow-lg">
-                {translations.map((t) => (
+              <div className="absolute left-0 top-full w-72 rounded-md border border-neutral-200 bg-white py-2 shadow-lg">
+                {sortedTranslations.map((t) => (
                   <Link
                     key={t.id}
                     href={`/translations/${t.id}`}
-                    className="block px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800"
+                    className="block whitespace-nowrap px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800"
                   >
                     {t.abbreviation} — {t.name}
                   </Link>
@@ -138,7 +142,7 @@ export default function Nav() {
                 Translations
               </p>
               <ul className="grid grid-cols-2 gap-1">
-                {translations.map((t) => (
+                {sortedTranslations.map((t) => (
                   <li key={t.id}>
                     <Link
                       href={`/translations/${t.id}`}
