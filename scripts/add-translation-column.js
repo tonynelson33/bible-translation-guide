@@ -625,6 +625,69 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Covenant Presbyterian Church, NCM NJ - ambiguous: found two different 'Covenant Presbyterian Church' congregations in NJ with different affiliations (Short Hills = PCA, Ewing/formerly Trenton = PC(USA)), and this dataset row's odd 'NCM' locality value doesn't clearly match either - no denominational default applied given the ambiguity",
   },
+
+  // --- Batch 11: more Lutheran/Presbyterian, including 3 rows that already
+  // self-identify their denomination in the church's own name ---
+  "48eb971c-21ff-4d79-9a71-e500d5e3f607": {
+    translation: "NRSV",
+    notes:
+      "Good Shepherd (Lutheran Church of the Good Shepherd), Moorhead MN - confirmed ELCA congregation (founded 1952); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a7333d79-96cd-4b85-9b64-09f38c25b008": {
+    translation: "",
+    notes:
+      "Ascension Lutheran Church, Eau Claire WI - confirmed ELS (Evangelical Lutheran Synod, a small confessional body in fellowship with WELS - co-sponsors the Wartburg Project's EHV translation but doesn't officially mandate it) - not LCMS/ELCA; no official denominational translation",
+  },
+  "6eb42f0c-c151-4d16-9d85-4cf790ad645e": {
+    translation: "NRSV",
+    notes:
+      "Stordahl Lutheran Church, Zumbrota MN - confirmed ELCA congregation (137-year-old rural congregation); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "4c1f5cec-5f72-40ab-8e3e-36d06bc8a891": {
+    translation: "NRSV",
+    notes:
+      "Gethsemane Lutheran Church, Fort Wayne IN - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "762f8c36-ede8-4445-a894-9a0b3d8086ce": {
+    translation: "",
+    notes:
+      "St Paul Lutheran Church and School, Lake Mills WI - confirmed WELS congregation; WELS has no official denominational translation",
+  },
+  "5acb2d70-513d-40f0-bc55-30b2ea9de3d0": {
+    translation: "NRSV",
+    notes:
+      "First Lutheran Church of Columbia Heights, MN - confirmed ELCA congregation (Minneapolis Area Synod); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "0a3d4209-10fd-44b8-b619-88ea28e1bb59": {
+    translation: "NRSV",
+    notes:
+      "Trinity Lutheran Church (ELCA), Brattleboro VT - denomination already stated in the row's own name; ELCA officially recommends the NRSV",
+  },
+  "4a619c98-dfae-4001-b8d2-ad2ae69aba03": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church of Brooklyn, NY - confirmed PC(USA) congregation (pcusa.org directory, founded 1822, Gothic Revival building with Tiffany windows); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "68fe1843-ec13-4937-8c84-11322fe7a3e3": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Pontotoc MS - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of St. Andrew); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "24089f2e-e7a0-4f3a-9881-1e02d524bdf1": {
+    translation: "NRSV",
+    notes:
+      "Westminster Presbyterian Church, Akron OH - confirmed PC(USA) congregation (pcusa.org directory, Eastminster Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "4d5d0302-1480-40e9-a39e-65eceff13cb6": {
+    translation: "",
+    notes:
+      "Cornerstone Orthodox Presbyterian Church, Houston TX - denomination already stated in the row's own name (OPC); OPC explicitly has no single official Bible translation, so no denominational default applies",
+  },
+  "862f4fae-1e43-41f7-b91a-f16eed515cdf": {
+    translation: "",
+    notes:
+      "Emmanuel Orthodox Presbyterian Church, Renton WA - denomination already stated in the row's own name (OPC); OPC explicitly has no single official Bible translation, so no denominational default applies",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
