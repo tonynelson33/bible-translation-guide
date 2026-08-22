@@ -426,6 +426,73 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Washington Zion Presbyterian Church - confirmed PC(USA) congregation (faithstreet.com), but listed there as located in Silver Spring MD, not Columbia MD as in this dataset row - flagging this location discrepancy for awareness, though the distinctive name makes it very likely the same church; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum",
   },
+
+  // --- Batch 8: more Lutheran/Presbyterian ---
+  "17dd43a9-e57d-4779-abe0-839c2daed681": {
+    translation: "ESV",
+    notes:
+      "Grace Lutheran Church, Liberal KS - confirmed LCMS congregation (est. 1945); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "c491b77d-9908-43cd-bbe9-46ea5658ab4c": {
+    translation: "NRSV",
+    notes:
+      "Salem Lutheran Church, Glendale CA - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "b2e8e845-12e3-423c-8969-003bb5d4a349": {
+    translation: "NRSV",
+    notes:
+      "Cedar Grove Lutheran Church, Batesburg-Leesville SC - confirmed ELCA congregation (NRHP-listed 1926-27 building); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "b5209649-3352-4437-b313-541b5f7ef837": {
+    translation: "NRSV",
+    notes:
+      "Hoff Lutheran Church - confirmed ELCA congregation, but found listed as located in Adams ND, not Park River ND as in this dataset row - flagging this location discrepancy for awareness; ELCA officially recommends the NRSV",
+  },
+  "8d5bcc10-5002-44e6-b405-2d77ac6848af": {
+    translation: "ESV",
+    notes:
+      "Our Redeemer Lutheran Church, Wahoo NE - confirmed LCMS congregation (locator.lcms.org, joined 1964, Nebraska District); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "5f42efd7-ff21-497b-b095-e8fb8d41f67e": {
+    translation: "",
+    notes:
+      "Zion German Evangelical Lutheran Church, Brooklyn NY - CONFLICTING affiliation signals across sources: uses the LCMS's Lutheran Service Book per one source, but is separately listed as ELCA and also appears in the LCMC congregation directory - genuinely ambiguous, so no denominational default applied rather than guess",
+  },
+  "c0152933-4084-46f5-8201-c35198a372fa": {
+    translation: "NRSV",
+    notes:
+      "Living Word (Evangelical) Lutheran Church, Abington PA - confirmed ELCA congregation (own domain is livingword-elca.org); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "9672ad2a-21cd-4a87-ba2d-aee4e01bffc6": {
+    translation: "NRSV",
+    notes:
+      "St Peter Lutheran Church, Dillsboro IN - confirmed ELCA congregation. Note: a separately-named 'Saint John Lutheran Church' also in the Dillsboro area is LCMS - do not confuse the two; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "b461a008-d752-48a0-b177-a4cfd8e982ff": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Montpelier OH - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "584da9a6-54fe-4548-9932-93dc2b6a4375": {
+    translation: "NRSV",
+    notes:
+      "St Luke Presbyterian Church, Warren MI - confirmed PC(USA) congregation; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "42ae491b-27f3-43fb-a269-682ef0a5b20f": {
+    translation: "",
+    notes:
+      "Thai Evangelical Presbyterian Church, Norwalk CA - could not confirm this specific congregation's denominational affiliation (search surfaced other, differently-named Presbyterian congregations in Norwalk instead); no translation info found",
+  },
+  "e0c39b14-81ce-40f5-b0ea-4a8943958bbe": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Buchanan MI - confirmed PC(USA) congregation; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "fd912438-6515-46ae-874a-7fb64e228536": {
+    translation: "",
+    notes:
+      "Reformation Orthodox Presbyterian Church, Apache Junction AZ (meets in Mesa) - confirmed OPC (Orthodox Presbyterian Church, a distinct small confessional Reformed denomination founded 1936, separate from PC(USA)/PCA); OPC explicitly has no single official Bible translation (NIV historically predominant, ESV growing) so no denominational default applies",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
