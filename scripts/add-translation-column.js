@@ -225,6 +225,73 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "First Presbyterian Church of DeFuniak Springs, FL - confirmed PC(USA) congregation (Presbytery of Florida, Synod of South Atlantic); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
   },
+
+  // --- Batch 5: more Lutheran/Presbyterian, plus a directly-confirmed
+  // individual-church fact (not a denominational default) ---
+  "fa22a445-428d-41de-ad51-235a02548b35": {
+    translation: "NRSV",
+    notes:
+      "Immanuel Lutheran Church, Bluefield WV - confirmed ELCA congregation; ELCA officially recommends the NRSV (its Lutheran Study Bible uses NRSV) - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "24ec1c73-3ab3-4998-946a-083980fb5bdd": {
+    translation: "ESV",
+    notes:
+      "St. Peter's Lutheran Church, Riceville IA - confirmed LCMS congregation (locator.lcms.org); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "8cb870c5-a286-420a-89d3-684afb769aa7": {
+    translation: "ESV",
+    notes:
+      "Lamb of God Lutheran Church, Lithia FL - confirmed LCMS congregation; LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses. Note: a differently-located 'Lamb of God Lutheran Church' in Haines City FL is ELCA - do not confuse the two",
+  },
+  "2db7bd1c-55f2-48a0-b6a2-0f7775a55e56": {
+    translation: "NRSV",
+    notes:
+      "Lutheran Church of Sunburst, MT - confirmed ELCA congregation (Montana Synod); ELCA officially recommends the NRSV (its Lutheran Study Bible uses NRSV) - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "d41be968-cadb-4ed0-a02e-ad2d8017e2b2": {
+    translation: "ESV",
+    notes:
+      "Immanuel Evangelical Lutheran Church, Buffalo NY - confirmed LCMS congregation (locator.lcms.org, joined 1892); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "0ce3f558-5a17-462c-990e-49bebf614217": {
+    translation: "ESV",
+    notes:
+      "Lake Oconee Lutheran Church, Eatonton GA - confirmed LCMS congregation (locator.lcms.org); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "6629471a-343c-4bac-b290-e9291dd43638": {
+    translation: "NRSV",
+    notes:
+      "Two Ridges Presbyterian Church, Steubenville OH (Wintersville) - confirmed PC(USA) congregation (pcusa.org directory, Upper Ohio Valley Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "ece07f6b-0581-48ef-80a6-09cf7793f0ec": {
+    translation: "NRSV",
+    notes:
+      "Westminster United Presbyterian Church, Minden NE - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Central Nebraska); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "cd9266a5-bb8f-4674-bc55-c6449ad9d3cd": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Tonkawa OK - confirmed PC(USA) congregation (pcusa.org directory, Cimarron Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "03cdbc6b-42ae-48e6-81b1-925894a574af": {
+    translation: "NRSV",
+    notes:
+      "United Presbyterian Church, Milford CT - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "706f2d3a-b56c-433d-9226-12c386b9db1a": {
+    translation: "NKJV",
+    notes:
+      "Thomas Road Baptist Church, Lynchburg VA (founded by Jerry Falwell, home of Liberty University) - directly confirmed via the church's own sermon materials, which cite Scripture as '(NKJV)'; founder Jerry Falwell was himself one of the NKJV's translators. This is a specific, individually-confirmed fact about this one congregation, not a Southern Baptist Convention-wide default (SBC has no denominational mandate)",
+  },
+  "0e8041ff-ed9d-40be-b33f-4f3ed4fa75ae": {
+    translation: "",
+    notes:
+      "Ebenezer Baptist Church, Greenville SC - could not confirm which specific 'Ebenezer Baptist Church' this row refers to (multiple same-named SC churches found, e.g. Travelers Rest, Florence); no translation info found",
+  },
+  "b28b6c02-8754-4f5f-9ee6-f2879c89cd9c": {
+    translation: "",
+    notes: "First United Methodist Church, Aberdeen WA - same as other UMC entries: no official denominational translation; no church-specific info found",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
