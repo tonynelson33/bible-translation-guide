@@ -688,6 +688,67 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Emmanuel Orthodox Presbyterian Church, Renton WA - denomination already stated in the row's own name (OPC); OPC explicitly has no single official Bible translation, so no denominational default applies",
   },
+
+  // --- Batch 12: more Lutheran/Presbyterian ---
+  "ff872774-5b60-4b2d-b44b-66746899ce3d": {
+    translation: "NRSV",
+    notes:
+      "Tabor Lutheran Church, Strandburg SD (NRHP-listed, 1910) - confirmed ELCA congregation (South Dakota Synod); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a1c710a0-f5d1-443f-8e04-c8e07bea1d1d": {
+    translation: "",
+    notes: "Saint Stephen Lutheran Church, Long Beach CA - could not confirm denominational affiliation (LCMS vs. ELCA vs. other); no translation info found",
+  },
+  "608f2605-4378-4db0-8ca0-87aff61c1d1c": {
+    translation: "NRSV",
+    notes:
+      "Lutheran Church Of The Messiah, Flushing NY - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "53e7b787-ef84-47e0-b15e-3b9ccf4a8f43": {
+    translation: "NRSV",
+    notes:
+      "All Saints Lutheran Church, Bowie MD - confirmed ELCA congregation (founded 1970); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "43559ca3-37fb-40a0-9b1a-61da5ad907c5": {
+    translation: "NRSV",
+    notes:
+      "St Paul Lutheran Church, Oakland CA - confirmed ELCA congregation (organized 1887 by Swedish immigrants, one of the oldest Lutheran churches on the West Coast); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "67764abe-75dd-44f3-bff5-436ed33c9de4": {
+    translation: "",
+    notes:
+      "First English Lutheran Church, Menahga MN - confirmed this congregation left ELCA and is now LCMC (Lutheran Congregations in Mission for Christ); LCMC has no official denominational translation",
+  },
+  "6f81ca89-15ef-492e-a91d-8cd86444c7cf": {
+    translation: "NRSV",
+    notes:
+      "St Paul Lutheran Church, Ravenna OH - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "eabdf779-5618-4691-85ed-35227405e5ad": {
+    translation: "NRSV",
+    notes:
+      "St. Benedict Presbyterian Church, St Benedict PA (West Carroll Twp, Cambria County) - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "518df752-9464-4f5f-a612-04beb7e52215": {
+    translation: "NRSV",
+    notes:
+      "Eagle River Presbyterian Church, AK - confirmed PC(USA) congregation (pcusa.org directory, Yukon Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "d494ed5a-a9d5-42a7-ad22-025842efc675": {
+    translation: "NRSV",
+    notes:
+      "Ft. King Presbyterian Church, Ocala FL - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of St. Augustine). Note: a separate PCA church, Redeemer Community Church, also exists in Ocala - do not confuse the two; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum",
+  },
+  "04507e20-f064-49ff-a9df-0fa60c2ce3a8": {
+    translation: "",
+    notes:
+      "Covenant Orthodox Presbyterian Church, New Bern NC - denomination already stated in the row's own name (OPC); OPC explicitly has no single official Bible translation, so no denominational default applies",
+  },
+  "30f78573-d4c0-49f0-9fe8-09e28fdde3ec": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Bridgeport TX - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
