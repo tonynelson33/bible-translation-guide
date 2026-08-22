@@ -51,6 +51,66 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Christ Church Vienna VA - confirmed ACNA parish (acna.org/admin_units/620); ACNA's 2019 Book of Common Prayer uses the ESV for scripture quotations (except Psalms/Canticles) - not independently confirmed which pew/pulpit Bible this specific congregation uses",
   },
+
+  // --- Batch 2: Lutheran/Presbyterian synod verification ---
+  // LCMS's Commission on Worship officially adopted the ESV for all Lutheran
+  // Service Book materials including the lectionary; ELCA officially
+  // recommends the NRSV (its Lutheran Study Bible uses NRSV); PC(USA)
+  // overwhelmingly uses NRSV in official worship resources/liturgy/curriculum.
+  // WELS has no official translation (the EHV is produced by an affiliated-
+  // but-independent group, not an official WELS mandate) and PCA has no
+  // official mandate either (ESV is just the dominant informal choice) - so
+  // those two are left blank even when the synod itself is confirmed.
+  "ec8b3e51-ca91-4a2d-b38a-7c1a26414e9c": {
+    translation: "",
+    notes:
+      "Anglo-Lutheran Catholic Church, Kansas City MO - this is a small independent Anglican/Lutheran hybrid denomination (founded 1997, ~11,000 members at peak), not LCMS/ELCA/WELS; no official translation found",
+  },
+  "f9a2b745-451a-4feb-adac-8d3995ce52db": {
+    translation: "",
+    notes:
+      "Trinity Lutheran Church, Omak WA - confirmed WELS congregation; WELS has no official denominational translation (the EHV/Wartburg Project is affiliated but not an official WELS mandate)",
+  },
+  "720c97e4-8af1-4c19-9a50-6fa67f3546a4": {
+    translation: "ESV",
+    notes:
+      "Saint John Lutheran Church, Newkirk OK - confirmed LCMS congregation (locator.lcms.org); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "2f0d22d4-68ba-40fa-a732-1fd1f29a6ec9": {
+    translation: "",
+    notes:
+      "Christ the King Lutheran Church, Palatine IL - confirmed WELS congregation (uses the Christian Worship hymnal); WELS has no official denominational translation. Note: a separate, differently-named 'Christ Lutheran Church' also in Palatine IL is ELCA - do not confuse the two",
+  },
+  "18d7c4fb-ce01-496f-aa86-5b6e4280ee91": {
+    translation: "ESV",
+    notes:
+      "St John's Lutheran Church, Beloit WI - confirmed LCMS congregation (locator.lcms.org); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "5ccaf981-0dc2-48bf-b85c-33c14bc33b51": {
+    translation: "NRSV",
+    notes:
+      "Graham Presbyterian Church, North Vernon IN - confirmed PC(USA) congregation (pcusa.org congregation directory, Ohio Valley Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "ead7d8e7-2fd6-4a5d-9a5d-cbeae9ff1326": {
+    translation: "NRSV",
+    notes:
+      "Mills River Presbyterian Church, Mills River NC - confirmed PC(USA) congregation (pcusa.org congregation directory, Presbytery of Western North Carolina); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "dd7b65a7-fb93-4ea2-a938-fce3fffbd4fa": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Pitman NJ - confirmed PC(USA) congregation (pcusa.org congregation directory, West Jersey Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "80845abd-5a8d-4574-a4e1-591df550a2fa": {
+    translation: "",
+    notes:
+      "Memorial Presbyterian Church, Elizabethton TN - confirmed PCA congregation (pcahistory.org); PCA has no officially mandated Bible translation (ESV is the dominant informal choice, not a mandate) so no denominational default applies",
+  },
+  "a59d94eb-516a-4e00-876e-c0d91dcfbbc0": {
+    translation: "NRSV",
+    notes:
+      "Grace Memorial Presbyterian Church, Pittsburgh PA - confirmed PC(USA) congregation (pcusa.org congregation directory, Pittsburgh Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
