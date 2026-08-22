@@ -42,23 +42,23 @@ export const rankingCategories: RankingCategory[] = [
           "The best-selling modern English translation for most of the past several decades, and still reliably in the top two or three spots on ECPA's monthly bestseller list.",
       },
       {
-        id: "nlt",
+        id: "esv",
         blurb:
-          "Close behind for years, and in parts of 2025 actually edged past the NIV in Christian retail unit-sales share — a reminder that this list moves.",
+          "The runner-up on ECPA's 2024 year-end list — a fixture near the top of the charts for years, especially strong in Reformed and broadly evangelical retail.",
       },
       {
         id: "kjv",
         blurb:
-          "The best-selling Bible translation of all time by a wide margin, thanks to a 400-year head start and being fully public domain.",
+          "Still holds a top-three spot on current bestseller charts, and remains the best-selling Bible translation of all time by a wide margin thanks to a 400-year head start and being fully public domain.",
       },
-      { id: "esv", blurb: "A regular top-five fixture on ECPA's list, especially strong in Reformed and broadly evangelical retail." },
+      { id: "nlt", blurb: "Right behind the KJV on the 2024 year-end list — and in parts of 2025, Christian-retail data briefly had it outselling the NIV, a reminder of how much this list moves." },
       { id: "nkjv", blurb: "Still a consistent top-ten seller, popular with readers who want the King James tradition in modern grammar." },
       { id: "csb", blurb: "One of the fastest-growing translations in recent years, breaking into the top six on ECPA's 2024 year-end list." },
       { id: "nasb", blurb: "A perennial top-ten seller, even though its audience is more specialized than the translations above it." },
       { id: "lsb", blurb: "The newest translation here by far (2021), with sales concentrated in Reformed and MacArthur-affiliated ministry circles rather than the general market." },
       { id: "net", blurb: "Doesn't chart on print bestseller lists at all — it was built for free online distribution from day one, not retail sales." },
     ],
-    note: "Positions 1-6 are grounded in ECPA's 2024 year-end bestseller data; exact order shifts some month to month, so treat this as a general picture rather than a fixed, permanent order.",
+    note: "Positions 1-6 follow ECPA's 2024 year-end bestseller list in order (NIV, ESV, KJV, NLT, NKJV, CSB); NASB, LSB, and NET's exact positions are less precisely documented. Exact order also shifts some month to month, so treat this as a general picture rather than a fixed, permanent order.",
   },
   {
     slug: "literal",
@@ -205,16 +205,19 @@ export const rankingCategories: RankingCategory[] = [
       "Which translations lend themselves to memorizing Scripture — precise, consistent wording and a cadence that's easy to recall.",
     entries: [
       {
-        id: "nasb",
-        blurb: "Its precise, consistent word-for-word phrasing has made it a longtime favorite for Scripture memory programs that care about exact wording.",
+        id: "kjv",
+        blurb:
+          "Generations of Christians memorized Scripture in the KJV, and it's not just familiarity — its rhythmic, poetic cadence genuinely makes text easier to recall, the same reason poetry memorizes more easily than prose.",
       },
       {
-        id: "kjv",
-        blurb: "Generations of Christians memorized Scripture in the KJV, and its rhythmic, memorable phrasing is part of why so much of it has stuck in the language.",
+        id: "nasb",
+        blurb:
+          "Its precise, consistent word-for-word phrasing appeals to structured Scripture memory programs that care about exact wording — though that same precision can make its sentences less naturally rhythmic to recite than the KJV's.",
       },
       {
         id: "esv",
-        blurb: "Increasingly the default for Scripture memory in Reformed and young-adult ministry circles, thanks to its literal, consistent wording.",
+        blurb:
+          "Increasingly the default for Scripture memory in Reformed and young-adult ministry circles — literal, consistent wording without the KJV's archaic vocabulary.",
       },
       { id: "nkjv", blurb: "Carries much of the KJV's memorable cadence, in grammar that's easier to commit to memory today." },
       { id: "niv", blurb: "Being the translation most people around you already know makes group memorization and recitation easier." },
@@ -229,26 +232,29 @@ export const rankingCategories: RankingCategory[] = [
     title: "Best Overall Balance",
     tabLabel: "Overall Balance",
     criteria:
-      "Which translations avoid leaning hard toward either strict literalism or loose paraphrase — using this site's own Formal/Dynamic/Optimal/Mixed philosophy labels and reading levels as a guide.",
+      "If you could only own one translation, which would serve you best across every use case on this page? Not a separate judgment call — this is each translation's average rank across the other seven lists (popularity, literalness, readability, study, devotions, preaching, memorization). Ties are broken by consistency: a translation that's solidly mid-pack everywhere ranks above one with the same average but wide swings between its best and worst category.",
     entries: [
       {
+        id: "esv",
+        blurb:
+          "The best average across all seven other categories — never ranks lower than 6th in any of them, with top-three finishes for preaching, memorization, and study. No single specialty, but no real weakness either.",
+      },
+      {
         id: "csb",
-        blurb: "The only translation on this site classified “Optimal” rather than Formal or Dynamic — its whole method is leaning formal or dynamic verse by verse, whichever best balances accuracy and readability.",
+        blurb:
+          "A near-even split between strengths and average results: #1 for preaching, top-two for readability and devotions, solidly mid-pack everywhere else.",
       },
       {
-        id: "net",
-        blurb: "Its “Mixed” approach is explicitly context-sensitive — generally literal, adjusted for clarity, with footnotes handling anything the main text can't.",
+        id: "niv",
+        blurb:
+          "The most consistently top-half translation on this page — never lower than 8th, with strong showings for popularity, devotions, and preaching.",
       },
-      {
-        id: "nkjv",
-        blurb: "A Formal translation that still lands at a 7th-grade reading level — a rare combination of literal accuracy and easy readability.",
-      },
-      { id: "niv", blurb: "Dynamic, but at a 7th-8th grade level it stays closer to the middle of the readability range than a more paraphrase-leaning translation would." },
-      { id: "esv", blurb: "Formal and more literal than the translations above it, but still widely considered a readable, middle-ground choice compared to the NASB or KJV." },
-      { id: "nlt", blurb: "Reads more easily than any other translation here, but it tilts hard toward readability rather than truly balancing it against literalness." },
-      { id: "lsb", blurb: "Deliberately tilts hard toward literal precision over readability — a strength for close study, but not built with “balance” as a goal." },
-      { id: "nasb", blurb: "Similarly tilted toward maximal literalness — its long-standing reputation is built on precision, not on splitting the difference with readability." },
-      { id: "kjv", blurb: "The furthest from center of any translation here — extremely literal by philosophy and, at a 12th-grade level, the least readable." },
+      { id: "nkjv", blurb: "Ties for 4th on average, but the most even performer here — never in the top two anywhere, and never in the bottom two either, across all seven other rankings." },
+      { id: "nasb", blurb: "Ties NKJV on average, but as a genuine specialist rather than an all-rounder: top-two for literalness, study, and memorization, bottom-two for readability and devotions." },
+      { id: "kjv", blurb: "Extremes in both directions — #1 for memorization and a top-three seller, but the least readable and near the bottom for daily devotional reading." },
+      { id: "nlt", blurb: "Outstanding for readability and devotions, but its looser wording pulls it toward the bottom everywhere literalness or careful study matters more." },
+      { id: "net", blurb: "Built for one job — serious study — and it shows elsewhere: near the bottom for preaching, memorization, and popularity." },
+      { id: "lsb", blurb: "The most specialized translation on this page: genuinely the most literal, but that same maximal precision costs it in readability, devotions, and popularity." },
     ],
   },
 ];
