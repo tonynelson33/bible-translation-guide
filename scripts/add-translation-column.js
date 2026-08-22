@@ -359,6 +359,73 @@ const KNOWN_TRANSLATIONS = {
     translation: "",
     notes: "Unity Baptist Church, Fayette AL - confirmed SBC affiliated; SBC has no denominational translation mandate; no church-specific info found",
   },
+
+  // --- Batch 7: more Lutheran/Presbyterian ---
+  "c7526776-0203-48cc-a8c3-6ce23f57a3e1": {
+    translation: "",
+    notes:
+      "Old Apostolic Lutheran Church, Sheridan WY - confirmed Old Apostolic Lutheran Church of America (small pietist Finnish-American Lutheran body, founded 1963 in the US, distinct from LCMS/ELCA/WELS); official translation stance not researched given small size",
+  },
+  "f0d94d0b-8b43-419c-9656-26b4436f2ffc": {
+    translation: "NRSV",
+    notes:
+      "Christ & Emmanuel Lutheran Parish, Kittanning PA - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a4f69ae6-54af-4976-bab6-6d13c6f22cc9": {
+    translation: "NRSV",
+    notes:
+      "Christ the King Lutheran Church, Cumming GA - confirmed ELCA congregation (established 1990); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a401b024-4b75-4cd9-82e8-d5da393b257e": {
+    translation: "",
+    notes:
+      "Peace Lutheran Church, Edgar WI - confirmed LCMC (Lutheran Congregations in Mission for Christ); LCMC has no official denominational translation",
+  },
+  "a4947900-92e7-45fb-a899-16a93e54130f": {
+    translation: "",
+    notes:
+      "Crown of Life Lutheran Church, West St Paul MN - confirmed WELS congregation; WELS has no official denominational translation",
+  },
+  "f549c50a-d8d9-4a6d-9242-fbc506802164": {
+    translation: "NRSV",
+    notes:
+      "St John Lutheran Church, Lakeside-Marblehead OH - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "9cac4b7d-378c-41d3-afd4-078ce507027b": {
+    translation: "NRSV",
+    notes:
+      "Trinity Lutheran Church, Worcester Twp PA (Fairview Village) - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "bad59d9b-dfaa-4960-97f0-a93df046301e": {
+    translation: "ESV",
+    notes:
+      "Good Shepherd Lutheran Church, Centralia MO - confirmed LCMS congregation (locator.lcms.org, joined 1958, Missouri District); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "7bebfa5b-f909-49ed-b7b3-0a20945f99a9": {
+    translation: "NRSV",
+    notes:
+      "Trinity Presbyterian Church, Wilmington DE - confirmed PC(USA) congregation (pcusa.org directory, New Castle Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "d5a56740-c79c-4ca2-91b1-76a6b49413ad": {
+    translation: "NRSV",
+    notes:
+      "Spencer Presbyterian Church, Spencer NC - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "b2e7672e-8a1c-4390-a7b1-f945dc4cb561": {
+    translation: "",
+    notes:
+      "Lake Oconee Presbyterian Church, Eatonton GA - confirmed PCA congregation (lopc-pca.org, founded 1996); PCA has no officially mandated Bible translation so no denominational default applies. Note: a differently-named 'Lake Oconee LUTHERAN Church' also in Eatonton GA is LCMS - do not confuse the two",
+  },
+  "20f2db7c-0967-4240-8059-4abc9f46fee8": {
+    translation: "NRSV",
+    notes:
+      "Grace Korean Presbyterian Church, Roswell GA - confirmed PC(USA) congregation (pcusa.org directory, Greater Atlanta Presbytery) - not a separate Korean-specific denomination; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "656c533e-ba40-49bd-9cd4-69c457f5cb88": {
+    translation: "NRSV",
+    notes:
+      "Washington Zion Presbyterian Church - confirmed PC(USA) congregation (faithstreet.com), but listed there as located in Silver Spring MD, not Columbia MD as in this dataset row - flagging this location discrepancy for awareness, though the distinctive name makes it very likely the same church; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
