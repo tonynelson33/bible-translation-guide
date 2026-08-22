@@ -156,29 +156,16 @@ export default function TranslationProfile({
             ))}
           </ul>
         </div>
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">Good Fit For</h2>
-            <ul className="mt-3 space-y-2">
-              {profile.goodFor.map((item, i) => (
-                <li key={i} className="flex gap-2 text-sm leading-relaxed text-neutral-700">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">Consider If</h2>
-            <ul className="mt-3 space-y-2">
-              {profile.consider.map((item, i) => (
-                <li key={i} className="flex gap-2 text-sm leading-relaxed text-neutral-700">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-400" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">Good Fit For</h2>
+          <ul className="mt-3 space-y-2">
+            {profile.goodFor.map((item, i) => (
+              <li key={i} className="flex gap-2 text-sm leading-relaxed text-neutral-700">
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
