@@ -749,6 +749,67 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "First Presbyterian Church, Bridgeport TX - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
   },
+
+  // --- Batch 13: more Lutheran/Presbyterian ---
+  "fe9bc6bc-5b6f-4dd3-9e2f-f4ebeb5bb837": {
+    translation: "",
+    notes:
+      "Zion Evangelical Lutheran Church, Gainesville FL - confirmed WELS congregation. Note: other differently-located 'Zion Evangelical Lutheran Church' congregations in Florida (Winter Garden = LCMS, another = ELCA) exist - do not confuse them; WELS has no official denominational translation",
+  },
+  "b396439e-7df6-4207-9e29-b1d1878faca6": {
+    translation: "NRSV",
+    notes:
+      "Mt Pleasant Lutheran Church, Racine WI (the 'Spaceship Church,' built 1975) - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "846ff5e1-e60e-4bc1-9ccd-9442bf531803": {
+    translation: "",
+    notes: "Our Savior Lutheran Church, Black Earth WI - could not confirm denominational affiliation (LCMS vs. ELCA vs. other); no translation info found",
+  },
+  "eb2cbc56-90a1-4e59-9277-2b29688fb6ea": {
+    translation: "NRSV",
+    notes:
+      "Central Lutheran Church, Seattle WA (Central Lutheran Church of the Holy Trinity) - confirmed ELCA congregation (Reconciling in Christ, Capitol Hill); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "9cc26584-f047-491c-8056-b680baf8c44c": {
+    translation: "NRSV",
+    notes:
+      "King of Kings Lutheran Church, Lake Orion MI - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "7e1e23ef-7e1e-4cfd-be8f-1a99bb7a655e": {
+    translation: "ESV",
+    notes:
+      "Immanuel Lutheran Church, Litchfield MN - confirmed LCMS congregation (Meeker County); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "97da12fe-a304-42a2-bb2d-5fb876da6dd0": {
+    translation: "ESV",
+    notes:
+      "Mt Calvary Lutheran Church, Wamego KS - confirmed LCMS congregation (locator.lcms.org, joined 1948, Kansas District); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "ffd370c7-49ac-4ccd-b9fa-52d2c3bb967f": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church of Lower Merion (now Gladwyne Presbyterian Church), Gladwyne PA - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Philadelphia); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "c71e543e-b124-4561-997c-caba34d7eba9": {
+    translation: "NRSV",
+    notes:
+      "First United Presbyterian Church, Baxter Springs KS - confirmed PC(USA) congregation (pcusa.org directory, founded 1869); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "fb7358de-f231-47b0-bf9e-222e17f58e97": {
+    translation: "NRSV",
+    notes:
+      "Carmel Presbyterian Church USA, Chester SC - confirmed PC(USA) congregation (pcusa.org directory); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "4cc5e05e-abf6-467d-9949-abf789f31efc": {
+    translation: "NRSV",
+    notes:
+      "Community Presbyterian Church, La Mirada CA - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Los Ranchos); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "c3425e47-b03a-48c4-897a-6d5e14925678": {
+    translation: "",
+    notes:
+      "Farner Presbyterian Church, Farner TN - CONFLICTING affiliation signals: a third-party directory (FaithStreet) lists it as PC(USA), but the church's own Facebook page identifies it as Evangelical Presbyterian Church (EPC, a distinct denomination not yet researched) - genuinely ambiguous, so no denominational default applied rather than guess",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
