@@ -493,6 +493,72 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Reformation Orthodox Presbyterian Church, Apache Junction AZ (meets in Mesa) - confirmed OPC (Orthodox Presbyterian Church, a distinct small confessional Reformed denomination founded 1936, separate from PC(USA)/PCA); OPC explicitly has no single official Bible translation (NIV historically predominant, ESV growing) so no denominational default applies",
   },
+
+  // --- Batch 9: more Lutheran/Presbyterian ---
+  "14f7bedf-f0b5-4f82-9589-c0e6196e4663": {
+    translation: "NRSV",
+    notes:
+      "St. John's Lutheran Church, Lynbrook NY - confirmed ELCA (merged with Lutheran Church of the Incarnation in 2018 to form St. John-Incarnation Lutheran Church, ELCA); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "de6cee87-d562-4dbc-be8d-25797fc6119c": {
+    translation: "ESV",
+    notes:
+      "Christ Our Savior Lutheran Church, Angel Fire NM - confirmed LCMS congregation (locator.lcms.org, Rocky Mountain District mission); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "b5ba0819-b77b-4843-bdbf-697e90927570": {
+    translation: "ESV",
+    notes:
+      "Grace Lutheran Church, Chester VA - confirmed LCMS congregation (locator.lcms.org, joined 1964); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "8cf53614-2f69-4116-976c-27440ce43521": {
+    translation: "NRSV",
+    notes:
+      "Canoe Ridge Lutheran Church, Decorah IA - confirmed ELCA congregation; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "3e86fc1e-296a-47a0-be0d-b080297882ca": {
+    translation: "ESV",
+    notes:
+      "St. Paul Lutheran Church, Birmingham AL - confirmed LCMS congregation (locator.lcms.org, historically African-American congregation, joined Missouri Synod 1950s-60s from the former American Lutheran Church); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "6ba72657-01e0-431f-a2d7-d6ed50367edb": {
+    translation: "NRSV",
+    notes:
+      "Waverly Lutheran Church, Trimont MN - confirmed ELCA congregation (merged into ELCA 1987, Southwestern Minnesota Synod); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "c02fbe19-8d97-47ca-8e57-d4e7af0b6e6e": {
+    translation: "",
+    notes: "All Saints Lutheran Church, Orland Park IL - could not confirm denominational affiliation (LCMS vs. ELCA vs. other); no translation info found",
+  },
+  "28c98227-921b-4c9b-9fba-36e69d497511": {
+    translation: "NRSV",
+    notes:
+      "St Paul's Lutheran Church, Elma IA - confirmed ELCA congregation. Note: a differently-located 'St. Paul Lutheran Church' in Eldora IA is LCMS - do not confuse the two; ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "4ba410f3-7f0f-4e84-a422-ababd8e4befd": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Durango CO - confirmed PC(USA) congregation (pcusa.org directory, Western Colorado Presbytery, founded 1881); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "59abf17e-7c30-4542-bf3d-350654c97c56": {
+    translation: "NRSV",
+    notes:
+      "East Liberty Presbyterian Church (ELPC), Pittsburgh PA - confirmed PC(USA) congregation (pcusa.org directory, known as the 'Cathedral of Hope,' founded 1819); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "726397b7-b444-4a73-b634-6e9e69388326": {
+    translation: "NRSV",
+    notes:
+      "Linden Presbyterian Church, Linden MI - confirmed PC(USA) congregation (pcusa.org directory, founded 1860); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "8e28fc99-5854-445a-acb6-59d415742c73": {
+    translation: "",
+    notes:
+      "United Presbyterian Church, Trenton NJ - could not confirm this specific congregation under this exact name (search only surfaced a differently-named First Presbyterian Church of Trenton, PCUSA); no translation info found for this specific entity",
+  },
+  "e3918513-0705-4f34-bb77-447c4200e97e": {
+    translation: "NRSV",
+    notes:
+      "Wayne Presbyterian Church, Wayne NJ - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Northeast New Jersey, founded 1870). Note: a differently-located 'Wayne Presbyterian Church' in Wayne PA is a separate PCUSA congregation - do not confuse the two; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
