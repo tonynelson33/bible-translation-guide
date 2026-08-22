@@ -204,30 +204,29 @@ export const rankingCategories: RankingCategory[] = [
     slug: "balance",
     title: "Best Overall Balance",
     tabLabel: "Overall Balance",
-    criteria:
-      "Which translations would serve you best in all areas if you could only have one? This is each translation's average rank across the other six lists on this page. Ties are broken first by consistency — a translation that's solidly mid-pack everywhere ranks above one with the same average but wide swings between its best and worst category — and if that's still tied, by which one has the higher floor, meaning a less-bad worst category.",
+    criteria: "Which translations would serve you best in all areas if you could only have one.",
     entries: [
       {
         id: "esv",
         blurb:
-          "The best average across all six other categories — never ranks lower than 6th in any of them, with top-three finishes for literalness, preaching, study, and memorization. No single specialty, but no real weakness either.",
+          "The best average across study, daily devotions, preaching, and memorization — top three in three of the four, and no worse than 6th in the other (daily devotions). No single specialty, but no real weakness either.",
+      },
+      {
+        id: "csb",
+        blurb:
+          "Ties NASB for the next-best average, but wins the tiebreak with an outright #1 for preaching — the only one of the two that actually leads a category rather than just running close behind.",
       },
       {
         id: "nasb",
         blurb:
-          "A precision specialist whose average still lands near the top — top-two finishes for literalness, study, and memorization outweigh its weaker showings for devotions and popularity.",
+          "Ties CSB for the next-best average — top-two finishes for study and memorization, held back mainly by a weaker showing for daily devotions.",
       },
-      {
-        id: "niv",
-        blurb:
-          "The most consistently top-half translation on this page — never lower than 8th, with strong showings for popularity, devotions, and preaching.",
-      },
-      { id: "nkjv", blurb: "Ties for 4th on average, but the most even performer here — parked at or near 5th in nearly every other ranking, never a specialist and never a weak spot." },
-      { id: "csb", blurb: "Also ties for 4th — #1 for preaching and top-two for devotions, but middling literalness and popularity pull its average down." },
-      { id: "kjv", blurb: "Also ties for 4th, but with the widest swings of the three — #1 for memorization, yet its worst showing (8th, for serious study) is weaker than CSB's or NKJV's." },
-      { id: "lsb", blurb: "The most literal translation on this page, but that same maximal precision costs it in devotions, preaching, and everyday popularity." },
-      { id: "net", blurb: "Built for one job — serious study — and it shows elsewhere: near the bottom for preaching, memorization, and popularity." },
-      { id: "nlt", blurb: "The most extreme translation here — #1 for devotions, but its looser wording drops it to the bottom for literalness, study, and memorization." },
+      { id: "nkjv", blurb: "The most even performer of the rest — solidly mid-pack in study, devotions, and preaching, with a strong 4th for memorization." },
+      { id: "niv", blurb: "Strong showings for daily devotions and preaching keep its average respectable, even though it's the weakest of this group for serious study." },
+      { id: "kjv", blurb: "Its #1 finish for memorization is offset by weaker showings for study and daily devotions." },
+      { id: "net", blurb: "Its #1 finish for serious study doesn't carry over — it's near the bottom for preaching and memorization, the two most public-facing use cases here." },
+      { id: "nlt", blurb: "Its #1 finish for daily devotions is the high point — everywhere else on this page, its looser wording holds it back." },
+      { id: "lsb", blurb: "The most literal translation on this site, but that precision doesn't translate into a lead in study, devotions, preaching, or memorization specifically." },
     ],
   },
 ];
