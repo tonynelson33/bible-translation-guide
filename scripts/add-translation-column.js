@@ -188,6 +188,43 @@ const KNOWN_TRANSLATIONS = {
     translation: "",
     notes: "First Christian Church Disciples of Christ, McAllen TX - confirmed Disciples of Christ; no translation info found",
   },
+
+  // --- Batch 4: more Lutheran/Presbyterian synod verification ---
+  "77f90d7e-be3d-4e1d-8e11-2b3f4721b327": {
+    translation: "",
+    notes:
+      "Living Word Lutheran Church, Milbank SD - confirmed LCMC (Lutheran Congregations in Mission for Christ, formed by former ELCA congregations that left over 2009 policy changes) - a third distinct Lutheran body from LCMS/ELCA/WELS; LCMC's official translation stance not yet researched",
+  },
+  "f3d823a9-8eb1-4b4e-8e9b-4453d4658659": {
+    translation: "ESV",
+    notes:
+      "Zion Lutheran Church, Downs KS - confirmed LCMS congregation; LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "41111c8d-63b6-4fef-be23-7e76f2cc6827": {
+    translation: "ESV",
+    notes:
+      "St. John's Lutheran Church, Wilcox NE - confirmed LCMS congregation (locator.lcms.org); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "66fe2ffd-b3f7-41d9-8756-a0fedb16fba9": {
+    translation: "NRSV",
+    notes:
+      "Osakis Presbyterian Church (First Presbyterian Church, Osakis MN) - confirmed PC(USA) congregation (pcusa.org directory, Minnesota Valleys Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "78189583-d0c6-4d44-aa3c-711e272f05d2": {
+    translation: "NRSV",
+    notes:
+      "Osceola Presbyterian Church, Osceola PA - confirmed PC(USA) congregation (pcusa.org directory, Northumberland Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a0f6d943-62a0-4907-9ab0-383f2d48911f": {
+    translation: "",
+    notes:
+      "Dry Fork Cumberland Presbyterian Church, Bethpage TN - confirmed Cumberland Presbyterian Church, a distinct denomination from PC(USA)/PCA; the denomination explicitly states it 'does not limit itself to any one translation of the Bible,' so no denominational default applies",
+  },
+  "72d2b5c3-af3e-4775-b895-7a192711549b": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church of DeFuniak Springs, FL - confirmed PC(USA) congregation (Presbytery of Florida, Synod of South Atlantic); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
