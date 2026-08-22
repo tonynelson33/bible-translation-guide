@@ -90,33 +90,6 @@ export const rankingCategories: RankingCategory[] = [
     ],
   },
   {
-    slug: "readable",
-    title: "Most Readable",
-    tabLabel: "Most Readable",
-    criteria:
-      "Which translations are easiest to read, based on the reading grade level in the comparison table — lower means more accessible to more readers.",
-    entries: [
-      {
-        id: "nlt",
-        blurb: "The most readable translation here by a clear margin, at a 6th-grade level — natural, story-like prose without being a paraphrase.",
-      },
-      {
-        id: "csb",
-        blurb: "A 7th-8th grade level built specifically to read naturally aloud, without drifting toward paraphrase.",
-      },
-      {
-        id: "net",
-        blurb: "Also around a 7th-grade level for its main text — readable day-to-day, even though its Full Notes Edition is a serious study tool underneath.",
-      },
-      { id: "nkjv", blurb: "Surprisingly readable at a 7th-grade level for a Formal, word-for-word translation — modernizing the KJV's grammar paid off here." },
-      { id: "niv", blurb: "A 7th-8th grade level, designed from the outset to read as clear, natural English for as broad an audience as possible." },
-      { id: "esv", blurb: "A 10th-grade level — more literal phrasing means a somewhat more demanding read than the translations above it." },
-      { id: "lsb", blurb: "Estimated at a 10th-11th grade level (unconfirmed) — its maximal literalness comes at some cost to easy reading." },
-      { id: "nasb", blurb: "An 11th-grade level — its long-standing reputation for precision is part of why it reads more densely than most." },
-      { id: "kjv", blurb: "The least readable translation here at a 12th-grade level, simply because its Early Modern English vocabulary and sentence structure are centuries old." },
-    ],
-  },
-  {
     slug: "study",
     title: "Best for Serious Study",
     tabLabel: "Serious Study",
@@ -148,7 +121,7 @@ export const rankingCategories: RankingCategory[] = [
     title: "Best for Daily Devotions",
     tabLabel: "Daily Devotions",
     criteria:
-      "Which translations are easiest to sit down and read for a while — clear and natural enough that the words don't get in the way of the reading.",
+      "Which translations are easiest to sit down and read for a while — clear and natural enough that the words don't get in the way of the reading. This is largely a readability question, so it's also the list to check for a translation that's easier on kids, new believers, or readers still learning English, not devotional use specifically.",
     entries: [
       {
         id: "nlt",
@@ -232,29 +205,29 @@ export const rankingCategories: RankingCategory[] = [
     title: "Best Overall Balance",
     tabLabel: "Overall Balance",
     criteria:
-      "If you could only own one translation, which would serve you best across every use case on this page? Not a separate judgment call — this is each translation's average rank across the other seven lists (popularity, literalness, readability, study, devotions, preaching, memorization). Ties are broken by consistency: a translation that's solidly mid-pack everywhere ranks above one with the same average but wide swings between its best and worst category.",
+      "Which translations would serve you best in all areas if you could only have one? This is each translation's average rank across the other six lists on this page. Ties are broken first by consistency — a translation that's solidly mid-pack everywhere ranks above one with the same average but wide swings between its best and worst category — and if that's still tied, by which one has the higher floor, meaning a less-bad worst category.",
     entries: [
       {
         id: "esv",
         blurb:
-          "The best average across all seven other categories — never ranks lower than 6th in any of them, with top-three finishes for preaching, memorization, and study. No single specialty, but no real weakness either.",
+          "The best average across all six other categories — never ranks lower than 6th in any of them, with top-three finishes for literalness, preaching, study, and memorization. No single specialty, but no real weakness either.",
       },
       {
-        id: "csb",
+        id: "nasb",
         blurb:
-          "A near-even split between strengths and average results: #1 for preaching, top-two for readability and devotions, solidly mid-pack everywhere else.",
+          "A precision specialist whose average still lands near the top — top-two finishes for literalness, study, and memorization outweigh its weaker showings for devotions and popularity.",
       },
       {
         id: "niv",
         blurb:
           "The most consistently top-half translation on this page — never lower than 8th, with strong showings for popularity, devotions, and preaching.",
       },
-      { id: "nkjv", blurb: "Ties for 4th on average, but the most even performer here — never in the top two anywhere, and never in the bottom two either, across all seven other rankings." },
-      { id: "nasb", blurb: "Ties NKJV on average, but as a genuine specialist rather than an all-rounder: top-two for literalness, study, and memorization, bottom-two for readability and devotions." },
-      { id: "kjv", blurb: "Extremes in both directions — #1 for memorization and a top-three seller, but the least readable and near the bottom for daily devotional reading." },
-      { id: "nlt", blurb: "Outstanding for readability and devotions, but its looser wording pulls it toward the bottom everywhere literalness or careful study matters more." },
+      { id: "nkjv", blurb: "Ties for 4th on average, but the most even performer here — parked at or near 5th in nearly every other ranking, never a specialist and never a weak spot." },
+      { id: "csb", blurb: "Also ties for 4th — #1 for preaching and top-two for devotions, but middling literalness and popularity pull its average down." },
+      { id: "kjv", blurb: "Also ties for 4th, but with the widest swings of the three — #1 for memorization, yet its worst showing (8th, for serious study) is weaker than CSB's or NKJV's." },
+      { id: "lsb", blurb: "The most literal translation on this page, but that same maximal precision costs it in devotions, preaching, and everyday popularity." },
       { id: "net", blurb: "Built for one job — serious study — and it shows elsewhere: near the bottom for preaching, memorization, and popularity." },
-      { id: "lsb", blurb: "The most specialized translation on this page: genuinely the most literal, but that same maximal precision costs it in readability, devotions, and popularity." },
+      { id: "nlt", blurb: "The most extreme translation here — #1 for devotions, but its looser wording drops it to the bottom for literalness, study, and memorization." },
     ],
   },
 ];

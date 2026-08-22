@@ -61,6 +61,35 @@ function CompactEntry({ rank, entry }: { rank: number; entry: RankingEntry }) {
   );
 }
 
+function TabButton({
+  cat,
+  isActive,
+  onClick,
+  featured = false,
+}: {
+  cat: RankingCategory;
+  isActive: boolean;
+  onClick: () => void;
+  featured?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={isActive}
+      className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+        featured ? "ring-1 ring-inset ring-brand-300" : ""
+      } ${
+        isActive
+          ? "bg-brand-700 text-white"
+          : "bg-neutral-100 text-neutral-600 hover:bg-brand-50 hover:text-brand-800"
+      }`}
+    >
+      {cat.tabLabel}
+    </button>
+  );
+}
+
 export default function RankingsPage({
   categories,
   defaultSlug,
@@ -70,6 +99,8 @@ export default function RankingsPage({
 }) {
   const [activeSlug, setActiveSlug] = useState(defaultSlug);
   const category = categories.find((c) => c.slug === activeSlug) ?? categories[0];
+  const balanceCategory = categories.find((c) => c.slug === "balance");
+  const otherCategories = categories.filter((c) => c.slug !== "balance");
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -83,25 +114,25 @@ export default function RankingsPage({
       </p>
 
       <div className="mt-6 flex flex-wrap justify-center gap-2">
-        {categories.map((cat) => {
-          const isActive = cat.slug === activeSlug;
-          return (
-            <button
-              key={cat.slug}
-              type="button"
-              onClick={() => setActiveSlug(cat.slug)}
-              aria-pressed={isActive}
-              className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-brand-700 text-white"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-brand-50 hover:text-brand-800"
-              }`}
-            >
-              {cat.tabLabel}
-            </button>
-          );
-        })}
+        {otherCategories.map((cat) => (
+          <TabButton
+            key={cat.slug}
+            cat={cat}
+            isActive={cat.slug === activeSlug}
+            onClick={() => setActiveSlug(cat.slug)}
+          />
+        ))}
       </div>
+      {balanceCategory && (
+        <div className="mt-2 flex justify-center">
+          <TabButton
+            cat={balanceCategory}
+            isActive={balanceCategory.slug === activeSlug}
+            onClick={() => setActiveSlug(balanceCategory.slug)}
+            featured
+          />
+        </div>
+      )}
 
       <section className="mt-8">
         <h2 className="font-serif text-2xl font-semibold text-brand-900">{category.title}</h2>
