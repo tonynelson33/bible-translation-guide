@@ -17,7 +17,7 @@ export interface TranslationProfile {
 export const translationProfiles: Partial<Record<string, TranslationProfile>> = {
   csb: {
     tagline:
-      "A modern “optimal equivalence” translation crafted to read naturally aloud without drifting into paraphrase.",
+      "A modern “optimal equivalence” translation designed to be read naturally aloud without drifting into paraphrase.",
     overview: [
       "The Christian Standard Bible is a revision of the Holman Christian Standard Bible (HCSB), released in 2017 and updated again in 2020. It's published by Holman Bible Publishers — the publishing arm of LifeWay Christian Resources — and produced by a translation oversight committee of evangelical scholars from multiple denominations.",
       "Its roots go back further than most readers realize. The project began in 1984 under Arthur Farstad, general editor of the New King James Version, who originally planned to keep it in the same Received Text tradition as the KJV and NKJV. After Farstad died in 1998, editor Edwin Blum took over a team of roughly 100 scholars from about 20 denominations and steered the project toward the modern critical Greek text instead — the textual family the CSB still uses today. What was published as the HCSB in 2004 (revised in 2009) was substantially reworked and relaunched as the CSB in 2017, under translation oversight co-chairs Thomas Schreiner and David Allen.",
