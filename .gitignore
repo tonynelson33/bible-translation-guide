@@ -24,6 +24,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# church research working data (>100MB, exceeds GitHub's file size limit;
+# regenerate from KNOWN_TRANSLATIONS / DENOMINATIONAL_DEFAULTS in scripts/)
+/churches-combined.csv
+/churches-combined.csv.bak
+/churches-combined.tmp.csv
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
