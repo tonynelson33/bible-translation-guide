@@ -7,6 +7,8 @@ export interface TranslationProfile {
   distinctives: string[];
   /** Who this translation tends to suit well. */
   goodFor: string[];
+  /** Optional "fun fact" style notes on specific, memorable renderings — shown above the sample verse. */
+  worthKnowing?: string[];
 }
 
 /**
@@ -36,6 +38,10 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Pastors and teachers who need a text accurate enough to preach expositionally from, but natural enough to read aloud to a congregation without stumbling over stiff phrasing.",
       "Personal and family Bible reading, where a 7th-8th grade level keeps it comfortable for teens and adults alike without drifting into paraphrase.",
       "Churches and small groups already using LifeWay curriculum — Sunday School material, VBS, and the CSB Study Bible are all built around this translation.",
+    ],
+    worthKnowing: [
+      "The CSB is one of the few modern translations to keep the Hebrew word wadi rather than translating it as “brook” or “valley” — as in “the Wadi Cherith,” where Elijah hid (1 Kings 17:3), or “the wadi of Kishon” (1 Kings 18:40). A wadi is a streambed that only carries water part of the year, so the choice paints a more precise picture of the terrain than “brook” does.",
+      "One of its most recognizable renderings is John 3:16, translated as “For God loved the world in this way: He gave his one and only Son...” rather than the familiar “For God so loved the world...” The underlying Greek word there normally describes the manner of an action — the way something is done — rather than its degree, so the CSB is translating it to highlight how God loved the world (by giving his Son) rather than how much.",
     ],
   },
 };

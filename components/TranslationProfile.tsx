@@ -169,6 +169,23 @@ export default function TranslationProfile({
         </div>
       </div>
 
+      {/* Worth knowing */}
+      {profile.worthKnowing && profile.worthKnowing.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">Worth Knowing</h2>
+          <div className="mt-3 space-y-3">
+            {profile.worthKnowing.map((item, i) => (
+              <p
+                key={i}
+                className="rounded-lg border border-brand-100 bg-brand-50/50 px-4 py-3 leading-relaxed text-neutral-700"
+              >
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Sample verse */}
       <div className="mt-10">
         <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">
