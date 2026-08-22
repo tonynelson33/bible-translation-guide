@@ -193,7 +193,7 @@ const KNOWN_TRANSLATIONS = {
   "77f90d7e-be3d-4e1d-8e11-2b3f4721b327": {
     translation: "",
     notes:
-      "Living Word Lutheran Church, Milbank SD - confirmed LCMC (Lutheran Congregations in Mission for Christ, formed by former ELCA congregations that left over 2009 policy changes) - a third distinct Lutheran body from LCMS/ELCA/WELS; LCMC's official translation stance not yet researched",
+      "Living Word Lutheran Church, Milbank SD - confirmed LCMC (Lutheran Congregations in Mission for Christ, formed by former ELCA congregations that left over 2009 policy changes) - a third distinct Lutheran body from LCMS/ELCA/WELS; checked and LCMC has no designated official Bible translation (it's a deliberately loose, less hierarchical association)",
   },
   "f3d823a9-8eb1-4b4e-8e9b-4453d4658659": {
     translation: "ESV",
