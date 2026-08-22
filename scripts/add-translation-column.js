@@ -292,6 +292,73 @@ const KNOWN_TRANSLATIONS = {
     translation: "",
     notes: "First United Methodist Church, Aberdeen WA - same as other UMC entries: no official denominational translation; no church-specific info found",
   },
+
+  // --- Batch 6: more Lutheran/Presbyterian, plus two more independent
+  // Lutheran bodies discovered (LCMC again, and NALC) ---
+  "9571f576-c190-4ec3-ab2e-2e9f7614c373": {
+    translation: "",
+    notes:
+      "Bethlehem/West Elbow Lake Lutheran Church, Elbow Lake MN - confirmed LCMC (Lutheran Congregations in Mission for Christ); LCMC has no official denominational translation",
+  },
+  "09966afb-3752-420a-80ec-ae86e10af637": {
+    translation: "ESV",
+    notes:
+      "Zion Lutheran Church, Edgeley ND - confirmed LCMS congregation (organized 1888); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "a5df1338-001d-4697-b62d-981bc1386358": {
+    translation: "NRSV",
+    notes:
+      "Everett-Breezewood Lutheran Parish, Everett PA - confirmed ELCA (parish's own materials reference growing '1 million new people' engagement alongside the ELCA); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "9273bfa9-0102-4ad7-97d5-7fc7840de025": {
+    translation: "",
+    notes:
+      "First Lutheran Church and School, Lake Geneva WI - confirmed WELS congregation (firstlutheranwels.org); WELS has no official denominational translation",
+  },
+  "d878d78c-7607-4ba1-a574-26500b3a994d": {
+    translation: "ESV",
+    notes:
+      "First Lutheran Church, Ponca City OK - confirmed LCMS congregation (locator.lcms.org, Oklahoma District); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "20676b45-898e-4711-80c6-d655a64b70bf": {
+    translation: "NRSV",
+    notes:
+      "Gloria Dei Lutheran Church, Wichita KS - confirmed ELCA congregation (established 1938); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "88321acc-172f-497e-8a82-19aa44ef1737": {
+    translation: "",
+    notes:
+      "Grace Lutheran Church, Eaton OH - confirmed NALC (North American Lutheran Church, formed 2010 by congregations that left ELCA) - a fourth distinct Lutheran body from LCMS/ELCA/WELS/LCMC; checked and NALC has no designated official Bible translation beyond affirming biblical authority generally",
+  },
+  "031a0517-0d55-4e71-9c0b-83d273b9cb12": {
+    translation: "NRSV",
+    notes:
+      "Highland (United) Presbyterian Church, Newport PA - confirmed PC(USA) congregation (pcusa.org directory, Carlisle Presbytery); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "8ca89af5-4dd8-4f86-99e8-8c8b992330d5": {
+    translation: "NRSV",
+    notes:
+      "Western Adirondack Presbyterian Church, Star Lake NY - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Northern New York); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "0e8010df-c2d0-4909-9f2e-6a036012e2e3": {
+    translation: "",
+    notes:
+      "Temple Presbyterian Church, Clover SC - confirmed PCA congregation (pcahistory.org); PCA has no officially mandated Bible translation so no denominational default applies",
+  },
+  "bddcafa2-ccb9-4b1e-8fef-472a1e1dcd5c": {
+    translation: "",
+    notes:
+      "First Presbyterian Church, Kings Mountain NC - IMPORTANT: this congregation is listed with ECO (Evangelical Covenant Order of Presbyterians, a body that split from PC(USA) in 2012), not PC(USA) itself - do not apply the PC(USA)/NRSV default here. ECO's own official translation stance has not been researched; no denominational default applied",
+  },
+  "531b5a43-0d8e-44fc-8483-99c6641b31cf": {
+    translation: "",
+    notes:
+      "Sweet Pilgrim (Missionary) Baptist Church, Albany NY - independent Missionary Baptist tradition (historically Black Baptist, not SBC); no denominational mandate structure; no translation info found",
+  },
+  "20015904-5740-4f3c-be41-ca41786f6754": {
+    translation: "",
+    notes: "Unity Baptist Church, Fayette AL - confirmed SBC affiliated; SBC has no denominational translation mandate; no church-specific info found",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
