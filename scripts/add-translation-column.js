@@ -559,6 +559,72 @@ const KNOWN_TRANSLATIONS = {
     notes:
       "Wayne Presbyterian Church, Wayne NJ - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Northeast New Jersey, founded 1870). Note: a differently-located 'Wayne Presbyterian Church' in Wayne PA is a separate PCUSA congregation - do not confuse the two; PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum",
   },
+
+  // --- Batch 10: more Lutheran/Presbyterian ---
+  "beb1ff86-fba8-4e65-96e3-a5b0226e9ed9": {
+    translation: "ESV",
+    notes:
+      "Our Saviour's Lutheran Church, Caruthers CA - confirmed LCMS congregation (locator.lcms.org, organized 1923); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "75616c31-2a8a-4532-8bab-cc9a40db88f9": {
+    translation: "",
+    notes:
+      "Redeemer Lutheran Church, Ann Arbor MI - confirmed WELS congregation (campus ministry to University of Michigan); WELS has no official denominational translation",
+  },
+  "e515712b-0b28-40f8-840b-4e465e660478": {
+    translation: "",
+    notes: "First Lutheran Church, Dayton OH (NRHP-listed, founded 1839) - could not confirm current denominational affiliation (LCMS vs. ELCA vs. other); no translation info found",
+  },
+  "35f634f5-02e6-468e-9dc5-48716e6e34f7": {
+    translation: "NRSV",
+    notes:
+      "Prince of Life Lutheran Church, Oregon City OR - confirmed ELCA congregation (Reconciling in Christ); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "f7315521-6e0a-4dd1-8339-0265417691e4": {
+    translation: "NRSV",
+    notes:
+      "Christ Lutheran Church, El Campo TX - confirmed ELCA congregation (Gulf Coast Synod); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "91c46935-f039-43c7-a3e1-996b71e11564": {
+    translation: "NRSV",
+    notes:
+      "Calvary Lutheran Church, Grand Forks ND - confirmed ELCA congregation (Eastern North Dakota Synod); ELCA officially recommends the NRSV - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "4125dd0c-68c5-4f84-8865-bf26ca5913e7": {
+    translation: "ESV",
+    notes:
+      "St. Paul's Lutheran Church, Beecher IL - confirmed LCMS congregation (founded 1865, Northern Illinois District; building destroyed by fire in 2021, congregation still active); LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "ad4f2582-eefd-4861-b4e8-781f9f22f1e3": {
+    translation: "ESV",
+    notes:
+      "Trinity Lutheran Church, Mansfield SD - confirmed LCMS congregation (locator.lcms.org, joined 1888). Note: a differently-located 'Trinity Lutheran Church ELCA' in Madison SD is a separate congregation - do not confuse the two; LCMS Commission on Worship adopted the ESV for all Lutheran Service Book materials including the lectionary",
+  },
+  "192128b4-c34a-4676-b580-aebc14674c72": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, New Castle IN - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Whitewater Valley); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "2229785d-1ada-4829-a31b-65cb393aa7d7": {
+    translation: "NRSV",
+    notes:
+      "Cherry Tree Presbyterian Church, Cherry Tree PA - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of Kiskiminetas); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "e564ee9d-fde2-4256-b568-7eff9adb8b6f": {
+    translation: "NRSV",
+    notes:
+      "First Presbyterian Church, Grand Bay AL - confirmed PC(USA) congregation (pcusa.org directory, Presbytery of South Alabama); PC(USA) overwhelmingly uses the NRSV in official worship resources, liturgy, and curriculum - not independently confirmed which pew/pulpit Bible this specific congregation uses",
+  },
+  "690cd24e-1ff4-43a1-ab21-cc10eaf4de56": {
+    translation: "",
+    notes:
+      "Trinity Presbyterian Church (OPC), Huntington WV - denomination already stated in the row's own name (OPC/Orthodox Presbyterian Church); OPC explicitly has no single official Bible translation, so no denominational default applies",
+  },
+  "b652fcdc-bb98-4626-8328-c448ebd2d9be": {
+    translation: "",
+    notes:
+      "Covenant Presbyterian Church, NCM NJ - ambiguous: found two different 'Covenant Presbyterian Church' congregations in NJ with different affiliations (Short Hills = PCA, Ewing/formerly Trenton = PC(USA)), and this dataset row's odd 'NCM' locality value doesn't clearly match either - no denominational default applied given the ambiguity",
+  },
 };
 
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
