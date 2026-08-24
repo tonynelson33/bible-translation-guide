@@ -13,15 +13,21 @@ export interface TranslationLinks {
 /**
  * Plain outbound links — no affiliate tracking. Keyed by translation id
  * (data/translations.json). Every URL here was individually verified to
- * resolve to real content before being added; a few notable gaps are
- * intentional, not oversights:
- *  - NIV has no direct publisher storefront — Zondervan sells only through
- *    retailers, so there's no "official" buy link for it.
- *  - CSB and NET don't operate their own stores either, but both have an
- *    official free-reading site (read.csbible.com, bible.org).
+ * resolve to real content before being added.
+ *
+ * "Official" doesn't always mean the publisher's own branded domain: NIV's
+ * publisher Zondervan and CSB's publisher Holman are both part of larger
+ * groups (HarperCollins Christian Publishing and LifeWay Christian
+ * Resources respectively) that run their own storefronts — FaithGateway and
+ * LifeWay.com — so those are used instead of a nonexistent Zondervan.com or
+ * Holman-branded store.
+ *
+ * A couple of intentional gaps remain:
+ *  - NET doesn't operate its own store, but has an official free-reading
+ *    site (bible.org).
  *  - LSB isn't available on Bible Gateway at all.
  *  - KJV has no single publisher (public domain), so there's no "official"
- *    buy link for it either — just retailers.
+ *    buy link for it — just retailers.
  */
 export const translationLinks: Record<string, TranslationLinks> = {
   esv: {
@@ -47,6 +53,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   niv: {
     buy: [
+      { label: "FaithGateway (official)", url: "https://faithgateway.com/collections/niv-bibles" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=NIV+Bible" },
       { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/niv" },
     ],
@@ -68,6 +75,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   csb: {
     buy: [
+      { label: "LifeWay (official)", url: "https://www.lifeway.com/en/shop/bibles/csb" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=CSB+Bible" },
       { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/csb" },
     ],
