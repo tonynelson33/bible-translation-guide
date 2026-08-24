@@ -1,4 +1,5 @@
 import type { Translation } from "./types";
+import lsbCachedVerses from "@/data/lsbCachedVerses.json";
 
 export interface VerseFetchResult {
   translationId: string;
@@ -237,6 +238,32 @@ async function fetchFromApiBible(
   }
 }
 
+/**
+ * Serves verse text sourced by hand from read.lsbible.org (see data/lsbCachedVerses.json)
+ * rather than a live API — the LSB has no public API, and this site isn't built for
+ * automated access. Only covers the 5 sample verses on /verses; well within Lockman's
+ * published permission to store up to 1,000 LSB verses electronically with attribution.
+ */
+function fetchFromCache(translation: Translation, verse: VerseRef): VerseFetchResult {
+  const text = (lsbCachedVerses as Record<string, string>)[verse.reference];
+  if (!text) {
+    return {
+      translationId: translation.id,
+      status: "unavailable",
+      text: null,
+      attribution: null,
+      message: `No cached text for ${verse.reference} yet — only the sample verses on this page have been sourced.`,
+    };
+  }
+  return {
+    translationId: translation.id,
+    status: "ok",
+    text,
+    attribution:
+      "Scripture quotations taken from the (LSB®) Legacy Standard Bible®, Copyright © 2021 by The Lockman Foundation. Used by permission. All rights reserved.",
+  };
+}
+
 export async function fetchVerseForTranslation(
   translation: Translation,
   verse: VerseRef
@@ -250,6 +277,8 @@ export async function fetchVerseForTranslation(
       return fetchFromNetBible(translation, verse);
     case "api-bible":
       return fetchFromApiBible(translation, verse);
+    case "cached":
+      return fetchFromCache(translation, verse);
     case "unavailable":
     default:
       return {

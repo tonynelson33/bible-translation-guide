@@ -121,17 +121,17 @@
     "philosophy": "Formal",
     "textualBasis": "Critical text",
     "publisher": "Lockman / Master's Seminary",
-    "quoteLimit": "~1,000 verses (verify)",
+    "quoteLimit": "1,000 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": { "marks": true, "method": "ALL CAPS" },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
     "quotationMarksForDialogue": true,
-    "verifyFields": ["gradeLevel", "quoteLimit"],
+    "verifyFields": ["gradeLevel"],
     "verseApi": {
-      "provider": "unavailable",
-      "note": "No known free public API for the LSB as of mid-2026. It does not appear on scripture.api.bible's public catalog. Manual sourcing or a direct licensing conversation with Lockman/Master's Seminary would be needed."
+      "provider": "cached",
+      "note": "No public API for the LSB, and read.lsbible.org isn't built for automated access. The 5 sample verses on /verses were sourced by hand from read.lsbible.org and are served from data/lsbCachedVerses.json instead of a live fetch — well within Lockman's published permission to store up to 1,000 LSB verses electronically with attribution. Verses outside that cached set still show as unavailable."
     }
   },
   {

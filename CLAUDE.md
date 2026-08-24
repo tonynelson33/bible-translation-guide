@@ -34,9 +34,10 @@ Each translation's `verifyFields` array (e.g. `["quoteLimit"]`) flags which valu
 fully confirmed against publisher documentation; `ComparisonTable` renders those with a `†`
 marker.
 
-**Live verse fetching** (`/verses` page): Scripture text is never hardcoded. Each translation's
-`verseApi` config in `data/translations.json` names a `provider`, and
-`lib/verseProviders.ts` has one adapter function per provider:
+**Live verse fetching** (`/verses` page): Scripture text is fetched live, not hardcoded — with
+one deliberate exception (LSB, see below). Each translation's `verseApi` config in
+`data/translations.json` names a `provider`, and `lib/verseProviders.ts` has one adapter
+function per provider:
 
 - `bible-api` → bible-api.com (KJV; public domain, no key)
 - `esv-api` → api.esv.org (needs `ESV_API_KEY` env var)
@@ -44,7 +45,18 @@ marker.
 - `api-bible` → scripture.api.bible (needs `API_BIBLE_KEY` env var + a per-translation
   `apiBibleId`; the free Starter plan only allows 3 copyrighted translations active at once —
   currently configured for NIV, CSB, NASB)
-- `unavailable` → no known free API (currently just LSB)
+- `cached` → currently just LSB. No public API exists, and read.lsbible.org isn't built for
+  automated access (its search doesn't respond to scripted interaction, and direct requests to
+  it get rate-limited). The 5 sample verses were instead sourced by hand — via a real browser
+  session, not a scraper — from read.lsbible.org's `read-lsbible.vercel.app/ref-tagger?ref=`
+  passage-lookup route, and are served from `data/lsbCachedVerses.json`. This is within
+  Lockman's published permission to store up to 1,000 LSB verses electronically with
+  attribution (see their Permission to Quote page), but only covers these 5 verses — anything
+  else still shows "Text unavailable." Don't build an automated scraper against
+  read.lsbible.org; if more LSB verses are needed later, source them by hand the same way, or
+  reach out to Lockman/316 Publishing about an official source.
+- `unavailable` → no known free source at all (currently none — every translation has at least
+  a live API or a cached fallback)
 
 Every adapter returns a `VerseFetchResult` with `status: "ok" | "unavailable" | "error"` instead
 of throwing, so a missing key or a down API degrades to a "Text unavailable" card

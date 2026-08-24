@@ -9,7 +9,7 @@ export interface OtMarking {
 
 export interface VerseApiConfig {
   /** Which provider adapter (lib/verseProviders.ts) to use for live verse fetches. */
-  provider: "bible-api" | "esv-api" | "net-bible" | "api-bible" | "unavailable";
+  provider: "bible-api" | "esv-api" | "net-bible" | "api-bible" | "cached" | "unavailable";
   /** api-bible only: the Bible ID for this translation on scripture.api.bible. */
   apiBibleId?: string;
   /** Human-readable note on availability/gaps, shown if fetch is not possible. */
