@@ -4,7 +4,10 @@ import type { Philosophy } from "@/lib/types";
 import { translations } from "@/lib/data";
 import { translationLinks } from "@/lib/buyLinks";
 
-export const metadata: Metadata = { title: "Buy" };
+export const metadata: Metadata = {
+  title: "Buy",
+  alternates: { canonical: "/buy" },
+};
 
 const monogramStyles: Record<Philosophy, string> = {
   Formal: "bg-indigo-600",

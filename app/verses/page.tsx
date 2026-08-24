@@ -6,6 +6,7 @@ import { fetchVerseForTranslation } from "@/lib/verseProviders";
 
 export const metadata: Metadata = {
   title: "Sample Verse Comparison",
+  alternates: { canonical: "/verses" },
 };
 
 // Verse text is fetched live from external Bible APIs on each request, per

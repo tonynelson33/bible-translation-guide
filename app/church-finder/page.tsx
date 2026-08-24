@@ -3,7 +3,10 @@ import ChurchResultCard from "@/components/ChurchResultCard";
 import { searchChurches } from "@/lib/churches";
 import { supabase } from "@/lib/supabase";
 
-export const metadata: Metadata = { title: "Church Finder" };
+export const metadata: Metadata = {
+  title: "Church Finder",
+  alternates: { canonical: "/church-finder" },
+};
 
 export default async function ChurchFinderPage({
   searchParams,

@@ -12,7 +12,10 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const translation = getTranslation(params.slug);
-  return { title: translation ? translation.abbreviation : "Translation" };
+  return {
+    title: translation ? translation.abbreviation : "Translation",
+    alternates: { canonical: `/translations/${params.slug}` },
+  };
 }
 
 export default async function TranslationProfilePage({ params }: { params: { slug: string } }) {

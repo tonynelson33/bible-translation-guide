@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import ComparisonTable from "@/components/ComparisonTable";
 import { translations } from "@/lib/data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
