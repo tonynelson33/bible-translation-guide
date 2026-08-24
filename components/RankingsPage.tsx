@@ -108,10 +108,8 @@ export default function RankingsPage({
         Rankings
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-        Pick a category to see how all nine translations stack up. Six lists each rank by one
-        specific use — popularity, literalness, study, devotions, preaching, memorization — and
-        Overall Balance combines those into a single composite score. Either way, “best” still
-        depends on what matters most to you.
+        Pick a category to see how all nine translations stack up. There's no single “best”
+        translation — these are just here as a helpful guide more than anything.
       </p>
 
       <div className="mt-6 flex flex-wrap justify-center gap-2">
