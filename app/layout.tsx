@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
@@ -16,13 +17,27 @@ const lora = Lora({
   display: "swap",
 });
 
+const siteDescription =
+  "A clear, side-by-side comparison of ESV, KJV, NIV, NLT, CSB, LSB, NKJV, NASB, and NET — translation philosophy, reading level, textual basis, and more.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bibletranslationguide.vercel.app"),
   title: {
     default: "BibleTranslationGuide — Compare Bible Translations",
     template: "%s — BibleTranslationGuide",
   },
-  description:
-    "A clear, side-by-side comparison of ESV, KJV, NIV, NLT, CSB, LSB, NKJV, NASB, and NET — translation philosophy, reading level, textual basis, and more.",
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName: "BibleTranslationGuide",
+    title: "BibleTranslationGuide — Compare Bible Translations",
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BibleTranslationGuide — Compare Bible Translations",
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +51,7 @@ export default function RootLayout({
         <Nav />
         <main className="min-w-0 flex-1">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
