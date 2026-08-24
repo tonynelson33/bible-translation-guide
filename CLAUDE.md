@@ -97,6 +97,20 @@ Only ~8% of churches have a confirmed `bible_translation` so far — this is inh
 long-tail research problem (see "Church data pipeline" below), not a bug. Most results
 correctly show "Not yet confirmed."
 
+**Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
+can't write to it), user submissions go into a separate `church_suggestions` table instead —
+RLS allows anon `insert` only, no `select`/`update`/`delete`, so submitters can't read anyone
+else's suggestions and there's no way to write directly into `churches` from the browser.
+`components/SuggestCorrectionForm.tsx` (inline on each `ChurchResultCard`, for editing an
+existing church's denomination/translation) and `components/AddChurchForm.tsx` (on the page
+itself, for a church not in the directory) both call helpers in `lib/churchSuggestions.ts`.
+Dropdown options for both forms live in `lib/suggestionOptions.ts` — denominations start from
+the 20 category slugs actually used in `churches.category` (see `humanizeCategory()`) plus
+~15 common ones not yet represented; translations cover the 9 this site profiles plus ~20 more,
+since a church may use one this site doesn't. Every submission lands with `status = 'pending'`;
+there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
+Supabase dashboard's Table Editor.
+
 **Church data pipeline** (`scripts/`, all one-off Node scripts, safe to re-run): the source
 data (`churches-combined.csv`, ~110MB, gitignored — exceeds GitHub's 100MB limit and is fully
 regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churches-data*.js` and

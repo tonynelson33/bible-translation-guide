@@ -1,6 +1,7 @@
 import type { Church } from "@/lib/churches";
 import { humanizeCategory } from "@/lib/churches";
 import Tooltip from "./Tooltip";
+import SuggestCorrectionForm from "./SuggestCorrectionForm";
 
 export default function ChurchResultCard({ church }: { church: Church }) {
   return (
@@ -34,6 +35,8 @@ export default function ChurchResultCard({ church }: { church: Church }) {
           <span className="italic text-neutral-400">Not yet confirmed</span>
         )}
       </div>
+
+      <SuggestCorrectionForm church={church} />
     </li>
   );
 }

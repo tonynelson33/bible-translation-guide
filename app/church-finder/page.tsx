@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ChurchResultCard from "@/components/ChurchResultCard";
+import AddChurchForm from "@/components/AddChurchForm";
 import { searchChurches } from "@/lib/churches";
 import { supabase } from "@/lib/supabase";
 
@@ -102,6 +103,8 @@ export default async function ChurchFinderPage({
               )}
             </div>
           )}
+
+          <AddChurchForm />
         </>
       )}
     </div>
