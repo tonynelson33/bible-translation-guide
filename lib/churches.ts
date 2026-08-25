@@ -56,6 +56,45 @@ function rowToChurch(row: Record<string, unknown>): Church {
   };
 }
 
+export interface CountRow {
+  label: string;
+  count: number;
+}
+
+/** Reads the church_denomination_counts view (a GROUP BY over churches.category, security_invoker so it respects the same RLS as churches itself). */
+export async function getDenominationCounts(): Promise<CountRow[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from("church_denomination_counts")
+    .select("category, count")
+    .order("count", { ascending: false });
+  if (error) {
+    console.error("getDenominationCounts error:", error.message);
+    return [];
+  }
+  return (data ?? []).map((row) => ({
+    label: humanizeCategory(row.category as string | null),
+    count: row.count as number,
+  }));
+}
+
+/** Reads the church_translation_counts view (a GROUP BY over churches.bible_translation). */
+export async function getTranslationCounts(): Promise<CountRow[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from("church_translation_counts")
+    .select("bible_translation, count")
+    .order("count", { ascending: false });
+  if (error) {
+    console.error("getTranslationCounts error:", error.message);
+    return [];
+  }
+  return (data ?? []).map((row) => ({
+    label: (row.bible_translation as string | null) ?? "Not yet confirmed",
+    count: row.count as number,
+  }));
+}
+
 /** Returns [] when Supabase isn't configured or the search has no usable criteria. */
 export async function searchChurches(params: ChurchSearchParams): Promise<Church[]> {
   const zip = params.zip?.trim();

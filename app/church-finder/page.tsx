@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import ChurchResultCard from "@/components/ChurchResultCard";
 import AddChurchForm from "@/components/AddChurchForm";
-import { searchChurches } from "@/lib/churches";
+import CountTable from "@/components/CountTable";
+import { searchChurches, getDenominationCounts, getTranslationCounts } from "@/lib/churches";
 import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
@@ -20,17 +21,27 @@ export default async function ChurchFinderPage({
   const hasSearched = Boolean(city || zip);
 
   const results = hasSearched ? await searchChurches({ city, state, zip }) : [];
+  const [denominationCounts, translationCounts] = supabase
+    ? await Promise.all([getDenominationCounts(), getTranslationCounts()])
+    : [[], []];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
         Church Finder
       </h1>
-      <p className="mt-3 text-neutral-600">
+      <p className="mt-3 max-w-3xl text-neutral-600">
         Search over 361,000 U.S. churches by city or zip code. Where we&apos;ve confirmed which
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>
+
+      {supabase && (
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <CountTable title="Denominations" rows={denominationCounts} />
+          <CountTable title="Bible Translations" rows={translationCounts} />
+        </div>
+      )}
 
       {!supabase ? (
         <p className="mt-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">

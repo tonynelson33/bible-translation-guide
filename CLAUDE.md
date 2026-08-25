@@ -111,6 +111,16 @@ since a church may use one this site doesn't. Every submission lands with `statu
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
 
+**Denomination/translation breakdown tables**: two `GROUP BY` views —
+`church_denomination_counts` and `church_translation_counts` — sit in front of `churches` and
+are read by `lib/churches.ts`'s `getDenominationCounts()`/`getTranslationCounts()`, rendered by
+`components/CountTable.tsx` side by side at the top of `/church-finder`. Both views are created
+with `security_invoker = true` — Postgres views default to running with the *creator's*
+privileges unless told otherwise, which would silently bypass `churches`' RLS policy; explicit
+`security_invoker` makes them respect the same public-SELECT policy as the table itself. Get
+this wrong and Supabase's security advisor flags it immediately (`security_definer_view`,
+ERROR level) — worth re-running `get_advisors` after any new view.
+
 **Church data pipeline** (`scripts/`, all one-off Node scripts, safe to re-run): the source
 data (`churches-combined.csv`, ~110MB, gitignored — exceeds GitHub's 100MB limit and is fully
 regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churches-data*.js` and
