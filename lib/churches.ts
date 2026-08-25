@@ -26,6 +26,7 @@ const RESULTS_LIMIT = 30;
 // churches that didn't match a specific denomination pattern.
 const CATEGORY_LABEL_OVERRIDES: Record<string, string> = {
   church_cathedral: "Denomination not identified",
+  quaker_friends: "Quaker (Friends)",
 };
 
 const LOWERCASE_CONNECTORS = new Set(["of", "and", "the", "in"]);

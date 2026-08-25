@@ -145,6 +145,20 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
 - `reference-us-zips.csv`: a free public-domain zip/city/state dataset (SimpleMaps), used for
   the address backfill and reusable for future geocoding needs.
 
+**Denomination taxonomy** (`scripts/add-refined-category-column.js`'s `CATCH_ALL_PATTERNS`,
+mirrored in `lib/suggestionOptions.ts`'s `denominationOptions` and
+`lib/churches.ts`'s `CATEGORY_LABEL_OVERRIDES`): the catch-all `church_cathedral` bucket is
+reclassified by regex against the church name, checked top to bottom with more specific patterns
+first. Two collisions worth remembering if extending this list: "Church of God" is not one
+denomination — Church of God in Christ (COGIC) and Church of God of Prophecy are distinct bodies
+from generic "Church of God" and must be matched before it, or they'd all fall into the generic
+bucket. And "Reformed Baptist" is a Baptist church theologically (not part of the Reformed
+Church in America / Christian Reformed Church family), so it's routed to `baptist_church` before
+the generic `Reformed` pattern gets a chance to catch it. New catch-all denominations were only
+added once real data showed they'd clear a "worth a category" bar (roughly 100+ matches in the
+existing data) — Christian & Missionary Alliance was checked and excluded (~83 matches, below
+that bar).
+
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
 text (other translations need API keys, see below). Nothing in the app reads this yet - it's

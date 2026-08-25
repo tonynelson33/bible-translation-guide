@@ -23,7 +23,13 @@ const OVERRIDE_PATTERNS = [
 // Order matters: first match wins, checked top to bottom. More specific
 // patterns that are substrings of a broader one (e.g. "Orthodox Presbyterian"
 // vs. "Orthodox", "Disciples of Christ" vs. "Church of Christ") must come
-// before the broader pattern they'd otherwise collide with.
+// before the broader pattern they'd otherwise collide with. Same reasoning
+// applies to the additions below: "Church of God in Christ" (COGIC) and
+// "...of Prophecy" are distinct denominations from generic "Church of God"
+// and must be checked first; "Reformed Baptist" is a Baptist church
+// theologically, not part of the Reformed Church in America/Christian
+// Reformed Church family, so it's routed to baptist_church before the
+// generic Reformed pattern gets a chance to catch it.
 const CATCH_ALL_PATTERNS = [
   { category: "latter_day_saints_church", pattern: /latter[- ]day saints|\bLDS\b|\bMormon\b/i },
   { category: "catholic_church", pattern: /\bCatholic\b/i },
@@ -32,12 +38,24 @@ const CATCH_ALL_PATTERNS = [
   { category: "lutheran_church", pattern: /\bLutheran\b/i },
   { category: "methodist_church", pattern: /\bMethodist\b/i },
   { category: "assembly_of_god_church", pattern: /\bAssembl(?:y|ies) of God\b/i },
+  { category: "church_of_god_in_christ", pattern: /\bChurch of God in Christ\b/i },
+  { category: "church_of_god_of_prophecy", pattern: /\bChurch of God of Prophecy\b/i },
+  { category: "church_of_god", pattern: /\bChurch of God\b/i },
+  { category: "baptist_church", pattern: /\bReformed Baptist\b/i },
   { category: "presbyterian_church", pattern: /\bPresbyterian\b/i },
+  { category: "reformed_church", pattern: /\bReformed\b/i },
   { category: "adventist_church", pattern: /\bAdventist\b/i },
   { category: "congregational_church", pattern: /\bCongregational\b|\bUnited Church of Christ\b/i },
   { category: "disciples_of_christ_church", pattern: /\bDisciples of Christ\b/i },
   { category: "christian_science_church", pattern: /Church of Christ,? Scientist/i },
   { category: "church_of_christ", pattern: /\bChurch of Christ\b/i },
+  { category: "nazarene_church", pattern: /\bNazarene\b/i },
+  { category: "wesleyan_church", pattern: /\bWesleyan\b/i },
+  { category: "mennonite_church", pattern: /\bMennonite\b/i },
+  { category: "foursquare_church", pattern: /\bFoursquare\b/i },
+  { category: "vineyard_church", pattern: /\bVineyard\b/i },
+  { category: "salvation_army", pattern: /\bSalvation Army\b/i },
+  { category: "quaker_friends", pattern: /\bQuaker\b|\bFriends Meeting\b/i },
 ];
 
 function classify(name) {
