@@ -13,10 +13,9 @@ export interface NewChurchSuggestion {
   address: string;
   locality: string;
   region: string;
-  zip?: string;
+  zip: string;
   denomination: string;
   translation: string;
-  note?: string;
 }
 
 export interface SubmitResult {
@@ -44,13 +43,12 @@ export async function submitNewChurchSuggestion(input: NewChurchSuggestion): Pro
   const { error } = await supabase.from("church_suggestions").insert({
     suggestion_type: "new_church",
     church_name: input.churchName,
-    address: input.address || null,
-    locality: input.locality || null,
-    region: input.region || null,
-    zip: input.zip || null,
-    denomination: input.denomination || null,
-    translation: input.translation || null,
-    note: input.note || null,
+    address: input.address,
+    locality: input.locality,
+    region: input.region,
+    zip: input.zip,
+    denomination: input.denomination,
+    translation: input.translation,
   });
   if (error) return { ok: false, error: error.message };
   return { ok: true };

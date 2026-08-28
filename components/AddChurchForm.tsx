@@ -13,7 +13,6 @@ export default function AddChurchForm() {
   const [zip, setZip] = useState("");
   const [denomination, setDenomination] = useState("");
   const [translation, setTranslation] = useState("");
-  const [note, setNote] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
 
   async function handleSubmit(e: FormEvent) {
@@ -27,7 +26,6 @@ export default function AddChurchForm() {
       zip,
       denomination,
       translation,
-      note,
     });
     setStatus(result.ok ? "done" : "error");
   }
@@ -73,6 +71,7 @@ export default function AddChurchForm() {
         Street address
         <input
           type="text"
+          required
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
@@ -104,6 +103,7 @@ export default function AddChurchForm() {
           Zip code
           <input
             type="text"
+            required
             value={zip}
             onChange={(e) => setZip(e.target.value)}
             className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
@@ -114,6 +114,7 @@ export default function AddChurchForm() {
         <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
           Denomination
           <select
+            required
             value={denomination}
             onChange={(e) => setDenomination(e.target.value)}
             className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
@@ -129,6 +130,7 @@ export default function AddChurchForm() {
         <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
           Bible translation
           <select
+            required
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
             className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
@@ -142,15 +144,6 @@ export default function AddChurchForm() {
           </select>
         </label>
       </div>
-      <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
-        Note (optional)
-        <textarea
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          rows={2}
-          className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-        />
-      </label>
       <div className="flex items-center gap-3">
         <button
           type="submit"
