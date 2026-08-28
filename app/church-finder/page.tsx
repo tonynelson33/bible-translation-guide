@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/church-finder" },
 };
 
-// The breakdown-table counts and search results come from Supabase via fetch,
-// which Next would otherwise cache for the life of the deployment. Revalidate
-// hourly (same cadence as the verse fetches) so church-data edits show up
-// without a redeploy.
-export const revalidate = 3600;
+// The breakdown-table counts and search results come from Supabase. Render on
+// every request (no Data Cache) so church-data edits — including ones made
+// straight against the DB — show up immediately, not up to an hour later or
+// only on the next deploy. The 3 queries per view are cheap at this traffic.
+export const dynamic = "force-dynamic";
 
 export default async function ChurchFinderPage({
   searchParams,
