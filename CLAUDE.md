@@ -115,6 +115,23 @@ typically a church's primary pulpit Bible). Every submission lands with `status 
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
 
+**Spam/duplicate mitigation on `AddChurchForm`**: the insert-only RLS policy is the primary
+defense — nothing a submitter sends ever reaches the public `churches` table without a human
+reviewing it first, so the actual blast radius of spam is an annoying review queue, not corrupted
+public data. On top of that: all 7 fields (name/address/city/state/zip/denomination/translation)
+are required, since a half-filled "new church" row isn't actionable during manual review anyway.
+`lib/churches.ts`'s `searchSimilarChurches()` does a live, debounced lookup against the real
+`churches` table (public-select, safe to call directly from the client) as someone types the name
+and city, surfacing existing matches before they submit — catches accidental duplicates, which is
+almost certainly the dominant failure mode over deliberate spam at this site's traffic level. A
+hidden honeypot field (`website`, positioned off-screen + `aria-hidden`, invisible to real users
+and screen readers) catches unsophisticated auto-fill bots — a filled honeypot silently no-ops
+the submit (shows the normal success message, makes no network call) rather than erroring, so a
+bot doesn't learn it was caught. Deliberately not implemented yet: real rate-limiting (would need
+a server-side piece — this is currently a pure browser→Supabase insert with no backend to track
+state) and CAPTCHA (real friction, not worth adding pre-emptively without evidence of actual
+abuse at low traffic).
+
 **Denomination/translation breakdown tables**: two `GROUP BY` views —
 `church_denomination_counts` and `church_translation_counts` — sit in front of `churches` and
 are read by `lib/churches.ts`'s `getDenominationCounts()`/`getTranslationCounts()`, rendered by

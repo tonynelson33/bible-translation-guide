@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { denominationOptions, translationOptions } from "@/lib/suggestionOptions";
 import { submitNewChurchSuggestion } from "@/lib/churchSuggestions";
+import { searchSimilarChurches, type SimilarChurchMatch } from "@/lib/churches";
 
 export default function AddChurchForm() {
   const [open, setOpen] = useState(false);
@@ -13,10 +14,27 @@ export default function AddChurchForm() {
   const [zip, setZip] = useState("");
   const [denomination, setDenomination] = useState("");
   const [translation, setTranslation] = useState("");
+  // Honeypot: real users never see or fill this field. A bot that auto-fills every
+  // input on the form will fill it, and we silently drop the submission on the floor.
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
+  const [similarChurches, setSimilarChurches] = useState<SimilarChurchMatch[]>([]);
+
+  // Live "already listed?" check, debounced so it doesn't fire on every keystroke.
+  useEffect(() => {
+    const handle = setTimeout(() => {
+      searchSimilarChurches(name, locality).then(setSimilarChurches);
+    }, 400);
+    return () => clearTimeout(handle);
+  }, [name, locality]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (website.trim() !== "") {
+      // Honeypot tripped -- pretend success so the bot doesn't learn it was caught.
+      setStatus("done");
+      return;
+    }
     setStatus("submitting");
     const result = await submitNewChurchSuggestion({
       churchName: name,
@@ -57,6 +75,22 @@ export default function AddChurchForm() {
       className="mt-6 space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
     >
       <h2 className="text-sm font-semibold text-neutral-800">Add a church</h2>
+
+      {/* Honeypot field: visually and semantically hidden from real users/screen readers. */}
+      <div aria-hidden="true" className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Leave this field blank
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </label>
+      </div>
+
       <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
         Church name
         <input
@@ -110,6 +144,20 @@ export default function AddChurchForm() {
           />
         </label>
       </div>
+
+      {similarChurches.length > 0 && (
+        <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+          <p className="font-medium">Already listed? These looked similar:</p>
+          <ul className="mt-1 space-y-0.5">
+            {similarChurches.map((c) => (
+              <li key={c.id}>
+                {c.name} — {c.address}, {c.locality}, {c.region}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
           Denomination

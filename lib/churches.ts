@@ -97,6 +97,44 @@ export async function getTranslationCounts(): Promise<CountRow[]> {
   }));
 }
 
+export interface SimilarChurchMatch {
+  id: string;
+  name: string;
+  address: string;
+  locality: string;
+  region: string;
+}
+
+/**
+ * Live "is this already listed?" check for the Add a Church form -- searches the real
+ * churches table (public-select, so safe to call directly from a client component) as
+ * someone types a name/city, to catch accidental duplicates before they're submitted.
+ * Returns [] until both fields have enough characters to search meaningfully.
+ */
+export async function searchSimilarChurches(name: string, locality: string): Promise<SimilarChurchMatch[]> {
+  const trimmedName = name.trim();
+  const trimmedLocality = locality.trim();
+  if (!supabase || trimmedName.length < 3 || trimmedLocality.length < 2) return [];
+
+  const { data, error } = await supabase
+    .from("churches")
+    .select("id, name, address, locality, region")
+    .ilike("name", `%${trimmedName}%`)
+    .ilike("locality", `${trimmedLocality}%`)
+    .limit(5);
+  if (error) {
+    console.error("searchSimilarChurches error:", error.message);
+    return [];
+  }
+  return (data ?? []).map((row) => ({
+    id: row.id as string,
+    name: row.name as string,
+    address: row.address as string,
+    locality: row.locality as string,
+    region: row.region as string,
+  }));
+}
+
 /** Returns [] when Supabase isn't configured or the search has no usable criteria. */
 export async function searchChurches(params: ChurchSearchParams): Promise<Church[]> {
   const zip = params.zip?.trim();
