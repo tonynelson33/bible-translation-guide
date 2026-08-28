@@ -13,9 +13,16 @@ const outputPath = path.join(__dirname, "..", "churches-combined.tmp.csv");
 // Overrides apply regardless of the existing prim_category, because these are
 // known miscategorizations already present in the source data (e.g. AME
 // churches tagged "episcopal_church" just because their name contains
-// "Episcopal", when they're actually a distinct Methodist denomination).
+// "Episcopal", when they're actually a distinct Methodist denomination — in the
+// live data ~96% of the "episcopal_church" bucket was actually AME).
+//
+// AME family = the spelled-out names plus the AME / A.M.E. / AMEZ / AMEC / UAME
+// abbreviations. Bare "CME" is deliberately NOT matched (870 false positives in
+// the data); only spelled-out "Christian Methodist Episcopal" counts.
+// "Missionary Baptist" is split out of the generic Baptist bucket (~8,800 rows).
 const OVERRIDE_PATTERNS = [
-  { category: "methodist_church", pattern: /African Methodist Episcopal|Christian Methodist Episcopal/i },
+  { category: "methodist_ame", pattern: /African Methodist|Christian Methodist Episcopal|\bU?A\.?M\.?E\.?[ZC]?\b/i },
+  { category: "missionary_baptist_church", pattern: /\bMissionary Baptist\b/i },
   { category: "lutheran_church", pattern: /\bLutheran\b/i },
   { category: "assembly_of_god_church", pattern: /\bAssembl(?:y|ies) of God\b/i },
 ];
@@ -30,10 +37,18 @@ const OVERRIDE_PATTERNS = [
 // theologically, not part of the Reformed Church in America/Christian
 // Reformed Church family, so it's routed to baptist_church before the
 // generic Reformed pattern gets a chance to catch it.
+// NOTE (2026-08): Latter Day Saints and Christian Science are no longer
+// classified — every such row was removed from the directory (see
+// scripts/apply-taxonomy-2026-08.mjs and scripts/removed-rows-2026-08-28.csv).
+// Do NOT re-add /latter[- ]day saints/ or /Church of Christ,? Scientist/
+// patterns here; a reload would resurrect the deleted rows.
 const CATCH_ALL_PATTERNS = [
-  { category: "latter_day_saints_church", pattern: /latter[- ]day saints|\bLDS\b|\bMormon\b/i },
   { category: "catholic_church", pattern: /\bCatholic\b/i },
   { category: "presbyterian_church", pattern: /\bOrthodox Presbyterian\b/i },
+  // Oriental Orthodox (Coptic/Armenian/Ethiopian/Eritrean/Syriac/Malankara) —
+  // a separate communion from Eastern Orthodox since 451 AD; must precede the
+  // generic Orthodox pattern.
+  { category: "oriental_orthodox_church", pattern: /\bCoptic\b|Ethiopian Orthodox|Eritrean Orthodox|Armenian (?:Apostolic|Orthodox|Church)|\bSyriac\b|Malankara|Mar Thoma/i },
   { category: "orthodox_church", pattern: /\bOrthodox\b/i },
   { category: "lutheran_church", pattern: /\bLutheran\b/i },
   { category: "methodist_church", pattern: /\bMethodist\b/i },
@@ -54,7 +69,6 @@ const CATCH_ALL_PATTERNS = [
   { category: "adventist_church", pattern: /\bAdventist\b/i },
   { category: "congregational_church", pattern: /\bCongregational\b|\bUnited Church of Christ\b/i },
   { category: "disciples_of_christ_church", pattern: /\bDisciples of Christ\b/i },
-  { category: "christian_science_church", pattern: /Church of Christ,? Scientist/i },
   { category: "church_of_christ", pattern: /\bChurch of Christ\b/i },
   { category: "nazarene_church", pattern: /\bNazarene\b/i },
   { category: "wesleyan_church", pattern: /\bWesleyan\b/i },
@@ -65,6 +79,20 @@ const CATCH_ALL_PATTERNS = [
   { category: "quaker_friends", pattern: /\bQuaker\b|\bFriends Meeting\b/i },
   { category: "calvary_chapel_church", pattern: /\bCalvary Chapel\b/i },
   { category: "church_of_the_brethren", pattern: /\bChurch of the Brethren\b/i },
+  // Oneness / Apostolic Pentecostal (UPCI, PAW, and the many independent
+  // "Apostolic" / "Christ ... Apostolic" churches). Excludes the unrelated
+  // New Apostolic Church and the Anabaptist Apostolic Christian Church; the
+  // Catholic / Orthodox / Lutheran "Apostolic" names are already caught above.
+  {
+    category: "oneness_apostolic_church",
+    pattern: /^(?!.*New Apostolic)(?!.*Apostolic Christian).*(?:\bApostolic\b|United Pentecostal|\bUPCI\b|Pentecostal Assemblies of the World|\bOneness\b)/i,
+  },
+  // Independent / dispensational "Bible Church" — but not "X Bible Baptist
+  // Church" or "Bible Presbyterian/Methodist/Lutheran" (real sub-denominations).
+  {
+    category: "bible_church",
+    pattern: /^(?!.*\bBaptist\b)(?!.*\bPresbyterian\b)(?!.*\bMethodist\b)(?!.*\bLutheran\b)(?!.*\bCatholic\b).*\bBible Church\b/i,
+  },
 ];
 
 function classify(name) {

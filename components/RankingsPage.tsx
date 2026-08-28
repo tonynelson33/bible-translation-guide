@@ -108,7 +108,7 @@ export default function RankingsPage({
         Rankings
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-        Pick a category to see how all nine translations stack up. There's no single “best”
+        Pick a category to see how all nine translations stack up. There&apos;s no single “best”
         translation — these are just here as a helpful guide more than anything.
       </p>
 
