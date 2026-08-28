@@ -186,7 +186,20 @@ sub-body is reliably self-identified in the church name at real volume — this 
 Baptist / Independent Baptist were never split out despite being common in reality: they're
 rarely spelled out in the name itself (only ~400-ish explicit matches each against a 62K+ Baptist
 bucket), unlike e.g. Missionary Baptist (~8,800 explicit matches) which would be a reliable split
-if ever wanted.
+if ever wanted. Two later additions, Calvary Chapel (876 matches) and Church of the Brethren
+(546), followed the same real-data-first process. `denominationOptions` also deliberately
+excludes Christian Science and Unitarian Universalist -- despite using Christian-sounding names,
+neither holds to historic Christian doctrine by any mainstream tradition's (Catholic, Orthodox,
+or Protestant) definition; the classifier itself still tags existing Christian Science churches
+correctly (`christian_science_church`, ~316 rows) since that's a separate, deliberate decision
+from what a *new* submission should be allowed to claim. Latter Day Saints is kept despite being
+excluded by most "Bible-believing" definitions too, since it's the largest and most practically
+recognized of the three (6,308 rows) -- a directory-completeness call, not a doctrinal one.
+`AddChurchForm` states "For Christian churches only" as a plain, low-key scope note; deliberately
+avoids the phrase "Bible-believing" since that's specifically evangelical-Protestant terminology
+that would read as excluding Catholic/Orthodox visitors, who together are a large share of
+classified churches and do hold Scripture as authoritative even without practicing *sola
+scriptura*.
 
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET

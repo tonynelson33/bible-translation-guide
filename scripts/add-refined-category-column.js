@@ -63,6 +63,8 @@ const CATCH_ALL_PATTERNS = [
   { category: "vineyard_church", pattern: /\bVineyard\b/i },
   { category: "salvation_army", pattern: /\bSalvation Army\b/i },
   { category: "quaker_friends", pattern: /\bQuaker\b|\bFriends Meeting\b/i },
+  { category: "calvary_chapel_church", pattern: /\bCalvary Chapel\b/i },
+  { category: "church_of_the_brethren", pattern: /\bChurch of the Brethren\b/i },
 ];
 
 function classify(name) {

@@ -75,6 +75,7 @@ export default function AddChurchForm() {
       className="mt-6 space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
     >
       <h2 className="text-sm font-semibold text-neutral-800">Add a church</h2>
+      <p className="text-xs text-neutral-500">For Christian churches only.</p>
 
       {/* Honeypot field: visually and semantically hidden from real users/screen readers. */}
       <div aria-hidden="true" className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">
