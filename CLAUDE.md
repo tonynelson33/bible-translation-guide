@@ -106,8 +106,12 @@ existing church's denomination/translation) and `components/AddChurchForm.tsx` (
 itself, for a church not in the directory) both call helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — denominations start from
 the 20 category slugs actually used in `churches.category` (see `humanizeCategory()`) plus
-~15 common ones not yet represented; translations cover the 9 this site profiles plus ~20 more,
-since a church may use one this site doesn't. Every submission lands with `status = 'pending'`;
+~15 common ones not yet represented; translations cover the 9 this site profiles plus ~14 more,
+since a church may use one this site doesn't. Deliberately excludes translations either fully
+superseded by a current edition already in the list (HCSB→CSB, NAB→NABRE, JB→NJB, TLB→NLT,
+NRSV→NRSVue) or rarely an actual pulpit translation even where real use exists (ASV — now
+essentially historical; MSG, NIrV, The Voice, NLV — devotional/children's/missions use, not
+typically a church's primary pulpit Bible). Every submission lands with `status = 'pending'`;
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
 
