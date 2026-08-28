@@ -3,7 +3,10 @@
 // existing values untouched.
 //
 // NOTE (2026-08): the latter_day_saints_church and christian_science_church
-// defaults (both KJV) were removed along with those rows — see
+// defaults (both KJV) were removed along with those rows. The episcopal_church
+// (NRSV) default was also dropped — that bucket is now anglican_episcopal_church,
+// which also holds ACNA / Continuing Anglican parishes (ESV / 1662 BCP, not
+// NRSV), so a single denominational default no longer applies. See
 // scripts/apply-taxonomy-2026-08.mjs.
 const fs = require("fs");
 const readline = require("readline");
@@ -17,10 +20,6 @@ const DENOMINATIONAL_DEFAULTS = {
   catholic_church: {
     translation: "NABRE",
     notes: "USCCB Lectionary for Mass, standard for U.S. Catholic parishes (denominational default, not individually confirmed per parish)",
-  },
-  episcopal_church: {
-    translation: "NRSV",
-    notes: "NRSV is the translation used in the Episcopal Church's official lectionary (Revised Common Lectionary as authorized by the 2006 General Convention) and liturgical worship; not mandated for individual members' personal use and not individually confirmed per parish",
   },
 };
 

@@ -102,6 +102,23 @@ function classify(name) {
   return "church_cathedral";
 }
 
+// Fold / merge to the final taxonomy (mirrors lib/suggestionOptions.ts's
+// denominationOptions). "Pentecostal" / "Evangelical" / "Mission" are
+// descriptors, not a specific body -> not identified. Wesleyan and
+// Anglican/Episcopal have merged dropdown labels. convents_and_monasteries is
+// left as-is here; scripts/apply-taxonomy-2026-08.mjs removes those rows.
+const FOLD_TO_CATHEDRAL = new Set(["pentecostal_church", "evangelical_church", "mission"]);
+const CATEGORY_MERGES = {
+  wesleyan_church: "methodist_church",
+  anglican_church: "anglican_episcopal_church",
+  episcopal_church: "anglican_episcopal_church",
+};
+
+function normalizeCategory(cat) {
+  if (FOLD_TO_CATHEDRAL.has(cat)) return "church_cathedral";
+  return CATEGORY_MERGES[cat] ?? cat;
+}
+
 // Minimal RFC-4180 CSV line parser/writer (handles quoted fields with commas).
 function parseCsvLine(line) {
   const fields = [];
@@ -182,6 +199,7 @@ async function main() {
       } else {
         refined = primCategory;
       }
+      refined = normalizeCategory(refined);
       counts[refined] = (counts[refined] || 0) + 1;
       fields[refinedCategoryIndex] = refined;
     }
