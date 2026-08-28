@@ -27,6 +27,7 @@ const RESULTS_LIMIT = 30;
 const CATEGORY_LABEL_OVERRIDES: Record<string, string> = {
   church_cathedral: "Denomination not identified",
   quaker_friends: "Quaker (Friends)",
+  adventist_church: "Seventh-day Adventist",
 };
 
 const LOWERCASE_CONNECTORS = new Set(["of", "and", "the", "in"]);

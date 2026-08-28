@@ -13,7 +13,6 @@ export interface Option {
  * answer someone would suggest.
  */
 export const denominationOptions: Option[] = [
-  { value: "adventist_church", label: "Adventist" },
   { value: "anglican_church", label: "Anglican" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
   { value: "baptist_church", label: "Baptist" },
@@ -24,8 +23,6 @@ export const denominationOptions: Option[] = [
   { value: "church_of_christ", label: "Church of Christ" },
   { value: "church_of_god", label: "Church of God (other)" },
   { value: "church_of_god_in_christ", label: "Church of God in Christ (COGIC)" },
-  { value: "church_of_god_of_prophecy", label: "Church of God of Prophecy" },
-  { value: "community_church", label: "Community Church (non-denominational)" },
   { value: "congregational_church", label: "Congregational" },
   { value: "convents_and_monasteries", label: "Convents and Monasteries" },
   { value: "disciples_of_christ_church", label: "Disciples of Christ" },
@@ -45,6 +42,7 @@ export const denominationOptions: Option[] = [
   { value: "quaker_friends", label: "Quaker (Friends)" },
   { value: "reformed_church", label: "Reformed" },
   { value: "salvation_army", label: "Salvation Army" },
+  { value: "adventist_church", label: "Seventh-day Adventist" },
   { value: "unitarian_universalist", label: "Unitarian Universalist" },
   { value: "vineyard_church", label: "Vineyard" },
   { value: "wesleyan_church", label: "Wesleyan" },

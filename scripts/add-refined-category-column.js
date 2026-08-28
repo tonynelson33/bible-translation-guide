@@ -39,7 +39,14 @@ const CATCH_ALL_PATTERNS = [
   { category: "methodist_church", pattern: /\bMethodist\b/i },
   { category: "assembly_of_god_church", pattern: /\bAssembl(?:y|ies) of God\b/i },
   { category: "church_of_god_in_christ", pattern: /\bChurch of God in Christ\b/i },
-  { category: "church_of_god_of_prophecy", pattern: /\bChurch of God of Prophecy\b/i },
+  // Church of God of Prophecy (a 1917 split from Church of God, Cleveland TN)
+  // was previously its own category but was merged back into the generic
+  // "Church of God" bucket as an intentional simplification -- the two read
+  // as basically the same thing to most people filling out a form, and
+  // Prophecy's ~500 matches didn't justify the extra dropdown entry the way
+  // COGIC's much larger, historically distinct ~2,000 does. No separate
+  // pattern needed: "Church of God of Prophecy" already matches the plain
+  // "Church of God" pattern below as a substring.
   { category: "church_of_god", pattern: /\bChurch of God\b/i },
   { category: "baptist_church", pattern: /\bReformed Baptist\b/i },
   { category: "presbyterian_church", pattern: /\bPresbyterian\b/i },

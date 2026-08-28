@@ -153,15 +153,23 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
 mirrored in `lib/suggestionOptions.ts`'s `denominationOptions` and
 `lib/churches.ts`'s `CATEGORY_LABEL_OVERRIDES`): the catch-all `church_cathedral` bucket is
 reclassified by regex against the church name, checked top to bottom with more specific patterns
-first. Two collisions worth remembering if extending this list: "Church of God" is not one
-denomination — Church of God in Christ (COGIC) and Church of God of Prophecy are distinct bodies
-from generic "Church of God" and must be matched before it, or they'd all fall into the generic
-bucket. And "Reformed Baptist" is a Baptist church theologically (not part of the Reformed
-Church in America / Christian Reformed Church family), so it's routed to `baptist_church` before
-the generic `Reformed` pattern gets a chance to catch it. New catch-all denominations were only
-added once real data showed they'd clear a "worth a category" bar (roughly 100+ matches in the
-existing data) — Christian & Missionary Alliance was checked and excluded (~83 matches, below
-that bar).
+first. One collision worth remembering if extending this list: "Reformed Baptist" is a Baptist
+church theologically (not part of the Reformed Church in America / Christian Reformed Church
+family), so it's routed to `baptist_church` before the generic `Reformed` pattern gets a chance
+to catch it. New catch-all denominations were only added once real data showed they'd clear a
+"worth a category" bar (roughly 100+ matches in the existing data) — Christian & Missionary
+Alliance was checked and excluded (~83 matches, below that bar). Church of God in Christ (COGIC)
+is kept as its own category (a historically distinct, much larger denomination, unrelated in
+origin to the other two); Church of God of Prophecy was initially split out too but was merged
+back into the generic `church_of_god` bucket as a deliberate simplification — the two read as
+basically the same thing on a form despite being technically separate bodies (they split from
+each other in 1917), and Prophecy's much smaller volume didn't justify a separate dropdown entry
+the way COGIC's does. Sub-splitting a denomination is only worth attempting when the specific
+sub-body is reliably self-identified in the church name at real volume — this is why Southern
+Baptist / Independent Baptist were never split out despite being common in reality: they're
+rarely spelled out in the name itself (only ~400-ish explicit matches each against a 62K+ Baptist
+bucket), unlike e.g. Missionary Baptist (~8,800 explicit matches) which would be a reliable split
+if ever wanted.
 
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
