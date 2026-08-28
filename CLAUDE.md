@@ -84,9 +84,9 @@ deliberately on verse text, not site copy).
 shared `components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
 `/church-finder` is NOT a placeholder — it's a real, working feature (below).
 
-**Church Finder** (`/church-finder`): search ~354,000 U.S. churches by city+state or zip,
+**Church Finder** (`/church-finder`): search ~353,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~354K rows, RLS enabled with a public SELECT-only policy — the
+project (`churches` table, ~353K rows, RLS enabled with a public SELECT-only policy — the
 `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write). `lib/supabase.ts` creates
 the client (returns `null` if env vars are unset, so the page shows a setup notice instead of
 crashing); `lib/churches.ts` has the search function and `humanizeCategory()` for turning
@@ -147,17 +147,17 @@ data (`churches-combined.csv`, ~110MB, gitignored — exceeds GitHub's 100MB lim
 regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churches-data*.js` and
 `backfill-*-from-zip.js`) then loaded into Supabase via `load-churches-to-supabase.mjs`
 (PostgREST bulk insert, batched). Translations are filled two ways:
-- **Bulk denominational defaults** (`fill-denominational-translations.js`): for denominations
-  with one confirmed, citable official translation - Catholic (NABRE) and Episcopal (NRSV).
-  (LDS and Christian Science, both KJV, were dropped when those rows were removed - see
-  "Denomination taxonomy" below.)
+- **Bulk denominational defaults** (`fill-denominational-translations.js`): only Catholic
+  (NABRE) now. LDS and Christian Science (both KJV) were dropped with those rows; Episcopal
+  (NRSV) was dropped because `episcopal_church` merged into `anglican_episcopal_church`, which
+  also holds ACNA / Continuing Anglican parishes (not NRSV). See "Denomination taxonomy" below.
 - **Per-church research** (`add-translation-column.js`, `KNOWN_TRANSLATIONS` map): for
   denominations split across sub-bodies with different standards - e.g. Lutheran (LCMS→ESV,
   ELCA→NRSV, but WELS/LCMC/NALC/ELS have no official stance) and Presbyterian (PC(USA)→NRSV,
   but PCA/OPC/ECO/Cumberland don't). ~160 churches done this way as of this writing, via real
   web search per church (never guessed) - about 80-90% hit rate once the specific synod is
   confirmed via an official source (locator.lcms.org, pcusa.org, etc.). This is genuinely slow
-  (one church at a time) and the ~354K total dwarfs what's been researched - continuing this is
+  (one church at a time) and the ~353K total dwarfs what's been researched - continuing this is
   an open-ended task, not something to "finish."
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out: LCMS's locator actively rate-limits automated access, ELCA/PCUSA have no bulk
@@ -168,37 +168,43 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   the address backfill and reusable for future geocoding needs.
 
 **Denomination taxonomy** — three pieces that must stay in step:
-`scripts/add-refined-category-column.js` (`OVERRIDE_PATTERNS` + `CATCH_ALL_PATTERNS`, the
-regex classifier that turns `church_cathedral` names into category slugs),
-`lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropdown), and
-`lib/churches.ts`'s `CATEGORY_LABEL_OVERRIDES` (how `churches.category` slugs render in the
+`scripts/add-refined-category-column.js` (`OVERRIDE_PATTERNS` + `CATCH_ALL_PATTERNS` +
+`normalizeCategory`, the regex classifier that turns `church_cathedral` names into category
+slugs), `lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropdown), and
+`lib/churches.ts`'s `humanizeCategory` (how `churches.category` slugs render in the
 `/church-finder` breakdown table).
 
 `denominationOptions` is a **fixed 33-entry US master taxonomy**, not a projection of what's in
 the data. Several labels split or merge the underlying buckets:
 - Where a label maps 1:1 onto a slug, `value` *is* that slug (so an edit suggestion merges
-  without a translation step) and the breakdown table shows the same label.
+  without a translation step).
 - Splits the source names *can* distinguish are real categories, populated by the classifier:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
   `oneness_apostolic_church`, `bible_church` (all added in the 2026-08 overhaul below).
 - Splits the names *can't* distinguish carry a descriptive slug with zero rows until manual
   review populates it: `church_of_god_holiness`, `non_denominational` /
-  `non_denominational_charismatic`, `plymouth_brethren_church`, `anglican_episcopal_church`.
-- Populated categories with **no dropdown entry** (`pentecostal_church`, `evangelical_church`,
-  `mission`, `convents_and_monasteries`, `wesleyan_church`, `anglican_church`,
-  `episcopal_church`) still appear in the breakdown table via the generic humanizer — they're
-  just not offered as a new-submission choice.
+  `non_denominational_charismatic`, `plymouth_brethren_church`.
+
+**Every category in the live data is now either `church_cathedral` ("Denomination not
+identified") or a `denominationOptions` value**, so `humanizeCategory` just reads the label off
+`denominationOptions` and the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
+got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
+specific body) into `church_cathedral`, merging `wesleyan_church` into `methodist_church`
+("Methodist / Wesleyan") and `anglican_church` + `episcopal_church` into
+`anglican_episcopal_church` ("Anglican / Episcopal"), and deleting the
+`convents_and_monasteries` bucket outright (religious communities, not congregations).
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
-- **The whole Latter Day Saint movement and Christian Science removed entirely** (~6,320 LDS /
-  Mormon + ~375 RLDS / Community of Christ + ~510 Christian Science + 5 joke/junk rows) — none
-  holds to historic Christian doctrine by any mainstream tradition's (Catholic, Orthodox, or
-  Protestant) definition, and this is a Christian-church directory. Applied directly against
-  Supabase *and* to `churches-combined.csv`; the classifier's LDS / `Church of Christ, Scientist`
-  patterns were deleted so a reload can't resurrect them (`apply-taxonomy-2026-08.mjs` carries
-  the RLDS + junk name patterns, with a NOT clause sparing e.g. "Community of Christ Lutheran
-  Church").
+- **Removed entirely** (~7,700 rows, archived to `removed-rows-2026-08-28.csv`): the whole
+  Latter Day Saint movement (~6,320 LDS / Mormon + ~375 RLDS / Community of Christ), ~510
+  Christian Science, ~490 `convents_and_monasteries`, and 5 joke/junk rows. None of the
+  religious bodies holds to historic Christian doctrine by any mainstream tradition's (Catholic,
+  Orthodox, or Protestant) definition; convents/monasteries aren't congregations. Applied
+  directly against Supabase *and* to `churches-combined.csv`; the classifier's LDS /
+  `Church of Christ, Scientist` patterns were deleted so a reload can't resurrect them
+  (`apply-taxonomy-2026-08.mjs` carries the RLDS + junk name patterns, with a NOT clause sparing
+  e.g. "Community of Christ Lutheran Church").
 - **Five name-identifiable splits** (~21K rows re-tagged): `Missionary Baptist` → out of the
   generic Baptist bucket (~8,800); `African Methodist` / `AME` / `A.M.E.` / `AMEZ` / `AMEC` /
   `UAME` / `Christian Methodist Episcopal` → `methodist_ame` (~4,150 — this emptied the old

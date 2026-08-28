@@ -5,13 +5,20 @@
 //      Mormon AND the RLDS / Community of Christ branch) and Christian Science
 //      (denominational decision: none holds to historic Christian doctrine by
 //      any mainstream tradition's definition, and this site is a Christian-
-//      church directory), plus a handful of joke / non-church junk entries that
-//      surfaced alongside them. Removed rows are written out verbatim to
+//      church directory), the convents_and_monasteries bucket (religious
+//      communities / institutions, not congregations), plus a handful of joke /
+//      non-church junk entries. Removed rows are written out verbatim to
 //      scripts/removed-rows-2026-08-28.csv as a record.
 //   2. Reclassifies five name-identifiable groups out of the buckets they were
 //      sitting in, to match the current dropdown taxonomy (lib/suggestionOptions.ts):
 //        missionary_baptist_church, methodist_ame, oriental_orthodox_church,
 //        bible_church, oneness_apostolic_church
+//   3. Folds / merges the buckets that have no dropdown entry so the
+//      /church-finder breakdown table mirrors the dropdown exactly:
+//        pentecostal_church, evangelical_church, mission -> church_cathedral
+//          ("Denomination not identified" -- none is a specific denomination)
+//        wesleyan_church -> methodist_church   ("Methodist / Wesleyan")
+//        anglican_church, episcopal_church -> anglican_episcopal_church
 //
 // Writes churches-combined.tmp.csv + scripts/removed-rows-2026-08-28.csv and prints a
 // summary. It does NOT replace churches-combined.csv — inspect the summary, then:
@@ -47,9 +54,14 @@ const REMOVE_RLDS_NAME = /community of christ|reorganized church|\bRLDS\b|everla
 const RLDS_NOT = /\bcatholic\b|\blutheran\b|\bUMC\b|united methodist|\bbaptist\b|presbyterian|episcopal/i;
 // Joke / non-church junk that turned up in the "latter day" sweep.
 const REMOVE_JUNK_NAME = /latter day pimps|latter day dude|latter[- ]day designs|latter day cottage/i;
-const REMOVED_CATEGORIES = new Set(["latter_day_saints_church", "christian_science_church"]);
+const REMOVED_CATEGORIES = new Set([
+  "latter_day_saints_church",
+  "christian_science_church",
+  "convents_and_monasteries",
+]);
 
 function shouldRemove(name, refinedCategory) {
+  if (refinedCategory === "convents_and_monasteries") return "convents";
   if (REMOVED_CATEGORIES.has(refinedCategory)) return "category";
   if (REMOVE_JUNK_NAME.test(name)) return "junk";
   if (REMOVE_LDS_NAME.test(name)) return "lds-name";
@@ -81,6 +93,23 @@ function reclassify(name, refinedCategory) {
   const oneness = /United Pentecostal|\bUPCI\b|Pentecostal Assemblies of the World|\bOneness\b/i.test(name);
   if (apostolic || oneness) return "oneness_apostolic_church";
   return refinedCategory;
+}
+
+// --- fold / merge to match the dropdown (step 3) --------------------------
+// Buckets with no entry in lib/suggestionOptions.ts's denominationOptions.
+// "Pentecostal" / "Evangelical" / "Mission" are descriptors, not a specific
+// body -> treat as not-identified. Wesleyan and Anglican/Episcopal have merged
+// dropdown labels ("Methodist / Wesleyan", "Anglican / Episcopal").
+const FOLD_TO_CATHEDRAL = new Set(["pentecostal_church", "evangelical_church", "mission"]);
+const CATEGORY_MERGES = {
+  wesleyan_church: "methodist_church",
+  anglican_church: "anglican_episcopal_church",
+  episcopal_church: "anglican_episcopal_church",
+};
+
+function normalizeCategory(cat) {
+  if (FOLD_TO_CATHEDRAL.has(cat)) return "church_cathedral";
+  return CATEGORY_MERGES[cat] ?? cat;
 }
 
 // --- minimal RFC-4180 CSV (matches the other scripts) ---------------------
@@ -130,7 +159,7 @@ async function main() {
   let nameIndex = -1;
   let refinedIndex = -1;
 
-  const removedBy = { category: 0, "lds-name": 0, "cs-name": 0, "rlds-name": 0, junk: 0 };
+  const removedBy = { category: 0, convents: 0, "lds-name": 0, "cs-name": 0, "rlds-name": 0, junk: 0 };
   const remappedTo = {};
   const remappedFrom = {};
   let kept = 0;
@@ -161,7 +190,7 @@ async function main() {
       continue;
     }
 
-    const next = reclassify(name, rc);
+    const next = normalizeCategory(reclassify(name, rc));
     if (next !== rc) {
       remappedTo[next] = (remappedTo[next] || 0) + 1;
       remappedFrom[`${rc} -> ${next}`] = (remappedFrom[`${rc} -> ${next}`] || 0) + 1;
