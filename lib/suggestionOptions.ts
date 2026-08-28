@@ -5,47 +5,58 @@ export interface Option {
 
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
- * The first block matches the category slugs actually used in churches.category
- * (see CLAUDE.md / lib/churches.ts's humanizeCategory) so a suggestion can map
- * cleanly onto the existing column; the second block adds common denominations
- * not yet represented in that taxonomy. "church_cathedral" (the source data's
- * generic "not identified" default) is deliberately excluded — it's not a real
- * answer someone would suggest.
+ *
+ * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
+ * mirror of churches.category — several labels split or merge the underlying
+ * buckets. Where a label maps cleanly onto an existing/derivable category slug
+ * (see lib/churches.ts's CATEGORY_LABEL_OVERRIDES and
+ * scripts/add-refined-category-column.js), the `value` is that slug so an edit
+ * suggestion can be merged without a translation step. Labels the source data
+ * can't distinguish from a name (both Non-denominational tiers,
+ * church_of_god_holiness, plymouth_brethren_church) carry a descriptive slug
+ * that starts with zero rows and gets populated by manual review.
+ *
+ * Deliberately excluded: Latter Day Saints and Christian Science (removed from
+ * the directory entirely — neither holds to historic Christian doctrine by any
+ * mainstream tradition's definition); "church_cathedral" (the "not identified"
+ * default); and the generic Pentecostal / Evangelical / Mission /
+ * Convents & Monasteries buckets (still shown in the /church-finder breakdown
+ * where real rows exist, just not offered as a new-submission choice).
  */
 export const denominationOptions: Option[] = [
-  { value: "anglican_church", label: "Anglican" },
+  { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
-  { value: "baptist_church", label: "Baptist" },
+  { value: "missionary_baptist_church", label: "Baptist (Historically Black / National)" },
+  { value: "baptist_church", label: "Baptist (Mainstream / Southern / American)" },
+  { value: "bible_church", label: "Bible Church (Independent / Dispensational)" },
   { value: "calvary_chapel_church", label: "Calvary Chapel" },
   { value: "catholic_church", label: "Catholic" },
-  { value: "charismatic_church", label: "Charismatic" },
-  { value: "christian_missionary_alliance", label: "Christian & Missionary Alliance" },
+  { value: "christian_missionary_alliance", label: "Christian & Missionary Alliance (CMA)" },
   { value: "church_of_christ", label: "Church of Christ" },
-  { value: "church_of_god", label: "Church of God (other)" },
+  { value: "church_of_god_holiness", label: "Church of God (Holiness / Traditional)" },
+  { value: "church_of_god", label: "Church of God (Pentecostal)" },
   { value: "church_of_god_in_christ", label: "Church of God in Christ (COGIC)" },
   { value: "church_of_the_brethren", label: "Church of the Brethren" },
-  { value: "congregational_church", label: "Congregational" },
-  { value: "convents_and_monasteries", label: "Convents and Monasteries" },
+  { value: "congregational_church", label: "Congregational (UCC)" },
   { value: "disciples_of_christ_church", label: "Disciples of Christ" },
-  { value: "episcopal_church", label: "Episcopal" },
-  { value: "evangelical_church", label: "Evangelical" },
   { value: "foursquare_church", label: "Foursquare" },
-  { value: "latter_day_saints_church", label: "Latter Day Saints" },
   { value: "lutheran_church", label: "Lutheran" },
-  { value: "mennonite_church", label: "Mennonite" },
-  { value: "methodist_church", label: "Methodist" },
-  { value: "mission", label: "Mission" },
+  { value: "mennonite_church", label: "Mennonite / Amish" },
+  { value: "methodist_ame", label: "Methodist (Historically Black / AME)" },
+  { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
   { value: "nazarene_church", label: "Nazarene" },
-  { value: "non_denominational", label: "Non-denominational" },
-  { value: "orthodox_church", label: "Orthodox" },
-  { value: "pentecostal_church", label: "Pentecostal" },
+  { value: "non_denominational_charismatic", label: "Non-denominational (Contemporary / Charismatic)" },
+  { value: "non_denominational", label: "Non-denominational (Traditional / Mainstream)" },
+  { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },
+  { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
+  { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },
+  { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
   { value: "presbyterian_church", label: "Presbyterian" },
   { value: "quaker_friends", label: "Quaker (Friends)" },
   { value: "reformed_church", label: "Reformed" },
   { value: "salvation_army", label: "Salvation Army" },
   { value: "adventist_church", label: "Seventh-day Adventist" },
   { value: "vineyard_church", label: "Vineyard" },
-  { value: "wesleyan_church", label: "Wesleyan" },
 ];
 
 /**

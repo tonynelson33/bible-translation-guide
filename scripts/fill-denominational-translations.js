@@ -1,6 +1,10 @@
 // One-off script: fills bible_translation / bible_translation_notes for the
-// three categories with a confirmed denominational default. Leaves every
-// other row's existing values untouched.
+// categories with a confirmed denominational default. Leaves every other row's
+// existing values untouched.
+//
+// NOTE (2026-08): the latter_day_saints_church and christian_science_church
+// defaults (both KJV) were removed along with those rows — see
+// scripts/apply-taxonomy-2026-08.mjs.
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");
@@ -13,14 +17,6 @@ const DENOMINATIONAL_DEFAULTS = {
   catholic_church: {
     translation: "NABRE",
     notes: "USCCB Lectionary for Mass, standard for U.S. Catholic parishes (denominational default, not individually confirmed per parish)",
-  },
-  latter_day_saints_church: {
-    translation: "KJV",
-    notes: "Officially designated by The Church of Jesus Christ of Latter-day Saints as its English-language Bible (denominational mandate, not individually confirmed per congregation)",
-  },
-  christian_science_church: {
-    translation: "KJV",
-    notes: "Used alongside Science and Health with Key to the Scriptures per Christian Science practice (denominational default, not individually confirmed per congregation)",
   },
   episcopal_church: {
     translation: "NRSV",

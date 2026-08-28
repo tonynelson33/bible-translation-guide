@@ -24,10 +24,35 @@ const RESULTS_LIMIT = 30;
 // churches.category holds slugs like "baptist_church" from the source data's
 // denomination classification; church_cathedral is the generic catch-all for
 // churches that didn't match a specific denomination pattern.
+//
+// The overrides below keep the /church-finder breakdown table in step with the
+// dropdown taxonomy in lib/suggestionOptions.ts — any category that has a 1:1
+// dropdown entry shows that same label here. Categories with no dropdown entry
+// (pentecostal_church, evangelical_church, mission, convents_and_monasteries,
+// wesleyan_church, anglican_church, episcopal_church) fall through to the
+// generic humanizer. The *_holiness / non_denominational* / plymouth_brethren /
+// anglican_episcopal slugs carry zero rows until manual review merges
+// suggestions into them.
 const CATEGORY_LABEL_OVERRIDES: Record<string, string> = {
   church_cathedral: "Denomination not identified",
   quaker_friends: "Quaker (Friends)",
   adventist_church: "Seventh-day Adventist",
+  anglican_episcopal_church: "Anglican / Episcopal",
+  missionary_baptist_church: "Baptist (Historically Black / National)",
+  baptist_church: "Baptist (Mainstream / Southern / American)",
+  bible_church: "Bible Church (Independent / Dispensational)",
+  christian_missionary_alliance: "Christian & Missionary Alliance (CMA)",
+  church_of_god_holiness: "Church of God (Holiness / Traditional)",
+  church_of_god: "Church of God (Pentecostal)",
+  congregational_church: "Congregational (UCC)",
+  mennonite_church: "Mennonite / Amish",
+  methodist_ame: "Methodist (Historically Black / AME)",
+  non_denominational_charismatic: "Non-denominational (Contemporary / Charismatic)",
+  non_denominational: "Non-denominational (Traditional / Mainstream)",
+  orthodox_church: "Orthodox (Eastern / Greek / Russian)",
+  oriental_orthodox_church: "Orthodox (Oriental / Coptic / Ethiopian)",
+  oneness_apostolic_church: "Pentecostal (Oneness / Apostolic)",
+  plymouth_brethren_church: "Plymouth Brethren / Christian Brethren",
 };
 
 const LOWERCASE_CONNECTORS = new Set(["of", "and", "the", "in"]);
