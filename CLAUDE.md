@@ -191,12 +191,14 @@ the data. Several labels split or merge the underlying buckets:
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
-- **Latter Day Saints and Christian Science removed entirely** (~6,300 + ~510 rows) — neither
+- **The whole Latter Day Saint movement and Christian Science removed entirely** (~6,320 LDS /
+  Mormon + ~375 RLDS / Community of Christ + ~510 Christian Science + 5 joke/junk rows) — none
   holds to historic Christian doctrine by any mainstream tradition's (Catholic, Orthodox, or
   Protestant) definition, and this is a Christian-church directory. Applied directly against
   Supabase *and* to `churches-combined.csv`; the classifier's LDS / `Church of Christ, Scientist`
-  patterns were deleted so a reload can't resurrect them. Community of Christ (the former RLDS,
-  ~370 rows) is a **separate** denomination and was left in place.
+  patterns were deleted so a reload can't resurrect them (`apply-taxonomy-2026-08.mjs` carries
+  the RLDS + junk name patterns, with a NOT clause sparing e.g. "Community of Christ Lutheran
+  Church").
 - **Five name-identifiable splits** (~21K rows re-tagged): `Missionary Baptist` → out of the
   generic Baptist bucket (~8,800); `African Methodist` / `AME` / `A.M.E.` / `AMEZ` / `AMEC` /
   `UAME` / `Christian Methodist Episcopal` → `methodist_ame` (~4,150 — this emptied the old

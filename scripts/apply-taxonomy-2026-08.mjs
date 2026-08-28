@@ -1,11 +1,13 @@
 // One-off (2026-08): applies the denomination-taxonomy overhaul to churches-combined.csv
 // so the source data matches the changes made directly against Supabase on 2026-08-28.
 //
-//   1. Removes every Latter-day Saints and Christian Science row (denominational
-//      decision: neither holds to historic Christian doctrine by any mainstream
-//      tradition's definition, and this site is a Christian-church directory).
-//      Removed rows are written out verbatim to scripts/removed-rows-2026-08-28.csv
-//      as a record.
+//   1. Removes every row belonging to the Latter Day Saint movement (LDS /
+//      Mormon AND the RLDS / Community of Christ branch) and Christian Science
+//      (denominational decision: none holds to historic Christian doctrine by
+//      any mainstream tradition's definition, and this site is a Christian-
+//      church directory), plus a handful of joke / non-church junk entries that
+//      surfaced alongside them. Removed rows are written out verbatim to
+//      scripts/removed-rows-2026-08-28.csv as a record.
 //   2. Reclassifies five name-identifiable groups out of the buckets they were
 //      sitting in, to match the current dropdown taxonomy (lib/suggestionOptions.ts):
 //        missionary_baptist_church, methodist_ame, oriental_orthodox_church,
@@ -33,16 +35,26 @@ const REMOVED = path.join(__dirname, "removed-rows-2026-08-28.csv");
 // pattern missed — "Latter Day Saint" (singular), "Latter Days Saints", the
 // abbreviated corporate name ("...Church of Christ Latter-Day St"), "Deseret"
 // (a Book-of-Mormon word, LDS-exclusive), typo'd "Crhist", etc. Deliberately
-// does NOT match Community of Christ / RLDS (a separate denomination) or the
-// eschatological "latter day" naming used by some Baptist/Pentecostal churches.
+// does NOT match the eschatological "latter day" naming used by some
+// Baptist/Pentecostal churches.
 const REMOVE_LDS_NAME = /latter[-\s]?days?[-\s]?saints?|church of jesus c\w+t of latter|church of christ latter-day st|\bLDS\b|\bMormon\b|\bDeseret\b/i;
 const REMOVE_CS_NAME = /christ,? scientist|christian science/i;
+// RLDS / Community of Christ — a distinct branch of the Latter Day Saint
+// movement, still excluded from a directory of historic-Christian churches.
+// The NOT clause spares congregations of other denominations that happen to be
+// named "Community of Christ ..." (Catholic / Lutheran / UMC etc.).
+const REMOVE_RLDS_NAME = /community of christ|reorganized church|\bRLDS\b|everlasting church of jesus christ.*latter/i;
+const RLDS_NOT = /\bcatholic\b|\blutheran\b|\bUMC\b|united methodist|\bbaptist\b|presbyterian|episcopal/i;
+// Joke / non-church junk that turned up in the "latter day" sweep.
+const REMOVE_JUNK_NAME = /latter day pimps|latter day dude|latter[- ]day designs|latter day cottage/i;
 const REMOVED_CATEGORIES = new Set(["latter_day_saints_church", "christian_science_church"]);
 
 function shouldRemove(name, refinedCategory) {
   if (REMOVED_CATEGORIES.has(refinedCategory)) return "category";
+  if (REMOVE_JUNK_NAME.test(name)) return "junk";
   if (REMOVE_LDS_NAME.test(name)) return "lds-name";
   if (REMOVE_CS_NAME.test(name)) return "cs-name";
+  if (REMOVE_RLDS_NAME.test(name) && !RLDS_NOT.test(name)) return "rlds-name";
   return null;
 }
 
@@ -118,7 +130,7 @@ async function main() {
   let nameIndex = -1;
   let refinedIndex = -1;
 
-  const removedBy = { category: 0, "lds-name": 0, "cs-name": 0 };
+  const removedBy = { category: 0, "lds-name": 0, "cs-name": 0, "rlds-name": 0, junk: 0 };
   const remappedTo = {};
   const remappedFrom = {};
   let kept = 0;
@@ -162,7 +174,7 @@ async function main() {
   await new Promise((r) => out.end(r));
   await new Promise((r) => removedOut.end(r));
 
-  const removedTotal = removedBy.category + removedBy["lds-name"] + removedBy["cs-name"];
+  const removedTotal = Object.values(removedBy).reduce((a, b) => a + b, 0);
   console.log(`\nRead ${total} data rows.`);
   console.log(`Removed ${removedTotal}:`, removedBy);
   console.log(`Kept ${kept}.  (removed + kept = ${removedTotal + kept})`);
