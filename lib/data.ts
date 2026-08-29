@@ -5,7 +5,6 @@ import type { Translation } from "./types";
 export interface SampleVerse {
   id: string;
   reference: string;
-  apiBibleVerseId: string;
 }
 
 export const translations = translationsData as Translation[];

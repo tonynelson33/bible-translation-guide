@@ -34,7 +34,7 @@ export default async function TranslationProfilePage({ params }: { params: { slu
   }
 
   const sampleVerse = sampleVerses[0];
-  const verseResult = await fetchVerseForTranslation(translation, sampleVerse);
+  const verseResult = fetchVerseForTranslation(translation, sampleVerse);
 
   return (
     <TranslationProfile

@@ -1,27 +1,22 @@
 [
   {
     "id": "john-3-16",
-    "reference": "John 3:16",
-    "apiBibleVerseId": "JHN.3.16"
+    "reference": "John 3:16"
   },
   {
     "id": "psalm-23-1",
-    "reference": "Psalm 23:1",
-    "apiBibleVerseId": "PSA.23.1"
+    "reference": "Psalm 23:1"
   },
   {
     "id": "genesis-1-1",
-    "reference": "Genesis 1:1",
-    "apiBibleVerseId": "GEN.1.1"
+    "reference": "Genesis 1:1"
   },
   {
     "id": "romans-8-28",
-    "reference": "Romans 8:28",
-    "apiBibleVerseId": "ROM.8.28"
+    "reference": "Romans 8:28"
   },
   {
     "id": "philippians-4-13",
-    "reference": "Philippians 4:13",
-    "apiBibleVerseId": "PHP.4.13"
+    "reference": "Philippians 4:13"
   }
 ]

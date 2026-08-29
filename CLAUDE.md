@@ -37,48 +37,33 @@ Each translation's `verifyFields` array (e.g. `["quoteLimit"]`) flags which valu
 fully confirmed against publisher documentation; `ComparisonTable` renders those with a `†`
 marker.
 
-**Live verse fetching** (`/verses` page): Scripture text is fetched live, not hardcoded — with
-one deliberate exception (LSB, see below). Each translation's `verseApi` config in
-`data/translations.json` names a `provider`, and `lib/verseProviders.ts` has one adapter
-function per provider:
+**Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
+`/verses` compares a **fixed** set of 5 sample verses (`data/verses.json`), so their text is
+**cached, not fetched live**. `data/cachedVerses.json` holds `{ [translationId]: { attribution,
+verses: { [reference]: text } } }` for all 9 translations, and `lib/verseProviders.ts`'s
+`fetchVerseForTranslation` is a plain synchronous lookup — no API keys, no rate limits, no
+network. A translation with no entry for a verse returns `status: "unavailable"` (renders as a
+"Text unavailable" card via `components/VerseCard.tsx`), never throws.
 
-- `bible-api` → bible-api.com (KJV; public domain, no key)
-- `esv-api` → api.esv.org (needs `ESV_API_KEY` env var — free, but the API application must be
-  approved by Crossway). **Compliance** (their terms, checked 2026-08): free only for
-  *non-commercial* use — a site that "charges for access, motivates visitors to buy something,
-  solicits donations, or accepts advertising or sponsorships" needs a paid license. Owner
-  confirmed 2026-08-29 the site is deliberately non-commercial and staying that way; `/buy` is
-  a placeholder that stays a placeholder. If that ever changes — real affiliate/commerce links,
-  ads, sponsorship, donations anywhere on the site — the ESV feed must be re-licensed or pulled
-  (drop `esv` from `data/translations.json` or unset `ESV_API_KEY`; the card degrades to "Text
-  unavailable"). Limits: ≤ 5,000 queries/day, ≤ 500 verses cached, ≤ 500 verses per page.
-  `fetchFromEsvApi` requests one verse, caches 1h (`next: { revalidate: 3600 }`), sets
-  `include-short-copyright=false` and supplies Crossway's required short-form notice itself (in
-  the adapter — do not trim it). A page-level notice + esv.org link renders on `/verses` when
-  ESV text loads.
-- `net-bible` → labs.bible.org (no key needed)
-- `api-bible` → scripture.api.bible (needs `API_BIBLE_KEY` env var + a per-translation
-  `apiBibleId`; the free Starter plan only allows 3 copyrighted translations active at once —
-  currently configured for NIV, CSB, NASB)
-- `cached` → currently just LSB. No public API exists, and read.lsbible.org isn't built for
-  automated access (its search doesn't respond to scripted interaction, and direct requests to
-  it get rate-limited). The 5 sample verses were instead sourced by hand — via a real browser
-  session, not a scraper — from read.lsbible.org's `read-lsbible.vercel.app/ref-tagger?ref=`
-  passage-lookup route, and are served from `data/lsbCachedVerses.json`. This is within
-  Lockman's published permission to store up to 1,000 LSB verses electronically with
-  attribution (see their Permission to Quote page), but only covers these 5 verses — anything
-  else still shows "Text unavailable." Don't build an automated scraper against
-  read.lsbible.org; if more LSB verses are needed later, source them by hand the same way, or
-  reach out to Lockman/316 Publishing about an official source.
-- `unavailable` → no known free source at all (currently none — every translation has at least
-  a live API or a cached fallback)
-
-Every adapter returns a `VerseFetchResult` with `status: "ok" | "unavailable" | "error"` instead
-of throwing, so a missing key or a down API degrades to a "Text unavailable" card
-(`components/VerseCard.tsx`) rather than breaking the page. `app/verses/page.tsx` is a Server
-Component that reads the selected verse from `searchParams`, fetches all 9 translations in
-parallel via `Promise.all`, and renders one `VerseCard` per translation; `components/VersePicker.tsx`
-is the client-side `<select>` that updates the URL query param.
+- **Why it's legal**: 5 verses per translation is far inside every publisher's
+  quote-without-permission ceiling (~500 for ESV/NIV/NLT/CSB/NASB, ~1,000 for NKJV/LSB, KJV
+  public domain, NET generous) on a **non-commercial** site, with the required notice shown
+  under each verse. See `data/cachedVerses.README.md` for the exact sourcing (KJV→bible-api,
+  NET→labs.bible.org, ESV→api.esv.org, LSB→prior hand-sourced set, NIV/NLT/CSB/NASB/NKJV→Bible
+  Gateway; superscriptions/headings stripped, `LORD` where small-capped, NASB is the 2020 ed.).
+- **Non-commercial still matters**: several of those permissions (ESV especially) are
+  *non-commercial only*. Owner confirmed 2026-08-29 the site stays non-commercial and `/buy`
+  stays a placeholder. If that changes — affiliate links, ads, sponsorship, donations anywhere
+  — the licensed translations (everything except KJV) need re-clearing or removing from
+  `cachedVerses.json`. See [[project_bible_guide_noncommercial]].
+- **No verse-API keys are used by the app anymore.** `ESV_API_KEY` / `API_BIBLE_KEY` were
+  removed from `.env.example`; the only remaining consumers are the one-off
+  `scripts/fetchVerseComparisons.mjs` (for the separate, not-yet-used
+  `data/verseComparisons.json` dataset).
+- **Adding a sample verse**: add the ref to `data/verses.json` and its text for every
+  translation to `cachedVerses.json`, from an authoritative source. If `/verses` ever needs to
+  cover arbitrary user-chosen verses (not a curated list), the caching approach breaks down and
+  a live-API layer would need rebuilding.
 
 **Comparison table** (`app/page.tsx` → `components/ComparisonTable.tsx`): a client component
 driven by a `columns` array, where each column defines its own `sortValue()` extractor and
@@ -319,13 +304,14 @@ scope, that's a real change — it means removing Oneness (and auditing Quaker /
 
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
-text (other translations need API keys, see below). Nothing in the app reads this yet - it's
-data prepared for a future page, not a current feature.
+text — a **separate** dataset from `/verses`, prepared for a future page, not read by anything
+in the app yet. These scripts are the only remaining code that can use `ESV_API_KEY` /
+`API_BIBLE_KEY`, and only to extend this dataset.
 
 ## Environment variables
 
-`ESV_API_KEY` and `API_BIBLE_KEY` are both optional — see `.env.example` for what they unlock and
-where to obtain them. The site builds and runs with neither set.
+The app needs only the two Supabase vars. No Bible-API keys — `/verses` text is cached
+(`data/cachedVerses.json`).
 
 `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are required for the Church
 Finder to actually query data (without them it shows a "not configured" notice instead of

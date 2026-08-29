@@ -7,15 +7,6 @@ export interface OtMarking {
   method?: "Bold" | "Small caps" | "ALL CAPS";
 }
 
-export interface VerseApiConfig {
-  /** Which provider adapter (lib/verseProviders.ts) to use for live verse fetches. */
-  provider: "bible-api" | "esv-api" | "net-bible" | "api-bible" | "cached" | "unavailable";
-  /** api-bible only: the Bible ID for this translation on scripture.api.bible. */
-  apiBibleId?: string;
-  /** Human-readable note on availability/gaps, shown if fetch is not possible. */
-  note?: string;
-}
-
 export interface Translation {
   id: string; // slug, e.g. "esv"
   name: string; // full name
@@ -36,5 +27,4 @@ export interface Translation {
   quotationMarksForDialogue: boolean;
   /** Field names flagged for manual verification before launch. */
   verifyFields?: string[];
-  verseApi: VerseApiConfig;
 }

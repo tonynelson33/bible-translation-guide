@@ -12,14 +12,12 @@
     "quoteLimit": "1,000 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verseApi": {
-      "provider": "esv-api",
-      "note": "Crossway's official ESV API (api.esv.org). Free for non-commercial use but requires signing up for a free account and an approved API application to get an ESV_API_KEY. Attribution to Crossway is required on every page displaying ESV text."
-    }
+    "quotationMarksForDialogue": true
   },
   {
     "id": "kjv",
@@ -34,14 +32,12 @@
     "quoteLimit": "Unlimited",
     "genderApproach": "Traditional",
     "redLetter": true,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": false,
-    "verseApi": {
-      "provider": "bible-api",
-      "note": "bible-api.com serves the KJV text directly with no API key or account required, since it is public domain."
-    }
+    "quotationMarksForDialogue": false
   },
   {
     "id": "niv",
@@ -56,15 +52,12 @@
     "quoteLimit": "500 verses",
     "genderApproach": "Inclusive",
     "redLetter": true,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verseApi": {
-      "provider": "api-bible",
-      "apiBibleId": "78a9f6124f344018-01",
-      "note": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify NIV is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-    }
+    "quotationMarksForDialogue": true
   },
   {
     "id": "nlt",
@@ -79,14 +72,12 @@
     "quoteLimit": "500 verses",
     "genderApproach": "Moderate",
     "redLetter": true,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verseApi": {
-      "provider": "api-bible",
-      "note": "Not yet confirmed available on scripture.api.bible's free Starter plan as of this build. Look up the current NLT Bible ID via GET /v1/bibles on your own account and add it here (apiBibleId), or source separately (Tyndale has historically run its own developer API — check for current status)."
-    }
+    "quotationMarksForDialogue": true
   },
   {
     "id": "csb",
@@ -101,15 +92,13 @@
     "quoteLimit": "1,000 verses",
     "genderApproach": "Moderate",
     "redLetter": true,
-    "otMarking": { "marks": true, "method": "Bold" },
+    "otMarking": {
+      "marks": true,
+      "method": "Bold"
+    },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verseApi": {
-      "provider": "api-bible",
-      "apiBibleId": "a556c5305ee15c3f-01",
-      "note": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify CSB is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-    }
+    "quotationMarksForDialogue": true
   },
   {
     "id": "lsb",
@@ -124,15 +113,16 @@
     "quoteLimit": "1,000 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
-    "otMarking": { "marks": true, "method": "ALL CAPS" },
+    "otMarking": {
+      "marks": true,
+      "method": "ALL CAPS"
+    },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
     "quotationMarksForDialogue": true,
-    "verifyFields": ["gradeLevel"],
-    "verseApi": {
-      "provider": "cached",
-      "note": "No public API for the LSB, and read.lsbible.org isn't built for automated access. The 5 sample verses on /verses were sourced by hand from read.lsbible.org and are served from data/lsbCachedVerses.json instead of a live fetch — well within Lockman's published permission to store up to 1,000 LSB verses electronically with attribution. Verses outside that cached set still show as unavailable."
-    }
+    "verifyFields": [
+      "gradeLevel"
+    ]
   },
   {
     "id": "nkjv",
@@ -147,15 +137,15 @@
     "quoteLimit": "~1,000 verses (verify)",
     "genderApproach": "Traditional",
     "redLetter": true,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": false,
     "quotationMarksForDialogue": true,
-    "verifyFields": ["quoteLimit"],
-    "verseApi": {
-      "provider": "api-bible",
-      "note": "Not yet confirmed available on scripture.api.bible's free Starter plan as of this build (that plan caps you at 3 copyrighted translations total, and this project's config prioritizes NIV/CSB/NASB by default). Look up the current NKJV Bible ID via GET /v1/bibles on your own account and add it here if you swap it in."
-    }
+    "verifyFields": [
+      "quoteLimit"
+    ]
   },
   {
     "id": "nasb",
@@ -171,15 +161,13 @@
     "genderApproach": "Moderate",
     "genderApproachLabel": "Moderate (2020)",
     "redLetter": true,
-    "otMarking": { "marks": true, "method": "Small caps" },
+    "otMarking": {
+      "marks": true,
+      "method": "Small caps"
+    },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": true,
-    "verseApi": {
-      "provider": "api-bible",
-      "apiBibleId": "a761ca71e0b3ddcf-01",
-      "note": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify NASB is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-    }
+    "quotationMarksForDialogue": true
   },
   {
     "id": "net",
@@ -194,14 +182,14 @@
     "quoteLimit": "Generous (verify)",
     "genderApproach": "Moderate",
     "redLetter": false,
-    "otMarking": { "marks": false },
+    "otMarking": {
+      "marks": false
+    },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
     "quotationMarksForDialogue": true,
-    "verifyFields": ["quoteLimit"],
-    "verseApi": {
-      "provider": "net-bible",
-      "note": "Free via the NET Bible Web Service at labs.bible.org/api, no API key required, for non-commercial use. Attribution to Biblical Studies Press, L.L.C. is required."
-    }
+    "verifyFields": [
+      "quoteLimit"
+    ]
   }
 ]

@@ -9,21 +9,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/verses" },
 };
 
-// Verse text is fetched live from external Bible APIs on each request, per
-// translation:
-//   - KJV  -> bible-api.com (public domain, no key needed)
-//   - ESV  -> api.esv.org (needs a free ESV_API_KEY env var)
-//   - NET  -> labs.bible.org (free, no key needed)
-//   - NIV, NASB, CSB -> scripture.api.bible (needs a free API_BIBLE_KEY env
-//     var; the free Starter plan only allows 3 copyrighted translations
-//     active at once, so only pick the ones you've actually enabled)
-//   - NLT, NKJV -> configured for scripture.api.bible but no Bible ID has
-//     been confirmed yet for the free plan; add one via lib/types.ts /
-//     data/translations.json once verified
-//   - LSB -> no known free public API as of mid-2026; needs manual sourcing
-// See lib/verseProviders.ts for the fetch logic and README.md for setup.
+// This page compares a fixed set of sample verses (data/verses.json), so their
+// text for every translation is stored in data/cachedVerses.json rather than
+// fetched from a live API — each translation's handful of verses is well within
+// its publisher's free-quotation allowance for this non-commercial site, with
+// the required attribution alongside. See data/cachedVerses.README.md.
 
-export default async function VersesPage({
+export default function VersesPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -31,10 +23,7 @@ export default async function VersesPage({
   const requestedId = typeof searchParams.verse === "string" ? searchParams.verse : undefined;
   const verse = (requestedId && getSampleVerse(requestedId)) || sampleVerses[0];
 
-  const results = await Promise.all(
-    translations.map((t) => fetchVerseForTranslation(t, verse))
-  );
-  const esvShown = results.some((r) => r.translationId === "esv" && r.status === "ok");
+  const results = translations.map((t) => fetchVerseForTranslation(t, verse));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -43,8 +32,7 @@ export default async function VersesPage({
           Sample Verse Comparison
         </h1>
         <p className="mt-3 text-neutral-600">
-          Pick a well-known verse and see how each translation renders it, fetched live from
-          each publisher&apos;s or aggregator&apos;s Bible text API.
+          Pick a well-known verse and see how each translation renders it, side by side.
         </p>
       </div>
 
@@ -59,28 +47,10 @@ export default async function VersesPage({
         })}
       </div>
 
-      <p className="mt-8 max-w-3xl text-sm text-neutral-500">
-        Some translations require a free API key to be configured in this deployment&apos;s
-        environment variables before their text will appear here — see the project README for
-        setup instructions.
+      <p className="mt-8 max-w-3xl text-xs leading-snug text-neutral-400">
+        Each translation is quoted here under its publisher&apos;s permissions for
+        non-commercial use, with the required copyright notice shown beneath the text.
       </p>
-
-      {esvShown && (
-        <p className="mt-4 max-w-3xl text-xs leading-snug text-neutral-400">
-          ESV text is served live from{" "}
-          <a
-            href="https://www.esv.org"
-            className="underline hover:text-neutral-600"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            esv.org
-          </a>{" "}
-          through the Crossway ESV API, used here under its free non-commercial terms. The ESV
-          may not be reproduced under a Creative Commons license, translated into another
-          language, or quoted beyond 500 verses or one half of any book.
-        </p>
-      )}
     </div>
   );
 }
