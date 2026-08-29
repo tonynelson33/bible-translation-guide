@@ -46,13 +46,16 @@ function per provider:
 - `esv-api` → api.esv.org (needs `ESV_API_KEY` env var — free, but the API application must be
   approved by Crossway). **Compliance** (their terms, checked 2026-08): free only for
   *non-commercial* use — a site that "charges for access, motivates visitors to buy something,
-  solicits donations, or accepts advertising or sponsorships" needs a paid license. So if
-  `/buy` ever becomes real affiliate/commerce links, or ads/sponsorship land anywhere on the
-  site, the ESV feed needs re-licensing or removing. Limits: ≤ 5,000 queries/day, ≤ 500 verses
-  cached, ≤ 500 verses per page. `fetchFromEsvApi` requests one verse, caches 1h
-  (`next: { revalidate: 3600 }`), sets `include-short-copyright=false` and supplies Crossway's
-  required short-form notice itself (in the adapter — do not trim it). `/church-finder`-style
-  A page-level notice + esv.org link renders on `/verses` when ESV text loads.
+  solicits donations, or accepts advertising or sponsorships" needs a paid license. Owner
+  confirmed 2026-08-29 the site is deliberately non-commercial and staying that way; `/buy` is
+  a placeholder that stays a placeholder. If that ever changes — real affiliate/commerce links,
+  ads, sponsorship, donations anywhere on the site — the ESV feed must be re-licensed or pulled
+  (drop `esv` from `data/translations.json` or unset `ESV_API_KEY`; the card degrades to "Text
+  unavailable"). Limits: ≤ 5,000 queries/day, ≤ 500 verses cached, ≤ 500 verses per page.
+  `fetchFromEsvApi` requests one verse, caches 1h (`next: { revalidate: 3600 }`), sets
+  `include-short-copyright=false` and supplies Crossway's required short-form notice itself (in
+  the adapter — do not trim it). A page-level notice + esv.org link renders on `/verses` when
+  ESV text loads.
 - `net-bible` → labs.bible.org (no key needed)
 - `api-bible` → scripture.api.bible (needs `API_BIBLE_KEY` env var + a per-translation
   `apiBibleId`; the free Starter plan only allows 3 copyrighted translations active at once —
