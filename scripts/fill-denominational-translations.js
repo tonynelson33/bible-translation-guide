@@ -6,8 +6,17 @@
 // defaults (both KJV) were removed along with those rows. The episcopal_church
 // (NRSV) default was also dropped — that bucket is now anglican_episcopal_church,
 // which also holds ACNA / Continuing Anglican parishes (ESV / 1662 BCP, not
-// NRSV), so a single denominational default no longer applies. See
+// NRSV), so a single denominational default no longer applies. Its leftover
+// values (incl. ~1,822 African Methodist Episcopal rows the classifier had
+// mislabeled `episcopal_church`, plus ~86 real Anglican/Episcopal rows) were
+// cleared to NULL straight against Supabase in 2026-08. See
 // scripts/apply-taxonomy-2026-08.mjs.
+//
+// Also applied straight against Supabase, not reproduced here (this rule keys
+// off the church *name*, not refined_category): congregational_church rows whose
+// name contains "United Church of Christ" → NRSV, same note text as the
+// disciples_of_christ_church default below. The bare-"Congregational Church"
+// rows in that bucket were left alone (a real minority are CCCC/NACCC, not UCC).
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");
@@ -20,6 +29,10 @@ const DENOMINATIONAL_DEFAULTS = {
   catholic_church: {
     translation: "NABRE",
     notes: "USCCB Lectionary for Mass, standard for U.S. Catholic parishes (denominational default, not individually confirmed per parish)",
+  },
+  disciples_of_christ_church: {
+    translation: "NRSV",
+    notes: "Standard translation in Christian Church (Disciples of Christ) worship resources and Chalice Press curriculum (denominational default, not individually confirmed per congregation)",
   },
 };
 

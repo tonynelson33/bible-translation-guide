@@ -106,9 +106,10 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~6% of churches have a confirmed `bible_translation` so far (~21,600 rows, almost all
-Catholic → NABRE) — this is inherently a long-tail research problem (see "Church data pipeline"
-below), not a bug. Most results correctly show "Not yet confirmed."
+Only ~6% of churches have a confirmed `bible_translation` so far (~21,500 rows — ~19,600
+Catholic → NABRE, ~1,800 mainline → NRSV, the rest per-church research) — this is inherently a
+long-tail research problem (see "Church data pipeline" below), not a bug. Most results
+correctly show "Not yet confirmed."
 
 **Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
 can't write to it), user submissions go into a separate `church_suggestions` table instead —
@@ -119,12 +120,20 @@ existing church's denomination/translation) and `components/AddChurchForm.tsx` (
 itself, for a church not in the directory) both call helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 33-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
-taxonomy" below), and translations cover the 9 this site profiles plus 11 more,
-since a church may use one this site doesn't. Deliberately excludes translations either fully
-superseded by a current edition already in the list (HCSB→CSB, NAB→NABRE, JB→NJB, TLB→NLT,
-NRSV→NRSVue) or rarely an actual pulpit translation even where real use exists (ASV — now
-essentially historical; MSG, NIrV, The Voice, NLV — devotional/children's/missions use, not
-typically a church's primary pulpit Bible). Every submission lands with `status = 'pending'`;
+taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
+since a church may use one this site doesn't. The list is scoped to translations a
+meaningful number of US congregations actually use *from the pulpit / in worship*:
+- `NRSV` and `NRSVue` are both listed — NRSV is still the lectionary Bible in most Episcopal /
+  ELCA / PC(USA) / UMC / UCC / Disciples parishes; NRSVue (2021) is the successor most haven't
+  physically adopted. (`NRSV` was briefly excluded as "superseded" — that was wrong.)
+- `EHV` (Evangelical Heritage Version) is listed for WELS Lutherans — the one big Lutheran body
+  with no other correct option (LCMS→ESV, ELCA→NRSV are both covered).
+- Deliberately excluded: editions genuinely out of print (HCSB→CSB, NAB→NABRE, JB→NJB,
+  TLB→NLT), study/personal Bibles that aren't pulpit translations (AMP is a borderline legacy
+  entry; RSV-2CE, Darby), and paraphrases (MSG, TPT, The Voice, NIrV, The Clear Word). ASV is
+  out too — even Churches of Christ have moved to NKJV/ESV.
+
+Every submission lands with `status = 'pending'`;
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
 
@@ -164,20 +173,30 @@ data (`churches-combined.csv`, ~110MB, gitignored — exceeds GitHub's 100MB lim
 regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churches-data*.js` and
 `backfill-*-from-zip.js`) then loaded into Supabase via `load-churches-to-supabase.mjs`
 (PostgREST bulk insert, batched). Translations are filled two ways:
-- **Bulk denominational defaults** (`fill-denominational-translations.js`): only Catholic
-  (NABRE) now — ~19,600 rows. LDS and Christian Science (both KJV) were dropped with those
-  rows; the Episcopal → NRSV rule was removed because `episcopal_church` merged into
-  `anglican_episcopal_church` (which also holds ACNA / Continuing Anglican parishes, not NRSV).
-  Dropping the *rule* didn't clear values it had already written: **~1,820 `methodist_ame` rows
-  still carry `bible_translation = 'NRSV'`** — leftovers from when that bucket was
-  `episcopal_church` (~96% AME). AME bodies have no NRSV standard; a one-line UPDATE to NULL
-  those out is a pending cleanup. See "Denomination taxonomy" below.
+- **Bulk denominational defaults**: applied only where a denomination is ~99% aligned to one
+  pulpit/lectionary translation and the category bucket is clean.
+  - `catholic_church` → NABRE (~19,600 rows; USCCB Lectionary for Mass) — via
+    `fill-denominational-translations.js`.
+  - `disciples_of_christ_church` → NRSV (~137) and `congregational_church` rows whose *name*
+    says "United Church of Christ" → NRSV (~1,580) — mainline bodies, NRSV in their worship
+    resources. Disciples is in `fill-denominational-translations.js`; the UCC-by-name rule was
+    applied straight against Supabase (it keys off the name, not `refined_category`) and is
+    only documented in that script's header. Bare-"Congregational Church" rows were left alone
+    (a real minority are CCCC / NACCC, not UCC).
+  - The old `episcopal_church` → NRSV rule was **removed** — that bucket became
+    `anglican_episcopal_church` (mixed: TEC uses NRSV, ACNA / Continuing Anglican don't). Its
+    leftover values — ~1,822 African Methodist Episcopal rows the classifier had mis-bucketed
+    as `episcopal_church`, plus ~86 real Anglican/Episcopal rows — were **cleared to NULL**
+    against Supabase in 2026-08. LDS / Christian Science (both KJV) went out with their rows.
+  - ~71 `NRSV` rows on `presbyterian_church` / `lutheran_church` are per-church research (PC(USA)
+    / ELCA confirmed individually), not a bulk default — left as-is.
 - **Per-church research** (`add-translation-column.js`, `KNOWN_TRANSLATIONS` map): for
   denominations split across sub-bodies with different standards - e.g. Lutheran (LCMS→ESV,
-  ELCA→NRSV, but WELS/LCMC/NALC/ELS have no official stance) and Presbyterian (PC(USA)→NRSV,
-  but PCA/OPC/ECO/Cumberland don't). ~160 churches done this way as of this writing, via real
-  web search per church (never guessed) - about 80-90% hit rate once the specific synod is
-  confirmed via an official source (locator.lcms.org, pcusa.org, etc.). This is genuinely slow
+  ELCA→NRSV, WELS→EHV, but LCMC/NALC/ELS have no official stance) and Presbyterian (PC(USA)→NRSV,
+  but PCA/OPC/ECO/Cumberland don't). ~100 churches done this way as of this writing (25 LCMS→ESV,
+  ~71 PC(USA)/ELCA→NRSV), via real web search per church (never guessed) - about 80-90% hit rate
+  once the specific synod is confirmed via an official source (locator.lcms.org, pcusa.org,
+  etc.). This is genuinely slow
   (one church at a time) and the ~352K total dwarfs what's been researched - continuing this is
   an open-ended task, not something to "finish."
 - A bulk cross-reference via each denomination's official congregation locator was considered
