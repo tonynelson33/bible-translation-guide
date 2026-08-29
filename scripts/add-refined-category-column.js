@@ -93,6 +93,11 @@ const CATCH_ALL_PATTERNS = [
     category: "bible_church",
     pattern: /^(?!.*\bBaptist\b)(?!.*\bPresbyterian\b)(?!.*\bMethodist\b)(?!.*\bLutheran\b)(?!.*\bCatholic\b).*\bBible Church\b/i,
   },
+  // Generic "X Baptist Church" — kept last so the more specific denominations
+  // above win. Excludes "St. ___ the Baptist" patron-saint naming (John the
+  // Baptist), common on Catholic/Orthodox/Episcopal parishes. "Missionary
+  // Baptist" is handled earlier by OVERRIDE_PATTERNS.
+  { category: "baptist_church", pattern: /^(?!.*\bthe Baptist\b).*\bBaptist\b/i },
 ];
 
 function classify(name) {

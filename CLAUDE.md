@@ -194,14 +194,14 @@ specific body) into `church_cathedral`, merging `wesleyan_church` into `methodis
 `anglican_episcopal_church` ("Anglican / Episcopal"), and deleting the
 `convents_and_monasteries` bucket outright (religious communities, not congregations).
 
-Then a **broad name-classifier rescue** moved ~1,800 rows *out* of `church_cathedral` whose name
-clearly states a denomination the classifier knows (Church of God 896, Nazarene 253, COGIC 202,
-Reformed 107, Wesleyan/Methodist 97, …). Most of these were filed under a vague `prim_category`
-in the source data and never hit the name classifier; `add-refined-category-column.js` now
-re-runs `classify()` as a fallback whenever a row would otherwise land on `church_cathedral`, so
-a regen reproduces this. (Deliberately *not* rescued: ~15K `church_cathedral` rows with
-"Baptist" in the name — the classifier has no generic Baptist pattern, since OSM tags real
-Baptist churches `baptist_church` reliably and the leftovers are too mixed to bucket safely.)
+Then a **broad name-classifier rescue** moved ~16,800 rows *out* of `church_cathedral` whose name
+clearly states a denomination the classifier knows — ~15,000 "X Baptist Church" (→ `baptist_church`),
+plus Church of God 896, Nazarene 253, COGIC 202, Reformed 107, Wesleyan/Methodist 97, and ~350
+smaller. Most were filed under a vague `prim_category` in the source data and never hit the name
+classifier; `add-refined-category-column.js` now re-runs `classify()` as a fallback whenever a
+row would otherwise land on `church_cathedral`, and its `CATCH_ALL_PATTERNS` gained a generic
+`\bBaptist\b` catch (last, so specific denominations win; excludes "St. ___ the Baptist"
+patron-saint naming). So a regen reproduces the rescue.
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
