@@ -34,6 +34,7 @@ export default async function VersesPage({
   const results = await Promise.all(
     translations.map((t) => fetchVerseForTranslation(t, verse))
   );
+  const esvShown = results.some((r) => r.translationId === "esv" && r.status === "ok");
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -63,6 +64,23 @@ export default async function VersesPage({
         environment variables before their text will appear here — see the project README for
         setup instructions.
       </p>
+
+      {esvShown && (
+        <p className="mt-4 max-w-3xl text-xs leading-snug text-neutral-400">
+          ESV text is served live from{" "}
+          <a
+            href="https://www.esv.org"
+            className="underline hover:text-neutral-600"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            esv.org
+          </a>{" "}
+          through the Crossway ESV API, used here under its free non-commercial terms. The ESV
+          may not be reproduced under a Creative Commons license, translated into another
+          language, or quoted beyond 500 verses or one half of any book.
+        </p>
+      )}
     </div>
   );
 }

@@ -43,7 +43,16 @@ one deliberate exception (LSB, see below). Each translation's `verseApi` config 
 function per provider:
 
 - `bible-api` → bible-api.com (KJV; public domain, no key)
-- `esv-api` → api.esv.org (needs `ESV_API_KEY` env var)
+- `esv-api` → api.esv.org (needs `ESV_API_KEY` env var — free, but the API application must be
+  approved by Crossway). **Compliance** (their terms, checked 2026-08): free only for
+  *non-commercial* use — a site that "charges for access, motivates visitors to buy something,
+  solicits donations, or accepts advertising or sponsorships" needs a paid license. So if
+  `/buy` ever becomes real affiliate/commerce links, or ads/sponsorship land anywhere on the
+  site, the ESV feed needs re-licensing or removing. Limits: ≤ 5,000 queries/day, ≤ 500 verses
+  cached, ≤ 500 verses per page. `fetchFromEsvApi` requests one verse, caches 1h
+  (`next: { revalidate: 3600 }`), sets `include-short-copyright=false` and supplies Crossway's
+  required short-form notice itself (in the adapter — do not trim it). `/church-finder`-style
+  A page-level notice + esv.org link renders on `/verses` when ESV text loads.
 - `net-bible` → labs.bible.org (no key needed)
 - `api-bible` → scripture.api.bible (needs `API_BIBLE_KEY` env var + a per-translation
   `apiBibleId`; the free Starter plan only allows 3 copyrighted translations active at once —

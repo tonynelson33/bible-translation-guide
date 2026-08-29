@@ -98,7 +98,11 @@ async function fetchFromEsvApi(
       };
     }
     const data = await res.json();
-    const text = data?.passages?.[0]?.trim();
+    const raw = data?.passages?.[0]?.trim();
+    // The ESV text itself wraps quoted-speech passages (e.g. John 3:16) in
+    // quotation marks. VerseCard renders every verse inside its own “…”, so
+    // strip any leading/trailing quote marks the API returned to avoid “““.
+    const text = raw?.replace(/^[\s"“”]+|[\s"“”]+$/g, "");
     if (!text) {
       return {
         translationId: translation.id,
@@ -112,8 +116,10 @@ async function fetchFromEsvApi(
       translationId: translation.id,
       status: "ok",
       text,
+      // Crossway's required short-form notice for quotations marked “ESV”
+      // (esv.org/about/terms + the ESV API terms). Do not abbreviate further.
       attribution:
-        "Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway. Used by permission. All rights reserved. (Verify exact required wording against Crossway's current permissions page before launch.)",
+        "Scripture quotations marked “ESV” are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.",
     };
   } catch {
     return {
