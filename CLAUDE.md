@@ -84,9 +84,9 @@ deliberately on verse text, not site copy).
 shared `components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
 `/church-finder` is NOT a placeholder — it's a real, working feature (below).
 
-**Church Finder** (`/church-finder`): search ~353,000 U.S. churches by city+state or zip,
+**Church Finder** (`/church-finder`): search ~351,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~353K rows, RLS enabled with a public SELECT-only policy — the
+project (`churches` table, ~351K rows, RLS enabled with a public SELECT-only policy — the
 `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write). `lib/supabase.ts` creates
 the client (returns `null` if env vars are unset, so the page shows a setup notice instead of
 crashing); `lib/churches.ts` has the search function and `humanizeCategory()` for turning
@@ -157,7 +157,7 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   but PCA/OPC/ECO/Cumberland don't). ~160 churches done this way as of this writing, via real
   web search per church (never guessed) - about 80-90% hit rate once the specific synod is
   confirmed via an official source (locator.lcms.org, pcusa.org, etc.). This is genuinely slow
-  (one church at a time) and the ~353K total dwarfs what's been researched - continuing this is
+  (one church at a time) and the ~351K total dwarfs what's been researched - continuing this is
   an open-ended task, not something to "finish."
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out: LCMS's locator actively rate-limits automated access, ELCA/PCUSA have no bulk
@@ -194,26 +194,33 @@ specific body) into `church_cathedral`, merging `wesleyan_church` into `methodis
 `anglican_episcopal_church` ("Anglican / Episcopal"), and deleting the
 `convents_and_monasteries` bucket outright (religious communities, not congregations).
 
-Then a **broad name-classifier rescue** moved ~16,800 rows *out* of `church_cathedral` whose name
+Then a **broad name-classifier rescue** moved ~22,000 rows *out* of `church_cathedral` whose name
 clearly states a denomination the classifier knows — ~15,000 "X Baptist Church" (→ `baptist_church`),
-plus Church of God 896, Nazarene 253, COGIC 202, Reformed 107, Wesleyan/Methodist 97, and ~350
-smaller. Most were filed under a vague `prim_category` in the source data and never hit the name
-classifier; `add-refined-category-column.js` now re-runs `classify()` as a fallback whenever a
-row would otherwise land on `church_cathedral`, and its `CATCH_ALL_PATTERNS` gained a generic
-`\bBaptist\b` catch (last, so specific denominations win; excludes "St. ___ the Baptist"
-patron-saint naming). So a regen reproduces the rescue.
+~5,000 "X Episcopal Church" (→ `anglican_episcopal_church`), ~700 "X Alliance Church"
+(→ `christian_missionary_alliance`, previously an empty dropdown slot), plus Church of God 896,
+Nazarene 253, COGIC 202, Reformed 107, Wesleyan 97, and ~350 smaller. Most were filed under a
+vague `prim_category` in the source data and never hit the name classifier;
+`add-refined-category-column.js` now re-runs `classify()` as a fallback whenever a row would
+otherwise land on `church_cathedral`, and its `CATCH_ALL_PATTERNS` gained generic `\bEpiscopal\b`
+(after Methodist), `\bAlliance Church\b`, and `\bBaptist\b` (last, so specific denominations win;
+excludes "St. ___ the Baptist" patron-saint naming) entries. So a regen reproduces the rescue.
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
-- **Removed entirely** (~7,700 rows, archived to `removed-rows-2026-08-28.csv`): the whole
-  Latter Day Saint movement (~6,320 LDS / Mormon + ~375 RLDS / Community of Christ), ~510
-  Christian Science, ~490 `convents_and_monasteries`, and 5 joke/junk rows. None of the
-  religious bodies holds to historic Christian doctrine by any mainstream tradition's (Catholic,
-  Orthodox, or Protestant) definition; convents/monasteries aren't congregations. Applied
-  directly against Supabase *and* to `churches-combined.csv`; the classifier's LDS /
-  `Church of Christ, Scientist` patterns were deleted so a reload can't resurrect them
-  (`apply-taxonomy-2026-08.mjs` carries the RLDS + junk name patterns, with a NOT clause sparing
-  e.g. "Community of Christ Lutheran Church").
+- **Removed entirely** (~9,200 rows, archived to `removed-rows-2026-08-28.csv`) — nothing that
+  isn't a historic-Christian congregation: the whole Latter Day Saint movement (~6,320 LDS /
+  Mormon + ~375 RLDS / Community of Christ), ~510 Christian Science, ~490 Jehovah's Witnesses,
+  ~580 Unitarian Universalist, ~290 New Thought (Unity / Religious Science / Divine Science),
+  ~75 Scientology, ~100 other-faith centres miscatalogued as churches, ~490
+  `convents_and_monasteries` (religious communities, not congregations), and 5 joke/junk rows.
+  None of the religious bodies holds to historic Christian doctrine by any mainstream
+  tradition's (Catholic, Orthodox, or Protestant) definition. Applied directly against Supabase
+  *and* to `churches-combined.csv`; the classifier's LDS / `Church of Christ, Scientist`
+  patterns were deleted so a reload can't resurrect them, and `apply-taxonomy-2026-08.mjs`
+  carries name patterns for all of the above with NOT clauses sparing e.g. "Community of Christ
+  Lutheran Church", "Jehovah Jireh" Christian churches, the "Unity Fellowship" denomination,
+  Primitive Baptist Universalists, Messianic congregations, and "... Mandir" South-Asian
+  Christian churches.
 - **Five name-identifiable splits** (~21K rows re-tagged): `Missionary Baptist` → out of the
   generic Baptist bucket (~8,800); `African Methodist` / `AME` / `A.M.E.` / `AMEZ` / `AMEC` /
   `UAME` / `Christian Methodist Episcopal` → `methodist_ame` (~4,150 — this emptied the old

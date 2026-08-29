@@ -1,13 +1,15 @@
 // One-off (2026-08): applies the denomination-taxonomy overhaul to churches-combined.csv
 // so the source data matches the changes made directly against Supabase on 2026-08-28.
 //
-//   1. Removes every row belonging to the Latter Day Saint movement (LDS /
-//      Mormon AND the RLDS / Community of Christ branch) and Christian Science
-//      (denominational decision: none holds to historic Christian doctrine by
-//      any mainstream tradition's definition, and this site is a Christian-
-//      church directory), the convents_and_monasteries bucket (religious
-//      communities / institutions, not congregations), plus a handful of joke /
-//      non-church junk entries. Removed rows are written out verbatim to
+//   1. Removes every row that isn't a historic-Christian congregation: the
+//      Latter Day Saint movement (LDS / Mormon AND RLDS / Community of Christ),
+//      Christian Science, Jehovah's Witnesses, Unitarian Universalism, the New
+//      Thought movement (Unity / Religious Science / Divine Science),
+//      Scientology, and other-faith centres miscatalogued as churches — none
+//      holds to historic Christian doctrine by any mainstream tradition's
+//      definition. Also the convents_and_monasteries bucket (religious
+//      communities, not congregations) and a handful of joke / non-church junk.
+//      Removed rows are written out verbatim to
 //      scripts/removed-rows-2026-08-28.csv as a record.
 //   2. Reclassifies five name-identifiable groups out of the buckets they were
 //      sitting in, to match the current dropdown taxonomy (lib/suggestionOptions.ts):
@@ -54,6 +56,20 @@ const REMOVE_RLDS_NAME = /community of christ|reorganized church|\bRLDS\b|everla
 const RLDS_NOT = /\bcatholic\b|\blutheran\b|\bUMC\b|united methodist|\bbaptist\b|presbyterian|episcopal/i;
 // Joke / non-church junk that turned up in the "latter day" sweep.
 const REMOVE_JUNK_NAME = /latter day pimps|latter day dude|latter[- ]day designs|latter day cottage/i;
+// Non-Christian groups (same call as LDS / Christian Science): Jehovah's
+// Witnesses, Unitarian Universalism, the New Thought movement (Unity, Religious
+// Science, Divine Science), Scientology, and other-faith centres that were
+// miscatalogued as churches. The NOT clauses spare Christian churches that use
+// "Jehovah" as a Hebrew name for God, the "Unity Fellowship" Christian
+// denomination, Primitive Baptist Universalists, Messianic congregations, and
+// South-Asian Christian churches ("... Mandir", "Masihi ...").
+const REMOVE_JW_NAME = /Kingdom Hall|Jehovah.{0,3}s Witness|Congregation[- ].{0,4}Jehovah/i;
+const REMOVE_UU_NAME = /\bUnitarian\b|\bUniversalist\b/i;
+const REMOVE_NEWTHOUGHT_NAME = /^Unity (?:Church|Spiritual|Center|of|on the)|\bUnity Church of\b|\bUnity of [A-Z]|Religious Science|Science of Mind|Divine Science|\bNew Thought\b|Unity Village|Unity Worldwide/i;
+const NEWTHOUGHT_NOT = /\bBaptist\b|\bHoliness\b|Pentecostal|\bApostolic\b|\bCOGIC\b|Missionary|Holy Unity|Unity Fellowship|Jesus Christ/i;
+const REMOVE_SCIENTOLOGY_NAME = /Scientology/i;
+const REMOVE_OTHERFAITH_NAME = /\bBuddhis|\bHindu\b|\bMosque\b|\bMasjid\b|\bIslamic\b|\bSikh\b|\bJain\b|Hare Krishna|\bMandir\b|\bGurdwara\b|Swaminarayan|\bShinto\b|\bTaoist\b|\bSynagogue\b/i;
+const OTHERFAITH_NOT = /Messianic|Christ/i;
 const REMOVED_CATEGORIES = new Set([
   "latter_day_saints_church",
   "christian_science_church",
@@ -67,6 +83,11 @@ function shouldRemove(name, refinedCategory) {
   if (REMOVE_LDS_NAME.test(name)) return "lds-name";
   if (REMOVE_CS_NAME.test(name)) return "cs-name";
   if (REMOVE_RLDS_NAME.test(name) && !RLDS_NOT.test(name)) return "rlds-name";
+  if (REMOVE_JW_NAME.test(name) && !/\bCatholic\b|\bEx-Jehovah/i.test(name)) return "jehovahs-witnesses";
+  if (REMOVE_UU_NAME.test(name) && !/\bBaptist\b/i.test(name)) return "unitarian-universalist";
+  if (REMOVE_NEWTHOUGHT_NAME.test(name) && !NEWTHOUGHT_NOT.test(name)) return "new-thought";
+  if (REMOVE_SCIENTOLOGY_NAME.test(name)) return "scientology";
+  if (REMOVE_OTHERFAITH_NAME.test(name) && !OTHERFAITH_NOT.test(name)) return "other-faith";
   return null;
 }
 
@@ -159,7 +180,11 @@ async function main() {
   let nameIndex = -1;
   let refinedIndex = -1;
 
-  const removedBy = { category: 0, convents: 0, "lds-name": 0, "cs-name": 0, "rlds-name": 0, junk: 0 };
+  const removedBy = {
+    category: 0, convents: 0, "lds-name": 0, "cs-name": 0, "rlds-name": 0, junk: 0,
+    "jehovahs-witnesses": 0, "unitarian-universalist": 0, "new-thought": 0,
+    scientology: 0, "other-faith": 0,
+  };
   const remappedTo = {};
   const remappedFrom = {};
   let kept = 0;
