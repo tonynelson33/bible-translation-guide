@@ -14,7 +14,7 @@ export default function HomePage() {
         A side-by-side look at nine of the most widely used English translations.
       </p>
 
-      <div className="mb-4 max-w-3xl rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-neutral-700">
+      <div className="mb-4 max-w-5xl overflow-x-auto whitespace-nowrap rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-neutral-700">
         Attend a church?{" "}
         <Link href="/church-finder" className="font-medium text-brand-700 hover:underline">
           Find it in the Church Finder
