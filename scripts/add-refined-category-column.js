@@ -52,6 +52,10 @@ const CATCH_ALL_PATTERNS = [
   { category: "orthodox_church", pattern: /\bOrthodox\b/i },
   { category: "lutheran_church", pattern: /\bLutheran\b/i },
   { category: "methodist_church", pattern: /\bMethodist\b/i },
+  // "X Episcopal Church" — the Episcopal Church / Continuing Anglican bodies.
+  // After Methodist so "Methodist Episcopal" (old UMC name) stays Methodist;
+  // AME / A.M.E. is handled earlier by OVERRIDE_PATTERNS.
+  { category: "anglican_episcopal_church", pattern: /\bEpiscopal\b/i },
   { category: "assembly_of_god_church", pattern: /\bAssembl(?:y|ies) of God\b/i },
   { category: "church_of_god_in_christ", pattern: /\bChurch of God in Christ\b/i },
   // Church of God of Prophecy (a 1917 split from Church of God, Cleveland TN)
@@ -74,7 +78,7 @@ const CATCH_ALL_PATTERNS = [
   { category: "wesleyan_church", pattern: /\bWesleyan\b/i },
   { category: "mennonite_church", pattern: /\bMennonite\b/i },
   { category: "foursquare_church", pattern: /\bFoursquare\b/i },
-  { category: "vineyard_church", pattern: /\bVineyard\b/i },
+  { category: "vineyard_church", pattern: /^(?!.*Martha'?s Vineyard).*\bVineyard\b/i },
   { category: "salvation_army", pattern: /\bSalvation Army\b/i },
   { category: "quaker_friends", pattern: /\bQuaker\b|\bFriends Meeting\b/i },
   { category: "calvary_chapel_church", pattern: /\bCalvary Chapel\b/i },
@@ -93,6 +97,9 @@ const CATCH_ALL_PATTERNS = [
     category: "bible_church",
     pattern: /^(?!.*\bBaptist\b)(?!.*\bPresbyterian\b)(?!.*\bMethodist\b)(?!.*\bLutheran\b)(?!.*\bCatholic\b).*\bBible Church\b/i,
   },
+  // Christian & Missionary Alliance — congregations are almost always named
+  // "X Alliance Church".
+  { category: "christian_missionary_alliance", pattern: /\bAlliance Church\b|Christian and Missionary Alliance|Christian & Missionary Alliance/i },
   // Generic "X Baptist Church" — kept last so the more specific denominations
   // above win. Excludes "St. ___ the Baptist" patron-saint naming (John the
   // Baptist), common on Catholic/Orthodox/Episcopal parishes. "Missionary
