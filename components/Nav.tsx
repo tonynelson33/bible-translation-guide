@@ -9,7 +9,7 @@ const primaryLinks = [
   { href: "/", label: "Home" },
   { href: "/verses", label: "Sample Verses" },
   { href: "/rankings", label: "Rankings" },
-  { href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Learn" },
   { href: "/church-finder", label: "Church Finder" },
   { href: "/buy", label: "Buy" },
 ];

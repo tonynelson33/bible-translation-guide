@@ -95,9 +95,18 @@ the one accent color. `app/layout.tsx` loads two fonts via `next/font/google`: I
 (`font-sans`, the default) and Lora for quoted Scripture text specifically (`font-serif`, applied
 deliberately on verse text, not site copy).
 
-**Placeholder pages** (`/rankings`, `/blog`, `/buy`, `/translations/[slug]`) all render the
-shared `components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
+**Placeholder pages** (`/rankings`, `/buy`, `/translations/[slug]`) all render the shared
+`components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
 `/church-finder` is NOT a placeholder — it's a real, working feature (below).
+
+**`/blog`** (nav + footer label "Learn") is a curated library of ~10 embedded YouTube videos
+on translation history, philosophy, Textus Receptus vs. Critical Text, gender language, and
+choosing a Bible — two tiers ("Start here" / "Go deeper"). Static server component, video list
+inlined in `app/blog/page.tsx`. Embeds use `youtube-nocookie.com` (no cookies until play) and
+`loading="lazy"`. The route stayed `/blog` to avoid churning nav/footer/sitemap. Videos were
+picked to be instructive and non-polemical and to represent both the Critical Text and
+Majority/Byzantine (KJV-underlying) text positions; re-check embeds periodically since uploads
+get pulled or have embedding disabled.
 
 **Church Finder** (`/church-finder`): search ~352,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
