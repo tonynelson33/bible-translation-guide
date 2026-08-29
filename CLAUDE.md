@@ -12,7 +12,10 @@ npm run start   # run the production build locally
 npm run lint    # next lint
 ```
 
-There is no test suite in this project yet.
+No unit-test suite. CI (`.github/workflows/ci.yml`) runs `tsc --noEmit`, `npm run lint`, and
+`npm run build` on every PR and every push to `main`. `.eslintrc.json` is just
+`next/core-web-vitals` — it must stay committed or `next lint` drops into an interactive
+"how would you like to configure ESLint?" prompt (which hangs CI).
 
 ## Architecture
 
@@ -84,18 +87,28 @@ deliberately on verse text, not site copy).
 shared `components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
 `/church-finder` is NOT a placeholder — it's a real, working feature (below).
 
-**Church Finder** (`/church-finder`): search ~351,000 U.S. churches by city+state or zip,
+**Church Finder** (`/church-finder`): search ~352,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~351K rows, RLS enabled with a public SELECT-only policy — the
-`NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write). `lib/supabase.ts` creates
-the client (returns `null` if env vars are unset, so the page shows a setup notice instead of
-crashing); `lib/churches.ts` has the search function and `humanizeCategory()` for turning
-category slugs like `baptist_church` into display labels. `app/church-finder/page.tsx` follows
-the same searchParams-driven Server Component pattern as `/verses`.
+project (`churches` table, ~351,900 rows, 30 distinct `category` values — `church_cathedral`
+plus 29 of the 33 dropdown categories that have rows; RLS enabled with a public SELECT-only
+policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
+`lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
+setup notice instead of crashing); `lib/churches.ts` has the search function and
+`humanizeCategory()` for turning category slugs like `baptist_church` into display labels.
+`app/church-finder/page.tsx` follows the same searchParams-driven Server Component pattern as
+`/verses`.
 
-Only ~8% of churches have a confirmed `bible_translation` so far — this is inherently a
-long-tail research problem (see "Church data pipeline" below), not a bug. Most results
-correctly show "Not yet confirmed."
+**Caching — two pieces, both required**: `app/church-finder/page.tsx` sets
+`export const dynamic = "force-dynamic"`, *and* `lib/supabase.ts` wraps the client's `fetch` to
+force `cache: "no-store"`. The Supabase client is created at module scope, so its `fetch` runs
+outside any request's caching context and `force-dynamic` alone doesn't reach it — without the
+`no-store` wrapper, Next's Data Cache serves stale PostgREST responses (they persist across
+deploys), so edits made straight against the DB can take up to an hour to surface. This cost
+real debugging time once; don't drop either half.
+
+Only ~6% of churches have a confirmed `bible_translation` so far (~21,600 rows, almost all
+Catholic → NABRE) — this is inherently a long-tail research problem (see "Church data pipeline"
+below), not a bug. Most results correctly show "Not yet confirmed."
 
 **Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
 can't write to it), user submissions go into a separate `church_suggestions` table instead —
@@ -106,7 +119,7 @@ existing church's denomination/translation) and `components/AddChurchForm.tsx` (
 itself, for a church not in the directory) both call helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 33-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
-taxonomy" below), and translations cover the 9 this site profiles plus ~14 more,
+taxonomy" below), and translations cover the 9 this site profiles plus 11 more,
 since a church may use one this site doesn't. Deliberately excludes translations either fully
 superseded by a current edition already in the list (HCSB→CSB, NAB→NABRE, JB→NJB, TLB→NLT,
 NRSV→NRSVue) or rarely an actual pulpit translation even where real use exists (ASV — now
@@ -114,6 +127,10 @@ essentially historical; MSG, NIrV, The Voice, NLV — devotional/children's/miss
 typically a church's primary pulpit Bible). Every submission lands with `status = 'pending'`;
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
+
+The home page (`app/page.tsx` callout) and site footer (`components/SiteFooter.tsx`, "Add your
+church →") both link into `/church-finder` specifically to drive these submissions — without
+that the feature is buried and users don't know they can correct their own church's entry.
 
 **Spam/duplicate mitigation on `AddChurchForm`**: the insert-only RLS policy is the primary
 defense — nothing a submitter sends ever reaches the public `churches` table without a human
@@ -148,16 +165,20 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
 `backfill-*-from-zip.js`) then loaded into Supabase via `load-churches-to-supabase.mjs`
 (PostgREST bulk insert, batched). Translations are filled two ways:
 - **Bulk denominational defaults** (`fill-denominational-translations.js`): only Catholic
-  (NABRE) now. LDS and Christian Science (both KJV) were dropped with those rows; Episcopal
-  (NRSV) was dropped because `episcopal_church` merged into `anglican_episcopal_church`, which
-  also holds ACNA / Continuing Anglican parishes (not NRSV). See "Denomination taxonomy" below.
+  (NABRE) now — ~19,600 rows. LDS and Christian Science (both KJV) were dropped with those
+  rows; the Episcopal → NRSV rule was removed because `episcopal_church` merged into
+  `anglican_episcopal_church` (which also holds ACNA / Continuing Anglican parishes, not NRSV).
+  Dropping the *rule* didn't clear values it had already written: **~1,820 `methodist_ame` rows
+  still carry `bible_translation = 'NRSV'`** — leftovers from when that bucket was
+  `episcopal_church` (~96% AME). AME bodies have no NRSV standard; a one-line UPDATE to NULL
+  those out is a pending cleanup. See "Denomination taxonomy" below.
 - **Per-church research** (`add-translation-column.js`, `KNOWN_TRANSLATIONS` map): for
   denominations split across sub-bodies with different standards - e.g. Lutheran (LCMS→ESV,
   ELCA→NRSV, but WELS/LCMC/NALC/ELS have no official stance) and Presbyterian (PC(USA)→NRSV,
   but PCA/OPC/ECO/Cumberland don't). ~160 churches done this way as of this writing, via real
   web search per church (never guessed) - about 80-90% hit rate once the specific synod is
   confirmed via an official source (locator.lcms.org, pcusa.org, etc.). This is genuinely slow
-  (one church at a time) and the ~351K total dwarfs what's been researched - continuing this is
+  (one church at a time) and the ~352K total dwarfs what's been researched - continuing this is
   an open-ended task, not something to "finish."
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out: LCMS's locator actively rate-limits automated access, ELCA/PCUSA have no bulk
@@ -186,8 +207,10 @@ the data. Several labels split or merge the underlying buckets:
   `non_denominational_charismatic`, `plymouth_brethren_church`.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value**, so `humanizeCategory` just reads the label off
-`denominationOptions` and the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
+identified") or a `denominationOptions` value** (30 distinct values live — `church_cathedral`
+plus 29 of the 33 dropdown categories; the other 4 have zero rows), so `humanizeCategory` just
+builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
+the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
 specific body) into `church_cathedral`, merging `wesleyan_church` into `methodist_church`
 ("Methodist / Wesleyan") and `anglican_church` + `episcopal_church` into
@@ -207,7 +230,7 @@ excludes "St. ___ the Baptist" patron-saint naming) entries. So a regen reproduc
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
-- **Removed entirely** (~9,200 rows, archived to `removed-rows-2026-08-28.csv`) — nothing that
+- **Removed entirely** (~9,240 rows, archived to `removed-rows-2026-08-28.csv`) — nothing that
   isn't a historic-Christian congregation: the whole Latter Day Saint movement (~6,320 LDS /
   Mormon + ~375 RLDS / Community of Christ), ~510 Christian Science, ~490 Jehovah's Witnesses,
   ~580 Unitarian Universalist, ~290 New Thought (Unity / Religious Science / Divine Science),

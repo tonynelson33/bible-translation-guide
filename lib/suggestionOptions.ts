@@ -9,19 +9,19 @@ export interface Option {
  * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
- * (see lib/churches.ts's CATEGORY_LABEL_OVERRIDES and
- * scripts/add-refined-category-column.js), the `value` is that slug so an edit
- * suggestion can be merged without a translation step. Labels the source data
- * can't distinguish from a name (both Non-denominational tiers,
+ * (see lib/churches.ts's humanizeCategory, which builds its label map from this
+ * list, and scripts/add-refined-category-column.js), the `value` is that slug so
+ * an edit suggestion can be merged without a translation step. Labels the source
+ * data can't distinguish from a name (both Non-denominational tiers,
  * church_of_god_holiness, plymouth_brethren_church) carry a descriptive slug
  * that starts with zero rows and gets populated by manual review.
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
  * mainstream tradition's definition); "church_cathedral" (the "not identified"
- * default); and the generic Pentecostal / Evangelical / Mission /
- * Convents & Monasteries buckets (still shown in the /church-finder breakdown
- * where real rows exist, just not offered as a new-submission choice).
+ * default); and the generic Pentecostal / Evangelical / Mission buckets, which
+ * the 2026-08 overhaul folded into "church_cathedral" (they name a style, not a
+ * body). Convents & Monasteries was deleted outright — not congregations.
  */
 export const denominationOptions: Option[] = [
   { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
