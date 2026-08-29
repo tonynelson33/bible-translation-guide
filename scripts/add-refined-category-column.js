@@ -200,6 +200,15 @@ async function main() {
         refined = primCategory;
       }
       refined = normalizeCategory(refined);
+      // Fallback: if we still landed on "not identified" — either because the
+      // source filed the row under a vague non-cathedral prim_category, or
+      // because normalizeCategory just folded a generic Pentecostal/Evangelical/
+      // Mission bucket — try the name classifier once more. A name like
+      // "Bethel Church of God" should read as Church of God, not "not
+      // identified". (classify() is a no-op here when it already ran above.)
+      if (refined === "church_cathedral") {
+        refined = classify(name);
+      }
       counts[refined] = (counts[refined] || 0) + 1;
       fields[refinedCategoryIndex] = refined;
     }
