@@ -93,6 +93,20 @@ picked to be instructive and non-polemical and to represent both the Critical Te
 Majority/Byzantine (KJV-underlying) text positions; re-check embeds periodically since uploads
 get pulled or have embedding disabled.
 
+**Why Translations Differ** (`/differences`, nav label "Differences"): the ~85 verses where
+translations most visibly disagree (from `data/verseComparisonList.json`, category "Translation
+Difference"), grouped under two parts — **Part 1, manuscript differences** (Textus Receptus /
+Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls) and **Part 2,
+translation choices** (undisputed text, different English). Content structure + every verse's
+one-line note live in `lib/translationDifferences.ts`; ~23 verses are *quoted* (KJV, NKJV, ESV,
+NIV, NET — enough to show TR vs CT), the rest only *described*. Quoted text is cached in
+`data/differenceVerses.json`, fetched once by `scripts/fetch-difference-verses.mjs` (KJV→bible-api,
+NET→labs.bible.org, ESV→api.esv.org, NIV/NKJV→api.bible; a `null` value means that translation
+drops the verse from its running text). Attributions reuse the strings in `cachedVerses.json`.
+Tone is deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest,"
+never "added" / "removed." Same non-commercial-quotation basis as `/verses` (~23 verses is far
+inside every limit).
+
 **Church Finder** (`/church-finder`): search ~352,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
 project (`churches` table, ~351,900 rows, 30 distinct `category` values — `church_cathedral`
