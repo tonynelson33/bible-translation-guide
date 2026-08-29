@@ -242,6 +242,18 @@ name matches" bar still applies to any *new* catch-all category.
 avoids "Bible-believing" (evangelical-Protestant terminology that would read as excluding
 Catholic/Orthodox visitors, a large share of classified churches).
 
+**The editorial line** (spelled out in the "What churches are listed here?" `<details>` on
+`/church-finder`): the directory carries the historic Christian traditions — Catholic, Orthodox,
+Protestant — and the working test for inclusion is *"Jesus Christ is God, and the Bible is God's
+authoritative word."* That is deliberately **not** "affirms the Trinity / the Nicene creeds" —
+that framing would contradict the `oneness_apostolic_church` dropdown category (Oneness
+Pentecostals reject the Trinity by definition, ~4K churches) and doesn't fit the non-creedal
+traditions (Churches of Christ, Disciples, Anabaptists, Quakers). The two-part test is what the
+removals actually screened on: LDS, Jehovah's Witnesses, Christian Science, Unitarian
+Universalism, and New Thought each fail the deity-of-Christ half and/or add another scripture;
+Oneness Pentecostals pass both, so they stay. If someone later wants a strictly Trinitarian
+scope, that's a real change — it means removing Oneness (and auditing Quaker / "Church of God").
+
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
 text (other translations need API keys, see below). Nothing in the app reads this yet - it's
