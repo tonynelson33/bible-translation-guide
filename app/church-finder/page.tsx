@@ -52,15 +52,12 @@ export default async function ChurchFinderPage({
           <p>
             Churches from the historic Christian traditions — Catholic, Orthodox, and Protestant.
             The common thread, and the line for what&apos;s included, is that Jesus Christ is God
-            and the Bible is God&apos;s authoritative word. Movements that grew out of
-            Christianity but redefined who Jesus is — the Latter Day Saint movement,
-            Jehovah&apos;s Witnesses, Christian Science — or that left Christian belief behind,
-            like Unitarian Universalism, aren&apos;t listed.
+            and the Bible is God&apos;s authoritative word.
           </p>
           <p>
             Nearly half of listings still show &ldquo;Denomination not identified&rdquo; — the
-            source data didn&apos;t specify one, and matching a church to a denomination is done
-            by hand.
+            source data didn&apos;t specify one. Those get sorted out by hand over time, along
+            with corrections and new churches people submit.
           </p>
         </div>
       </details>
