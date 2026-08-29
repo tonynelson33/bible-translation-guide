@@ -50,18 +50,12 @@ export default async function ChurchFinderPage({
         </summary>
         <div className="mt-2 space-y-2 text-sm text-neutral-600">
           <p>
-            This directory covers Christian congregations across the historic traditions —
-            Catholic, Orthodox, and Protestant (Baptist, Methodist, Lutheran, Presbyterian,
-            Pentecostal, Anglican/Episcopal, Reformed, Restorationist, Anabaptist, Holiness,
-            Adventist, and non-denominational among them).
-          </p>
-          <p>
-            It leaves out groups that fall outside historic Christian teaching as all three of
-            those traditions define it — the Latter Day Saint movement (LDS and Community of
-            Christ), Jehovah&apos;s Witnesses, Christian Science, Unitarian Universalism, and the
-            New Thought churches (Unity, Religious Science). It also skips entities that
-            aren&apos;t congregations: monasteries and convents, denominational and ministry
-            offices, campus groups, and retreat centers.
+            Churches from the historic Christian traditions — Catholic, Orthodox, and Protestant.
+            The common thread, and the line for what&apos;s included, is that Jesus Christ is God
+            and the Bible is God&apos;s authoritative word. Movements that grew out of
+            Christianity but redefined who Jesus is — the Latter Day Saint movement,
+            Jehovah&apos;s Witnesses, Christian Science — or that left Christian belief behind,
+            like Unitarian Universalism, aren&apos;t listed.
           </p>
           <p>
             Nearly half of listings still show &ldquo;Denomination not identified&rdquo; — the
