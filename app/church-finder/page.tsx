@@ -7,6 +7,8 @@ import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
   title: "Church Finder",
+  description:
+    "Search 350,000+ U.S. Christian churches by city or zip and see which Bible translation each one uses. Covers the historic traditions — Catholic, Orthodox, and Protestant.",
   alternates: { canonical: "/church-finder" },
 };
 
@@ -41,6 +43,33 @@ export default async function ChurchFinderPage({
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>
+
+      <details className="mt-4 max-w-3xl">
+        <summary className="cursor-pointer text-sm font-medium text-brand-700 hover:underline">
+          What churches are listed here?
+        </summary>
+        <div className="mt-2 space-y-2 text-sm text-neutral-600">
+          <p>
+            This directory covers Christian congregations across the historic traditions —
+            Catholic, Orthodox, and Protestant (Baptist, Methodist, Lutheran, Presbyterian,
+            Pentecostal, Anglican/Episcopal, Reformed, Restorationist, Anabaptist, Holiness,
+            Adventist, and non-denominational among them).
+          </p>
+          <p>
+            It leaves out groups that fall outside historic Christian teaching as all three of
+            those traditions define it — the Latter Day Saint movement (LDS and Community of
+            Christ), Jehovah&apos;s Witnesses, Christian Science, Unitarian Universalism, and the
+            New Thought churches (Unity, Religious Science). It also skips entities that
+            aren&apos;t congregations: monasteries and convents, denominational and ministry
+            offices, campus groups, and retreat centers.
+          </p>
+          <p>
+            Nearly half of listings still show &ldquo;Denomination not identified&rdquo; — the
+            source data didn&apos;t specify one, and matching a church to a denomination is done
+            by hand.
+          </p>
+        </div>
+      </details>
 
       {supabase && (
         <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
