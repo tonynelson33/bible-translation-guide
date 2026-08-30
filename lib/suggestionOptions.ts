@@ -6,7 +6,7 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (31 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (32 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
@@ -21,6 +21,10 @@ export interface Option {
  *     Pentecostal), and labelling every one "Pentecostal" mislabels the Anderson churches.
  *   - "Non-denominational (Contemporary/Charismatic)" + "(Traditional/Mainstream)" → one
  *     "Non-denominational". A submitter can't reliably pick between the two.
+ *
+ * Added 2026-08-30: "Evangelical Free Church (EFCA)" — ~1,600 congregations nationally,
+ * many named "X Community Church" / "X Evangelical Free Church" and previously landing in
+ * "church_cathedral" or being mislabelled. Its own category slug so suggestions merge cleanly.
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
@@ -44,6 +48,7 @@ export const denominationOptions: Option[] = [
   { value: "church_of_the_brethren", label: "Church of the Brethren" },
   { value: "congregational_church", label: "Congregational (UCC)" },
   { value: "disciples_of_christ_church", label: "Disciples of Christ" },
+  { value: "evangelical_free_church", label: "Evangelical Free Church (EFCA)" },
   { value: "foursquare_church", label: "Foursquare" },
   { value: "lutheran_church", label: "Lutheran" },
   { value: "mennonite_church", label: "Mennonite / Amish" },

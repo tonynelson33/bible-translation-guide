@@ -52,7 +52,7 @@ export default async function ChurchFinderPage({
         Church Finder
       </h1>
       <p className="mt-3 max-w-3xl text-neutral-600">
-        Search over 351,000 U.S. churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
+        Search over 350,000 U.S. churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>

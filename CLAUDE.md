@@ -119,10 +119,11 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~352,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~350,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~351,700 rows, 31 distinct `category` values — `church_cathedral`
-plus 30 of the 31 dropdown categories that have rows; RLS enabled with a public SELECT-only
+project (`churches` table, ~350,300 rows — US only; non-US rows were removed 2026-08-30 — with
+33 distinct `category` values: `church_cathedral` plus all 32 dropdown categories, every one of
+which now has rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
 `lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
 setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
@@ -185,7 +186,7 @@ the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in t
 column of `/church-finder`, open by default) is for a church not in the directory. Both call
 helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
-fixed 31-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
+fixed 32-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
 since a church may use one this site doesn't. The list is scoped to translations a
 meaningful number of US congregations actually use *from the pulpit / in worship*:
@@ -283,7 +284,7 @@ slugs), `lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropd
 `lib/churches.ts`'s `humanizeCategory` (how `churches.category` slugs render in the
 `/church-finder` breakdown table).
 
-`denominationOptions` is a **fixed 31-entry US master taxonomy**, not a projection of what's in
+`denominationOptions` is a **fixed 32-entry US master taxonomy**, not a projection of what's in
 the data. Several labels split or merge the underlying buckets:
 - Where a label maps 1:1 onto a slug, `value` *is* that slug (so an edit suggestion merges
   without a translation step).
@@ -291,16 +292,20 @@ the data. Several labels split or merge the underlying buckets:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
   `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul), plus
   `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern).
-- `non_denominational` carries a descriptive slug with zero rows until manual review populates
-  it (the ~45k generic-name churches).
+- `non_denominational` (101 rows as of 2026-08-30) is populated only by per-church verification,
+  never a name pattern — a sample proved ~35-45% of generic-named "X Community Church" rows are
+  quietly SBC / AG / EFCA / Converge / etc. See the overnight-grind log.
 - **Merged 2026-08-30** (all empty or unenforceable by name): `church_of_god_holiness` +
   `church_of_god` → one "Church of God" (Anderson/Holiness vs Cleveland/Pentecostal is
   invisible in a bare "Church of God" name); the two `non_denominational*` tiers → one
   "Non-denominational".
+- **Added 2026-08-30**: `evangelical_free_church` ("Evangelical Free Church (EFCA)", ~1,600
+  congregations nationally, 461 rows so far) — populated by an "Evangelical Free" name pattern
+  plus individually-researched "X Community Church" rows.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (31 distinct values live — `church_cathedral`
-plus 30 of the 31 dropdown categories; only `non_denominational` has zero rows), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (33 distinct values live — `church_cathedral`
+plus all 32 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
