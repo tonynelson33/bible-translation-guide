@@ -100,20 +100,22 @@ picked to be instructive and non-polemical and to represent both the Critical Te
 Majority/Byzantine (KJV-underlying) text positions; re-check embeds periodically since uploads
 get pulled or have embedding disabled.
 
-**Why Translations Differ** (`/differences`, nav label "Differences"): the ~85 verses where
+**Why Translations Differ** (`/differences`, nav label "Differences"): the 84 verses where
 translations most visibly disagree (from `data/verseComparisonList.json`, category "Translation
-Difference"), grouped under two parts — **Part 1, manuscript differences** (Textus Receptus /
-Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls) and **Part 2,
-translation choices** (undisputed text, different English). Content structure + every verse's
-one-line note (and which translations each card shows) live in
-`lib/translationDifferences.ts`. Most verses are only *described*; the ~34 comparison cards
-*quote* KJV + ESV (plus NKJV/NIV/NET only where that translation is what creates the
-difference). Quoted text is cached in `data/differenceVerses.json`,
-`scripts/fetch-difference-verses.mjs` (KJV→bible-api, NET→labs.bible.org, ESV→api.esv.org,
-NIV/NKJV→api.bible) — same fidelity rules as `cachedVerses.json` (words + punctuation exact via
-`scripts/verse-clean.mjs`, no hand-editing). `components/DiffVerseCard.tsx` shows the "Textus
-Receptus / critical text" tag only for the NT manuscript sections — not the OT section or
-Part 2, where that framing doesn't apply. Attributions reuse `cachedVerses.json`. Tone is
+Difference" — 85 minus Leviticus 6:25, which reads the same in KJV and ESV and was dropped
+2026-08 from the JSON *and the source xlsx*). Grouped into **Part 1 — Manuscript Differences**
+(Textus Receptus / Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls)
+and **Part 2 — English Word Differences** (undisputed text, different English). Content
+structure + every verse's one-line note (and which translations each card shows) live in
+`lib/translationDifferences.ts`; sections are numbered in the page component, not the data.
+Most verses are only *described*; the ~35 comparison cards *quote* KJV + ESV (plus NKJV/NIV/NET
+only where that translation is what creates the difference), except "Whole verses" cards which
+show KJV alone (modern texts drop the verse). Quoted text is cached in
+`data/differenceVerses.json`, `scripts/fetch-difference-verses.mjs` (KJV→bible-api,
+NET→labs.bible.org, ESV→api.esv.org, NIV/NKJV→api.bible; merges, doesn't overwrite) — same
+fidelity rules as `cachedVerses.json` (words + punctuation exact via `scripts/verse-clean.mjs`,
+no hand-editing). Layout is `max-w-6xl`, two-column (`sm:columns-2`) verse lists.
+Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 

@@ -4,7 +4,7 @@ import cachedVerses from "@/data/cachedVerses.json";
 /**
  * Content for /differences. The ~85 verses come from
  * data/verseComparisonList.json (category "Translation Difference"). The first
- * two sections just list them; from "Missing phrases" on, each item is a
+ * long-passages section just lists them; from "Phrases" on, each item is a
  * KJV vs. ESV comparison (plus another translation only where that translation
  * is what creates the difference). Quoted text is in data/differenceVerses.json
  * (scripts/fetch-difference-verses.mjs, official APIs only).
@@ -77,7 +77,7 @@ export const USED_TRANSLATIONS: TranslationId[] = ["kjv", "esv", "nkjv", "niv", 
 export const differenceParts: DiffPart[] = [
   {
     id: "manuscripts",
-    title: "Part 1 — Which manuscripts?",
+    title: "Part 1 — Manuscript Differences",
     intro:
       "The KJV and NKJV translate the New Testament from the Textus Receptus, a Greek text compiled in the 1500s from the Byzantine manuscript tradition. Most modern translations use a critical text that also weighs the oldest surviving manuscripts, some from the 300s and earlier, most of them discovered after 1600. Where the two traditions disagree you get bracketed verses, footnotes, and shorter or longer readings. The Old Testament has a parallel situation: the standard Hebrew (Masoretic) text versus older witnesses like the Greek Septuagint and the Dead Sea Scrolls.",
     sections: [
@@ -123,7 +123,7 @@ export const differenceParts: DiffPart[] = [
       },
       {
         id: "phrases",
-        title: "Missing phrases",
+        title: "Phrases",
         intro:
           "Here it is not a whole verse but a clause or phrase — the Byzantine text is longer, the critical text shorter. KJV and ESV, side by side:",
         shown: [
@@ -210,7 +210,7 @@ export const differenceParts: DiffPart[] = [
   },
   {
     id: "wording",
-    title: "Part 2 — Which English words?",
+    title: "Part 2 — English Word Differences",
     intro:
       "In these places the Hebrew or Greek is not in question — it reads the same in every manuscript. What differs is the English: the sense of an ambiguous word, whether to render a masculine form inclusively, or how much interpretation to fold into the translation.",
     sections: [
@@ -277,12 +277,6 @@ export const differenceParts: DiffPart[] = [
             note:
               "Greek anthrōpous, a generic masculine: KJV “all sick people,” ESV “all the sick,” NIV “all who were ill.” The KJV’s “lunatick” for what the ESV calls “those having seizures” is a separate, unrelated matter of aging vocabulary.",
           },
-          {
-            reference: "Leviticus 6:25",
-            show: ["kjv", "esv"],
-            note:
-              "The KJV and ESV read almost identically here — the generic-masculine question (a “he” that stands for any priest) runs through the sacrificial laws rather than turning on this one verse. Included because the source list flags it.",
-          },
         ],
       },
       {
@@ -304,4 +298,4 @@ export const differenceParts: DiffPart[] = [
 ];
 
 /** total distinct verses covered (for the intro count) */
-export const TOTAL_VERSES = 85;
+export const TOTAL_VERSES = 84;

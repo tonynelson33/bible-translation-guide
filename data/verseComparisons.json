@@ -27780,66 +27780,6 @@
     }
   },
   {
-    "reference": "Leviticus 6:25",
-    "category": "Translation Difference",
-    "differenceType": "Modern Gender-Language Controversy",
-    "passageGroup": null,
-    "translations": {
-      "esv": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Crossway's official ESV API (api.esv.org). Free for non-commercial use but requires signing up for a free account and an approved API application to get an ESV_API_KEY. Attribution to Crossway is required on every page displaying ESV text."
-      },
-      "kjv": {
-        "status": "ok",
-        "text": "Speak unto Aaron and to his sons, saying, This\nis the law of the sin offering: In the place where the burnt offering is killed shall the sin offering be killed before the LORD: it\nis most holy.",
-        "attribution": "Public domain. Text served via bible-api.com."
-      },
-      "niv": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify NIV is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-      },
-      "nlt": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Not yet confirmed available on scripture.api.bible's free Starter plan as of this build. Look up the current NLT Bible ID via GET /v1/bibles on your own account and add it here (apiBibleId), or source separately (Tyndale has historically run its own developer API — check for current status)."
-      },
-      "csb": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify CSB is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-      },
-      "lsb": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "No known free public API for the LSB as of mid-2026. It does not appear on scripture.api.bible's public catalog. Manual sourcing or a direct licensing conversation with Lockman/Master's Seminary would be needed."
-      },
-      "nkjv": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Not yet confirmed available on scripture.api.bible's free Starter plan as of this build (that plan caps you at 3 copyrighted translations total, and this project's config prioritizes NIV/CSB/NASB by default). Look up the current NKJV Bible ID via GET /v1/bibles on your own account and add it here if you swap it in."
-      },
-      "nasb": {
-        "status": "unavailable",
-        "text": null,
-        "attribution": null,
-        "message": "Available via scripture.api.bible with a free Starter-plan account, but that free plan only permits 3 copyrighted translations active at once — verify NASB is one of the 3 you've enabled, and confirm this Bible ID still matches your account's /v1/bibles listing."
-      },
-      "net": {
-        "status": "ok",
-        "text": "“Tell Aaron and his sons, ‘This is the law of the sin offering. In the place where the burnt offering is slaughtered the sin offering must be slaughtered before the Lord. It is most holy.",
-        "attribution": "NET Bible® copyright © 1996-2017 by Biblical Studies Press, L.L.C. Used by permission, all rights reserved. (Verify exact required wording against bible.org's current terms before launch.)"
-      }
-    }
-  },
-  {
     "reference": "Matthew 4:24",
     "category": "Translation Difference",
     "differenceType": "Modern Gender-Language Controversy",

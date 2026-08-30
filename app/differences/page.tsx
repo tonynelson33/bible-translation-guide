@@ -23,29 +23,29 @@ export default function DifferencesPage() {
           Why translations differ
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-          Most of the Bible reads the same in every English translation. But in about{" "}
-          {TOTAL_VERSES} places the differences are visible enough that people notice — a verse
-          in brackets, a footnote, a familiar phrase that&apos;s shorter than they remember.
-          Those differences come from two things: which ancient copies a translation follows, and
-          which English words the translators chose.
+          Most of the Bible reads the same in every English translation. But in {TOTAL_VERSES}{" "}
+          places the differences are visible enough that people notice — a verse in brackets, a
+          footnote, a familiar phrase that&apos;s shorter than they remember. Those differences
+          come from two things: which ancient copies a translation follows, and which English
+          words the translators chose.
         </p>
 
         {/* table of contents */}
-        <nav className="mt-5 rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-sm">
+        <nav className="mt-5 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm">
           {differenceParts.map((part) => (
-            <div key={part.id} className="mb-2 last:mb-0">
+            <div key={part.id} className="mb-3 last:mb-0">
               <a href={`#${part.id}`} className="font-semibold text-brand-800 hover:underline">
                 {part.title}
               </a>
-              <span className="text-neutral-400"> · </span>
-              {part.sections.map((s, i) => (
-                <span key={s.id}>
-                  {i > 0 && <span className="text-neutral-300"> · </span>}
-                  <a href={`#${s.id}`} className="text-neutral-600 hover:text-brand-700 hover:underline">
-                    {s.title}
-                  </a>
-                </span>
-              ))}
+              <ol className="mt-1 space-y-0.5 pl-5 text-neutral-600">
+                {part.sections.map((s, i) => (
+                  <li key={s.id}>
+                    <a href={`#${s.id}`} className="hover:text-brand-700 hover:underline">
+                      {i + 1}) {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
             </div>
           ))}
         </nav>
@@ -56,9 +56,11 @@ export default function DifferencesPage() {
           <h2 className="font-serif text-xl font-semibold text-brand-900">{part.title}</h2>
           <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-neutral-600">{part.intro}</p>
 
-          {part.sections.map((section) => (
+          {part.sections.map((section, sectionIndex) => (
             <div key={section.id} id={section.id} className="mt-7 scroll-mt-20">
-              <h3 className="font-serif text-base font-semibold text-brand-900">{section.title}</h3>
+              <h3 className="font-serif text-base font-semibold text-brand-900">
+                {sectionIndex + 1}) {section.title}
+              </h3>
               <p className="mt-1 max-w-3xl text-sm leading-relaxed text-neutral-500">
                 {section.intro}
               </p>

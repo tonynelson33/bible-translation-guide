@@ -88,7 +88,6 @@ const REFS = [
   ["1 Corinthians 1:10", ["kjv", "esv", "niv"]],
   ["1 Corinthians 6:9-10", ["kjv", "esv", "niv", "nkjv"]],
   ["1 Timothy 1:10", ["kjv", "esv", "niv"]],
-  ["Leviticus 6:25", ["kjv", "esv"]],
   ["Matthew 4:24", ["kjv", "esv", "niv"]],
 ];
 
