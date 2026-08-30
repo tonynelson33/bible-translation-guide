@@ -15,12 +15,48 @@ export interface Church {
 }
 
 export interface ChurchSearchParams {
+  name?: string;
   city?: string;
   state?: string;
   zip?: string;
 }
 
-const RESULTS_LIMIT = 30;
+export interface ChurchSearchResult {
+  /** Up to RESULTS_LIMIT rows, ordered by name. */
+  churches: Church[];
+  /** Total matches in the DB, even when more than RESULTS_LIMIT. */
+  total: number;
+}
+
+// Hard cap on rows returned for any one search. The densest zip has ~71 churches
+// and the biggest city ~2,700 — past 100 the answer is "narrow it down" (add a
+// name), not "page through hundreds". The client paginates these 100 in memory.
+export const RESULTS_LIMIT = 100;
+
+/** Client paginates the fetched results this many per page — 100 / 25 = 4 pages max. */
+export const PAGE_SIZE = 25;
+
+export const MIN_NAME_CHARS = 3;
+export const MIN_CITY_CHARS = 3;
+
+/**
+ * Returns an error string if the params can't be searched, or null if they're good.
+ * Shared by the client form (inline validation) and the server (shared-link guard).
+ */
+export function validateSearchParams(params: ChurchSearchParams): string | null {
+  const name = params.name?.trim() ?? "";
+  const city = params.city?.trim() ?? "";
+  const zip = params.zip?.trim() ?? "";
+
+  if (!name && !city && !zip) return "Enter a church name, city, or zip code.";
+  if (zip && !/^\d{5}$/.test(zip)) return "Enter a 5-digit zip code.";
+  if (name && name.length < MIN_NAME_CHARS)
+    return `Church name needs at least ${MIN_NAME_CHARS} letters.`;
+  // City is ignored when a zip is given, so only enforce its length otherwise.
+  if (!zip && city && city.length < MIN_CITY_CHARS)
+    return `City needs at least ${MIN_CITY_CHARS} letters.`;
+  return null;
+}
 
 // churches.category holds slugs like "baptist_church". Every slug in the live
 // data is either "church_cathedral" (the "not identified" catch-all) or a value
@@ -139,27 +175,46 @@ export async function searchSimilarChurches(name: string, locality: string): Pro
   }));
 }
 
-/** Returns [] when Supabase isn't configured or the search has no usable criteria. */
-export async function searchChurches(params: ChurchSearchParams): Promise<Church[]> {
+const EMPTY_RESULT: ChurchSearchResult = { churches: [], total: 0 };
+
+/**
+ * Location comes from zip if given, otherwise city (+ optional state); a name
+ * term is an additional `ILIKE '%…%'` filter on top of either. Returns up to
+ * RESULTS_LIMIT rows plus the true total. Safe to call from a client component —
+ * `churches` is public-SELECT.
+ */
+export async function searchChurches(params: ChurchSearchParams): Promise<ChurchSearchResult> {
+  const name = params.name?.trim();
   const zip = params.zip?.trim();
   const city = params.city?.trim();
   const state = params.state?.trim().toUpperCase();
 
-  if (!supabase || (!zip && !city)) return [];
+  if (!supabase || validateSearchParams(params) !== null) return EMPTY_RESULT;
 
-  let query = supabase.from("churches").select("*").order("name").limit(RESULTS_LIMIT);
+  let query = supabase
+    .from("churches")
+    .select("*", { count: "exact" })
+    .order("name")
+    .limit(RESULTS_LIMIT);
 
   if (zip) {
     query = query.ilike("zip", `${zip}%`);
   } else if (city) {
     query = query.ilike("locality", `${city}%`);
     if (state) query = query.eq("region", state);
+  } else if (state) {
+    // Name-only search can still be scoped to a state.
+    query = query.eq("region", state);
+  }
+  if (name) {
+    // Escape PostgREST wildcards so a literal % or _ in the term isn't treated as one.
+    query = query.ilike("name", `%${name.replace(/[%_]/g, "\\$&")}%`);
   }
 
-  const { data, error } = await query;
+  const { data, error, count } = await query;
   if (error) {
     console.error("searchChurches error:", error.message);
-    return [];
+    return EMPTY_RESULT;
   }
-  return (data ?? []).map(rowToChurch);
+  return { churches: (data ?? []).map(rowToChurch), total: count ?? 0 };
 }

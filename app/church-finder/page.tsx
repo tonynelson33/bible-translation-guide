@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import ChurchResultCard from "@/components/ChurchResultCard";
-import AddChurchForm from "@/components/AddChurchForm";
+import ChurchSearch from "@/components/ChurchSearch";
 import CountTable from "@/components/CountTable";
-import { searchChurches, getDenominationCounts, getTranslationCounts } from "@/lib/churches";
+import {
+  searchChurches,
+  validateSearchParams,
+  getDenominationCounts,
+  getTranslationCounts,
+  type ChurchSearchParams,
+} from "@/lib/churches";
 import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
@@ -23,12 +28,19 @@ export default async function ChurchFinderPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const city = typeof searchParams.city === "string" ? searchParams.city : undefined;
-  const state = typeof searchParams.state === "string" ? searchParams.state : undefined;
-  const zip = typeof searchParams.zip === "string" ? searchParams.zip : undefined;
-  const hasSearched = Boolean(city || zip);
+  const str = (v: string | string[] | undefined) => (typeof v === "string" ? v : undefined);
+  const initialParams: ChurchSearchParams = {
+    name: str(searchParams.name),
+    city: str(searchParams.city),
+    state: str(searchParams.state)?.toUpperCase(),
+    zip: str(searchParams.zip),
+  };
+  const initialPage = Math.max(1, Number(str(searchParams.page)) || 1);
+  const canSearch = validateSearchParams(initialParams) === null;
 
-  const results = hasSearched ? await searchChurches({ city, state, zip }) : [];
+  const initialResult = canSearch
+    ? await searchChurches(initialParams)
+    : { churches: [], total: 0 };
   const [denominationCounts, translationCounts] = supabase
     ? await Promise.all([getDenominationCounts(), getTranslationCounts()])
     : [[], []];
@@ -39,7 +51,7 @@ export default async function ChurchFinderPage({
         Church Finder
       </h1>
       <p className="mt-3 max-w-3xl text-neutral-600">
-        Search over 351,000 U.S. churches by city or zip code. Where we&apos;ve confirmed which
+        Search over 351,000 U.S. churches by name, city, or zip code. Where we&apos;ve confirmed which
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>
@@ -77,68 +89,12 @@ export default async function ChurchFinderPage({
           </div>
 
           {/* middle column — search, results, add-a-church */}
-          <div className="order-1 flex min-w-0 flex-col gap-4 lg:order-2 lg:flex-1">
-            <form className="flex flex-wrap items-end gap-2 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-              <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-                City
-                <input
-                  type="text"
-                  name="city"
-                  defaultValue={city}
-                  placeholder="e.g. Austin"
-                  className="w-40 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-                />
-              </label>
-              <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-                State
-                <input
-                  type="text"
-                  name="state"
-                  defaultValue={state}
-                  placeholder="TX"
-                  maxLength={2}
-                  className="w-16 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm uppercase text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-                />
-              </label>
-              <span className="pb-2 text-sm text-neutral-400">or</span>
-              <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-                Zip code
-                <input
-                  type="text"
-                  name="zip"
-                  defaultValue={zip}
-                  placeholder="78701"
-                  className="w-24 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-                />
-              </label>
-              <button
-                type="submit"
-                className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
-              >
-                Search
-              </button>
-            </form>
-
-            {hasSearched &&
-              (results.length === 0 ? (
-                <p className="text-neutral-500">
-                  No churches found for that search. Try a different city or zip code.
-                </p>
-              ) : (
-                <div>
-                  <p className="mb-2 text-sm text-neutral-500">
-                    Showing {results.length} result{results.length === 1 ? "" : "s"}
-                    {results.length === 30 ? " (first 30 — narrow your search for more precise results)" : ""}
-                  </p>
-                  <ul className="flex flex-col gap-2">
-                    {results.map((church) => (
-                      <ChurchResultCard key={church.id} church={church} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-
-            <AddChurchForm defaultOpen />
+          <div className="order-1 min-w-0 lg:order-2 lg:flex-1">
+            <ChurchSearch
+              initialParams={initialParams}
+              initialResult={initialResult}
+              initialPage={initialPage}
+            />
           </div>
 
           {/* right column — bible translations */}
