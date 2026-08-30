@@ -68,7 +68,7 @@ export default async function ChurchFinderPage({
             and the Bible is God&apos;s authoritative word.
           </p>
           <p>
-            Nearly half of listings still show &ldquo;Denomination not identified&rdquo; — the
+            Nearly half of listings still show &ldquo;Not identified&rdquo; for denomination — the
             source data didn&apos;t specify one. Those get sorted out by hand over time, along
             with corrections and new churches people submit.
           </p>

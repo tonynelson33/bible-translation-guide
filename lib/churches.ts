@@ -75,7 +75,7 @@ const DROPDOWN_LABEL: Record<string, string> = Object.fromEntries(
 const LOWERCASE_CONNECTORS = new Set(["of", "and", "the", "in"]);
 
 export function humanizeCategory(category: string | null): string {
-  if (!category || category === "church_cathedral") return "Denomination not identified";
+  if (!category || category === "church_cathedral") return "Not identified";
   return (
     DROPDOWN_LABEL[category] ??
     category
@@ -144,7 +144,7 @@ export async function getTranslationCounts(): Promise<CountRow[]> {
   return (data ?? []).map((row) => {
     const translation = (row.bible_translation as string | null) ?? null;
     return {
-      label: translation ?? "Not yet confirmed",
+      label: translation ?? "Not identified",
       count: row.count as number,
       value: translation,
     };

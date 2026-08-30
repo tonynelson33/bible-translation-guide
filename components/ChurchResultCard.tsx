@@ -35,7 +35,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
                 <span className="font-semibold text-brand-800">{church.bibleTranslation}</span>
               )
             ) : (
-              <span className="text-neutral-400">Translation not identified</span>
+              <span className="text-neutral-400">Not identified</span>
             )}
           </dd>
         </div>

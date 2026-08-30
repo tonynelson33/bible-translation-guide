@@ -131,7 +131,7 @@ setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
 
 **Search model** (`lib/churches.ts` + `components/ChurchSearch.tsx`, a client component):
 - Fields: church name (`ILIKE '%term%'`, min 3 chars), denomination (dropdown built from the
-  live `getDenominationCounts()` — real `category` buckets only, with counts; `category =` exact
+  live `getDenominationCounts()` — real `category` buckets only, A–Z; `category =` exact
   filter), city (starts-with, min 3), state (dropdown, `lib/usStates.ts`, exact, optional), zip
   (exactly 5 digits, prefix match so ZIP+4 rows are caught). Location comes from zip if given,
   else city+state, else state alone can scope a name/denomination search; name and denomination
@@ -170,7 +170,8 @@ real debugging time once; don't drop either half.
 Only ~6% of churches have a confirmed `bible_translation` so far (~21,500 rows — ~19,600
 Catholic → NABRE, ~1,800 mainline → NRSV, the rest per-church research) — this is inherently a
 long-tail research problem (see "Church data pipeline" below), not a bug. Most results
-correctly show "Not yet confirmed."
+correctly show "Not identified" for the translation (same label the result card and the
+breakdown tables use for an unknown denomination or translation).
 
 **Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
 can't write to it), user submissions go into a separate `church_suggestions` table instead —

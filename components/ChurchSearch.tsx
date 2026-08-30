@@ -44,9 +44,9 @@ export default function ChurchSearch({
 
   const zipActive = zip.trim().length > 0;
 
-  // Real denomination buckets only (drop the "not identified" catch-all), sorted by count.
+  // Real denomination buckets only (drop the "not identified" catch-all), A–Z.
   const denomOptions = useMemo(
-    () => denominations.filter((d) => d.value),
+    () => denominations.filter((d) => d.value).sort((a, b) => a.label.localeCompare(b.label)),
     [denominations],
   );
   const denomLabel = (slug?: string) =>
@@ -153,7 +153,7 @@ export default function ChurchSearch({
               <option value="">Any denomination</option>
               {denomOptions.map((d) => (
                 <option key={d.value} value={d.value as string}>
-                  {d.label} ({d.count.toLocaleString()})
+                  {d.label}
                 </option>
               ))}
             </select>
