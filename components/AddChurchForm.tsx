@@ -5,8 +5,8 @@ import { denominationOptions, translationOptions } from "@/lib/suggestionOptions
 import { submitNewChurchSuggestion } from "@/lib/churchSuggestions";
 import { searchSimilarChurches, type SimilarChurchMatch } from "@/lib/churches";
 
-export default function AddChurchForm() {
-  const [open, setOpen] = useState(false);
+export default function AddChurchForm({ defaultOpen = false }: { defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [locality, setLocality] = useState("");
@@ -75,7 +75,6 @@ export default function AddChurchForm() {
       className="space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
     >
       <h2 className="text-sm font-semibold text-neutral-800">Add a church</h2>
-      <p className="text-xs text-neutral-500">For Christian churches only.</p>
 
       {/* Honeypot field: visually and semantically hidden from real users/screen readers. */}
       <div aria-hidden="true" className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">

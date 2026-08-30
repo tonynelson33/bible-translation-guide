@@ -2,9 +2,20 @@ import { supabase } from "./supabase";
 
 export interface EditSuggestion {
   churchId: string;
+  /** name as the submitter has it (may be a correction) */
   churchName: string;
-  denomination: string;
-  translation: string;
+  address?: string;
+  locality?: string;
+  region?: string;
+  zip?: string;
+  denomination?: string;
+  translation?: string;
+  note?: string;
+}
+
+export interface ClosedReport {
+  churchId: string;
+  churchName: string;
   note?: string;
 }
 
@@ -30,8 +41,25 @@ export async function submitEditSuggestion(input: EditSuggestion): Promise<Submi
     suggestion_type: "edit",
     church_id: input.churchId,
     church_name: input.churchName,
+    address: input.address || null,
+    locality: input.locality || null,
+    region: input.region || null,
+    zip: input.zip || null,
     denomination: input.denomination || null,
     translation: input.translation || null,
+    note: input.note || null,
+  });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+/** Flags a church as permanently closed / no longer existing, for removal on review. */
+export async function submitClosedReport(input: ClosedReport): Promise<SubmitResult> {
+  if (!supabase) return { ok: false, error: "Not configured." };
+  const { error } = await supabase.from("church_suggestions").insert({
+    suggestion_type: "closed",
+    church_id: input.churchId,
+    church_name: input.churchName,
     note: input.note || null,
   });
   if (error) return { ok: false, error: error.message };

@@ -128,7 +128,10 @@ policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot wri
 setup notice instead of crashing); `lib/churches.ts` has the search function and
 `humanizeCategory()` for turning category slugs like `baptist_church` into display labels.
 `app/church-finder/page.tsx` follows the same searchParams-driven Server Component pattern as
-`/verses`.
+`/verses`. Search performance depends on two trigram/prefix indexes added 2026-08
+(`church_finder_search_indexes` migration: `pg_trgm` extension + `idx_churches_locality_trgm`
+GIN on `locality`, `idx_churches_zip` on `zip`) — without them the anon connection's cold-cache
+`ILIKE 'City%' AND region = ?` query hit the statement timeout for big cities (e.g. Waco TX).
 
 **Caching — two pieces, both required**: `app/church-finder/page.tsx` sets
 `export const dynamic = "force-dynamic"`, *and* `lib/supabase.ts` wraps the client's `fetch` to
@@ -147,9 +150,13 @@ correctly show "Not yet confirmed."
 can't write to it), user submissions go into a separate `church_suggestions` table instead —
 RLS allows anon `insert` only, no `select`/`update`/`delete`, so submitters can't read anyone
 else's suggestions and there's no way to write directly into `churches` from the browser.
-`components/SuggestCorrectionForm.tsx` (inline on each `ChurchResultCard`, for editing an
-existing church's denomination/translation) and `components/AddChurchForm.tsx` (on the page
-itself, for a church not in the directory) both call helpers in `lib/churchSuggestions.ts`.
+`suggestion_type` is `edit | new_church | closed` (the `closed` value was added 2026-08 —
+widening that CHECK constraint is the only migration if you add another type).
+`components/SuggestCorrectionForm.tsx` (inline on each `ChurchResultCard`) lets a visitor
+correct name / address / denomination / translation, **or** tick "permanently closed" to flag
+the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in the middle
+column of `/church-finder`, open by default) is for a church not in the directory. Both call
+helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 33-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
@@ -193,7 +200,10 @@ abuse at low traffic).
 **Denomination/translation breakdown tables**: two `GROUP BY` views —
 `church_denomination_counts` and `church_translation_counts` — sit in front of `churches` and
 are read by `lib/churches.ts`'s `getDenominationCounts()`/`getTranslationCounts()`, rendered by
-`components/CountTable.tsx` side by side at the top of `/church-finder`. Both views are created
+`components/CountTable.tsx`. `/church-finder` is a 3-column layout (`lg:flex-row`):
+Denominations table on the left, Bible Translations table on the right, and the search form +
+results + `AddChurchForm` in the middle. On mobile the columns stack search-first, then the two
+tables (explicit `order-1/2/3` + `lg:order-*` — `order-first` was unreliable). Both views are created
 with `security_invoker = true` — Postgres views default to running with the *creator's*
 privileges unless told otherwise, which would silently bypass `churches`' RLS policy; explicit
 `security_invoker` makes them respect the same public-SELECT policy as the table itself. Get
@@ -312,9 +322,10 @@ Southern/Independent Baptist were never split — rarely spelled out in the name
 matches each against a 55K+ bucket), unlike Missionary Baptist. The historical "clears ~100+
 name matches" bar still applies to any *new* catch-all category.
 
-`AddChurchForm` states "For Christian churches only" as a plain, low-key scope note; deliberately
-avoids "Bible-believing" (evangelical-Protestant terminology that would read as excluding
-Catholic/Orthodox visitors, a large share of classified churches).
+`AddChurchForm` used to carry a "For Christian churches only" scope note; it was removed 2026-08
+(the "What churches are listed here?" `<details>` on the page already covers scope). If you ever
+re-add a scope line, avoid "Bible-believing" — evangelical-Protestant terminology that would read
+as excluding Catholic/Orthodox visitors, a large share of classified churches.
 
 **The editorial line** (spelled out in the "What churches are listed here?" `<details>` on
 `/church-finder`): the directory carries the historic Christian traditions — Catholic, Orthodox,
