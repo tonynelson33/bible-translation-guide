@@ -6,15 +6,21 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (31 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
- * an edit suggestion can be merged without a translation step. Labels the source
- * data can't distinguish from a name (both Non-denominational tiers,
- * church_of_god_holiness, plymouth_brethren_church) carry a descriptive slug
- * that starts with zero rows and gets populated by manual review.
+ * an edit suggestion can be merged without a translation step. `non_denominational`
+ * carries a descriptive slug that starts with zero rows and gets populated by
+ * manual review.
+ *
+ * Merged 2026-08-30 (all were empty or unenforceable-by-name):
+ *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
+ *     Bare "Church of God" names can't be told apart (Anderson/Holiness vs Cleveland/
+ *     Pentecostal), and labelling every one "Pentecostal" mislabels the Anderson churches.
+ *   - "Non-denominational (Contemporary/Charismatic)" + "(Traditional/Mainstream)" → one
+ *     "Non-denominational". A submitter can't reliably pick between the two.
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
@@ -33,8 +39,7 @@ export const denominationOptions: Option[] = [
   { value: "catholic_church", label: "Catholic" },
   { value: "christian_missionary_alliance", label: "Christian & Missionary Alliance (CMA)" },
   { value: "church_of_christ", label: "Church of Christ" },
-  { value: "church_of_god_holiness", label: "Church of God (Holiness / Traditional)" },
-  { value: "church_of_god", label: "Church of God (Pentecostal)" },
+  { value: "church_of_god", label: "Church of God" },
   { value: "church_of_god_in_christ", label: "Church of God in Christ (COGIC)" },
   { value: "church_of_the_brethren", label: "Church of the Brethren" },
   { value: "congregational_church", label: "Congregational (UCC)" },
@@ -45,8 +50,7 @@ export const denominationOptions: Option[] = [
   { value: "methodist_ame", label: "Methodist (Historically Black / AME)" },
   { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
   { value: "nazarene_church", label: "Nazarene" },
-  { value: "non_denominational_charismatic", label: "Non-denominational (Contemporary / Charismatic)" },
-  { value: "non_denominational", label: "Non-denominational (Traditional / Mainstream)" },
+  { value: "non_denominational", label: "Non-denominational" },
   { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },
   { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
   { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },

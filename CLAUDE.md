@@ -121,8 +121,8 @@ deliberately neutral — "present in the Byzantine manuscripts, absent from the 
 
 **Church Finder** (`/church-finder`): search ~352,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~351,900 rows, 30 distinct `category` values — `church_cathedral`
-plus 29 of the 33 dropdown categories that have rows; RLS enabled with a public SELECT-only
+project (`churches` table, ~351,700 rows, 31 distinct `category` values — `church_cathedral`
+plus 30 of the 31 dropdown categories that have rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
 `lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
 setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
@@ -185,7 +185,7 @@ the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in t
 column of `/church-finder`, open by default) is for a church not in the directory. Both call
 helpers in `lib/churchSuggestions.ts`.
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
-fixed 33-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
+fixed 31-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
 since a church may use one this site doesn't. The list is scoped to translations a
 meaningful number of US congregations actually use *from the pulpit / in worship*:
@@ -283,20 +283,24 @@ slugs), `lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropd
 `lib/churches.ts`'s `humanizeCategory` (how `churches.category` slugs render in the
 `/church-finder` breakdown table).
 
-`denominationOptions` is a **fixed 33-entry US master taxonomy**, not a projection of what's in
+`denominationOptions` is a **fixed 31-entry US master taxonomy**, not a projection of what's in
 the data. Several labels split or merge the underlying buckets:
 - Where a label maps 1:1 onto a slug, `value` *is* that slug (so an edit suggestion merges
   without a translation step).
 - Splits the source names *can* distinguish are real categories, populated by the classifier:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
-  `oneness_apostolic_church`, `bible_church` (all added in the 2026-08 overhaul below).
-- Splits the names *can't* distinguish carry a descriptive slug with zero rows until manual
-  review populates it: `church_of_god_holiness`, `non_denominational` /
-  `non_denominational_charismatic`, `plymouth_brethren_church`.
+  `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul), plus
+  `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern).
+- `non_denominational` carries a descriptive slug with zero rows until manual review populates
+  it (the ~45k generic-name churches).
+- **Merged 2026-08-30** (all empty or unenforceable by name): `church_of_god_holiness` +
+  `church_of_god` → one "Church of God" (Anderson/Holiness vs Cleveland/Pentecostal is
+  invisible in a bare "Church of God" name); the two `non_denominational*` tiers → one
+  "Non-denominational".
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (30 distinct values live — `church_cathedral`
-plus 29 of the 33 dropdown categories; the other 4 have zero rows), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (31 distinct values live — `church_cathedral`
+plus 30 of the 31 dropdown categories; only `non_denominational` has zero rows), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
