@@ -18,7 +18,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
         <div className="flex gap-1.5">
           <dt className="font-semibold text-neutral-600">Denomination:</dt>
           <dd className={hasDenomination ? "font-semibold text-neutral-900" : "text-neutral-400"}>
-            {hasDenomination ? humanizeCategory(church.category) : "Not identified"}
+            {humanizeCategory(church.category)}
           </dd>
         </div>
         <div className="flex gap-1.5">
@@ -35,7 +35,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
                 <span className="font-semibold text-brand-800">{church.bibleTranslation}</span>
               )
             ) : (
-              <span className="text-neutral-400">Not identified</span>
+              <span className="text-neutral-400">Translation not identified</span>
             )}
           </dd>
         </div>
