@@ -136,15 +136,15 @@ setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
   can scope a name-only search; a name term is an extra filter on any of those. Zip disables
   the city/state inputs. `validateSearchParams()` is the single source of truth for "is this
   searchable?", shared by the client (inline errors) and the server (shared-link guard).
-- `searchChurches()` returns `{ churches, total }` — capped at `RESULTS_LIMIT` (100) rows plus
-  the true `count`. `ChurchSearch` paginates those 100 **in memory**, `PAGE_SIZE` (25) per page
-  → max 4 pages, ‹ › arrows, zero network per page turn. The query string
+- `searchChurches()` returns `{ churches, total }` — capped at `RESULTS_LIMIT` (300) rows plus
+  the true `count`. `ChurchSearch` paginates those in memory, `PAGE_SIZE` (50) per page → max
+  6 pages, ‹ › arrows, zero network per page turn. The query string
   (`?name=&city=&state=&zip=&page=`) is kept in sync with `history.replaceState` (no Next
   navigation, so no RSC refetch / scroll jump), and `page.tsx` still does the first search
   server-side from `searchParams` so shared links and no-JS render correctly.
-- When `total > 100` the results line says "first 100 shown — add a church name to narrow it
-  down". The densest 5-digit zip (~104 in 90011) and the biggest city (~2,700 in Houston TX)
-  both hit this.
+- When `total > 300` the results line says "first 300 shown — add a church name to narrow it
+  down". 300 covers every 5-digit zip in full (densest is ~256 in 75216, Dallas); only large
+  cities overflow (~2,700 in Houston TX).
 
 Search performance depends on three trigram/prefix indexes:
 `church_finder_search_indexes` (2026-08: `pg_trgm` extension + `idx_churches_locality_trgm` GIN

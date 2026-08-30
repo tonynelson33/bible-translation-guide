@@ -28,13 +28,13 @@ export interface ChurchSearchResult {
   total: number;
 }
 
-// Hard cap on rows returned for any one search. The densest zip has ~71 churches
-// and the biggest city ~2,700 — past 100 the answer is "narrow it down" (add a
-// name), not "page through hundreds". The client paginates these 100 in memory.
-export const RESULTS_LIMIT = 100;
+// Hard cap on rows returned for any one search. The densest zip has ~256 churches,
+// so 300 returns every zip complete; the biggest city (~2,700) still overflows and
+// gets the "narrow it down" nudge. The client paginates these in memory.
+export const RESULTS_LIMIT = 300;
 
-/** Client paginates the fetched results this many per page — 100 / 25 = 4 pages max. */
-export const PAGE_SIZE = 25;
+/** Client paginates the fetched results this many per page — 300 / 50 = 6 pages max. */
+export const PAGE_SIZE = 50;
 
 export const MIN_NAME_CHARS = 3;
 export const MIN_CITY_CHARS = 3;

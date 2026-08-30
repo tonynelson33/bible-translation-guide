@@ -47,7 +47,7 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
         onClick={() => setOpen(true)}
         className="mt-2 text-xs font-medium text-brand-700 hover:underline"
       >
-        Suggest a correction
+        Update information
       </button>
     );
   }
@@ -170,7 +170,7 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
             ? "Submitting…"
             : closed
               ? "Report as closed"
-              : "Submit correction"}
+              : "Submit update"}
         </button>
         <button
           type="button"

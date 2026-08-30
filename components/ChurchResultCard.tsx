@@ -12,13 +12,13 @@ export default function ChurchResultCard({ church }: { church: Church }) {
         {church.zip ? ` ${church.zip}` : ""}
       </p>
 
-      <dl className="mt-1 text-sm">
+      <dl className="mt-1.5 text-sm">
         <div className="flex gap-1.5">
-          <dt className="text-neutral-500">Denomination:</dt>
-          <dd className="text-neutral-800">{humanizeCategory(church.category)}</dd>
+          <dt className="font-medium text-neutral-500">Denomination:</dt>
+          <dd className="font-semibold text-neutral-900">{humanizeCategory(church.category)}</dd>
         </div>
         <div className="flex gap-1.5">
-          <dt className="text-neutral-500">Translation:</dt>
+          <dt className="font-medium text-neutral-500">Translation:</dt>
           <dd>
             {church.bibleTranslation ? (
               church.bibleTranslationNotes ? (
@@ -31,7 +31,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
                 <span className="font-semibold text-brand-800">{church.bibleTranslation}</span>
               )
             ) : (
-              <span className="italic text-neutral-400">Not yet confirmed</span>
+              <span className="text-neutral-500">Not yet confirmed</span>
             )}
           </dd>
         </div>
