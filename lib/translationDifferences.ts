@@ -131,7 +131,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Luke 4:4", show: ["kjv", "esv"], note: "“but by every word of God” — the full quotation of Deuteronomy 8:3, uncontested in the Matthew 4:4 parallel." },
           { reference: "Luke 4:8", show: ["kjv", "esv"], note: "KJV adds “Get thee behind me, Satan”; the rebuke is uncontested in Matthew 4:10 and Matthew 16:23." },
           { reference: "Luke 9:55-56", show: ["kjv", "esv"], note: "“Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them.”" },
-          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” The ESV encloses it in double brackets; the manuscript evidence is genuinely divided here." },
+          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” KJV and NKJV print it plainly; the ESV keeps it but in double brackets — shown here — because the manuscript evidence is genuinely divided." },
           { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts omit it." },
           { reference: "Luke 24:12", show: ["kjv", "esv"], note: "Peter running to the empty tomb; kept in most modern texts, footnoted in a few." },
           { reference: "John 5:3-4", show: ["kjv", "esv"], note: "The detail about an angel going down to stir the pool of Bethesda." },
@@ -263,13 +263,26 @@ export const differenceParts: DiffPart[] = [
             reference: "1 Corinthians 6:9-10",
             show: ["kjv", "esv", "niv", "nkjv"],
             note:
-              "Two Greek words — malakoi and arsenokoitai — rendered very differently: KJV “effeminate … abusers of themselves with mankind,” NKJV “homosexuals, nor sodomites,” ESV “men who practice homosexuality,” NIV “men who have sex with men.” The debate is over how narrowly or broadly each term applies, not over the text. The same word (arsenokoitai) is used again in 1 Timothy 1:10.",
+              "Two Greek words — malakoi and arsenokoitai — rendered very differently: KJV “effeminate … abusers of themselves with mankind,” NKJV “homosexuals, nor sodomites,” ESV “men who practice homosexuality,” NIV “men who have sex with men.” The debate is over how narrowly or broadly each term applies, not over the text.",
           },
-        ],
-        referenced: [
-          { reference: "1 Timothy 1:10", note: "Uses arsenokoitai again, in a list of the “lawless” — the same rendering question as 1 Corinthians 6:9." },
-          { reference: "Leviticus 6:25", note: "A generic-singular question in the sacrificial law — “the priest … he” versus “the one who.” Visible mainly in the surrounding verses." },
-          { reference: "Matthew 4:24", note: "Greek anthrōpous — “all sick people,” “all who were ill,” or “all the sick.” The masculine form is generic." },
+          {
+            reference: "1 Timothy 1:10",
+            show: ["kjv", "esv", "niv"],
+            note:
+              "The same Greek word as in 1 Corinthians 6:9 (arsenokoitai), and the same rendering question: KJV “them that defile themselves with mankind,” ESV “men who practice homosexuality,” NIV “those practicing homosexuality.”",
+          },
+          {
+            reference: "Matthew 4:24",
+            show: ["kjv", "esv", "niv"],
+            note:
+              "Greek anthrōpous, a generic masculine: KJV “all sick people,” ESV “all the sick,” NIV “all who were ill.” The KJV’s “lunatick” for what the ESV calls “those having seizures” is a separate, unrelated matter of aging vocabulary.",
+          },
+          {
+            reference: "Leviticus 6:25",
+            show: ["kjv", "esv"],
+            note:
+              "The KJV and ESV read almost identically here — the generic-masculine question (a “he” that stands for any priest) runs through the sacrificial laws rather than turning on this one verse. Included because the source list flags it.",
+          },
         ],
       },
       {
