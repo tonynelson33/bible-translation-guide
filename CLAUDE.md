@@ -119,8 +119,8 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~352,000 U.S. churches by church name, city+state,
-or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
+**Church Finder** (`/church-finder`): search ~352,000 U.S. churches by church name, denomination,
+city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
 project (`churches` table, ~351,900 rows, 30 distinct `category` values — `church_cathedral`
 plus 29 of the 33 dropdown categories that have rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
@@ -130,27 +130,34 @@ setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
 `baptist_church` into display labels.
 
 **Search model** (`lib/churches.ts` + `components/ChurchSearch.tsx`, a client component):
-- Fields: church name (`ILIKE '%term%'`, min 3 chars), city (starts-with, min 3), state
-  (dropdown, `lib/usStates.ts`, exact, optional), zip (exactly 5 digits, prefix match so
-  ZIP+4 rows are caught). Location comes from zip if given, else city+state, else state alone
-  can scope a name-only search; a name term is an extra filter on any of those. Zip disables
-  the city/state inputs. `validateSearchParams()` is the single source of truth for "is this
-  searchable?", shared by the client (inline errors) and the server (shared-link guard).
+- Fields: church name (`ILIKE '%term%'`, min 3 chars), denomination (dropdown built from the
+  live `getDenominationCounts()` — real `category` buckets only, with counts; `category =` exact
+  filter), city (starts-with, min 3), state (dropdown, `lib/usStates.ts`, exact, optional), zip
+  (exactly 5 digits, prefix match so ZIP+4 rows are caught). Location comes from zip if given,
+  else city+state, else state alone can scope a name/denomination search; name and denomination
+  are extra filters on any of those and a search is valid with just one of name/denomination/
+  city/zip. Zip disables the city/state inputs. `validateSearchParams()` is the single source
+  of truth for "is this searchable?", shared by the client (inline errors) and the server
+  (shared-link guard). `CountRow` carries a `value` (slug / translation code) so the dropdown
+  and the breakdown table share one query.
 - `searchChurches()` returns `{ churches, total }` — capped at `RESULTS_LIMIT` (300) rows plus
   the true `count`. `ChurchSearch` paginates those in memory, `PAGE_SIZE` (50) per page → max
   6 pages, ‹ › arrows, zero network per page turn. The query string
-  (`?name=&city=&state=&zip=&page=`) is kept in sync with `history.replaceState` (no Next
-  navigation, so no RSC refetch / scroll jump), and `page.tsx` still does the first search
-  server-side from `searchParams` so shared links and no-JS render correctly.
-- When `total > 300` the results line says "first 300 shown — add a church name to narrow it
-  down". 300 covers every 5-digit zip in full (densest is ~256 in 75216, Dallas); only large
-  cities overflow (~2,700 in Houston TX).
+  (`?name=&denomination=&city=&state=&zip=&page=`) is kept in sync with `history.replaceState`
+  (no Next navigation, so no RSC refetch / scroll jump), and `page.tsx` still does the first
+  search server-side from `searchParams` so shared links and no-JS render correctly.
+- When `total > 300` the results line says "first 300 shown — {add a church name / narrow it
+  further}". 300 covers every 5-digit zip in full (densest is ~256 in 75216, Dallas); large
+  cities (~2,700 in Houston TX) and broad denomination-only searches (70k Baptist) overflow.
 
-Search performance depends on three trigram/prefix indexes:
-`church_finder_search_indexes` (2026-08: `pg_trgm` extension + `idx_churches_locality_trgm` GIN
-on `locality`, `idx_churches_zip` on `zip`) and `church_finder_name_trgm_index`
-(`idx_churches_name_trgm` GIN on `name`, for the leading-wildcard name search). Without them the
-anon connection's cold-cache queries hit the statement timeout on big cities (e.g. Waco TX).
+Search performance depends on these indexes (all 2026-08):
+`church_finder_search_indexes` (`pg_trgm` extension + `idx_churches_locality_trgm` GIN on
+`locality`, `idx_churches_zip` on `zip`), `church_finder_name_trgm_index`
+(`idx_churches_name_trgm` GIN on `name`, for the leading-wildcard name search), and
+`church_finder_category_region_indexes` (`idx_churches_category`, `idx_churches_region`,
+`idx_churches_region_category` — for the denomination filter and state-only scopes). Without the
+matching index a cold-cache query seq-scans ~352k rows and hits the statement timeout (this bit
+us on Waco TX, then again on "Orthodox churches in CA").
 
 **Caching — two pieces, both required**: `app/church-finder/page.tsx` sets
 `export const dynamic = "force-dynamic"`, *and* `lib/supabase.ts` wraps the client's `fetch` to

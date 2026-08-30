@@ -19,6 +19,8 @@ export interface ChurchSearchParams {
   city?: string;
   state?: string;
   zip?: string;
+  /** A churches.category slug, e.g. "baptist_church". Filter on top of the location. */
+  denomination?: string;
 }
 
 export interface ChurchSearchResult {
@@ -47,8 +49,10 @@ export function validateSearchParams(params: ChurchSearchParams): string | null 
   const name = params.name?.trim() ?? "";
   const city = params.city?.trim() ?? "";
   const zip = params.zip?.trim() ?? "";
+  const denomination = params.denomination?.trim() ?? "";
 
-  if (!name && !city && !zip) return "Enter a church name, city, or zip code.";
+  if (!name && !city && !zip && !denomination)
+    return "Enter a church name, city, zip code, or denomination.";
   if (zip && !/^\d{5}$/.test(zip)) return "Enter a 5-digit zip code.";
   if (name && name.length < MIN_NAME_CHARS)
     return `Church name needs at least ${MIN_NAME_CHARS} letters.`;
@@ -101,6 +105,8 @@ function rowToChurch(row: Record<string, unknown>): Church {
 export interface CountRow {
   label: string;
   count: number;
+  /** Raw value behind the label — a category slug for denominations, the translation code for translations. null for the "not identified" bucket. */
+  value: string | null;
 }
 
 /** Reads the church_denomination_counts view (a GROUP BY over churches.category, security_invoker so it respects the same RLS as churches itself). */
@@ -114,10 +120,14 @@ export async function getDenominationCounts(): Promise<CountRow[]> {
     console.error("getDenominationCounts error:", error.message);
     return [];
   }
-  return (data ?? []).map((row) => ({
-    label: humanizeCategory(row.category as string | null),
-    count: row.count as number,
-  }));
+  return (data ?? []).map((row) => {
+    const category = (row.category as string | null) ?? null;
+    return {
+      label: humanizeCategory(category),
+      count: row.count as number,
+      value: category === "church_cathedral" ? null : category,
+    };
+  });
 }
 
 /** Reads the church_translation_counts view (a GROUP BY over churches.bible_translation). */
@@ -131,10 +141,14 @@ export async function getTranslationCounts(): Promise<CountRow[]> {
     console.error("getTranslationCounts error:", error.message);
     return [];
   }
-  return (data ?? []).map((row) => ({
-    label: (row.bible_translation as string | null) ?? "Not yet confirmed",
-    count: row.count as number,
-  }));
+  return (data ?? []).map((row) => {
+    const translation = (row.bible_translation as string | null) ?? null;
+    return {
+      label: translation ?? "Not yet confirmed",
+      count: row.count as number,
+      value: translation,
+    };
+  });
 }
 
 export interface SimilarChurchMatch {
@@ -188,6 +202,7 @@ export async function searchChurches(params: ChurchSearchParams): Promise<Church
   const zip = params.zip?.trim();
   const city = params.city?.trim();
   const state = params.state?.trim().toUpperCase();
+  const denomination = params.denomination?.trim();
 
   if (!supabase || validateSearchParams(params) !== null) return EMPTY_RESULT;
 
@@ -203,12 +218,15 @@ export async function searchChurches(params: ChurchSearchParams): Promise<Church
     query = query.ilike("locality", `${city}%`);
     if (state) query = query.eq("region", state);
   } else if (state) {
-    // Name-only search can still be scoped to a state.
+    // A name- or denomination-only search can still be scoped to a state.
     query = query.eq("region", state);
   }
   if (name) {
     // Escape PostgREST wildcards so a literal % or _ in the term isn't treated as one.
     query = query.ilike("name", `%${name.replace(/[%_]/g, "\\$&")}%`);
+  }
+  if (denomination) {
+    query = query.eq("category", denomination);
   }
 
   const { data, error, count } = await query;

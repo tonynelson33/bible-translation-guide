@@ -4,6 +4,8 @@ import Tooltip from "./Tooltip";
 import SuggestCorrectionForm from "./SuggestCorrectionForm";
 
 export default function ChurchResultCard({ church }: { church: Church }) {
+  const hasDenomination = Boolean(church.category) && church.category !== "church_cathedral";
+
   return (
     <li className="rounded-lg border border-neutral-200 bg-white px-3.5 py-2.5">
       <p className="font-semibold text-brand-900">{church.name}</p>
@@ -14,11 +16,13 @@ export default function ChurchResultCard({ church }: { church: Church }) {
 
       <dl className="mt-1.5 text-sm">
         <div className="flex gap-1.5">
-          <dt className="font-medium text-neutral-500">Denomination:</dt>
-          <dd className="font-semibold text-neutral-900">{humanizeCategory(church.category)}</dd>
+          <dt className="font-semibold text-neutral-600">Denomination:</dt>
+          <dd className={hasDenomination ? "font-semibold text-neutral-900" : "text-neutral-400"}>
+            {hasDenomination ? humanizeCategory(church.category) : "Not identified"}
+          </dd>
         </div>
         <div className="flex gap-1.5">
-          <dt className="font-medium text-neutral-500">Translation:</dt>
+          <dt className="font-semibold text-neutral-600">Translation:</dt>
           <dd>
             {church.bibleTranslation ? (
               church.bibleTranslationNotes ? (
@@ -31,7 +35,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
                 <span className="font-semibold text-brand-800">{church.bibleTranslation}</span>
               )
             ) : (
-              <span className="text-neutral-500">Not yet confirmed</span>
+              <span className="text-neutral-400">Not identified</span>
             )}
           </dd>
         </div>

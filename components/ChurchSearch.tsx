@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import {
   searchChurches,
   validateSearchParams,
@@ -8,6 +8,7 @@ import {
   RESULTS_LIMIT,
   type ChurchSearchParams,
   type ChurchSearchResult,
+  type CountRow,
 } from "@/lib/churches";
 import { US_STATES } from "@/lib/usStates";
 import ChurchResultCard from "./ChurchResultCard";
@@ -16,26 +17,22 @@ import AddChurchForm from "./AddChurchForm";
 const inputClass =
   "rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600 disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400";
 
-function locationLabel(p: ChurchSearchParams): string | null {
-  if (p.zip) return `zip ${p.zip}`;
-  if (p.city) return p.state ? `${p.city}, ${p.state}` : p.city;
-  if (p.state) return US_STATES.find((s) => s.code === p.state)?.name ?? p.state;
-  return null;
-}
-
 export default function ChurchSearch({
   initialParams,
   initialResult,
   initialPage,
+  denominations,
 }: {
   initialParams: ChurchSearchParams;
   initialResult: ChurchSearchResult;
   initialPage: number;
+  denominations: CountRow[];
 }) {
   const [name, setName] = useState(initialParams.name ?? "");
   const [city, setCity] = useState(initialParams.city ?? "");
   const [state, setState] = useState(initialParams.state ?? "");
   const [zip, setZip] = useState(initialParams.zip ?? "");
+  const [denomination, setDenomination] = useState(initialParams.denomination ?? "");
 
   const hadInitialSearch = validateSearchParams(initialParams) === null;
   const [result, setResult] = useState<ChurchSearchResult>(initialResult);
@@ -47,12 +44,38 @@ export default function ChurchSearch({
 
   const zipActive = zip.trim().length > 0;
 
+  // Real denomination buckets only (drop the "not identified" catch-all), sorted by count.
+  const denomOptions = useMemo(
+    () => denominations.filter((d) => d.value),
+    [denominations],
+  );
+  const denomLabel = (slug?: string) =>
+    denomOptions.find((d) => d.value === slug)?.label ?? null;
+
+  function describe(p: ChurchSearchParams): string {
+    const where = p.zip
+      ? `zip ${p.zip}`
+      : p.city
+        ? p.state
+          ? `${p.city}, ${p.state}`
+          : p.city
+        : p.state
+          ? US_STATES.find((s) => s.code === p.state)?.name ?? p.state
+          : null;
+    const dl = denomLabel(p.denomination);
+    if (dl && where) return ` — ${dl} · ${where}`;
+    if (dl) return ` — ${dl}`;
+    if (where) return ` in ${where}`;
+    return "";
+  }
+
   // Push the current query into the URL bar without a Next navigation, so the
   // page stays put (no RSC refetch, no scroll jump) but the link is shareable
   // and a manual refresh re-runs the same search server-side.
   function syncUrl(params: ChurchSearchParams, pageNum: number) {
     const qs = new URLSearchParams();
     if (params.name) qs.set("name", params.name);
+    if (params.denomination) qs.set("denomination", params.denomination);
     if (params.zip) qs.set("zip", params.zip);
     else {
       if (params.city) qs.set("city", params.city);
@@ -66,8 +89,8 @@ export default function ChurchSearch({
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const params: ChurchSearchParams = zipActive
-      ? { name: name.trim(), zip: zip.trim() }
-      : { name: name.trim(), city: city.trim(), state: state.trim() };
+      ? { name: name.trim(), denomination, zip: zip.trim() }
+      : { name: name.trim(), denomination, city: city.trim(), state: state.trim() };
 
     const validationError = validateSearchParams(params);
     if (validationError) {
@@ -96,8 +119,12 @@ export default function ChurchSearch({
     syncUrl(activeParams, clamped);
   }
 
-  const label = locationLabel(activeParams);
   const capped = result.total > RESULTS_LIMIT;
+  const narrowHint = activeParams.name
+    ? "narrow it down further"
+    : activeParams.denomination
+      ? "add a church name to narrow it down"
+      : "add a church name or denomination to narrow it down";
 
   return (
     <div className="flex flex-col gap-4">
@@ -115,6 +142,21 @@ export default function ChurchSearch({
               placeholder="e.g. Grace Baptist"
               className={`w-56 ${inputClass}`}
             />
+          </label>
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            Denomination
+            <select
+              value={denomination}
+              onChange={(e) => setDenomination(e.target.value)}
+              className={`w-56 ${inputClass}`}
+            >
+              <option value="">Any denomination</option>
+              {denomOptions.map((d) => (
+                <option key={d.value} value={d.value as string}>
+                  {d.label} ({d.count.toLocaleString()})
+                </option>
+              ))}
+            </select>
           </label>
           <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
             City
@@ -175,7 +217,8 @@ export default function ChurchSearch({
         <div>
           {result.total === 0 ? (
             <p className="text-neutral-500">
-              No churches found for that search. Try a different name, city, or zip code.
+              No churches found for that search. Try a different name, denomination, city, or zip
+              code.
             </p>
           ) : (
             <>
@@ -185,7 +228,7 @@ export default function ChurchSearch({
                     {result.total.toLocaleString()}{" "}
                     {result.total === 1 ? "church" : "churches"}
                   </span>
-                  {label ? ` in ${label}` : ""}
+                  {describe(activeParams)}
                   {result.churches.length > PAGE_SIZE && (
                     <>
                       {" "}
@@ -193,10 +236,7 @@ export default function ChurchSearch({
                     </>
                   )}
                   {capped && (
-                    <span className="text-neutral-400">
-                      {" "}
-                      (first {RESULTS_LIMIT} shown — add a church name to narrow it down)
-                    </span>
+                    <span className="text-neutral-400"> (first {RESULTS_LIMIT} shown — {narrowHint})</span>
                   )}
                 </p>
                 {totalPages > 1 && (

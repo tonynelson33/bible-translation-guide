@@ -65,16 +65,6 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
       onSubmit={handleSubmit}
       className="mt-2 space-y-2 rounded-md border border-neutral-200 bg-white p-3"
     >
-      <label className="flex items-center gap-2 text-xs font-medium text-neutral-700">
-        <input
-          type="checkbox"
-          checked={closed}
-          onChange={(e) => setClosed(e.target.checked)}
-          className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
-        />
-        This church has permanently closed / no longer exists
-      </label>
-
       {!closed && (
         <>
           <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
@@ -158,6 +148,16 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
           rows={2}
           className={fieldClass}
         />
+      </label>
+
+      <label className="flex items-center gap-2 border-t border-neutral-100 pt-2 text-xs font-medium text-neutral-700">
+        <input
+          type="checkbox"
+          checked={closed}
+          onChange={(e) => setClosed(e.target.checked)}
+          className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
+        />
+        This church has permanently closed / no longer exists
       </label>
 
       <div className="flex items-center gap-3">
