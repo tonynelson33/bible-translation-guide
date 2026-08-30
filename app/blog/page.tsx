@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Learn",
+  title: "Videos",
   description:
     "A short, curated set of videos on how English Bible translations are made — translation philosophy, the Textus Receptus and Critical Text, gender language, and how to choose a Bible.",
   alternates: { canonical: "/blog" },
@@ -111,10 +111,10 @@ function VideoCard({ video }: { video: Video }) {
   );
 }
 
-export default function LearnPage() {
+export default function VideosPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">Learn</h1>
+      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">Videos</h1>
       <p className="mt-3 max-w-2xl text-neutral-600">
         A short set of videos on how English Bible translations are made and how to choose one.
         Each is hosted on YouTube by its creator &mdash; listing it here isn&rsquo;t an

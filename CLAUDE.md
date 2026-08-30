@@ -91,7 +91,7 @@ deliberately on verse text, not site copy).
 `components/ComingSoon.tsx` — real content/logic is intentionally not built yet.
 `/church-finder` is NOT a placeholder — it's a real, working feature (below).
 
-**`/blog`** (nav + footer label "Learn") is a curated library of ~10 embedded YouTube videos
+**`/blog`** (nav + footer label "Videos") is a curated library of ~10 embedded YouTube videos
 on translation history, philosophy, Textus Receptus vs. Critical Text, gender language, and
 choosing a Bible — two tiers ("Start here" / "Go deeper"). Static server component, video list
 inlined in `app/blog/page.tsx`. Embeds use `youtube-nocookie.com` (no cookies until play) and

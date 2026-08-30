@@ -15,7 +15,7 @@ export default function SiteFooter() {
             <Link href="/" className="hover:text-brand-700">Home</Link>
             <Link href="/verses" className="hover:text-brand-700">Sample Verses</Link>
             <Link href="/rankings" className="hover:text-brand-700">Rankings</Link>
-            <Link href="/blog" className="hover:text-brand-700">Learn</Link>
+            <Link href="/blog" className="hover:text-brand-700">Videos</Link>
             <Link href="/differences" className="hover:text-brand-700">Differences</Link>
             <Link href="/church-finder" className="hover:text-brand-700">Church Finder</Link>
             <Link href="/buy" className="hover:text-brand-700">Buy</Link>
