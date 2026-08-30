@@ -5,7 +5,7 @@ import SuggestCorrectionForm from "./SuggestCorrectionForm";
 
 export default function ChurchResultCard({ church }: { church: Church }) {
   return (
-    <li className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
+    <li className="rounded-lg border border-neutral-200 bg-white px-3.5 py-3">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <p className="font-semibold text-brand-900">{church.name}</p>
@@ -19,7 +19,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
         </span>
       </div>
 
-      <div className="mt-3 border-t border-neutral-100 pt-3 text-sm">
+      <div className="mt-2 border-t border-neutral-100 pt-2 text-sm">
         <span className="font-medium text-neutral-500">Bible translation: </span>
         {church.bibleTranslation ? (
           church.bibleTranslationNotes ? (

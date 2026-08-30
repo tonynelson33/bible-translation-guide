@@ -62,13 +62,6 @@ export default async function ChurchFinderPage({
         </div>
       </details>
 
-      {supabase && (
-        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <CountTable title="Denominations" rows={denominationCounts} />
-          <CountTable title="Bible Translations" rows={translationCounts} />
-        </div>
-      )}
-
       {!supabase ? (
         <p className="mt-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
           Church Finder isn&apos;t configured for this deployment yet — add{" "}
@@ -78,46 +71,56 @@ export default async function ChurchFinderPage({
         </p>
       ) : (
         <>
-          <form className="mt-8 flex flex-wrap items-end gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              City
-              <input
-                type="text"
-                name="city"
-                defaultValue={city}
-                placeholder="e.g. Austin"
-                className="w-40 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              State
-              <input
-                type="text"
-                name="state"
-                defaultValue={state}
-                placeholder="TX"
-                maxLength={2}
-                className="w-20 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm uppercase text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-              />
-            </label>
-            <span className="pb-2 text-sm text-neutral-400">or</span>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              Zip code
-              <input
-                type="text"
-                name="zip"
-                defaultValue={zip}
-                placeholder="78701"
-                className="w-28 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
-              />
-            </label>
-            <button
-              type="submit"
-              className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
-            >
-              Search
-            </button>
-          </form>
+          <div className="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-2">
+            <CountTable title="Denominations" rows={denominationCounts} />
+
+            <div className="flex flex-col gap-4">
+              <CountTable title="Bible Translations" rows={translationCounts} />
+
+              <form className="flex flex-wrap items-end gap-2 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+                  City
+                  <input
+                    type="text"
+                    name="city"
+                    defaultValue={city}
+                    placeholder="e.g. Austin"
+                    className="w-40 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+                  State
+                  <input
+                    type="text"
+                    name="state"
+                    defaultValue={state}
+                    placeholder="TX"
+                    maxLength={2}
+                    className="w-16 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm uppercase text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+                  />
+                </label>
+                <span className="pb-2 text-sm text-neutral-400">or</span>
+                <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+                  Zip code
+                  <input
+                    type="text"
+                    name="zip"
+                    defaultValue={zip}
+                    placeholder="78701"
+                    className="w-24 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
+                >
+                  Search
+                </button>
+              </form>
+
+              <AddChurchForm />
+            </div>
+          </div>
 
           {hasSearched && (
             <div className="mt-8">
@@ -127,11 +130,11 @@ export default async function ChurchFinderPage({
                 </p>
               ) : (
                 <>
-                  <p className="mb-3 text-sm text-neutral-500">
+                  <p className="mb-2 text-sm text-neutral-500">
                     Showing {results.length} result{results.length === 1 ? "" : "s"}
                     {results.length === 30 ? " (first 30 — narrow your search for more precise results)" : ""}
                   </p>
-                  <ul className="flex flex-col gap-3">
+                  <ul className="flex flex-col gap-2">
                     {results.map((church) => (
                       <ChurchResultCard key={church.id} church={church} />
                     ))}
@@ -140,8 +143,6 @@ export default async function ChurchFinderPage({
               )}
             </div>
           )}
-
-          <AddChurchForm />
         </>
       )}
     </div>

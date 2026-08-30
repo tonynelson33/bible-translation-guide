@@ -53,7 +53,7 @@ export default function AddChurchForm() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-6 text-sm font-medium text-brand-700 hover:underline"
+        className="text-left text-sm font-medium text-brand-700 hover:underline"
       >
         Don&apos;t see your church? Add it →
       </button>
@@ -62,7 +62,7 @@ export default function AddChurchForm() {
 
   if (status === "done") {
     return (
-      <p className="mt-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+      <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
         Thanks! We&apos;ll check it&apos;s not already listed under a different name before adding
         it.
       </p>
@@ -72,7 +72,7 @@ export default function AddChurchForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-6 space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
+      className="space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
     >
       <h2 className="text-sm font-semibold text-neutral-800">Add a church</h2>
       <p className="text-xs text-neutral-500">For Christian churches only.</p>
