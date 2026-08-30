@@ -5,7 +5,7 @@ import {
   differenceParts,
   TOTAL_VERSES,
   TRANSLATION_LABEL,
-  type TranslationId,
+  USED_TRANSLATIONS,
 } from "@/lib/translationDifferences";
 
 export const metadata: Metadata = {
@@ -14,8 +14,6 @@ export const metadata: Metadata = {
     "The roughly 85 verses where English Bible translations most visibly disagree — bracketed verses, the Textus Receptus and the critical text, the Johannine Comma, 'virgin' vs 'young woman', and inclusive language — grouped and explained.",
   alternates: { canonical: "/differences" },
 };
-
-const ATTR_ORDER: TranslationId[] = ["kjv", "nkjv", "esv", "niv", "net"];
 
 export default function DifferencesPage() {
   return (
@@ -56,7 +54,11 @@ export default function DifferencesPage() {
           <h2 className="font-serif text-2xl font-semibold text-brand-900">{part.title}</h2>
           <p className="mt-2 text-neutral-600">{part.intro}</p>
 
-          {part.sections.map((section) => (
+          {part.sections.map((section) => {
+            // the Textus Receptus / critical text tag only makes sense for the
+            // New Testament manuscript sections
+            const showTag = part.id === "manuscripts" && section.id !== "old-testament";
+            return (
             <div key={section.id} id={section.id} className="mt-8 scroll-mt-20">
               <h3 className="font-serif text-xl font-semibold text-brand-900">{section.title}</h3>
               <p className="mt-2 text-sm text-neutral-600">{section.intro}</p>
@@ -64,7 +66,7 @@ export default function DifferencesPage() {
               {section.shown && section.shown.length > 0 && (
                 <ul className="mt-4 space-y-4">
                   {section.shown.map((v) => (
-                    <DiffVerseCard key={v.reference} verse={v} />
+                    <DiffVerseCard key={v.reference} verse={v} showTag={showTag} />
                   ))}
                 </ul>
               )}
@@ -85,7 +87,8 @@ export default function DifferencesPage() {
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
         </section>
       ))}
 
@@ -96,7 +99,7 @@ export default function DifferencesPage() {
           Where a verse is only described rather than quoted, no translation&apos;s wording is
           reproduced.
         </p>
-        {ATTR_ORDER.map((id) => (
+        {USED_TRANSLATIONS.map((id) => (
           <p key={id}>
             <span className="font-semibold">{TRANSLATION_LABEL[id]}:</span> {ATTRIBUTIONS[id]}
           </p>

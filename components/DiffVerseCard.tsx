@@ -5,7 +5,14 @@ import {
   verseText,
 } from "@/lib/translationDifferences";
 
-export default function DiffVerseCard({ verse }: { verse: ShownVerse }) {
+export default function DiffVerseCard({
+  verse,
+  showTag,
+}: {
+  verse: ShownVerse;
+  /** show the "Textus Receptus" / "Critical text" tag under each label (NT manuscript sections only) */
+  showTag: boolean;
+}) {
   return (
     <li className="rounded-lg border border-neutral-200 bg-white p-4 sm:p-5">
       <p className="font-serif text-lg font-semibold text-brand-900">{verse.reference}</p>
@@ -14,12 +21,14 @@ export default function DiffVerseCard({ verse }: { verse: ShownVerse }) {
         {verse.show.map((id) => {
           const text = verseText(verse.reference, id);
           return (
-            <div key={id} className="grid grid-cols-[4.5rem_1fr] gap-x-3 py-2 sm:grid-cols-[6rem_1fr]">
+            <div key={id} className="grid grid-cols-[4rem_1fr] gap-x-3 py-2 sm:grid-cols-[6rem_1fr]">
               <div className="text-right">
                 <span className="text-sm font-semibold text-brand-800">{TRANSLATION_LABEL[id]}</span>
-                <span className="block text-[10px] uppercase tracking-wide text-neutral-400">
-                  {TRANSLATION_TAG[id]}
-                </span>
+                {showTag && (
+                  <span className="block text-[10px] uppercase tracking-wide text-neutral-400">
+                    {TRANSLATION_TAG[id]}
+                  </span>
+                )}
               </div>
               {text ? (
                 <p className="font-serif text-neutral-800">{text}</p>

@@ -1,205 +1,162 @@
 {
-  "John 8:7": {
-    "kjv": "So when they continued asking him, he lifted up himself, and said unto them, He that is without sin among you, let him first cast a stone at her.",
-    "esv": "And as they continued to ask him, he stood up and said to them, “Let him who is without sin among you be the first to throw a stone at her.",
-    "niv": "When they kept on questioning him, he straightened up and said to them, “Let any one of you who is without sin be the first to throw a stone at her.",
-    "nkjv": "So when they continued asking Him, He raised Himself up and said to them, “He who is without sin among you, let him throw a stone at her first.",
-    "net": "When they persisted in asking him, he stood up straight and replied, “Whoever among you is guiltless may be the first to throw a stone at her."
+  "Acts 9:5-6": {
+    "kjv": "And he said, Who art thou, Lord? And the Lord said, I am Jesus whom thou persecutest: it is hard for thee to kick against the pricks. And he trembling and astonished said, Lord, what wilt thou have me to do? And the Lord said unto him, Arise, and go into the city, and it shall be told thee what thou must do.",
+    "esv": "And he said, “Who are you, Lord?” And he said, “I am Jesus, whom you are persecuting. But rise and enter the city, and you will be told what you are to do."
   },
-  "Mark 16:16": {
-    "kjv": "He that believeth and is baptized shall be saved; but he that believeth not shall be damned.",
-    "esv": "Whoever believes and is baptized will be saved, but whoever does not believe will be condemned.",
-    "niv": "Whoever believes and is baptized will be saved, but whoever does not believe will be condemned.",
-    "nkjv": "He who believes and is baptized will be saved; but he who does not believe will be condemned.",
-    "net": "The one who believes and is baptized will be saved, but the one who does not believe will be condemned."
+  "John 5:3-4": {
+    "kjv": "In these lay a great multitude of impotent folk, of blind, halt, withered, waiting for the moving of the water. For an angel went down at a certain season into the pool, and troubled the water: whosoever then first after the troubling of the water stepped in was made whole of whatsoever disease he had.",
+    "esv": "In these lay a multitude of invalids—blind, lame, and paralyzed."
   },
-  "Matthew 17:21": {
-    "kjv": "Howbeit this kind goeth not out but by prayer and fasting.",
-    "esv": null,
-    "niv": null,
-    "nkjv": "However, this kind does not go out except by prayer and fasting.",
-    "net": null
+  "Luke 9:55-56": {
+    "kjv": "But he turned, and rebuked them, and said, Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them. And they went to another village.",
+    "esv": "But he turned and rebuked them. And they went on to another village."
   },
-  "Matthew 18:11": {
-    "kjv": "For the Son of man is come to save that which was lost.",
-    "esv": null,
-    "niv": null,
-    "nkjv": "For the Son of Man has come to save that which was lost.",
-    "net": null
-  },
-  "Acts 8:37": {
-    "kjv": "And Philip said, If thou believest with all thine heart, thou mayest. And he answered and said, I believe that Jesus Christ is the Son of God.",
-    "esv": null,
-    "niv": null,
-    "nkjv": "Then Philip said, “If you believe with all your heart, you may.” And he answered and said, “I believe that Jesus Christ is the Son of God.",
-    "net": null
-  },
-  "Matthew 23:14": {
-    "kjv": "Woe unto you, scribes and Pharisees, hypocrites! for ye devour widows’ houses, and for a pretence make long prayer: therefore ye shall receive the greater damnation.",
-    "esv": null,
-    "niv": null,
-    "nkjv": "Woe to you, scribes and Pharisees, hypocrites! For you devour widows’ houses, and for a pretense make long prayers. Therefore you will receive greater condemnation.",
-    "net": null
-  },
-  "Luke 22:43": {
-    "kjv": "And there appeared an angel unto him from heaven, strengthening him.",
-    "esv": "And there appeared to him an angel from heaven, strengthening him.",
-    "niv": "An angel from heaven appeared to him and strengthened him.",
-    "nkjv": "Then an angel appeared to Him from heaven, strengthening Him.",
-    "net": "Then an angel from heaven appeared to him and strengthened him."
-  },
-  "Luke 22:44": {
-    "kjv": "And being in an agony he prayed more earnestly: and his sweat was as it were great drops of blood falling down to the ground.",
-    "esv": "And being in agony he prayed more earnestly; and his sweat became like great drops of blood falling down to the ground.",
-    "niv": "And being in anguish, he prayed more earnestly, and his sweat was like drops of blood falling to the ground.",
-    "nkjv": "And being in agony, He prayed more earnestly. Then His sweat became like great drops of blood falling down to the ground.",
-    "net": "And in his anguish he prayed more earnestly, and his sweat was like drops of blood falling to the ground.]"
-  },
-  "Colossians 1:14": {
-    "kjv": "In whom we have redemption through his blood, even the forgiveness of sins:",
-    "esv": "in whom we have redemption, the forgiveness of sins.",
-    "niv": "in whom we have redemption, the forgiveness of sins.",
-    "nkjv": "in whom we have redemption through His blood, the forgiveness of sins.",
-    "net": "in whom we have redemption, the forgiveness of sins."
-  },
-  "Romans 8:1": {
-    "kjv": "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.",
-    "esv": "There is therefore now no condemnation for those who are in Christ Jesus.",
-    "niv": "Therefore, there is now no condemnation for those who are in Christ Jesus,",
-    "nkjv": "There is therefore now no condemnation to those who are in Christ Jesus, who do not walk according to the flesh, but according to the Spirit.",
-    "net": "There is therefore now no condemnation for those who are in Christ Jesus."
+  "Luke 22:43-44": {
+    "kjv": "And there appeared an angel unto him from heaven, strengthening him. And being in an agony he prayed more earnestly: and his sweat was as it were great drops of blood falling down to the ground.",
+    "esv": "And there appeared to him an angel from heaven, strengthening him. And being in agony he prayed more earnestly; and his sweat became like great drops of blood falling down to the ground."
   },
   "Matthew 6:13": {
     "kjv": "And lead us not into temptation, but deliver us from evil: For thine is the kingdom, and the power, and the glory, for ever. Amen.",
-    "esv": "And lead us not into temptation, but deliver us from evil.",
-    "niv": "And lead us not into temptation, but deliver us from the evil one.’",
-    "nkjv": "And do not lead us into temptation, But deliver us from the evil one. For Yours is the kingdom and the power and the glory forever. Amen.",
-    "net": "And do not lead us into temptation, but deliver us from the evil one."
+    "esv": "And lead us not into temptation, but deliver us from evil."
   },
-  "Mark 9:29": {
-    "kjv": "And he said unto them, This kind can come forth by nothing, but by prayer and fasting.",
-    "esv": "And he said to them, “This kind cannot be driven out by anything but prayer.",
-    "niv": "He replied, “This kind can come out only by prayer.",
-    "nkjv": "So He said to them, “This kind can come out by nothing but prayer and fasting.",
-    "net": "He told them, “This kind can come out only by prayer."
+  "Luke 4:4": {
+    "kjv": "And Jesus answered him, saying, It is written, That man shall not live by bread alone, but by every word of God.",
+    "esv": "And Jesus answered him, “It is written, ‘Man shall not live by bread alone.’"
   },
-  "1 John 5:7": {
-    "kjv": "For there are three that bear record in heaven, the Father, the Word, and the Holy Ghost: and these three are one.",
-    "esv": "For there are three that testify:",
-    "niv": "For there are three that testify:",
-    "nkjv": "For there are three that bear witness in heaven: the Father, the Word, and the Holy Spirit; and these three are one.",
-    "net": "For there are three that testify,"
+  "Luke 23:34": {
+    "kjv": "Then said Jesus, Father, forgive them; for they know not what they do. And they parted his raiment, and cast lots.",
+    "esv": "And Jesus said, “Father, forgive them, for they know not what they do.” And they cast lots to divide his garments."
   },
-  "1 John 5:8": {
-    "kjv": "And there are three that bear witness in earth, the spirit, and the water, and the blood: and these three agree in one.",
-    "esv": "the Spirit and the water and the blood; and these three agree.",
-    "niv": "the Spirit, the water and the blood; and the three are in agreement.",
-    "nkjv": "And there are three that bear witness on earth: the Spirit, the water, and the blood; and these three agree as one.",
-    "net": "the Spirit and the water and the blood, and these three are in agreement."
+  "Luke 24:12": {
+    "kjv": "Then arose Peter, and ran unto the sepulchre; and stooping down, he beheld the linen clothes laid by themselves, and departed, wondering in himself at that which was come to pass.",
+    "esv": "But Peter rose and ran to the tomb; stooping and looking in, he saw the linen cloths by themselves; and he went home marveling at what had happened."
   },
-  "1 Timothy 3:16": {
-    "kjv": "And without controversy great is the mystery of godliness: God was manifest in the flesh, justified in the Spirit, seen of angels, preached unto the Gentiles, believed on in the world, received up into glory.",
-    "esv": "Great indeed, we confess, is the mystery of godliness: He was manifested in the flesh, vindicated by the Spirit, seen by angels, proclaimed among the nations, believed on in the world, taken up in glory.",
-    "niv": "Beyond all question, the mystery from which true godliness springs is great: He appeared in the flesh, was vindicated by the Spirit, was seen by angels, was preached among the nations, was believed on in the world, was taken up in glory.",
-    "nkjv": "And without controversy great is the mystery of godliness: God was manifested in the flesh, Justified in the Spirit, Seen by angels, Preached among the Gentiles, Believed on in the world, Received up in glory.",
-    "net": "And we all agree, our religion contains amazing revelation: He was revealed in the flesh, vindicated by the Spirit, seen by angels, proclaimed among Gentiles, believed on in the world, taken up in glory."
+  "Romans 8:1": {
+    "kjv": "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.",
+    "esv": "There is therefore now no condemnation for those who are in Christ Jesus."
   },
-  "John 1:18": {
-    "kjv": "No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him.",
-    "esv": "No one has ever seen God; God the only Son, who is at the Father’s side, he has made him known.",
-    "niv": "No one has ever seen God, but the one and only Son, who is himself God and is in closest relationship with the Father, has made him known.",
-    "nkjv": "No one has seen God at any time. The only begotten Son, who is in the bosom of the Father, He has declared Him.",
-    "net": "No one has ever seen God. The only one, himself God, who is in closest fellowship with the Father, has made God known."
+  "Luke 4:8": {
+    "kjv": "And Jesus answered and said unto him, Get thee behind me, Satan: for it is written, Thou shalt worship the Lord thy God, and him only shalt thou serve.",
+    "esv": "And Jesus answered him, “It is written, “‘You shall worship the Lord your God, and him only shall you serve.’"
+  },
+  "Colossians 1:14": {
+    "kjv": "In whom we have redemption through his blood, even the forgiveness of sins:",
+    "esv": "in whom we have redemption, the forgiveness of sins."
+  },
+  "Matthew 27:35": {
+    "kjv": "And they crucified him, and parted his garments, casting lots: that it might be fulfilled which was spoken by the prophet, They parted my garments among them, and upon my vesture did they cast lots.",
+    "esv": "And when they had crucified him, they divided his garments among them by casting lots."
   },
   "Mark 1:2": {
     "kjv": "As it is written in the prophets, Behold, I send my messenger before thy face, which shall prepare thy way before thee.",
-    "esv": "As it is written in Isaiah the prophet, “Behold, I send my messenger before your face, who will prepare your way,",
-    "niv": "as it is written in Isaiah the prophet: “I will send my messenger ahead of you, who will prepare your way”—",
-    "nkjv": "As it is written in the Prophets: “Behold, I send My messenger before Your face, Who will prepare Your way before You.",
-    "net": "As it is written in the prophet Isaiah, “ Look, I am sending my messenger ahead of you, who will prepare your way,"
+    "esv": "As it is written in Isaiah the prophet, “Behold, I send my messenger before your face, who will prepare your way,"
   },
-  "Revelation 22:19": {
-    "kjv": "And if any man shall take away from the words of the book of this prophecy, God shall take away his part out of the book of life, and out of the holy city, and from the things which are written in this book.",
-    "esv": "and if anyone takes away from the words of the book of this prophecy, God will take away his share in the tree of life and in the holy city, which are described in this book.",
-    "niv": "And if anyone takes words away from this scroll of prophecy, God will take away from that person any share in the tree of life and in the Holy City, which are described in this scroll.",
-    "nkjv": "and if anyone takes away from the words of the book of this prophecy, God shall take away his part from the Book of Life, from the holy city, and from the things which are written in this book.",
-    "net": "And if anyone takes away from the words of this book of prophecy, God will take away his share in the tree of life and in the holy city that are described in this book."
+  "Mark 9:29": {
+    "kjv": "And he said unto them, This kind can come forth by nothing, but by prayer and fasting.",
+    "esv": "And he said to them, “This kind cannot be driven out by anything but prayer."
+  },
+  "Luke 11:2-4": {
+    "kjv": "And he said unto them, When ye pray, say, Our Father which art in heaven, Hallowed be thy name. Thy kingdom come. Thy will be done, as in heaven, so in earth. Give us day by day our daily bread. And forgive us our sins; for we also forgive every one that is indebted to us. And lead us not into temptation; but deliver us from evil.",
+    "esv": "And he said to them, “When you pray, say: “Father, hallowed be your name. Your kingdom come. Give us each day our daily bread, and forgive us our sins, for we ourselves forgive everyone who is indebted to us. And lead us not into temptation."
   },
   "Romans 14:10": {
     "kjv": "But why dost thou judge thy brother? or why dost thou set at nought thy brother? for we shall all stand before the judgment seat of Christ.",
-    "esv": "Why do you pass judgment on your brother? Or you, why do you despise your brother? For we will all stand before the judgment seat of God;",
-    "niv": "You, then, why do you judge your brother or sister? Or why do you treat them with contempt? For we will all stand before God’s judgment seat.",
-    "nkjv": "But why do you judge your brother? Or why do you show contempt for your brother? For we shall all stand before the judgment seat of Christ.",
-    "net": "But you who eat vegetables only—why do you judge your brother or sister? And you who eat everything—why do you despise your brother or sister? For we will all stand before the judgment seat of God."
+    "esv": "Why do you pass judgment on your brother? Or you, why do you despise your brother? For we will all stand before the judgment seat of God;"
+  },
+  "1 Corinthians 15:47": {
+    "kjv": "The first man is of the earth, earthy: the second man is the Lord from heaven.",
+    "esv": "The first man was from the earth, a man of dust; the second man is from heaven."
+  },
+  "Revelation 22:19": {
+    "kjv": "And if any man shall take away from the words of the book of this prophecy, God shall take away his part out of the book of life, and out of the holy city, and from the things which are written in this book.",
+    "esv": "and if anyone takes away from the words of the book of this prophecy, God will take away his share in the tree of life and in the holy city, which are described in this book."
+  },
+  "Revelation 1:11": {
+    "kjv": "Saying, I am Alpha and Omega, the first and the last: and, What thou seest, write in a book, and send it unto the seven churches which are in Asia; unto Ephesus, and unto Smyrna, and unto Pergamos, and unto Thyatira, and unto Sardis, and unto Philadelphia, and unto Laodicea.",
+    "esv": "saying, “Write what you see in a book and send it to the seven churches, to Ephesus and to Smyrna and to Pergamum and to Thyatira and to Sardis and to Philadelphia and to Laodicea."
+  },
+  "1 John 5:7": {
+    "kjv": "For there are three that bear record in heaven, the Father, the Word, and the Holy Ghost: and these three are one.",
+    "esv": "For there are three that testify:"
+  },
+  "1 John 5:8": {
+    "kjv": "And there are three that bear witness in earth, the spirit, and the water, and the blood: and these three agree in one.",
+    "esv": "the Spirit and the water and the blood; and these three agree."
+  },
+  "1 Timothy 3:16": {
+    "kjv": "And without controversy great is the mystery of godliness: God was manifest in the flesh, justified in the Spirit, seen of angels, preached unto the Gentiles, believed on in the world, received up into glory.",
+    "esv": "Great indeed, we confess, is the mystery of godliness: He was manifested in the flesh, vindicated by the Spirit, seen by angels, proclaimed among the nations, believed on in the world, taken up in glory."
+  },
+  "John 1:18": {
+    "kjv": "No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him.",
+    "esv": "No one has ever seen God; God the only Son, who is at the Father’s side, he has made him known."
+  },
+  "Luke 2:14": {
+    "kjv": "Glory to God in the highest, and on earth peace, good will toward men.",
+    "esv": "Glory to God in the highest, and on earth peace among those with whom he is pleased!"
+  },
+  "Matthew 1:25": {
+    "kjv": "And knew her not till she had brought forth her firstborn son: and he called his name JESUS.",
+    "esv": "but knew her not until she had given birth to a son. And he called his name Jesus."
   },
   "Deuteronomy 32:8": {
     "kjv": "When the most High divided to the nations their inheritance, when he separated the sons of Adam, he set the bounds of the people according to the number of the children of Israel.",
-    "esv": "When the Most High gave to the nations their inheritance, when he divided mankind, he fixed the borders of the peoples according to the number of the sons of God.",
-    "niv": "When the Most High gave the nations their inheritance, when he divided all mankind, he set up boundaries for the peoples according to the number of the sons of Israel.",
-    "nkjv": "When the Most High divided their inheritance to the nations, When He separated the sons of Adam, He set the boundaries of the peoples According to the number of the children of Israel.",
-    "net": "When the Most High gave the nations their inheritance, when he divided up humankind, he set the boundaries of the peoples, according to the number of the heavenly assembly."
+    "esv": "When the Most High gave to the nations their inheritance, when he divided mankind, he fixed the borders of the peoples according to the number of the sons of God."
   },
   "1 Samuel 13:1": {
     "kjv": "Saul reigned one year; and when he had reigned two years over Israel,",
-    "esv": "Saul lived for one year and then became king, and when he had reigned for two years over Israel,",
-    "niv": "Saul was thirty years old when he became king, and he reigned over Israel forty- two years.",
-    "nkjv": "Saul reigned one year; and when he had reigned two years over Israel,",
-    "net": "Saul was [thirty] years old when he began to reign; he ruled over Israel for [forty] years."
+    "esv": "Saul lived for one year and then became king, and when he had reigned for two years over Israel,"
   },
   "Psalm 22:16": {
     "kjv": "For dogs have compassed me: the assembly of the wicked have inclosed me: they pierced my hands and my feet.",
     "esv": "For dogs encompass me; a company of evildoers encircles me; they have pierced my hands and feet—",
-    "niv": "Dogs surround me, a pack of villains encircles me; they pierce my hands and my feet.",
-    "nkjv": "For dogs have surrounded Me; The congregation of the wicked has enclosed Me. They pierced My hands and My feet;",
     "net": "Yes, wild dogs surround me— a gang of evil men crowd around me; like a lion they pin my hands and feet."
   },
   "Psalm 8:5": {
     "kjv": "For thou hast made him a little lower than the angels, and hast crowned him with glory and honour.",
-    "esv": "Yet you have made him a little lower than the heavenly beings and crowned him with glory and honor.",
-    "niv": "You have made them a little lower than the angels and crowned them with glory and honor.",
-    "nkjv": "For You have made him a little lower than the angels, And You have crowned him with glory and honor.",
-    "net": "You made them a little less than the heavenly beings. You crowned mankind with honor and majesty."
+    "esv": "Yet you have made him a little lower than the heavenly beings and crowned him with glory and honor."
   },
   "Zechariah 12:10": {
     "kjv": "And I will pour upon the house of David, and upon the inhabitants of Jerusalem, the spirit of grace and of supplications: and they shall look upon me whom they have pierced, and they shall mourn for him, as one mourneth for his only son, and shall be in bitterness for him, as one that is in bitterness for his firstborn.",
-    "esv": "And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and pleas for mercy, so that, when they look on me, on him whom they have pierced, they shall mourn for him, as one mourns for an only child, and weep bitterly over him, as one weeps over a firstborn.",
-    "niv": "And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. They will look on me, the one they have pierced, and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son.",
-    "nkjv": "And I will pour on the house of David and on the inhabitants of Jerusalem the Spirit of grace and supplication; then they will look on Me whom they pierced. Yes, they will mourn for Him as one mourns for his only son, and grieve for Him as one grieves for a firstborn.",
-    "net": "I will pour out on the kingship of David and the population of Jerusalem a spirit of grace and supplication so that they will look to me, the one they have pierced. They will lament for him as one laments for an only son, and there will be a bitter cry for him like the bitter cry for a firstborn."
+    "esv": "And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and pleas for mercy, so that, when they look on me, on him whom they have pierced, they shall mourn for him, as one mourns for an only child, and weep bitterly over him, as one weeps over a firstborn."
   },
   "Isaiah 7:14": {
     "kjv": "Therefore the Lord himself shall give you a sign; Behold, a virgin shall conceive, and bear a son, and shall call his name Immanuel.",
     "esv": "Therefore the Lord himself will give you a sign. Behold, the virgin shall conceive and bear a son, and shall call his name Immanuel.",
-    "niv": "Therefore the Lord himself will give you a sign: The virgin will conceive and give birth to a son, and will call him Immanuel.",
-    "nkjv": "Therefore the Lord Himself will give you a sign: Behold, the virgin shall conceive and bear a Son, and shall call His name Immanuel.",
     "net": "For this reason the Lord himself will give you a confirming sign. Look, this young woman is about to conceive and will give birth to a son. You, young woman, will name him Immanuel."
   },
   "Isaiah 9:6": {
     "kjv": "For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace.",
-    "esv": "For to us a child is born, to us a son is given; and the government shall be upon his shoulder, and his name shall be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.",
-    "niv": "For to us a child is born, to us a son is given, and the government will be on his shoulders. And he will be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.",
-    "nkjv": "For unto us a Child is born, Unto us a Son is given; And the government will be upon His shoulder. And His name will be called Wonderful, Counselor, Mighty God, Everlasting Father, Prince of Peace.",
-    "net": "For a child has been born to us, a son has been given to us. He shoulders responsibility and is called Wonderful Adviser, Mighty God, Everlasting Father, Prince of Peace."
+    "esv": "For to us a child is born, to us a son is given; and the government shall be upon his shoulder, and his name shall be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace."
   },
   "Micah 5:2": {
     "kjv": "But thou, Bethlehem Ephratah, though thou be little among the thousands of Judah, yet out of thee shall he come forth unto me that is to be ruler in Israel; whose goings forth have been from of old, from everlasting.",
     "esv": "But you, O Bethlehem Ephrathah, who are too little to be among the clans of Judah, from you shall come forth for me one who is to be ruler in Israel, whose coming forth is from of old, from ancient days.",
-    "niv": "But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, whose origins are from of old, from ancient times.",
-    "nkjv": "But you, Bethlehem Ephrathah, Though you are little among the thousands of Judah, Yet out of you shall come forth to Me The One to be Ruler in Israel, Whose goings forth are from of old, From everlasting.",
-    "net": "As for you, Bethlehem Ephrathah, seemingly insignificant among the clans of Judah— from you a king will emerge who will rule over Israel on my behalf, one whose origins are in the distant past."
+    "niv": "But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, whose origins are from of old, from ancient times."
   },
   "1 Corinthians 1:10": {
     "kjv": "Now I beseech you, brethren, by the name of our Lord Jesus Christ, that ye all speak the same thing, and that there be no divisions among you; but that ye be perfectly joined together in the same mind and in the same judgment.",
     "esv": "I appeal to you, brothers, by the name of our Lord Jesus Christ, that all of you agree, and that there be no divisions among you, but that you be united in the same mind and the same judgment.",
-    "niv": "I appeal to you, brothers and sisters, in the name of our Lord Jesus Christ, that all of you agree with one another in what you say and that there be no divisions among you, but that you be perfectly united in mind and thought.",
-    "nkjv": "Now I plead with you, brethren, by the name of our Lord Jesus Christ, that you all speak the same thing, and that there be no divisions among you, but that you be perfectly joined together in the same mind and in the same judgment.",
-    "net": "I urge you, brothers and sisters, by the name of our Lord Jesus Christ, to agree together, to end your divisions, and to be united by the same mind and purpose."
+    "niv": "I appeal to you, brothers and sisters, in the name of our Lord Jesus Christ, that all of you agree with one another in what you say and that there be no divisions among you, but that you be perfectly united in mind and thought."
   },
-  "1 Corinthians 6:9": {
-    "kjv": "Know ye not that the unrighteous shall not inherit the kingdom of God? Be not deceived: neither fornicators, nor idolaters, nor adulterers, nor effeminate, nor abusers of themselves with mankind,",
-    "esv": "Or do you not know that the unrighteous will not inherit the kingdom of God? Do not be deceived: neither the sexually immoral, nor idolaters, nor adulterers, nor men who practice homosexuality,",
-    "niv": "Or do you not know that wrongdoers will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral nor idolaters nor adulterers nor men who have sex with men",
-    "nkjv": "Do you not know that the unrighteous will not inherit the kingdom of God? Do not be deceived. Neither fornicators, nor idolaters, nor adulterers, nor homosexuals, nor sodomites,",
-    "net": "Do you not know that the unrighteous will not inherit the kingdom of God? Do not be deceived! The sexually immoral, idolaters, adulterers, passive homosexual partners, practicing homosexuals,"
+  "1 Corinthians 6:9-10": {
+    "kjv": "Know ye not that the unrighteous shall not inherit the kingdom of God? Be not deceived: neither fornicators, nor idolaters, nor adulterers, nor effeminate, nor abusers of themselves with mankind, Nor thieves, nor covetous, nor drunkards, nor revilers, nor extortioners, shall inherit the kingdom of God.",
+    "esv": "Or do you not know that the unrighteous will not inherit the kingdom of God? Do not be deceived: neither the sexually immoral, nor idolaters, nor adulterers, nor men who practice homosexuality, nor thieves, nor the greedy, nor drunkards, nor revilers, nor swindlers will inherit the kingdom of God.",
+    "niv": "Or do you not know that wrongdoers will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral nor idolaters nor adulterers nor men who have sex with men nor thieves nor the greedy nor drunkards nor slanderers nor swindlers will inherit the kingdom of God.",
+    "nkjv": "Do you not know that the unrighteous will not inherit the kingdom of God? Do not be deceived. Neither fornicators, nor idolaters, nor adulterers, nor homosexuals, nor sodomites, nor thieves, nor covetous, nor drunkards, nor revilers, nor extortioners will inherit the kingdom of God."
+  },
+  "1 Timothy 1:10": {
+    "kjv": "For whoremongers, for them that defile themselves with mankind, for menstealers, for liars, for perjured persons, and if there be any other thing that is contrary to sound doctrine;",
+    "esv": "the sexually immoral, men who practice homosexuality, enslavers, liars, perjurers, and whatever else is contrary to sound doctrine,",
+    "niv": "for the sexually immoral, for those practicing homosexuality, for slave traders and liars and perjurers—and for whatever else is contrary to the sound doctrine"
+  },
+  "Leviticus 6:25": {
+    "kjv": "Speak unto Aaron and to his sons, saying, This is the law of the sin offering: In the place where the burnt offering is killed shall the sin offering be killed before the LORD: it is most holy.",
+    "esv": "Speak to Aaron and his sons, saying, This is the law of the sin offering. In the place where the burnt offering is killed shall the sin offering be killed before the LORD; it is most holy."
+  },
+  "Matthew 4:24": {
+    "kjv": "And his fame went throughout all Syria: and they brought unto him all sick people that were taken with divers diseases and torments, and those which were possessed with devils, and those which were lunatick, and those that had the palsy; and he healed them.",
+    "esv": "So his fame spread throughout all Syria, and they brought him all the sick, those afflicted with various diseases and pains, those oppressed by demons, those having seizures, and paralytics, and he healed them.",
+    "niv": "News about him spread all over Syria, and people brought to him all who were ill with various diseases, those suffering severe pain, the demon-possessed, those having seizures, and the paralyzed; and he healed them."
   }
 }
