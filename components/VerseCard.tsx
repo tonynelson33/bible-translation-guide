@@ -20,7 +20,9 @@ export default function VerseCard({
 
       {result.status === "ok" && result.text ? (
         <>
-          <p className="font-serif text-lg leading-relaxed text-neutral-800">&ldquo;{result.text}&rdquo;</p>
+          {/* text is reproduced exactly as the publisher's source returns it —
+              no quote marks are added here (the source keeps its own) */}
+          <p className="font-serif text-lg leading-relaxed text-neutral-800">{result.text}</p>
           {result.attribution && (
             <p className="mt-3 text-xs leading-snug text-neutral-400">{result.attribution}</p>
           )}

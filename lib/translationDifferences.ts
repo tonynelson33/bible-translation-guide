@@ -131,7 +131,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Luke 4:4", show: ["kjv", "esv"], note: "“but by every word of God” — the full quotation of Deuteronomy 8:3, uncontested in the Matthew 4:4 parallel." },
           { reference: "Luke 4:8", show: ["kjv", "esv"], note: "KJV adds “Get thee behind me, Satan”; the rebuke is uncontested in Matthew 4:10 and Matthew 16:23." },
           { reference: "Luke 9:55-56", show: ["kjv", "esv"], note: "“Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them.”" },
-          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” KJV and NKJV print it plainly; the ESV keeps it but in double brackets — shown here — because the manuscript evidence is genuinely divided." },
+          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” Both keep it, but the ESV footnotes it — “Some manuscripts omit verses 43 and 44” — and its print edition sets the verses in double brackets. The manuscript evidence is genuinely divided." },
           { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts omit it." },
           { reference: "Luke 24:12", show: ["kjv", "esv"], note: "Peter running to the empty tomb; kept in most modern texts, footnoted in a few." },
           { reference: "John 5:3-4", show: ["kjv", "esv"], note: "The detail about an angel going down to stir the pool of Bethesda." },

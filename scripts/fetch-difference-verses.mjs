@@ -8,6 +8,7 @@
 // KJV -> bible-api.com, NET -> labs.bible.org (no keys). NIV/NKJV -> api.bible.
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { cleanPlain, cleanEsv } from "./verse-clean.mjs";
 
 for (const line of readFileSync(new URL("../.env.local", import.meta.url), "utf8").split("\n")) {
   const m = line.match(/^([A-Z_]+)=(.*)$/);
@@ -72,9 +73,6 @@ const REFS = [
   ["Matthew 4:24", ["kjv", "esv", "niv"]],
 ];
 
-const stripOuter = (s) =>
-  s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().replace(/^[\s"“”]+|[\s"“”]+$/g, "");
-
 function apiId(ref) {
   const m = ref.match(/^(.+?) (\d+):(\d+)(?:-(\d+))?$/);
   const code = BOOK[m[1]];
@@ -87,7 +85,7 @@ async function kjv(ref, tries = 4) {
     const r = await fetch(`https://bible-api.com/${encodeURIComponent(ref)}?translation=kjv`);
     if (r.ok) {
       const d = await r.json();
-      return d.text ? stripOuter(d.text) : null;
+      return d.text ? cleanPlain(d.text) : null;
     }
     await new Promise((res) => setTimeout(res, 2000));
   }
@@ -98,7 +96,7 @@ async function net(ref) {
   const r = await fetch(`https://labs.bible.org/api/?passage=${encodeURIComponent(ref)}&type=json`);
   if (!r.ok) return null;
   const d = await r.json();
-  return Array.isArray(d) ? stripOuter(d.map((v) => v.text || "").join(" ")) : null;
+  return Array.isArray(d) ? cleanPlain(d.map((v) => v.text || "").join(" ")) : null;
 }
 
 async function esv(ref) {
@@ -108,7 +106,7 @@ async function esv(ref) {
   const r = await fetch(url, { headers: { Authorization: `Token ${ESV_KEY}` } });
   if (!r.ok) return null;
   const d = await r.json();
-  return d.passages?.[0] ? stripOuter(d.passages[0]) : null;
+  return d.passages?.[0] ? cleanEsv(d.passages[0]) : null;
 }
 
 async function apiBible(ref, id) {
@@ -120,7 +118,7 @@ async function apiBible(ref, id) {
   const r = await fetch(url, { headers: { "api-key": BIBLE_KEY } });
   if (!r.ok) return null;
   const d = await r.json();
-  return d.data?.content ? stripOuter(d.data.content) : null;
+  return d.data?.content ? cleanPlain(d.data.content) : null;
 }
 
 const out = {};

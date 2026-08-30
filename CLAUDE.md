@@ -45,12 +45,19 @@ verses: { [reference]: text } } }` for all 9 translations, and `lib/verseProvide
 network. A translation with no entry for a verse returns `status: "unavailable"` (renders as a
 "Text unavailable" card via `components/VerseCard.tsx`), never throws.
 
+- **Fidelity**: verse **words and punctuation are exact** — every quotation mark and dash as
+  the source publishes it (John 3:16 keeps its opening `"` in ESV/NLT/NASB/LSB, has none in
+  KJV/NIV/NKJV/CSB/NET). Only non-verse furniture is removed: verse/chapter numbers, headings,
+  Psalm superscriptions; the small-caps divine name is written `LORD`; line breaks flattened to
+  one line. **Never hand-edit the text** (an earlier bug hand-added `[[ ]]` to Luke 22:43-44 —
+  removed). `components/VerseCard.tsx` adds no quote glyphs of its own. See
+  `data/cachedVerses.README.md`: KJV→bible-api, ESV→api.esv.org (`scripts/fetch-sample-verses.mjs`),
+  NIV/NLT/CSB/NASB/NKJV/NET/LSB→Bible Gateway by hand (no API keeps their small-caps + quotes).
+  NASB is the 2020 edition (matches `latestRevisionYear`).
 - **Why it's legal**: 5 verses per translation is far inside every publisher's
   quote-without-permission ceiling (~500 for ESV/NIV/NLT/CSB/NASB, ~1,000 for NKJV/LSB, KJV
   public domain, NET generous) on a **non-commercial** site, with the required notice shown
-  under each verse. See `data/cachedVerses.README.md` for the exact sourcing (KJV→bible-api,
-  NET→labs.bible.org, ESV→api.esv.org, LSB→prior hand-sourced set, NIV/NLT/CSB/NASB/NKJV→Bible
-  Gateway; superscriptions/headings stripped, `LORD` where small-capped, NASB is the 2020 ed.).
+  under each verse.
 - **Non-commercial still matters**: several of those permissions (ESV especially) are
   *non-commercial only*. Owner confirmed 2026-08-29 the site stays non-commercial and `/buy`
   stays a placeholder. If that changes — affiliate links, ads, sponsorship, donations anywhere
@@ -98,14 +105,17 @@ translations most visibly disagree (from `data/verseComparisonList.json`, catego
 Difference"), grouped under two parts — **Part 1, manuscript differences** (Textus Receptus /
 Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls) and **Part 2,
 translation choices** (undisputed text, different English). Content structure + every verse's
-one-line note live in `lib/translationDifferences.ts`; ~23 verses are *quoted* (KJV, NKJV, ESV,
-NIV, NET — enough to show TR vs CT), the rest only *described*. Quoted text is cached in
-`data/differenceVerses.json`, fetched once by `scripts/fetch-difference-verses.mjs` (KJV→bible-api,
-NET→labs.bible.org, ESV→api.esv.org, NIV/NKJV→api.bible; a `null` value means that translation
-drops the verse from its running text). Attributions reuse the strings in `cachedVerses.json`.
-Tone is deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest,"
-never "added" / "removed." Same non-commercial-quotation basis as `/verses` (~23 verses is far
-inside every limit).
+one-line note (and which translations each card shows) live in
+`lib/translationDifferences.ts`. Most verses are only *described*; the ~34 comparison cards
+*quote* KJV + ESV (plus NKJV/NIV/NET only where that translation is what creates the
+difference). Quoted text is cached in `data/differenceVerses.json`,
+`scripts/fetch-difference-verses.mjs` (KJV→bible-api, NET→labs.bible.org, ESV→api.esv.org,
+NIV/NKJV→api.bible) — same fidelity rules as `cachedVerses.json` (words + punctuation exact via
+`scripts/verse-clean.mjs`, no hand-editing). `components/DiffVerseCard.tsx` shows the "Textus
+Receptus / critical text" tag only for the NT manuscript sections — not the OT section or
+Part 2, where that framing doesn't apply. Attributions reuse `cachedVerses.json`. Tone is
+deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
+"added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
 **Church Finder** (`/church-finder`): search ~352,000 U.S. churches by city+state or zip,
 showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
