@@ -83,9 +83,9 @@ export const differenceParts: DiffPart[] = [
     sections: [
       {
         id: "long-passages",
-        title: "Two long passages",
+        title: "Two well-known passages",
         intro:
-          "Two well-known passages are missing from the earliest Greek manuscripts but present in the later Byzantine ones. Modern translations keep both — normally in brackets, with a note.",
+          "The woman caught in adultery and the longer ending of Mark. Both are missing from the earliest Greek manuscripts but present in the later Byzantine ones; modern translations keep both, normally in brackets with a note.",
         referenced: [
           {
             reference: "John 7:53 – 8:11",
