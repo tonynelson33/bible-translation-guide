@@ -330,7 +330,10 @@ scope, that's a real change — it means removing Oneness (and auditing Quaker /
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
 text — a **separate** dataset from `/verses`, prepared for a future page, not read by anything
 in the app yet. These scripts are the only remaining code that can use `ESV_API_KEY` /
-`API_BIBLE_KEY`, and only to extend this dataset.
+`API_BIBLE_KEY`, and only to extend this dataset. It was fetched with the *old* normalization
+(quote-stripping etc.), so if a page ever renders it, regenerate it with `scripts/verse-clean.mjs`
+first and re-check counts against the publisher limits (502 verses is at the ESV/NIV/NLT ceiling —
+see [[project_bible_guide_noncommercial]]).
 
 ## Environment variables
 

@@ -27,7 +27,25 @@ const BOOK = {
 };
 
 // [reference, [translations to fetch]]. Default is kjv + esv.
+// NOTE: bible-api.com rate-limits over a run this size. Verses it misses keep
+// whatever's already in data/differenceVerses.json (KJV is public domain, so a
+// prior value is fine). The "whole verses" KJV set and John 8:58 were seeded
+// from Bible Gateway's KJV (public domain) in a browser session.
 const REFS = [
+  // whole verses (KJV only — modern texts drop the verse)
+  ["Matthew 17:21", ["kjv"]],
+  ["Matthew 18:11", ["kjv"]],
+  ["Matthew 23:14", ["kjv"]],
+  ["Mark 7:16", ["kjv"]],
+  ["Mark 11:26", ["kjv"]],
+  ["Mark 15:28", ["kjv"]],
+  ["Luke 17:36", ["kjv"]],
+  ["Luke 23:17", ["kjv"]],
+  ["Acts 8:37", ["kjv"]],
+  ["Acts 15:34", ["kjv"]],
+  ["Acts 24:7", ["kjv"]],
+  ["Acts 28:29", ["kjv"]],
+  ["Romans 16:24", ["kjv"]],
   // missing phrases
   ["Acts 9:5-6", ["kjv", "esv"]],
   ["John 5:3-4", ["kjv", "esv"]],
@@ -53,7 +71,8 @@ const REFS = [
   ["1 John 5:7", ["kjv", "esv"]],
   ["1 John 5:8", ["kjv", "esv"]],
   ["1 Timothy 3:16", ["kjv", "esv"]],
-  ["John 1:18", ["kjv", "esv"]],
+  ["John 1:18", ["kjv", "esv", "niv"]],
+  ["John 8:58", ["kjv", "esv"]],
   ["Luke 2:14", ["kjv", "esv"]],
   ["Matthew 1:25", ["kjv", "esv"]],
   // Old Testament
@@ -121,19 +140,28 @@ async function apiBible(ref, id) {
   return d.data?.content ? cleanPlain(d.data.content) : null;
 }
 
-const out = {};
+// Merge into the existing file — never blow away hand-seeded values (the
+// "Mark 9:44 and 9:46" combined key, or a KJV verse bible-api rate-limited on).
+const file = new URL("../data/differenceVerses.json", import.meta.url);
+const out = JSON.parse(readFileSync(file, "utf8"));
+
 for (const [ref, want] of REFS) {
-  const row = {};
-  if (want.includes("kjv")) row.kjv = await kjv(ref);
-  if (want.includes("esv")) row.esv = await esv(ref);
-  if (want.includes("niv")) row.niv = await apiBible(ref, BIBLE_IDS.niv);
-  if (want.includes("nkjv")) row.nkjv = await apiBible(ref, BIBLE_IDS.nkjv);
-  if (want.includes("net")) row.net = await net(ref);
-  out[ref] = row;
-  const missing = Object.entries(row).filter(([, v]) => !v).map(([k]) => k);
-  console.log(ref.padEnd(22), missing.length ? "MISSING: " + missing.join(",") : "ok");
+  const fetched = {};
+  if (want.includes("kjv")) fetched.kjv = await kjv(ref);
+  if (want.includes("esv")) fetched.esv = await esv(ref);
+  if (want.includes("niv")) fetched.niv = await apiBible(ref, BIBLE_IDS.niv);
+  if (want.includes("nkjv")) fetched.nkjv = await apiBible(ref, BIBLE_IDS.nkjv);
+  if (want.includes("net")) fetched.net = await net(ref);
+
+  out[ref] ??= {};
+  const kept = [];
+  for (const [k, v] of Object.entries(fetched)) {
+    if (v) out[ref][k] = v;
+    else kept.push(k);
+  }
+  console.log(ref.padEnd(22), kept.length ? "kept existing: " + kept.join(",") : "ok");
   await new Promise((res) => setTimeout(res, 400));
 }
 
-writeFileSync(new URL("../data/differenceVerses.json", import.meta.url), JSON.stringify(out, null, 2) + "\n");
+writeFileSync(file, JSON.stringify(out, null, 2) + "\n");
 console.log("\nwrote data/differenceVerses.json —", Object.keys(out).length, "passages");

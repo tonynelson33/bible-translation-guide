@@ -89,7 +89,8 @@
   },
   "John 1:18": {
     "kjv": "No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him.",
-    "esv": "No one has ever seen God; God the only Son, who is at the Father’s side, he has made him known."
+    "esv": "No one has ever seen God; God the only Son, who is at the Father’s side, he has made him known.",
+    "niv": "No one has ever seen God, but the one and only Son, who is himself God and is in closest relationship with the Father, has made him known."
   },
   "Luke 2:14": {
     "kjv": "Glory to God in the highest, and on earth peace, good will toward men.",
@@ -158,5 +159,51 @@
     "kjv": "And his fame went throughout all Syria: and they brought unto him all sick people that were taken with divers diseases and torments, and those which were possessed with devils, and those which were lunatick, and those that had the palsy; and he healed them.",
     "esv": "So his fame spread throughout all Syria, and they brought him all the sick, those afflicted with various diseases and pains, those oppressed by demons, those having seizures, and paralytics, and he healed them.",
     "niv": "News about him spread all over Syria, and people brought to him all who were ill with various diseases, those suffering severe pain, the demon-possessed, those having seizures, and the paralyzed; and he healed them."
+  },
+  "Matthew 17:21": {
+    "kjv": "Howbeit this kind goeth not out but by prayer and fasting."
+  },
+  "Matthew 18:11": {
+    "kjv": "For the Son of man is come to save that which was lost."
+  },
+  "Matthew 23:14": {
+    "kjv": "Woe unto you, scribes and Pharisees, hypocrites! for ye devour widows’ houses, and for a pretence make long prayer: therefore ye shall receive the greater damnation."
+  },
+  "Mark 7:16": {
+    "kjv": "If any man have ears to hear, let him hear."
+  },
+  "Mark 9:44 and 9:46": {
+    "kjv": "Where their worm dieth not, and the fire is not quenched."
+  },
+  "Mark 11:26": {
+    "kjv": "But if ye do not forgive, neither will your Father which is in heaven forgive your trespasses."
+  },
+  "Mark 15:28": {
+    "kjv": "And the scripture was fulfilled, which saith, And he was numbered with the transgressors."
+  },
+  "Luke 17:36": {
+    "kjv": "Two men shall be in the field; the one shall be taken, and the other left."
+  },
+  "Luke 23:17": {
+    "kjv": "(For of necessity he must release one unto them at the feast.)"
+  },
+  "Acts 8:37": {
+    "kjv": "And Philip said, If thou believest with all thine heart, thou mayest. And he answered and said, I believe that Jesus Christ is the Son of God."
+  },
+  "Acts 15:34": {
+    "kjv": "Notwithstanding it pleased Silas to abide there still."
+  },
+  "Acts 24:7": {
+    "kjv": "But the chief captain Lysias came upon us, and with great violence took him away out of our hands,"
+  },
+  "Acts 28:29": {
+    "kjv": "And when he had said these words, the Jews departed, and had great reasoning among themselves."
+  },
+  "Romans 16:24": {
+    "kjv": "The grace of our Lord Jesus Christ be with you all. Amen."
+  },
+  "John 8:58": {
+    "kjv": "Jesus said unto them, Verily, verily, I say unto you, Before Abraham was, I am.",
+    "esv": "Jesus said to them, “Truly, truly, I say to you, before Abraham was, I am.”"
   }
 }
