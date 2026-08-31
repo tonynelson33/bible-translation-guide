@@ -121,7 +121,8 @@ deliberately neutral — "present in the Byzantine manuscripts, absent from the 
 
 **Church Finder** (`/church-finder`): search ~350,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~350,300 rows — US only; non-US rows were removed 2026-08-30 — with
+project (`churches` table, ~349,700 rows — US only, and non-congregations (parsonages,
+rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 33 distinct `category` values: `church_cathedral` plus all 32 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
