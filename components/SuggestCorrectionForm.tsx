@@ -18,6 +18,9 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
   const [zip, setZip] = useState(church.zip ?? "");
   const [denomination, setDenomination] = useState(church.category ?? "");
   const [translation, setTranslation] = useState(church.bibleTranslation ?? "");
+  const [website, setWebsite] = useState(
+    church.website ? church.website.replace(/^https?:\/\//i, "") : "",
+  );
   const [note, setNote] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
 
@@ -35,6 +38,7 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
           zip,
           denomination,
           translation,
+          website,
           note,
         });
     setStatus(result.ok ? "done" : "error");
@@ -137,6 +141,23 @@ export default function SuggestCorrectionForm({ church }: { church: Church }) {
               </select>
             </label>
           </div>
+          <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
+            Website (optional)
+            <span className="flex items-center rounded-md border border-neutral-300 bg-white focus-within:border-brand-600 focus-within:ring-1 focus-within:ring-brand-600">
+              <span className="select-none pl-2 text-sm text-neutral-400">https://</span>
+              <input
+                type="text"
+                inputMode="url"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                placeholder="firstbaptist.org"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                className="w-full rounded-md bg-transparent px-1 py-1.5 text-sm text-neutral-900 focus:outline-none"
+              />
+            </span>
+          </label>
         </>
       )}
 

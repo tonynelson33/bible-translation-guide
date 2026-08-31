@@ -14,6 +14,9 @@ export default function AddChurchForm({ defaultOpen = false }: { defaultOpen?: b
   const [zip, setZip] = useState("");
   const [denomination, setDenomination] = useState("");
   const [translation, setTranslation] = useState("");
+  // The real, visible "church homepage" field. (Deliberately not named "website" —
+  // that name belongs to the honeypot below.)
+  const [homepage, setHomepage] = useState("");
   // Honeypot: real users never see or fill this field. A bot that auto-fills every
   // input on the form will fill it, and we silently drop the submission on the floor.
   const [website, setWebsite] = useState("");
@@ -44,6 +47,7 @@ export default function AddChurchForm({ defaultOpen = false }: { defaultOpen?: b
       zip,
       denomination,
       translation,
+      website: homepage,
     });
     setStatus(result.ok ? "done" : "error");
   }
@@ -192,6 +196,23 @@ export default function AddChurchForm({ defaultOpen = false }: { defaultOpen?: b
           </select>
         </label>
       </div>
+      <label className="flex flex-col gap-1 text-xs font-medium text-neutral-600">
+        Website (optional)
+        <span className="flex items-center rounded-md border border-neutral-300 bg-white focus-within:border-brand-600 focus-within:ring-1 focus-within:ring-brand-600">
+          <span className="select-none pl-2 text-sm text-neutral-400">https://</span>
+          <input
+            type="text"
+            inputMode="url"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
+            placeholder="firstbaptist.org"
+            value={homepage}
+            onChange={(e) => setHomepage(e.target.value)}
+            className="w-full rounded-md bg-transparent px-1 py-1.5 text-sm text-neutral-900 focus:outline-none"
+          />
+        </span>
+      </label>
       <div className="flex items-center gap-3">
         <button
           type="submit"

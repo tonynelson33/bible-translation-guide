@@ -12,6 +12,8 @@ export interface Church {
   category: string | null;
   bibleTranslation: string | null;
   bibleTranslationNotes: string | null;
+  /** Full https:// URL, or null. */
+  website: string | null;
 }
 
 export interface ChurchSearchParams {
@@ -99,6 +101,7 @@ function rowToChurch(row: Record<string, unknown>): Church {
     category: (row.category as string | null) ?? null,
     bibleTranslation: (row.bible_translation as string | null) || null,
     bibleTranslationNotes: (row.bible_translation_notes as string | null) || null,
+    website: (row.website as string | null) || null,
   };
 }
 

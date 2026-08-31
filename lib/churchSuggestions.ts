@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { normalizeWebsite } from "./website";
 
 export interface EditSuggestion {
   churchId: string;
@@ -10,6 +11,8 @@ export interface EditSuggestion {
   zip?: string;
   denomination?: string;
   translation?: string;
+  /** Raw submitter input; normalised to `https://…` (or dropped) on insert. */
+  website?: string;
   note?: string;
 }
 
@@ -27,6 +30,8 @@ export interface NewChurchSuggestion {
   zip: string;
   denomination: string;
   translation: string;
+  /** Raw submitter input; normalised to `https://…` (or dropped) on insert. */
+  website?: string;
 }
 
 export interface SubmitResult {
@@ -47,6 +52,7 @@ export async function submitEditSuggestion(input: EditSuggestion): Promise<Submi
     zip: input.zip || null,
     denomination: input.denomination || null,
     translation: input.translation || null,
+    website: normalizeWebsite(input.website),
     note: input.note || null,
   });
   if (error) return { ok: false, error: error.message };
@@ -77,6 +83,7 @@ export async function submitNewChurchSuggestion(input: NewChurchSuggestion): Pro
     zip: input.zip,
     denomination: input.denomination,
     translation: input.translation,
+    website: normalizeWebsite(input.website),
   });
   if (error) return { ok: false, error: error.message };
   return { ok: true };

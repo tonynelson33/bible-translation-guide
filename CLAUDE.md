@@ -182,10 +182,21 @@ else's suggestions and there's no way to write directly into `churches` from the
 `suggestion_type` is `edit | new_church | closed` (the `closed` value was added 2026-08 —
 widening that CHECK constraint is the only migration if you add another type).
 `components/SuggestCorrectionForm.tsx` (inline on each `ChurchResultCard`) lets a visitor
-correct name / address / denomination / translation, **or** tick "permanently closed" to flag
-the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in the middle
-column of `/church-finder`, open by default) is for a church not in the directory. Both call
-helpers in `lib/churchSuggestions.ts`.
+correct name / address / denomination / translation / **website**, **or** tick "permanently
+closed" to flag the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in
+the middle column of `/church-finder`, open by default) is for a church not in the directory.
+Both call helpers in `lib/churchSuggestions.ts`.
+
+**`website`** (added 2026-08-30, nullable, on both `churches` and `church_suggestions`): an
+optional church homepage. Stored as a full `https://…` URL. `lib/website.ts` `normalizeWebsite()`
+does the "https:// assumed" bit — strips any scheme the submitter typed and prepends `https://`,
+keeping `www.` only if they included it (forcing www breaks apex-only + `.church` domains); drops
+anything with a space or no dot. `prettyWebsite()` is the display form (scheme stripped). Both
+forms show a field with a static grey `https://` prefix. **NB the visible field in
+`AddChurchForm` is the `homepage` state var, not `website`** — `website` is the honeypot input
+name there and must stay a bot trap. The result card renders it as a `rel="nofollow noopener"`
+external link when present. `churches.website` is null for ~all rows until the crowdsourced
+forms populate it (no bulk import).
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 32-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,

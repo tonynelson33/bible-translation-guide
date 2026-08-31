@@ -1,5 +1,6 @@
 import type { Church } from "@/lib/churches";
 import { humanizeCategory } from "@/lib/churches";
+import { prettyWebsite } from "@/lib/website";
 import Tooltip from "./Tooltip";
 import SuggestCorrectionForm from "./SuggestCorrectionForm";
 
@@ -39,6 +40,21 @@ export default function ChurchResultCard({ church }: { church: Church }) {
             )}
           </dd>
         </div>
+        {church.website && (
+          <div className="flex gap-1.5">
+            <dt className="font-semibold text-neutral-600">Website:</dt>
+            <dd className="min-w-0">
+              <a
+                href={church.website}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="break-all font-semibold text-brand-800 hover:underline"
+              >
+                {prettyWebsite(church.website)}
+              </a>
+            </dd>
+          </div>
+        )}
       </dl>
 
       <SuggestCorrectionForm church={church} />
