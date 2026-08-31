@@ -41,3 +41,4 @@ next-env.d.ts
 # scripts/sbc-churches.ndjson, IS committed; these are just run state)
 scripts/.sbc-fetch-checkpoint*.json
 scripts/sbc-churches.test.ndjson
+scripts/sbc-fetch.log
