@@ -84,13 +84,11 @@ export default async function ChurchFinderPage({
         </p>
       ) : (
         <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start">
-          {/* left column — denominations */}
-          <div className="order-2 lg:order-1 lg:w-80 lg:shrink-0">
-            <CountTable title="Denominations" rows={denominationCounts} />
-          </div>
-
-          {/* middle column — search, results, add-a-church */}
-          <div className="order-1 min-w-0 lg:order-2 lg:flex-1">
+          {/* Source order == left-to-right on desktop, and top-to-bottom when the
+              columns stack on mobile: church search first, then the two count
+              tables (denominations, then translations). */}
+          {/* far-left column — search, results, add-a-church */}
+          <div className="min-w-0 lg:flex-1">
             <ChurchSearch
               initialParams={initialParams}
               initialResult={initialResult}
@@ -99,8 +97,13 @@ export default async function ChurchFinderPage({
             />
           </div>
 
-          {/* right column — bible translations */}
-          <div className="order-3 lg:order-3 lg:w-72 lg:shrink-0">
+          {/* denomination counts */}
+          <div className="lg:w-80 lg:shrink-0">
+            <CountTable title="Denominations" rows={denominationCounts} />
+          </div>
+
+          {/* bible translation counts */}
+          <div className="lg:w-72 lg:shrink-0">
             <CountTable title="Bible Translations" rows={translationCounts} />
           </div>
         </div>

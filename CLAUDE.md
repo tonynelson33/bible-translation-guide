@@ -240,10 +240,10 @@ abuse at low traffic).
 **Denomination/translation breakdown tables**: two `GROUP BY` views —
 `church_denomination_counts` and `church_translation_counts` — sit in front of `churches` and
 are read by `lib/churches.ts`'s `getDenominationCounts()`/`getTranslationCounts()`, rendered by
-`components/CountTable.tsx`. `/church-finder` is a 3-column layout (`lg:flex-row`):
-Denominations table on the left, Bible Translations table on the right, and the search form +
-results + `AddChurchForm` in the middle. On mobile the columns stack search-first, then the two
-tables (explicit `order-1/2/3` + `lg:order-*` — `order-first` was unreliable). Both views are created
+`components/CountTable.tsx`. `/church-finder` is a 3-column layout (`lg:flex-row`): search form +
+results + `AddChurchForm` on the **far left** (`lg:flex-1`), then the Denominations count table,
+then the Bible Translations count table. JSX source order == visual order, so no `order-*`
+classes — on mobile the columns just stack in that order (search first). Both views are created
 with `security_invoker = true` — Postgres views default to running with the *creator's*
 privileges unless told otherwise, which would silently bypass `churches`' RLS policy; explicit
 `security_invoker` makes them respect the same public-SELECT policy as the table itself. Get
