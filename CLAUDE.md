@@ -374,8 +374,13 @@ generic `Reformed` pattern (it's Baptist theologically, not Reformed-family). CO
 own category (historically distinct, ~2,000 rows); Church of God of Prophecy stays folded into
 generic `church_of_god` (split from Cleveland TN in 1917, but reads the same on a form).
 Southern/Independent Baptist were never split — rarely spelled out in the name (~400 explicit
-matches each against a 55K+ bucket), unlike Missionary Baptist. The historical "clears ~100+
-name matches" bar still applies to any *new* catch-all category.
+matches each against a 55K+ bucket), unlike Missionary Baptist. The `baptist_church` dropdown
+label was reworded 2026-08-31 (*"Baptist (Mainstream / Southern / American)"* → *"Baptist
+(Southern / Independent / other)"*, dropping the "Mainstream / American" claim — ABCUSA is a
+small slice of the bucket) — wording only, no data carve-out; a real Southern/SBC split needs
+the SBC church-locator sync, not a name pattern. The historical "clears ~100+ name matches" bar
+still applies to any *new* catch-all category. ("Bible Church (Independent / Dispensational)"
+was trimmed to "Bible Church (Independent)" the same day — label only.)
 
 `AddChurchForm` used to carry a "For Christian churches only" scope note; it was removed 2026-08
 (the "What churches are listed here?" `<details>` on the page already covers scope). If you ever

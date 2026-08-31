@@ -26,6 +26,14 @@ export interface Option {
  * many named "X Community Church" / "X Evangelical Free Church" and previously landing in
  * "church_cathedral" or being mislabelled. Its own category slug so suggestions merge cleanly.
  *
+ * Relabelled 2026-08-31 (labels only — slugs unchanged, no data move):
+ *   - "Bible Church (Independent / Dispensational)" → "Bible Church (Independent)".
+ *     Dispensationalism is common in the movement but not universal.
+ *   - "Baptist (Mainstream / Southern / American)" → "Baptist (Southern / Independent / other)".
+ *     Interim wording. The bucket is a name-catch catch-all (~95% of its ~70k rows carry no
+ *     sub-stream signal in the name); "/ other" keeps it from mislabelling the ABCUSA /
+ *     moderate rows in it. A real Southern/SBC carve-out needs the SBC locator sync, not a label.
+ *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
  * mainstream tradition's definition); "church_cathedral" (the "not identified"
@@ -37,8 +45,8 @@ export const denominationOptions: Option[] = [
   { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
   { value: "missionary_baptist_church", label: "Baptist (Historically Black / National)" },
-  { value: "baptist_church", label: "Baptist (Mainstream / Southern / American)" },
-  { value: "bible_church", label: "Bible Church (Independent / Dispensational)" },
+  { value: "baptist_church", label: "Baptist (Southern / Independent / other)" },
+  { value: "bible_church", label: "Bible Church (Independent)" },
   { value: "calvary_chapel_church", label: "Calvary Chapel" },
   { value: "catholic_church", label: "Catholic" },
   { value: "christian_missionary_alliance", label: "Christian & Missionary Alliance (CMA)" },
