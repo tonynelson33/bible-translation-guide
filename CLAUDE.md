@@ -121,7 +121,7 @@ deliberately neutral — "present in the Byzantine manuscripts, absent from the 
 
 **Church Finder** (`/church-finder`): search ~350,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~349,700 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~349,800 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 33 distinct `category` values: `church_cathedral` plus all 32 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -311,9 +311,16 @@ the data. Several labels split or merge the underlying buckets:
   `church_of_god` → one "Church of God" (Anderson/Holiness vs Cleveland/Pentecostal is
   invisible in a bare "Church of God" name); the two `non_denominational*` tiers → one
   "Non-denominational".
-- **Added 2026-08-30**: `evangelical_free_church` ("Evangelical Free Church (EFCA)", ~1,600
-  congregations nationally, 461 rows so far) — populated by an "Evangelical Free" name pattern
-  plus individually-researched "X Community Church" rows.
+- **Added 2026-08-30**: `evangelical_free_church` ("Evangelical Free Church (EFCA)"). **1,330
+  rows** after syncing EFCA's own church locator: `https://data.efca.org/api/v1/churches?bounds[…]`
+  returns all ~1,586 EFCA churches as one JSON blob (name, full address, district, website,
+  coords). Pulled server-side via the `http` extension into an `efca_import` staging table,
+  matched to `churches` on normalised street+zip5 then name+city+state, then **960 relabelled**
+  (551 were `church_cathedral`, ~70 mislabelled `bible_church`, rest already EFCA), **265 new
+  churches inserted**, 361 skipped (ambiguous / shared-building matches). Websites backfilled from
+  the EFCA data where ours were blank. Audit/rollback tables: `efca_sync_relabel_before_2026_08_30`,
+  `efca_sync_inserted_2026_08_30`, `efca_orphans_2026_08_30`. This is the template for other
+  denominations that publish a church locator — see the "denomination directory sync" memory.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
 identified") or a `denominationOptions` value** (33 distinct values live — `church_cathedral`
