@@ -6,14 +6,14 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (34 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (35 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
  * an edit suggestion can be merged without a translation step. `non_denominational`,
- * `sbc_church` and `pca_church` carry descriptive slugs that the name classifier
- * never assigns — they're populated only by directory sync + manual review.
+ * `sbc_church`, `pca_church` and `gmc_church` carry descriptive slugs that the name
+ * classifier never assigns — they're populated only by directory sync + manual review.
  *
  * Merged 2026-08-30 (all were empty or unenforceable-by-name):
  *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
@@ -44,6 +44,14 @@ export interface Option {
  * ~780 inserted. "presbyterian_church" relabelled "Presbyterian" → "Presbyterian (Mainline /
  * other)" (the residual is mostly PC(USA), plus EPC / ECO / OPC / ARP).
  *
+ * Added 2026-08-31: "Methodist (Global Methodist Church)" (gmc_church) — the conservative body
+ * that left the UMC in 2022. From GMC's own directory (globalmethodist.org → Storepoint widget
+ * → api.storepoint.co JSON, 3,936 US churches with address + coords, no websites). ~2,280
+ * relabelled from "methodist_church" (churches that voted to leave — our data still has their
+ * old "United Methodist" names) / "church_cathedral", ~1,280 inserted. "methodist_church"
+ * relabelled "…(Mainline & Global)" → "…(Mainline)" — the "& Global" was pointing at GMC,
+ * now split out; the residual is UMC + Free Methodist + Wesleyan Church + smaller.
+ *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
  * mainstream tradition's definition); "church_cathedral" (the "not identified"
@@ -71,8 +79,9 @@ export const denominationOptions: Option[] = [
   { value: "foursquare_church", label: "Foursquare" },
   { value: "lutheran_church", label: "Lutheran" },
   { value: "mennonite_church", label: "Mennonite / Amish" },
+  { value: "gmc_church", label: "Methodist (Global Methodist Church)" },
   { value: "methodist_ame", label: "Methodist (Historically Black / AME)" },
-  { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
+  { value: "methodist_church", label: "Methodist / Wesleyan (Mainline)" },
   { value: "nazarene_church", label: "Nazarene" },
   { value: "non_denominational", label: "Non-denominational" },
   { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },

@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~360,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~362,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~360,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~362,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -354,18 +354,34 @@ the data. Several labels split or merge the underlying buckets:
   / OPC / ARP). Rollback: `pca_sync_relabel_before_2026_08_31` (restore category), delete
   `pca_sync_inserted_2026_08_31` ids. Staging kept: `pca_import`, `pca_match`, `pca_insert_plan`,
   `pca_sync_holdback_2026_08_31`.
+- **Added 2026-08-31**: `gmc_church` ("Methodist (Global Methodist Church)") — the conservative
+  body that broke from the UMC in 2022. From GMC's directory (`globalmethodist.org/find-a-church`
+  → **Storepoint** widget `1682b4fc2190ec` → `https://api.storepoint.co/v1/1682b4fc2190ec/locations`,
+  one open JSON call, `results.locations[]`: name, `streetaddress` (one formatted string — parse
+  it), `loc_lat`/`loc_long`, `phone`, `description` = GMC conference; **no websites**). 3,936 US
+  rows → `gmc_import` (state backfilled from zip / nearest-church coords for ~47 rows whose
+  address string lacked it) → `gmc_match`. **~2,280 relabelled** — 1,892 from `methodist_church`
+  (churches that left the UMC; our data still shows their old "United Methodist" names —
+  categories fixed, names left as-is), ~390 from `church_cathedral` + a city+name loose-dedup
+  pass. **1,281 inserted** (coords from the feed), 218 held back (dup risk in multi-Methodist
+  towns). `gmc_church` **3,559**; `methodist_church` 22,756 → **20,855**, relabelled
+  **"…(Mainline & Global)" → "…(Mainline)"** (the "& Global" pointed at GMC; residual is UMC +
+  Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
+  delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
+  `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
 
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
 **`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
-BatchGeo, 2026-08-31). Idea for later (not built): mark these with an asterisk in the
+BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31).
+Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (35 distinct values live — `church_cathedral`
-plus all 34 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (36 distinct values live — `church_cathedral`
+plus all 35 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
