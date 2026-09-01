@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~370,800 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~371,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~370,800 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~371,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -429,6 +429,22 @@ the data. Several labels split or merge the underlying buckets:
   `rca_sync_inserted_2026_09_01` ids. Staging: `rca_import`/`rca_ch`/`rca_match`/`rca_plan`/
   `rca_insert_plan`/`rca_sync_holdback_2026_09_01`, fn `rca_norm_name`. (RCA splits between an
   evangelical/NIV Midwest wing and a mainline/NRSV eastern wing — no translation default.)
+- **2026-09-01 — Christian Reformed Church filled from `crcna.org`** (`reformed_church`, existing
+  bucket — no new slug). `crcna.org/churches/feed` is one no-auth **GeoJSON FeatureCollection**
+  (~1,800 features: `geometry.coordinates` [lng,lat] as strings; `properties` = id, name,
+  previousName, koreanName, street, city, state, status, languages[]; **no ZIP**). Keep
+  `status == "Active"` and drop Canadian provinces → **685** US congregations.
+  `scripts/fetch-crc-churches.mjs` → `scripts/crc-churches.ndjson`. `crc_match` = Tier A
+  (region+city+`efca_norm_street2`) / GEO ±0.004° / Tier B (`crc_norm_name` on name **or
+  previousName** + city). **151 relabelled** `church_cathedral` → `reformed_church` (CRC plants
+  named "Hope Church" / "CrossWay Church" / Spanish & Korean congregations). **129 inserted**
+  (`md5('crc:'||id)`, coords, no ZIP). 104 held back. `reformed_church` **1,481 → 1,760**;
+  `church_cathedral` 131,547 → **131,397**; **table ~370,953.** Commits 8b56b0d (fetch+data) /
+  <this>. Rollback: `crc_sync_relabel_before_2026_09_01` (category), delete
+  `crc_sync_inserted_2026_09_01` ids. Staging: `crc_import`/`crc_ch`/`crc_match`/`crc_plan`/
+  `crc_insert_plan`/`crc_sync_holdback_2026_09_01`, fn `crc_norm_name`. (CRC has no mandated
+  translation — historically NIV-heavy but no default applied. Combined with the RCA sync above,
+  `reformed_church` grew 1,188 → 1,760 this day.)
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -483,7 +499,8 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
 2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), the
 **Free Methodist slice of `methodist_church`** (FMC-USA, `fmcusa.org`, 2026-09-01), and the
-**RCA slice of `reformed_church`** (Reformed Church in America, `rca.org`, 2026-09-01).
+**RCA + CRC slices of `reformed_church`** (Reformed Church in America `rca.org` + Christian
+Reformed Church `crcna.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
