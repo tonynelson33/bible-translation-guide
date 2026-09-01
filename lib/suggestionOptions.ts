@@ -6,14 +6,14 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (36 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
- * an edit suggestion can be merged without a translation step. `non_denominational`,
- * `sbc_church`, `pca_church`, `gmc_church` and `acna_church` carry descriptive slugs
- * that the name classifier never assigns — populated only by directory sync + manual review.
+ * an edit suggestion can be merged without a translation step. `non_denominational`
+ * and `sbc_church` carry descriptive slugs that the name classifier never assigns —
+ * populated only by directory sync + manual review.
  *
  * Merged 2026-08-30 (all were empty or unenforceable-by-name):
  *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
@@ -38,28 +38,14 @@ export interface Option {
  * → "Baptist (Southern / Independent / other)" → "Baptist (Independent / other)". The
  * Mainstream/ABCUSA slice is still unlabelled inside it — a later split if a source appears.
  *
- * Added 2026-08-31: "Presbyterian (Presbyterian Church in America)" (pca_church) — same
- * treatment, from PCA's own directory (pcaac.org / BatchGeo map JSON, 1,936 US churches with
- * address + website + coords). ~990 relabelled from "presbyterian_church" / "church_cathedral",
- * ~780 inserted. "presbyterian_church" relabelled "Presbyterian" → "Presbyterian (Mainline /
- * other)" (the residual is mostly PC(USA), plus EPC / ECO / OPC / ARP).
- *
- * Added 2026-08-31: "Methodist (Global Methodist Church)" (gmc_church) — the conservative body
- * that left the UMC in 2022. From GMC's own directory (globalmethodist.org → Storepoint widget
- * → api.storepoint.co JSON, 3,936 US churches with address + coords, no websites). ~2,280
- * relabelled from "methodist_church" (churches that voted to leave — our data still has their
- * old "United Methodist" names) / "church_cathedral", ~1,280 inserted. "methodist_church"
- * relabelled "…(Mainline & Global)" → "…(Mainline)" — the "& Global" was pointing at GMC,
- * now split out; the residual is UMC + Free Methodist + Wesleyan Church + smaller.
- *
- * Added 2026-08-31: "Anglican Church in North America (ACNA)" (acna_church) — the conservative
- * realignment out of The Episcopal Church (2009). From ACNA's own directory (acna.org map,
- * ~935 US congregations with address + coords). ~470 relabelled from "anglican_episcopal_church"
- * (the 2026-08 overhaul had merged Anglican + Episcopal into one bucket to fix an AME
- * mislabelling — this re-splits the ACNA side using an authoritative source), plus a few from
- * "church_cathedral" / "reformed_church" (Reformed Episcopal Church is an ACNA member). ~300
- * inserted. Residual "anglican_episcopal_church" relabelled "Anglican / Episcopal" → "Anglican
- * / Episcopal (TEC & other)" — it's now TEC + continuing-Anglican bodies.
+ * Tried and reverted 2026-08-31 (owner call — too fine-grained for this site's audience):
+ * separate slugs for PCA (Presbyterian Church in America), GMC (Global Methodist Church) and
+ * ACNA (Anglican Church in North America), each carved from its parent bucket via the
+ * denomination's own directory. All three were rolled back into the parent (`presbyterian_church`
+ * / `methodist_church` / `anglican_episcopal_church`); the ~2,300 churches those syncs *added*
+ * to the DB were kept, just filed under the parent bucket. SBC stayed — it's the 2nd-largest
+ * Protestant body and "Baptist" without it is close to useless. If any of PCA/GMC/ACNA is
+ * wanted back, the sync + rollback tables are documented in the "csv vs db drift" memory.
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
@@ -69,8 +55,7 @@ export interface Option {
  * body). Convents & Monasteries was deleted outright — not congregations.
  */
 export const denominationOptions: Option[] = [
-  { value: "acna_church", label: "Anglican Church in North America (ACNA)" },
-  { value: "anglican_episcopal_church", label: "Anglican / Episcopal (TEC & other)" },
+  { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
   { value: "missionary_baptist_church", label: "Baptist (Historically Black / National)" },
   { value: "sbc_church", label: "Baptist (Southern Baptist Convention)" },
@@ -89,17 +74,15 @@ export const denominationOptions: Option[] = [
   { value: "foursquare_church", label: "Foursquare" },
   { value: "lutheran_church", label: "Lutheran" },
   { value: "mennonite_church", label: "Mennonite / Amish" },
-  { value: "gmc_church", label: "Methodist (Global Methodist Church)" },
   { value: "methodist_ame", label: "Methodist (Historically Black / AME)" },
-  { value: "methodist_church", label: "Methodist / Wesleyan (Mainline)" },
+  { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
   { value: "nazarene_church", label: "Nazarene" },
   { value: "non_denominational", label: "Non-denominational" },
   { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },
   { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
   { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },
   { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
-  { value: "pca_church", label: "Presbyterian (Presbyterian Church in America)" },
-  { value: "presbyterian_church", label: "Presbyterian (Mainline / other)" },
+  { value: "presbyterian_church", label: "Presbyterian" },
   { value: "quaker_friends", label: "Quaker (Friends)" },
   { value: "reformed_church", label: "Reformed" },
   { value: "salvation_army", label: "Salvation Army" },

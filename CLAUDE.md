@@ -342,47 +342,20 @@ the data. Several labels split or merge the underlying buckets:
   `sbc_sync_inserted_2026_08_31` ids. Phase 3 (website/phone backfill from `/church/<slug>/`
   detail pages) still pending. Like `non_denominational`, the name classifier never assigns
   `sbc_church` — a `churches-combined.csv` reload would not reproduce it.
-- **Added 2026-08-31**: `pca_church` ("Presbyterian (Presbyterian Church in America)"). Same
-  template, from PCA's directory — `pcaac.org/church-directory/` embeds a **BatchGeo** map
-  whose data is one JSON call (`batchgeo.com/map/json/?i=<id>&t=<ts>&tok=<token>` → `per.mapRS[]`
-  with name, address, website, email, lat/lng; NO phone/presbytery in the export; `tok` is
-  time-limited — grab fresh from the map page). 1,936 US rows → `pca_import` → `pca_match`.
-  **986 relabelled** (933 from `presbyterian_church`, ~50 from `church_cathedral` / `reformed_church`,
-  + 53 loose-dedup), **782 inserted** with website + coords, 40 held back. `pca_church` **1,768**
-  (1,526 with a website, all with coords); `presbyterian_church` 9,376 → **8,665**, relabelled
-  **"Presbyterian" → "Presbyterian (Mainline / other)"** (residual is mostly PC(USA) + EPC / ECO
-  / OPC / ARP). Rollback: `pca_sync_relabel_before_2026_08_31` (restore category), delete
-  `pca_sync_inserted_2026_08_31` ids. Staging kept: `pca_import`, `pca_match`, `pca_insert_plan`,
-  `pca_sync_holdback_2026_08_31`.
-- **Added 2026-08-31**: `gmc_church` ("Methodist (Global Methodist Church)") — the conservative
-  body that broke from the UMC in 2022. From GMC's directory (`globalmethodist.org/find-a-church`
-  → **Storepoint** widget `1682b4fc2190ec` → `https://api.storepoint.co/v1/1682b4fc2190ec/locations`,
-  one open JSON call, `results.locations[]`: name, `streetaddress` (one formatted string — parse
-  it), `loc_lat`/`loc_long`, `phone`, `description` = GMC conference; **no websites**). 3,936 US
-  rows → `gmc_import` (state backfilled from zip / nearest-church coords for ~47 rows whose
-  address string lacked it) → `gmc_match`. **~2,280 relabelled** — 1,892 from `methodist_church`
-  (churches that left the UMC; our data still shows their old "United Methodist" names —
-  categories fixed, names left as-is), ~390 from `church_cathedral` + a city+name loose-dedup
-  pass. **1,281 inserted** (coords from the feed), 218 held back (dup risk in multi-Methodist
-  towns). `gmc_church` **3,559**; `methodist_church` 22,756 → **20,855**, relabelled
-  **"…(Mainline & Global)" → "…(Mainline)"** (the "& Global" pointed at GMC; residual is UMC +
-  Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
-  delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
-  `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
-- **Added 2026-08-31**: `acna_church` ("Anglican Church in North America (ACNA)") — the
-  conservative realignment out of The Episcopal Church (2009). From ACNA's directory
-  (`acna.org/anglican_church/map` — a Rails/gmaps4rails page that embeds every congregation
-  inline as `handler.addMarkers([{lat,lng,infowindow:"<html>"}])`; `scripts/fetch-acna-churches.mjs`
-  carves out the array + parses the infowindow HTML). ~935 US congregations → `acna_import` →
-  `acna_match`. **474 relabelled** — 368 from `anglican_episcopal_church` (the 2026-08 overhaul
-  had merged Anglican + Episcopal to fix an AME-mislabelling mess; this re-splits the ACNA side
-  from an authoritative source), rest from `church_cathedral` + `reformed_church` (Reformed
-  Episcopal Church is an ACNA founding member). **298 inserted** (coords, no website in feed).
-  `acna_church` **772**; `anglican_episcopal_church` 5,916 → **5,548**, relabelled
-  **"Anglican / Episcopal" → "Anglican / Episcopal (TEC & other)"** (residual is The Episcopal
-  Church + continuing-Anglican bodies). Rollback: `acna_sync_relabel_before_2026_08_31`, delete
-  `acna_sync_inserted_2026_08_31` ids. Staging: `acna_import`/`acna_match`/`acna_insert_plan`/
-  `acna_sync_holdback_2026_08_31`.
+- **Tried 2026-08-31, then REVERTED (owner call — too fine-grained for this site):** separate
+  slugs `pca_church` (PCA), `gmc_church` (Global Methodist Church), `acna_church` (ACNA), each
+  carved from its parent bucket via the denomination's own directory. Migration
+  `revert_pca_gmc_acna_slugs_to_parent_buckets` moved every touched row (relabels + the ~2,360
+  inserts) into `presbyterian_church` / `methodist_church` / `anglican_episcopal_church` and the
+  residual labels were restored ("Presbyterian", "Methodist / Wesleyan (Mainline & Global)",
+  "Anglican / Episcopal"). **The added churches were kept** (they carry real addresses / coords /
+  websites) — they just live in the parent bucket now, so `presbyterian_church` (+1,768),
+  `methodist_church` (+3,559), `anglican_episcopal_church` (+772) are each a bit larger and a
+  bit better-identified than before the syncs. If any is wanted back: the feed URLs are
+  `pcaac.org/church-directory/` (BatchGeo JSON, tokenised), `globalmethodist.org` (Storepoint
+  widget `1682b4fc2190ec` → `api.storepoint.co/v1/<id>/locations`), `acna.org/anglican_church/map`
+  (gmaps4rails markers inline; `scripts/fetch-acna-churches.mjs`); rollback tables
+  `{pca,gmc,acna}_sync_relabel_before_2026_08_31` + `_inserted_` still exist.
 - **2026-08-31 — `nazarene_church` filled from the Church of the Nazarene directory** (existing
   bucket, no new slug). `maps.nazarene.org/FindAChurch/` is an **ArcGIS** map; its layer REST
   query endpoint `.../ArcGIS/rest/services/Nazarene/NazareneChurches/MapServer/0/query`
@@ -441,18 +414,18 @@ the data. Several labels split or merge the underlying buckets:
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
-**`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
-BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
+**`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31),
 **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
 **`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
-**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), **`acna_church`** (ACNA, `acna.org` map, 2026-08-31), and **`nazarene_church`** (Church of the Nazarene, ArcGIS layer, 2026-08-31).
+**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), and
+**`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (37 distinct values live — `church_cathedral`
-plus all 36 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
+plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
