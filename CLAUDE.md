@@ -343,6 +343,13 @@ the data. Several labels split or merge the underlying buckets:
   detail pages) still pending. Like `non_denominational`, the name classifier never assigns
   `sbc_church` — a `churches-combined.csv` reload would not reproduce it.
 
+**Buckets sourced from the denomination's own official church directory** (not name-pattern /
+crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
+directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
+**`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31). Idea for later (not built): mark these
+with an asterisk in the `/church-finder` denomination breakdown table. Mechanism when wanted: a
+`Set` of directory-synced slugs that `CountTable` checks — no schema change.
+
 **Every category in the live data is now either `church_cathedral` ("Denomination not
 identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
 plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
