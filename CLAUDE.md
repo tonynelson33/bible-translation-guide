@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~350,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~360,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~349,800 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~360,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -327,17 +327,21 @@ the data. Several labels split or merge the underlying buckets:
   robots.txt crawl-delay (~4.6h) → `scripts/sbc-churches.ndjson` (committed), pulled server-side
   via the `http` extension into `sbc_import`; best match per listing computed once into
   `sbc_match` (Tier A: region+zip5+normalised street; Tier B: name similarity ≥0.75 + sole
-  strong candidate in-city). **Phase 1 (2026-08-31): 20,201 rows relabelled** — 17,666 from
-  `baptist_church`, 2,460 from `church_cathedral` (SBC churches named "X Community/Cowboy
-  Church" that were "not identified"), 75 from `bible_church`. Rows in specific non-Baptist
-  buckets and `missionary_baptist_church` were left alone (address matches there are
-  building-shares / dual-alignment). With SBC carved out, `baptist_church` (70,556 → 52,890)
-  was relabelled **"Baptist (Southern / Independent / other)" → "Baptist (Independent /
-  other)"**. Rollback table: `sbc_sync_relabel_before_2026_08_31` (id, old_category,
-  old_website, old_name). Phase 2 (insert ~8k unmatched SBC listings) and Phase 3
-  (website/phone backfill from detail pages) still pending. Like `non_denominational`, the
-  name classifier never assigns `sbc_church` — a `churches-combined.csv` reload would not
-  reproduce it.
+  strong candidate in-city). **Phase 1: 20,201 rows relabelled** — 17,666 from `baptist_church`,
+  2,460 from `church_cathedral` (SBC churches named "X Community/Cowboy Church" that were "not
+  identified"), 75 from `bible_church`. Rows in specific non-Baptist buckets and
+  `missionary_baptist_church` were left alone (address matches there are building-shares /
+  dual-alignment). **Phase 2: +718 more relabels** (loose address match the strict tier missed)
+  **and 10,271 new rows inserted** (SBC listings with a full address and no match; deterministic
+  id `md5('sbc:'||slug)`; aggressive dedup + junk filter; 696 held back — PO-box-only, likely
+  existing dupes, non-church entities — in `sbc_sync_holdback_2026_08_31`). `sbc_church` now
+  **31,190**, `baptist_church` **52,295**, table **~360,000 rows**. With SBC carved out,
+  `baptist_church` was relabelled **"Baptist (Southern / Independent / other)" → "Baptist
+  (Independent / other)"**. Rollback: `sbc_sync_relabel_before_2026_08_31` +
+  `sbc_sync_phase2_relabel_before_2026_08_31` (restore `category`), delete
+  `sbc_sync_inserted_2026_08_31` ids. Phase 3 (website/phone backfill from `/church/<slug>/`
+  detail pages) still pending. Like `non_denominational`, the name classifier never assigns
+  `sbc_church` — a `churches-combined.csv` reload would not reproduce it.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
 identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
