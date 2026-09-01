@@ -6,14 +6,14 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (35 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (36 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
  * an edit suggestion can be merged without a translation step. `non_denominational`,
- * `sbc_church`, `pca_church` and `gmc_church` carry descriptive slugs that the name
- * classifier never assigns — they're populated only by directory sync + manual review.
+ * `sbc_church`, `pca_church`, `gmc_church` and `acna_church` carry descriptive slugs
+ * that the name classifier never assigns — populated only by directory sync + manual review.
  *
  * Merged 2026-08-30 (all were empty or unenforceable-by-name):
  *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
@@ -52,6 +52,15 @@ export interface Option {
  * relabelled "…(Mainline & Global)" → "…(Mainline)" — the "& Global" was pointing at GMC,
  * now split out; the residual is UMC + Free Methodist + Wesleyan Church + smaller.
  *
+ * Added 2026-08-31: "Anglican Church in North America (ACNA)" (acna_church) — the conservative
+ * realignment out of The Episcopal Church (2009). From ACNA's own directory (acna.org map,
+ * ~935 US congregations with address + coords). ~470 relabelled from "anglican_episcopal_church"
+ * (the 2026-08 overhaul had merged Anglican + Episcopal into one bucket to fix an AME
+ * mislabelling — this re-splits the ACNA side using an authoritative source), plus a few from
+ * "church_cathedral" / "reformed_church" (Reformed Episcopal Church is an ACNA member). ~300
+ * inserted. Residual "anglican_episcopal_church" relabelled "Anglican / Episcopal" → "Anglican
+ * / Episcopal (TEC & other)" — it's now TEC + continuing-Anglican bodies.
+ *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
  * mainstream tradition's definition); "church_cathedral" (the "not identified"
@@ -60,7 +69,8 @@ export interface Option {
  * body). Convents & Monasteries was deleted outright — not congregations.
  */
 export const denominationOptions: Option[] = [
-  { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
+  { value: "acna_church", label: "Anglican Church in North America (ACNA)" },
+  { value: "anglican_episcopal_church", label: "Anglican / Episcopal (TEC & other)" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
   { value: "missionary_baptist_church", label: "Baptist (Historically Black / National)" },
   { value: "sbc_church", label: "Baptist (Southern Baptist Convention)" },

@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~368,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~368,200 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~368,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~368,200 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -369,6 +369,20 @@ the data. Several labels split or merge the underlying buckets:
   Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
   delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
   `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
+- **Added 2026-08-31**: `acna_church` ("Anglican Church in North America (ACNA)") — the
+  conservative realignment out of The Episcopal Church (2009). From ACNA's directory
+  (`acna.org/anglican_church/map` — a Rails/gmaps4rails page that embeds every congregation
+  inline as `handler.addMarkers([{lat,lng,infowindow:"<html>"}])`; `scripts/fetch-acna-churches.mjs`
+  carves out the array + parses the infowindow HTML). ~935 US congregations → `acna_import` →
+  `acna_match`. **474 relabelled** — 368 from `anglican_episcopal_church` (the 2026-08 overhaul
+  had merged Anglican + Episcopal to fix an AME-mislabelling mess; this re-splits the ACNA side
+  from an authoritative source), rest from `church_cathedral` + `reformed_church` (Reformed
+  Episcopal Church is an ACNA founding member). **298 inserted** (coords, no website in feed).
+  `acna_church` **772**; `anglican_episcopal_church` 5,916 → **5,548**, relabelled
+  **"Anglican / Episcopal" → "Anglican / Episcopal (TEC & other)"** (residual is The Episcopal
+  Church + continuing-Anglican bodies). Rollback: `acna_sync_relabel_before_2026_08_31`, delete
+  `acna_sync_inserted_2026_08_31` ids. Staging: `acna_import`/`acna_match`/`acna_insert_plan`/
+  `acna_sync_holdback_2026_08_31`.
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -419,14 +433,14 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
 **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
 **`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
-and **`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31).
+**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), and **`acna_church`** (ACNA, `acna.org` map, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (36 distinct values live — `church_cathedral`
-plus all 35 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (37 distinct values live — `church_cathedral`
+plus all 36 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
