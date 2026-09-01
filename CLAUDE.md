@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~368,200 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~369,300 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~368,200 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~369,300 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -383,6 +383,18 @@ the data. Several labels split or merge the underlying buckets:
   Church + continuing-Anglican bodies). Rollback: `acna_sync_relabel_before_2026_08_31`, delete
   `acna_sync_inserted_2026_08_31` ids. Staging: `acna_import`/`acna_match`/`acna_insert_plan`/
   `acna_sync_holdback_2026_08_31`.
+- **2026-08-31 — `nazarene_church` filled from the Church of the Nazarene directory** (existing
+  bucket, no new slug). `maps.nazarene.org/FindAChurch/` is an **ArcGIS** map; its layer REST
+  query endpoint `.../ArcGIS/rest/services/Nazarene/NazareneChurches/MapServer/0/query`
+  returns every church (`where=…Region='USA/Canada'`, page with `resultOffset`, maxRecordCount
+  2000). 4,510 US churches with address + coords + website; the `name` field has **no "Church
+  of the Nazarene" suffix** (it's implied — `naz_norm_name` strips it from both sides; inserts
+  get it appended back). `naz_import` → `naz_match`. **402 relabelled** (364 from
+  `church_cathedral` — generic-named Nazarene plants like "Sunrise Community Church"),
+  **1,102 inserted** (coords + website). `nazarene_church` **3,123 → 4,602** (~+47%; directory
+  4,510); 2,415 now have a website. `church_cathedral` 133,099 → **132,722**. Rollback:
+  `naz_sync_relabel_before_2026_08_31`, delete `naz_sync_inserted_2026_08_31` ids. Staging:
+  `naz_import`/`naz_match`/`naz_insert_plan`/`naz_sync_holdback_2026_08_31`.
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -433,7 +445,7 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
 **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
 **`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
-**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), and **`acna_church`** (ACNA, `acna.org` map, 2026-08-31).
+**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), **`acna_church`** (ACNA, `acna.org` map, 2026-08-31), and **`nazarene_church`** (Church of the Nazarene, ArcGIS layer, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
