@@ -369,6 +369,20 @@ the data. Several labels split or merge the underlying buckets:
   Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
   delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
   `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
+- **2026-08-31 — `foursquare_church` filled from the Foursquare (ICFG) locator** (existing
+  bucket, no new slug). `foursquare.org/locator/` is WordPress with a clean REST endpoint
+  `GET /wp-json/locator/v1/locations?state=<ST>&type[]=Church` → JSON array per state (name,
+  street, city, state, coords, phone, email, website, district; **`shipping_zip` field is
+  always empty** — no zip). 1,365 churches → `fsq_import` → `fsq_match` (no zip, so Tier A =
+  region + city + normalised street; Tier GEO = coordinate proximity + name; Tier B name+city).
+  **463 relabelled** (mostly from `church_cathedral` — the directory names churches "[City]
+  Foursquare Church" but the congregation brands as "Revolution Church" / "Life Center" / etc.;
+  exact street+city match is strong enough to flip even when names disagree), **393 inserted**
+  (coords + website from the feed), 105 held back (building shares). `foursquare_church`
+  **457 → 1,309** (~2.9×; directory has 1,365); 782 now have a website. `church_cathedral`
+  134,081 → **133,622**. Rollback: `fsq_sync_relabel_before_2026_08_31`, delete
+  `fsq_sync_inserted_2026_08_31` ids. Staging: `fsq_import`/`fsq_match`/`fsq_insert_plan`/
+  `fsq_sync_holdback_2026_08_31`.
 - **2026-08-31 — `assembly_of_god_church` filled from the AG directory** (existing bucket, no
   new slug). `ag.org`'s church directory is server-rendered HTML, searchable by state with
   page pagination, **behind Cloudflare** — the Node fetcher (`scripts/fetch-ag-churches.mjs`)
@@ -390,7 +404,8 @@ crowdsourced — these rows are as authoritative as the denomination's own recor
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
 **`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
 BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
-and **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31).
+**`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31), and
+**`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
