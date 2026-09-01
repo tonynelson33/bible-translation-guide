@@ -42,3 +42,6 @@ next-env.d.ts
 scripts/.sbc-fetch-checkpoint*.json
 scripts/sbc-churches.test.ndjson
 scripts/sbc-fetch.log
+scripts/.ag-fetch-checkpoint*.json
+scripts/ag-churches.test.ndjson
+scripts/ag-fetch.log
