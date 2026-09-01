@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~369,300 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~370,500 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~369,300 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~370,500 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -169,10 +169,10 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~6% of churches have a confirmed `bible_translation` so far (~21,500 rows — ~19,600
-Catholic → NABRE, ~1,800 mainline → NRSV, the rest per-church research) — this is inherently a
-long-tail research problem (see "Church data pipeline" below), not a bug. Most results
-correctly show "Not identified" for the translation (same label the result card and the
+Only ~7% of churches have a confirmed `bible_translation` so far (~27,200 rows — ~19,600
+Catholic → NABRE, ~7,800 Episcopal/mainline → NRSV, the rest per-church research) — this is
+inherently a long-tail research problem (see "Church data pipeline" below), not a bug. Most
+results correctly show "Not identified" for the translation (same label the result card and the
 breakdown tables use for an unknown denomination or translation).
 
 **Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
@@ -265,11 +265,16 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
     applied straight against Supabase (it keys off the name, not `refined_category`) and is
     only documented in that script's header. Bare-"Congregational Church" rows were left alone
     (a real minority are CCCC / NACCC, not UCC).
-  - The old `episcopal_church` → NRSV rule was **removed** — that bucket became
-    `anglican_episcopal_church` (mixed: TEC uses NRSV, ACNA / Continuing Anglican don't). Its
-    leftover values — ~1,822 African Methodist Episcopal rows the classifier had mis-bucketed
-    as `episcopal_church`, plus ~86 real Anglican/Episcopal rows — were **cleared to NULL**
-    against Supabase in 2026-08. LDS / Christian Science (both KJV) went out with their rows.
+  - The old blanket `episcopal_church` → NRSV rule was **removed** in 2026-08 — that bucket
+    became `anglican_episcopal_church` (mixed: TEC uses NRSV, ACNA / Continuing Anglican don't),
+    and ~1,822 of its rows were actually African Methodist Episcopal churches the classifier had
+    mis-bucketed on the word "Episcopal". Those + ~86 real Anglican/Episcopal rows were
+    **cleared to NULL**; LDS / Christian Science (both KJV) went out with their rows.
+  - **2026-09-01 the NRSV default was re-applied, but precisely**: only to the ~5,990
+    `anglican_episcopal_church` rows matched to a parish in The Episcopal Church's *own* parish
+    directory (the TEC directory sync below) — no ACNA, no AME, no Continuing Anglican. NRSV is
+    the version overwhelmingly used in TEC worship / lectionary. Rollback:
+    `tec_sync_nrsv_before_2026_09_01` (restore `bible_translation` + `_notes` by `id`).
   - ~71 `NRSV` rows on `presbyterian_church` / `lutheran_church` are per-church research (PC(USA)
     / ELCA confirmed individually), not a bulk default — left as-is.
 - **Per-church research** (`add-translation-column.js`, `KNOWN_TRANSLATIONS` map): for
@@ -368,6 +373,28 @@ the data. Several labels split or merge the underlying buckets:
   4,510); 2,415 now have a website. `church_cathedral` 133,099 → **132,722**. Rollback:
   `naz_sync_relabel_before_2026_08_31`, delete `naz_sync_inserted_2026_08_31` ids. Staging:
   `naz_import`/`naz_match`/`naz_insert_plan`/`naz_sync_holdback_2026_08_31`.
+- **2026-09-01 — The Episcopal Church filled from the Episcopal Asset Map** (`anglican_episcopal_church`,
+  existing bucket, no new slug). TEC's parish directory is `episcopalassetmap.org` (Drupal +
+  Leaflet Views). Two public no-auth endpoints joined on `nid`:
+  `/search/places/batch?offset=N&limit=500&display=block_4` → `{nid,lat,lon,type}` for ~8,260
+  map places; `/list?type[church]=church&page=N` → name/street/city/state, ~687 pages.
+  **No ZIP in either feed.** `scripts/fetch-tec-churches.mjs` (Node fetch works — no Cloudflare)
+  → `scripts/tec-churches.ndjson` (6,429 US parishes, committed). ~436 non-US diocese rows
+  (Haiti, Latin America, Taiwan, Europe) filtered; PR/VI/GU/MP kept. `tec_import` → `tec_match`
+  (no zip → Tier A region+city+`efca_norm_street2`; Tier GEO coord box ±0.004°; Tier B
+  `tec_norm_name` sim + same city — the fn strips episcopal/anglican/church/parish/chapel/mission
+  + stopwords from both sides). **870 relabelled** `church_cathedral` → `anglican_episcopal_church`
+  (address/geo + name agree; many were Episcopal parishes with a place name or a sub-ministry
+  row like "St Mark's Youth Group"). **1,134 inserted** (parishes absent from our data;
+  deterministic id `md5('tec:'||nid)`; no ZIP). 376 held back — geo-collisions where a
+  different congregation now holds the building, PO-box-only, building-shares (17 with ELCA —
+  full communion). `anglican_episcopal_church` **6,320 → 8,317** (~+32%); `church_cathedral`
+  132,722 → **131,859**; **table ~370,468**. Also set `bible_translation='NRSV'` on the ~5,990
+  of those rows that matched the TEC directory and had no translation (precise re-application of
+  the old blanket rule — see pipeline section). Rollback:
+  `tec_sync_relabel_before_2026_09_01` (category), delete `tec_sync_inserted_2026_09_01` ids,
+  `tec_sync_nrsv_before_2026_09_01` (translation). Staging: `tec_import`/`tec_ch`/`tec_match`/
+  `tec_plan`/`tec_insert_plan`/`tec_sync_holdback_2026_09_01`, fn `tec_norm_name`.
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -417,8 +444,10 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31),
 **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
 **`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
-**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31), and
-**`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31).
+**`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31),
+**`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31), and
+**`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
+2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
