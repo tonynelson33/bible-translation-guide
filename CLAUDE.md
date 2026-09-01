@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~367,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~368,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~367,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~368,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -369,6 +369,19 @@ the data. Several labels split or merge the underlying buckets:
   Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
   delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
   `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
+- **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
+  bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
+  &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
+  all 1,939 (`churches[]`: name, `address` as one string, coords, phone, email, website,
+  `churchcode`). `cma_import` → `cma_match` (Tier A region+zip5+street; GEO coords; B name+city).
+  **466 relabelled** (429 from `church_cathedral` at name_sim ≥ 0.35, 29 from `bible_church`;
+  the 123 name-disagree `church_cathedral` matches → holdback, NOT auto-flipped, because C&MA
+  has heavy ethnic building-sharing — Vietnamese/Cambodian/Hmong/Spanish Alliance congregations
+  in shared halls). **584 inserted** (coords + website), 164 held back. `christian_missionary_alliance`
+  **~700 → 1,753** (~2.5×; directory has 1,939); 1,102 have a website. `church_cathedral`
+  133,622 → **133,187**. Rollback: `cma_sync_relabel_before_2026_08_31`, delete
+  `cma_sync_inserted_2026_08_31` ids. Staging: `cma_import`/`cma_match`/`cma_insert_plan`/
+  `cma_sync_holdback_2026_08_31`.
 - **2026-08-31 — `foursquare_church` filled from the Foursquare (ICFG) locator** (existing
   bucket, no new slug). `foursquare.org/locator/` is WordPress with a clean REST endpoint
   `GET /wp-json/locator/v1/locations?state=<ST>&type[]=Church` → JSON array per state (name,
@@ -404,8 +417,9 @@ crowdsourced — these rows are as authoritative as the denomination's own recor
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
 **`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
 BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
-**`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31), and
-**`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31).
+**`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
+**`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
+and **`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
