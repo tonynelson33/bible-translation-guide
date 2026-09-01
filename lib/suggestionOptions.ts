@@ -6,14 +6,14 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (32 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
  * an edit suggestion can be merged without a translation step. `non_denominational`
- * carries a descriptive slug that starts with zero rows and gets populated by
- * manual review.
+ * and `sbc_church` carry descriptive slugs that the name classifier never
+ * assigns — they're populated only by directory sync + manual review.
  *
  * Merged 2026-08-30 (all were empty or unenforceable-by-name):
  *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
@@ -29,10 +29,14 @@ export interface Option {
  * Relabelled 2026-08-31 (labels only — slugs unchanged, no data move):
  *   - "Bible Church (Independent / Dispensational)" → "Bible Church (Independent)".
  *     Dispensationalism is common in the movement but not universal.
- *   - "Baptist (Mainstream / Southern / American)" → "Baptist (Southern / Independent / other)".
- *     Interim wording. The bucket is a name-catch catch-all (~95% of its ~70k rows carry no
- *     sub-stream signal in the name); "/ other" keeps it from mislabelling the ABCUSA /
- *     moderate rows in it. A real Southern/SBC carve-out needs the SBC locator sync, not a label.
+ *
+ * Added 2026-08-31: "Baptist (Southern Baptist Convention)" (sbc_church) — populated by an
+ * EFCA-style sync from the SBC's own directory (churches.sbc.net, ~39k listings). ~20k rows
+ * moved in from "baptist_church" and "church_cathedral" (many SBC churches are named
+ * "X Community Church" / "X Cowboy Church" and were sitting in "not identified"). With SBC
+ * carved out, "baptist_church" was relabelled "Baptist (Mainstream / Southern / American)"
+ * → "Baptist (Southern / Independent / other)" → "Baptist (Independent / other)". The
+ * Mainstream/ABCUSA slice is still unlabelled inside it — a later split if a source appears.
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
@@ -45,7 +49,8 @@ export const denominationOptions: Option[] = [
   { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
   { value: "assembly_of_god_church", label: "Assembly of God" },
   { value: "missionary_baptist_church", label: "Baptist (Historically Black / National)" },
-  { value: "baptist_church", label: "Baptist (Southern / Independent / other)" },
+  { value: "sbc_church", label: "Baptist (Southern Baptist Convention)" },
+  { value: "baptist_church", label: "Baptist (Independent / other)" },
   { value: "bible_church", label: "Bible Church (Independent)" },
   { value: "calvary_chapel_church", label: "Calvary Chapel" },
   { value: "catholic_church", label: "Catholic" },

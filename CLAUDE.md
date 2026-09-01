@@ -123,7 +123,7 @@ deliberately neutral — "present in the Byzantine manuscripts, absent from the 
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
 project (`churches` table, ~349,800 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
-33 distinct `category` values: `church_cathedral` plus all 32 dropdown categories, every one of
+34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
 `lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
@@ -321,10 +321,27 @@ the data. Several labels split or merge the underlying buckets:
   the EFCA data where ours were blank. Audit/rollback tables: `efca_sync_relabel_before_2026_08_30`,
   `efca_sync_inserted_2026_08_30`, `efca_orphans_2026_08_30`. This is the template for other
   denominations that publish a church locator — see the "denomination directory sync" memory.
+- **Added 2026-08-31**: `sbc_church` ("Baptist (Southern Baptist Convention)"). Populated from
+  the SBC's own directory (`churches.sbc.net`, WordPress + FacetWP, ~39,288 listings with
+  name+street+city+state+zip). `scripts/fetch-sbc-churches.mjs` pages the FacetWP listing at
+  robots.txt crawl-delay (~4.6h) → `scripts/sbc-churches.ndjson` (committed), pulled server-side
+  via the `http` extension into `sbc_import`; best match per listing computed once into
+  `sbc_match` (Tier A: region+zip5+normalised street; Tier B: name similarity ≥0.75 + sole
+  strong candidate in-city). **Phase 1 (2026-08-31): 20,201 rows relabelled** — 17,666 from
+  `baptist_church`, 2,460 from `church_cathedral` (SBC churches named "X Community/Cowboy
+  Church" that were "not identified"), 75 from `bible_church`. Rows in specific non-Baptist
+  buckets and `missionary_baptist_church` were left alone (address matches there are
+  building-shares / dual-alignment). With SBC carved out, `baptist_church` (70,556 → 52,890)
+  was relabelled **"Baptist (Southern / Independent / other)" → "Baptist (Independent /
+  other)"**. Rollback table: `sbc_sync_relabel_before_2026_08_31` (id, old_category,
+  old_website, old_name). Phase 2 (insert ~8k unmatched SBC listings) and Phase 3
+  (website/phone backfill from detail pages) still pending. Like `non_denominational`, the
+  name classifier never assigns `sbc_church` — a `churches-combined.csv` reload would not
+  reproduce it.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (33 distinct values live — `church_cathedral`
-plus all 32 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
+plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
@@ -373,14 +390,16 @@ Still-relevant classifier rules: "Reformed Baptist" routes to `baptist_church` b
 generic `Reformed` pattern (it's Baptist theologically, not Reformed-family). COGIC stays its
 own category (historically distinct, ~2,000 rows); Church of God of Prophecy stays folded into
 generic `church_of_god` (split from Cleveland TN in 1917, but reads the same on a form).
-Southern/Independent Baptist were never split — rarely spelled out in the name (~400 explicit
-matches each against a 55K+ bucket), unlike Missionary Baptist. The `baptist_church` dropdown
-label was reworded 2026-08-31 (*"Baptist (Mainstream / Southern / American)"* → *"Baptist
-(Southern / Independent / other)"*, dropping the "Mainstream / American" claim — ABCUSA is a
-small slice of the bucket) — wording only, no data carve-out; a real Southern/SBC split needs
-the SBC church-locator sync, not a name pattern. The historical "clears ~100+ name matches" bar
-still applies to any *new* catch-all category. ("Bible Church (Independent / Dispensational)"
-was trimmed to "Bible Church (Independent)" the same day — label only.)
+Southern/Independent Baptist can't be split by name (~400 explicit matches each against the
+bucket, unlike Missionary Baptist). **Southern Baptist WAS carved out 2026-08-31 via a
+directory sync** (`sbc_church`, see the taxonomy section above) — 20,201 rows, from the SBC's
+own church locator, not a name pattern. What's left in `baptist_church` — relabelled
+*"Baptist (Mainstream / Southern / American)"* → *"…(Southern / Independent / other)"* →
+*"Baptist (Independent / other)"* over the day — is independent Baptists, unmatched SBC
+churches, ABCUSA/moderate, and unaffiliated; no further name-based split is planned. The
+historical "clears ~100+ name matches" bar still applies to any *new* catch-all category.
+("Bible Church (Independent / Dispensational)" was trimmed to "Bible Church (Independent)" the
+same day — label only.)
 
 `AddChurchForm` used to carry a "For Christian churches only" scope note; it was removed 2026-08
 (the "What churches are listed here?" `<details>` on the page already covers scope). If you ever
