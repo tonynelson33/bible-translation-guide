@@ -395,6 +395,22 @@ the data. Several labels split or merge the underlying buckets:
   `tec_sync_relabel_before_2026_09_01` (category), delete `tec_sync_inserted_2026_09_01` ids,
   `tec_sync_nrsv_before_2026_09_01` (translation). Staging: `tec_import`/`tec_ch`/`tec_match`/
   `tec_plan`/`tec_insert_plan`/`tec_sync_holdback_2026_09_01`, fn `tec_norm_name`.
+- **2026-09-01 — Free Methodist Church USA filled from `fmcusa.org`** (`methodist_church`,
+  existing bucket — no new slug). `fmcusa.org/find-a-church` is WP + "WP Google Map Gold"; the
+  entire marker set is inlined as base64 JSON in `window.wpgmp.mapdata13` (also in the raw HTML,
+  so Node works) — decode → `places[]` with title, address, city/state/postal_code, coords, and
+  `extra_fields` (conference, status, phone, email, website). `scripts/fetch-freemethodist-churches.mjs`
+  → `scripts/freemethodist-churches.ndjson` (815 US congregations, committed; `address` is
+  sometimes "street City ST ZIP" — split at the trailing city/state/zip). Has ZIP + coords, so
+  `fmc_match` is a clean Tier A (region+zip5+`efca_norm_street2`) / GEO / Tier B (`fmc_norm_name`
+  + city). **177 relabelled** `church_cathedral` → `methodist_church` (FM plants named "X
+  Community Church" / "The Table Church" etc.). **200 inserted** (`md5('fmc:'||id)`, ZIP + coords
+  + non-social website). 94 held back (geo-collisions, dup addresses, PO boxes). `methodist_church`
+  **24,414 → 24,789**; `church_cathedral` 131,859 → **131,684**; **table ~370,668.** Commits
+  bffd657 (fetch+data) / <this>. Rollback: `fmc_sync_relabel_before_2026_09_01` (category),
+  delete `fmc_sync_inserted_2026_09_01` ids. Staging: `fmc_import`/`fmc_ch`/`fmc_match`/`fmc_plan`/
+  `fmc_insert_plan`/`fmc_sync_holdback_2026_09_01`, fn `fmc_norm_name`. (FMC-USA has no single
+  official pulpit translation — no bulk `bible_translation` applied.)
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -445,9 +461,10 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31),
 **`foursquare_church`** (bulk of it — Foursquare/ICFG, `foursquare.org/locator/`, 2026-08-31),
 **`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31),
-**`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31), and
+**`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31),
 **`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
-2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced).
+2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), and the
+**Free Methodist slice of `methodist_church`** (FMC-USA, `fmcusa.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
