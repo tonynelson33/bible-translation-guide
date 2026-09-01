@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~362,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~367,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~362,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~367,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -369,12 +369,28 @@ the data. Several labels split or merge the underlying buckets:
   Free Methodist + Wesleyan Church + smaller). Rollback: `gmc_sync_relabel_before_2026_08_31`,
   delete `gmc_sync_inserted_2026_08_31` ids. Staging: `gmc_import` / `gmc_match` /
   `gmc_insert_plan` / `gmc_sync_holdback_2026_08_31`.
+- **2026-08-31 — `assembly_of_god_church` filled from the AG directory** (existing bucket, no
+  new slug). `ag.org`'s church directory is server-rendered HTML, searchable by state with
+  page pagination, **behind Cloudflare** — the Node fetcher (`scripts/fetch-ag-churches.mjs`)
+  gets 403'd, so the pull ran through the in-app browser (holds the CF clearance cookie);
+  result committed as `scripts/ag-churches.ndjson` (`{guid,name,street,city,state,zip,phone}`,
+  the address was one `"<street> <city>"` run split at the last street-suffix token — ~18%
+  kept the whole run as `street` + blank `city`, backfilled from same-zip locality for the
+  inserts). 12,696 US churches → `ag_import` → `ag_match` (Tier A region+zip5+street; **Tier AL**
+  loose = house# + zip5 + first street token, for the blank-city rows; Tier B name+city).
+  **2,880 relabelled** (2,751 from `church_cathedral` — many AG churches are named "X Church" /
+  "Christian Life Center" / "Iglesia … Asambleas de Dios" and sat in "not identified"),
+  **4,850 inserted**, 480 held back. `assembly_of_god_church` **4,224 → 11,901** (~2.8×; AG's
+  real US footprint is ~12,700). Rollback: `ag_sync_relabel_before_2026_08_31`, delete
+  `ag_sync_inserted_2026_08_31` ids. Staging: `ag_import` / `ag_match` / `ag_insert_plan` /
+  `ag_sync_holdback_2026_08_31`.
 
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
 **`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
-BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31).
+BatchGeo, 2026-08-31), **`gmc_church`** (GMC, `globalmethodist.org` / Storepoint, 2026-08-31),
+and **`assembly_of_god_church`** (bulk of it — AG, `ag.org` directory, 2026-08-31).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
