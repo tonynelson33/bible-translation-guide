@@ -6,14 +6,14 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (34 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
  * list, and scripts/add-refined-category-column.js), the `value` is that slug so
- * an edit suggestion can be merged without a translation step. `non_denominational`
- * and `sbc_church` carry descriptive slugs that the name classifier never
- * assigns — they're populated only by directory sync + manual review.
+ * an edit suggestion can be merged without a translation step. `non_denominational`,
+ * `sbc_church` and `pca_church` carry descriptive slugs that the name classifier
+ * never assigns — they're populated only by directory sync + manual review.
  *
  * Merged 2026-08-30 (all were empty or unenforceable-by-name):
  *   - "Church of God (Holiness)" + "Church of God (Pentecostal)" → one "Church of God".
@@ -37,6 +37,12 @@ export interface Option {
  * carved out, "baptist_church" was relabelled "Baptist (Mainstream / Southern / American)"
  * → "Baptist (Southern / Independent / other)" → "Baptist (Independent / other)". The
  * Mainstream/ABCUSA slice is still unlabelled inside it — a later split if a source appears.
+ *
+ * Added 2026-08-31: "Presbyterian (Presbyterian Church in America)" (pca_church) — same
+ * treatment, from PCA's own directory (pcaac.org / BatchGeo map JSON, 1,936 US churches with
+ * address + website + coords). ~990 relabelled from "presbyterian_church" / "church_cathedral",
+ * ~780 inserted. "presbyterian_church" relabelled "Presbyterian" → "Presbyterian (Mainline /
+ * other)" (the residual is mostly PC(USA), plus EPC / ECO / OPC / ARP).
  *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
@@ -73,7 +79,8 @@ export const denominationOptions: Option[] = [
   { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
   { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },
   { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
-  { value: "presbyterian_church", label: "Presbyterian" },
+  { value: "pca_church", label: "Presbyterian (Presbyterian Church in America)" },
+  { value: "presbyterian_church", label: "Presbyterian (Mainline / other)" },
   { value: "quaker_friends", label: "Quaker (Friends)" },
   { value: "reformed_church", label: "Reformed" },
   { value: "salvation_army", label: "Salvation Army" },

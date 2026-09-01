@@ -342,17 +342,30 @@ the data. Several labels split or merge the underlying buckets:
   `sbc_sync_inserted_2026_08_31` ids. Phase 3 (website/phone backfill from `/church/<slug>/`
   detail pages) still pending. Like `non_denominational`, the name classifier never assigns
   `sbc_church` — a `churches-combined.csv` reload would not reproduce it.
+- **Added 2026-08-31**: `pca_church` ("Presbyterian (Presbyterian Church in America)"). Same
+  template, from PCA's directory — `pcaac.org/church-directory/` embeds a **BatchGeo** map
+  whose data is one JSON call (`batchgeo.com/map/json/?i=<id>&t=<ts>&tok=<token>` → `per.mapRS[]`
+  with name, address, website, email, lat/lng; NO phone/presbytery in the export; `tok` is
+  time-limited — grab fresh from the map page). 1,936 US rows → `pca_import` → `pca_match`.
+  **986 relabelled** (933 from `presbyterian_church`, ~50 from `church_cathedral` / `reformed_church`,
+  + 53 loose-dedup), **782 inserted** with website + coords, 40 held back. `pca_church` **1,768**
+  (1,526 with a website, all with coords); `presbyterian_church` 9,376 → **8,665**, relabelled
+  **"Presbyterian" → "Presbyterian (Mainline / other)"** (residual is mostly PC(USA) + EPC / ECO
+  / OPC / ARP). Rollback: `pca_sync_relabel_before_2026_08_31` (restore category), delete
+  `pca_sync_inserted_2026_08_31` ids. Staging kept: `pca_import`, `pca_match`, `pca_insert_plan`,
+  `pca_sync_holdback_2026_08_31`.
 
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
-**`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31). Idea for later (not built): mark these
-with an asterisk in the `/church-finder` denomination breakdown table. Mechanism when wanted: a
-`Set` of directory-synced slugs that `CountTable` checks — no schema change.
+**`sbc_church`** (SBC, `churches.sbc.net`, 2026-08-31), **`pca_church`** (PCA, `pcaac.org` /
+BatchGeo, 2026-08-31). Idea for later (not built): mark these with an asterisk in the
+`/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
+directory-synced slugs that `CountTable` checks — no schema change.
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
-plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (35 distinct values live — `church_cathedral`
+plus all 34 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
