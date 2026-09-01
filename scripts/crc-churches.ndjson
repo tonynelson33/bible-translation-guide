@@ -1,0 +1,685 @@
+{"id":"10000","name":"Iglesia Cristiana Reformada Comunidad de Fe Poinciana","prev_name":"Iglesia Cristiana Reformada Comunidad de Fe Poinciana","street":"1851 Laurel Ave","city":"Poinciana","state":"FL","lat":28.0754,"lng":-81.4887,"languages":"English|Spanish"}
+{"id":"10006","name":"Toyee CRC","prev_name":null,"street":"","city":"Crownpoint","state":"NM","lat":35.7492,"lng":-107.9812,"languages":""}
+{"id":"10007","name":"Whitehorse Lake CRC","prev_name":null,"street":"","city":"Crownpoint","state":"NM","lat":35.749,"lng":-107.9814,"languages":""}
+{"id":"10009","name":"Alive Ministries","prev_name":null,"street":"263 Church St","city":"Jenison","state":"MI","lat":42.9062,"lng":-85.789,"languages":"English"}
+{"id":"10013","name":"Restore Church","prev_name":null,"street":"95 Prospect St","city":"Midland Park","state":"NJ","lat":40.9949,"lng":-74.1408,"languages":"English"}
+{"id":"10016","name":"Madison Church: South Hill Campus","prev_name":"Madison Church: Franklin Campus","street":"415 MLK Jr St SE Ste 101","city":"Grand Rapids","state":"MI","lat":42.9493,"lng":-85.6584,"languages":"English"}
+{"id":"10017","name":"Happy Valley CRC","prev_name":null,"street":"24 Happy Valley Rd","city":"Pleasanton","state":"CA","lat":37.6369,"lng":-121.8862,"languages":"English|Korean"}
+{"id":"10021","name":"Community Church of St. Luke","prev_name":"New Song Community Church","street":"2230 Frederick Douglass Blvd","city":"New York","state":"NY","lat":40.8071,"lng":-73.9531,"languages":"English"}
+{"id":"10028","name":"Summit Faith Community CRC","prev_name":null,"street":"110 Academy St","city":"Farmington","state":"ME","lat":44.6694,"lng":-70.1494,"languages":"English"}
+{"id":"10031","name":"Mision de Fe Internacional","prev_name":"Mission of Faith International","street":"9268 Texas 242","city":"Conroe","state":"TX","lat":30.208,"lng":-95.4345,"languages":"English|Spanish"}
+{"id":"10040","name":"City Reformed Church","prev_name":null,"street":"1661 N Farwell Ave","city":"Milwaukee","state":"WI","lat":43.0526,"lng":-87.8931,"languages":"English"}
+{"id":"100802","name":"Grace in Garfield CRC","prev_name":null,"street":"3454 West Lake St","city":"Chicago","state":"IL","lat":41.885,"lng":-87.7133,"languages":"English"}
+{"id":"101","name":"Faith Presbyterian CRC","prev_name":null,"street":"Hwy 10150 Father Duenas Ln","city":"Chalan Pago Ordot","state":"GU","lat":13.4377,"lng":144.7861,"languages":"English"}
+{"id":"102384","name":"Korean CRC of St. Louis","prev_name":null,"street":"1200 S Lindbergh Blvd","city":"St. Louis","state":"MO","lat":38.6367,"lng":-90.4036,"languages":"Korean"}
+{"id":"103117","name":"Victory Fellowship","prev_name":null,"street":"961 Temple SE","city":"Grand Rapids","state":"MI","lat":42.9399,"lng":-85.645,"languages":""}
+{"id":"103839","name":"Church Beyond Borders","prev_name":null,"street":"4122 4th Ave","city":"Des Moines","state":"IA","lat":41.6358,"lng":-93.6227,"languages":"English|Korean"}
+{"id":"103843","name":"Madison Avenue CRC Español","prev_name":null,"street":"494 Madison Ave","city":"Paterson","state":"NJ","lat":40.9229,"lng":-74.1524,"languages":"Spanish"}
+{"id":"103844","name":"Kadosh Emmanuel","prev_name":null,"street":"7703b Boone Rd","city":"Houston","state":"TX","lat":29.6945,"lng":-95.5749,"languages":"Spanish"}
+{"id":"103850","name":"The Sarang Church","prev_name":null,"street":"2 Beacon Hill Rd","city":"Port Washington","state":"NY","lat":40.8318,"lng":-73.6835,"languages":"Korean"}
+{"id":"103921","name":"Sunlight Community Church - Winter Garden Brasil","prev_name":null,"street":"607 Avalon Rd","city":"Winter Garden","state":"FL","lat":28.5358,"lng":-81.6071,"languages":"English|Portuguese"}
+{"id":"103950","name":"Sunlight Church at PGA Village","prev_name":null,"street":"8555 Commerce Centre Dr","city":"Port St. Lucie","state":"FL","lat":27.31,"lng":-80.4197,"languages":"English"}
+{"id":"103954","name":"La Casa Holland","prev_name":"La Casa De Mi Padre","street":"609 W 20th St","city":"Holland","state":"MI","lat":42.7793,"lng":-86.1345,"languages":"English|Spanish"}
+{"id":"103959","name":"World People Church","prev_name":null,"street":"1611 Beverly Blvd","city":"Los Angeles","state":"CA","lat":34.0637,"lng":-118.2632,"languages":"Korean"}
+{"id":"103964","name":"Rhema Community Church","prev_name":null,"street":"6700 Schirra Ct","city":"Bakersfield","state":"CA","lat":35.317,"lng":-119.0766,"languages":"English|Spanish"}
+{"id":"103965","name":"Logos CRC","prev_name":null,"street":"","city":"Zeeland","state":"MI","lat":42.8241,"lng":-86.0047,"languages":"English|Mandarin"}
+{"id":"103966","name":"Iglesia Conexion sin Limites","prev_name":null,"street":"4839 Simcoe St","city":"Dallas","state":"TX","lat":32.7897,"lng":-96.7135,"languages":"Spanish"}
+{"id":"105","name":"Fresno Hmong Community CRC","prev_name":null,"street":"1639 W Shields Ave","city":"Fresno","state":"CA","lat":36.7786,"lng":-119.8305,"languages":"Hmong"}
+{"id":"11027","name":"The PIER Church","prev_name":"The PIER","street":"4669 S Division Ave","city":"Wyoming","state":"MI","lat":42.8784,"lng":-85.6651,"languages":"English"}
+{"id":"112","name":"Korean Disciples Community Church","prev_name":"Joy Community CRC","street":"500 Shatto Pl #410","city":"Los Angeles","state":"CA","lat":34.0649,"lng":-118.2893,"languages":"English|Korean"}
+{"id":"113","name":"Jesus First Reformed Church","prev_name":"L.A. Global Mission Church","street":"2140 W Olympic Blvd Ste 540","city":"Los Angeles","state":"CA","lat":34.0517,"lng":-118.2809,"languages":"Korean"}
+{"id":"114","name":"Penn Elim Presbyterian Church","prev_name":null,"street":"703 Pen Ambler Rd","city":"Ambler","state":"PA","lat":40.165,"lng":-75.2362,"languages":"Korean"}
+{"id":"116","name":"Olympic Presbyterian","prev_name":null,"street":"3055 Wilshire Blvd #220","city":"Los Angeles","state":"CA","lat":34.0622,"lng":-118.288,"languages":"Korean"}
+{"id":"119","name":"Sovereign Grace Community CRC","prev_name":"Dominion Celebration Chr Fellowship","street":"23750 Alessandro Blvd","city":"Moreno Valley","state":"CA","lat":33.9181,"lng":-117.2477,"languages":"English"}
+{"id":"1207","name":"Aetna CRC","prev_name":null,"street":"3459 S 8 Mile Rd","city":"Falmouth","state":"MI","lat":44.287,"lng":-85.0541,"languages":"English"}
+{"id":"12186","name":"Phoenix Korean Presbyterian Church","prev_name":null,"street":"5043 N 18th Ave","city":"Phoenix","state":"AZ","lat":33.5112,"lng":-112.0971,"languages":"Korean"}
+{"id":"12187","name":"HyungJe Presbyterian Church of S.C.","prev_name":null,"street":"2580 W Orange Ave","city":"Anaheim","state":"CA","lat":33.8241,"lng":-117.9756,"languages":"Korean"}
+{"id":"122","name":"Dover Christian Reformed Church","prev_name":"Indonesian Christian Reformed Fellowship","street":"5 Hale St","city":"Dover","state":"NH","lat":43.1931,"lng":-70.8749,"languages":"English|Indonesian"}
+{"id":"1228","name":"Cadillac Christian Reformed Church","prev_name":null,"street":"1110 E Division St","city":"Cadillac","state":"MI","lat":44.2525,"lng":-85.3819,"languages":"English"}
+{"id":"123","name":"River of Life Christian Fellowship","prev_name":null,"street":"Academy St","city":"Athens","state":"ME","lat":44.9263,"lng":-69.6734,"languages":"English"}
+{"id":"1235","name":"Ellsworth CRC","prev_name":null,"street":"9323 Main St","city":"Ellsworth","state":"MI","lat":45.1669,"lng":-85.2462,"languages":"English"}
+{"id":"1242","name":"Prosper CRC","prev_name":null,"street":"1975 E Prosper Rd","city":"Falmouth","state":"MI","lat":44.2433,"lng":-85.054,"languages":"English"}
+{"id":"1244","name":"Friendship CRC","prev_name":null,"street":"415 N Ohio St","city":"Gaylord","state":"MI","lat":45.0319,"lng":-84.6858,"languages":"English"}
+{"id":"1249","name":"Highland CRC","prev_name":null,"street":"9034 23 Mile Rd","city":"Marion","state":"MI","lat":44.1462,"lng":-85.268,"languages":"English"}
+{"id":"1252","name":"Lake City Christian Reformed Church","prev_name":null,"street":"1657 S Morey Rd","city":"Lake City","state":"MI","lat":44.3151,"lng":-85.2141,"languages":"English"}
+{"id":"1256","name":"Lucas Christian Reformed Church","prev_name":null,"street":"10479 South Lucas Rd","city":"McBain","state":"MI","lat":44.1872,"lng":-85.2844,"languages":"English"}
+{"id":"1265","name":"Crossroads Christian Fellowship","prev_name":"Faith in Christ Fellowship CRC","street":"101 Oakridge Dr","city":"Marquette","state":"MI","lat":46.4664,"lng":-87.4241,"languages":"English"}
+{"id":"1270","name":"Calvin CRC","prev_name":null,"street":"10970 S Burkett Rd","city":"McBain","state":"MI","lat":44.1794,"lng":-85.1534,"languages":"English"}
+{"id":"1277","name":"Rudyard Christian Reformed Church","prev_name":null,"street":"17970 S Tilson Rd","city":"Rudyard","state":"MI","lat":46.2457,"lng":-84.593,"languages":"English"}
+{"id":"1280","name":"Fellowship Church of Traverse City","prev_name":"Fellowship CRC","street":"2555 Garfield Rd N","city":"Traverse City","state":"MI","lat":44.7241,"lng":-85.5963,"languages":"English"}
+{"id":"1284","name":"Vogel Center Christian Reformed Church","prev_name":null,"street":"1789 E Stoney Corners Rd","city":"McBain","state":"MI","lat":44.1926,"lng":-85.0571,"languages":"English"}
+{"id":"129","name":"Seattle Dream Church","prev_name":null,"street":"1012 W Main St","city":"Monroe","state":"WA","lat":47.851,"lng":-121.9846,"languages":"Korean"}
+{"id":"12947","name":"Madison Church: North Campus","prev_name":"Madison North","street":"750 Eastern Ave NE","city":"Grand Rapids","state":"MI","lat":42.9765,"lng":-85.6496,"languages":"English"}
+{"id":"130","name":"Intersection Ministries","prev_name":"Crosswinds - Intersection Ministries","street":"945 136th Ave","city":"Holland","state":"MI","lat":42.8261,"lng":-86.116,"languages":"English"}
+{"id":"133","name":"Grace Community Chapel","prev_name":"Grace Community Chapel 18162","street":"260 Elm Ave","city":"Teaneck","state":"NJ","lat":40.8874,"lng":-74.0259,"languages":"English|Korean"}
+{"id":"136","name":"Hope Community Church","prev_name":"Santa Clarita Valley Community","street":"18951 Sierra Estates Dr","city":"Santa Clarita","state":"CA","lat":34.4014,"lng":-118.4669,"languages":"English|Korean"}
+{"id":"137","name":"Grace Community Christian Reformed Church","prev_name":null,"street":"10415 S Kedvale Ave","city":"Oak Lawn","state":"IL","lat":41.7035,"lng":-87.7241,"languages":"English"}
+{"id":"13806","name":"Pleasant Valley Reformed Church","prev_name":null,"street":"20957 150th St","city":"Holland","state":"IA","lat":42.4855,"lng":-92.8112,"languages":"English"}
+{"id":"13961","name":"Hope Church of Lincoln Park","prev_name":"First Reformed Church of Lincoln Park","street":"60 Chapel Hill Rd","city":"Lincoln Park","state":"NJ","lat":40.9193,"lng":-74.3041,"languages":"English"}
+{"id":"14114","name":"Conklin Reformed Church","prev_name":null,"street":"3769 Sehler St","city":"Conklin","state":"MI","lat":43.1265,"lng":-85.8836,"languages":"English"}
+{"id":"14207","name":"First Reformed Church","prev_name":null,"street":"15924 S Park Ave","city":"South Holland","state":"IL","lat":41.6056,"lng":-87.6077,"languages":"English"}
+{"id":"147","name":"Great Hope CRC","prev_name":"Calvary CRC of Livingston","street":"215 E Cedar Ln","city":"Teaneck","state":"NJ","lat":40.882,"lng":-73.9996,"languages":"Korean"}
+{"id":"14768","name":"The Source Church","prev_name":null,"street":"Everglades High School17100 SW 48 Ct","city":"Miramar","state":"FL","lat":25.9847,"lng":-80.3402,"languages":"English"}
+{"id":"14782","name":"Living Water CRC","prev_name":null,"street":"3190 Burton St SE","city":"Grand Rapids","state":"MI","lat":42.9265,"lng":-85.5888,"languages":"English"}
+{"id":"14784","name":"Deep-Rooted Tree of Life CRC","prev_name":null,"street":"1622 Parker Ave 3rd Fl","city":"Fort Lee","state":"NJ","lat":40.8493,"lng":-73.9679,"languages":"Korean"}
+{"id":"14785","name":"Open Door Community Church","prev_name":null,"street":"1823 Erickson Cir","city":"Stockton","state":"CA","lat":37.9002,"lng":-121.3122,"languages":"English"}
+{"id":"150614","name":"Living Water Ann Arbor","prev_name":null,"street":"","city":"Ann Arbor","state":"MI","lat":42.2709,"lng":-83.7263,"languages":"English|Korean"}
+{"id":"150616","name":"The Way Church - Aliquippa","prev_name":null,"street":"","city":"Aliquippa","state":"PA","lat":40.6014,"lng":-80.2902,"languages":"English"}
+{"id":"150631","name":"Eglise Salem Restaurée CRC","prev_name":"Eglise Salem Restaurée","street":"6151 Clarcona Ocoee Rd","city":"Orlando","state":"FL","lat":28.6126,"lng":-81.4662,"languages":"Creole"}
+{"id":"15099","name":"Heart of the Lord Church","prev_name":null,"street":"520 N Dale Ave","city":"Anaheim","state":"CA","lat":33.8384,"lng":-117.9842,"languages":"Korean"}
+{"id":"1510","name":"Great Vision CRC","prev_name":"Body of the Lord","street":"4465 Melrose Ave","city":"Los Angeles","state":"CA","lat":34.0837,"lng":-118.2976,"languages":"Korean"}
+{"id":"15102","name":"Beautiful Korean Church","prev_name":null,"street":"2317 Sewell Mill Rd","city":"Marietta","state":"GA","lat":33.9781,"lng":-84.4847,"languages":"Korean"}
+{"id":"15223","name":"Namu Church of New York","prev_name":null,"street":"40-15 149th St","city":"Flushing","state":"NY","lat":40.7628,"lng":-73.8158,"languages":"English|Korean"}
+{"id":"1531","name":"CrossPoint CRC","prev_name":"Calvary","street":"6950 Edison Ave","city":"Chino","state":"CA","lat":33.9985,"lng":-117.653,"languages":"English|Mandarin|Korean"}
+{"id":"1532","name":"Urim CRC","prev_name":"South Orange Korean","street":"24231 El Toro Rd","city":"Laguna Woods","state":"CA","lat":33.6126,"lng":-117.722,"languages":"Korean"}
+{"id":"1534","name":"Korean-American CRC of Orange County","prev_name":null,"street":"2261 N Orange-Olive Rd","city":"Orange","state":"CA","lat":33.8262,"lng":-117.8493,"languages":"English|Korean"}
+{"id":"1535","name":"Orange Korean CRC","prev_name":null,"street":"643 W Malvern Ave","city":"Fullerton","state":"CA","lat":33.8751,"lng":-117.937,"languages":"English|Korean"}
+{"id":"1539","name":"Oasis Community CRC","prev_name":null,"street":"23750 Alessandro Blvd #C","city":"Moreno Valley","state":"CA","lat":33.9177,"lng":-117.2499,"languages":"English"}
+{"id":"1541","name":"Grace Valley Christian Reformed Church","prev_name":null,"street":"1370 E Robindale Rd","city":"Las Vegas","state":"NV","lat":36.0504,"lng":-115.1338,"languages":"English"}
+{"id":"1549","name":"Trinity Fellowship CRC","prev_name":null,"street":"4110 Palm Ave","city":"San Diego","state":"CA","lat":32.5842,"lng":-117.0448,"languages":"English"}
+{"id":"155","name":"Cornerstone Prison Church","prev_name":null,"street":"1600 N Dr","city":"Sioux Falls","state":"SD","lat":43.5674,"lng":-96.7245,"languages":"English"}
+{"id":"1551","name":"Korean Church of Orange County","prev_name":null,"street":"14381 Magnolia St","city":"Westminster","state":"CA","lat":33.7532,"lng":-117.973,"languages":"Korean"}
+{"id":"1555","name":"Friendship Community CRC","prev_name":null,"street":"14800 Baseline Ave","city":"Fontana","state":"CA","lat":34.1225,"lng":-117.4814,"languages":"English"}
+{"id":"1557","name":"Hope Community CRC","prev_name":null,"street":"9085 Colorado Ave","city":"Riverside","state":"CA","lat":33.9378,"lng":-117.449,"languages":"English"}
+{"id":"1558","name":"Yung Kwang CRC","prev_name":null,"street":"1965 Verbania Dr","city":"Las Vegas","state":"NV","lat":36.196,"lng":-115.3209,"languages":"English|Korean"}
+{"id":"1559","name":"The River Christian Reformed Church","prev_name":"Redlands CRC","street":"459 E Highland Ave","city":"Redlands","state":"CA","lat":34.0447,"lng":-117.1673,"languages":"English"}
+{"id":"1565","name":"Crossroads CRC","prev_name":null,"street":"2406 N Twin Oaks Valley Rd","city":"San Marcos","state":"CA","lat":33.1883,"lng":-117.1569,"languages":"English"}
+{"id":"1571","name":"Shema Presbyterian","prev_name":null,"street":"311 W South St","city":"Anaheim","state":"CA","lat":33.8264,"lng":-117.9145,"languages":"Korean"}
+{"id":"1573","name":"Laotian Vientiane CRC","prev_name":null,"street":"21640 Cottonwood Ave","city":"Moreno Valley","state":"CA","lat":33.9247,"lng":-117.2853,"languages":"Laotian"}
+{"id":"15800","name":"Casa de Oracion","prev_name":null,"street":"2050 FM 2920","city":"Spring","state":"TX","lat":30.072,"lng":-95.4475,"languages":"Spanish"}
+{"id":"161","name":"Iglesia Camino al Cielo CRC","prev_name":null,"street":"2406 N Twin Oaks Valley Rd","city":"San Marcos","state":"CA","lat":33.188,"lng":-117.157,"languages":"Spanish"}
+{"id":"163","name":"Good Tree","prev_name":null,"street":"8201 Orangethorpe Ave #D","city":"Buena Park","state":"CA","lat":33.8594,"lng":-117.9898,"languages":"English|Korean"}
+{"id":"166","name":"Henderson Christ Love Presbyterian Church","prev_name":null,"street":"2 S Pecos Rd","city":"Henderson","state":"NV","lat":36.0273,"lng":-115.1,"languages":"English|Korean"}
+{"id":"171","name":"The River Community Church","prev_name":null,"street":"164 Davis St","city":"Douglas","state":"MA","lat":42.0585,"lng":-71.6861,"languages":"English"}
+{"id":"17166","name":"F Street Neighborhood Church","prev_name":null,"street":"1302 F St","city":"Lincoln","state":"NE","lat":40.805,"lng":-96.7024,"languages":"English"}
+{"id":"172","name":"Ann Arbor Hope Church","prev_name":null,"street":"2500 S Main St","city":"Ann Arbor","state":"MI","lat":42.2508,"lng":-83.7499,"languages":"English|Korean"}
+{"id":"173","name":"All Nations Church","prev_name":null,"street":"6700 Schirra Ct","city":"Bakersfield","state":"CA","lat":35.317,"lng":-119.0766,"languages":"Korean"}
+{"id":"174","name":"All Nations Community Church","prev_name":null,"street":"5260 Hill Ave","city":"Toledo","state":"OH","lat":41.6398,"lng":-83.6677,"languages":"Korean"}
+{"id":"175","name":"On the House CRC","prev_name":null,"street":"","city":"Grand Haven","state":"MI","lat":43.0326,"lng":-86.1878,"languages":"English"}
+{"id":"17586","name":"Living Water Community Church-Sheldon","prev_name":null,"street":"610 2nd Ave","city":"Sheldon","state":"IA","lat":43.184,"lng":-95.8556,"languages":"English"}
+{"id":"179","name":"Watershed Church","prev_name":null,"street":"720 S Elmwood Ave","city":"Traverse City","state":"MI","lat":44.7565,"lng":-85.6408,"languages":"English"}
+{"id":"180","name":"City Grace Church","prev_name":"City Fellowship","street":"65 Chrystie St","city":"New York","state":"NY","lat":40.7168,"lng":-73.9948,"languages":"English"}
+{"id":"1807","name":"Alameda Christian Reformed Church","prev_name":null,"street":"2914 Encinal Ave","city":"Alameda","state":"CA","lat":37.7573,"lng":-122.2363,"languages":"English"}
+{"id":"18080","name":"Hana Seed Church","prev_name":"Hanaseed Church","street":"687 Arastradero Rd","city":"Palo Alto","state":"CA","lat":37.4013,"lng":-122.1283,"languages":"Korean"}
+{"id":"1814","name":"Escalon CRC","prev_name":null,"street":"2203 California St","city":"Escalon","state":"CA","lat":37.7958,"lng":-120.9859,"languages":"English"}
+{"id":"18147","name":"Emmaus City Church","prev_name":null,"street":"78 Kendrick Ave","city":"Worcester","state":"MA","lat":42.3056,"lng":-71.7952,"languages":"English"}
+{"id":"1815","name":"Fairfield CRC","prev_name":null,"street":"300 Marigold Dr","city":"Fairfield","state":"CA","lat":38.2853,"lng":-122.0331,"languages":"English"}
+{"id":"18154","name":"Sunlight Orlando Grace Korean","prev_name":"Grace Church","street":"7000 Winegard Rd","city":"Orlando","state":"FL","lat":28.4552,"lng":-81.3852,"languages":"English|Korean"}
+{"id":"18157","name":"Jesus Love Church of Southern California","prev_name":"Jesus Love Church of S.C.","street":"16113 S Denker Ave","city":"Gardena","state":"CA","lat":33.8843,"lng":-118.3045,"languages":"Korean"}
+{"id":"1816","name":"River Rock Church","prev_name":null,"street":"929 Sutter Street","city":"Folsom","state":"CA","lat":38.6754,"lng":-121.1799,"languages":"English"}
+{"id":"1817","name":"Fresno Christian Reformed Church","prev_name":null,"street":"1639 W Shields Ave","city":"Fresno","state":"CA","lat":36.7789,"lng":-119.8307,"languages":"English"}
+{"id":"182","name":"Living Water Community CRC","prev_name":null,"street":"1005 8th St SEHwy 10 E","city":"Orange City","state":"IA","lat":42.998,"lng":-96.0437,"languages":"English"}
+{"id":"1821","name":"First CRC","prev_name":null,"street":"2175 Leoni Dr","city":"Hanford","state":"CA","lat":36.3511,"lng":-119.6477,"languages":"English"}
+{"id":"1824","name":"Christ's Community CRC","prev_name":null,"street":"25927 Kay Ave","city":"Hayward","state":"CA","lat":37.6404,"lng":-122.0982,"languages":"English"}
+{"id":"1826","name":"Gateway Community CRC","prev_name":null,"street":"353 E Donna Dr","city":"Merced","state":"CA","lat":37.3303,"lng":-120.4657,"languages":"English"}
+{"id":"1828","name":"Modesto CRC","prev_name":"First","street":"2620 College Ave","city":"Modesto","state":"CA","lat":37.6788,"lng":-121.0069,"languages":"English"}
+{"id":"1829","name":"Napa Valley Community Church","prev_name":"Valley Community Church","street":"4149 Linda Vista Ave","city":"Napa","state":"CA","lat":38.3294,"lng":-122.3275,"languages":"English"}
+{"id":"1832","name":"Cornerstone Church of Oakdale","prev_name":"Community CRC","street":"131 West F St","city":"Oakdale","state":"CA","lat":37.7651,"lng":-120.8502,"languages":"English"}
+{"id":"1838","name":"Almond Valley CRC","prev_name":null,"street":"333 S Wilma Ave","city":"Ripon","state":"CA","lat":37.7375,"lng":-121.1364,"languages":"English"}
+{"id":"1849","name":"Immanuel Christian Reformed Church","prev_name":null,"street":"517 Orange Ave","city":"Ripon","state":"CA","lat":37.7353,"lng":-121.1301,"languages":"English"}
+{"id":"1850","name":"Granite Springs Church","prev_name":null,"street":"1170 E Joiner Pkwy","city":"Lincoln","state":"CA","lat":38.8662,"lng":-121.2872,"languages":"English"}
+{"id":"1852","name":"Living Stones CRC","prev_name":"Sacramento CRC","street":"Florin Rd at Amherst, 1/2 mile east of I-5","city":"Sacramento","state":"CA","lat":38.4954,"lng":-121.5039,"languages":"English"}
+{"id":"1854","name":"Golden Gate CRC","prev_name":null,"street":"378 18th Ave","city":"San Francisco","state":"CA","lat":37.781,"lng":-122.477,"languages":"Chinese|English"}
+{"id":"1856","name":"San Jose Christian Reformed Church","prev_name":null,"street":"5150 Camden Ave","city":"San Jose","state":"CA","lat":37.2454,"lng":-121.9064,"languages":"English"}
+{"id":"1860","name":"Visalia CRC","prev_name":"First CRC","street":"1030 S Linwood St","city":"Visalia","state":"CA","lat":36.3213,"lng":-119.3401,"languages":"English"}
+{"id":"1863","name":"Faith Christian Fellowship CRC","prev_name":"Walnut Creek","street":"860 Bancroft Rd","city":"Walnut Creek","state":"CA","lat":37.9322,"lng":-122.0447,"languages":"English"}
+{"id":"1865","name":"Friendship Agape CRC","prev_name":null,"street":"5150 Camden Ave","city":"San Jose","state":"CA","lat":37.2455,"lng":-121.9062,"languages":"English|Mandarin"}
+{"id":"1871","name":"Alameda Korean Church","prev_name":"N. California Korean Community","street":"2914 Encinal Ave","city":"Alameda","state":"CA","lat":37.7574,"lng":-122.2361,"languages":"Korean"}
+{"id":"190","name":"Grace Indonesian CRC","prev_name":null,"street":"1501 Arcola Ave","city":"Silver Spring","state":"MD","lat":39.0462,"lng":-77.0321,"languages":"Indonesian"}
+{"id":"193","name":"Dallas Woori Reformed Church","prev_name":"Dallas Samil CRC","street":"2633 Royal Ln","city":"Dallas","state":"TX","lat":32.8958,"lng":-96.8894,"languages":"Korean"}
+{"id":"197","name":"First Korean Presbyterian Church of Fort Worth","prev_name":"First Korean Presby.","street":"5728 White Settlement Rd","city":"Westworth Village","state":"TX","lat":32.7606,"lng":-97.4111,"languages":"Korean"}
+{"id":"200","name":"Eighth Street Community CRC","prev_name":null,"street":"3760 N 8th St","city":"Philadelphia","state":"PA","lat":40.0095,"lng":-75.1416,"languages":"English"}
+{"id":"20098","name":"Iglesia Reformada de Chandler","prev_name":"Iglesia Creacion","street":"1550 W Chandler Blvd","city":"Chandler","state":"AZ","lat":33.3071,"lng":-111.8684,"languages":"Spanish"}
+{"id":"201","name":"By Grace Alone Frankford Fellowship CRC","prev_name":null,"street":"1300 Dyre St","city":"Philadelphia","state":"PA","lat":40.0235,"lng":-75.0838,"languages":"English"}
+{"id":"202","name":"The Lord's Church of Austin","prev_name":null,"street":"301 W Anderson Ln","city":"Austin","state":"TX","lat":30.3443,"lng":-97.7076,"languages":"Korean"}
+{"id":"203","name":"All Nations Church - SA (Onnuri)","prev_name":"All Nations Church - SA","street":"1250 Holbrook Rd","city":"San Antonio","state":"TX","lat":29.4925,"lng":-98.4186,"languages":"English|Korean"}
+{"id":"208476","name":"Vive Church Milwaukee","prev_name":null,"street":"","city":"Milwaukee","state":"WI","lat":43.0389,"lng":-87.9065,"languages":""}
+{"id":"21236","name":"Tapestry Church","prev_name":"Oakland Communion","street":"2106 39th Ave","city":"Oakland","state":"CA","lat":37.7806,"lng":-122.2128,"languages":"English"}
+{"id":"217","name":"Word of Truth International Ministries CRC","prev_name":"Word of Truth","street":"10825 E Marginal Way S","city":"Tukwila","state":"WA","lat":47.5058,"lng":-122.2911,"languages":"English"}
+{"id":"222","name":"Mercy Presbyterian Church","prev_name":"In-Ae","street":"17115 S Dalton Ave #23","city":"Gardena","state":"CA","lat":33.8753,"lng":-118.3039,"languages":"English|Korean"}
+{"id":"2407","name":"Elmhurst CRC","prev_name":null,"street":"149 W Brush Hill Rd","city":"Elmhurst","state":"IL","lat":41.8628,"lng":-87.941,"languages":"English"}
+{"id":"2410","name":"Many Peoples Church","prev_name":"Many Peoples Community Church","street":"1212 W Chase Ave 1L","city":"Chicago","state":"IL","lat":42.0143,"lng":-87.6625,"languages":"English"}
+{"id":"2414","name":"Ebenezer CRC","prev_name":null,"street":"1300 S Harvey Ave","city":"Berwyn","state":"IL","lat":41.8634,"lng":-87.7805,"languages":"English|Spanish"}
+{"id":"242","name":"Iglesia Cristiana El Sembrador CRC","prev_name":null,"street":"8380 Cypress Ave","city":"Fontana","state":"CA","lat":34.1017,"lng":-117.4446,"languages":"Spanish"}
+{"id":"2421","name":"Grace and Peace Community","prev_name":"Grace & Peace Fellowship","street":"1856 N Leclaire","city":"Chicago","state":"IL","lat":41.9145,"lng":-87.7534,"languages":"English"}
+{"id":"2424","name":"Lawndale CRC Lighthouse","prev_name":null,"street":"1240 S Pulaski Rd","city":"Chicago","state":"IL","lat":41.865,"lng":-87.7254,"languages":"English"}
+{"id":"2426","name":"Lombard CRC","prev_name":null,"street":"2020 South Meyers Rd","city":"Lombard","state":"IL","lat":41.8473,"lng":-87.9927,"languages":"English"}
+{"id":"2427","name":"Horizon Community Church","prev_name":null,"street":"2129 63rd St","city":"Downers Grove","state":"IL","lat":41.7724,"lng":-88.0334,"languages":"English"}
+{"id":"244","name":"Areumdawoon Church of Las Vegas","prev_name":null,"street":"6286 W Post Rd","city":"Las Vegas","state":"NV","lat":36.0748,"lng":-115.2285,"languages":"English|Korean"}
+{"id":"2442","name":"First CRC","prev_name":null,"street":"801 15th Ave","city":"Fulton","state":"IL","lat":41.8631,"lng":-90.1609,"languages":"English"}
+{"id":"2444","name":"Bethel CRC","prev_name":null,"street":"1208 3rd Ave","city":"Fulton","state":"IL","lat":41.8726,"lng":-90.1538,"languages":"English"}
+{"id":"2446","name":"Yebon Korean CRC","prev_name":"Korean CRC","street":"850 Jenkins Ct","city":"Wheeling","state":"IL","lat":42.1378,"lng":-87.9379,"languages":"Korean"}
+{"id":"2460","name":"Plainfield Christian Reformed Church","prev_name":"Christ Community Church of Plainfield","street":"12410 S VanDyke Rd","city":"Plainfield","state":"IL","lat":41.6578,"lng":-88.2148,"languages":"English"}
+{"id":"247","name":"CrossWay Church CRC","prev_name":null,"street":"311 N Parkway Ave","city":"Battle Ground","state":"WA","lat":45.7833,"lng":-122.5369,"languages":"English"}
+{"id":"2477","name":"Grace Valley Christian Reformed Church","prev_name":"German Valley","street":"8210 E Edwardsville Rd","city":"German Valley","state":"IL","lat":42.2305,"lng":-89.4533,"languages":"English"}
+{"id":"2486","name":"Faith CRC","prev_name":"West Suburban","street":"1070 S Prospect Ave","city":"Elmhurst","state":"IL","lat":41.8651,"lng":-87.9445,"languages":"English"}
+{"id":"2491","name":"Wheaton Christian Reformed","prev_name":"Wheaton CRC","street":"711 E Harrison","city":"Wheaton","state":"IL","lat":41.874,"lng":-88.0951,"languages":"English"}
+{"id":"250","name":"Amistad Cristiana CRC","prev_name":null,"street":"130 3rd St NW","city":"Sioux Center","state":"IA","lat":43.0801,"lng":-96.1776,"languages":"Spanish"}
+{"id":"251","name":"RedArrow Ministries","prev_name":"RedArrow Ministries CRC","street":"31133 E Red Arrow Hwy","city":"Paw Paw","state":"MI","lat":42.2224,"lng":-85.8543,"languages":"English"}
+{"id":"252","name":"inSpirit Church CRC","prev_name":null,"street":"870 74th St SW Ste A","city":"Byron Center","state":"MI","lat":42.8295,"lng":-85.6857,"languages":"English"}
+{"id":"255","name":"One Hope Community Church","prev_name":null,"street":"4318 N Lawrence St","city":"Philadelphia","state":"PA","lat":40.0168,"lng":-75.134,"languages":"English|Spanish"}
+{"id":"261","name":"Emanuelu Church","prev_name":"Samoan Church","street":"9120 Heil Ave","city":"Fountain Valley","state":"CA","lat":33.7226,"lng":-117.9696,"languages":"English|Samoan"}
+{"id":"265","name":"Lord's Grace Church in Tracy CRC","prev_name":null,"street":"3402 Mars Ct Ste 111","city":"Tracy","state":"CA","lat":37.7065,"lng":-121.426,"languages":"English|Korean"}
+{"id":"26621","name":"New Dawn","prev_name":null,"street":"17603 Ardmore Ave","city":"Bellflower","state":"CA","lat":33.8727,"lng":-118.1294,"languages":"Spanish"}
+{"id":"2701","name":"Back to God All Nations Church","prev_name":"Back to God","street":"7326 S Racine Ave","city":"Chicago","state":"IL","lat":41.7606,"lng":-87.6543,"languages":"English"}
+{"id":"2702","name":"Immanuel CRC","prev_name":null,"street":"8302 S Normandy Ave","city":"Burbank","state":"IL","lat":41.7406,"lng":-87.7876,"languages":"English"}
+{"id":"2705","name":"Hyde Park CRC","prev_name":null,"street":"5144 S Cornell Ave","city":"Chicago","state":"IL","lat":41.801,"lng":-87.5864,"languages":"Chinese"}
+{"id":"2707","name":"New Life Church","prev_name":null,"street":"500 S Gougar Rd","city":"New Lenox","state":"IL","lat":41.5101,"lng":-88.0033,"languages":"English"}
+{"id":"2708","name":"Faith CRC","prev_name":null,"street":"8383 W 171st St","city":"Tinley Park","state":"IL","lat":41.5794,"lng":-87.8213,"languages":"English"}
+{"id":"2709","name":"Orland Park CRC","prev_name":null,"street":"7500 W Sycamore Dr","city":"Orland Park","state":"IL","lat":41.615,"lng":-87.8023,"languages":"English"}
+{"id":"272","name":"New City Church","prev_name":null,"street":"8711 Wornall Rd","city":"Kansas City","state":"MO","lat":38.97,"lng":-94.595,"languages":"English"}
+{"id":"274","name":"Haitian CRC","prev_name":null,"street":"1331 N Pine Hills Rd","city":"Orlando","state":"FL","lat":28.572,"lng":-81.4518,"languages":"Creole"}
+{"id":"275","name":"Christ Church of Davis","prev_name":null,"street":"1801 Oak Ave","city":"Davis","state":"CA","lat":38.5599,"lng":-121.7528,"languages":"English"}
+{"id":"2757","name":"Calvary Church of Oak Lawn","prev_name":"Calvin CRC","street":"10056 S Central Ave","city":"Oak Lawn","state":"IL","lat":41.709,"lng":-87.7604,"languages":"English"}
+{"id":"2758","name":"Palos Heights CRC","prev_name":null,"street":"7059 W 127th St","city":"Palos Heights","state":"IL","lat":41.6594,"lng":-87.7932,"languages":"English"}
+{"id":"276","name":"Encounter Church","prev_name":null,"street":"4620 Kalamazoo Ave SE","city":"Kentwood","state":"MI","lat":42.8802,"lng":-85.6249,"languages":"English"}
+{"id":"278","name":"Happy Church","prev_name":null,"street":"4077 W Pico Blvd","city":"Los Angeles","state":"CA","lat":34.0479,"lng":-118.3244,"languages":"English|Korean"}
+{"id":"281","name":"Grace and Peace Community Fellowship","prev_name":null,"street":"1300 W Hunting Park Ave","city":"Philadelphia","state":"PA","lat":40.0163,"lng":-75.1474,"languages":"English"}
+{"id":"2810","name":"Grangeville CRC","prev_name":null,"street":"327 W N 4th St & Junction St","city":"Grangeville","state":"ID","lat":45.9361,"lng":-116.1193,"languages":"English"}
+{"id":"282","name":"Ye-Eun Presbyterian Church","prev_name":null,"street":"1401 W Washington Blvd","city":"Los Angeles","state":"CA","lat":34.0404,"lng":-118.2866,"languages":"English|Korean"}
+{"id":"2820","name":"Sunrise CRC","prev_name":null,"street":"823 NE Ford St","city":"McMinnville","state":"OR","lat":45.2141,"lng":-123.1937,"languages":"English"}
+{"id":"2822","name":"Parklane CRC","prev_name":null,"street":"16001 SE Main St","city":"Portland","state":"OR","lat":45.5142,"lng":-122.4984,"languages":"English"}
+{"id":"2823","name":"Christ Community Church","prev_name":null,"street":"22100 SW Grahams Ferry Rd","city":"Tualatin","state":"OR","lat":45.3595,"lng":-122.7767,"languages":"English"}
+{"id":"2825","name":"Zion CRC","prev_name":null,"street":"2800 NW 153rd Ave","city":"Beaverton","state":"OR","lat":45.54,"lng":-122.8348,"languages":"English|Korean"}
+{"id":"2826","name":"Oak Hills Church","prev_name":"Oak Hills CRC","street":"2800 NW 153rd Ave","city":"Beaverton","state":"OR","lat":45.54,"lng":-122.8343,"languages":"English"}
+{"id":"2830","name":"Quincy CRC","prev_name":null,"street":"420 H St SE","city":"Quincy","state":"WA","lat":47.2318,"lng":-119.8454,"languages":"English"}
+{"id":"2834","name":"Sunnyslope CRC","prev_name":null,"street":"197 Hrubetz Rd SE","city":"Salem","state":"OR","lat":44.8907,"lng":-123.0573,"languages":"English"}
+{"id":"2838","name":"New Hope CRC","prev_name":null,"street":"3110 W Francis Ave","city":"Spokane","state":"WA","lat":47.7158,"lng":-117.4581,"languages":"English"}
+{"id":"284","name":"Korean Community Church","prev_name":null,"street":"6435 Roland St","city":"Buena Park","state":"CA","lat":33.8676,"lng":-117.9834,"languages":"English|Korean"}
+{"id":"2842","name":"Sunnyside CRC","prev_name":null,"street":"700 North 16th St","city":"Sunnyside","state":"WA","lat":46.3326,"lng":-119.9991,"languages":"English"}
+{"id":"285","name":"Santa Maria New Vision Church","prev_name":"Santa Maria Korean Church","street":"213 Capitol Dr","city":"Santa Maria","state":"CA","lat":34.9522,"lng":-120.4221,"languages":"English|Korean"}
+{"id":"2850","name":"Life Church/ Iglesia Vida","prev_name":"Faith Alive Church","street":"6711 Summitview Ave","city":"Yakima","state":"WA","lat":46.6009,"lng":-120.5985,"languages":"English|Spanish"}
+{"id":"2854","name":"Faith Community Church","prev_name":null,"street":"300 W Centennial Dr","city":"Zillah","state":"WA","lat":46.4105,"lng":-120.2479,"languages":"English"}
+{"id":"290","name":"Iglesia Cristiana Reformada de Quincy","prev_name":null,"street":"420 H St SE","city":"Quincy","state":"WA","lat":47.232,"lng":-119.8453,"languages":"Spanish"}
+{"id":"291","name":"Iglesia Cristiana Reformada Vida Abundante CRC","prev_name":null,"street":"105 Goldendale Ave","city":"Toppenish","state":"WA","lat":46.3841,"lng":-120.3131,"languages":"Spanish"}
+{"id":"292","name":"Artesia City Church CRC","prev_name":null,"street":"18718 Grayland Ave","city":"Artesia","state":"CA","lat":33.8618,"lng":-118.0755,"languages":"Hindi|Urdu"}
+{"id":"296","name":"New Hope Community Church of Shafter","prev_name":"New Hope Community Church","street":"730 E Lerdo Hwy","city":"Shafter","state":"CA","lat":35.5002,"lng":-119.2642,"languages":"English|Spanish"}
+{"id":"299","name":"New Life Prison Community","prev_name":"New Life Prison Church","street":"Chapel, Newton Correctional Facility307 S 60th Ave W","city":"Newton","state":"IA","lat":41.7025,"lng":-93.048,"languages":"English"}
+{"id":"30218","name":"Hispano Americana","prev_name":null,"street":"826 W Katella Ave","city":"Orange","state":"CA","lat":33.8087,"lng":-117.8614,"languages":"Spanish|American Sign Language"}
+{"id":"30222","name":"The Caledonia Gathering","prev_name":null,"street":"The Cobblestone Event Plaza9818 Cherry Valley Ave SE","city":"Caledonia","state":"MI","lat":42.8128,"lng":-85.5557,"languages":"English"}
+{"id":"30227","name":"Chin Christian Church of Grand Rapids","prev_name":null,"street":"5330 Kalamazoo Ave SE","city":"Kentwood","state":"MI","lat":42.8666,"lng":-85.6241,"languages":""}
+{"id":"30346","name":"The Church of Joy","prev_name":null,"street":"3938 Wilshire Blvd","city":"Los Angeles","state":"CA","lat":34.0614,"lng":-118.3125,"languages":"Korean"}
+{"id":"3204","name":"Bradenton CRC","prev_name":null,"street":"4208 26th St W","city":"Bradenton","state":"FL","lat":27.4647,"lng":-82.5881,"languages":"English"}
+{"id":"3208","name":"New Hope Community Church","prev_name":null,"street":"6400 NW 31st Ave","city":"Fort Lauderdale","state":"FL","lat":26.2052,"lng":-80.1868,"languages":"English"}
+{"id":"3212","name":"Sunlight Community Church - Lake Worth","prev_name":"Sunlight Community Church","street":"1325 North A St","city":"Lake Worth","state":"FL","lat":26.6326,"lng":-80.0653,"languages":"English"}
+{"id":"3216","name":"South Kendall Community CRC","prev_name":null,"street":"16550 SW 147th Ave","city":"Miami","state":"FL","lat":25.6133,"lng":-80.4307,"languages":"English"}
+{"id":"3218","name":"Sunlight Community Church - Miami","prev_name":"Iglesia El Buen Samaritano CRC","street":"4585 W Flagler St","city":"Miami","state":"FL","lat":25.7718,"lng":-80.2702,"languages":"Spanish"}
+{"id":"3219","name":"Iglesia Buenas Nuevas (Good News) CRC","prev_name":null,"street":"10855 SW 26th St","city":"Miami","state":"FL","lat":25.7454,"lng":-80.371,"languages":"Spanish"}
+{"id":"32190","name":"Vision Church","prev_name":null,"street":"2306 E Pama Ln","city":"Las Vegas","state":"NV","lat":36.0505,"lng":-115.1337,"languages":"English|Korean"}
+{"id":"3229","name":"Sunlight Ministries","prev_name":"Sunlight Community Church","street":"477 SW Cashmere Blvd","city":"Port St. Lucie","state":"FL","lat":27.3106,"lng":-80.3797,"languages":"English|Portuguese|Spanish|Korean"}
+{"id":"3243","name":"Iglesia Cristiana Reformada Vida Nueva CRC","prev_name":null,"street":"5941 NW 176th St Unit 5","city":"Miami","state":"FL","lat":25.9334,"lng":-80.3,"languages":"English|Spanish"}
+{"id":"3354","name":"Madison Square CRC","prev_name":null,"street":"1441 Madison Ave SE","city":"Grand Rapids","state":"MI","lat":42.9373,"lng":-85.6593,"languages":"English"}
+{"id":"3372","name":"Plymouth Heights CRC","prev_name":null,"street":"1800 Plymouth Ave SE","city":"Grand Rapids","state":"MI","lat":42.93,"lng":-85.6235,"languages":"English"}
+{"id":"3376","name":"Seymour CRC","prev_name":null,"street":"840 Alger St SE","city":"Grand Rapids","state":"MI","lat":42.92,"lng":-85.6462,"languages":"English"}
+{"id":"3380","name":"Shawnee Park Christian Reformed Church","prev_name":null,"street":"2255 Tecumseh Dr SE","city":"Grand Rapids","state":"MI","lat":42.9217,"lng":-85.6198,"languages":"English"}
+{"id":"3385","name":"Woodlawn CRC","prev_name":null,"street":"3190 Burton St SE","city":"Grand Rapids","state":"MI","lat":42.9266,"lng":-85.5897,"languages":"English"}
+{"id":"35874","name":"San Diego Woori Community Church","prev_name":null,"street":"13885 El Camino Real","city":"San Diego","state":"CA","lat":32.9707,"lng":-117.239,"languages":"Korean"}
+{"id":"35875","name":"Fil-Am CRC of Pearland","prev_name":null,"street":"Pearland West Community Center2150 Countryplace Pky","city":"Pearland","state":"TX","lat":29.5524,"lng":-95.3648,"languages":"English"}
+{"id":"35880","name":"Vida Nueva","prev_name":null,"street":"18901 Kuykendahl Rd","city":"Spring","state":"TX","lat":30.0443,"lng":-95.492,"languages":""}
+{"id":"3607","name":"First Cutlerville Christian Reformed Church","prev_name":null,"street":"1425 68th St SW","city":"Byron Center","state":"MI","lat":42.8432,"lng":-85.6995,"languages":"English"}
+{"id":"3610","name":"Covenant CRC","prev_name":null,"street":"7171 Willard Ave SE","city":"Grand Rapids","state":"MI","lat":42.8342,"lng":-85.649,"languages":"English"}
+{"id":"3611","name":"Providence CRC","prev_name":null,"street":"7730 Eastern Ave SE","city":"Grand Rapids","state":"MI","lat":42.824,"lng":-85.6444,"languages":"English"}
+{"id":"3614","name":"Cutlerville East CRC","prev_name":null,"street":"501 68th St SE","city":"Cutlerville","state":"MI","lat":42.8414,"lng":-85.6518,"languages":"English"}
+{"id":"3616","name":"Hillside Community Church","prev_name":null,"street":"1440 68th St SE","city":"Grand Rapids","state":"MI","lat":42.8396,"lng":-85.6288,"languages":"English"}
+{"id":"3621","name":"Alger Park CRC","prev_name":null,"street":"2655 Eastern Ave SE","city":"Grand Rapids","state":"MI","lat":42.915,"lng":-85.6473,"languages":"English"}
+{"id":"3625","name":"Monroe Community Church","prev_name":"Monroe Mall Ministry","street":"1020 Monroe Ave NW","city":"Grand Rapids","state":"MI","lat":42.9808,"lng":-85.6715,"languages":"English"}
+{"id":"3633","name":"Discovery CRC","prev_name":null,"street":"7245 Eastern Ave SE","city":"Cutlerville","state":"MI","lat":42.8326,"lng":-85.6458,"languages":"English"}
+{"id":"36507","name":"New Gate Church","prev_name":null,"street":"3350 S Winston St","city":"Aurora","state":"CO","lat":39.6555,"lng":-104.8063,"languages":""}
+{"id":"3656","name":"Ideal Park Church","prev_name":null,"street":"320 56th St SW","city":"Wyoming","state":"MI","lat":42.8618,"lng":-85.6719,"languages":"English"}
+{"id":"3670","name":"Kelloggsville Church","prev_name":"Kelloggsville CRC","street":"610 52nd St SE","city":"Kentwood","state":"MI","lat":42.868,"lng":-85.6502,"languages":"English"}
+{"id":"3677","name":"LaGrave Avenue CRC","prev_name":null,"street":"107 LaGrave Ave SE","city":"Grand Rapids","state":"MI","lat":42.9602,"lng":-85.6657,"languages":"English"}
+{"id":"3684","name":"Moline CRC","prev_name":null,"street":"4341 Chappel St","city":"Moline","state":"MI","lat":42.7391,"lng":-85.6638,"languages":"English"}
+{"id":"3691","name":"Wayland CRC","prev_name":null,"street":"303 E Elm St","city":"Wayland","state":"MI","lat":42.6778,"lng":-85.64,"languages":"English"}
+{"id":"3695","name":"Community CRC","prev_name":null,"street":"150 Burt St SE","city":"Wyoming","state":"MI","lat":42.8903,"lng":-85.6612,"languages":"English"}
+{"id":"38143","name":"Principe De Paz","prev_name":null,"street":"00479 County Road 687","city":"South Haven","state":"MI","lat":42.4174,"lng":-86.187,"languages":"Spanish"}
+{"id":"38981","name":"Jesus' Heart Church","prev_name":null,"street":"125 S Vermont Ave","city":"Los Angeles","state":"CA","lat":34.072,"lng":-118.2921,"languages":""}
+{"id":"3902","name":"Oakwood CRC","prev_name":null,"street":"8750 Storey Rd","city":"Belding","state":"MI","lat":43.1157,"lng":-85.2622,"languages":"English"}
+{"id":"3928","name":"Beckwith Hills CRC","prev_name":null,"street":"2100 Chelsea Rd NE","city":"Grand Rapids","state":"MI","lat":42.9888,"lng":-85.6183,"languages":"English"}
+{"id":"3933","name":"African Community Fellowship Church","prev_name":null,"street":"4275 Shaffer Ave SE","city":"Kentwood","state":"MI","lat":42.8862,"lng":-85.5883,"languages":"English|Swahili"}
+{"id":"3936","name":"East Leonard Christian Reformed Church","prev_name":null,"street":"1027 Leonard St NE","city":"Grand Rapids","state":"MI","lat":42.9849,"lng":-85.6439,"languages":"English"}
+{"id":"3938","name":"Gold Avenue Church","prev_name":null,"street":"49 Gold Ave NW","city":"Grand Rapids","state":"MI","lat":42.965,"lng":-85.6857,"languages":"English"}
+{"id":"3941","name":"Westend CRC","prev_name":null,"street":"1015 Westend Ave NW","city":"Grand Rapids","state":"MI","lat":42.9815,"lng":-85.7198,"languages":"English"}
+{"id":"3944","name":"North End Chapel","prev_name":"Riverside CRC","street":"602 Comstock Blvd NE","city":"Grand Rapids","state":"MI","lat":43.0054,"lng":-85.6551,"languages":"English"}
+{"id":"3946","name":"Sunshine Community CRC","prev_name":null,"street":"3019 Coit Ave NE","city":"Grand Rapids","state":"MI","lat":43.0176,"lng":-85.6568,"languages":"English"}
+{"id":"3950","name":"Korean Grace CRC","prev_name":null,"street":"1970 Jefferson Ave SE","city":"Grand Rapids","state":"MI","lat":42.9283,"lng":-85.6629,"languages":"Korean"}
+{"id":"3956","name":"West Leonard CRC","prev_name":null,"street":"1053 Leonard St NW","city":"Grand Rapids","state":"MI","lat":42.9859,"lng":-85.6952,"languages":"English"}
+{"id":"3960","name":"Westview Church","prev_name":null,"street":"2929 Leonard NW","city":"Grand Rapids","state":"MI","lat":42.9875,"lng":-85.7402,"languages":"English"}
+{"id":"3964","name":"Grant CRC","prev_name":null,"street":"13110 Poplar Ave","city":"Grant","state":"MI","lat":43.3166,"lng":-85.7215,"languages":"English"}
+{"id":"3966","name":"Pine Grove Community Church","prev_name":null,"street":"3 mi W of US 131 on M-82, 8775 88th StCorner of Beech & M-82","city":"Howard City","state":"MI","lat":43.4076,"lng":-85.4824,"languages":"English"}
+{"id":"3972","name":"Blythefield CRC","prev_name":"Arcadia-Plainfield CRC","street":"6350 Kuttshill NE","city":"Rockford","state":"MI","lat":43.078,"lng":-85.5784,"languages":"English"}
+{"id":"3973","name":"River Rock Church","prev_name":null,"street":"6060 Belding Rd","city":"Rockford","state":"MI","lat":43.0843,"lng":-85.5179,"languages":"English"}
+{"id":"3974","name":"Trinity CRC","prev_name":null,"street":"660 S State St","city":"Sparta","state":"MI","lat":43.1442,"lng":-85.7083,"languages":"English"}
+{"id":"41227","name":"Mission Church","prev_name":null,"street":"2435 E 17th St","city":"Tucson","state":"AZ","lat":32.2135,"lng":-110.936,"languages":"English"}
+{"id":"41228","name":"Strong Tower Ministries","prev_name":null,"street":"2141 Porters St SW","city":"Wyoming","state":"MI","lat":42.9219,"lng":-85.7184,"languages":"Swahili"}
+{"id":"4214","name":"First CRC","prev_name":null,"street":"8541 Byron Center Ave SW","city":"Byron Center","state":"MI","lat":42.8097,"lng":-85.723,"languages":"English"}
+{"id":"4215","name":"Second CRC","prev_name":null,"street":"76th St & Byron Center Ave","city":"Byron Center","state":"MI","lat":42.827,"lng":-85.723,"languages":"English"}
+{"id":"4216","name":"Heritage CRC","prev_name":null,"street":"3089 84th St SW","city":"Byron Center","state":"MI","lat":42.8121,"lng":-85.7403,"languages":"English"}
+{"id":"4217","name":"Friendship CRC","prev_name":null,"street":"190 100th St SE","city":"Byron Center","state":"MI","lat":42.781,"lng":-85.6602,"languages":"English"}
+{"id":"4219","name":"Pathway Church","prev_name":"Pathway Ministries","street":"8350 Byron Center Ave","city":"Byron Center","state":"MI","lat":42.8134,"lng":-85.7229,"languages":"English"}
+{"id":"4221","name":"Dorr CRC","prev_name":null,"street":"4220 18th St","city":"Dorr","state":"MI","lat":42.7263,"lng":-85.723,"languages":"English"}
+{"id":"4225","name":"Fellowship Christian Reformed Church","prev_name":null,"street":"4375 Ivanrest SW","city":"Grandville","state":"MI","lat":42.8855,"lng":-85.7443,"languages":"English"}
+{"id":"4233","name":"Ivanrest Christian Reformed Church","prev_name":null,"street":"3777 Ivanrest Ave SW","city":"Grandville","state":"MI","lat":42.896,"lng":-85.745,"languages":"English"}
+{"id":"4236","name":"South Grandville CRC","prev_name":null,"street":"4130 Wilson Ave","city":"Grandville","state":"MI","lat":42.8897,"lng":-85.7616,"languages":"English"}
+{"id":"4245","name":"Calvary CRC","prev_name":null,"street":"3500 Byron Center Ave SW","city":"Wyoming","state":"MI","lat":42.9007,"lng":-85.7228,"languages":"English"}
+{"id":"4246","name":"Hahn-In CRC of Grand Rapids","prev_name":null,"street":"2445 28th St SW","city":"Wyoming","state":"MI","lat":42.9145,"lng":-85.7255,"languages":"Korean"}
+{"id":"4249","name":"Lee Street CRC","prev_name":null,"street":"1261 Lee St SW","city":"Wyoming","state":"MI","lat":42.9319,"lng":-85.6987,"languages":"English"}
+{"id":"4254","name":"Emanuel Hispanic CRC","prev_name":null,"street":"1265 36th Street SW","city":"Wyoming","state":"MI","lat":42.8993,"lng":-85.6963,"languages":"Spanish"}
+{"id":"4262","name":"Faith Community CRC","prev_name":null,"street":"5250 Byron Center Ave SW","city":"Wyoming","state":"MI","lat":42.869,"lng":-85.7222,"languages":"English"}
+{"id":"4303","name":"Anaheim CRC","prev_name":null,"street":"530 N Dale Ave","city":"Anaheim","state":"CA","lat":33.8384,"lng":-117.9843,"languages":"English"}
+{"id":"4304","name":"Latin American CRC","prev_name":null,"street":"530 N Dale Ave","city":"Anaheim","state":"CA","lat":33.8385,"lng":-117.9845,"languages":"Spanish"}
+{"id":"4306","name":"Hope International CRC","prev_name":"Hope Community","street":"1741 S Baldwin Ave","city":"Arcadia","state":"CA","lat":34.1193,"lng":-118.0547,"languages":"Chinese|English|Spanish"}
+{"id":"4309","name":"First CRC","prev_name":null,"street":"18411 S Alburtis Ave","city":"Artesia","state":"CA","lat":33.8641,"lng":-118.0851,"languages":"English"}
+{"id":"4310","name":"Lifestream CRC","prev_name":"Lifestream CRC","street":"18718 Grayland Ave","city":"Artesia","state":"CA","lat":33.8617,"lng":-118.0756,"languages":"English|Korean"}
+{"id":"4312","name":"Trinity CRC","prev_name":null,"street":"18718 Grayland Ave","city":"Artesia","state":"CA","lat":33.8616,"lng":-118.0754,"languages":"English"}
+{"id":"4315","name":"Bethany CRC","prev_name":null,"street":"17054 Bixby Ave","city":"Bellflower","state":"CA","lat":33.8787,"lng":-118.1208,"languages":"English"}
+{"id":"4318","name":"First CRC of Bellflower","prev_name":null,"street":"17603 Ardmore Ave","city":"Bellflower","state":"CA","lat":33.8726,"lng":-118.1295,"languages":"English"}
+{"id":"4319","name":"New City CRC","prev_name":null,"street":"1228 E South St","city":"Long Beach","state":"CA","lat":33.8598,"lng":-118.1766,"languages":"English"}
+{"id":"4321","name":"Rosewood CRC","prev_name":null,"street":"10115 Rose St","city":"Bellflower","state":"CA","lat":33.8698,"lng":-118.1178,"languages":"English|Spanish"}
+{"id":"4323","name":"Iglesia Cristiana Ref. De Camarillo","prev_name":null,"street":"2304 Antonio Ave","city":"Camarillo","state":"CA","lat":34.243,"lng":-119.0174,"languages":"Spanish"}
+{"id":"4325","name":"Grace United Church","prev_name":"God's Grace Christian Church","street":"17620 Ardmore Ave","city":"Bellflower","state":"CA","lat":33.8723,"lng":-118.1288,"languages":"English"}
+{"id":"4337","name":"Fountain of Life Fellowship","prev_name":"Community CRC","street":"9120 Heil Ave","city":"Fountain Valley","state":"CA","lat":33.7226,"lng":-117.9698,"languages":"English"}
+{"id":"4339","name":"Long Beach CRC","prev_name":null,"street":"5559 E Wardlow Rd","city":"Long Beach","state":"CA","lat":33.8193,"lng":-118.1227,"languages":"English"}
+{"id":"4340","name":"Sky City CRC","prev_name":"Chinese CRC","street":"332 N New Ave","city":"Monterey Park","state":"CA","lat":34.066,"lng":-118.1079,"languages":"Chinese|English"}
+{"id":"4341","name":"Los Angeles Community CRC","prev_name":null,"street":"10611 S Hoover St","city":"Los Angeles","state":"CA","lat":33.9395,"lng":-118.2872,"languages":"English"}
+{"id":"4359","name":"Bethany Korean CRC","prev_name":null,"street":"2401 N Brighton St","city":"Burbank","state":"CA","lat":34.1996,"lng":-118.337,"languages":"English|Korean"}
+{"id":"4360","name":"TtoKamsa Mission Church","prev_name":"Los Angeles Home","street":"3119 W 6th St","city":"Los Angeles","state":"CA","lat":34.0641,"lng":-118.2892,"languages":"Korean"}
+{"id":"4362","name":"All Nations Church","prev_name":null,"street":"10000 Foothill Blvd","city":"Lake View Terrace","state":"CA","lat":34.2719,"lng":-118.3446,"languages":"Korean"}
+{"id":"4363","name":"Bethel CRC","prev_name":"Glendale","street":"10725 Penrose St","city":"Sun Valley","state":"CA","lat":34.2329,"lng":-118.3648,"languages":"English|Spanish"}
+{"id":"4366","name":"The Bridge CRC","prev_name":null,"street":"1067 E Badillo St","city":"Covina","state":"CA","lat":34.0867,"lng":-117.8685,"languages":"Korean"}
+{"id":"4370","name":"Little Saigon CRC","prev_name":null,"street":"10321 Bolsa Ave","city":"Westminster","state":"CA","lat":33.7454,"lng":-117.9491,"languages":"Vietnamese"}
+{"id":"4403","name":"Bauer CRC","prev_name":null,"street":"4958 Bauer Rd","city":"Hudsonville","state":"MI","lat":42.9206,"lng":-85.9063,"languages":"English"}
+{"id":"4405","name":"Evergreen Ministries","prev_name":null,"street":"4512 - 48th Ave","city":"Hudsonville","state":"MI","lat":42.8497,"lng":-85.8977,"languages":"English"}
+{"id":"4406","name":"First Christian Reformed Church","prev_name":"First Hudsonville CRC","street":"5486 32nd Ave","city":"Hudsonville","state":"MI","lat":42.8687,"lng":-85.8606,"languages":"English"}
+{"id":"4408","name":"Forest Grove CRC","prev_name":null,"street":"3515 Perry St","city":"Hudsonville","state":"MI","lat":42.7971,"lng":-85.8691,"languages":"English"}
+{"id":"4410","name":"Georgetown Christian Reformed Church","prev_name":null,"street":"6475 40th Ave","city":"Hudsonville","state":"MI","lat":42.8866,"lng":-85.8818,"languages":"English"}
+{"id":"4412","name":"Hillcrest CRC","prev_name":null,"street":"3617 Hillcrest Rd","city":"Hudsonville","state":"MI","lat":42.8748,"lng":-85.8721,"languages":"English"}
+{"id":"4414","name":"Immanuel CRC","prev_name":null,"street":"3520 Kiel St","city":"Hudsonville","state":"MI","lat":42.8693,"lng":-85.8692,"languages":"English"}
+{"id":"4416","name":"Jamestown CRC","prev_name":null,"street":"1653 Riley St","city":"Hudsonville","state":"MI","lat":42.8267,"lng":-85.8239,"languages":"English"}
+{"id":"4417","name":"Searchlight Ministries","prev_name":null,"street":"4020 22nd Ave","city":"Hudsonville","state":"MI","lat":42.8413,"lng":-85.8354,"languages":"English"}
+{"id":"4418","name":"Messiah CRC","prev_name":null,"street":"2900 Springdale","city":"Hudsonville","state":"MI","lat":42.8818,"lng":-85.8532,"languages":"English"}
+{"id":"4419","name":"Zutphen CRC","prev_name":null,"street":"3223 40th Ave","city":"Hudsonville","state":"MI","lat":42.8263,"lng":-85.8828,"languages":"English"}
+{"id":"4420","name":"Baldwin Street CRC","prev_name":null,"street":"2101 Baldwin St","city":"Jenison","state":"MI","lat":42.9079,"lng":-85.8346,"languages":"English"}
+{"id":"4422","name":"Cottonwood Church","prev_name":"Cottonwood Church CRC","street":"1101 Cypress Dr","city":"Jenison","state":"MI","lat":42.9151,"lng":-85.809,"languages":"English"}
+{"id":"4423","name":"Fairway CRC","prev_name":null,"street":"1165 44th St","city":"Jenison","state":"MI","lat":42.8846,"lng":-85.8102,"languages":"English"}
+{"id":"4426","name":"Ridgewood CRC","prev_name":null,"street":"1571 Baldwin St","city":"Jenison","state":"MI","lat":42.9081,"lng":-85.8211,"languages":"English"}
+{"id":"4428","name":"The Refuge","prev_name":"Trinity Christian Reformed Church","street":"O-60 Port Sheldon Rd","city":"Grandville","state":"MI","lat":42.902,"lng":-85.7829,"languages":"English"}
+{"id":"44287","name":"Jesus on Colfax Ministries","prev_name":null,"street":"E Colfax Ave","city":"Aurora","state":"CO","lat":39.7409,"lng":-104.873,"languages":"English"}
+{"id":"4520","name":"Jersey City Mission","prev_name":null,"street":"575 Summit Ave","city":"Jersey City","state":"NJ","lat":40.7341,"lng":-74.0596,"languages":"Spanish"}
+{"id":"4533","name":"The New Horizon CRC","prev_name":null,"street":"8 Barnes St","city":"Paterson","state":"NJ","lat":40.909,"lng":-74.1856,"languages":"Spanish"}
+{"id":"4547","name":"Grace Christian Reformed Church","prev_name":null,"street":"9800 Burke Lake Rd","city":"Burke","state":"VA","lat":38.7821,"lng":-77.2841,"languages":"English|Korean"}
+{"id":"4561","name":"Madison Avenue CRC","prev_name":null,"street":"494 Madison Ave","city":"Paterson","state":"NJ","lat":40.9238,"lng":-74.1522,"languages":"English|Spanish"}
+{"id":"4562","name":"Northside Community CRC","prev_name":null,"street":"90 Jefferson St","city":"Paterson","state":"NJ","lat":40.9266,"lng":-74.1723,"languages":"English"}
+{"id":"4565","name":"Rockpoint Community Church","prev_name":"Covenant CRC","street":"400 North Haledon Ave","city":"North Haledon","state":"NJ","lat":40.9637,"lng":-74.169,"languages":"English"}
+{"id":"4566","name":"Bridgeway Community CRC","prev_name":null,"street":"381 Haledon Ave","city":"Haledon","state":"NJ","lat":40.9371,"lng":-74.1813,"languages":"English"}
+{"id":"4568","name":"Spirit and Truth Fellowship CRC","prev_name":null,"street":"4400 N 6th St","city":"Philadelphia","state":"PA","lat":40.0184,"lng":-75.1369,"languages":"English"}
+{"id":"4575","name":"Unity CRC","prev_name":null,"street":"339 N 11th St","city":"Prospect Park","state":"NJ","lat":40.9361,"lng":-74.1731,"languages":"English"}
+{"id":"4582","name":"Silver Spring CRC","prev_name":null,"street":"1501 Arcola Ave","city":"Silver Spring","state":"MD","lat":39.0461,"lng":-77.0323,"languages":"English"}
+{"id":"4589","name":"Terra Ceia CRC","prev_name":null,"street":"3298 Terra Ceia Rd","city":"Pantego","state":"NC","lat":35.6005,"lng":-76.7654,"languages":"English"}
+{"id":"47061","name":"Chin Christian Church of Syracuse","prev_name":null,"street":"7823 Hicks Rd","city":"Baldwinsville","state":"NY","lat":43.1495,"lng":-76.2783,"languages":""}
+{"id":"48847","name":"My Father's House Christian Community","prev_name":null,"street":"5587 113th Ave","city":"Fennville","state":"MI","lat":42.5141,"lng":-86.0905,"languages":"Spanish"}
+{"id":"5107","name":"Bravo Community CRC","prev_name":null,"street":"5587 113th Ave","city":"Fennville","state":"MI","lat":42.5141,"lng":-86.0906,"languages":"English"}
+{"id":"5109","name":"East Saugatuck CRC","prev_name":null,"street":"3815 56th St","city":"Holland","state":"MI","lat":42.6971,"lng":-86.0934,"languages":"English"}
+{"id":"5112","name":"Cambodian Fellowship CRC","prev_name":null,"street":"1 Grave Pl","city":"Holland","state":"MI","lat":42.7876,"lng":-86.1071,"languages":"English|Khmer"}
+{"id":"5113","name":"Graafschap CRC","prev_name":null,"street":"5973 Church St","city":"Holland","state":"MI","lat":42.7533,"lng":-86.1337,"languages":"English"}
+{"id":"5116","name":"Mision Rey de Reyes CRC","prev_name":"Mision del Rey Jesus","street":"1627 W Lakewood Blvd Holland MI 49424","city":"Holland","state":"MI","lat":42.8055,"lng":-86.1745,"languages":"Spanish"}
+{"id":"5117","name":"Hamilton CRC","prev_name":null,"street":"3596 47th St","city":"Hamilton","state":"MI","lat":42.6821,"lng":-86.0063,"languages":"English"}
+{"id":"5121","name":"Harderwyk Ministries","prev_name":"Harderwyk","street":"1627 W Lakewood Blvd","city":"Holland","state":"MI","lat":42.8049,"lng":-86.1747,"languages":"English"}
+{"id":"5129","name":"Calvary CRC","prev_name":null,"street":"400 Beeline Rd","city":"Holland","state":"MI","lat":42.8094,"lng":-86.1053,"languages":"English"}
+{"id":"5133","name":"The Foundation Church","prev_name":"Calvin CRC","street":"387 West Lakewood Blvd","city":"Holland","state":"MI","lat":42.8053,"lng":-86.1253,"languages":"English"}
+{"id":"5137","name":"Central Avenue Church","prev_name":null,"street":"259 Central Ave","city":"Holland","state":"MI","lat":42.7879,"lng":-86.1067,"languages":"English"}
+{"id":"5141","name":"Faith CRC","prev_name":null,"street":"85 W 26th St","city":"Holland","state":"MI","lat":42.774,"lng":-86.1115,"languages":"English"}
+{"id":"5145","name":"Fourteenth Street CRC","prev_name":null,"street":"14 W 14th St","city":"Holland","state":"MI","lat":42.7844,"lng":-86.1079,"languages":"English"}
+{"id":"5146","name":"Gibson Church","prev_name":"Gibson Christian Reformed Church","street":"6484 140th Ave","city":"Holland","state":"MI","lat":42.7104,"lng":-86.1838,"languages":"English"}
+{"id":"5147","name":"Maple Avenue Ministries","prev_name":null,"street":"427 Maple Ave","city":"Holland","state":"MI","lat":42.7814,"lng":-86.1147,"languages":"English"}
+{"id":"5149","name":"Holland Heights CRC","prev_name":null,"street":"836 E 8th St","city":"Holland","state":"MI","lat":42.7896,"lng":-86.0714,"languages":"English"}
+{"id":"5150","name":"Lao CRC","prev_name":"Lao Community","street":"940 Royce Ave","city":"Holland","state":"MI","lat":42.7636,"lng":-86.0915,"languages":"English|Laotian"}
+{"id":"5158","name":"Maranatha CRC","prev_name":null,"street":"918 Central Ave","city":"Holland","state":"MI","lat":42.764,"lng":-86.1073,"languages":"English"}
+{"id":"5166","name":"Pillar Church","prev_name":null,"street":"57 E 10th St","city":"Holland","state":"MI","lat":42.789,"lng":-86.1048,"languages":"English"}
+{"id":"5170","name":"Park CRC","prev_name":null,"street":"1496 W 32nd St","city":"Holland","state":"MI","lat":42.7678,"lng":-86.1708,"languages":"English"}
+{"id":"5178","name":"Providence CRC","prev_name":null,"street":"821 Ottawa Ave","city":"Holland","state":"MI","lat":42.767,"lng":-86.1256,"languages":"English"}
+{"id":"5186","name":"Niekerk CRC","prev_name":null,"street":"545 Country Club Rd","city":"Holland","state":"MI","lat":42.777,"lng":-86.0568,"languages":"English"}
+{"id":"5190","name":"Noordeloos CRC","prev_name":null,"street":"4055 112th Ave","city":"Holland","state":"MI","lat":42.8424,"lng":-86.06,"languages":"English"}
+{"id":"5196","name":"Kibbie CRC","prev_name":null,"street":"00479 County Road 687","city":"South Haven","state":"MI","lat":42.4175,"lng":-86.1873,"languages":"English|Spanish"}
+{"id":"5198","name":"South Olive CRC","prev_name":null,"street":"6425 120th Ave","city":"Holland","state":"MI","lat":42.8862,"lng":-86.0828,"languages":"English"}
+{"id":"5199","name":"Christian Reformed Church of St. Joseph","prev_name":null,"street":"3275 Washington Ave","city":"St. Joseph","state":"MI","lat":42.0584,"lng":-86.4844,"languages":"English"}
+{"id":"53949","name":"North Philly Community Church","prev_name":null,"street":"2147 N Uber St","city":"Philadelphia","state":"PA","lat":39.9872,"lng":-75.1648,"languages":"English"}
+{"id":"5407","name":"Christ Community Church of East Islip","prev_name":null,"street":"391 East Main St","city":"East Islip","state":"NY","lat":40.7352,"lng":-73.1729,"languages":"English"}
+{"id":"5422","name":"Queens CRC","prev_name":null,"street":"143-55 84th Dr","city":"Jamaica","state":"NY","lat":40.7121,"lng":-73.813,"languages":"English"}
+{"id":"5423","name":"Covenant Christian Reformed Church","prev_name":"Filipino-American CRC","street":"440 Hoboken Ave","city":"Jersey City","state":"NJ","lat":40.7352,"lng":-74.058,"languages":"English"}
+{"id":"5424","name":"Midland Park CRC","prev_name":null,"street":"183 Godwin Ave","city":"Midland Park","state":"NJ","lat":40.9882,"lng":-74.1406,"languages":"English"}
+{"id":"5427","name":"East West Church of NY","prev_name":null,"street":"5402 217th St","city":"Bayside Hills","state":"NY","lat":40.7523,"lng":-73.763,"languages":"English|Korean"}
+{"id":"5433","name":"New Life Community CRC","prev_name":null,"street":"5475 Amboy Rd","city":"Staten Island","state":"NY","lat":40.532,"lng":-74.1926,"languages":"Korean"}
+{"id":"5453","name":"Faith Community Church","prev_name":null,"street":"530 Sicomac Ave","city":"Wyckoff","state":"NJ","lat":40.9928,"lng":-74.1896,"languages":"English"}
+{"id":"5462","name":"Global Vision CRC","prev_name":"Love Global Vision CRC","street":"410 Grove St","city":"Clifton","state":"NJ","lat":40.8688,"lng":-74.179,"languages":"Korean"}
+{"id":"5468","name":"Sussex CRC","prev_name":null,"street":"49 Unionville Ave","city":"Sussex","state":"NJ","lat":41.2128,"lng":-74.6042,"languages":"English"}
+{"id":"54756","name":"Church on The Ave","prev_name":"University District Church","street":"4130 University Way NE","city":"Seattle","state":"WA","lat":47.6578,"lng":-122.3129,"languages":"English"}
+{"id":"54757","name":"International Peacemaking Church of Christ","prev_name":null,"street":"405 Airport Freeway #302/506","city":"Bedford","state":"TX","lat":32.8408,"lng":-97.1584,"languages":"English|French"}
+{"id":"5481","name":"Cedar Hill Christian Reformed Church","prev_name":null,"street":"422 Cedar Hill Ave","city":"Wyckoff","state":"NJ","lat":40.9905,"lng":-74.1621,"languages":"English"}
+{"id":"558882","name":"Redemption Christian Reformed Church","prev_name":null,"street":"306 W 78th St","city":"Chanhassen","state":"MN","lat":44.8624,"lng":-93.5301,"languages":""}
+{"id":"559645","name":"Abundant Life Ministries","prev_name":null,"street":"5330 Kalamazoo Ave SE","city":"Grand Rapids","state":"MI","lat":42.8666,"lng":-85.6242,"languages":""}
+{"id":"5604","name":"Crown Point CRC","prev_name":null,"street":"909 E Greenwood Ave","city":"Crown Point","state":"IN","lat":41.4051,"lng":-87.3523,"languages":"English"}
+{"id":"5608","name":"First CRC","prev_name":null,"street":"1633 S Halleck St","city":"DeMotte","state":"IN","lat":41.1857,"lng":-87.1982,"languages":"English"}
+{"id":"5609","name":"Bethel CRC","prev_name":null,"street":"521 S Halleck St","city":"DeMotte","state":"IN","lat":41.1982,"lng":-87.1966,"languages":"English"}
+{"id":"5610","name":"Beacon Light Community CRC","prev_name":null,"street":"3770 Burr St","city":"Gary","state":"IN","lat":41.5502,"lng":-87.4042,"languages":"English"}
+{"id":"5612","name":"Hammond CRC","prev_name":null,"street":"1910 167th St","city":"Hammond","state":"IN","lat":41.5918,"lng":-87.483,"languages":"English"}
+{"id":"5616","name":"Faith Church - Highland Campus","prev_name":"First CRC","street":"8910 Grace St","city":"Highland","state":"IN","lat":41.5515,"lng":-87.4477,"languages":"English"}
+{"id":"5620","name":"New Life CRC","prev_name":"Second CRC (Highland)","street":"3010 Ridge Rd","city":"Highland","state":"IN","lat":41.5531,"lng":-87.4564,"languages":"English"}
+{"id":"5625","name":"Family of Faith CRC","prev_name":null,"street":"6645 W Steger Rd","city":"Monee","state":"IL","lat":41.468,"lng":-87.7743,"languages":"English"}
+{"id":"5628","name":"Lafayette CRC","prev_name":null,"street":"1200 Tippecanoe St","city":"Lafayette","state":"IN","lat":40.427,"lng":-86.8838,"languages":"English"}
+{"id":"5630","name":"Sunrise CRC","prev_name":null,"street":"909 E 500 S","city":"Lafayette","state":"IN","lat":40.3427,"lng":-86.8859,"languages":"English"}
+{"id":"5632","name":"New Hope Church","prev_name":"First","street":"3642 Lake St","city":"Lansing","state":"IL","lat":41.5656,"lng":-87.5275,"languages":"English"}
+{"id":"5636","name":"Bethel CRC","prev_name":null,"street":"3500 Glenwood Lansing Rd","city":"Lansing","state":"IL","lat":41.5436,"lng":-87.532,"languages":"English"}
+{"id":"5648","name":"Munster Church","prev_name":"Munster Christian Reformed Church","street":"214 Ridge Rd","city":"Munster","state":"IN","lat":41.5622,"lng":-87.5214,"languages":"English"}
+{"id":"5651","name":"Crossroads Community CRC","prev_name":null,"street":"1538 Janice Dr","city":"Schererville","state":"IN","lat":41.4946,"lng":-87.4832,"languages":"English"}
+{"id":"5660","name":"Cottage Grove CRC","prev_name":null,"street":"16556 Cottage Grove Ave","city":"South Holland","state":"IL","lat":41.5943,"lng":-87.598,"languages":"English"}
+{"id":"5666","name":"Emmanuel CRC","prev_name":null,"street":"22515 Torrence Ave","city":"Sauk Village","state":"IL","lat":41.4808,"lng":-87.5564,"languages":"English"}
+{"id":"5670","name":"Community Christian Reformed Church","prev_name":null,"street":"10498 N 450 E","city":"De Motte","state":"IN","lat":41.1521,"lng":-87.3059,"languages":"English"}
+{"id":"5728","name":"East Martin CRC","prev_name":null,"street":"510 118th Ave","city":"Martin","state":"MI","lat":42.5514,"lng":-85.5934,"languages":"English"}
+{"id":"5735","name":"Greene Road CRC","prev_name":"Goshen CRC","street":"518 N Greene Rd","city":"Goshen","state":"IN","lat":41.5927,"lng":-85.8659,"languages":"English"}
+{"id":"5743","name":"Second CRC","prev_name":null,"street":"3015 Nichols Rd","city":"Kalamazoo","state":"MI","lat":42.3207,"lng":-85.6304,"languages":"English"}
+{"id":"5744","name":"Third Christian Reformed Church","prev_name":null,"street":"2400 Winchell Ave","city":"Kalamazoo","state":"MI","lat":42.2676,"lng":-85.6197,"languages":"English"}
+{"id":"57530","name":"Resurrection Church","prev_name":null,"street":"50 Bennington St","city":"Boston","state":"MA","lat":42.3757,"lng":-71.0371,"languages":"English|Spanish"}
+{"id":"57534","name":"Yesalm Korean CRC","prev_name":null,"street":"5517 Ventura St","city":"Fort Worth","state":"TX","lat":32.9058,"lng":-97.267,"languages":"Korean"}
+{"id":"5758","name":"Grace CRC","prev_name":null,"street":"1724 Whites Rd","city":"Kalamazoo","state":"MI","lat":42.2609,"lng":-85.6087,"languages":"English"}
+{"id":"5760","name":"Heritage CRC","prev_name":null,"street":"2857 South 11th St","city":"Kalamazoo","state":"MI","lat":42.2632,"lng":-85.6543,"languages":"English"}
+{"id":"5764","name":"Korean CRC","prev_name":null,"street":"109 Mission Dr","city":"Vicksburg","state":"MI","lat":42.1315,"lng":-85.5899,"languages":"English|Korean"}
+{"id":"5773","name":"Northern Heights CRC","prev_name":null,"street":"1454 West E Ave","city":"Kalamazoo","state":"MI","lat":42.3624,"lng":-85.6081,"languages":"English"}
+{"id":"5777","name":"Prairie Edge CRC","prev_name":null,"street":"9316 Oakland Dr","city":"Portage","state":"MI","lat":42.1815,"lng":-85.6146,"languages":"English"}
+{"id":"5782","name":"Southern Heights CRC","prev_name":null,"street":"4141 East Hillandale Dr","city":"Kalamazoo","state":"MI","lat":42.249,"lng":-85.5988,"languages":"English"}
+{"id":"57833","name":"Hasarang Family Church","prev_name":null,"street":"8050 E Mountain View Rd","city":"Scottsdale","state":"AZ","lat":33.5754,"lng":-111.9076,"languages":"Korean"}
+{"id":"5787","name":"Westwood Christian Reformed Church","prev_name":null,"street":"620 Northampton Rd","city":"Kalamazoo","state":"MI","lat":42.2975,"lng":-85.6399,"languages":"English"}
+{"id":"58117","name":"A & M Korean Student Church","prev_name":null,"street":"1100 Carter Creek Pky","city":"Bryan","state":"TX","lat":30.6608,"lng":-96.363,"languages":"Korean"}
+{"id":"58119","name":"The Loving Church","prev_name":null,"street":"166 E Roger Rd","city":"Tucson","state":"AZ","lat":32.2787,"lng":-110.9693,"languages":"English|Korean"}
+{"id":"58120","name":"Logos Church","prev_name":null,"street":"2675 S Jones Blvd #201","city":"Las Vegas","state":"NV","lat":36.141,"lng":-115.2258,"languages":"Korean"}
+{"id":"59499","name":"Rise Up Church","prev_name":"Cedar Spring Church Plant","street":"Cedar Springs Middle School4873 16 Mile Rd NE","city":"Cedar Springs","state":"MI","lat":43.221,"lng":-85.5456,"languages":"English"}
+{"id":"59501","name":"City On A Hill Church","prev_name":null,"street":"375 Watchung Ave","city":"Bloomfield","state":"NJ","lat":40.829,"lng":-74.1849,"languages":"English"}
+{"id":"6018","name":"East Side CRC","prev_name":null,"street":"23600 Emery Rd","city":"Warrensville Heights","state":"OH","lat":41.4338,"lng":-81.5123,"languages":"English"}
+{"id":"60335","name":"Yeolin Community Church","prev_name":null,"street":"1622 Hickory Valley Rd","city":"Chattanooga","state":"TN","lat":35.0267,"lng":-85.1763,"languages":"Korean"}
+{"id":"6042","name":"Dearborn Christian Fellowship CRC","prev_name":"Dearborn","street":"21360 Donaldson","city":"Dearborn","state":"MI","lat":42.2927,"lng":-83.2455,"languages":"English"}
+{"id":"6049","name":"First Christian Reformed Church of Detroit","prev_name":"First","street":"1444 Maryland St","city":"Grosse Pointe Park","state":"MI","lat":42.3864,"lng":-82.9442,"languages":"English"}
+{"id":"60619","name":"Cerritos Mission Church","prev_name":null,"street":"12413 195th St","city":"Cerritos","state":"CA","lat":33.8539,"lng":-118.0674,"languages":"English|Korean"}
+{"id":"6063","name":"Imlay City CRC","prev_name":null,"street":"395 N Cedar St","city":"Imlay City","state":"MI","lat":43.0287,"lng":-83.0715,"languages":"English"}
+{"id":"6074","name":"Cascades Fellowship CRC","prev_name":null,"street":"2390 West High St","city":"Jackson","state":"MI","lat":42.2329,"lng":-84.441,"languages":"English"}
+{"id":"6081","name":"River Terrace Church","prev_name":null,"street":"1509 River Terrace Dr","city":"East Lansing","state":"MI","lat":42.7231,"lng":-84.4609,"languages":"English"}
+{"id":"6084","name":"Hmong Christian Ministries","prev_name":"Hmong Christian Ministry Church","street":"2618 South Waverly Hwy","city":"Lansing","state":"MI","lat":42.6587,"lng":-84.6025,"languages":"English|Hmong"}
+{"id":"6089","name":"Han-Bit Korean CRC","prev_name":null,"street":"1849 S Livernois Rd","city":"Rochester Hills","state":"MI","lat":42.6542,"lng":-83.151,"languages":"English|Korean"}
+{"id":"6090","name":"North Hills CRC","prev_name":null,"street":"3150 N Adams Rd","city":"Troy","state":"MI","lat":42.5638,"lng":-83.2061,"languages":"English"}
+{"id":"6096","name":"Willard CRC","prev_name":null,"street":"4180 State Route 103 S","city":"Willard","state":"OH","lat":41.0283,"lng":-82.7316,"languages":"English"}
+{"id":"6304","name":"Baldwin Christian Reformed Church","prev_name":null,"street":"897 US Highway 63","city":"Baldwin","state":"WI","lat":44.9916,"lng":-92.3746,"languages":"English"}
+{"id":"6316","name":"Brooten Community Church","prev_name":"Brooten","street":"542 Pleasant Ave","city":"Brooten","state":"MN","lat":45.4958,"lng":-95.1231,"languages":"English"}
+{"id":"63163","name":"Cornerstone Church of New York","prev_name":"Cornerstone Church of NYC","street":"211-06 48th Ave","city":"Bayside","state":"NY","lat":40.755,"lng":-73.7694,"languages":"English"}
+{"id":"63164","name":"Orange Hope Church","prev_name":null,"street":"2311 E Chapman Ave","city":"Fullerton","state":"CA","lat":33.8751,"lng":-117.892,"languages":"Korean"}
+{"id":"63165","name":"Korean Peace Presbyterian Church","prev_name":null,"street":"14061 East 2nd St","city":"Whittier","state":"CA","lat":33.9621,"lng":-118.022,"languages":"Korean"}
+{"id":"63167","name":"All Nations Church - Inland","prev_name":null,"street":"9806 Arrow Route","city":"Rancho Cucamonga","state":"CA","lat":34.1003,"lng":-117.5905,"languages":"English|Korean"}
+{"id":"63180","name":"Manhattan Vertical Church","prev_name":null,"street":"357 W 36th St Ste 501","city":"New York","state":"NY","lat":40.7545,"lng":-73.9948,"languages":"Korean"}
+{"id":"6320","name":"Bunde Christian Reformed Church","prev_name":null,"street":"14001 Hwy 7 SE","city":"Clara City","state":"MN","lat":44.9347,"lng":-95.3094,"languages":"English"}
+{"id":"6325","name":"Bridgewood Church","prev_name":null,"street":"6201 W 135th St","city":"Savage","state":"MN","lat":44.7571,"lng":-93.3573,"languages":"English"}
+{"id":"6340","name":"Hancock CRC","prev_name":null,"street":"954 Fifth St","city":"Hancock","state":"MN","lat":45.4989,"lng":-95.7923,"languages":"English"}
+{"id":"6347","name":"New Life SEA CRC","prev_name":"New Life","street":"1600 Silver Lake Rd NW","city":"New Brighton","state":"MN","lat":45.0761,"lng":-93.2197,"languages":"English|Karen|Laotian|Thai"}
+{"id":"6353","name":"Calvary CRC","prev_name":null,"street":"5300 France Ave S","city":"Edina","state":"MN","lat":44.9071,"lng":-93.3298,"languages":"English"}
+{"id":"6355","name":"Faith Christian Reformed Church","prev_name":null,"street":"1600 Silver Lake Rd NW","city":"New Brighton","state":"MN","lat":45.0759,"lng":-93.2194,"languages":"English"}
+{"id":"6361","name":"Pease CRC","prev_name":null,"street":"117 W Main St","city":"Pease","state":"MN","lat":45.6994,"lng":-93.6494,"languages":"English"}
+{"id":"6362","name":"Bethel Christian Reformed Church","prev_name":null,"street":"8938 33rd St","city":"Princeton","state":"MN","lat":45.5926,"lng":-93.5933,"languages":"English"}
+{"id":"6369","name":"First Christian Reformed Church of Prinsburg","prev_name":null,"street":"106 6th St","city":"Prinsburg","state":"MN","lat":44.9357,"lng":-95.1866,"languages":"English"}
+{"id":"6370","name":"Unity Christian Reformed Church","prev_name":null,"street":"510 6th St N","city":"Prinsburg","state":"MN","lat":44.9401,"lng":-95.1861,"languages":"English"}
+{"id":"6373","name":"Raymond CRC","prev_name":null,"street":"202 3rd Ave S","city":"Raymond","state":"MN","lat":45.0147,"lng":-95.2363,"languages":"English"}
+{"id":"6377","name":"Emden CRC","prev_name":null,"street":"512 Emerson Ave NW","city":"Renville","state":"MN","lat":44.7953,"lng":-95.2187,"languages":"English"}
+{"id":"6381","name":"Grace CRC","prev_name":null,"street":"3540 75th St East","city":"Inver Grove Heights","state":"MN","lat":44.8405,"lng":-93.0338,"languages":"English"}
+{"id":"6385","name":"Rock of Life CRC","prev_name":"Willmar CRC","street":"1708 SW 8th St","city":"Willmar","state":"MN","lat":45.1049,"lng":-95.052,"languages":"English"}
+{"id":"6614","name":"Chandler CRC","prev_name":null,"street":"Carlton Ave & Hwy #91","city":"Chandler","state":"MN","lat":43.9299,"lng":-95.9423,"languages":"English"}
+{"id":"6615","name":"Faith Community CRC","prev_name":"Colton","street":"200 S Dakota","city":"Colton","state":"SD","lat":43.789,"lng":-96.9264,"languages":"English"}
+{"id":"6621","name":"First CRC","prev_name":null,"street":"125 Center St W","city":"Edgerton","state":"MN","lat":43.8747,"lng":-96.131,"languages":"English"}
+{"id":"6628","name":"Bethel CRC","prev_name":null,"street":"610 Main St","city":"Edgerton","state":"MN","lat":43.8755,"lng":-96.1281,"languages":"English"}
+{"id":"6642","name":"Holland Christian Reformed Church","prev_name":null,"street":"500 Sioux St","city":"Holland","state":"MN","lat":44.0927,"lng":-96.1856,"languages":"English"}
+{"id":"6643","name":"Holland Center CRC","prev_name":null,"street":"5 miles south, 3.5 miles west of Lodgepole","city":"Lodgepole","state":"SD","lat":45.7988,"lng":-102.7575,"languages":"English"}
+{"id":"6644","name":"Hull CRC","prev_name":null,"street":"1233 96th St SE","city":"Hague","state":"ND","lat":46.0298,"lng":-100.1224,"languages":"English"}
+{"id":"6656","name":"Luverne CRC","prev_name":null,"street":"605 North Estey","city":"Luverne","state":"MN","lat":43.6595,"lng":-96.2115,"languages":"English"}
+{"id":"6670","name":"Pipestone Christian Reformed","prev_name":null,"street":"800 2nd Ave SE","city":"Pipestone","state":"MN","lat":43.9909,"lng":-96.316,"languages":"English"}
+{"id":"6684","name":"Volga CRC","prev_name":null,"street":"412 Kasan Ave","city":"Volga","state":"SD","lat":44.3207,"lng":-96.9265,"languages":"English"}
+{"id":"6685","name":"Worthington Christian Reformed Church","prev_name":null,"street":"1100 First Ave SW","city":"Worthington","state":"MN","lat":43.6096,"lng":-95.6097,"languages":"English"}
+{"id":"6902","name":"Fellowship CRC","prev_name":null,"street":"407 Perry Ave","city":"Big Rapids","state":"MI","lat":43.6877,"lng":-85.4894,"languages":"English"}
+{"id":"6904","name":"Ferrysburg Community Church","prev_name":null,"street":"17785 Mohawk Dr","city":"Spring Lake","state":"MI","lat":43.0926,"lng":-86.228,"languages":"English"}
+{"id":"6908","name":"First Christian Reformed Church","prev_name":null,"street":"721 Hillcrest Ave","city":"Fremont","state":"MI","lat":43.4738,"lng":-85.9359,"languages":"English"}
+{"id":"6912","name":"Second CRC","prev_name":null,"street":"600 Apache Dr","city":"Fremont","state":"MI","lat":43.4595,"lng":-85.9316,"languages":"English"}
+{"id":"6920","name":"Fruitport CRC","prev_name":null,"street":"3520 E Pontaluna Rd","city":"Fruitport","state":"MI","lat":43.1324,"lng":-86.1588,"languages":"English"}
+{"id":"6922","name":"Covenant Life Church","prev_name":null,"street":"101 Columbus Ave","city":"Grand Haven","state":"MI","lat":43.0656,"lng":-86.2313,"languages":"English"}
+{"id":"6924","name":"First CRC of Grand Haven","prev_name":null,"street":"516 S Ferry St","city":"Grand Haven","state":"MI","lat":43.056,"lng":-86.2151,"languages":"English"}
+{"id":"6925","name":"Angel Community Church","prev_name":"Applewood","street":"446 Ada Ave","city":"Muskegon","state":"MI","lat":43.2335,"lng":-86.2332,"languages":"English"}
+{"id":"6928","name":"Second Christian Reformed Church","prev_name":null,"street":"2021 Sheldon Rd","city":"Grand Haven","state":"MI","lat":43.0449,"lng":-86.2287,"languages":"English"}
+{"id":"6932","name":"Allen Avenue CRC","prev_name":null,"street":"695 Allen Ave","city":"Muskegon","state":"MI","lat":43.2348,"lng":-86.2272,"languages":"English"}
+{"id":"6950","name":"Celebration Community Church","prev_name":null,"street":"1260 W Sherman Blvd","city":"Muskegon","state":"MI","lat":43.2059,"lng":-86.274,"languages":"English"}
+{"id":"6953","name":"Grace CRC","prev_name":null,"street":"2500 E Laketon Ave","city":"Muskegon","state":"MI","lat":43.22,"lng":-86.182,"languages":"English"}
+{"id":"6961","name":"Calvin Church","prev_name":null,"street":"973 W Norton Ave","city":"Muskegon","state":"MI","lat":43.1899,"lng":-86.2681,"languages":"English"}
+{"id":"6969","name":"New Era CRC","prev_name":null,"street":"1820 Ray Ave","city":"New Era","state":"MI","lat":43.5594,"lng":-86.3404,"languages":"English"}
+{"id":"6973","name":"Reeman CRC","prev_name":null,"street":"6121 S Fitzgerald Ave","city":"Fremont","state":"MI","lat":43.4426,"lng":-86.0095,"languages":"English"}
+{"id":"6977","name":"Spring Lake CRC","prev_name":null,"street":"364 S Lake Ave","city":"Spring Lake","state":"MI","lat":43.0709,"lng":-86.1851,"languages":"English"}
+{"id":"710","name":"Christ's Community Church","prev_name":"Creation Church","street":"1550 W Chandler Blvd","city":"Chandler","state":"AZ","lat":33.307,"lng":-111.869,"languages":"English"}
+{"id":"720","name":"Missio Dei Church","prev_name":"Sunshine Community CRC","street":"11601 Montwood Dr","city":"El Paso","state":"TX","lat":31.768,"lng":-106.2901,"languages":"English"}
+{"id":"7205","name":"Korean CRC","prev_name":null,"street":"1416 20th St","city":"Ames","state":"IA","lat":42.0416,"lng":-93.6302,"languages":"Korean"}
+{"id":"721","name":"Valley Ridge Community Church","prev_name":null,"street":"","city":"Socorro","state":"TX","lat":31.6501,"lng":-106.279,"languages":"Spanish"}
+{"id":"7210","name":"Trinity CRC","prev_name":null,"street":"3626 Ontario St","city":"Ames","state":"IA","lat":42.0332,"lng":-93.6682,"languages":"English"}
+{"id":"7212","name":"Austinville CRC","prev_name":null,"street":"31871 2nd St","city":"Austinville","state":"IA","lat":42.5874,"lng":-92.959,"languages":"English"}
+{"id":"7216","name":"Britt CRC","prev_name":null,"street":"569 Main Ave N","city":"Britt","state":"IA","lat":43.1017,"lng":-93.8,"languages":"English"}
+{"id":"7224","name":"Hollandale CRC","prev_name":null,"street":"102 Amsterdam Ave E","city":"Hollandale","state":"MN","lat":43.759,"lng":-93.202,"languages":"English"}
+{"id":"7233","name":"Kanawha CRC","prev_name":null,"street":"129 E 3rd St","city":"Kanawha","state":"IA","lat":42.9361,"lng":-93.7918,"languages":"English"}
+{"id":"7237","name":"Wright CRC","prev_name":null,"street":"from Kanawha - 5 mi S, 2 mi W County Rd C-201726 130th St","city":"Kanawha","state":"IA","lat":42.9252,"lng":-93.7962,"languages":"English"}
+{"id":"7243","name":"Rolling Acres Christian Reformed Church","prev_name":null,"street":"341 19th St SW","city":"Mason City","state":"IA","lat":43.1332,"lng":-93.2089,"languages":"English"}
+{"id":"7245","name":"Parkersburg CRC","prev_name":null,"street":"807 Grant St","city":"Parkersburg","state":"IA","lat":42.5771,"lng":-92.784,"languages":"English"}
+{"id":"725","name":"Hope Community CRC","prev_name":null,"street":"3700 N Fanning Dr","city":"Flagstaff","state":"AZ","lat":35.219,"lng":-111.5951,"languages":"English"}
+{"id":"7253","name":"First CRC","prev_name":null,"street":"2.5 miles west of Wellsburg on D-2512420 185th St","city":"Wellsburg","state":"IA","lat":42.4509,"lng":-92.9217,"languages":"English"}
+{"id":"7261","name":"Woden CRC","prev_name":null,"street":"3 miles south & 2 miles west of Woden205 290th St","city":"Woden","state":"IA","lat":43.2379,"lng":-93.9163,"languages":"English"}
+{"id":"72935","name":"Iglesia Todas Las Naciones","prev_name":null,"street":"3520 Kiel St","city":"Hudsonville","state":"MI","lat":42.8693,"lng":-85.8692,"languages":""}
+{"id":"750","name":"Phoenix CRC","prev_name":null,"street":"2438 E Earll Dr","city":"Phoenix","state":"AZ","lat":33.4842,"lng":-112.0283,"languages":"English"}
+{"id":"7521","name":"Hawarden CRC","prev_name":null,"street":"1515 16th St","city":"Hawarden","state":"IA","lat":43.0046,"lng":-96.4732,"languages":"English"}
+{"id":"7528","name":"First CRC","prev_name":null,"street":"110 4th Ave N","city":"Hospers","state":"IA","lat":43.0718,"lng":-95.9024,"languages":"English"}
+{"id":"7529","name":"First CRC","prev_name":null,"street":"1121 5th St","city":"Hull","state":"IA","lat":43.1932,"lng":-96.1312,"languages":"English"}
+{"id":"7530","name":"Hope CRC","prev_name":null,"street":"1407 6th St","city":"Hull","state":"IA","lat":43.1947,"lng":-96.1271,"languages":"English"}
+{"id":"75301","name":"The Voice CRC of Virginia","prev_name":"Virginia Voice Church","street":"9800 Burke Lake Rd","city":"Burke","state":"VA","lat":38.7822,"lng":-77.2839,"languages":"English|Korean"}
+{"id":"7535","name":"Ireton Christian Reformed","prev_name":null,"street":"301 Maple St","city":"Ireton","state":"IA","lat":42.9757,"lng":-96.3117,"languages":"English"}
+{"id":"7542","name":"Calvin CRC","prev_name":null,"street":"326 7th St SE","city":"Le Mars","state":"IA","lat":42.7845,"lng":-96.1612,"languages":"English"}
+{"id":"7544","name":"Northern Lighthouse Church","prev_name":"Northern Lighthouse CRC","street":"6141 N 14th St","city":"Lincoln","state":"NE","lat":40.8731,"lng":-96.7013,"languages":"English"}
+{"id":"7545","name":"Pathway Community CRC","prev_name":"Johnson County Church Planting Group","street":"15885 Lackman Rd","city":"Olathe","state":"KS","lat":38.8411,"lng":-94.7599,"languages":"English"}
+{"id":"7549","name":"Ocheyedan CRC","prev_name":null,"street":"833 5th St","city":"Ocheyedan","state":"IA","lat":43.4137,"lng":-95.5387,"languages":"English"}
+{"id":"7550","name":"Prairie Lane CRC","prev_name":null,"street":"3111 South 119th St","city":"Omaha","state":"NE","lat":41.23,"lng":-96.0993,"languages":"English"}
+{"id":"7556","name":"First CRC","prev_name":null,"street":"408 Arizona Ave SW","city":"Orange City","state":"IA","lat":43.0023,"lng":-96.0602,"languages":"English"}
+{"id":"7557","name":"Calvary CRC","prev_name":null,"street":"709 Fifth St SE","city":"Orange City","state":"IA","lat":43.0023,"lng":-96.0486,"languages":"English"}
+{"id":"7559","name":"Immanuel CRC","prev_name":null,"street":"1405 Albany Ave NE","city":"Orange City","state":"IA","lat":43.02,"lng":-96.0557,"languages":"English"}
+{"id":"7563","name":"Sanborn Christian Reformed Church","prev_name":null,"street":"208 N Western St","city":"Sanborn","state":"IA","lat":43.1819,"lng":-95.6632,"languages":"English"}
+{"id":"7570","name":"First CRC","prev_name":null,"street":"901 9th St","city":"Sheldon","state":"IA","lat":43.1792,"lng":-95.846,"languages":"English"}
+{"id":"7572","name":"Immanuel Christian Reformed Church","prev_name":null,"street":"601 Union Ave","city":"Sheldon","state":"IA","lat":43.1817,"lng":-95.8355,"languages":"English"}
+{"id":"7577","name":"Sibley Christian Reformed Church","prev_name":null,"street":"115 Maple Dr","city":"Sibley","state":"IA","lat":43.4085,"lng":-95.7494,"languages":"English"}
+{"id":"7582","name":"Siouxland Unity CRC","prev_name":"Lao Unity","street":"601 Court St","city":"Sioux City","state":"IA","lat":42.4966,"lng":-96.3968,"languages":"English|Laotian"}
+{"id":"7610","name":"Oxnard Korean CRC","prev_name":null,"street":"1076 E Strobe St","city":"Oxnard","state":"CA","lat":34.2304,"lng":-119.1604,"languages":"Korean"}
+{"id":"7613","name":"Springing Fountain Church","prev_name":"Springing Fountain CRC","street":"11924 Leland Ave","city":"South Whittier","state":"CA","lat":33.9229,"lng":-118.0418,"languages":"Korean"}
+{"id":"7625","name":"Southern California Han Min CRC","prev_name":"Orange Han Min CRC","street":"2355 W Valencia Dr","city":"Fullerton","state":"CA","lat":33.8674,"lng":-117.9694,"languages":"Korean"}
+{"id":"7627","name":"Young Sung Nanum Church","prev_name":"Nanum Church of Santa Maria","street":"5420 Stillwell Rd","city":"Santa Maria","state":"CA","lat":34.8601,"lng":-120.3971,"languages":"Korean"}
+{"id":"7636","name":"Han Sarang Church","prev_name":"Garden Grove Korean Presby.","street":"9822 Russell Ave","city":"Garden Grove","state":"CA","lat":33.7682,"lng":-117.9578,"languages":"Korean"}
+{"id":"7637","name":"Pilgrim Church","prev_name":"So Mang CRC","street":"3840 El Camino Rd","city":"Las Vegas","state":"NV","lat":36.1193,"lng":-115.2288,"languages":"English|Korean"}
+{"id":"7651","name":"Korean Peace Church of Los Angeles","prev_name":"Korean Peace of Los Angeles CRC","street":"14683 Fox St","city":"Mission Hills","state":"CA","lat":34.2672,"lng":-118.4531,"languages":"English|Korean"}
+{"id":"7658","name":"Dong San of Love CRC","prev_name":"Valley Dong San","street":"9440 Balboa Blvd","city":"Northridge","state":"CA","lat":34.2418,"lng":-118.5018,"languages":"English|Korean"}
+{"id":"7661","name":"Joo Sung Christian Reformed Church","prev_name":"Joo Sung Mission Church","street":"2115 W Crescent Ave #201","city":"Anaheim","state":"CA","lat":33.8398,"lng":-117.9553,"languages":"Korean"}
+{"id":"7664","name":"East Bay Korean CRC","prev_name":null,"street":"1534 Everett St","city":"El Cerrito","state":"CA","lat":37.9221,"lng":-122.31,"languages":"English|Korean"}
+{"id":"7672","name":"San Jose New Hope CRC","prev_name":"San Jose Hope","street":"2930 Patrick Henry Dr","city":"Santa Clara","state":"CA","lat":37.3956,"lng":-121.9794,"languages":"Korean"}
+{"id":"7802","name":"Anacortes CRC","prev_name":null,"street":"1019 Tenth St","city":"Anacortes","state":"WA","lat":48.514,"lng":-122.6138,"languages":"English"}
+{"id":"7803","name":"Alaska Korean CRC","prev_name":null,"street":"709 W International Airport Rd","city":"Anchorage","state":"AK","lat":61.1737,"lng":-149.8964,"languages":"Korean"}
+{"id":"7804","name":"Trinity CRC","prev_name":null,"street":"3000 E 16th Ave","city":"Anchorage","state":"AK","lat":61.206,"lng":-149.8246,"languages":"English"}
+{"id":"7806","name":"Kelsey Creek Church","prev_name":"Bellevue Christian Reformed Church","street":"1221 148th Ave NE","city":"Bellevue","state":"WA","lat":47.6213,"lng":-122.1445,"languages":"English"}
+{"id":"7807","name":"Mountain View CRC","prev_name":null,"street":"6678 Old Guide Rd","city":"Lynden","state":"WA","lat":48.8834,"lng":-122.4943,"languages":"English"}
+{"id":"7808","name":"Hope in Christ CRC","prev_name":"Bellingham CRC","street":"712 E Sunset Dr","city":"Bellingham","state":"WA","lat":48.77,"lng":-122.4661,"languages":"English"}
+{"id":"7809","name":"Alger Community CRC","prev_name":null,"street":"1475 Silver Run Ln (Alger)","city":"Bellingham","state":"WA","lat":48.624,"lng":-122.3437,"languages":"English"}
+{"id":"7820","name":"First CRC","prev_name":null,"street":"1429 McDougall Ave","city":"Everett","state":"WA","lat":47.998,"lng":-122.1994,"languages":"English"}
+{"id":"7828","name":"Kent First Korean CRC","prev_name":null,"street":"300 W Saar St","city":"Kent","state":"WA","lat":47.3783,"lng":-122.2352,"languages":"English|Korean"}
+{"id":"7832","name":"First Christian Reformed Church","prev_name":null,"street":"1010 W Front St","city":"Lynden","state":"WA","lat":48.9409,"lng":-122.4603,"languages":"English"}
+{"id":"7836","name":"Second CRC","prev_name":null,"street":"710 Front St","city":"Lynden","state":"WA","lat":48.942,"lng":-122.4567,"languages":"English"}
+{"id":"7838","name":"Sonlight Community CRC","prev_name":"Sonlight Church","street":"8800 Bender Rd","city":"Lynden","state":"WA","lat":48.9613,"lng":-122.4407,"languages":"English"}
+{"id":"7840","name":"Third CRC","prev_name":null,"street":"514 Liberty St","city":"Lynden","state":"WA","lat":48.9446,"lng":-122.4554,"languages":"English"}
+{"id":"7844","name":"Bethel CRC","prev_name":null,"street":"1105 Liberty St","city":"Lynden","state":"WA","lat":48.942,"lng":-122.4622,"languages":"English"}
+{"id":"785","name":"The Village Community Ministries","prev_name":"The Village CRC","street":"1926 N Cloverland Ave","city":"Tucson","state":"AZ","lat":32.2458,"lng":-110.8806,"languages":"English"}
+{"id":"7856","name":"Cascade CRC","prev_name":null,"street":"13908 51st Ave NE","city":"Marysville","state":"WA","lat":48.1224,"lng":-122.1634,"languages":"English"}
+{"id":"7857","name":"New Hope Fellowship","prev_name":"Monroe CRC","street":"1012 W Main St","city":"Monroe","state":"WA","lat":47.8509,"lng":-121.9845,"languages":"English"}
+{"id":"7858","name":"Mill Creek Church","prev_name":"Mill Creek Community CRC","street":"16415 North Rd","city":"Bothell","state":"WA","lat":47.8491,"lng":-122.2351,"languages":"English"}
+{"id":"7860","name":"Faith Community Fellowship","prev_name":null,"street":"1427 Monte Vista Dr","city":"Mount Vernon","state":"WA","lat":48.4341,"lng":-122.2797,"languages":"English"}
+{"id":"7861","name":"First CRC","prev_name":null,"street":"701 W Blackburn Rd","city":"Mount Vernon","state":"WA","lat":48.4067,"lng":-122.343,"languages":"English"}
+{"id":"7865","name":"Oak Harbor CRC","prev_name":null,"street":"1411 Wieldraayer Rd","city":"Oak Harbor","state":"WA","lat":48.2967,"lng":-122.6916,"languages":"English"}
+{"id":"7866","name":"Iglesia Vida Nueva CRC","prev_name":"Skagit Valley Hispanic Ministry","street":"701 W Blackburn Rd","city":"Mount Vernon","state":"WA","lat":48.4067,"lng":-122.343,"languages":"Spanish"}
+{"id":"7867","name":"Olympia CRC","prev_name":null,"street":"2121 Log Cabin Rd","city":"Olympia","state":"WA","lat":47.0139,"lng":-122.8725,"languages":"English"}
+{"id":"7872","name":"Emmaus Road CRC","prev_name":null,"street":"","city":"Seattle","state":"WA","lat":47.6062,"lng":-122.3321,"languages":"English"}
+{"id":"7873","name":"Shoreline Christian Reformed Church","prev_name":"First Christian Reformed Church of Seattle","street":"14555 25th Ave NE","city":"Shoreline","state":"WA","lat":47.7354,"lng":-122.3024,"languages":"English"}
+{"id":"7876","name":"True Light CRC","prev_name":"Hope Korean","street":"905 S 54th St","city":"Tacoma","state":"WA","lat":47.2084,"lng":-122.4463,"languages":"Korean"}
+{"id":"7885","name":"Sumas CRC","prev_name":null,"street":"700 Sumas Ave","city":"Sumas","state":"WA","lat":48.997,"lng":-122.2624,"languages":"English"}
+{"id":"7891","name":"Tacoma Christian Reformed Community Church","prev_name":"Community CRC","street":"2419 E 72nd St","city":"Tacoma","state":"WA","lat":47.1931,"lng":-122.3962,"languages":"English"}
+{"id":"7892","name":"Tacoma CRC","prev_name":"Korean CRC","street":"9424 S Yakima Ave","city":"Tacoma","state":"WA","lat":47.1712,"lng":-122.4444,"languages":"English|Korean"}
+{"id":"7895","name":"Hebron CRC","prev_name":null,"street":"6112 20th St E","city":"Fife","state":"WA","lat":47.2386,"lng":-122.3478,"languages":"English|Korean"}
+{"id":"79482","name":"Nasung Gloria Church","prev_name":null,"street":"690 Willshire Pl #302","city":"Los Angeles","state":"CA","lat":34.0602,"lng":-118.2874,"languages":"English|Korean"}
+{"id":"79484","name":"Iglesia Misionera Renacer","prev_name":null,"street":"17603 Ardmore Ave","city":"Bellflower","state":"CA","lat":33.8726,"lng":-118.1295,"languages":"English|Spanish"}
+{"id":"79485","name":"Orangewood Community Church","prev_name":null,"street":"3710 W Orangewood Ave","city":"Phoenix","state":"AZ","lat":33.5464,"lng":-112.1394,"languages":"English"}
+{"id":"801","name":"Valley CRC","prev_name":null,"street":"1452 River Rd","city":"Binghamton","state":"NY","lat":42.1979,"lng":-75.855,"languages":"English"}
+{"id":"804","name":"East Palmyra CRC","prev_name":null,"street":"2057 E Palmyra Port Gibson Rd","city":"Palmyra","state":"NY","lat":43.0831,"lng":-77.1574,"languages":"English"}
+{"id":"810","name":"Goshen CRC","prev_name":null,"street":"2440 State Rte 17A","city":"Goshen","state":"NY","lat":41.3851,"lng":-74.3404,"languages":"English"}
+{"id":"8107","name":"Christian Reformed Church of Cedar","prev_name":null,"street":"3056 Rutledge Ave","city":"Cedar","state":"IA","lat":41.2114,"lng":-92.5253,"languages":"English"}
+{"id":"8109","name":"Peace CRC","prev_name":null,"street":"6600 C Ave NE","city":"Cedar Rapids","state":"IA","lat":42.0437,"lng":-91.638,"languages":"English"}
+{"id":"8114","name":"Crossroads Fellowship CRC","prev_name":"Des Moines CRC","street":"1200 60th St","city":"West Des Moines","state":"IA","lat":41.5887,"lng":-93.7915,"languages":"English"}
+{"id":"81143","name":"City Hope GR","prev_name":null,"street":"1020 Monroe Ave NW","city":"Grand Rapids","state":"MI","lat":42.9771,"lng":-85.6718,"languages":"English"}
+{"id":"81144","name":"Encounter Church - Fulton Heights","prev_name":null,"street":"1736 Lyon St NE","city":"Grand Rapids","state":"MI","lat":42.9658,"lng":-85.6261,"languages":"English"}
+{"id":"8117","name":"Chinese Church of Iowa City","prev_name":null,"street":"570 Madison Ave","city":"North Liberty","state":"IA","lat":41.7511,"lng":-91.6341,"languages":"Chinese|English"}
+{"id":"8121","name":"Leighton CRC","prev_name":null,"street":"415 Reid St","city":"Leighton","state":"IA","lat":41.3397,"lng":-92.7866,"languages":"English"}
+{"id":"8128","name":"Newton CRC","prev_name":null,"street":"511 S 5th Ave E","city":"Newton","state":"IA","lat":41.6953,"lng":-93.0479,"languages":"English"}
+{"id":"8135","name":"First CRC","prev_name":null,"street":"815 N 11th St","city":"Oskaloosa","state":"IA","lat":41.3029,"lng":-92.6322,"languages":"English"}
+{"id":"814","name":"Trinity CRC","prev_name":null,"street":"187 Main Street","city":"Richfield Springs","state":"NY","lat":42.8536,"lng":-74.981,"languages":"English"}
+{"id":"8142","name":"Bethel CRC","prev_name":null,"street":"2157 230th","city":"Oskaloosa","state":"IA","lat":41.3219,"lng":-92.6496,"languages":"English"}
+{"id":"8143","name":"Good News Chapel","prev_name":null,"street":"603 South H St","city":"Oskaloosa","state":"IA","lat":41.2906,"lng":-92.6547,"languages":"English"}
+{"id":"8149","name":"Connect Church","prev_name":"First CRC","street":"914 Liberty St","city":"Pella","state":"IA","lat":41.4057,"lng":-92.9214,"languages":"English"}
+{"id":"8150","name":"Grace Fellowship CRC","prev_name":null,"street":"2497 Highway 163","city":"Pella","state":"IA","lat":41.3929,"lng":-92.8731,"languages":"English"}
+{"id":"8156","name":"Cornerstone Church","prev_name":"Second CRC","street":"1020 E Oskaloosa St","city":"Pella","state":"IA","lat":41.397,"lng":-92.8926,"languages":"English"}
+{"id":"8163","name":"Calvary CRC","prev_name":null,"street":"408 Maple St","city":"Pella","state":"IA","lat":41.4178,"lng":-92.9122,"languages":"English"}
+{"id":"8165","name":"Faith CRC","prev_name":null,"street":"Corner of E 12th & University St","city":"Pella","state":"IA","lat":41.4113,"lng":-92.9077,"languages":"English"}
+{"id":"8170","name":"Peoria CRC","prev_name":null,"street":"120 Peoria West St","city":"Pella","state":"IA","lat":41.464,"lng":-92.8022,"languages":"English"}
+{"id":"8177","name":"Prairie City Christian Reformed Church","prev_name":null,"street":"608 E 6th St","city":"Prairie City","state":"IA","lat":41.6007,"lng":-93.2299,"languages":"English"}
+{"id":"8179","name":"Trinity CRC","prev_name":null,"street":"1703 McKelvey Rd","city":"Maryland Heights","state":"MO","lat":38.709,"lng":-90.4565,"languages":"English"}
+{"id":"818","name":"Rochester CRC","prev_name":null,"street":"2750 Atlantic Ave","city":"Penfield","state":"NY","lat":43.1541,"lng":-77.4816,"languages":"English"}
+{"id":"8180","name":"Stephenville CRC","prev_name":null,"street":"1120 County Road 351","city":"Stephenville","state":"TX","lat":32.1891,"lng":-98.2676,"languages":"English"}
+{"id":"8184","name":"Sully CRC","prev_name":null,"street":"103 9th Ave","city":"Sully","state":"IA","lat":41.5809,"lng":-92.843,"languages":"English"}
+{"id":"8191","name":"Tracy CRC","prev_name":null,"street":"2451 Picard Dr","city":"Tracy","state":"IA","lat":41.2741,"lng":-92.88,"languages":"English"}
+{"id":"822","name":"Avery Street CRC","prev_name":null,"street":"661 Avery St","city":"South Windsor","state":"CT","lat":41.8313,"lng":-72.5161,"languages":"English"}
+{"id":"826","name":"Community CRC","prev_name":null,"street":"7823 Hicks Rd","city":"Baldwinsville","state":"NY","lat":43.1495,"lng":-76.2783,"languages":"English"}
+{"id":"82637","name":"The Story Church","prev_name":null,"street":"156-17 Northern Blvd","city":"Flushing","state":"NY","lat":40.7641,"lng":-73.8086,"languages":"English|Korean"}
+{"id":"828","name":"Champlain Valley CRC","prev_name":null,"street":"73A Church St","city":"Waltham","state":"VT","lat":44.1631,"lng":-73.2373,"languages":"English"}
+{"id":"8310","name":"Fellowship CRC","prev_name":null,"street":"4800 Indian School Rd NE","city":"Albuquerque","state":"NM","lat":35.1015,"lng":-106.5908,"languages":"English"}
+{"id":"8317","name":"Church Rock CRC","prev_name":null,"street":"O6A Indian Village Dr","city":"Church Rock","state":"NM","lat":35.5354,"lng":-108.6064,"languages":"English|Navajo"}
+{"id":"832","name":"New England Chapel","prev_name":null,"street":"300 E Central St","city":"Franklin","state":"MA","lat":42.0793,"lng":-71.3839,"languages":"English"}
+{"id":"8320","name":"Crownpoint CRC","prev_name":null,"street":"Chaco Blvd & Sandpiper, 1 block east","city":"Crownpoint","state":"NM","lat":35.7439,"lng":-107.9813,"languages":"English|Navajo"}
+{"id":"8330","name":"Maranatha Fellowship CRC","prev_name":null,"street":"618 West Arrington St","city":"Farmington","state":"NM","lat":36.7308,"lng":-108.213,"languages":"English"}
+{"id":"8335","name":"Fort Wingate CRC","prev_name":null,"street":"State Hwy 400 342A","city":"Fort Wingate","state":"NM","lat":35.4643,"lng":-108.5444,"languages":"English"}
+{"id":"835","name":"Immanuel Church","prev_name":null,"street":"253 Myers Corners Rd","city":"Wappingers Falls","state":"NY","lat":41.6068,"lng":-73.8632,"languages":"English"}
+{"id":"8350","name":"Naschitti CRC","prev_name":null,"street":"41 1/3 miles north of Gallup on US 491","city":"Naschitti","state":"NM","lat":36.0637,"lng":-108.6816,"languages":"English"}
+{"id":"8360","name":"Red Valley CRC","prev_name":null,"street":"Route N13 Hwy (north of Red Rock Trading Post)","city":"Red Valley","state":"AZ","lat":36.6357,"lng":-109.352,"languages":"English|Navajo"}
+{"id":"8363","name":"Rehoboth CRC","prev_name":null,"street":"415 Tse Yaaniichii St","city":"Rehoboth","state":"NM","lat":35.5263,"lng":-108.6531,"languages":"English"}
+{"id":"8368","name":"Sanostee CRC","prev_name":null,"street":"9 miles west 491 on N34","city":"Sanostee","state":"NM","lat":36.4251,"lng":-108.8722,"languages":"English|Navajo"}
+{"id":"8372","name":"Bethel CRC","prev_name":null,"street":"Jct of Hwy 491 & 64","city":"Shiprock","state":"NM","lat":36.4946,"lng":-108.7611,"languages":"English|Navajo"}
+{"id":"8376","name":"Four Corners CRC","prev_name":null,"street":"Goat's Spring Rd, Apache County","city":"Teecnospos","state":"AZ","lat":36.7775,"lng":-109.3455,"languages":"Navajo"}
+{"id":"8380","name":"Toadlena CRC","prev_name":null,"street":"","city":"Toadlena","state":"NM","lat":36.5083,"lng":-108.7473,"languages":"Navajo"}
+{"id":"8384","name":"First Navajo CRC","prev_name":"Tohatchi CRC","street":"700 Water Tower Rd","city":"Tohatchi","state":"NM","lat":35.7803,"lng":-108.6248,"languages":"English|Navajo"}
+{"id":"8387","name":"Bethlehem CRC","prev_name":null,"street":"10 miles north of Gallup on Hwy 491Tohlakai Rt 4","city":"Tohlakai","state":"NM","lat":35.6599,"lng":-108.7686,"languages":"English|Navajo"}
+{"id":"8393","name":"Window Rock CRC","prev_name":null,"street":"205 Teecto Dr","city":"Window Rock","state":"AZ","lat":35.6805,"lng":-109.0519,"languages":"English"}
+{"id":"8398","name":"Zuni CRC","prev_name":null,"street":"29 Pia Mesa Rd","city":"Zuni","state":"NM","lat":35.0646,"lng":-108.8506,"languages":"English"}
+{"id":"8401","name":"Khmer CRC","prev_name":null,"street":"3600 Helena St","city":"Aurora","state":"CO","lat":39.7677,"lng":-104.8071,"languages":"Cambodian"}
+{"id":"8404","name":"Alamosa CRC","prev_name":null,"street":"1861 County Rd 10 S","city":"Alamosa","state":"CO","lat":37.4302,"lng":-106.0066,"languages":"English"}
+{"id":"8408","name":"Chelwood CRC","prev_name":null,"street":"2200 Chelwood Park Blvd NE","city":"Albuquerque","state":"NM","lat":35.1076,"lng":-106.5058,"languages":"English|Navajo"}
+{"id":"8410","name":"Crestview Church","prev_name":null,"street":"3665 Madison Ave","city":"Boulder","state":"CO","lat":40.0061,"lng":-105.247,"languages":"English"}
+{"id":"8412","name":"Cragmor CRC","prev_name":null,"street":"1225 Acacia Dr","city":"Colorado Springs","state":"CO","lat":38.889,"lng":-104.8023,"languages":"English"}
+{"id":"8413","name":"Korean Presbyterian Galilee","prev_name":null,"street":"2200 Chelwood Park Blvd NE","city":"Albuquerque","state":"NM","lat":35.1077,"lng":-106.5058,"languages":"English|Korean"}
+{"id":"8414","name":"Boulder Korean Church","prev_name":null,"street":"3665 Madison Ave","city":"Boulder","state":"CO","lat":40.0062,"lng":-105.2469,"languages":"Korean"}
+{"id":"8416","name":"First CRC of Denver","prev_name":"First Christian Reformed Church","street":"1814 S Emerson St","city":"Denver","state":"CO","lat":39.6836,"lng":-104.9766,"languages":"English"}
+{"id":"842","name":"Webster CRC","prev_name":null,"street":"1344 State Rd","city":"Webster","state":"NY","lat":43.2017,"lng":-77.423,"languages":"English"}
+{"id":"8427","name":"New Life CRC","prev_name":null,"street":"1350 N 7th St","city":"Grand Junction","state":"CO","lat":39.0794,"lng":-108.5602,"languages":"English"}
+{"id":"8428","name":"Family in Christ Community Church","prev_name":null,"street":"11355 N Sheridan Blvd","city":"Westminster","state":"CO","lat":39.9027,"lng":-105.0544,"languages":"English"}
+{"id":"8432","name":"Hillcrest Christian Church","prev_name":"Hillcrest CRC","street":"3000 S Race St","city":"Denver","state":"CO","lat":39.6628,"lng":-104.9643,"languages":"English|Mandarin"}
+{"id":"8433","name":"Connections Church","prev_name":"Horizon Community Church","street":"2121 Dad Clark Dr","city":"Highlands Ranch","state":"CO","lat":39.5619,"lng":-104.9642,"languages":"English"}
+{"id":"8443","name":"Dispatch CRC","prev_name":null,"street":"298 10 Rd","city":"Cawker City","state":"KS","lat":39.5168,"lng":-98.434,"languages":"English"}
+{"id":"8447","name":"Peace Community Church","prev_name":null,"street":"26077 Nelson Way Ste 1409","city":"Katy","state":"TX","lat":29.7749,"lng":-95.8217,"languages":"English"}
+{"id":"8449","name":"Immanuel Christian Reformed Church","prev_name":null,"street":"1900 S Taft Hill Rd","city":"Fort Collins","state":"CO","lat":40.5629,"lng":-105.1142,"languages":"English"}
+{"id":"8450","name":"Hope CRC","prev_name":null,"street":"770 Pineloch Dr","city":"Houston","state":"TX","lat":29.5709,"lng":-95.1472,"languages":"English"}
+{"id":"8453","name":"New Life CRC","prev_name":null,"street":"2050 FM 2920","city":"Spring","state":"TX","lat":30.072,"lng":-95.4475,"languages":"English"}
+{"id":"8455","name":"Luctor CRC","prev_name":null,"street":"2 miles east & 3 1/2 miles north of Prairie View","city":"Prairie View","state":"KS","lat":39.8653,"lng":-99.5335,"languages":"English"}
+{"id":"853","name":"Fairlawn CRC","prev_name":null,"street":"305 Goldthwaite Rd","city":"Whitinsville","state":"MA","lat":42.1235,"lng":-71.6814,"languages":"English"}
+{"id":"858","name":"Pleasant Street CRC","prev_name":null,"street":"25 Cross St","city":"Whitinsville","state":"MA","lat":42.1058,"lng":-71.6546,"languages":"English"}
+{"id":"8708","name":"Corsica CRC","prev_name":null,"street":"535 E 3rd St","city":"Corsica","state":"SD","lat":43.4255,"lng":-98.4033,"languages":"English"}
+{"id":"8716","name":"Harrison Community Church","prev_name":"Harrison CRC","street":"775 Lecocq Ave","city":"Harrison","state":"SD","lat":43.4289,"lng":-98.5256,"languages":"English"}
+{"id":"8721","name":"Bridge of Hope Ministries","prev_name":null,"street":"Sioux Center Intermediate School Gym950 4th Ave NE","city":"Sioux Center","state":"IA","lat":43.0771,"lng":-96.185,"languages":"English"}
+{"id":"8740","name":"Inwood Christian Reformed Church","prev_name":null,"street":"305 E Madison","city":"Inwood","state":"IA","lat":43.3047,"lng":-96.428,"languages":"English"}
+{"id":"8745","name":"Lebanon CRC","prev_name":null,"street":"2142 380th St","city":"Sioux Center","state":"IA","lat":43.0993,"lng":-96.358,"languages":"English"}
+{"id":"8748","name":"Peace CRC","prev_name":null,"street":"306 N High St","city":"Menno","state":"SD","lat":43.2439,"lng":-97.5758,"languages":"English"}
+{"id":"8749","name":"New Holland CRC","prev_name":null,"street":"100 Church Ave","city":"New Holland","state":"SD","lat":43.4273,"lng":-98.6077,"languages":"English"}
+{"id":"8753","name":"Platte CRC","prev_name":null,"street":"520 Wyoming Ave","city":"Platte","state":"SD","lat":43.3859,"lng":-98.8504,"languages":"English"}
+{"id":"8757","name":"Lakeview CRC","prev_name":"Lakeview Community","street":"29930 270th Ave1 mile east of Lakeview School","city":"Lakeview","state":"SD","lat":43.0707,"lng":-100.7282,"languages":"English"}
+{"id":"8761","name":"Rock Rapids CRC","prev_name":null,"street":"303 S Bradley","city":"Rock Rapids","state":"IA","lat":43.4293,"lng":-96.1775,"languages":"English"}
+{"id":"8765","name":"First CRC","prev_name":null,"street":"1401 16th St","city":"Rock Valley","state":"IA","lat":43.2065,"lng":-96.2983,"languages":"English"}
+{"id":"8769","name":"Calvin Christian Reformed Church","prev_name":null,"street":"1804 17th Ave","city":"Rock Valley","state":"IA","lat":43.2086,"lng":-96.2932,"languages":"English"}
+{"id":"8770","name":"Trinity CRC","prev_name":null,"street":"2020 8th St SE","city":"Rock Valley","state":"IA","lat":43.1975,"lng":-96.2869,"languages":"English"}
+{"id":"8773","name":"First CRC","prev_name":null,"street":"321 2nd St SE","city":"Sioux Center","state":"IA","lat":43.0749,"lng":-96.171,"languages":"English"}
+{"id":"8777","name":"Bethel CRC","prev_name":null,"street":"341 S Main Ave","city":"Sioux Center","state":"IA","lat":43.0747,"lng":-96.1761,"languages":"English"}
+{"id":"8779","name":"Covenant CRC","prev_name":null,"street":"106 2nd St NE","city":"Sioux Center","state":"IA","lat":43.0789,"lng":-96.1734,"languages":"English"}
+{"id":"8780","name":"Faith CRC","prev_name":null,"street":"801 - 9th St SE","city":"Sioux Center","state":"IA","lat":43.0689,"lng":-96.1635,"languages":"English"}
+{"id":"8781","name":"First CRC","prev_name":null,"street":"2901 E 26th St","city":"Sioux Falls","state":"SD","lat":43.5288,"lng":-96.6885,"languages":"English"}
+{"id":"8782","name":"Shalom CRC","prev_name":null,"street":"4100 S Southeastern Ave","city":"Sioux Falls","state":"SD","lat":43.5071,"lng":-96.689,"languages":"English"}
+{"id":"8902","name":"Ada CRC","prev_name":null,"street":"7152 Bradfield St SE","city":"Ada","state":"MI","lat":42.9549,"lng":-85.4938,"languages":"English"}
+{"id":"8906","name":"Lakeside Community CRC","prev_name":null,"street":"6201 Whitneyville Ave SE","city":"Alto","state":"MI","lat":42.8525,"lng":-85.4603,"languages":"English"}
+{"id":"8912","name":"Caledonia CRC","prev_name":null,"street":"9957 Cherry Valley Ave SE","city":"Caledonia","state":"MI","lat":42.7843,"lng":-85.508,"languages":"English"}
+{"id":"8925","name":"Brookside CRC","prev_name":null,"street":"3600 Kalamazoo Ave SE","city":"Grand Rapids","state":"MI","lat":42.8981,"lng":-85.6267,"languages":"English"}
+{"id":"8929","name":"Cascade Fellowship CRC","prev_name":null,"street":"6655 Cascade Rd SE","city":"Grand Rapids","state":"MI","lat":42.9192,"lng":-85.5019,"languages":"English"}
+{"id":"8945","name":"Princeton CRC","prev_name":null,"street":"5330 Kalamazoo Ave SE","city":"Kentwood","state":"MI","lat":42.8666,"lng":-85.6242,"languages":"English"}
+{"id":"8960","name":"Harvest Community CRC","prev_name":"Lake Odessa","street":"620 6th Ave","city":"Lake Odessa","state":"MI","lat":42.7778,"lng":-85.1407,"languages":"English"}
+{"id":"8965","name":"Calvary CRC","prev_name":"Lowell Calvary CRC","street":"1151 W Main St","city":"Lowell","state":"MI","lat":42.9324,"lng":-85.3521,"languages":"English"}
+{"id":"8970","name":"Restoration Christian Reformed Church","prev_name":"Middleville CRC","street":"708 W Main St","city":"Middleville","state":"MI","lat":42.7114,"lng":-85.4756,"languages":"English"}
+{"id":"9307","name":"Alto CRC","prev_name":null,"street":"N3631 County EE","city":"Waupun","state":"WI","lat":43.6739,"lng":-88.7951,"languages":"English"}
+{"id":"9309","name":"Covenant Christian Reformed Church","prev_name":null,"street":"1601 S Covenant Ln","city":"Appleton","state":"WI","lat":44.248,"lng":-88.3642,"languages":"English"}
+{"id":"9312","name":"Faith Community CRC","prev_name":null,"street":"401 Stone St","city":"Beaver Dam","state":"WI","lat":43.4453,"lng":-88.8286,"languages":"English"}
+{"id":"93201","name":"Vida y Esperanza","prev_name":null,"street":"15228 SW 119th Terr","city":"Miami","state":"FL","lat":25.6554,"lng":-80.4409,"languages":"Spanish"}
+{"id":"9321","name":"Delavan CRC","prev_name":null,"street":"850 Oak St","city":"Delavan","state":"WI","lat":42.6366,"lng":-88.635,"languages":"English"}
+{"id":"9322","name":"Living Hope Community CRC","prev_name":null,"street":"740 W State St","city":"Fox Lake","state":"WI","lat":43.5666,"lng":-88.9199,"languages":"English"}
+{"id":"9323","name":"Geneva Campus Church","prev_name":null,"street":"401 N Blackhawk Ave","city":"Madison","state":"WI","lat":43.0708,"lng":-89.4458,"languages":"English"}
+{"id":"9324","name":"MarshView Ministries","prev_name":null,"street":"103 S Cedar St","city":"Horicon","state":"WI","lat":43.4513,"lng":-88.6282,"languages":"English"}
+{"id":"9342","name":"Brookfield Christian Reformed Church","prev_name":null,"street":"14135 W Burleigh Rd","city":"Brookfield","state":"WI","lat":43.0746,"lng":-88.0879,"languages":"English"}
+{"id":"9349","name":"First Christian Reformed Church","prev_name":null,"street":"216 S 7th St","city":"Oostburg","state":"WI","lat":43.6207,"lng":-87.7933,"languages":"English"}
+{"id":"9356","name":"Racine CRC","prev_name":null,"street":"900 Illinois St","city":"Racine","state":"WI","lat":42.7221,"lng":-87.8341,"languages":"English"}
+{"id":"9364","name":"Second CRC","prev_name":null,"street":"332 Tamarack St","city":"Randolph","state":"WI","lat":43.5412,"lng":-89.0029,"languages":"English"}
+{"id":"9370","name":"Christ Community Church","prev_name":"First","street":"428 Geele Ave","city":"Sheboygan","state":"WI","lat":43.7685,"lng":-87.7075,"languages":"English"}
+{"id":"9377","name":"Calvin Christian Reformed Church","prev_name":null,"street":"2313 Saemann Ave","city":"Sheboygan","state":"WI","lat":43.764,"lng":-87.7371,"languages":"English"}
+{"id":"9378","name":"Hmong CRC","prev_name":null,"street":"1556 N 16th St","city":"Sheboygan","state":"WI","lat":43.7623,"lng":-87.7266,"languages":"Hmong"}
+{"id":"9391","name":"First CRC","prev_name":null,"street":"20 Bly St","city":"Waupun","state":"WI","lat":43.6323,"lng":-88.7402,"languages":"English"}
+{"id":"9396","name":"Bethel CRC","prev_name":null,"street":"410 S West St","city":"Waupun","state":"WI","lat":43.628,"lng":-88.7518,"languages":"English"}
+{"id":"95060","name":"City on a Hill","prev_name":"Plainwell Ministries","street":"317 12th St","city":"Plainwell","state":"MI","lat":42.4438,"lng":-85.6616,"languages":"English"}
+{"id":"95062","name":"Iglesia Hispana Goshen","prev_name":null,"street":"2440 State Route 17A","city":"Goshen","state":"NY","lat":41.3851,"lng":-74.3404,"languages":"Spanish"}
+{"id":"95064","name":"Higher Calling CRC","prev_name":null,"street":"115 N 7th St","city":"Smithfield","state":"NC","lat":35.5104,"lng":-78.3408,"languages":"English"}
+{"id":"95071","name":"King's Covenant Church","prev_name":null,"street":"424 Garretson Rd","city":"Bridgewater","state":"NJ","lat":40.5956,"lng":-74.6477,"languages":"English"}
+{"id":"9520","name":"Bozeman CRC","prev_name":null,"street":"324 N 5th Ave","city":"Bozeman","state":"MT","lat":45.6826,"lng":-111.0436,"languages":"English"}
+{"id":"9560","name":"Bethel CRC","prev_name":null,"street":"7693 Churchill Rd","city":"Manhattan","state":"MT","lat":45.7498,"lng":-111.309,"languages":"English"}
+{"id":"9561","name":"Manhattan CRC","prev_name":null,"street":"7950 Churchill Rd","city":"Manhattan","state":"MT","lat":45.7515,"lng":-111.3033,"languages":"English"}
+{"id":"9575","name":"The Community CRC","prev_name":"Cambodian","street":"4035 S 5600 W","city":"West Valley City","state":"UT","lat":40.6838,"lng":-112.0242,"languages":""}
+{"id":"9576","name":"Life in Christ CRC","prev_name":"First","street":"803 E 900 S","city":"Salt Lake City","state":"UT","lat":40.7499,"lng":-111.8681,"languages":"English"}
+{"id":"9603","name":"The River Church","prev_name":"The River CRC","street":"1652 Lincoln Rd","city":"Allegan","state":"MI","lat":42.5371,"lng":-85.8762,"languages":"English"}
+{"id":"9604","name":"First CRC of Allendale","prev_name":"First CRC","street":"5734 Country View Dr","city":"Allendale","state":"MI","lat":42.9709,"lng":-85.9269,"languages":"English"}
+{"id":"9608","name":"Second Church","prev_name":"Second CRC","street":"6950 Lake Michigan Dr","city":"Allendale","state":"MI","lat":42.9699,"lng":-85.9576,"languages":"English"}
+{"id":"9612","name":"Beaverdam CRC","prev_name":null,"street":"5166 64th Ave","city":"Beaverdam","state":"MI","lat":42.8623,"lng":-85.941,"languages":"English"}
+{"id":"9616","name":"Borculo CRC","prev_name":null,"street":"6464 96th Ave","city":"Zeeland","state":"MI","lat":42.886,"lng":-86.0202,"languages":"English"}
+{"id":"9618","name":"Coopersville CRC","prev_name":null,"street":"200 Henry St","city":"Coopersville","state":"MI","lat":43.0724,"lng":-85.9319,"languages":"English"}
+{"id":"9620","name":"Drenthe Christian Reformed Church","prev_name":null,"street":"6344 Adams St","city":"Zeeland","state":"MI","lat":42.7818,"lng":-85.9391,"languages":"English"}
+{"id":"9635","name":"Lamont CRC","prev_name":null,"street":"4745 Leonard St","city":"Coopersville","state":"MI","lat":43.0085,"lng":-85.9037,"languages":"English"}
+{"id":"9641","name":"North Blendon CRC","prev_name":null,"street":"7284 Taylor St","city":"Hudsonville","state":"MI","lat":42.9278,"lng":-85.9642,"languages":"English"}
+{"id":"9645","name":"Oakland CRC","prev_name":null,"street":"4460 38th St","city":"Hamilton","state":"MI","lat":42.7344,"lng":-85.9231,"languages":"English"}
+{"id":"9653","name":"Rusk CRC","prev_name":null,"street":"10354 92nd Ave","city":"Allendale","state":"MI","lat":42.9553,"lng":-86.0127,"languages":"English"}
+{"id":"9661","name":"North Street CRC","prev_name":null,"street":"20 E Main Ave","city":"Zeeland","state":"MI","lat":42.8118,"lng":-86.0178,"languages":"English"}
+{"id":"9665","name":"Third Christian Reformed Church","prev_name":null,"street":"10 W Central Ave","city":"Zeeland","state":"MI","lat":42.8101,"lng":-86.0194,"languages":"English"}
+{"id":"9671","name":"Haven Christian Reformed Church","prev_name":null,"street":"541 Alice St","city":"Zeeland","state":"MI","lat":42.8076,"lng":-86.0346,"languages":"English"}
+{"id":"96977","name":"Sembrando Vida CRC","prev_name":null,"street":"1111 Highland Dr","city":"Vista","state":"CA","lat":33.2106,"lng":-117.2572,"languages":"English|Spanish"}
+{"id":"98051","name":"Seed Church","prev_name":null,"street":"1-50 51st Ave","city":"Long Island City","state":"NY","lat":40.7427,"lng":-73.9593,"languages":"Korean"}
+{"id":"98439","name":"Carismah Church","prev_name":null,"street":"26077 Nelson Way Ste 1510","city":"Katy","state":"TX","lat":29.7749,"lng":-95.8217,"languages":"Spanish"}
+{"id":"98448","name":"Word Encounter Church","prev_name":null,"street":"4900 Hurlbut St","city":"Detroit","state":"MI","lat":42.3824,"lng":-82.9951,"languages":"English"}
+{"id":"98449","name":"Mision De Fe Internacional Mcallen","prev_name":null,"street":"624 Ash Ave W","city":"McAllen","state":"TX","lat":26.2036,"lng":-98.2266,"languages":"Spanish"}
+{"id":"98451","name":"The Way Church Holland","prev_name":null,"street":"821 Ottawa Ave","city":"Holland","state":"MI","lat":42.767,"lng":-86.1266,"languages":"Spanish"}
+{"id":"98461","name":"Comunidad de Paz","prev_name":null,"street":"6207 Katy Gaston Rd, Apt #3217","city":"Houston","state":"TX","lat":29.8525,"lng":-95.6411,"languages":"Spanish"}
+{"id":"98462","name":"The Light and Salt Church of the World","prev_name":null,"street":"540 8th St 1Fl","city":"Palisades Park","state":"NJ","lat":40.8486,"lng":-73.9853,"languages":"Korean"}
+{"id":"98466","name":"Holy Rock Church","prev_name":null,"street":"2551 Beverly Blvd #D","city":"Los Angeles","state":"CA","lat":34.0694,"lng":-118.276,"languages":"Korean"}
+{"id":"98469","name":"Hope Church en Español","prev_name":null,"street":"770 Pineloch Dr","city":"Houston","state":"TX","lat":29.5708,"lng":-95.1472,"languages":"Spanish"}
+{"id":"98472","name":"Grace in Christ Fellowship","prev_name":null,"street":"105 Morrison Ave","city":"Wilmington","state":"DE","lat":39.6916,"lng":-75.5881,"languages":""}
+{"id":"98475","name":"Goodtree Fellowship Church","prev_name":null,"street":"15310 Alondra Blvd","city":"La Mirada","state":"CA","lat":33.8881,"lng":-118.0046,"languages":"Korean"}
