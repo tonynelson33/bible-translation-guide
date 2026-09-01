@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~370,500 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~370,800 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~370,500 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~370,800 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -411,6 +411,24 @@ the data. Several labels split or merge the underlying buckets:
   delete `fmc_sync_inserted_2026_09_01` ids. Staging: `fmc_import`/`fmc_ch`/`fmc_match`/`fmc_plan`/
   `fmc_insert_plan`/`fmc_sync_holdback_2026_09_01`, fn `fmc_norm_name`. (FMC-USA has no single
   official pulpit translation — no bulk `bible_translation` applied.)
+- **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
+  bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
+  AJAX is slow (~2.5s) and 100-capped, so: list every store via
+  `/wp-json/wp/v2/wpsl_stores?per_page=100&page=N` (858; WP post id == WPSL store id;
+  `X-WP-Total` = count), then scrape each `/churches/<slug>/` detail page for its inline
+  `var wpslMap_… = {…"locations":[{store,address,city,state,zip,lat,lng,id}]}`.
+  `scripts/fetch-rca-churches.mjs` (8-way concurrent) → `scripts/rca-churches.ndjson`
+  (**662** US congregations w/ full address + coords; ~86 stores have an empty locations array —
+  no address in the locator, skipped; ~110 Canadian). `rca_match` = Tier A
+  (region+zip5+`efca_norm_street2`) / GEO ±0.004° / Tier B (`rca_norm_name` + city).
+  **140 relabelled** `church_cathedral` → `reformed_church` (RCA plants named "The Community
+  Church" / "Hesed", or matched via a sub-ministry row). **156 inserted** (`md5('rca:'||id)`,
+  zip + coords). 82 held back (geo-collisions, dup addresses). `reformed_church` **1,188 → 1,481**;
+  `church_cathedral` 131,684 → **131,547**; **table ~370,824.** Commits 1b78bd8 (fetch+data) /
+  <this>. Rollback: `rca_sync_relabel_before_2026_09_01` (category), delete
+  `rca_sync_inserted_2026_09_01` ids. Staging: `rca_import`/`rca_ch`/`rca_match`/`rca_plan`/
+  `rca_insert_plan`/`rca_sync_holdback_2026_09_01`, fn `rca_norm_name`. (RCA splits between an
+  evangelical/NIV Midwest wing and a mainline/NRSV eastern wing — no translation default.)
 - **2026-08-31 — `christian_missionary_alliance` filled from the C&MA locator** (existing
   bucket, no new slug). `cmalliance.org/churches/` → `GET /rest/map/churches-nearby?lat=39.8
   &lng=-98.5&radius=99999&limit=5000` — one open JSON call, US center + huge radius returns
@@ -463,8 +481,9 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`christian_missionary_alliance`** (bulk of it — C&MA, `cmalliance.org`, 2026-08-31),
 **`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31),
 **`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
-2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), and the
-**Free Methodist slice of `methodist_church`** (FMC-USA, `fmcusa.org`, 2026-09-01).
+2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), the
+**Free Methodist slice of `methodist_church`** (FMC-USA, `fmcusa.org`, 2026-09-01), and the
+**RCA slice of `reformed_church`** (Reformed Church in America, `rca.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
