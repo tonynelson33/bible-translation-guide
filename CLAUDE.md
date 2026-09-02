@@ -619,6 +619,26 @@ otherwise land on `church_cathedral`, and its `CATCH_ALL_PATTERNS` gained generi
 (after Methodist), `\bAlliance Church\b`, and `\bBaptist\b` (last, so specific denominations win;
 excludes "St. ___ the Baptist" patron-saint naming) entries. So a regen reproduces the rescue.
 
+**2026-09-01 — OpenStreetMap denomination cross-match** (`scripts/fetch-osm-church-denominations.mjs`):
+pulled every US `amenity=place_of_worship` with a `denomination` tag from the Overpass API,
+state by state — **115,605** POIs → `scripts/osm-church-denominations.ndjson` (committed).
+A regex map turns the 700+ raw OSM `denomination` values into our slugs (excluding LDS / JW /
+Christian Science / Unitarian / Unity etc. — bodies removed from the directory — and vague tags
+like bare `pentecostal`/`evangelical`). Matched by **coordinate proximity** (Manhattan-degree
+box) against the `church_cathedral` rows, name-corroborated with `pg_trgm`. **Only the
+tight+name-agreeing tier was applied: 3,634 relabelled** (catholic 1,464, baptist 833,
+methodist 381, lutheran 164, presbyterian 149, …). ~32,000 candidates held back — 17k where
+coords aren't tight, 10k where two nearby OSM POIs disagree on denomination, 5k where the
+tight-coord OSM name doesn't match ours (usually a *different* congregation now in / next to
+the building). `church_cathedral` 130,489 → **126,855**; identified rate **64.9 % → 65.9 %**.
+Cross-matching two independently-geocoded church datasets is inherently noisier than a
+denomination's own roster — the held 32k live in `sync_archive.osm_relabel_plan` (with coords,
+both names, and the hold reason) for a future review pass, ideally with website verification.
+Rollback: `sync_archive.osm_sync_relabel_before_2026_09_01` (restore `category` by id). The
+~1,450 OSM POIs tagged `nondenominational` were **not** applied (the project only assigns
+`non_denominational` via per-church verification). Newly-relabelled `catholic_church` rows are
+NABRE candidates for the next `fill-denominational-translations.js` run.
+
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
 - **Removed entirely** (~9,240 rows, archived to `removed-rows-2026-08-28.csv`) — nothing that
