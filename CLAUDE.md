@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~371,600 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~371,700 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~371,600 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~371,700 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -466,6 +466,23 @@ the data. Several labels split or merge the underlying buckets:
   `opc_insert_plan`/`opc_sync_holdback_2026_09_01`, fn `opc_norm_name`. (~15 inserts have a venue
   name in `address` or a doubled "…Reformed Orthodox Presbyterian Church" name — cosmetic, worth
   a cleanup pass. OPC has no mandated translation — no default.)
+- **2026-09-01 — Associate Reformed Presbyterian Church filled from `arpchurch.org`**
+  (`presbyterian_church`, existing bucket — no new slug). Same shape as RCA: WP Store Locator
+  whose `store_search` AJAX ignores `search_radius`, so `scripts/fetch-arp-churches.mjs` lists
+  all **269** via `/wp-json/wp/v2/wpsl_stores` then scrapes each `/churches/<slug>/` for its
+  inline `wpslMap_N.locations[0]` (8-way concurrent). **255** US congregations w/ full address +
+  coords (2 parse failures, ~12 non-US). ARP is a Carolina-Piedmont Scots-Irish body — NC 68 /
+  SC 57 / FL 23. Names decode HTML entities in staging. `arp_match` over `presbyterian_church`
+  + `reformed_church` + `church_cathedral`; Tier A (region+zip5+`efca_norm_street2`) / GEO
+  ±0.004° / B name+city. **72 relabelled** `church_cathedral` → `presbyterian_church`
+  ("Mount Zion ARP Church" → our "Mt Zion", etc.). **69 inserted** (`md5('arp:'||id)`; generic
+  names get " ARP Church" suffix). 23 held back. `presbyterian_church` **10,569 → 10,710**;
+  `church_cathedral` 130,577 → **130,505**; **table ~371,698.** Commits f266072 (fetch+data) /
+  <this>. Rollback: `arp_sync_relabel_before_2026_09_01` (category), delete
+  `arp_sync_inserted_2026_09_01` ids. Staging: `arp_import`/`arp_ch`/`arp_match`/`arp_plan`/
+  `arp_insert_plan`/`arp_sync_holdback_2026_09_01`, fn `arp_norm_name`. (Same venue-name-in-address
+  blemish as OPC on ~6 church-plant inserts. No mandated translation — no default. With the OPC
+  sync, `presbyterian_church` grew +277 this day.)
 - **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
   bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
   AJAX is slow (~2.5s) and 100-capped, so: list every store via
@@ -556,8 +573,9 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **Free Methodist + Wesleyan slices of `methodist_church`** (FMC-USA `fmcusa.org` + The Wesleyan
 Church `secure.wesleyan.org`, 2026-09-01), the **RCA + CRC slices of `reformed_church`**
 (Reformed Church in America `rca.org` + Christian Reformed Church `crcna.org`, 2026-09-01), and
-the **Converge/BGC slice of `baptist_church`** (`converge.org`, 2026-09-01), and the **OPC slice
-of `presbyterian_church`** (Orthodox Presbyterian Church, `opc.org`, 2026-09-01).
+the **Converge/BGC slice of `baptist_church`** (`converge.org`, 2026-09-01), and the **OPC + ARP
+slices of `presbyterian_church`** (Orthodox Presbyterian Church `opc.org` + Associate Reformed
+Presbyterian `arpchurch.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
