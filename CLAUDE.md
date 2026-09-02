@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~371,700 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~376,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~371,700 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~376,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -646,6 +646,22 @@ Rollback: `sync_archive.osm_sync_relabel_before_2026_09_01` (restore `category` 
   `sync_archive.catholic_nabre_before_2026_09_01` is the rollback. Translation coverage
   7.3 % → 7.8 % (~29,100 rows). `church_cathedral` after both OSM passes: **126,408**;
   identified rate **66.0 %**.
+- **Phase 2** — `scripts/fetch-osm-church-details.mjs` re-ran the same Overpass query keeping the
+  `addr:*` / `website` / `phone` tags (the first pass only kept name + coords). 115,605 rows →
+  `scripts/osm-church-details.ndjson`. Coordinate-matched against the *whole* `churches` table
+  (per-state batched geo-join — the un-batched join times the connector out):
+  - **Website backfill: 15,272** — OSM has a website, our row has none, tight coord/name match.
+    `churches.website` populated 7.5k → ~24.4k (3×). Rollback
+    `sync_archive.osm_website_before_2026_09_01`.
+  - **Net-new inserts: 4,340** — OSM rows with a mapped denomination + `housenumber`+`street` +
+    no church within ~200 m + not a diocesan office / institutional chapel + not a
+    region+zip+street or region+city+name dup. `id = md5('osm:'||osm)`; Catholic ones get NABRE.
+    Table 371,698 → **376,038**; identified rate **66.4 %**. Rollback
+    `sync_archive.osm_sync_inserted_2026_09_01` (delete ids).
+  All OSM staging lives in `sync_archive` (`osm_relabel_plan` keeps the ~31k unresolved relabel
+  candidates; `osm_insert_plan` the insert holdbacks). The big derived tables (`osm_details`,
+  `ch_all`, `ch_keys`, `osm_geopairs`, `osm_ch_match`) were dropped after — recreatable from the
+  two committed ndjson files.
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
