@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~371,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~371,200 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~371,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~371,200 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -411,6 +411,25 @@ the data. Several labels split or merge the underlying buckets:
   delete `fmc_sync_inserted_2026_09_01` ids. Staging: `fmc_import`/`fmc_ch`/`fmc_match`/`fmc_plan`/
   `fmc_insert_plan`/`fmc_sync_holdback_2026_09_01`, fn `fmc_norm_name`. (FMC-USA has no single
   official pulpit translation — no bulk `bible_translation` applied.)
+- **2026-09-01 — The Wesleyan Church filled from `secure.wesleyan.org`** (`methodist_church`,
+  existing bucket — no new slug; the label is already "Methodist / Wesleyan"). The
+  `wesleyan.org/find-a-church` page embeds `secure.wesleyan.org/findachurch/frame`, whose search
+  hits one no-auth JSON endpoint: `GET /findachurch/codes?latitude&longitude&distance=<mi>` —
+  `distance=4000` from the US centroid returns the whole set (~1,540, no pagination). Fields:
+  name, website, phone, `mailing_address` / `formatted_address` ("street, city, ST zip
+  country|county" — inconsistent tail). `scripts/fetch-wesleyan-churches.mjs` parses to a US
+  state + 5-digit zip → **1,426** US congregations (~97 Canadian, 19 no-address dropped).
+  `wes_match` = Tier A (region+zip5+`efca_norm_street2`) / GEO ±0.004° / Tier B (`wes_norm_name`
+  + city). **Names are often "City CampusName"** with no "Wesleyan" — address/geo carry most
+  matches. **317 relabelled** `church_cathedral` → `methodist_church`. **245 inserted**
+  (`md5('wes:'||region||':'||city||':'||name||':'||street)` — the feed has no stable id).
+  **176 held back** — 100 geo-collisions, **68 PO-box-only** (unusually high; rural holiness
+  churches, worth a later pass since they carry real coords), 8 dupes. `methodist_church`
+  **24,789 → 25,347**; `church_cathedral` 131,397 → **131,084**; **table ~371,198.** Commits
+  3830435 (fetch+data) / <this>. Rollback: `wes_sync_relabel_before_2026_09_01` (category),
+  delete `wes_sync_inserted_2026_09_01` ids. Staging: `wes_import`/`wes_ch`/`wes_match`/`wes_plan`/
+  `wes_insert_plan`/`wes_sync_holdback_2026_09_01`, fn `wes_norm_name`. (No mandated translation
+  — no default. With the FMC sync, `methodist_church` grew +933 this day.)
 - **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
   bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
   AJAX is slow (~2.5s) and 100-capped, so: list every store via
@@ -498,9 +517,9 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`nazarene_church`** (bulk of it — Church of the Nazarene, ArcGIS layer, 2026-08-31),
 **`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
 2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), the
-**Free Methodist slice of `methodist_church`** (FMC-USA, `fmcusa.org`, 2026-09-01), and the
-**RCA + CRC slices of `reformed_church`** (Reformed Church in America `rca.org` + Christian
-Reformed Church `crcna.org`, 2026-09-01).
+**Free Methodist + Wesleyan slices of `methodist_church`** (FMC-USA `fmcusa.org` + The Wesleyan
+Church `secure.wesleyan.org`, 2026-09-01), and the **RCA + CRC slices of `reformed_church`**
+(Reformed Church in America `rca.org` + Christian Reformed Church `crcna.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
