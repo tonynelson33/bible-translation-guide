@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~371,200 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~371,500 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~371,200 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~371,500 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -430,6 +430,24 @@ the data. Several labels split or merge the underlying buckets:
   delete `wes_sync_inserted_2026_09_01` ids. Staging: `wes_import`/`wes_ch`/`wes_match`/`wes_plan`/
   `wes_insert_plan`/`wes_sync_holdback_2026_09_01`, fn `wes_norm_name`. (No mandated translation
   — no default. With the FMC sync, `methodist_church` grew +933 this day.)
+- **2026-09-01 — Converge (Baptist General Conference) filled from `converge.org`** (`baptist_church`,
+  existing bucket — no new slug; Converge is the former BGC, Swedish Baptist heritage). The
+  `converge.org/churches` HTML is bot-protected but its data endpoint is open:
+  `GET /wp-json/ak/v1/churches` → one JSON array (~1,720) of {id, name, address, state, region
+  (Converge's 10 US districts), website, lat, lng}. `scripts/fetch-converge-churches.mjs` parses
+  address to a US state + 5-digit zip → **1,391** US churches (~326 no-address / "Coming Soon!"
+  plants / international dropped). **Only ~24% of names contain "Baptist"** (Converge brands
+  generically — "Awaken Church", "Flood Church"), so address/geo tiers do the work.
+  `cvg_match` over `baptist_church` + `church_cathedral` + `bible_church`; Tier A
+  (region+zip5+`efca_norm_street2`) / GEO ±0.004° / Tier B. **497 relabelled** → `baptist_church`
+  (478 from `church_cathedral`, 19 from `bible_church` — mostly campus/language-suffix name
+  variants of the same church). **330 inserted** (`md5('cvg:'||id)`). 237 held back (185
+  geo-collisions, 47 dup addresses). `baptist_church` **52,295 → 53,116**; `church_cathedral`
+  131,084 → **130,612**; `bible_church` 3,500 → **3,481**; **table ~371,528.** Commits 23eecec
+  (fetch+data) / <this>. Rollback: `cvg_sync_relabel_before_2026_09_01` (category), delete
+  `cvg_sync_inserted_2026_09_01` ids. Staging: `cvg_import`/`cvg_ch`/`cvg_match`/`cvg_plan`/
+  `cvg_insert_plan`/`cvg_sync_holdback_2026_09_01`, fn `cvg_norm_name`. (Converge has no mandated
+  translation — no default.)
 - **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
   bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
   AJAX is slow (~2.5s) and 100-capped, so: list every store via
@@ -518,8 +536,9 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **`anglican_episcopal_church`** (the TEC slice of it — The Episcopal Church, `episcopalassetmap.org`,
 2026-09-01; ACNA / Continuing Anglican rows in the bucket are *not* directory-sourced), the
 **Free Methodist + Wesleyan slices of `methodist_church`** (FMC-USA `fmcusa.org` + The Wesleyan
-Church `secure.wesleyan.org`, 2026-09-01), and the **RCA + CRC slices of `reformed_church`**
-(Reformed Church in America `rca.org` + Christian Reformed Church `crcna.org`, 2026-09-01).
+Church `secure.wesleyan.org`, 2026-09-01), the **RCA + CRC slices of `reformed_church`**
+(Reformed Church in America `rca.org` + Christian Reformed Church `crcna.org`, 2026-09-01), and
+the **Converge/BGC slice of `baptist_church`** (`converge.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
