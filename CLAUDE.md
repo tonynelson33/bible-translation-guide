@@ -582,6 +582,21 @@ Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
 
+**Sync scratch/rollback tables — 2026-09-01 cleanup.** The free-tier DB hit its 500 MB limit
+and Supabase flagged a Critical `rls_disabled_in_public` advisor: all ~129 sync-pipeline tables
+had been created in `public` with no RLS (browser-`anon`-writable) and the 8 `<denom>_ch`
+tables (filtered copies of `churches`) were ~284 MB of pure waste. Fixed: the `_ch` +
+`_import` / `_match` / `_plan` / `_insert_plan` staging tables and every `*_norm_name` /
+`efca_*` helper function were **dropped** (recreatable from the committed
+`scripts/*-churches.ndjson` + migration history). The 64 rollback/audit tables — every
+`*_sync_relabel_before_*`, `*_sync_inserted_*`, `*_sync_holdback_*`, `tec_sync_nrsv_before_*`,
+`efca_orphans_*`, and the 11 `archive_removed_*_2026_08_30` — were **moved to a private
+`sync_archive` schema** (PostgREST doesn't serve it; not advisor-flagged). So every "Rollback:"
+line above is still valid but the table now lives at `sync_archive.<name>`. DB 535 → 192 MB;
+`public` holds only `churches`, `church_suggestions`, the two count views, and `pg_trgm`.
+**Any future sync must create its tables in `sync_archive`, not `public`, and must not leave a
+`_ch`-style projection behind** (`TEMP` table, or drop it right after building `_match`).
+
 **Every category in the live data is now either `church_cathedral` ("Denomination not
 identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
 plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
