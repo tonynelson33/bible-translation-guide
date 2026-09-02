@@ -636,8 +636,16 @@ denomination's own roster — the held 32k live in `sync_archive.osm_relabel_pla
 both names, and the hold reason) for a future review pass, ideally with website verification.
 Rollback: `sync_archive.osm_sync_relabel_before_2026_09_01` (restore `category` by id). The
 ~1,450 OSM POIs tagged `nondenominational` were **not** applied (the project only assigns
-`non_denominational` via per-church verification). Newly-relabelled `catholic_church` rows are
-NABRE candidates for the next `fill-denominational-translations.js` run.
+`non_denominational` via per-church verification).
+- **Salvage pass** (same day): +447 more from the held `name_disagrees` tier where OSM says
+  catholic/orthodox at tight coords and our name carries an unambiguous Catholic/Orthodox
+  devotional pattern (`St X` / `Our Lady` / `Parish` / `orthodox` …) — trigram had failed on
+  "St" vs "Saint" and on parish-merger renames. `catholic_church` 20,836 → 21,282.
+- **Catholic → NABRE** re-run: all `catholic_church` rows with no translation (1,501 pre-OSM +
+  the OSM/salvage additions) got NABRE with the standard "denominational default" note.
+  `sync_archive.catholic_nabre_before_2026_09_01` is the rollback. Translation coverage
+  7.3 % → 7.8 % (~29,100 rows). `church_cathedral` after both OSM passes: **126,408**;
+  identified rate **66.0 %**.
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
