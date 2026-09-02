@@ -169,11 +169,11 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~7% of churches have a confirmed `bible_translation` so far (~27,200 rows — ~19,600
-Catholic → NABRE, ~7,800 Episcopal/mainline → NRSV, the rest per-church research) — this is
-inherently a long-tail research problem (see "Church data pipeline" below), not a bug. Most
-results correctly show "Not identified" for the translation (same label the result card and the
-breakdown tables use for an unknown denomination or translation).
+Only ~8% of churches have a confirmed `bible_translation` so far (30,143 rows as of 2026-09-01
+— 22,327 Catholic → NABRE, 7,783 Episcopal / UCC / mainline → NRSV, ~33 per-church research) —
+this is inherently a long-tail research problem (see "Church data pipeline" below), not a bug.
+Most results correctly show "Not identified" for the translation (same label the result card and
+the breakdown tables use for an unknown denomination or translation).
 
 **Crowdsourced corrections**: since the `churches` table is public-SELECT-only (the anon key
 can't write to it), user submissions go into a separate `church_suggestions` table instead —
@@ -257,8 +257,9 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
 (PostgREST bulk insert, batched). Translations are filled two ways:
 - **Bulk denominational defaults**: applied only where a denomination is ~99% aligned to one
   pulpit/lectionary translation and the category bucket is clean.
-  - `catholic_church` → NABRE (~19,600 rows; USCCB Lectionary for Mass) — via
-    `fill-denominational-translations.js`.
+  - `catholic_church` → NABRE (~22,300 rows as of 2026-09-01; USCCB Lectionary for Mass) — via
+    `fill-denominational-translations.js`, plus the 2026-09-01 re-run (see below) that caught
+    every Catholic row added or newly identified by the OSM cross-match.
   - `disciples_of_christ_church` → NRSV (~137) and `congregational_church` rows whose *name*
     says "United Church of Christ" → NRSV (~1,580) — mainline bodies, NRSV in their worship
     resources. Disciples is in `fill-denominational-translations.js`; the UCC-by-name rule was
