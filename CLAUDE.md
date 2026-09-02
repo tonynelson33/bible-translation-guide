@@ -475,14 +475,16 @@ the data. Several labels split or merge the underlying buckets:
   SC 57 / FL 23. Names decode HTML entities in staging. `arp_match` over `presbyterian_church`
   + `reformed_church` + `church_cathedral`; Tier A (region+zip5+`efca_norm_street2`) / GEO
   ±0.004° / B name+city. **72 relabelled** `church_cathedral` → `presbyterian_church`
-  ("Mount Zion ARP Church" → our "Mt Zion", etc.). **69 inserted** (`md5('arp:'||id)`; generic
-  names get " ARP Church" suffix). 23 held back. `presbyterian_church` **10,569 → 10,710**;
-  `church_cathedral` 130,577 → **130,505**; **table ~371,698.** Commits f266072 (fetch+data) /
+  ("Mount Zion ARP Church" → our "Mt Zion", etc.), **+ 16 more** via a name-pattern sweep of
+  `church_cathedral` rows explicitly named "… ARP Church" that the feed missed (closed/merged;
+  archived with `arp_id = null`). **69 inserted** (`md5('arp:'||id)`; generic names get " ARP
+  Church" suffix). 23 held back. `presbyterian_church` **10,569 → 10,726**; `church_cathedral`
+  130,577 → **130,489**; **table ~371,698.** Commits f266072 (fetch+data) /
   <this>. Rollback: `arp_sync_relabel_before_2026_09_01` (category), delete
   `arp_sync_inserted_2026_09_01` ids. Staging: `arp_import`/`arp_ch`/`arp_match`/`arp_plan`/
   `arp_insert_plan`/`arp_sync_holdback_2026_09_01`, fn `arp_norm_name`. (Same venue-name-in-address
   blemish as OPC on ~6 church-plant inserts. No mandated translation — no default. With the OPC
-  sync, `presbyterian_church` grew +277 this day.)
+  sync, `presbyterian_church` grew +293 this day.)
 - **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
   bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
   AJAX is slow (~2.5s) and 100-capped, so: list every store via
