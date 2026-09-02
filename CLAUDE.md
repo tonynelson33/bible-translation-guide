@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~371,500 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~371,600 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~371,500 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~371,600 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -448,6 +448,24 @@ the data. Several labels split or merge the underlying buckets:
   `cvg_sync_inserted_2026_09_01` ids. Staging: `cvg_import`/`cvg_ch`/`cvg_match`/`cvg_plan`/
   `cvg_insert_plan`/`cvg_sync_holdback_2026_09_01`, fn `cvg_norm_name`. (Converge has no mandated
   translation — no default.)
+- **2026-09-01 — Orthodox Presbyterian Church filled from `opc.org`** (`presbyterian_church`,
+  existing bucket — no new slug). `opc.org/locator.html` is a POST form; `scripts/fetch-opc-churches.mjs`
+  POSTs `state=<ST>` for all 50 states + DC and parses the returned HTML church cards
+  (`<table class="churchCard">` — name in `<h2>` as "NAME - City, ST", address from `<h4>Address</h4>`
+  or `<h4>Meeting At</h4>`, **coords from the embedded `/maps/place/…/@lat,lng` Google Maps link**).
+  **328** congregations (57 have no coords — the older `&ll=` map format or none; all have
+  street + zip). Names render ALL-CAPS and are often a single word ("Grace", "Providence") →
+  title-cased; the `<h2>` "- City, ST" tail is stripped; inserts get " Orthodox Presbyterian
+  Church" appended unless the name already carries a church word. `opc_match` over
+  `presbyterian_church` + `church_cathedral`; GEO ±0.004° dominates (Tier A rarely fires — OPC
+  "Meeting At" strings carry venue names / parentheticals). **35 relabelled** `church_cathedral`
+  → `presbyterian_church`, **101 inserted** (`md5('opc:'||id)`), 29 held back. `presbyterian_church`
+  **10,433 → 10,569**; `church_cathedral` 130,612 → **130,577**; **table ~371,629.** Commits
+  2c54705 (fetch+data) / <this>. Rollback: `opc_sync_relabel_before_2026_09_01` (category),
+  delete `opc_sync_inserted_2026_09_01` ids. Staging: `opc_import`/`opc_ch`/`opc_match`/`opc_plan`/
+  `opc_insert_plan`/`opc_sync_holdback_2026_09_01`, fn `opc_norm_name`. (~15 inserts have a venue
+  name in `address` or a doubled "…Reformed Orthodox Presbyterian Church" name — cosmetic, worth
+  a cleanup pass. OPC has no mandated translation — no default.)
 - **2026-09-01 — Reformed Church in America filled from `rca.org`** (`reformed_church`, existing
   bucket — no new slug). `rca.org/find-an-rca-church` is WP Store Locator; the `store_search`
   AJAX is slow (~2.5s) and 100-capped, so: list every store via
@@ -538,7 +556,8 @@ directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`
 **Free Methodist + Wesleyan slices of `methodist_church`** (FMC-USA `fmcusa.org` + The Wesleyan
 Church `secure.wesleyan.org`, 2026-09-01), the **RCA + CRC slices of `reformed_church`**
 (Reformed Church in America `rca.org` + Christian Reformed Church `crcna.org`, 2026-09-01), and
-the **Converge/BGC slice of `baptist_church`** (`converge.org`, 2026-09-01).
+the **Converge/BGC slice of `baptist_church`** (`converge.org`, 2026-09-01), and the **OPC slice
+of `presbyterian_church`** (Orthodox Presbyterian Church, `opc.org`, 2026-09-01).
 Idea for later (not built): mark these with an asterisk in the
 `/church-finder` denomination breakdown table. Mechanism when wanted: a `Set` of
 directory-synced slugs that `CountTable` checks — no schema change.
