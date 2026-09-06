@@ -582,6 +582,19 @@ the data. Several labels split or merge the underlying buckets:
     `church_cathedral` → `assembly_of_god_church` (12,003 → 12,772). `church_cathedral` **121,880**.
     Rollback `sync_archive.ag_rematch_relabel_before_2026_09_05`.
 
+**2026-09-05 — combined re-match of the 10 smaller directory scrapes** (`scripts/build-denom-rematch.mjs`
+→ `scripts/denom-rematch.ndjson`): ARP, Converge, CRC, Foursquare, Free Methodist, Nazarene, OPC,
+RCA, TEC, Wesleyan — all have coords, so **geo-matched** (±0.0026°) against `church_cathedral`.
+Lesson repeated from the OSM `evangelical` tier: tight distance alone catches building-shares
+("St. Luke's, Seattle" ↔ "Pangea"; "Bethel ARP" ↔ a Christadelphian mission) — so required
+`name_sim ≥ 0.45` (or ≥ 0.30 at < 45 m) + an other-denomination guard. **+307 relabelled**:
+`anglican_episcopal_church` 128 (TEC, also → NRSV), `nazarene_church` 53, `baptist_church` 40
+(Converge), `reformed_church` 36 (CRC/RCA), `methodist_church` 31 (FMC/Wesleyan),
+`foursquare_church` 17, `presbyterian_church` 2 (ARP/OPC, → ESV). `church_cathedral` **121,573**;
+identified rate **67.8 %**. Rollback `sync_archive.dr_relabel_before_2026_09_05` (restores
+`category` + `bible_translation` + notes by id). These directories were mostly consumed by their
+first syncs — the yield tail is thin; SBC (+627) and AG (+769) were the meaningful re-matches.
+
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
 directory's own staleness): **`evangelical_free_church`** (EFCA, `data.efca.org`, 2026-08-30),
