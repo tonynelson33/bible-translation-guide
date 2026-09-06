@@ -351,6 +351,15 @@ the data. Several labels split or merge the underlying buckets:
   `sbc_sync_inserted_2026_08_31` ids. Phase 3 (website/phone backfill from `/church/<slug>/`
   detail pages) still pending. Like `non_denominational`, the name classifier never assigns
   `sbc_church` — a `churches-combined.csv` reload would not reproduce it.
+  - **Re-match 2026-09-05**: a third pass against the same `sbc-churches.ndjson` with a *looser*
+    street key (drop all street-type suffixes; compare house# + stripped street name, prefix-OK)
+    and a name tier at sim ≥ 0.62 + sole-in-city, targeting only `church_cathedral` +
+    `baptist_church`, with an "other denomination in our name" guard (PH / COGIC / AME / …).
+    **+3,870 relabelled** (627 from `church_cathedral`, 3,243 `baptist_church` → `sbc_church` —
+    mostly "First Baptist Church of X" ↔ our "First Church X"). Address-tier matches with
+    name_sim < 0.45 were dropped — building succession (e.g. "Forest Hill Baptist" → the
+    non-SBC "Harvest Church" now in its building). `sbc_church` **31,233 → 35,103**;
+    `church_cathedral` **122,649**. Rollback `sync_archive.sbc_rematch_relabel_before_2026_09_05`.
 - **Tried 2026-08-31, then REVERTED (owner call — too fine-grained for this site):** separate
   slugs `pca_church` (PCA), `gmc_church` (Global Methodist Church), `acna_church` (ACNA), each
   carved from its parent bucket via the denomination's own directory. Migration
