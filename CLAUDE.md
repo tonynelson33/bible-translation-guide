@@ -311,11 +311,11 @@ the data. Several labels split or merge the underlying buckets:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
   `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul), plus
   `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern).
-- `non_denominational` (~3,270 rows as of 2026-09-05) is populated from external directories that
-  explicitly classify a church as non-denominational/independent (usachurches.org, OSM
-  `denomination=nondenominational` tags — see the 2026-09-05 section below) or per-church
-  verification — **never a bare name pattern**: a sample proved ~35-45% of generic-named
-  "X Community Church" rows are quietly SBC / AG / EFCA / Converge / etc.
+- `non_denominational` (~4,180 rows as of 2026-09-05) is populated from external directories that
+  explicitly classify a church as non-denominational/independent (usachurches.org, the ARC / GCC
+  church-planting networks, OSM `denomination=nondenominational` tags — see the 2026-09-05 section
+  below) or per-church verification — **never a bare name pattern**: a sample proved ~35-45% of
+  generic-named "X Community Church" rows are quietly SBC / AG / EFCA / Converge / etc.
 - **Merged 2026-08-30** (all empty or unenforceable by name): `church_of_god_holiness` +
   `church_of_god` → one "Church of God" (Anderson/Holiness vs Cleveland/Pentecostal is
   invisible in a bare "Church of God" name); the two `non_denominational*` tiers → one
@@ -684,7 +684,17 @@ classified it as non-denominational/independent" — still never a bare name pat
   "X Bible Church" names → `bible_church`, rest → `non_denominational`; 196 name+zip dup-risk held
   out). **909 websites** backfilled onto matched rows. Rollbacks: `sync_archive.uc_nondenom_*_before_2026_09_05`
   (relabel / georelabel / namezip_relabel / website) + `uc_nondenom_inserted_2026_09_05` (delete ids).
-  Table 377,033; `church_cathedral` **124,211**; identified rate **67.1 %**; website coverage ~25.9k.
+- **Church-planting networks** (`scripts/fetch-church-networks.mjs`, `.ndjson` committed): **ARC**
+  (Association of Related Churches — Storepoint widget `160fafe6488211`, 1,352 US, coords+addr+website)
+  + **GCC** (Great Commission Collective — WP Store Locator `store_search`, 56 US). Every ARC/GCC
+  member is a non-denominational plant, so this is a clean signal. Geo-matched to the whole table:
+  **541 relabelled** `church_cathedral` → `non_denominational`, **379 net-new inserts**
+  (`id = md5('net:'||source||':'||ext_id)`), **739 websites** backfilled. Rollbacks
+  `sync_archive.net_relabel_before_2026_09_05` / `net_website_before_2026_09_05` / `net_inserted_2026_09_05`.
+  (Acts 29 skipped — its members are Reformed Baptist / PCA / nondenominational in a mix, not a
+  clean signal. Every Nation — Ninja-Tables church list, data endpoint not cracked; ~300 US, minor.)
+  Combined 2026-09-05: `non_denominational` **101 → 4,184**; table **377,412**; `church_cathedral`
+  **123,670**; identified rate **67.2 %**; website coverage ~26.6k.
 - **PCA + OPC → ESV** (translation, not denomination): the PCA/OPC congregations matched to their
   own directories during the 2026-08-31 / 09-01 syncs (then folded into `presbyterian_church`)
   were tagged ESV — the PCA is the denomination most identified with the ESV; OPC uses ESV/NASB
