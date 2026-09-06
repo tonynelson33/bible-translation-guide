@@ -123,7 +123,7 @@ deliberately neutral — "present in the Byzantine manuscripts, absent from the 
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
 project (`churches` table, ~377,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
-34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
+35 distinct `category` values: `church_cathedral` plus all 34 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
 `lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
@@ -199,7 +199,7 @@ name there and must stay a bot trap. The result card renders it as a `rel="nofol
 external link when present. `churches.website` is null for ~all rows until the crowdsourced
 forms populate it (no bulk import).
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
-fixed 32-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
+fixed 34-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
 since a church may use one this site doesn't. The list is scoped to translations a
 meaningful number of US congregations actually use *from the pulpit / in worship*:
@@ -303,14 +303,17 @@ slugs), `lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropd
 `lib/churches.ts`'s `humanizeCategory` (how `churches.category` slugs render in the
 `/church-finder` breakdown table).
 
-`denominationOptions` is a **fixed 32-entry US master taxonomy**, not a projection of what's in
+`denominationOptions` is a **fixed 34-entry US master taxonomy**, not a projection of what's in
 the data. Several labels split or merge the underlying buckets:
 - Where a label maps 1:1 onto a slug, `value` *is* that slug (so an edit suggestion merges
   without a translation step).
 - Splits the source names *can* distinguish are real categories, populated by the classifier:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
-  `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul), plus
-  `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern).
+  `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul),
+  `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern), and
+  `pentecostal_church` ("Pentecostal (Independent / other)", added 2026-09-06 — the Pentecostal
+  *family* catch-all, checked after AG/Foursquare/COGIC/Oneness so those win; ~3,850 rows; "Full
+  Gospel" deliberately excluded from the pattern as too broad).
 - `non_denominational` (~4,575 rows as of 2026-09-05) is populated from external directories that
   explicitly classify a church as non-denominational/independent (usachurches.org, the ARC / GCC
   church-planting networks, OSM `nondenominational` and filtered `evangelical`/`protestant` tags —
@@ -374,6 +377,23 @@ the data. Several labels split or merge the underlying buckets:
   widget `1682b4fc2190ec` → `api.storepoint.co/v1/<id>/locations`), `acna.org/anglican_church/map`
   (gmaps4rails markers inline; `scripts/fetch-acna-churches.mjs`); rollback tables
   `{pca,gmc,acna}_sync_relabel_before_2026_08_31` + `_inserted_` still exist.
+- **Added 2026-09-06: `pentecostal_church` ("Pentecostal (Independent / other)")** — partly
+  reverses the 2026-08 call to fold generic "Pentecostal" into "not identified", but *only* for
+  Pentecostal and *only* as a family catch-all (parallel to `baptist_church` = "Baptist
+  (Independent / other)"), not the umbrella. Unlike `non_denominational`/`sbc_church` this one
+  IS a name-pattern bucket — but "Pentecostal" is a *family-reliable* signal (a church named
+  "First Pentecostal" is almost certainly Pentecostal-family; the organized bodies AG /
+  Foursquare / COGIC / Oneness are carved out ahead of it in the classifier). `classify()` gets a
+  pattern (`\bPentecostal\b` | `Pentecost[eé]s` | Fire-Baptized | Open Bible Standard, minus
+  Baptist / the Oneness "Church of Jesus Christ" / PAW / BibleWay / Spanish "Pentecostal Unida"
+  names); `FOLD_TO_CATHEDRAL` drops `pentecostal_church` (keeps `evangelical_church` / `mission`).
+  The Oneness pattern also gained `Apost[oó]lica` + `Pentecost[a-zé]* Unida` (Spanish UPCI).
+  **3,853 relabelled** `church_cathedral` → `pentecostal_church` + **136** → `oneness_apostolic_church`
+  (Spanish Oneness cleanup). ~10-15% of the new bucket may be unnamed AG/COGIC affiliates —
+  acceptable, they were "not identified" before. "Full Gospel" left OUT of the pattern (too broad:
+  Word of Faith, Full Gospel Baptist Church Fellowship, Korean AG). `church_cathedral`
+  **121,573 → 117,584**; identified rate **68.8 %**. Migration `add_pentecostal_church_bucket`;
+  rollback `sync_archive.pentecostal_bucket_before_2026_09_06` (restores `category` by id).
 - **2026-08-31 — `nazarene_church` filled from the Church of the Nazarene directory** (existing
   bucket, no new slug). `maps.nazarene.org/FindAChurch/` is an **ArcGIS** map; its layer REST
   query endpoint `.../ArcGIS/rest/services/Nazarene/NazareneChurches/MapServer/0/query`
@@ -631,8 +651,8 @@ line above is still valid but the table now lives at `sync_archive.<name>`. DB 5
 `_ch`-style projection behind** (`TEMP` table, or drop it right after building `_match`).
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (34 distinct values live — `church_cathedral`
-plus all 33 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (35 distinct values live — `church_cathedral`
+plus all 34 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a

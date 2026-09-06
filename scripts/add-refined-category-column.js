@@ -89,7 +89,21 @@ const CATCH_ALL_PATTERNS = [
   // Catholic / Orthodox / Lutheran "Apostolic" names are already caught above.
   {
     category: "oneness_apostolic_church",
-    pattern: /^(?!.*New Apostolic)(?!.*Apostolic Christian).*(?:\bApostolic\b|United Pentecostal|\bUPCI\b|Pentecostal Assemblies of the World|\bOneness\b)/i,
+    pattern: /^(?!.*New Apostolic)(?!.*Apostolic Christian).*(?:\bApostolic\b|Apost[oó]lica|United Pentecostal|Pentecost[a-zé]* Unida|\bUPCI\b|Pentecostal Assemblies of the World|\bOneness\b)/i,
+  },
+  // Pentecostal (Independent / other) — the family catch-all, checked AFTER the
+  // organized Pentecostal bodies above (AG line ~59, COGIC ~60, Church of God
+  // ~69, Foursquare ~80, Oneness/Apostolic just above) so those win. Catches
+  // generic "X Pentecostal Church" (incl. Spanish "Iglesia Pentecostal"),
+  // Pentecostal-Holiness / Fire-Baptized / IPHC-style names, and Open Bible
+  // Standard. Excludes "X Pentecostal Baptist" and the Oneness "...Church of
+  // Jesus Christ" / "in Jesus' name" / BibleWay / PAW / "Pentecostal Unida"
+  // (Spanish UPCI) names the Oneness pattern above doesn't spell out. "Full
+  // Gospel" is deliberately NOT here — too broad (Word of Faith, Full Gospel
+  // Baptist Church Fellowship, Korean AG all use it).
+  {
+    category: "pentecostal_church",
+    pattern: /^(?!.*\bBaptist\b)(?!.*Church of Jesus Christ)(?!.*in Jesus'? name)(?!.*Assemblies of the World)(?!.*Bible[- ]?[Ww]ay)(?!.*Pentecost[a-zé]* Unida).*(?:\bPentecostal\b|\bPentecost[eé]s\b|\bFire[- ]Baptized\b|Open Bible Standard)/i,
   },
   // Independent / dispensational "Bible Church" — but not "X Bible Baptist
   // Church" or "Bible Presbyterian/Methodist/Lutheran" (real sub-denominations).
@@ -115,11 +129,14 @@ function classify(name) {
 }
 
 // Fold / merge to the final taxonomy (mirrors lib/suggestionOptions.ts's
-// denominationOptions). "Pentecostal" / "Evangelical" / "Mission" are
-// descriptors, not a specific body -> not identified. Wesleyan and
+// denominationOptions). "Evangelical" / "Mission" are descriptors, not a
+// specific body -> not identified. "Pentecostal" WAS folded the same way but
+// got its own catch-all bucket 2026-09-06 (family-reliable name signal, the
+// organized bodies AG/Foursquare/COGIC/Oneness are carved out ahead of it) --
+// see the pentecostal_church pattern in CATCH_ALL_PATTERNS. Wesleyan and
 // Anglican/Episcopal have merged dropdown labels. convents_and_monasteries is
 // left as-is here; scripts/apply-taxonomy-2026-08.mjs removes those rows.
-const FOLD_TO_CATHEDRAL = new Set(["pentecostal_church", "evangelical_church", "mission"]);
+const FOLD_TO_CATHEDRAL = new Set(["evangelical_church", "mission"]);
 const CATEGORY_MERGES = {
   wesleyan_church: "methodist_church",
   anglican_church: "anglican_episcopal_church",
@@ -214,10 +231,10 @@ async function main() {
       refined = normalizeCategory(refined);
       // Fallback: if we still landed on "not identified" — either because the
       // source filed the row under a vague non-cathedral prim_category, or
-      // because normalizeCategory just folded a generic Pentecostal/Evangelical/
-      // Mission bucket — try the name classifier once more. A name like
-      // "Bethel Church of God" should read as Church of God, not "not
-      // identified". (classify() is a no-op here when it already ran above.)
+      // because normalizeCategory just folded a generic Evangelical / Mission
+      // bucket — try the name classifier once more. A name like "Bethel Church
+      // of God" should read as Church of God, not "not identified".
+      // (classify() is a no-op here when it already ran above.)
       if (refined === "church_cathedral") {
         refined = classify(name);
       }

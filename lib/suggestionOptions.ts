@@ -6,7 +6,7 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (33 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (34 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
@@ -47,12 +47,24 @@ export interface Option {
  * Protestant body and "Baptist" without it is close to useless. If any of PCA/GMC/ACNA is
  * wanted back, the sync + rollback tables are documented in the "csv vs db drift" memory.
  *
+ * Added 2026-09-06: "Pentecostal (Independent / other)" (pentecostal_church). Partly reverses
+ * the 2026-08 decision to fold generic "Pentecostal" into "not identified" — but only for
+ * Pentecostal, and only as a *family catch-all* (parallel to "Baptist (Independent / other)"),
+ * not the umbrella. "Pentecostal" is a family-reliable name signal — a church named "First
+ * Pentecostal" is almost certainly Pentecostal-family; the organized bodies (AG, Foursquare,
+ * COGIC, Oneness/Apostolic) are carved out ahead of it in the classifier, so what lands here is
+ * the independent / unaffiliated / small-body tail (~3,900 rows, incl. the Pentecostal-Holiness
+ * / IPHC-style and Open Bible names, and Spanish "Iglesia Pentecostal"). ~10-15% may actually be
+ * unnamed AG/COGIC affiliates — acceptable, they were "not identified" before. "Full Gospel" was
+ * deliberately left OUT of the pattern (too broad — Word of Faith / Full Gospel Baptist / Korean
+ * AG all use it). "Evangelical" and "Mission" stay folded — those really are just adjectives.
+ *
  * Deliberately excluded: Latter Day Saints and Christian Science (removed from
  * the directory entirely — neither holds to historic Christian doctrine by any
  * mainstream tradition's definition); "church_cathedral" (the "not identified"
- * default); and the generic Pentecostal / Evangelical / Mission buckets, which
- * the 2026-08 overhaul folded into "church_cathedral" (they name a style, not a
- * body). Convents & Monasteries was deleted outright — not congregations.
+ * default); and the generic Evangelical / Mission buckets, which the 2026-08
+ * overhaul folded into "church_cathedral" (they name a style, not a body).
+ * Convents & Monasteries was deleted outright — not congregations.
  */
 export const denominationOptions: Option[] = [
   { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
@@ -80,6 +92,7 @@ export const denominationOptions: Option[] = [
   { value: "non_denominational", label: "Non-denominational" },
   { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },
   { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
+  { value: "pentecostal_church", label: "Pentecostal (Independent / other)" },
   { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },
   { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
   { value: "presbyterian_church", label: "Presbyterian" },
