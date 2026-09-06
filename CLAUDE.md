@@ -119,9 +119,9 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~376,000 U.S. churches by church name, denomination,
+**Church Finder** (`/church-finder`): search ~377,000 U.S. churches by church name, denomination,
 city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~376,000 rows — US only, and non-congregations (parsonages,
+project (`churches` table, ~377,000 rows — US only, and non-congregations (parsonages,
 rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
 34 distinct `category` values: `church_cathedral` plus all 33 dropdown categories, every one of
 which now has rows; RLS enabled with a public SELECT-only
@@ -169,9 +169,10 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~8% of churches have a confirmed `bible_translation` so far (30,143 rows as of 2026-09-01
-— 22,327 Catholic → NABRE, 7,783 Episcopal / UCC / mainline → NRSV, ~33 per-church research) —
-this is inherently a long-tail research problem (see "Church data pipeline" below), not a bug.
+Only ~8.5% of churches have a confirmed `bible_translation` so far (~32,000 rows as of 2026-09-05
+— ~22,300 Catholic → NABRE, ~7,800 Episcopal / UCC / mainline → NRSV, 1,904 PCA/OPC → ESV, the
+rest per-church research) — this is inherently a long-tail research problem (see "Church data
+pipeline" below), not a bug.
 Most results correctly show "Not identified" for the translation (same label the result card and
 the breakdown tables use for an unknown denomination or translation).
 
@@ -310,9 +311,11 @@ the data. Several labels split or merge the underlying buckets:
   `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
   `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul), plus
   `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern).
-- `non_denominational` (101 rows as of 2026-08-30) is populated only by per-church verification,
-  never a name pattern — a sample proved ~35-45% of generic-named "X Community Church" rows are
-  quietly SBC / AG / EFCA / Converge / etc. See the overnight-grind log.
+- `non_denominational` (~3,270 rows as of 2026-09-05) is populated from external directories that
+  explicitly classify a church as non-denominational/independent (usachurches.org, OSM
+  `denomination=nondenominational` tags — see the 2026-09-05 section below) or per-church
+  verification — **never a bare name pattern**: a sample proved ~35-45% of generic-named
+  "X Community Church" rows are quietly SBC / AG / EFCA / Converge / etc.
 - **Merged 2026-08-30** (all empty or unenforceable by name): `church_of_god_holiness` +
   `church_of_god` → one "Church of God" (Anderson/Holiness vs Cleveland/Pentecostal is
   invisible in a bare "Church of God" name); the two `non_denominational*` tiers → one
@@ -663,6 +666,33 @@ Rollback: `sync_archive.osm_sync_relabel_before_2026_09_01` (restore `category` 
   candidates; `osm_insert_plan` the insert holdbacks). The big derived tables (`osm_details`,
   `ch_all`, `ch_keys`, `osm_geopairs`, `osm_ch_match`) were dropped after — recreatable from the
   two committed ndjson files.
+
+**2026-09-05 — `non_denominational` push + mainline translation defaults.** The
+`non_denominational` bucket went 101 → **3,268** via three sources (the "populated only by
+per-church verification" rule is relaxed to "an external directory or an OSM mapper explicitly
+classified it as non-denominational/independent" — still never a bare name pattern):
+- **OSM `denomination=nondenominational` tag** — the ~1,450 POIs held back on 2026-09-01.
+  `scripts/osm-nondenom.json` (filtered from `osm-church-details.ndjson`), coord-matched to
+  `church_cathedral` (±0.0020°). **783 relabelled** (within ~90 m *or* name sim ≥ 0.35).
+  Rollback `sync_archive.osm_nondenom_relabel_before_2026_09_05`.
+- **usachurches.org** "Non-Denominational / Independent" directory (2,890 listings; permissive
+  robots.txt, ToU restricts *commercial* redistribution only). `scripts/fetch-usachurches-nondenom.mjs`
+  (category pages → name/street/city/state) + `-details.mjs` (detail pages → coords from the
+  embedded Google-Maps link, ZIP, website; 2,890/2,890 coords+zip, 1,817 websites). Both `.ndjson`
+  committed. Applied against `church_cathedral`: **977** relabelled on name+city+state, **+396**
+  more on the geo re-match, **+39** on name+zip5. **995 net-new inserts** (`id = md5('uc:'||slug)`;
+  "X Bible Church" names → `bible_church`, rest → `non_denominational`; 196 name+zip dup-risk held
+  out). **909 websites** backfilled onto matched rows. Rollbacks: `sync_archive.uc_nondenom_*_before_2026_09_05`
+  (relabel / georelabel / namezip_relabel / website) + `uc_nondenom_inserted_2026_09_05` (delete ids).
+  Table 377,033; `church_cathedral` **124,211**; identified rate **67.1 %**; website coverage ~25.9k.
+- **PCA + OPC → ESV** (translation, not denomination): the PCA/OPC congregations matched to their
+  own directories during the 2026-08-31 / 09-01 syncs (then folded into `presbyterian_church`)
+  were tagged ESV — the PCA is the denomination most identified with the ESV; OPC uses ESV/NASB
+  with ESV the plurality. **1,904 rows** (1,768 PCA + 136 OPC). Rollback
+  `sync_archive.pca_opc_esv_before_2026_09_02`. Translation coverage 8.0 % → **8.5 %** (ESV
+  29 → 1,933). ACNA (~770) was **not** done — genuinely split ESV/NKJV/NRSV across its wings,
+  doesn't clear the "~99 % aligned" bar. LCMS→ESV (~6k `lutheran_church` rows) is a clean rule
+  but needs their access-gated locator to identify the rows — left alone.
 
 **2026-08 taxonomy overhaul** (`scripts/apply-taxonomy-2026-08.mjs`, one-off; deleted rows
 archived verbatim to `scripts/removed-rows-2026-08-28.csv`):
