@@ -574,6 +574,13 @@ the data. Several labels split or merge the underlying buckets:
   real US footprint is ~12,700). Rollback: `ag_sync_relabel_before_2026_08_31`, delete
   `ag_sync_inserted_2026_08_31` ids. Staging: `ag_import` / `ag_match` / `ag_insert_plan` /
   `ag_sync_holdback_2026_08_31`.
+  - **Re-match 2026-09-05** (same `ag-churches.ndjson`, loose street key, `church_cathedral` only):
+    AG church names diverge hard from ours ("Bethel Assembly of God" ↔ our "Bethel Church",
+    "Aliento de Vida", Spanish "Templo …"), so address matches averaged name_sim ~0.14. Applied
+    where `name_sim ≥ 0.22` **or** a core-content-word match after stripping "assembly/of/god/
+    church/iglesia/…" ≥ 0.35, with an other-denomination-in-our-name guard. **+769 relabelled**
+    `church_cathedral` → `assembly_of_god_church` (12,003 → 12,772). `church_cathedral` **121,880**.
+    Rollback `sync_archive.ag_rematch_relabel_before_2026_09_05`.
 
 **Buckets sourced from the denomination's own official church directory** (not name-pattern /
 crowdsourced — these rows are as authoritative as the denomination's own records, modulo the
