@@ -99,11 +99,10 @@ export default function TranslationSpectrum() {
         </svg>
       </div>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-500">
-        The same order as the list, grouped into the three bands published spectrum charts use — plus
-        the paraphrases past the line, which this site doesn&apos;t profile. The axis is translation
-        method, not reading difficulty. <span aria-hidden="true">*</span> The Amplified&apos;s base
-        text is as formal as the NASB; its bracketed expansions are what pull the printed page
-        rightward.
+        The same order as the list, in the three bands that published spectrum charts use, plus a
+        paraphrase zone the site doesn&apos;t profile. The axis is translation method, not reading
+        difficulty. <span aria-hidden="true">*</span> The Amplified&apos;s base text is as formal as
+        the NASB; the bracketed expansions pull the printed page rightward.
       </p>
     </div>
   );

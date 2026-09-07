@@ -75,7 +75,7 @@ export const rankingCategories: RankingCategory[] = [
     title: "Most Literal / Word for Word",
     tabLabel: "Most Literal",
     criteria:
-      "Which translations stick closest to the exact words and grammar of the original Hebrew, Aramaic, and Greek — based on each translation's stated philosophy (Formal, Dynamic, Optimal, or Mixed) and its reputation among close readers.",
+      "Which translations stick closest to the exact words and grammar of the original Hebrew, Aramaic, and Greek — based on each translation's stated philosophy (Formal, Optimal, Mixed, or Dynamic) and its reputation among close readers.",
     entries: [
       {
         id: "lsb",
@@ -101,38 +101,41 @@ export const rankingCategories: RankingCategory[] = [
       { id: "ceb", blurb: "Dynamic and pitched at a 7th-grade reading level, generally a little freer with the wording than the NIV." },
       { id: "nlt", blurb: "The least literal translation here — a genuine translation, but one built to prioritize clarity over matching the original's exact wording." },
     ],
-    note: "This mostly follows each translation's own stated philosophy — the Formal / Dynamic / Optimal / Mixed field in the comparison table — plus the broad agreement of published “translation spectrum” charts. The three tiers are well settled; the order within each is finer judgment. AMP and NRSV are the genuine edge cases (see their entries), and the NET is placed by how its readable main text lands, not by its “Mixed” label — the literal renderings sit in its footnotes. “More literal” describes a method, not accuracy or quality — everything here is a real translation by competent scholars.",
+    note: "This mostly follows each translation's own stated philosophy — the Formal / Optimal / Mixed / Dynamic field in the comparison table — plus the broad agreement of published “translation spectrum” charts. The three tiers are well settled; the order within each is finer judgment. AMP and NRSV are the genuine edge cases (see their entries), and the NET is placed by how its readable main text lands, not by its “Mixed” label — the literal renderings sit in its footnotes. “More literal” describes a method, not accuracy or quality — everything here is a real translation by competent scholars.",
   },
   {
-    slug: "study",
-    title: "Best for Serious Study",
-    tabLabel: "Serious Study",
+    slug: "memorization",
+    title: "Best for Memorization",
+    tabLabel: "Memorization",
     criteria:
-      "Which translations give a careful reader the most help digging into what the original text actually says — through literalness, footnotes, or a strong study-Bible ecosystem.",
+      "Which translations lend themselves to memorizing Scripture — precise, consistent wording and a cadence that's easy to recall.",
     entries: [
       {
-        id: "net",
-        blurb: "Its Full Notes Edition carries more than 60,000 translators' notes — more than any other translation here — walking through word choices, alternate readings, and textual variants verse by verse.",
+        id: "kjv",
+        blurb:
+          "Generations of Christians memorized Scripture in the KJV, and it's not just familiarity — its rhythmic, poetic cadence genuinely makes text easier to recall, the same reason poetry memorizes more easily than prose.",
       },
       {
         id: "nasb",
-        blurb: "Long the standard for close, word-for-word study, especially for readers doing original-language word studies or comparing translations line by line.",
+        blurb:
+          "Its precise, consistent word-for-word phrasing appeals to structured Scripture memory programs that care about exact wording — though that same precision can make its sentences less naturally rhythmic to recite than the KJV's.",
       },
       {
-        id: "nrsv",
-        blurb: "The default translation of academic biblical studies — the text behind the New Oxford Annotated and HarperCollins study Bibles and the common version in most non-evangelical seminaries, with formal wording and a serious set of text-critical footnotes.",
+        id: "esv",
+        blurb:
+          "Increasingly the default for Scripture memory in Reformed and young-adult ministry circles — literal, consistent wording without the KJV's archaic vocabulary.",
       },
-      { id: "esv", blurb: "The base text for the widely used ESV Study Bible, backed by one of the largest libraries of study notes and commentaries built around any single translation." },
-      { id: "lsb", blurb: "Maximally literal and internally consistent, which appeals to readers doing detailed word studies — though its study-resource library is still young." },
-      { id: "nkjv", blurb: "Formal and marginal-note-heavy about where the Majority Text and modern critical text differ, which suits textually-minded study." },
-      { id: "csb", blurb: "The CSB Study Bible and CSB Apologetics Study Bible give it a real study apparatus, even though its main text prioritizes readability over maximal literalness." },
-      { id: "niv", blurb: "The NIV Study Bible is one of the best-selling study Bibles ever made — strong supporting material, even though the translation itself is Dynamic, not word-for-word." },
-      { id: "kjv", blurb: "The hub of the classic lay-study toolkit — Strong's Concordance, Treasury of Scripture Knowledge, and centuries of verse-keyed commentary are all built on it, and it flags translator-supplied words in italics. What holds it back for this specific question: the Textus Receptus base rather than the older manuscripts scholars now follow, plus 1611 vocabulary that can quietly mislead." },
-      { id: "amp", blurb: "Purpose-built to expose the range of meaning in a word without a lexicon — useful for that, as long as you remember that a word's list of possible meanings isn't the same as what it means in context." },
-      { id: "ceb", blurb: "The CEB Study Bible is a solid mainline resource, but the translation itself is built for reading ease rather than word-level precision." },
-      { id: "nlt", blurb: "Built for clarity and accessibility first — a fine translation for understanding a passage's meaning, but not the first choice for granular word-level study." },
+      { id: "nkjv", blurb: "Carries much of the KJV's memorable cadence, in grammar that's easier to commit to memory today." },
+      { id: "niv", blurb: "Being the translation most people around you already know makes group memorization and recitation easier." },
+      { id: "lsb", blurb: "Its consistent, literal renderings suit precision-focused memorization, though it's too new to have an established memory-verse tradition yet." },
+      { id: "csb", blurb: "Used in some LifeWay children's and student curricula for Scripture memory, with clear, consistent phrasing." },
+      { id: "nrsv", blurb: "No real memory-verse tradition, and reshaping familiar singular lines for inclusive language (“Blessed are those…”) works against the crisp, fixed phrasing that memorization rewards." },
+      { id: "ceb", blurb: "Plain vocabulary helps, but its loose, conversational phrasing gives exact wording less of a fixed shape to hold onto." },
+      { id: "nlt", blurb: "Its more flexible, thought-for-thought phrasing makes exact word-for-word recall harder than with a more literal translation." },
+      { id: "net", blurb: "Built as a study tool, not a memory-verse text — its main text isn't designed or marketed around fixed, memorable pew phrasing." },
+      { id: "amp", blurb: "The brackets and alternate-word strings make a verse almost impossible to fix in memory in any single form." },
     ],
-    note: "Three things feed this and they don't always agree: how closely the wording tracks the original, how thoroughly the translation footnotes its own choices (NET is far ahead), and the size of the surrounding library of study Bibles and commentaries — ESV and NIV for the evangelical world, NRSV for the academic one. A translation can rank on any one of the three, which is why the NIV places mid-pack despite its dynamic text. It's pitched at a self-directed lay student; a scholar's list would lean harder on the original languages.",
+    note: "Two things drive this: consistency — memorize a verse and it should match every printing and cross-reference — and cadence, since rhythmic prose is genuinely easier to recall (the KJV's real edge). Familiarity matters for group recitation, and a handful of translations have decades of memory-verse programs built around them. A newer translation can be well-suited to memorizing and still rank low here purely for lack of that tradition.",
   },
   {
     slug: "devotions",
@@ -197,44 +200,41 @@ export const rankingCategories: RankingCategory[] = [
     note: "This weighs three things: whether the text is precise enough to build a verse-by-verse sermon on, whether it reads well aloud, and whether it's what the congregation already has open. It is not a count of which Bible is used in the most pulpits — that's Most Popular. The KJV in particular is preached from far more widely than its spot here suggests; it ranks lower because the archaic vocabulary works against close exposition. Denominational lectionary and official choices (NRSV, ESV, CSB) do much of the sorting.",
   },
   {
-    slug: "memorization",
-    title: "Best for Memorization",
-    tabLabel: "Memorization",
+    slug: "study",
+    title: "Best for Serious Study",
+    tabLabel: "Serious Study",
     criteria:
-      "Which translations lend themselves to memorizing Scripture — precise, consistent wording and a cadence that's easy to recall.",
+      "Which translations give a careful reader the most help digging into what the original text actually says — through literalness, footnotes, or a strong study-Bible ecosystem.",
     entries: [
       {
-        id: "kjv",
-        blurb:
-          "Generations of Christians memorized Scripture in the KJV, and it's not just familiarity — its rhythmic, poetic cadence genuinely makes text easier to recall, the same reason poetry memorizes more easily than prose.",
+        id: "net",
+        blurb: "Its Full Notes Edition carries more than 60,000 translators' notes — more than any other translation here — walking through word choices, alternate readings, and textual variants verse by verse.",
       },
       {
         id: "nasb",
-        blurb:
-          "Its precise, consistent word-for-word phrasing appeals to structured Scripture memory programs that care about exact wording — though that same precision can make its sentences less naturally rhythmic to recite than the KJV's.",
+        blurb: "Long the standard for close, word-for-word study, especially for readers doing original-language word studies or comparing translations line by line.",
       },
       {
-        id: "esv",
-        blurb:
-          "Increasingly the default for Scripture memory in Reformed and young-adult ministry circles — literal, consistent wording without the KJV's archaic vocabulary.",
+        id: "nrsv",
+        blurb: "The default translation of academic biblical studies — the text behind the New Oxford Annotated and HarperCollins study Bibles and the common version in most non-evangelical seminaries, with formal wording and a serious set of text-critical footnotes.",
       },
-      { id: "nkjv", blurb: "Carries much of the KJV's memorable cadence, in grammar that's easier to commit to memory today." },
-      { id: "niv", blurb: "Being the translation most people around you already know makes group memorization and recitation easier." },
-      { id: "lsb", blurb: "Its consistent, literal renderings suit precision-focused memorization, though it's too new to have an established memory-verse tradition yet." },
-      { id: "csb", blurb: "Used in some LifeWay children's and student curricula for Scripture memory, with clear, consistent phrasing." },
-      { id: "nrsv", blurb: "No real memory-verse tradition, and reshaping familiar singular lines for inclusive language (“Blessed are those…”) works against the crisp, fixed phrasing that memorization rewards." },
-      { id: "ceb", blurb: "Plain vocabulary helps, but its loose, conversational phrasing gives exact wording less of a fixed shape to hold onto." },
-      { id: "nlt", blurb: "Its more flexible, thought-for-thought phrasing makes exact word-for-word recall harder than with a more literal translation." },
-      { id: "net", blurb: "Built as a study tool, not a memory-verse text — its main text isn't designed or marketed around fixed, memorable pew phrasing." },
-      { id: "amp", blurb: "The brackets and alternate-word strings make a verse almost impossible to fix in memory in any single form." },
+      { id: "esv", blurb: "The base text for the widely used ESV Study Bible, backed by one of the largest libraries of study notes and commentaries built around any single translation." },
+      { id: "lsb", blurb: "Maximally literal and internally consistent, which appeals to readers doing detailed word studies — though its study-resource library is still young." },
+      { id: "nkjv", blurb: "Formal and marginal-note-heavy about where the Majority Text and modern critical text differ, which suits textually-minded study." },
+      { id: "csb", blurb: "The CSB Study Bible and CSB Apologetics Study Bible give it a real study apparatus, even though its main text prioritizes readability over maximal literalness." },
+      { id: "niv", blurb: "The NIV Study Bible is one of the best-selling study Bibles ever made — strong supporting material, even though the translation itself is Dynamic, not word-for-word." },
+      { id: "kjv", blurb: "The hub of the classic lay-study toolkit — Strong's Concordance, Treasury of Scripture Knowledge, and centuries of verse-keyed commentary are all built on it, and it flags translator-supplied words in italics. What holds it back for this specific question: the Textus Receptus base rather than the older manuscripts scholars now follow, plus 1611 vocabulary that can quietly mislead." },
+      { id: "amp", blurb: "Purpose-built to expose the range of meaning in a word without a lexicon — useful for that, as long as you remember that a word's list of possible meanings isn't the same as what it means in context." },
+      { id: "ceb", blurb: "The CEB Study Bible is a solid mainline resource, but the translation itself is built for reading ease rather than word-level precision." },
+      { id: "nlt", blurb: "Built for clarity and accessibility first — a fine translation for understanding a passage's meaning, but not the first choice for granular word-level study." },
     ],
-    note: "Two things drive this: consistency — memorize a verse and it should match every printing and cross-reference — and cadence, since rhythmic prose is genuinely easier to recall (the KJV's real edge). Familiarity matters for group recitation, and a handful of translations have decades of memory-verse programs built around them. A newer translation can be well-suited to memorizing and still rank low here purely for lack of that tradition.",
+    note: "Three things feed this and they don't always agree: how closely the wording tracks the original, how thoroughly the translation footnotes its own choices (NET is far ahead), and the size of the surrounding library of study Bibles and commentaries — ESV and NIV for the evangelical world, NRSV for the academic one. A translation can rank on any one of the three, which is why the NIV places mid-pack despite its dynamic text. It's pitched at a self-directed lay student; a scholar's list would lean harder on the original languages.",
   },
   {
     slug: "balance",
     title: "Best Overall Balance",
     tabLabel: "Overall Balance",
-    criteria: "Which translations would serve you best in all areas if you could only have one.",
+    criteria: "Which translations would serve you best across the four main areas if you could only have one.",
     entries: [
       {
         id: "esv",
@@ -261,6 +261,6 @@ export const rankingCategories: RankingCategory[] = [
       { id: "nlt", blurb: "#1 for daily devotions and nowhere else near the top — its thought-for-thought wording is last or near-last for study, preaching, and memorization." },
       { id: "amp", blurb: "A reference tool rather than an everyday Bible — last in three of the four categories, and 10th in the other." },
     ],
-    note: "This list averages each translation's placement in the four categories above that measure how well it serves a single use — serious study, daily devotions, preaching, and memorization. Most Popular and Most Literal are left out: they describe what a translation is, not how well it works for you. Ties go to the translation with the stronger single-category finish.",
+    note: "This list averages each translation's placement in the four categories above that measure how well it serves a single use — memorization, daily devotions, preaching, and serious study. Most Popular and Most Literal are left out: they describe what a translation is, not how well it works for you. Ties go to the translation with the stronger single-category finish.",
   },
 ];
