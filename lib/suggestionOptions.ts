@@ -104,8 +104,19 @@ export const denominationOptions: Option[] = [
 ];
 
 /**
- * Bible translation choices — deliberately broader than the 9 translations this
- * site profiles in depth, since a church may use one this site doesn't cover.
+ * Bible translation choices for the "add a church" / "suggest a correction"
+ * forms — broader than the 9 translations this site profiles in depth (a church
+ * may use one that isn't profiled), but curated to what a church member would
+ * realistically pick as their congregation's *pulpit* Bible.
+ *
+ * Trimmed 2026-09-06 (each removed option: no real pulpit constituency that
+ * would pick it over a neighbour): NJB (never a US lectionary — NABRE covers
+ * US Catholics), CEV / GNT (readability editions, not primary pulpit Bibles),
+ * WEB (public-domain, near-zero church use), RSV (essentially no church still
+ * uses the 1952 text — they've moved to NRSV or ESV), NRSVue (a 2021 NRSV
+ * revision no member can distinguish from "NRSV"), Douay-Rheims KEPT (Latin
+ * Mass parishes genuinely report it). This list is form-only — removing an
+ * entry does not affect how a stored `bible_translation` value renders.
  */
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
@@ -114,7 +125,6 @@ export const translationOptions: Option[] = [
   { value: "Douay-Rheims", label: "Douay-Rheims" },
   { value: "EHV", label: "EHV — Evangelical Heritage Version" },
   { value: "ESV", label: "ESV — English Standard Version" },
-  { value: "GNT", label: "GNT — Good News Translation" },
   { value: "KJV", label: "KJV — King James Version" },
   { value: "LSB", label: "LSB — Legacy Standard Bible" },
   { value: "NABRE", label: "NABRE — New American Bible, Revised Edition" },
@@ -124,7 +134,5 @@ export const translationOptions: Option[] = [
   { value: "NKJV", label: "NKJV — New King James Version" },
   { value: "NLT", label: "NLT — New Living Translation" },
   { value: "NRSV", label: "NRSV — New Revised Standard Version" },
-  { value: "NRSVue", label: "NRSVue — New Revised Standard Version, Updated Edition" },
   { value: "OSB", label: "OSB — Orthodox Study Bible" },
-  { value: "RSV", label: "RSV — Revised Standard Version" },
 ];
