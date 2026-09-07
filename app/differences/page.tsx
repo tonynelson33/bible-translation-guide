@@ -21,7 +21,7 @@ export default function DifferencesPage() {
         <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
           Why translations differ
         </h1>
-        <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+        <p className="mt-3 leading-relaxed text-neutral-700">
           Most of the Bible reads the same in every English translation. But in many places the
           differences are visible enough that people notice — a verse in brackets, a footnote, a
           familiar phrase that&apos;s shorter than they remember. Those differences come from two
@@ -59,14 +59,14 @@ export default function DifferencesPage() {
           <h2 className="font-serif text-2xl font-semibold text-brand-900 sm:text-3xl">
             {part.title}
           </h2>
-          <p className="mt-2 max-w-3xl leading-relaxed text-neutral-600">{part.intro}</p>
+          <p className="mt-2 max-w-3xl leading-relaxed text-neutral-700">{part.intro}</p>
 
           {part.sections.map((section, sectionIndex) => (
             <div key={section.id} id={section.id} className="mt-11 scroll-mt-20">
               <h3 className="font-serif text-xl font-semibold text-brand-900">
                 <span className="text-brand-400">{sectionIndex + 1})</span> {section.title}
               </h3>
-              <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-neutral-500">
+              <p className="mt-2 max-w-3xl leading-relaxed text-neutral-700">
                 {section.intro}
               </p>
 
@@ -79,11 +79,11 @@ export default function DifferencesPage() {
               )}
 
               {section.referenced && section.referenced.length > 0 && (
-                <dl className="mt-3 max-w-3xl text-sm leading-snug">
+                <dl className="mt-3 max-w-3xl text-sm leading-relaxed">
                   {section.referenced.map((r) => (
                     <div key={r.reference} className="mb-2">
                       <dt className="inline font-semibold text-brand-800">{r.reference} — </dt>
-                      <dd className="inline text-neutral-600">{r.note}</dd>
+                      <dd className="inline text-neutral-700">{r.note}</dd>
                     </div>
                   ))}
                 </dl>
