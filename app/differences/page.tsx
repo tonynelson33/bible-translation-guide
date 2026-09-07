@@ -3,7 +3,6 @@ import DiffVerseCard from "@/components/DiffVerseCard";
 import {
   ATTRIBUTIONS,
   differenceParts,
-  TOTAL_VERSES,
   TRANSLATION_LABEL,
   USED_TRANSLATIONS,
 } from "@/lib/translationDifferences";
@@ -23,11 +22,11 @@ export default function DifferencesPage() {
           Why translations differ
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-          Most of the Bible reads the same in every English translation. But in {TOTAL_VERSES}{" "}
-          places the differences are visible enough that people notice — a verse in brackets, a
-          footnote, a familiar phrase that&apos;s shorter than they remember. Those differences
-          come from two things: which ancient copies a translation follows, and which English
-          words the translators chose.
+          Most of the Bible reads the same in every English translation. But in many places the
+          differences are visible enough that people notice — a verse in brackets, a footnote, a
+          familiar phrase that&apos;s shorter than they remember. Those differences come from two
+          things: which ancient copies a translation follows, and which English words the
+          translators chose.
         </p>
 
         {/* table of contents */}
@@ -52,16 +51,22 @@ export default function DifferencesPage() {
       </div>
 
       {differenceParts.map((part) => (
-        <section key={part.id} id={part.id} className="mt-10 scroll-mt-20">
-          <h2 className="font-serif text-xl font-semibold text-brand-900">{part.title}</h2>
-          <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-neutral-600">{part.intro}</p>
+        <section
+          key={part.id}
+          id={part.id}
+          className="mt-14 scroll-mt-20 border-t border-neutral-200 pt-10"
+        >
+          <h2 className="font-serif text-2xl font-semibold text-brand-900 sm:text-3xl">
+            {part.title}
+          </h2>
+          <p className="mt-2 max-w-3xl leading-relaxed text-neutral-600">{part.intro}</p>
 
           {part.sections.map((section, sectionIndex) => (
-            <div key={section.id} id={section.id} className="mt-7 scroll-mt-20">
-              <h3 className="font-serif text-base font-semibold text-brand-900">
-                {sectionIndex + 1}) {section.title}
+            <div key={section.id} id={section.id} className="mt-11 scroll-mt-20">
+              <h3 className="font-serif text-xl font-semibold text-brand-900">
+                <span className="text-brand-400">{sectionIndex + 1})</span> {section.title}
               </h3>
-              <p className="mt-1 max-w-3xl text-sm leading-relaxed text-neutral-500">
+              <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-neutral-500">
                 {section.intro}
               </p>
 

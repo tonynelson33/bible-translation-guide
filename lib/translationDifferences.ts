@@ -296,6 +296,3 @@ export const differenceParts: DiffPart[] = [
     ],
   },
 ];
-
-/** total distinct verses covered (for the intro count) */
-export const TOTAL_VERSES = 84;
