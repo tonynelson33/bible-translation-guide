@@ -1,16 +1,19 @@
 # BibleTranslationGuide
 
-A comparison site for nine widely used English Bible translations — ESV, KJV, NIV, NLT, CSB,
-LSB, NKJV, NASB, and NET. Built with Next.js (App Router) and Tailwind CSS. No database — all
-comparison data lives in static JSON files in `data/`.
+A comparison site for thirteen widely used English Bible translations — CSB, ESV, KJV, NIV, NLT,
+LSB, NKJV, NASB, NET, NRSV, CEB, EHV, and AMP. Built with Next.js (App Router) and Tailwind CSS.
+The comparison data lives in static JSON files in `data/`; the Church Finder (`/church-finder`)
+is backed by a Supabase Postgres database.
 
 ## Pages
 
 - `/` — sortable comparison table (translations x editorial/textual attributes)
-- `/verses` — pick a well-known verse and see it rendered side-by-side across all nine
-  translations, fetched live from each translation's Bible text API
-- `/translations/[slug]` — placeholder profile page per translation
-- `/rankings`, `/blog`, `/church-finder`, `/buy` — placeholder pages
+- `/verses` — pick a well-known verse and see it rendered side-by-side across all thirteen
+  translations (text is cached in `data/cachedVerses.json`, not fetched live)
+- `/translations/[slug]` — a full profile page per translation
+- `/rankings` — criteria-based rankings across seven categories
+- `/church-finder` — search ~348,000 U.S. Protestant churches by name / denomination / location
+- `/blog` (nav label "Videos"), `/differences`, `/buy` — supporting content pages
 
 ## Getting started
 
@@ -25,29 +28,19 @@ Then open http://localhost:3000.
 
 ## Verse text sources (`/verses`)
 
-Scripture text is **never** hardcoded — it's fetched at request time from each translation's own
-API, per `lib/verseProviders.ts`:
+`/verses` compares a **fixed** set of five sample verses (`data/verses.json`), so the text for
+each translation is **cached, not fetched live** — `data/cachedVerses.json` holds the verse text
+plus the publisher's required attribution for all thirteen translations, and
+`lib/verseProviders.ts` is a plain synchronous lookup (no API keys, no network). Five verses per
+translation is well inside every publisher's quote-without-permission allowance on this
+non-commercial site. See `data/cachedVerses.README.md` for how each translation's text was
+sourced and the fidelity rules for editing it.
 
-| Translation | Source | API key needed? |
-|---|---|---|
-| KJV | [bible-api.com](https://bible-api.com) | No — public domain |
-| ESV | [api.esv.org](https://api.esv.org) (Crossway) | Yes — free, non-commercial (`ESV_API_KEY`) |
-| NET | [labs.bible.org](https://labs.bible.org/api_web_service) | No |
-| NIV, NASB, CSB | [scripture.api.bible](https://scripture.api.bible) | Yes — free Starter plan (`API_BIBLE_KEY`) |
-| NLT, NKJV | Configured for scripture.api.bible, but no Bible ID confirmed yet on the free plan | — |
-| LSB | **No known free public API as of mid-2026** | — |
+## Environment
 
-Important limitation: scripture.api.bible's free Starter plan only allows **3 copyrighted
-translations active at once** on your account. This project defaults to NIV, NASB, and CSB. If
-you'd rather have NLT or NKJV live instead, look up the current Bible ID for that translation via
-`GET /v1/bibles` on your own api.bible account, add it to the corresponding entry's `apiBibleId`
-in `data/translations.json`, and drop one of the other three.
-
-If a translation's key/ID isn't configured, its card on `/verses` shows "Text unavailable" with
-an explanation instead of failing — the page always renders for all nine translations.
-
-Copy `.env.example` to `.env.local` and fill in whichever keys you have. All are optional; the
-site builds and runs fine with none of them set.
+Copy `.env.example` to `.env.local`. The only variables the app uses are
+`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (for the Church Finder — without
+them that page shows a setup notice instead of crashing). No Bible-API keys are needed.
 
 ## Data
 
@@ -61,8 +54,9 @@ home page.
 1. Push this repo to GitHub (see below).
 2. In Vercel, "Add New Project" → import the GitHub repo → framework preset "Next.js" (auto-
    detected) → Deploy. No paid add-ons are required.
-3. If you have any of the API keys above, add them under Project Settings → Environment Variables
-   before or after the first deploy, then redeploy.
+3. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` under Project Settings →
+   Environment Variables (before or after the first deploy), then redeploy so the Church Finder
+   can query data.
 4. Once ready, connect the `bibletranslationguide.com` domain under Project Settings → Domains.
 
 ## Pushing to GitHub

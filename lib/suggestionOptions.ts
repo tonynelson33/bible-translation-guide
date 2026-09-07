@@ -108,9 +108,9 @@ export const denominationOptions: Option[] = [
 
 /**
  * Bible translation choices for the "add a church" / "suggest a correction"
- * forms — broader than the 9 translations this site profiles in depth (a church
- * may use one that isn't profiled), but curated to what a church member would
- * realistically pick as their congregation's *pulpit* Bible.
+ * forms — curated to what a church member would realistically pick as their
+ * congregation's *pulpit* Bible. Since the 2026-09-06 trim this is exactly the
+ * 13 translations the site profiles in depth (data/translations.json).
  *
  * Trimmed 2026-09-06 to 13 — the English Bibles a Protestant congregation would
  * realistically pick as its pulpit Bible. Removed: NJB / Douay-Rheims / NABRE

@@ -235,4 +235,111 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Anyone who wants a free, high-quality translation with its extensive notes available online at no cost.",
     ],
   },
+
+  nrsv: {
+    tagline:
+      "The standard translation of mainline Protestant churches and academic biblical studies — a formal revision of the RSV with inclusive language for people.",
+    overview: [
+      "The New Revised Standard Version was published in 1989 by the National Council of Churches, as a revision of the 1952 Revised Standard Version — itself a revision of the 1901 American Standard Version, in the lineage that runs back to the King James Version. The translation committee was chaired by the textual critic Bruce Metzger of Princeton and included Protestant, Roman Catholic, Eastern Orthodox, and Jewish scholars — one of the most broadly ecumenical teams ever assembled for an English Bible.",
+      "Its guiding rule, inherited from the RSV, is “as literal as possible, as free as necessary” — a formal-equivalence approach that stays close to the structure of the Hebrew, Aramaic, and Greek, though less rigidly word-for-word than the NASB or ESV. It translates from the standard critical texts, and where the Dead Sea Scrolls or the Septuagint preserve an older or clearer reading than the traditional Masoretic Hebrew, the NRSV often follows it and notes the change in the margin.",
+      "The NRSV was the first major English translation to use gender-inclusive language for humanity as a standing policy: where the original clearly addresses or describes both men and women, it renders the text “brothers and sisters,” “friends,” or “people” rather than “brothers” or “men.” Traditional masculine language for God is kept. It also does not capitalize pronouns referring to God — a deliberate choice, since the original languages draw no such distinction.",
+      "In 2021 the NCC released the New Revised Standard Version, Updated Edition (NRSVue) — a moderate revision folding in three decades of manuscript discoveries and scholarship, refining the inclusive-language renderings, and adjusting several thousand verses. The NRSV and NRSVue are one translation; Bible Gateway and most publishers now serve the updated text as the current NRSV, and mainline denominations are gradually adopting it.",
+      "For a generation the NRSV has been the assumed common text of Protestant seminaries and academic biblical scholarship, and the base for study Bibles like the New Oxford Annotated Bible and the HarperCollins Study Bible. It is the standard or approved lectionary translation in the Episcopal Church, the Evangelical Lutheran Church in America, the Presbyterian Church (U.S.A.), the United Methodist Church, the United Church of Christ, and the Christian Church (Disciples of Christ), and it is also published in a Catholic edition.",
+    ],
+    distinctives: [
+      "The first major English translation to use gender-inclusive language for humanity as a standing policy — “brothers and sisters” where the Greek adelphoi addresses a mixed group — while keeping traditional masculine language for God.",
+      "Does not capitalize pronouns referring to God (“he,” “him”), reflecting that the original Hebrew and Greek make no such distinction.",
+      "Produced by an unusually ecumenical committee — Protestant, Roman Catholic, Eastern Orthodox, and Jewish scholars — chaired by the textual critic Bruce Metzger.",
+      "Freely follows the Dead Sea Scrolls or Septuagint over the Masoretic Hebrew where they preserve an older reading, with the change noted in the margin.",
+      "The standard translation of academic biblical studies and mainline seminaries, and the lectionary Bible of most mainline denominations; also published in a Catholic edition with the deuterocanonical books.",
+    ],
+    goodFor: [
+      "Mainline Protestant worship and study — it is the pew and lectionary Bible in the Episcopal, ELCA, PC(USA), UMC, UCC, and Disciples traditions.",
+      "Academic and seminary-level study, where it is the assumed common text and anchors the major annotated study Bibles.",
+      "Ecumenical settings, and readers who want a formal translation that uses inclusive language for people.",
+    ],
+    worthKnowing: [
+      "The NRSVue's rendering of Genesis 1:1 — “When God began to create the heavens and the earth” — treats the verse as a dependent clause leading into verse 2, rather than the standalone “In the beginning, God created…” The Hebrew grammar genuinely allows both, and the choice reflects a reading many scholars favor; it is one of the more visible changes from the 1989 NRSV, which kept the traditional wording.",
+      "The NRSV is the most recent revision in the King James line: KJV (1611) → English Revised Version / ASV (1885–1901) → RSV (1952) → NRSV (1989) → NRSVue (2021). The ESV is a separate 2001 revision of the same RSV, made for a more evangelical readership.",
+    ],
+  },
+
+  ceb: {
+    tagline:
+      "A readable, mainline-sponsored translation aimed at a comfortable 7th-grade reading level, best known for rendering “the Son of Man” as “the Human One.”",
+    overview: [
+      "The Common English Bible was published in 2011 by an alliance of the publishing houses of five mainline Protestant denominations — Chalice Press (Disciples of Christ), Westminster John Knox Press (Presbyterian Church U.S.A.), Church Publishing (Episcopal Church), Abingdon Press (United Methodist Church), and Pilgrim Press (United Church of Christ). About 120 scholars from two dozen traditions translated it, and it was field-tested with 77 reading groups — more than 500 people — before release.",
+      "Its central goal is readability. The CEB targets a 7th-grade reading level, comfortable for a majority of English readers, using a functional-equivalence approach that prioritizes clear, natural, contemporary sentences over word-for-word correspondence. It sits roughly between the NIV and the NLT on the literal-to-readable spectrum, and translates from the standard critical texts.",
+      "The CEB uses gender-inclusive language for humanity and takes contemporary approaches to several traditional phrases: “the Human One” in place of “the Son of Man,” everyday vocabulary in place of church jargon where possible, and — like the NIV's 2011 revision — God as the explicit subject of Romans 8:28 (“God works all things together for good”).",
+      "It is used across mainline Protestantism, most visibly in United Methodist and Presbyterian settings — the CEB Study Bible is a common confirmation-class and small-group resource — and it appears alongside the NRSV in many mainline pews. Abingdon Press, the United Methodist Church's own publishing house, is one of its five sponsors.",
+    ],
+    distinctives: [
+      "Renders the Greek “Son of Man” as “the Human One” throughout — a literal take on the underlying idiom that is the CEB's single most recognizable and most debated choice.",
+      "Built and field-tested for a 7th-grade reading level, with input from 77 reading groups before publication.",
+      "Sponsored by an alliance of five mainline denominational publishers (Disciples, PC(USA), Episcopal, UMC, UCC) rather than a single house.",
+      "Uses gender-inclusive language for humanity and plain contemporary vocabulary in place of traditional church terms where possible.",
+      "Makes God the explicit subject of Romans 8:28 — “God works all things together for good” — the same choice the NIV made in 2011.",
+    ],
+    goodFor: [
+      "Mainline Protestant small groups, confirmation classes, and daily reading, especially where the CEB Study Bible is already in use.",
+      "Readers who find the NRSV's formal sentences heavy going and want a clear, contemporary text from the same broad tradition.",
+      "New readers, younger readers, and anyone reading Scripture in longer stretches rather than studying it phrase by phrase.",
+    ],
+    worthKnowing: [
+      "“The Human One” is the CEB's attempt to translate what “Son of Man” meant rather than transliterate it. In the Gospels it is how Jesus most often refers to himself, and the CEB's translators argued that long use had turned the phrase into a title readers no longer hear as words. Critics counter that it severs the link to Daniel 7, where “one like a son of man” is a specific, weighted image. It is the choice most people point to as either the CEB's strength or its dealbreaker.",
+    ],
+  },
+
+  ehv: {
+    tagline:
+      "A confessional Lutheran translation from the Wartburg Project, balancing accuracy and readability while leaning toward the traditional text on disputed passages.",
+    overview: [
+      "The Evangelical Heritage Version was produced by the Wartburg Project, a group of more than 100 Lutheran pastors, professors, and teachers connected to the Wisconsin Evangelical Lutheran Synod (WELS) and the Evangelical Lutheran Synod (ELS). The New Testament and Psalms appeared in 2017 and the complete Bible in 2019. It exists because these confessional Lutheran bodies wanted a modern translation shaped by their own theological tradition rather than adopting the NIV, the ESV, or another outside option.",
+      "The project describes its method simply as “balance” — as literal as possible, as free as necessary, choosing formal or functional wording verse by verse rather than committing to one philosophy. In practice it reads close to the NIV or CSB in cadence, a little more formal in places.",
+      "Its most distinctive feature is textual. Rather than following the modern critical Greek text wherever it differs from the traditional Received Text, the EHV weighs both and tends to favor the fuller or older-attested reading. So it keeps passages that many modern translations bracket or footnote as doubtful — the longer ending of Mark, the woman caught in adultery in John 8, “through Christ” in Philippians 4:13 — in the main text. Its Old Testament follows the Masoretic Hebrew.",
+      "On gender language the EHV is traditional: it keeps “brothers,” generic “he,” and “sons of God” where the older forms are grammatically masculine, and it does not capitalize pronouns referring to God. It also deliberately preserves a set of traditional English Bible vocabulary the translators considered a worthwhile heritage — words like “grace,” “covenant,” and “only-begotten.”",
+      "The EHV is the standard translation in WELS and ELS congregations, schools, and curriculum. Its footprint outside those roughly 1,500 congregations is small, but within them it functions the way the ESV does in the PCA or the NIV once did across broad evangelicalism.",
+    ],
+    distinctives: [
+      "Leans toward the traditional Received Text on disputed New Testament passages — it keeps the longer ending of Mark, John 7:53–8:11, and “through Christ” in Philippians 4:13 in the main text rather than bracketing them.",
+      "Produced by the Wartburg Project specifically for the confessional Lutheran bodies WELS and ELS, which wanted a translation shaped by their own tradition.",
+      "Deliberately keeps a set of traditional English Bible vocabulary — “grace,” “covenant,” “only-begotten,” “saints” — as a heritage worth preserving.",
+      "Traditional on gender language, and does not capitalize pronouns referring to God.",
+      "Permits free quotation of up to 1,000 verses without written permission — one of the more generous allowances among translations still under copyright.",
+    ],
+    goodFor: [
+      "WELS and ELS congregations, schools, and members — this is their translation, built for their worship and curriculum.",
+      "Readers who want a modern, readable translation that still keeps the traditionally-included passages in the main text rather than in brackets or footnotes.",
+      "Confessional Lutherans and others who found the ESV too spare or the NIV's textual and gender choices unsatisfying.",
+    ],
+    worthKnowing: [
+      "The name points back to Luther. The Wartburg is the castle where Martin Luther, in hiding in 1521–22, translated the New Testament into German in about eleven weeks — the translation that went on to shape the modern German language. The “Heritage” in the title is a claim to stand in that same Reformation line: Scripture in the people's language, with its theology guarded.",
+    ],
+  },
+
+  amp: {
+    tagline:
+      "A study tool that expands key words with bracketed alternatives and definitions right in the text, so a reader can see the range of meaning without a lexicon.",
+    overview: [
+      "The Amplified Bible was produced by the Lockman Foundation — the organization behind the NASB — with the complete edition appearing in 1965, following an Amplified New Testament in 1958. Much of the work was driven by Frances Siewert, a Bible teacher who spent decades developing the “amplification” method. It draws on the same American Standard Version lineage as the NASB, with the amplifications layered on top of a formal base text.",
+      "The idea is to bring the extra shades of meaning a Hebrew or Greek word carries — meanings a single English word usually can't hold — directly into the text. A key term is followed by brackets or parentheses offering alternate renderings, a short definition, or an implied clarification. Where a normal translation has to pick one English word, the Amplified shows several.",
+      "The Lockman Foundation substantially revised the Amplified Bible in 2015, updating the base translation and standardizing the bracket system so it is easier to follow. The base text is formal-equivalence and translates from the standard critical texts; the amplifications are the added layer.",
+      "The trade-off is readability. The brackets, parentheses, and inserted phrases break the flow of a sentence, so the Amplified is hard to read aloud or in long stretches — it is a translation to sit with a single verse in, not to read through. It is most at home in personal study and devotional use, and is especially popular in charismatic and Word of Faith circles, where drawing out every nuance of a promise or command is valued.",
+    ],
+    distinctives: [
+      "Expands key words in-line with bracketed alternate renderings, definitions, and implied meaning — the reader sees the range a Hebrew or Greek word covers without opening a lexicon.",
+      "Comes from the Lockman Foundation, publisher of the NASB, and shares its American Standard Version lineage and formal base text.",
+      "Substantially revised in 2015 — the base translation was updated and the bracket-and-parenthesis system standardized to be easier to follow.",
+      "Capitalizes pronouns referring to God (“He,” “His,” “Him”), the Lockman house style it shares with the NASB and LSB.",
+      "Its dense in-text notation makes it difficult to read aloud or at length — it is built for studying one passage closely, not for continuous reading.",
+    ],
+    goodFor: [
+      "Personal study of a single passage, where seeing several possible renderings of a key word side by side is the whole point.",
+      "Devotional reading in charismatic and Word of Faith settings, where its habit of drawing out every nuance of a text is valued.",
+      "A second or third translation to consult alongside a primary reading Bible, rather than a stand-alone text for church or cover-to-cover reading.",
+    ],
+    worthKnowing: [
+      "The Amplified's method carries a risk its own translators acknowledged: when every possible shade of a word is laid out in brackets, a reader can be tempted to pick whichever meaning fits what they already want the verse to say. A word's range of possible meanings is not the same as its meaning in a given sentence, which the context usually settles. The Amplified helps most when it prompts a closer look, and least when it is treated as license to choose.",
+    ],
+  },
 };
