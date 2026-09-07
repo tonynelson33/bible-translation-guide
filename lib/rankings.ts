@@ -170,7 +170,7 @@ export const rankingCategories: RankingCategory[] = [
   },
   {
     slug: "preaching",
-    title: "Best for Preaching / From the Pulpit",
+    title: "Best for Preaching",
     tabLabel: "Preaching",
     criteria:
       "Which translations hold up best for a pastor — accurate enough to preach expositionally, natural enough to read aloud to a congregation.",
