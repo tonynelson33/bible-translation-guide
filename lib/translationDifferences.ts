@@ -2,12 +2,13 @@ import differenceVerses from "@/data/differenceVerses.json";
 import cachedVerses from "@/data/cachedVerses.json";
 
 /**
- * Content for /differences. The ~85 verses come from
- * data/verseComparisonList.json (category "Translation Difference"). The first
- * long-passages section just lists them; from "Phrases" on, each item is a
- * KJV vs. ESV comparison (plus another translation only where that translation
- * is what creates the difference). Quoted text is in data/differenceVerses.json
- * (scripts/fetch-difference-verses.mjs, official APIs only).
+ * Content for /differences. A curated set of ~53 references, drawn from the
+ * "Translation Difference" rows of data/verseComparisonList.json (~84 of them —
+ * no exact total is claimed on the page; "most visible" has no standard
+ * threshold). The first long-passages section just lists them; from "Phrases"
+ * on, each item is a KJV vs. ESV comparison (plus another translation only where
+ * that translation is what creates the difference). Quoted text is in
+ * data/differenceVerses.json (scripts/fetch-difference-verses.mjs, official APIs only).
  *
  *  Part 1 — manuscript differences (Textus Receptus / Byzantine vs. critical
  *           text; Masoretic OT vs. Septuagint / Dead Sea Scrolls)

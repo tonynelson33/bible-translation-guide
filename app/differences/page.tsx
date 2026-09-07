@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Why Translations Differ",
   description:
-    "The roughly 85 verses where English Bible translations most visibly disagree — bracketed verses, the Textus Receptus and the critical text, the Johannine Comma, 'virgin' vs 'young woman', and inclusive language — grouped and explained.",
+    "The verses where English Bible translations most visibly disagree — bracketed verses, the Textus Receptus and the critical text, the Johannine Comma, 'virgin' vs 'young woman', and inclusive language — grouped and explained.",
   alternates: { canonical: "/differences" },
 };
 
