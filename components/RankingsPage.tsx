@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { RankingCategory, RankingEntry } from "@/lib/rankings";
 import { getTranslation } from "@/lib/data";
+import TranslationSpectrum from "./TranslationSpectrum";
 
 const medalStyles = [
   "h-9 w-9 text-base bg-amber-400 text-amber-950", // gold
@@ -148,6 +149,8 @@ export default function RankingsPage({
             <CompactEntry key={entry.id} rank={i + 4} entry={entry} />
           ))}
         </ol>
+
+        {category.slug === "literal" && <TranslationSpectrum />}
 
         {category.note && (
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">{category.note}</p>
