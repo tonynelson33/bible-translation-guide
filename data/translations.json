@@ -236,33 +236,6 @@
     ]
   },
   {
-    "id": "ehv",
-    "name": "Evangelical Heritage Version",
-    "abbreviation": "EHV",
-    "latestRevisionYear": 2019,
-    "firstPublishedYear": 2019,
-    "gradeLevel": "8-9 (est.)",
-    "philosophy": "Optimal",
-    "textualBasis": "Critical text",
-    "publisher": "Wartburg Project (WELS / ELS)",
-    "quoteLimit": "1,000 verses",
-    "genderApproach": "Traditional",
-    "redLetter": false,
-    "otMarking": {
-      "marks": false
-    },
-    "italicizesTranslatorWords": false,
-    "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel",
-      "philosophy",
-      "textualBasis",
-      "redLetter",
-      "italicizesTranslatorWords"
-    ]
-  },
-  {
     "id": "amp",
     "name": "Amplified Bible",
     "abbreviation": "AMP",

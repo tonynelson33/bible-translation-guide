@@ -24,7 +24,7 @@ Vercel's free tier. Most of the site (comparison table, verse pages) runs on sta
 no database, but the Church Finder (`/church-finder`) is backed by a real Postgres database —
 see that section below before assuming "no database" applies everywhere.
 
-**Data layer**: `data/translations.json` (13 translations, all comparison-table fields) and
+**Data layer**: `data/translations.json` (12 translations, all comparison-table fields) and
 `data/verses.json` (5 sample verse references) are the single source of truth, typed by
 `lib/types.ts` and loaded through `lib/data.ts` (`translations`, `sampleVerses`,
 `getTranslation()`, `getSampleVerse()`). Every page/component that needs translation data reads
@@ -36,9 +36,15 @@ automatically. The other four files that must be kept in step per translation (n
 links), `lib/translationProfiles.ts` (the full profile page — without an entry the route falls
 back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categories).
 
-The current 13: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSV, CEB,
-EHV, AMP (added 2026-09-06). This set is now identical to `translationOptions` in
-`lib/suggestionOptions.ts` — every translation a church-finder submitter can pick has a profile.
+The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSV, CEB,
+AMP (added 2026-09-06). EHV was added the same day and cut 2026-09-07 (see "The editorial line").
+This set is identical to `translationOptions` in `lib/suggestionOptions.ts` — every translation a
+church-finder submitter can pick has a profile.
+
+**2026-09-07: NET moved right of CSB in the "Most Literal" ranking** (and the balance category
+recomputed). The NET's literal renderings live in its footnotes, so its main text reads freer
+than its "Mixed" label — which is where published translation-spectrum charts place it. Its #1
+for "Serious Study" is unchanged (that's the 60,000 notes, not the main text).
 
 Each translation's `verifyFields` array (e.g. `["quoteLimit"]`) flags which values were not
 fully confirmed against publisher documentation; `ComparisonTable` renders those with a `†`
@@ -47,7 +53,7 @@ marker.
 **Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
 `/verses` compares a **fixed** set of 5 sample verses (`data/verses.json`), so their text is
 **cached, not fetched live**. `data/cachedVerses.json` holds `{ [translationId]: { attribution,
-verses: { [reference]: text } } }` for all 13 translations, and `lib/verseProviders.ts`'s
+verses: { [reference]: text } } }` for all 12 translations, and `lib/verseProviders.ts`'s
 `fetchVerseForTranslation` is a plain synchronous lookup — no API keys, no rate limits, no
 network. A translation with no entry for a verse returns `status: "unavailable"` (renders as a
 "Text unavailable" card via `components/VerseCard.tsx`), never throws.
@@ -98,7 +104,7 @@ deliberately on verse text, not site copy).
 `/buy` (`lib/buyLinks.ts`), and every `/translations/[slug]` (`lib/translationProfiles.ts`) are
 all real. `components/ComingSoon.tsx` still exists only as the per-route fallback in
 `app/translations/[slug]/page.tsx` for a translation with no `translationProfiles` entry — with
-all 13 profiled, it currently never renders.
+all 12 profiled, it currently never renders.
 
 **`/blog`** (nav + footer label "Videos") is a curated library of ~10 embedded YouTube videos
 on translation history, philosophy, Textus Receptus vs. Critical Text, gender language, and
@@ -211,15 +217,19 @@ external link when present. `churches.website` is null for ~all rows until the c
 forms populate it (no bulk import).
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 30-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
-taxonomy" below), and `translationOptions` is 13 entries: **exactly the set this site profiles**
-(`data/translations.json`), since the 2026-09-06 trim. The list is scoped to translations a
-meaningful number of US Protestant congregations actually use *from the pulpit / in worship*:
+taxonomy" below), and `translationOptions` is 12 entries: **exactly the set this site profiles**
+(`data/translations.json`). The list is scoped to translations a meaningful number of US
+Protestant congregations actually use *from the pulpit / in worship*:
 - `NRSV` is listed (added as a full profile 2026-09-06) — still the lectionary Bible in most
   Episcopal / ELCA / PC(USA) / UMC / UCC / Disciples parishes. `NRSVue` was dropped in the trim:
   a member can't tell the 2021 revision from "NRSV" on a form.
-- `CEB`, `EHV`, `AMP` were also promoted to full profiles 2026-09-06. `EHV` is the WELS Lutheran
-  option (LCMS→ESV, ELCA→NRSV are covered elsewhere); `CEB` is mainline (UMC especially); `AMP`
-  is a legacy study/devotional Bible with real use in charismatic circles.
+- `CEB` and `AMP` were also promoted to full profiles 2026-09-06. `CEB` is mainline (UMC
+  especially); `AMP` is a legacy study/devotional Bible with real use in charismatic circles.
+- `EHV` was added 2026-09-06 and **cut 2026-09-07**. WELS/ELS (its only real constituency, ~1,300
+  congregations) have no official translation and use a mix of NIV / ESV / CSB — all already
+  listed — and the EHV is absent from the translation-comparison genre. A stored
+  `bible_translation = 'EHV'` value would still render as "EHV"; it's just no longer a form option
+  or a profile.
 - Deliberately excluded: editions genuinely out of print (HCSB→CSB, NAB→NABRE, JB→NJB, TLB→NLT),
   Catholic / Orthodox editions (out of scope — NABRE, OSB, Douay-Rheims, RSV-2CE), readability
   rather than pulpit editions (CEV, GNT), public-domain texts with near-zero church use (WEB),
@@ -295,8 +305,8 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
     / ELCA confirmed individually), not a bulk default — left as-is.
 - **Per-church research** (`add-translation-column.js`, `KNOWN_TRANSLATIONS` map): for
   denominations split across sub-bodies with different standards - e.g. Lutheran (LCMS→ESV,
-  ELCA→NRSV, WELS→EHV, but LCMC/NALC/ELS have no official stance) and Presbyterian (PC(USA)→NRSV,
-  but PCA/OPC/ECO/Cumberland don't). ~100 churches done this way as of this writing (25 LCMS→ESV,
+  ELCA→NRSV, but WELS / ELS / LCMC / NALC have no official stance — WELS in particular uses a
+  mix of NIV / ESV / CSB / EHV) and Presbyterian (PC(USA)→NRSV, but PCA/OPC/ECO/Cumberland don't). ~100 churches done this way as of this writing (25 LCMS→ESV,
   ~71 PC(USA)/ELCA→NRSV), via real web search per church (never guessed) - about 80-90% hit rate
   once the specific synod is confirmed via an official source (locator.lcms.org, pcusa.org,
   etc.). This is genuinely slow
@@ -827,14 +837,15 @@ subject is the *Protestant translation conversation* — which English Bible a c
 chooses, and why — and that doesn't apply the same way where the translation is fixed by the
 bishops (Catholic/Orthodox) or where the church is outside the Nicene boundary (Oneness). The
 in-depth translation profiles are all Protestant anyway — and the same day they were expanded
-from 9 to 13 (added NRSV, CEB, EHV, AMP), so `translationOptions` and the profiled set are now
-one list. Consequences of the narrowing: the
+from 9 to 13 (added NRSV, CEB, EHV, AMP); EHV was then cut 2026-09-07 (weak constituency, absent
+from the translation-comparison genre — see the `translationOptions` note above), leaving 12,
+which is also exactly `translationOptions`. Consequences of the narrowing: the
 table dropped from ~377K to ~348K rows, translation coverage from ~8.5 % to ~2.8 % (NABRE was
 70 % of it), and the "Catholic, Orthodox, Protestant" copy on `/church-finder` (both the visible
 line and the page metadata) became "Protestant". `denominationOptions` 34 → 30 (dropped
 `catholic_church`, `orthodox_church`, `oriental_orthodox_church`, `oneness_apostolic_church`);
 `translationOptions` 16 → 13 (dropped NABRE, OSB, Douay-Rheims — then the same day the four new
-profiles were added, keeping it at 13). Rollback for the ~29,700-row
+profiles were added, keeping it at 13; EHV cut 2026-09-07 → 12). Rollback for the ~29,700-row
 delete: `sync_archive.archive_removed_nonprotestant_2026_09_06` (migration
 `remove_catholic_orthodox_oneness`).
 

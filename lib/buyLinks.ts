@@ -152,16 +152,6 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=CEB" },
     ],
   },
-  ehv: {
-    buy: [
-      { label: "Northwestern Publishing House (official)", url: "https://online.nph.net/bibles/ehv-bibles.html" },
-      { label: "Amazon", url: "https://www.amazon.com/s?k=EHV+Bible" },
-    ],
-    readFree: [
-      { label: "The Wartburg Project (official)", url: "https://wartburgproject.org/read" },
-      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=EHV" },
-    ],
-  },
   amp: {
     buy: [
       { label: "Lockman Foundation (official)", url: "https://shop.lockman.org/collections/amplified" },

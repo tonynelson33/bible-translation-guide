@@ -109,8 +109,8 @@ export const denominationOptions: Option[] = [
 /**
  * Bible translation choices for the "add a church" / "suggest a correction"
  * forms — curated to what a church member would realistically pick as their
- * congregation's *pulpit* Bible. Since the 2026-09-06 trim this is exactly the
- * 13 translations the site profiles in depth (data/translations.json).
+ * congregation's *pulpit* Bible. This is exactly the set the site profiles in
+ * depth (data/translations.json) — 12 as of 2026-09-07.
  *
  * Trimmed 2026-09-06 to 13 — the English Bibles a Protestant congregation would
  * realistically pick as its pulpit Bible. Removed: NJB / Douay-Rheims / NABRE
@@ -118,14 +118,15 @@ export const denominationOptions: Option[] = [
  * same), CEV / GNT (readability editions, not primary pulpit Bibles), WEB
  * (public-domain, near-zero church use), RSV (essentially no church still uses
  * the 1952 text — they've moved to NRSV or ESV), NRSVue (a 2021 NRSV revision
- * no member can distinguish from "NRSV"). This list is form-only — removing an
- * entry does not affect how a stored `bible_translation` value renders.
+ * no member can distinguish from "NRSV"). Then EHV removed 2026-09-07 — WELS /
+ * ELS (its only real constituency) already use NIV / ESV / CSB, all listed, and
+ * it's absent from the translation-comparison genre. This list is form-only —
+ * removing an entry does not affect how a stored `bible_translation` value renders.
  */
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
   { value: "CEB", label: "CEB — Common English Bible" },
   { value: "CSB", label: "CSB — Christian Standard Bible" },
-  { value: "EHV", label: "EHV — Evangelical Heritage Version" },
   { value: "ESV", label: "ESV — English Standard Version" },
   { value: "KJV", label: "KJV — King James Version" },
   { value: "LSB", label: "LSB — Legacy Standard Bible" },

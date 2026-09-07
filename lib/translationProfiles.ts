@@ -290,33 +290,6 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     ],
   },
 
-  ehv: {
-    tagline:
-      "A confessional Lutheran translation from the Wartburg Project, balancing accuracy and readability while leaning toward the traditional text on disputed passages.",
-    overview: [
-      "The Evangelical Heritage Version was produced by the Wartburg Project, a group of more than 100 Lutheran pastors, professors, and teachers connected to the Wisconsin Evangelical Lutheran Synod (WELS) and the Evangelical Lutheran Synod (ELS). The New Testament and Psalms appeared in 2017 and the complete Bible in 2019. It exists because these confessional Lutheran bodies wanted a modern translation shaped by their own theological tradition rather than adopting the NIV, the ESV, or another outside option.",
-      "The project describes its method simply as “balance” — as literal as possible, as free as necessary, choosing formal or functional wording verse by verse rather than committing to one philosophy. In practice it reads close to the NIV or CSB in cadence, a little more formal in places.",
-      "Its most distinctive feature is textual. Rather than following the modern critical Greek text wherever it differs from the traditional Received Text, the EHV weighs both and tends to favor the fuller or older-attested reading. So it keeps passages that many modern translations bracket or footnote as doubtful — the longer ending of Mark, the woman caught in adultery in John 8, “through Christ” in Philippians 4:13 — in the main text. Its Old Testament follows the Masoretic Hebrew.",
-      "On gender language the EHV is traditional: it keeps “brothers,” generic “he,” and “sons of God” where the older forms are grammatically masculine, and it does not capitalize pronouns referring to God. It also deliberately preserves a set of traditional English Bible vocabulary the translators considered a worthwhile heritage — words like “grace,” “covenant,” and “only-begotten.”",
-      "The EHV is the standard translation in WELS and ELS congregations, schools, and curriculum. Its footprint outside those roughly 1,500 congregations is small, but within them it functions the way the ESV does in the PCA or the NIV once did across broad evangelicalism.",
-    ],
-    distinctives: [
-      "Leans toward the traditional Received Text on disputed New Testament passages — it keeps the longer ending of Mark, John 7:53–8:11, and “through Christ” in Philippians 4:13 in the main text rather than bracketing them.",
-      "Produced by the Wartburg Project specifically for the confessional Lutheran bodies WELS and ELS, which wanted a translation shaped by their own tradition.",
-      "Deliberately keeps a set of traditional English Bible vocabulary — “grace,” “covenant,” “only-begotten,” “saints” — as a heritage worth preserving.",
-      "Traditional on gender language, and does not capitalize pronouns referring to God.",
-      "Permits free quotation of up to 1,000 verses without written permission — one of the more generous allowances among translations still under copyright.",
-    ],
-    goodFor: [
-      "WELS and ELS congregations, schools, and members — this is their translation, built for their worship and curriculum.",
-      "Readers who want a modern, readable translation that still keeps the traditionally-included passages in the main text rather than in brackets or footnotes.",
-      "Confessional Lutherans and others who found the ESV too spare or the NIV's textual and gender choices unsatisfying.",
-    ],
-    worthKnowing: [
-      "The name points back to Luther. The Wartburg is the castle where Martin Luther, in hiding in 1521–22, translated the New Testament into German in about eleven weeks — the translation that went on to shape the modern German language. The “Heritage” in the title is a claim to stand in that same Reformation line: Scripture in the people's language, with its theology guarded.",
-    ],
-  },
-
   amp: {
     tagline:
       "A study tool that expands key words with bracketed alternatives and definitions right in the text, so a reader can see the range of meaning without a lexicon.",

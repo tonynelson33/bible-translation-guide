@@ -1,14 +1,14 @@
 # BibleTranslationGuide
 
-A comparison site for thirteen widely used English Bible translations — CSB, ESV, KJV, NIV, NLT,
-LSB, NKJV, NASB, NET, NRSV, CEB, EHV, and AMP. Built with Next.js (App Router) and Tailwind CSS.
+A comparison site for twelve widely used English Bible translations — CSB, ESV, KJV, NIV, NLT,
+LSB, NKJV, NASB, NET, NRSV, CEB, and AMP. Built with Next.js (App Router) and Tailwind CSS.
 The comparison data lives in static JSON files in `data/`; the Church Finder (`/church-finder`)
 is backed by a Supabase Postgres database.
 
 ## Pages
 
 - `/` — sortable comparison table (translations x editorial/textual attributes)
-- `/verses` — pick a well-known verse and see it rendered side-by-side across all thirteen
+- `/verses` — pick a well-known verse and see it rendered side-by-side across all twelve
   translations (text is cached in `data/cachedVerses.json`, not fetched live)
 - `/translations/[slug]` — a full profile page per translation
 - `/rankings` — criteria-based rankings across seven categories
@@ -30,7 +30,7 @@ Then open http://localhost:3000.
 
 `/verses` compares a **fixed** set of five sample verses (`data/verses.json`), so the text for
 each translation is **cached, not fetched live** — `data/cachedVerses.json` holds the verse text
-plus the publisher's required attribution for all thirteen translations, and
+plus the publisher's required attribution for all twelve translations, and
 `lib/verseProviders.ts` is a plain synchronous lookup (no API keys, no network). Five verses per
 translation is well inside every publisher's quote-without-permission allowance on this
 non-commercial site. See `data/cachedVerses.README.md` for how each translation's text was
