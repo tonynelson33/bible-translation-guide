@@ -6,7 +6,7 @@ export interface Option {
 /**
  * Denomination choices for the "suggest a correction" / "add a church" forms.
  *
- * This list is a mutually-exclusive US master taxonomy (34 entries), NOT a
+ * This list is a mutually-exclusive US master taxonomy (30 entries), NOT a
  * mirror of churches.category — several labels split or merge the underlying
  * buckets. Where a label maps cleanly onto an existing/derivable category slug
  * (see lib/churches.ts's humanizeCategory, which builds its label map from this
@@ -52,19 +52,25 @@ export interface Option {
  * Pentecostal, and only as a *family catch-all* (parallel to "Baptist (Independent / other)"),
  * not the umbrella. "Pentecostal" is a family-reliable name signal — a church named "First
  * Pentecostal" is almost certainly Pentecostal-family; the organized bodies (AG, Foursquare,
- * COGIC, Oneness/Apostolic) are carved out ahead of it in the classifier, so what lands here is
- * the independent / unaffiliated / small-body tail (~3,900 rows, incl. the Pentecostal-Holiness
- * / IPHC-style and Open Bible names, and Spanish "Iglesia Pentecostal"). ~10-15% may actually be
- * unnamed AG/COGIC affiliates — acceptable, they were "not identified" before. "Full Gospel" was
+ * COGIC) are carved out ahead of it in the classifier, so what lands here is the independent /
+ * unaffiliated / small-body tail (~3,900 rows, incl. the Pentecostal-Holiness / IPHC-style and
+ * Open Bible names, and Spanish "Iglesia Pentecostal"). ~10-15% may actually be unnamed
+ * AG/COGIC affiliates — acceptable, they were "not identified" before. "Full Gospel" was
  * deliberately left OUT of the pattern (too broad — Word of Faith / Full Gospel Baptist / Korean
  * AG all use it). "Evangelical" and "Mission" stay folded — those really are just adjectives.
  *
- * Deliberately excluded: Latter Day Saints and Christian Science (removed from
- * the directory entirely — neither holds to historic Christian doctrine by any
- * mainstream tradition's definition); "church_cathedral" (the "not identified"
- * default); and the generic Evangelical / Mission buckets, which the 2026-08
- * overhaul folded into "church_cathedral" (they name a style, not a body).
- * Convents & Monasteries was deleted outright — not congregations.
+ * SCOPE 2026-09-06 — the directory is now Trinitarian Protestant only. Removed as out of scope
+ * (rows archived to sync_archive.archive_removed_nonprotestant_2026_09_06, ~29,700 congregations):
+ *   - "Catholic" (catholic_church, ~22,300) and both "Orthodox" buckets (orthodox_church /
+ *     oriental_orthodox_church, ~2,850) — the Reformation-Protestant translation conversation
+ *     this site is about (which English Bible does a congregation choose, and why) doesn't
+ *     apply the same way to churches where the translation is fixed by the bishops.
+ *   - "Pentecostal (Oneness / Apostolic)" (oneness_apostolic_church, ~4,570) — non-Trinitarian
+ *     (modalist); outside the Nicene boundary the rest of the list shares.
+ * Earlier removals (2026-08): Latter Day Saints, Christian Science, Jehovah's Witnesses,
+ * Unitarian Universalism, New Thought, Scientology, other-faith centres, convents/monasteries.
+ * Also excluded: "church_cathedral" (the "not identified" default) and the generic Evangelical /
+ * Mission buckets, which the 2026-08 overhaul folded into "church_cathedral".
  */
 export const denominationOptions: Option[] = [
   { value: "anglican_episcopal_church", label: "Anglican / Episcopal" },
@@ -74,7 +80,6 @@ export const denominationOptions: Option[] = [
   { value: "baptist_church", label: "Baptist (Independent / other)" },
   { value: "bible_church", label: "Bible Church (Independent)" },
   { value: "calvary_chapel_church", label: "Calvary Chapel" },
-  { value: "catholic_church", label: "Catholic" },
   { value: "christian_missionary_alliance", label: "Christian & Missionary Alliance (CMA)" },
   { value: "church_of_christ", label: "Church of Christ" },
   { value: "church_of_god", label: "Church of God" },
@@ -90,10 +95,7 @@ export const denominationOptions: Option[] = [
   { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
   { value: "nazarene_church", label: "Nazarene" },
   { value: "non_denominational", label: "Non-denominational" },
-  { value: "orthodox_church", label: "Orthodox (Eastern / Greek / Russian)" },
-  { value: "oriental_orthodox_church", label: "Orthodox (Oriental / Coptic / Ethiopian)" },
   { value: "pentecostal_church", label: "Pentecostal (Independent / other)" },
-  { value: "oneness_apostolic_church", label: "Pentecostal (Oneness / Apostolic)" },
   { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
   { value: "presbyterian_church", label: "Presbyterian" },
   { value: "quaker_friends", label: "Quaker (Friends)" },
@@ -109,30 +111,27 @@ export const denominationOptions: Option[] = [
  * may use one that isn't profiled), but curated to what a church member would
  * realistically pick as their congregation's *pulpit* Bible.
  *
- * Trimmed 2026-09-06 (each removed option: no real pulpit constituency that
- * would pick it over a neighbour): NJB (never a US lectionary — NABRE covers
- * US Catholics), CEV / GNT (readability editions, not primary pulpit Bibles),
- * WEB (public-domain, near-zero church use), RSV (essentially no church still
- * uses the 1952 text — they've moved to NRSV or ESV), NRSVue (a 2021 NRSV
- * revision no member can distinguish from "NRSV"), Douay-Rheims KEPT (Latin
- * Mass parishes genuinely report it). This list is form-only — removing an
+ * Trimmed 2026-09-06 to 13 — the English Bibles a Protestant congregation would
+ * realistically pick as its pulpit Bible. Removed: NJB / Douay-Rheims / NABRE
+ * (Catholic — out of scope, see the denomination note above), OSB (Orthodox —
+ * same), CEV / GNT (readability editions, not primary pulpit Bibles), WEB
+ * (public-domain, near-zero church use), RSV (essentially no church still uses
+ * the 1952 text — they've moved to NRSV or ESV), NRSVue (a 2021 NRSV revision
+ * no member can distinguish from "NRSV"). This list is form-only — removing an
  * entry does not affect how a stored `bible_translation` value renders.
  */
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
   { value: "CEB", label: "CEB — Common English Bible" },
   { value: "CSB", label: "CSB — Christian Standard Bible" },
-  { value: "Douay-Rheims", label: "Douay-Rheims" },
   { value: "EHV", label: "EHV — Evangelical Heritage Version" },
   { value: "ESV", label: "ESV — English Standard Version" },
   { value: "KJV", label: "KJV — King James Version" },
   { value: "LSB", label: "LSB — Legacy Standard Bible" },
-  { value: "NABRE", label: "NABRE — New American Bible, Revised Edition" },
   { value: "NASB", label: "NASB — New American Standard Bible" },
   { value: "NET", label: "NET — New English Translation" },
   { value: "NIV", label: "NIV — New International Version" },
   { value: "NKJV", label: "NKJV — New King James Version" },
   { value: "NLT", label: "NLT — New Living Translation" },
   { value: "NRSV", label: "NRSV — New Revised Standard Version" },
-  { value: "OSB", label: "OSB — Orthodox Study Bible" },
 ];

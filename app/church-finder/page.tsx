@@ -13,7 +13,7 @@ import { supabase } from "@/lib/supabase";
 export const metadata: Metadata = {
   title: "Church Finder",
   description:
-    "Search 377,000+ U.S. Christian churches by city or zip and see which Bible translation each one uses. Covers the historic traditions — Catholic, Orthodox, and Protestant.",
+    "Search 340,000+ U.S. Protestant churches by city or zip and see which Bible translation each one uses.",
   alternates: { canonical: "/church-finder" },
 };
 
@@ -52,7 +52,7 @@ export default async function ChurchFinderPage({
         Church Finder
       </h1>
       <p className="mt-3 max-w-3xl text-neutral-600">
-        Search over 377,000 U.S. churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
+        Search over 340,000 U.S. Protestant churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>
@@ -63,9 +63,10 @@ export default async function ChurchFinderPage({
         </summary>
         <div className="mt-2 space-y-2 text-sm text-neutral-600">
           <p>
-            Churches from the historic Christian traditions — Catholic, Orthodox, and Protestant.
-            The common thread, and the line for what&apos;s included, is that Jesus Christ is God
-            and the Bible is God&apos;s authoritative word.
+            Protestant churches across the U.S. — the historic Reformation traditions and the
+            movements that grew from them. The common thread, and the line for what&apos;s
+            included: God is one in three persons (Father, Son, and Holy Spirit), Jesus Christ is
+            God, and the Bible is the final authority.
           </p>
           <p>
             Nearly half of listings still show &ldquo;Not identified&rdquo; for denomination — the

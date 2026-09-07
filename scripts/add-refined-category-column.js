@@ -3,6 +3,14 @@
 // "church_cathedral" rows (the generic catch-all) get reclassified by matching
 // denominational keywords in the church name; anything that matches nothing
 // stays "church_cathedral".
+//
+// SCOPE (2026-09): the live directory is Trinitarian Protestant only —
+// catholic_church, orthodox_church, oriental_orthodox_church and
+// oneness_apostolic_church were removed from Supabase and dropped from
+// lib/suggestionOptions.ts. The patterns below still CLASSIFY those names (so a
+// CSV regeneration can identify and drop them cleanly) but a regeneration must
+// then delete every row in those four categories. Rollback of the live delete:
+// sync_archive.archive_removed_nonprotestant_2026_09_06.
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");

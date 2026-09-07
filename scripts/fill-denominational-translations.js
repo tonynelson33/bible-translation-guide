@@ -2,6 +2,11 @@
 // categories with a confirmed denominational default. Leaves every other row's
 // existing values untouched.
 //
+// NOTE (2026-09): the catholic_church → NABRE default was removed along with the
+// Catholic / Orthodox / Oneness-Apostolic rows — the directory is now Trinitarian
+// Protestant only. See scripts/apply-taxonomy-2026-08.mjs and the SCOPE note in
+// lib/suggestionOptions.ts.
+//
 // NOTE (2026-08): the latter_day_saints_church and christian_science_church
 // defaults (both KJV) were removed along with those rows. The episcopal_church
 // (NRSV) default was also dropped — that bucket is now anglican_episcopal_church,
@@ -26,10 +31,6 @@ const backupPath = path.join(__dirname, "..", "churches-combined.csv.bak");
 const outputPath = path.join(__dirname, "..", "churches-combined.tmp.csv");
 
 const DENOMINATIONAL_DEFAULTS = {
-  catholic_church: {
-    translation: "NABRE",
-    notes: "USCCB Lectionary for Mass, standard for U.S. Catholic parishes (denominational default, not individually confirmed per parish)",
-  },
   disciples_of_christ_church: {
     translation: "NRSV",
     notes: "Standard translation in Christian Church (Disciples of Christ) worship resources and Chalice Press curriculum (denominational default, not individually confirmed per congregation)",

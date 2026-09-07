@@ -119,12 +119,13 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~377,000 U.S. churches by church name, denomination,
-city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~377,000 rows — US only, and non-congregations (parsonages,
-rectories, cemeteries, schools/daycares, camps/retreats, bookstores) removed 2026-08-30 — with
-35 distinct `category` values: `church_cathedral` plus all 34 dropdown categories, every one of
-which now has rows; RLS enabled with a public SELECT-only
+**Church Finder** (`/church-finder`): search ~348,000 U.S. **Protestant** churches by church name,
+denomination, city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
+project (`churches` table, ~348,000 rows — US only; non-congregations removed 2026-08-30; and
+**Catholic, Orthodox, and Oneness/Apostolic congregations removed 2026-09-06** (~29,700 — the
+directory is now Trinitarian Protestant only, see "Denomination taxonomy" and the editorial-line
+section below) — with 31 distinct `category` values: `church_cathedral` plus all 30 dropdown
+categories, every one with rows; RLS enabled with a public SELECT-only
 policy, so the `NEXT_PUBLIC_SUPABASE_ANON_KEY` exposed to the browser cannot write).
 `lib/supabase.ts` creates the client (returns `null` if env vars are unset, so the page shows a
 setup notice instead of crashing); `lib/churches.ts` has `searchChurches()`,
@@ -169,10 +170,11 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~8.5% of churches have a confirmed `bible_translation` so far (~32,000 rows as of 2026-09-05
-— ~22,300 Catholic → NABRE, ~7,800 Episcopal / UCC / mainline → NRSV, 1,904 PCA/OPC → ESV, the
-rest per-church research) — this is inherently a long-tail research problem (see "Church data
-pipeline" below), not a bug.
+Only ~2.8% of churches have a confirmed `bible_translation` (~9,850 rows as of 2026-09-06 —
+7,911 Episcopal / ELCA / PC(USA) / UMC / UCC → NRSV, 1,904 PCA / OPC → ESV, the rest per-church
+research). It was ~8.5% before 2026-09-06, but the Catholic → NABRE default (~22,300 rows) went
+away with the Catholic bucket. Translation is inherently a long-tail research problem for the
+Protestant free-church world where the pastor picks (see "Church data pipeline" below), not a bug.
 Most results correctly show "Not identified" for the translation (same label the result card and
 the breakdown tables use for an unknown denomination or translation).
 
@@ -199,7 +201,7 @@ name there and must stay a bot trap. The result card renders it as a `rel="nofol
 external link when present. `churches.website` is null for ~all rows until the crowdsourced
 forms populate it (no bulk import).
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
-fixed 34-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
+fixed 30-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
 taxonomy" below), and `translationOptions` covers the 9 this site profiles plus 13 more,
 since a church may use one this site doesn't. The list is scoped to translations a
 meaningful number of US congregations actually use *from the pulpit / in worship*:
@@ -258,9 +260,10 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
 (PostgREST bulk insert, batched). Translations are filled two ways:
 - **Bulk denominational defaults**: applied only where a denomination is ~99% aligned to one
   pulpit/lectionary translation and the category bucket is clean.
-  - `catholic_church` → NABRE (~22,300 rows as of 2026-09-01; USCCB Lectionary for Mass) — via
-    `fill-denominational-translations.js`, plus the 2026-09-01 re-run (see below) that caught
-    every Catholic row added or newly identified by the OSM cross-match.
+  - `catholic_church` → NABRE — **removed 2026-09-06** with the Catholic bucket (was ~22,300
+    rows; the site is Protestant-only now). The `fill-denominational-translations.js` entry and
+    the `add-translation-column.js` NABRE note are gone; historical rollback for the delete is
+    `sync_archive.archive_removed_nonprotestant_2026_09_06`.
   - `disciples_of_christ_church` → NRSV (~137) and `congregational_church` rows whose *name*
     says "United Church of Christ" → NRSV (~1,580) — mainline bodies, NRSV in their worship
     resources. Disciples is in `fill-denominational-translations.js`; the UCC-by-name rule was
@@ -303,13 +306,12 @@ slugs), `lib/suggestionOptions.ts`'s `denominationOptions` (the submission dropd
 `lib/churches.ts`'s `humanizeCategory` (how `churches.category` slugs render in the
 `/church-finder` breakdown table).
 
-`denominationOptions` is a **fixed 34-entry US master taxonomy**, not a projection of what's in
+`denominationOptions` is a **fixed 30-entry US master taxonomy**, not a projection of what's in
 the data. Several labels split or merge the underlying buckets:
 - Where a label maps 1:1 onto a slug, `value` *is* that slug (so an edit suggestion merges
   without a translation step).
 - Splits the source names *can* distinguish are real categories, populated by the classifier:
-  `missionary_baptist_church`, `methodist_ame`, `oriental_orthodox_church`,
-  `oneness_apostolic_church`, `bible_church` (added in the 2026-08 overhaul),
+  `missionary_baptist_church`, `methodist_ame`, `bible_church` (added in the 2026-08 overhaul),
   `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern), and
   `pentecostal_church` ("Pentecostal (Independent / other)", added 2026-09-06 — the Pentecostal
   *family* catch-all, checked after AG/Foursquare/COGIC/Oneness so those win; ~3,850 rows; "Full
@@ -651,8 +653,8 @@ line above is still valid but the table now lives at `sync_archive.<name>`. DB 5
 `_ch`-style projection behind** (`TEMP` table, or drop it right after building `_match`).
 
 **Every category in the live data is now either `church_cathedral` ("Denomination not
-identified") or a `denominationOptions` value** (35 distinct values live — `church_cathedral`
-plus all 34 dropdown categories, every one now populated), so `humanizeCategory` just
+identified") or a `denominationOptions` value** (31 distinct values live — `church_cathedral`
+plus all 30 dropdown categories, every one now populated), so `humanizeCategory` just
 builds a `{value: label}` map from `denominationOptions` and reads the label straight off it —
 the breakdown table mirrors the dropdown exactly. The 2026-08 overhaul
 got there by folding `pentecostal_church` / `evangelical_church` / `mission` (descriptors, not a
@@ -801,21 +803,35 @@ historical "clears ~100+ name matches" bar still applies to any *new* catch-all 
 same day — label only.)
 
 `AddChurchForm` used to carry a "For Christian churches only" scope note; it was removed 2026-08
-(the "What churches are listed here?" `<details>` on the page already covers scope). If you ever
-re-add a scope line, avoid "Bible-believing" — evangelical-Protestant terminology that would read
-as excluding Catholic/Orthodox visitors, a large share of classified churches.
+(the "What churches are listed here?" `<details>` on the page already covers scope).
 
-**The editorial line** (spelled out in the "What churches are listed here?" `<details>` on
-`/church-finder`): the directory carries the historic Christian traditions — Catholic, Orthodox,
-Protestant — and the working test for inclusion is *"Jesus Christ is God, and the Bible is God's
-authoritative word."* That is deliberately **not** "affirms the Trinity / the Nicene creeds" —
-that framing would contradict the `oneness_apostolic_church` dropdown category (Oneness
-Pentecostals reject the Trinity by definition, ~4K churches) and doesn't fit the non-creedal
-traditions (Churches of Christ, Disciples, Anabaptists, Quakers). The two-part test is what the
-removals actually screened on: LDS, Jehovah's Witnesses, Christian Science, Unitarian
-Universalism, and New Thought each fail the deity-of-Christ half and/or add another scripture;
-Oneness Pentecostals pass both, so they stay. If someone later wants a strictly Trinitarian
-scope, that's a real change — it means removing Oneness (and auditing Quaker / "Church of God").
+**The editorial line** (as of 2026-09-06, spelled out in the "What churches are listed here?"
+`<details>` on `/church-finder`): the directory is **Trinitarian Protestant** — the historic
+Reformation traditions and the movements that grew from them. Inclusion test: *God is one in
+three persons; Jesus Christ is God; the Bible is the final authority.*
+
+Earlier the line was broader — "the historic Christian traditions (Catholic, Orthodox,
+Protestant)" with a deliberately two-part, *non*-Trinitarian test ("Jesus is God + the Bible is
+authoritative"). That was narrowed on 2026-09-06 (owner call). The reasoning: the site's
+subject is the *Protestant translation conversation* — which English Bible a congregation
+chooses, and why — and that doesn't apply the same way where the translation is fixed by the
+bishops (Catholic/Orthodox) or where the church is outside the Nicene boundary (Oneness). The
+9 in-depth translation profiles were always Protestant-evangelical anyway. Consequences: the
+table dropped from ~377K to ~348K rows, translation coverage from ~8.5 % to ~2.8 % (NABRE was
+70 % of it), and the "Catholic, Orthodox, Protestant" copy on `/church-finder` (both the visible
+line and the page metadata) became "Protestant". `denominationOptions` 34 → 30 (dropped
+`catholic_church`, `orthodox_church`, `oriental_orthodox_church`, `oneness_apostolic_church`);
+`translationOptions` 16 → 13 (dropped NABRE, OSB, Douay-Rheims). Rollback for the ~29,700-row
+delete: `sync_archive.archive_removed_nonprotestant_2026_09_06` (migration
+`remove_catholic_orthodox_oneness`).
+
+**Still Protestant-adjacent but borderline, left in:** Churches of Christ / Disciples (Stone–
+Campbell — non-creedal, "just Christian"), Quaker (liberal meetings are barely creedal), and
+Seventh-day Adventist (idiosyncratic, sabbatarian). All three descend from the Protestant world
+and affirm the three-part test in principle; audit if the line ever tightens further. The
+classifier (`add-refined-category-column.js`) still *classifies* Catholic/Orthodox/Oneness
+names so a CSV regeneration can identify and delete them — but a regeneration must run that
+delete step (there is no live removal script; the CSV is a stale, lossy path anyway).
 
 **Bible verse comparison dataset** (`data/verseComparisonList.json`, `data/verseComparisons.json`,
 `scripts/fetchVerseComparisons.mjs` / `retryFailedVerses.mjs`): 502 verses with fetched KJV/NET
