@@ -125,7 +125,7 @@ export const differenceParts: DiffPart[] = [
         id: "phrases",
         title: "Phrases",
         intro:
-          "Here it is not a whole verse but a clause or phrase — the Byzantine text is longer, the critical text shorter. KJV and ESV, side by side:",
+          "Not a whole verse but a clause or phrase that the Textus Receptus has and the earliest manuscripts don’t. Modern translations mostly drop these — to a footnote, or out of the text entirely — but a few (like the angel in Gethsemane, Luke 22:43–44) they keep in the main text with a note that the manuscripts are divided. Each card says which. KJV and ESV side by side:",
         shown: [
           { reference: "Matthew 6:13", show: ["kjv", "esv"], note: "The closing doxology of the Lord’s Prayer — “For thine is the kingdom, and the power, and the glory.” The ESV footnotes it; it echoes 1 Chronicles 29:11." },
           { reference: "Luke 4:4", show: ["kjv", "esv"], note: "“but by every word of God” — the full quotation of Deuteronomy 8:3, uncontested in the Matthew 4:4 parallel." },
@@ -143,7 +143,8 @@ export const differenceParts: DiffPart[] = [
       {
         id: "single-words",
         title: "Single words and small details",
-        intro: "The smallest manuscript differences — a name, a title, a phrase.",
+        intro:
+          "The smallest manuscript differences. Sometimes the Textus Receptus has a word or short phrase the oldest copies lack; more often the two simply read a different word — “Isaiah” for “the prophets” in Mark 1:2, “tree of life” for “book of life” in Revelation 22:19. Modern translations follow the shorter or better-attested reading. KJV and ESV side by side:",
         shown: [
           { reference: "Matthew 27:35", show: ["kjv", "esv"], note: "KJV adds the quotation of Psalm 22:18 (“they parted my garments…”); the fulfilment is stated in John 19:24." },
           { reference: "Mark 1:2", show: ["kjv", "esv"], note: "KJV: “in the prophets.” Critical text: “in Isaiah the prophet.” The quotation that follows blends Malachi 3:1 with Isaiah 40:3." },
@@ -159,7 +160,7 @@ export const differenceParts: DiffPart[] = [
         id: "doctrinal-wording",
         title: "Wording that touches doctrine",
         intro:
-          "These manuscript differences land on wording that some readers consider doctrinally significant — usually about the deity of Christ or the Trinity. In each case the doctrine is taught plainly elsewhere; what varies is whether this particular verse also states it.",
+          "The same kind of manuscript difference — a changed word or letter, and in one case (1 John 5:7) a whole clause the earliest copies lack — but here it lands on wording some readers consider doctrinally significant, usually about the deity of Christ or the Trinity. In every case the doctrine is taught plainly elsewhere; what varies is whether this particular verse also states it.",
         shown: [
           {
             reference: "1 John 5:7",
@@ -197,7 +198,7 @@ export const differenceParts: DiffPart[] = [
         id: "old-testament",
         title: "Old Testament: the Hebrew text and its older witnesses",
         intro:
-          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or different from older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 100 BC). Translators weigh these differently.",
+          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 100 BC). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
         shown: [
           { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment and the Septuagint: “the sons of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
           { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew of Saul’s age is incomplete — literally “Saul was … years old.” KJV renders it woodenly; the ESV brackets a guess; the NIV fills in numbers from the Septuagint and Acts 13:21." },
