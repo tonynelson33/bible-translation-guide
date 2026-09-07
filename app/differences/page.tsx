@@ -28,6 +28,11 @@ export default function DifferencesPage() {
           things: which ancient copies a translation follows, and which English words the
           translators chose.
         </p>
+        <p className="mt-3 leading-relaxed text-neutral-700">
+          &ldquo;Two well-known passages&rdquo; and &ldquo;Whole verses&rdquo; below are complete
+          lists. The other sections show a representative sample of each kind of difference — there
+          is no agreed complete list of those.
+        </p>
 
         {/* table of contents */}
         <nav className="mt-5 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm">

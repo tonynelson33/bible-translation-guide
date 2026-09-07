@@ -116,12 +116,15 @@ Majority/Byzantine (KJV-underlying) text positions; re-check embeds periodically
 get pulled or have embedding disabled.
 
 **Why Translations Differ** (`/differences`, nav label "Differences"): the verses where
-translations most visibly disagree — a curated set (~53 references, 10 sections) drawn from the
+translations most visibly disagree — a curated set (~52 references, 9 sections) drawn from the
 ~84 rows tagged "Translation Difference" in `data/verseComparisonList.json`. **No total is stated
 on the page or in the page metadata** (both said "84" / "roughly 85"; removed 2026-09-07 —
-"most visible" has no standard threshold, and the page is a subset of the list anyway). Leviticus
-6:25 was dropped 2026-08 from the JSON and the source xlsx (reads the same in KJV and ESV).
-Grouped into **Part 1 — Manuscript Differences**
+"most visible" has no standard threshold, and the page is a subset of the list anyway). The page
+intro says which sections are complete: Part 1's "Two well-known passages" and "Whole verses" are
+closed lists (all of each is on the page); every other section is a representative sample.
+(Leviticus 6:25 was dropped 2026-08 from the JSON and the source xlsx — reads the same in KJV and
+ESV. A "John 8:58" section — a non-difference, "I am" is identical in every version — was cut
+2026-09-07.) Grouped into **Part 1 — Manuscript Differences**
 (Textus Receptus / Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls)
 and **Part 2 — English Word Differences** (undisputed text, different English). Content
 structure + every verse's one-line note (and which translations each card shows) live in

@@ -281,20 +281,6 @@ export const differenceParts: DiffPart[] = [
           },
         ],
       },
-      {
-        id: "john-858",
-        title: "“I am”: John 8:58",
-        intro:
-          "The Greek egō eimi is undisputed, and every translation renders it “I am.” What varies is only punctuation and whether a footnote points to Exodus 3:14 (“I AM WHO I AM”). Readers who see Jesus claiming the divine name are reading the same words in every version.",
-        shown: [
-          {
-            reference: "John 8:58",
-            show: ["kjv", "esv"],
-            note:
-              "Word for word the same. The KJV capitalizes only the sentence; the ESV adds quotation marks around Jesus’ words and footnotes some interpreters’ view that “I am” echoes the divine name of Exodus 3:14. Neither the Greek nor the English is in dispute.",
-          },
-        ],
-      },
     ],
   },
 ];
