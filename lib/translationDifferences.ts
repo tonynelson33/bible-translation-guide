@@ -197,7 +197,7 @@ export const differenceParts: DiffPart[] = [
         id: "old-testament",
         title: "Old Testament: the Hebrew text and its older witnesses",
         intro:
-          "The Old Testament’s standard Hebrew text — the Masoretic Text, fixed by about AD 1000 — is occasionally shorter, damaged, or different from older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 100 BC). Translators weigh these differently.",
+          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or different from older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 100 BC). Translators weigh these differently.",
         shown: [
           { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment and the Septuagint: “the sons of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
           { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew of Saul’s age is incomplete — literally “Saul was … years old.” KJV renders it woodenly; the ESV brackets a guess; the NIV fills in numbers from the Septuagint and Acts 13:21." },
@@ -234,16 +234,16 @@ export const differenceParts: DiffPart[] = [
         intro: "Here translators agree on the words and differ on nuance.",
         shown: [
           {
-            reference: "Micah 5:2",
-            show: ["kjv", "esv", "niv"],
-            note:
-              "KJV and NKJV: the ruler’s “goings forth have been … from everlasting” — eternal. The ESV (“from ancient days”) and NIV (“from ancient times”) read it as “long ago,” pointing to David’s line. The Hebrew phrase can carry either sense; the eternal Sonship of Christ is taught elsewhere either way.",
-          },
-          {
             reference: "Isaiah 9:6",
             show: ["kjv", "esv"],
             note:
               "The KJV’s commas — “Wonderful, Counsellor, The mighty God” — can be read as separate titles. Modern translations join the pairs: “Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.” The Hebrew has no punctuation; it is a translator’s judgment, and “Mighty God” is a title of the child either way.",
+          },
+          {
+            reference: "Micah 5:2",
+            show: ["kjv", "esv", "niv"],
+            note:
+              "KJV and NKJV: the ruler’s “goings forth have been … from everlasting” — eternal. The ESV (“from ancient days”) and NIV (“from ancient times”) read it as “long ago,” pointing to David’s line. The Hebrew phrase can carry either sense; the eternal Sonship of Christ is taught elsewhere either way.",
           },
         ],
       },
