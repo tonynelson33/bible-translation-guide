@@ -55,8 +55,14 @@ marker.
 **cached, not fetched live**. `data/cachedVerses.json` holds `{ [translationId]: { attribution,
 verses: { [reference]: text } } }` for all 12 translations, and `lib/verseProviders.ts`'s
 `fetchVerseForTranslation` is a plain synchronous lookup — no API keys, no rate limits, no
-network. A translation with no entry for a verse returns `status: "unavailable"` (renders as a
-"Text unavailable" card via `components/VerseCard.tsx`), never throws.
+network. A translation with no entry for a verse returns `status: "unavailable"`, never throws.
+
+`/verses` layout (rewritten 2026-09-07): a single-column list, one row per translation, `max-w-6xl`,
+ordered **most literal → freest** — the order is derived at module load from the `literal` category
+in `lib/rankings.ts` (`rankingCategories.find(c => c.slug === "literal")`), so it self-syncs. Each
+row is a `[abbr | verse text]` grid (stacks on mobile); attributions are collected into one
+fine-print block at the foot of the page (still on-page = licence notice satisfied). `VerseCard.tsx`
+is **no longer used here** — it survives only as the single-verse card on `/translations/[slug]`.
 
 - **Fidelity**: verse **words and punctuation are exact** — every quotation mark and dash as
   the source publishes it (John 3:16 keeps its opening `"` in ESV/NLT/NASB/LSB, has none in
@@ -98,13 +104,27 @@ shows through.
 **Styling**: Tailwind, with a custom `brand` (deep blue) color scale in `tailwind.config.ts` as
 the one accent color. `app/layout.tsx` loads two fonts via `next/font/google`: Inter for UI
 (`font-sans`, the default) and Lora for quoted Scripture text specifically (`font-serif`, applied
-deliberately on verse text, not site copy).
+deliberately on verse text, not site copy). The philosophy pills (`lib/glossary.ts`) are the only
+other colours — indigo/teal/purple/amber for Formal/Optimal/Mixed/Dynamic; `components/TranslationSpectrum.tsx`
+(an SVG shown only on the `/rankings` "Most Literal" tab) reuses those.
+
+**`app/globals.css` — `overflow-x` gotcha**: it is set on `<html>` **only**, deliberately. Setting
+it on `<body>` too (as it was until 2026-09-07) makes `<body>` a scroll container, which silently
+kills `position: sticky` on the nav (`components/Nav.tsx` is `sticky top-0`). Don't re-add it to
+`body`. The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
 
 **No placeholder pages remain.** `/rankings` (`lib/rankings.ts` + `components/RankingsPage.tsx`),
 `/buy` (`lib/buyLinks.ts`), and every `/translations/[slug]` (`lib/translationProfiles.ts`) are
 all real. `components/ComingSoon.tsx` still exists only as the per-route fallback in
 `app/translations/[slug]/page.tsx` for a translation with no `translationProfiles` entry — with
 all 12 profiled, it currently never renders.
+
+`/rankings`: 7 categories in `rankingCategories` — order is the tab order. As of 2026-09-07:
+popular, literal, memorization, devotions, preaching, study, balance (Serious Study and
+Memorization were swapped so the row runs roughly basic → serious; `balance` renders as a
+featured tab below the row, `defaultRankingSlug`). `lib/rankings.ts` header comment documents
+the per-category ranking logic (original 9 keep relative order in the 6 descriptive categories;
+balance is computed). The Most Literal tab also renders `TranslationSpectrum`.
 
 **`/blog`** (nav + footer label "Videos") is a curated library of ~10 embedded YouTube videos
 on translation history, philosophy, Textus Receptus vs. Critical Text, gender language, and
