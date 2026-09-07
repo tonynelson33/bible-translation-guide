@@ -88,5 +88,45 @@
       "Romans 8:28": "And we know that all things work together for good for those who love God, who are called according to his purpose,",
       "Philippians 4:13": "I am able to do all things through the one who strengthens me."
     }
+  },
+  "nrsv": {
+    "attribution": "Scripture quotations are from the New Revised Standard Version, Updated Edition. Copyright © 2021 National Council of Churches of Christ in the United States of America. Used by permission. All rights reserved worldwide.",
+    "verses": {
+      "John 3:16": "“For God so loved the world that he gave his only Son, so that everyone who believes in him may not perish but may have eternal life.",
+      "Psalm 23:1": "The LORD is my shepherd; I shall not want.",
+      "Genesis 1:1": "When God began to create the heavens and the earth,",
+      "Romans 8:28": "We know that all things work together for good for those who love God, who are called according to his purpose.",
+      "Philippians 4:13": "I can do all things through him who strengthens me."
+    }
+  },
+  "ceb": {
+    "attribution": "Scripture quotations are from the Common English Bible. Copyright © 2011 by Common English Bible. Used by permission. All rights reserved.",
+    "verses": {
+      "John 3:16": "God so loved the world that he gave his only Son, so that everyone who believes in him won't perish but will have eternal life.",
+      "Psalm 23:1": "The LORD is my shepherd. I lack nothing.",
+      "Genesis 1:1": "When God began to create the heavens and the earth—",
+      "Romans 8:28": "We know that God works all things together for good for the ones who love God, for those who are called according to his purpose.",
+      "Philippians 4:13": "I can endure all these things through the power of the one who gives me strength."
+    }
+  },
+  "ehv": {
+    "attribution": "Scripture quotations are from The Holy Bible, Evangelical Heritage Version® (EHV®). Copyright © 2019 Wartburg Project, Inc. All rights reserved. Used by permission.",
+    "verses": {
+      "John 3:16": "“For God so loved the world that he gave his only-begotten Son, that whoever believes in him shall not perish, but have eternal life.",
+      "Psalm 23:1": "The LORD is my shepherd. I lack nothing.",
+      "Genesis 1:1": "In the beginning, God created the heavens and the earth.",
+      "Romans 8:28": "We know that all things work together for the good of those who love God, for those who are called according to his purpose,",
+      "Philippians 4:13": "I can do all things through Christ, who strengthens me."
+    }
+  },
+  "amp": {
+    "attribution": "Scripture quotations taken from the Amplified® Bible (AMP), Copyright © 2015 by The Lockman Foundation. Used by permission. All rights reserved. lockman.org",
+    "verses": {
+      "John 3:16": "“For God so [greatly] loved and dearly prized the world, that He [even] gave His [One and] only begotten Son, so that whoever believes and trusts in Him [as Savior] shall not perish, but have eternal life.",
+      "Psalm 23:1": "The LORD is my Shepherd [to feed, to guide and to shield me], I shall not want.",
+      "Genesis 1:1": "In the beginning God (Elohim) created [by forming from nothing] the heavens and the earth.",
+      "Romans 8:28": "And we know [with great confidence] that God [who is deeply concerned about us] causes all things to work together [as a plan] for good for those who love God, to those who are called according to His plan and purpose.",
+      "Philippians 4:13": "I can do all things [which He has called me to do] through Him who strengthens and empowers me [to fulfill His purpose—I am self-sufficient in Christ’s sufficiency; I am ready for anything and equal to anything through Him who infuses me with inner strength and confident peace.]"
+    }
   }
 }

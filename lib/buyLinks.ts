@@ -28,6 +28,8 @@ export interface TranslationLinks {
  *  - LSB isn't available on Bible Gateway at all.
  *  - KJV has no single publisher (public domain), so there's no "official"
  *    buy link for it — just retailers.
+ *  - NRSV is the same: the NCC licenses it to many houses, so no one store
+ *    is "official." Bible Gateway serves it as the NRSVue.
  */
 export const translationLinks: Record<string, TranslationLinks> = {
   esv: {
@@ -126,6 +128,48 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible.org (official)", url: "https://bible.org/" },
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NET" },
       { label: "YouVersion", url: "https://www.bible.com/versions/107" },
+    ],
+  },
+  nrsv: {
+    // No single publisher — the NCC licenses the NRSV to many houses (HarperOne,
+    // Zondervan, Cambridge, Oxford, Hendrickson), so there's no one "official" store.
+    buy: [
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/nrsv" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=NRSV+Bible" },
+    ],
+    readFree: [
+      { label: "Bible Gateway (NRSVue)", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NRSVUE" },
+    ],
+  },
+  ceb: {
+    buy: [
+      { label: "Common English Bible (official)", url: "https://www.commonenglishbible.com/explore/shop" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Common+English+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/ceb" },
+    ],
+    readFree: [
+      { label: "Read the CEB (official)", url: "https://www.commonenglishbible.com/explore/read-online" },
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=CEB" },
+    ],
+  },
+  ehv: {
+    buy: [
+      { label: "Northwestern Publishing House (official)", url: "https://online.nph.net/bibles/ehv-bibles.html" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=EHV+Bible" },
+    ],
+    readFree: [
+      { label: "The Wartburg Project (official)", url: "https://wartburgproject.org/read" },
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=EHV" },
+    ],
+  },
+  amp: {
+    buy: [
+      { label: "Lockman Foundation (official)", url: "https://shop.lockman.org/collections/amplified" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Amplified+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/amplified" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=AMP" },
     ],
   },
 };

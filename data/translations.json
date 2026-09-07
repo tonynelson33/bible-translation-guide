@@ -191,5 +191,99 @@
     "verifyFields": [
       "quoteLimit"
     ]
+  },
+  {
+    "id": "nrsv",
+    "name": "New Revised Standard Version",
+    "abbreviation": "NRSV",
+    "latestRevisionYear": 2021,
+    "firstPublishedYear": 1989,
+    "gradeLevel": "11",
+    "philosophy": "Formal",
+    "textualBasis": "Critical text",
+    "publisher": "National Council of Churches",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true
+  },
+  {
+    "id": "ceb",
+    "name": "Common English Bible",
+    "abbreviation": "CEB",
+    "latestRevisionYear": 2011,
+    "firstPublishedYear": 2011,
+    "gradeLevel": "7",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical text",
+    "publisher": "Common English Bible (mainline alliance)",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter"
+    ]
+  },
+  {
+    "id": "ehv",
+    "name": "Evangelical Heritage Version",
+    "abbreviation": "EHV",
+    "latestRevisionYear": 2019,
+    "firstPublishedYear": 2019,
+    "gradeLevel": "8-9 (est.)",
+    "philosophy": "Optimal",
+    "textualBasis": "Critical text",
+    "publisher": "Wartburg Project (WELS / ELS)",
+    "quoteLimit": "1,000 verses",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "philosophy",
+      "textualBasis",
+      "redLetter",
+      "italicizesTranslatorWords"
+    ]
+  },
+  {
+    "id": "amp",
+    "name": "Amplified Bible",
+    "abbreviation": "AMP",
+    "latestRevisionYear": 2015,
+    "firstPublishedYear": 1965,
+    "gradeLevel": "11 (uneven)",
+    "philosophy": "Formal",
+    "textualBasis": "Critical text",
+    "publisher": "Lockman Foundation",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Traditional",
+    "redLetter": true,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "redLetter"
+    ]
   }
 ]
