@@ -2,11 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* overflow-x only on <html> (the viewport scroller). Setting it on <body> too
+   makes <body> a scroll container, which breaks `position: sticky` on the nav. */
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-body {
   overflow-x: hidden;
 }
