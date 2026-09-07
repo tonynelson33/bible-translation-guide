@@ -101,6 +101,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "ceb", blurb: "Dynamic and pitched at a 7th-grade reading level, generally a little freer with the wording than the NIV." },
       { id: "nlt", blurb: "The least literal translation here — a genuine translation, but one built to prioritize clarity over matching the original's exact wording." },
     ],
+    note: "This mostly follows each translation's own stated philosophy — the Formal / Dynamic / Optimal / Mixed field in the comparison table — plus the broad agreement of published “translation spectrum” charts. The three tiers are well settled; the order within each is finer judgment, and AMP and NRSV are genuine edge cases (see their entries). “More literal” describes a method, not accuracy or quality — everything here is a real translation by competent scholars.",
   },
   {
     slug: "study",
@@ -132,6 +133,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "ceb", blurb: "The CEB Study Bible is a solid mainline resource, but the translation itself is built for reading ease rather than word-level precision." },
       { id: "nlt", blurb: "Built for clarity and accessibility first — a fine translation for understanding a passage's meaning, but not the first choice for granular word-level study." },
     ],
+    note: "Three things feed this and they don't always agree: how closely the wording tracks the original, how thoroughly the translation footnotes its own choices (NET is far ahead), and the size of the surrounding library of study Bibles and commentaries — ESV and NIV for the evangelical world, NRSV for the academic one. A translation can rank on any one of the three, which is why the NIV places mid-pack despite its dynamic text. It's pitched at a self-directed lay student; a scholar's list would lean harder on the original languages.",
   },
   {
     slug: "devotions",
@@ -163,6 +165,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "lsb", blurb: "The newest and most literal translation here, with the fewest devotional resources — reading plans, daily-verse apps — built around it so far." },
       { id: "amp", blurb: "The bracketed alternate meanings that make it a useful study tool also make it almost impossible to read in a natural flow — the wrong tool for sitting and reading." },
     ],
+    note: "Close to a straight readability ranking: reading grade level from the comparison table, adjusted for how natural the prose sounds aloud (the NKJV's grade level is low but its register is formal, so it sits lower than the number alone). It runs roughly opposite to Most Literal — though not exactly, since the NET is both fairly formal and easy to read. Easy to read is not the same as good for depth.",
   },
   {
     slug: "preaching",
@@ -194,6 +197,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "net", blurb: "Built as a study tool with extensive footnotes rather than a pew or pulpit Bible — it's rarely anyone's primary preaching text." },
       { id: "amp", blurb: "You can't read the bracketed alternate meanings aloud, and almost no one preaches from it as a primary text — a reference to consult, not a pulpit Bible." },
     ],
+    note: "This weighs three things: whether the text is precise enough to build a verse-by-verse sermon on, whether it reads well aloud, and whether it's what the congregation already has open. It is not a count of which Bible is used in the most pulpits — that's Most Popular. The KJV in particular is preached from far more widely than its spot here suggests; it ranks lower because the archaic vocabulary works against close exposition. Denominational lectionary and official choices (NRSV, ESV, CSB) do much of the sorting.",
   },
   {
     slug: "memorization",
@@ -228,6 +232,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "net", blurb: "Built as a study tool, not a memory-verse text — its main text isn't designed or marketed around fixed, memorable pew phrasing." },
       { id: "amp", blurb: "The brackets and alternate-word strings make a verse almost impossible to fix in memory in any single form." },
     ],
+    note: "Two things drive this: consistency — memorize a verse and it should match every printing and cross-reference — and cadence, since rhythmic prose is genuinely easier to recall (the KJV's real edge). Familiarity matters for group recitation, and a handful of translations have decades of memory-verse programs built around them. A newer translation can be well-suited to memorizing and still rank low here purely for lack of that tradition.",
   },
   {
     slug: "balance",
