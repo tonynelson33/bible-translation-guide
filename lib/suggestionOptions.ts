@@ -47,17 +47,18 @@ export interface Option {
  * Protestant body and "Baptist" without it is close to useless. If any of PCA/GMC/ACNA is
  * wanted back, the sync + rollback tables are documented in the "csv vs db drift" memory.
  *
- * Added 2026-09-06: "Pentecostal (Independent / other)" (pentecostal_church). Partly reverses
- * the 2026-08 decision to fold generic "Pentecostal" into "not identified" — but only for
- * Pentecostal, and only as a *family catch-all* (parallel to "Baptist (Independent / other)"),
- * not the umbrella. "Pentecostal" is a family-reliable name signal — a church named "First
- * Pentecostal" is almost certainly Pentecostal-family; the organized bodies (AG, Foursquare,
- * COGIC) are carved out ahead of it in the classifier, so what lands here is the independent /
- * unaffiliated / small-body tail (~3,900 rows, incl. the Pentecostal-Holiness / IPHC-style and
- * Open Bible names, and Spanish "Iglesia Pentecostal"). ~10-15% may actually be unnamed
- * AG/COGIC affiliates — acceptable, they were "not identified" before. "Full Gospel" was
- * deliberately left OUT of the pattern (too broad — Word of Faith / Full Gospel Baptist / Korean
- * AG all use it). "Evangelical" and "Mission" stay folded — those really are just adjectives.
+ * Added 2026-09-06: "Pentecostal" (pentecostal_church). Partly reverses the 2026-08 decision to
+ * fold generic "Pentecostal" into "not identified" — as a *family catch-all* that sits below the
+ * organized Pentecostal bodies (AG, Foursquare, COGIC), which are carved out ahead of it in the
+ * classifier. "Pentecostal" is a family-reliable name signal — a church named "First Pentecostal"
+ * is almost certainly Pentecostal-family; what lands here is the independent / unaffiliated /
+ * small-body tail (~3,900 rows, incl. Pentecostal-Holiness / IPHC-style and Open Bible names, and
+ * Spanish "Iglesia Pentecostal"). ~10-15% may actually be unnamed AG/COGIC affiliates —
+ * acceptable, they were "not identified" before. "Full Gospel" was deliberately left OUT of the
+ * pattern (too broad — Word of Faith / Full Gospel Baptist / Korean AG all use it). "Evangelical"
+ * and "Mission" stay folded — those really are just adjectives. (Labelled "Pentecostal
+ * (Independent / other)" 2026-09-06, trimmed to plain "Pentecostal" the same day once the
+ * "Pentecostal (Oneness / Apostolic)" bucket was removed and there was nothing to disambiguate.)
  *
  * SCOPE 2026-09-06 — the directory is now Trinitarian Protestant only. Removed as out of scope
  * (rows archived to sync_archive.archive_removed_nonprotestant_2026_09_06, ~29,700 congregations):
@@ -95,7 +96,7 @@ export const denominationOptions: Option[] = [
   { value: "methodist_church", label: "Methodist / Wesleyan (Mainline & Global)" },
   { value: "nazarene_church", label: "Nazarene" },
   { value: "non_denominational", label: "Non-denominational" },
-  { value: "pentecostal_church", label: "Pentecostal (Independent / other)" },
+  { value: "pentecostal_church", label: "Pentecostal" },
   { value: "plymouth_brethren_church", label: "Plymouth Brethren / Christian Brethren" },
   { value: "presbyterian_church", label: "Presbyterian" },
   { value: "quaker_friends", label: "Quaker (Friends)" },

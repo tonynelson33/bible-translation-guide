@@ -313,9 +313,9 @@ the data. Several labels split or merge the underlying buckets:
 - Splits the source names *can* distinguish are real categories, populated by the classifier:
   `missionary_baptist_church`, `methodist_ame`, `bible_church` (added in the 2026-08 overhaul),
   `plymouth_brethren_church` (populated 2026-08-30 by a "Gospel Hall" pattern), and
-  `pentecostal_church` ("Pentecostal (Independent / other)", added 2026-09-06 — the Pentecostal
-  *family* catch-all, checked after AG/Foursquare/COGIC/Oneness so those win; ~3,850 rows; "Full
-  Gospel" deliberately excluded from the pattern as too broad).
+  `pentecostal_church` ("Pentecostal", added 2026-09-06 — the Pentecostal *family* catch-all,
+  checked after AG/Foursquare/COGIC so those win; ~3,850 rows; "Full Gospel" deliberately
+  excluded from the pattern as too broad).
 - `non_denominational` (~4,575 rows as of 2026-09-05) is populated from external directories that
   explicitly classify a church as non-denominational/independent (usachurches.org, the ARC / GCC
   church-planting networks, OSM `nondenominational` and filtered `evangelical`/`protestant` tags —
@@ -379,13 +379,12 @@ the data. Several labels split or merge the underlying buckets:
   widget `1682b4fc2190ec` → `api.storepoint.co/v1/<id>/locations`), `acna.org/anglican_church/map`
   (gmaps4rails markers inline; `scripts/fetch-acna-churches.mjs`); rollback tables
   `{pca,gmc,acna}_sync_relabel_before_2026_08_31` + `_inserted_` still exist.
-- **Added 2026-09-06: `pentecostal_church` ("Pentecostal (Independent / other)")** — partly
-  reverses the 2026-08 call to fold generic "Pentecostal" into "not identified", but *only* for
-  Pentecostal and *only* as a family catch-all (parallel to `baptist_church` = "Baptist
-  (Independent / other)"), not the umbrella. Unlike `non_denominational`/`sbc_church` this one
+- **Added 2026-09-06: `pentecostal_church` ("Pentecostal")** — partly reverses the 2026-08 call
+  to fold generic "Pentecostal" into "not identified", as a family catch-all that sits below the
+  organized Pentecostal bodies. Unlike `non_denominational`/`sbc_church` this one
   IS a name-pattern bucket — but "Pentecostal" is a *family-reliable* signal (a church named
   "First Pentecostal" is almost certainly Pentecostal-family; the organized bodies AG /
-  Foursquare / COGIC / Oneness are carved out ahead of it in the classifier). `classify()` gets a
+  Foursquare / COGIC are carved out ahead of it in the classifier). `classify()` gets a
   pattern (`\bPentecostal\b` | `Pentecost[eé]s` | Fire-Baptized | Open Bible Standard, minus
   Baptist / the Oneness "Church of Jesus Christ" / PAW / BibleWay / Spanish "Pentecostal Unida"
   names); `FOLD_TO_CATHEDRAL` drops `pentecostal_church` (keeps `evangelical_church` / `mission`).
