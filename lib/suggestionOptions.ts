@@ -110,7 +110,6 @@ export const denominationOptions: Option[] = [
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
   { value: "CEB", label: "CEB — Common English Bible" },
-  { value: "CEV", label: "CEV — Contemporary English Version" },
   { value: "CSB", label: "CSB — Christian Standard Bible" },
   { value: "Douay-Rheims", label: "Douay-Rheims" },
   { value: "EHV", label: "EHV — Evangelical Heritage Version" },
@@ -122,12 +121,10 @@ export const translationOptions: Option[] = [
   { value: "NASB", label: "NASB — New American Standard Bible" },
   { value: "NET", label: "NET — New English Translation" },
   { value: "NIV", label: "NIV — New International Version" },
-  { value: "NJB", label: "NJB — New Jerusalem Bible" },
   { value: "NKJV", label: "NKJV — New King James Version" },
   { value: "NLT", label: "NLT — New Living Translation" },
   { value: "NRSV", label: "NRSV — New Revised Standard Version" },
   { value: "NRSVue", label: "NRSVue — New Revised Standard Version, Updated Edition" },
   { value: "OSB", label: "OSB — Orthodox Study Bible" },
   { value: "RSV", label: "RSV — Revised Standard Version" },
-  { value: "WEB", label: "WEB — World English Bible" },
 ];
