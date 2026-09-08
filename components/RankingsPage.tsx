@@ -79,11 +79,15 @@ function TabButton({
       onClick={onClick}
       aria-pressed={isActive}
       className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
-        featured ? "ring-1 ring-inset ring-brand-300" : ""
+        featured ? "ring-1 ring-inset ring-gild-400" : ""
       } ${
         isActive
-          ? "bg-brand-700 text-white"
-          : "bg-neutral-100 text-neutral-600 hover:bg-brand-50 hover:text-brand-800"
+          ? featured
+            ? "bg-gild-600 text-white"
+            : "bg-brand-700 text-white"
+          : featured
+            ? "bg-gild-50 text-gild-800 hover:bg-gild-100"
+            : "bg-neutral-100 text-neutral-600 hover:bg-brand-50 hover:text-brand-800"
       }`}
     >
       {cat.tabLabel}

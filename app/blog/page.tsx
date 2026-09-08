@@ -95,7 +95,7 @@ function VideoCard({ video }: { video: Video }) {
           className="absolute inset-0 h-full w-full"
         />
       </div>
-      <p className="mt-2 text-xs font-medium uppercase tracking-wide text-brand-600">
+      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-gild-700">
         {video.topic}
       </p>
       <a

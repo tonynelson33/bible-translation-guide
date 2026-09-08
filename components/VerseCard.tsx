@@ -22,7 +22,9 @@ export default function VerseCard({
         <>
           {/* text is reproduced exactly as the publisher's source returns it —
               no quote marks are added here (the source keeps its own) */}
-          <p className="font-serif text-lg leading-relaxed text-neutral-800">{result.text}</p>
+          <p className="border-l-2 border-gild-300 pl-4 font-serif text-lg leading-relaxed text-neutral-800">
+            {result.text}
+          </p>
           {result.attribution && (
             <p className="mt-3 text-xs leading-snug text-neutral-400">{result.attribution}</p>
           )}

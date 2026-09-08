@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TranslationSpectrum from "@/components/TranslationSpectrum";
+import SpectrumStrip from "@/components/SpectrumStrip";
 import { translations } from "@/lib/data";
 import { philosophyGlossary } from "@/lib/glossary";
 import { rankingCategories } from "@/lib/rankings";
@@ -77,12 +78,7 @@ export default function HomePage() {
 
       {/* Philosophy band — decorative restatement of the spectrum */}
       <section className="mx-auto mt-10 max-w-3xl">
-        <div className="flex h-2 overflow-hidden rounded-full">
-          <span className="flex-[3] bg-indigo-300" />
-          <span className="flex-[1.2] bg-teal-300" />
-          <span className="flex-[0.9] bg-purple-300" />
-          <span className="flex-[2.4] bg-amber-300" />
-        </div>
+        <SpectrumStrip className="h-2" />
         <div className="mt-1.5 flex justify-between text-xs text-neutral-500">
           <span>word-for-word</span>
           <span>thought-for-thought</span>

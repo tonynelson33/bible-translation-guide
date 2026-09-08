@@ -12,7 +12,7 @@ export default function ComingSoon({
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-start px-4 py-20 sm:px-6 lg:px-8">
       {eyebrow && (
-        <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-600">
+        <span className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-gild-700">
           {eyebrow}
         </span>
       )}
