@@ -33,10 +33,21 @@ export default function ComparePage() {
 
       <ComparisonTable translations={translations} />
 
-      <p className="mt-3 text-sm text-neutral-500">
-        <sup className="text-brand-600">†</sup> Quote limits and some fields marked &ldquo;verify&rdquo;
-        should be confirmed against current publisher documentation before relying on them.
-      </p>
+      <div className="mt-3 space-y-1 text-sm text-neutral-500">
+        <p>
+          <sup className="text-brand-600">†</sup> Quote limits and some fields marked
+          &ldquo;verify&rdquo; should be confirmed against current publisher documentation before
+          relying on them.
+        </p>
+        <p>
+          &ldquo;NRSVue&rdquo; is the 2021 Updated Edition of the NRSV, which most publishers now
+          serve as the current &ldquo;NRSV.&rdquo; See{" "}
+          <Link href="/translations/nrsvue" className="text-brand-600 hover:underline">
+            its profile
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   );
 }

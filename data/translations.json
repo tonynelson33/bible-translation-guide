@@ -193,9 +193,9 @@
     ]
   },
   {
-    "id": "nrsv",
-    "name": "New Revised Standard Version",
-    "abbreviation": "NRSV",
+    "id": "nrsvue",
+    "name": "New Revised Standard Version, Updated Edition",
+    "abbreviation": "NRSVue",
     "latestRevisionYear": 2021,
     "firstPublishedYear": 1989,
     "gradeLevel": "11",

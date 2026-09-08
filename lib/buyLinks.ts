@@ -28,8 +28,8 @@ export interface TranslationLinks {
  *  - LSB isn't available on Bible Gateway at all.
  *  - KJV has no single publisher (public domain), so there's no "official"
  *    buy link for it — just retailers.
- *  - NRSV is the same: the NCC licenses it to many houses, so no one store
- *    is "official." Bible Gateway serves it as the NRSVue.
+ *  - NRSVue is the same: the NCC licenses it to many houses, so no one store
+ *    is "official."
  */
 export const translationLinks: Record<string, TranslationLinks> = {
   esv: {
@@ -130,15 +130,15 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/107" },
     ],
   },
-  nrsv: {
-    // No single publisher — the NCC licenses the NRSV to many houses (HarperOne,
+  nrsvue: {
+    // No single publisher — the NCC licenses the NRSVue to many houses (HarperOne,
     // Zondervan, Cambridge, Oxford, Hendrickson), so there's no one "official" store.
     buy: [
       { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/nrsv" },
-      { label: "Amazon", url: "https://www.amazon.com/s?k=NRSV+Bible" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=NRSVue+Bible" },
     ],
     readFree: [
-      { label: "Bible Gateway (NRSVue)", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NRSVUE" },
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NRSVUE" },
     ],
   },
   ceb: {

@@ -39,10 +39,11 @@ Do **not** hand-edit verse text (e.g. adding brackets a source didn't return).
 - **NIV, NLT, CSB, NASB, NKJV, NET, LSB** — sourced by hand from Bible Gateway
   passage pages in a browser session (no API preserves their small-caps and
   quotation marks), then pasted in. Same approach the LSB always used.
-- **NRSV, CEB, AMP** — added 2026-09-06, same Bible-Gateway browser method.
-  The "nrsv" entry uses the NRSV Updated Edition (NRSVue) text — Bible Gateway
-  and the NCC treat it as the current NRSV — with that edition's copyright
-  notice. The AMP verses keep every bracket the Amplified Bible prints.
+- **NRSVue, CEB, AMP** — added 2026-09-06, same Bible-Gateway browser method.
+  The `nrsvue` entry is the NRSV Updated Edition (2021) text with that edition's
+  copyright notice — the site labels the translation "NRSVue" throughout
+  (renamed from "nrsv" 2026-09-08; `/translations/nrsv` redirects). The AMP
+  verses keep every bracket the Amplified Bible prints.
   (EHV was added the same day, then removed 2026-09-07.)
 
 ## Why this is allowed
@@ -54,7 +55,7 @@ of the work:
 
 | Translation | Free quotation ceiling |
 | --- | --- |
-| ESV, NIV, NLT, CSB, NASB, NRSV, CEB, AMP | ~500 verses |
+| ESV, NIV, NLT, CSB, NASB, NRSVue, CEB, AMP | ~500 verses |
 | NKJV, LSB | ~1,000 verses |
 | KJV | public domain |
 | NET | generous; permission notice required |

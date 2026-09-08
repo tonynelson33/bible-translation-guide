@@ -41,7 +41,7 @@ const MARKERS: Marker[] = [
   { label: "KJV", pos: 16, above: false },
   { label: "NKJV", pos: 20, above: true },
   { label: "AMP *", pos: 27, above: false },
-  { label: "NRSV", pos: 35, above: true },
+  { label: "NRSVue", pos: 35, above: true },
   { label: "CSB", pos: 46, above: false },
   { label: "NET", pos: 54, above: true },
   { label: "NIV", pos: 64, above: false },
@@ -65,7 +65,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 820 126"
           className="w-full min-w-[820px]"
           role="img"
-          aria-label="Translation spectrum, in the same left-to-right order as the ranking. Formal, word-for-word: LSB, NASB, ESV, KJV, NKJV, AMP, NRSV. Mediating: CSB, NET. Dynamic, thought-for-thought: NIV, CEB, NLT. A separate paraphrase zone this site does not cover: The Message, The Passion, the Living Bible."
+          aria-label="Translation spectrum, in the same left-to-right order as the ranking. Formal, word-for-word: LSB, NASB, ESV, KJV, NKJV, AMP, NRSVue. Mediating: CSB, NET. Dynamic, thought-for-thought: NIV, CEB, NLT. A separate paraphrase zone this site does not cover: The Message, The Passion, the Living Bible."
         >
           {BANDS.map((band) => {
             const x = px(band.from);

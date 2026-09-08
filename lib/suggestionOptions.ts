@@ -109,19 +109,22 @@ export const denominationOptions: Option[] = [
 /**
  * Bible translation choices for the "add a church" / "suggest a correction"
  * forms — curated to what a church member would realistically pick as their
- * congregation's *pulpit* Bible. This is exactly the set the site profiles in
- * depth (data/translations.json) — 12 as of 2026-09-07.
+ * congregation's *pulpit* Bible. Same set the site profiles in depth
+ * (data/translations.json), with one deliberate difference: the site profiles
+ * the 2021 "NRSVue" text, but the form keeps `value: "NRSV"` — that matches the
+ * ~7,900 stored `bible_translation = 'NRSV'` rows, and a mainline church that
+ * says it uses "the NRSV" usually means the 1989 lectionary text, not the 2021
+ * edition specifically. The label names both.
  *
- * Trimmed 2026-09-06 to 13 — the English Bibles a Protestant congregation would
+ * Trimmed 2026-09-06 — the English Bibles a Protestant congregation would
  * realistically pick as its pulpit Bible. Removed: NJB / Douay-Rheims / NABRE
  * (Catholic — out of scope, see the denomination note above), OSB (Orthodox —
  * same), CEV / GNT (readability editions, not primary pulpit Bibles), WEB
  * (public-domain, near-zero church use), RSV (essentially no church still uses
- * the 1952 text — they've moved to NRSV or ESV), NRSVue (a 2021 NRSV revision
- * no member can distinguish from "NRSV"). Then EHV removed 2026-09-07 — WELS /
- * ELS (its only real constituency) already use NIV / ESV / CSB, all listed, and
- * it's absent from the translation-comparison genre. This list is form-only —
- * removing an entry does not affect how a stored `bible_translation` value renders.
+ * the 1952 text). Then EHV removed 2026-09-07 — WELS / ELS (its only real
+ * constituency) already use NIV / ESV / CSB, all listed, and it's absent from
+ * the translation-comparison genre. This list is form-only — removing an entry
+ * does not affect how a stored `bible_translation` value renders.
  */
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
@@ -135,5 +138,5 @@ export const translationOptions: Option[] = [
   { value: "NIV", label: "NIV — New International Version" },
   { value: "NKJV", label: "NKJV — New King James Version" },
   { value: "NLT", label: "NLT — New Living Translation" },
-  { value: "NRSV", label: "NRSV — New Revised Standard Version" },
+  { value: "NRSV", label: "NRSV / NRSVue — New Revised Standard Version" },
 ];

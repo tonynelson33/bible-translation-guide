@@ -28,7 +28,7 @@ export const defaultRankingSlug = "balance";
  * definitions (lib/glossary.ts), and each translation's own profile
  * (lib/translationProfiles.ts).
  *
- * NRSV, CEB, and AMP were added 2026-09-06 (EHV was added then cut 2026-09-07 —
+ * NRSVue, CEB, and AMP were added 2026-09-06 (EHV was added then cut 2026-09-07 —
  * tiny constituency already served by NIV / ESV / CSB, and absent from the
  * translation-comparison genre). In "Most Literal" 2026-09-07, NET was moved to
  * just past the CSB: its literal renderings live in its footnotes, so the main
@@ -62,13 +62,13 @@ export const rankingCategories: RankingCategory[] = [
       { id: "nkjv", blurb: "Still a consistent top-ten seller, popular with readers who want the King James tradition in modern grammar." },
       { id: "csb", blurb: "One of the fastest-growing translations in recent years, breaking into the top six on ECPA's 2024 year-end list." },
       { id: "nasb", blurb: "A perennial top-ten seller, even though its audience is more specialized than the translations above it." },
-      { id: "nrsv", blurb: "The standard translation of mainline Protestant churches and the academic world — modest retail numbers, but a large everyday footprint across seminaries, universities, and mainline pews." },
+      { id: "nrsvue", blurb: "The standard translation of mainline Protestant churches and the academic world — modest retail numbers, but a large everyday footprint across seminaries, universities, and mainline pews." },
       { id: "amp", blurb: "A steady mid-list seller for decades, with a following among charismatic readers and study-Bible shoppers that keeps it on ECPA's monthly lists." },
       { id: "lsb", blurb: "The newest translation here by far (2021), with sales concentrated in Reformed and MacArthur-affiliated ministry circles rather than the general market." },
       { id: "ceb", blurb: "Sells steadily into United Methodist and other mainline congregations, but has little presence in the evangelical retail that drives the bestseller lists." },
       { id: "net", blurb: "Doesn't chart on print bestseller lists at all — it was built for free online distribution from day one, not retail sales." },
     ],
-    note: "Positions 1-6 follow ECPA's 2024 year-end bestseller list in order (NIV, ESV, KJV, NLT, NKJV, CSB). Everything below that — NASB, NRSV, AMP, LSB, CEB, NET — blends occasional bestseller-list appearances with overall real-world use and is less precisely documented. Exact order also shifts month to month, so treat this as a general picture rather than a fixed, permanent order.",
+    note: "Positions 1-6 follow ECPA's 2024 year-end bestseller list in order (NIV, ESV, KJV, NLT, NKJV, CSB). Everything below that — NASB, NRSVue, AMP, LSB, CEB, NET — blends occasional bestseller-list appearances with overall real-world use and is less precisely documented. Exact order also shifts month to month, so treat this as a general picture rather than a fixed, permanent order.",
   },
   {
     slug: "literal",
@@ -94,14 +94,14 @@ export const rankingCategories: RankingCategory[] = [
       { id: "kjv", blurb: "Formal and word-for-word from the Textus Receptus, though its 17th-century English can obscure just how literal the underlying choices are." },
       { id: "nkjv", blurb: "Keeps the KJV's same literal, word-for-word approach and textual tradition, just in modernized grammar." },
       { id: "amp", blurb: "Its base text sits in the formal NASB family — spectrum charts often place it near the top — but the bracketed strings of alternate meanings add words that aren't in the original, so the text as printed reads less literally than its foundation." },
-      { id: "nrsv", blurb: "Formal by design and in the word-for-word RSV line, but its systematic use of inclusive language — often pluralizing a singular “he” to “they” — is a deliberate step away from matching the exact grammatical forms." },
+      { id: "nrsvue", blurb: "Formal by design and in the word-for-word RSV line, but its systematic use of inclusive language — often pluralizing a singular “he” to “they” — is a deliberate step away from matching the exact grammatical forms." },
       { id: "csb", blurb: "“Optimal equivalence” is explicitly a middle path — it leans formal or dynamic verse by verse rather than committing to literalness as a rule." },
       { id: "net", blurb: "The literal renderings and the harder calls live in its 60,000 footnotes, so the main text you actually read is free enough to land just past the CSB — more so than its “Mixed” label suggests." },
       { id: "niv", blurb: "Dynamic by design — prioritizes natural phrasing over word-for-word correspondence." },
       { id: "ceb", blurb: "Dynamic and pitched at a 7th-grade reading level, generally a little freer with the wording than the NIV." },
       { id: "nlt", blurb: "The least literal translation here — a genuine translation, but one built to prioritize clarity over matching the original's exact wording." },
     ],
-    note: "This mostly follows each translation's own stated philosophy — the Formal / Optimal / Mixed / Dynamic field in the comparison table — plus the broad agreement of published “translation spectrum” charts. The three tiers are well settled; the order within each is finer judgment. AMP and NRSV are the genuine edge cases (see their entries), and the NET is placed by how its readable main text lands, not by its “Mixed” label — the literal renderings sit in its footnotes. “More literal” describes a method, not accuracy or quality — everything here is a real translation by competent scholars.",
+    note: "This mostly follows each translation's own stated philosophy — the Formal / Optimal / Mixed / Dynamic field in the comparison table — plus the broad agreement of published “translation spectrum” charts. The three tiers are well settled; the order within each is finer judgment. AMP and NRSVue are the genuine edge cases (see their entries), and the NET is placed by how its readable main text lands, not by its “Mixed” label — the literal renderings sit in its footnotes. “More literal” describes a method, not accuracy or quality — everything here is a real translation by competent scholars.",
   },
   {
     slug: "memorization",
@@ -129,7 +129,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "niv", blurb: "Being the translation most people around you already know makes group memorization and recitation easier." },
       { id: "lsb", blurb: "Its consistent, literal renderings suit precision-focused memorization, though it's too new to have an established memory-verse tradition yet." },
       { id: "csb", blurb: "Used in some LifeWay children's and student curricula for Scripture memory, with clear, consistent phrasing." },
-      { id: "nrsv", blurb: "No real memory-verse tradition, and reshaping familiar singular lines for inclusive language (“Blessed are those…”) works against the crisp, fixed phrasing that memorization rewards." },
+      { id: "nrsvue", blurb: "No real memory-verse tradition, and reshaping familiar singular lines for inclusive language (“Blessed are those…”) works against the crisp, fixed phrasing that memorization rewards." },
       { id: "ceb", blurb: "Plain vocabulary helps, but its loose, conversational phrasing gives exact wording less of a fixed shape to hold onto." },
       { id: "nlt", blurb: "Its more flexible, thought-for-thought phrasing makes exact word-for-word recall harder than with a more literal translation." },
       { id: "net", blurb: "Built as a study tool, not a memory-verse text — its main text isn't designed or marketed around fixed, memorable pew phrasing." },
@@ -160,7 +160,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "net", blurb: "A readable main text at a 7th-grade level — the footnotes are there if you want them, but they don't have to slow down a devotional read." },
       { id: "nkjv", blurb: "A more traditional register than the translations above it, but still a 7th-grade reading level once the KJV's archaic grammar is modernized." },
       { id: "esv", blurb: "Widely used for daily reading plans and Scripture apps, even though its more literal phrasing makes it a slightly denser read than the Dynamic translations." },
-      { id: "nrsv", blurb: "Its formal, academic register and habit of reshaping sentences for inclusive language make it a slightly heavier read than the evangelical formal translations." },
+      { id: "nrsvue", blurb: "Its formal, academic register and habit of reshaping sentences for inclusive language make it a slightly heavier read than the evangelical formal translations." },
       { id: "kjv", blurb: "Many readers still prefer it for daily devotions out of familiarity and tradition, despite its 12th-grade reading level." },
       { id: "nasb", blurb: "Its precision is better suited to study than to easy daily reading — a dense, formal text at an 11th-grade level." },
       { id: "lsb", blurb: "The newest and most literal translation here, with the fewest devotional resources — reading plans, daily-verse apps — built around it so far." },
@@ -187,17 +187,17 @@ export const rankingCategories: RankingCategory[] = [
         id: "niv",
         blurb: "The most broadly familiar translation to congregations — useful when a pastor wants the text they're preaching from to match what's already in the pews.",
       },
-      { id: "nrsv", blurb: "The pulpit and lectionary Bible across most of mainline Protestantism — Episcopal, ELCA, PC(USA), United Methodist, UCC — and built in the RSV tradition to be read aloud in worship." },
+      { id: "nrsvue", blurb: "The pulpit and lectionary Bible across most of mainline Protestantism — Episcopal, ELCA, PC(USA), United Methodist, UCC — and built in the RSV tradition to be read aloud in worship." },
       { id: "nasb", blurb: "A longtime favorite for expository, verse-by-verse preaching, where matching the original wording closely matters more than natural cadence." },
       { id: "nkjv", blurb: "The KJV's cadence and textual tradition without the archaic vocabulary — a common pulpit choice for churches moving on from the King James English but not the tradition behind it." },
       { id: "kjv", blurb: "Still one of the most-preached-from Bibles in the country — independent Baptist, Pentecostal, Holiness, and traditional Black-church pulpits especially — with a cadence built for reading aloud. The cost for exposition is the 1611 vocabulary the preacher keeps having to translate." },
-      { id: "ceb", blurb: "Turns up in mainline pulpits, often alongside the NRSV, for its smooth read-aloud quality — though its looser wording gives an expositor less to work with." },
+      { id: "ceb", blurb: "Turns up in mainline pulpits, often alongside the NRSVue, for its smooth read-aloud quality — though its looser wording gives an expositor less to work with." },
       { id: "lsb", blurb: "The primary pulpit text at Grace Community Church and other MacArthur-affiliated churches, though not yet in wide use beyond those circles." },
       { id: "nlt", blurb: "Sometimes used in outreach-oriented or seeker-friendly preaching contexts where accessibility is the priority, but less common as a primary pulpit Bible." },
       { id: "net", blurb: "Built as a study tool with extensive footnotes rather than a pew or pulpit Bible — it's rarely anyone's primary preaching text." },
       { id: "amp", blurb: "You can't read the bracketed alternate meanings aloud, and almost no one preaches from it as a primary text — a reference to consult, not a pulpit Bible." },
     ],
-    note: "This weighs three things: whether the text is precise enough to build a verse-by-verse sermon on, whether it reads well aloud, and whether it's what the congregation already has open. It is not a count of which Bible is used in the most pulpits — that's Most Popular. The KJV in particular is preached from far more widely than its spot here suggests; it ranks lower because the archaic vocabulary works against close exposition. Denominational lectionary and official choices (NRSV, ESV, CSB) do much of the sorting.",
+    note: "This weighs three things: whether the text is precise enough to build a verse-by-verse sermon on, whether it reads well aloud, and whether it's what the congregation already has open. It is not a count of which Bible is used in the most pulpits — that's Most Popular. The KJV in particular is preached from far more widely than its spot here suggests; it ranks lower because the archaic vocabulary works against close exposition. Denominational lectionary and official choices (NRSVue, ESV, CSB) do much of the sorting.",
   },
   {
     slug: "study",
@@ -215,7 +215,7 @@ export const rankingCategories: RankingCategory[] = [
         blurb: "Long the standard for close, word-for-word study, especially for readers doing original-language word studies or comparing translations line by line.",
       },
       {
-        id: "nrsv",
+        id: "nrsvue",
         blurb: "The default translation of academic biblical studies — the text behind the New Oxford Annotated and HarperCollins study Bibles and the common version in most non-evangelical seminaries, with formal wording and a serious set of text-critical footnotes.",
       },
       { id: "esv", blurb: "The base text for the widely used ESV Study Bible, backed by one of the largest libraries of study notes and commentaries built around any single translation." },
@@ -228,7 +228,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "ceb", blurb: "The CEB Study Bible is a solid mainline resource, but the translation itself is built for reading ease rather than word-level precision." },
       { id: "nlt", blurb: "Built for clarity and accessibility first — a fine translation for understanding a passage's meaning, but not the first choice for granular word-level study." },
     ],
-    note: "Three things feed this and they don't always agree: how closely the wording tracks the original, how thoroughly the translation footnotes its own choices (NET is far ahead), and the size of the surrounding library of study Bibles and commentaries — ESV and NIV for the evangelical world, NRSV for the academic one. A translation can rank on any one of the three, which is why the NIV places mid-pack despite its dynamic text. It's pitched at a self-directed lay student; a scholar's list would lean harder on the original languages.",
+    note: "Three things feed this and they don't always agree: how closely the wording tracks the original, how thoroughly the translation footnotes its own choices (NET is far ahead), and the size of the surrounding library of study Bibles and commentaries — ESV and NIV for the evangelical world, NRSVue for the academic one. A translation can rank on any one of the three, which is why the NIV places mid-pack despite its dynamic text. It's pitched at a self-directed lay student; a scholar's list would lean harder on the original languages.",
   },
   {
     slug: "balance",
@@ -253,7 +253,7 @@ export const rankingCategories: RankingCategory[] = [
       },
       { id: "niv", blurb: "No category win, but 3rd for preaching, 4th for devotions, 5th for memorization, and never lower than 8th — the most consistently useful of the group even when it's not the best." },
       { id: "nkjv", blurb: "The most even spread on the page: 4th to 6th in all four categories, without ever leading one." },
-      { id: "nrsv", blurb: "Carried by a 3rd for serious study and a 4th for preaching; the formal register and inclusive-language phrasing land it 8th for both personal reading and memorization." },
+      { id: "nrsvue", blurb: "Carried by a 3rd for serious study and a 4th for preaching; the formal register and inclusive-language phrasing land it 8th for both personal reading and memorization." },
       { id: "kjv", blurb: "A clear #1 for memorization and 7th for preaching, weighed against a pair of 9th-place finishes for study and daily reading — the archaic text is the drag on the everyday-use side." },
       { id: "net", blurb: "The #1 translation for serious study, but 11th for both preaching and memorization — the notes that make it exceptional don't help when the text is read aloud." },
       { id: "ceb", blurb: "A strong 2nd for daily devotions carries an otherwise low set of finishes — 8th to 11th in the other three." },

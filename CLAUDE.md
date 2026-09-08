@@ -47,8 +47,10 @@ sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The 
 Footer (`components/SiteFooter.tsx`) is a four-column layout led by a `SpectrumStrip`. When you
 add a route to the nav/footer, add it to `app/sitemap.ts` too.
 
-The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSV, CEB,
-AMP (added 2026-09-06). EHV was added the same day and cut 2026-09-07 (see "The editorial line").
+The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSVue, CEB,
+AMP (added 2026-09-06 — NRSVue as `nrsv`, renamed 2026-09-08 since the verse text is the 2021
+Updated Edition; `/translations/nrsv` redirects). EHV was added the same day and cut 2026-09-07
+(see "The editorial line").
 This set is identical to `translationOptions` in `lib/suggestionOptions.ts` — every translation a
 church-finder submitter can pick has a profile.
 
@@ -273,12 +275,17 @@ external link when present. `churches.website` is null for ~all rows until the c
 forms populate it (no bulk import).
 Dropdown options for both forms live in `lib/suggestionOptions.ts` — `denominationOptions` is a
 fixed 30-entry US master taxonomy (NOT a mirror of `churches.category`; see "Denomination
-taxonomy" below), and `translationOptions` is 12 entries: **exactly the set this site profiles**
-(`data/translations.json`). The list is scoped to translations a meaningful number of US
-Protestant congregations actually use *from the pulpit / in worship*:
-- `NRSV` is listed (added as a full profile 2026-09-06) — still the lectionary Bible in most
-  Episcopal / ELCA / PC(USA) / UMC / UCC / Disciples parishes. `NRSVue` was dropped in the trim:
-  a member can't tell the 2021 revision from "NRSV" on a form.
+taxonomy" below), and `translationOptions` is 12 entries: the set this site profiles
+(`data/translations.json`), with **one deliberate mismatch** — the site profiles the 2021
+**NRSVue** text (renamed from `nrsv` 2026-09-08 — see the NRSVue note below), but the form keeps
+`value: "NRSV"` (label "NRSV / NRSVue"). That matches the ~7,900 stored `bible_translation =
+'NRSV'` rows, and a mainline church that says it uses "the NRSV" usually means the 1989 lectionary
+text. The list is scoped to translations a meaningful number of US Protestant congregations
+actually use *from the pulpit / in worship*:
+- `NRSV` / `NRSVue` — still the lectionary Bible family in most Episcopal / ELCA / PC(USA) / UMC /
+  UCC / Disciples parishes. Church-finder data and the form use "NRSV"; the profiled translation
+  (verses, comparison table, rankings) is the 2021 NRSVue, at `/translations/nrsvue`
+  (`/translations/nrsv` → 308 redirect in `next.config.mjs`).
 - `CEB` and `AMP` were also promoted to full profiles 2026-09-06. `CEB` is mainline (UMC
   especially); `AMP` is a legacy study/devotional Bible with real use in charismatic circles.
 - `EHV` was added 2026-09-06 and **cut 2026-09-07**. WELS/ELS (its only real constituency, ~1,300
@@ -895,9 +902,10 @@ subject is the *Protestant translation conversation* — which English Bible a c
 chooses, and why — and that doesn't apply the same way where the translation is fixed by the
 bishops (Catholic/Orthodox) or where the church is outside the Nicene boundary (Oneness). The
 in-depth translation profiles are all Protestant anyway — and the same day they were expanded
-from 9 to 13 (added NRSV, CEB, EHV, AMP); EHV was then cut 2026-09-07 (weak constituency, absent
-from the translation-comparison genre — see the `translationOptions` note above), leaving 12,
-which is also exactly `translationOptions`. Consequences of the narrowing: the
+from 9 to 13 (added NRSVue, CEB, EHV, AMP); EHV was then cut 2026-09-07 (weak constituency, absent
+from the translation-comparison genre — see the `translationOptions` note above), leaving 12.
+(`translationOptions` matches, except it lists "NRSV" where the profile is "NRSVue" — deliberate,
+see that note.) Consequences of the narrowing: the
 table dropped from ~377K to ~348K rows, translation coverage from ~8.5 % to ~2.8 % (NABRE was
 70 % of it), and the "Catholic, Orthodox, Protestant" copy on `/church-finder` (both the visible
 line and the page metadata) became "Protestant". `denominationOptions` 34 → 30 (dropped

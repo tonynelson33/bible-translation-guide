@@ -1,7 +1,7 @@
 # BibleTranslationGuide
 
 A comparison site for twelve widely used English Bible translations — CSB, ESV, KJV, NIV, NLT,
-LSB, NKJV, NASB, NET, NRSV, CEB, and AMP. Built with Next.js (App Router) and Tailwind CSS.
+LSB, NKJV, NASB, NET, NRSVue, CEB, and AMP. Built with Next.js (App Router) and Tailwind CSS.
 The comparison data lives in static JSON files in `data/`; the Church Finder (`/church-finder`)
 is backed by a Supabase Postgres database.
 

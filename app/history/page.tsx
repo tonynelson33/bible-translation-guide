@@ -72,7 +72,7 @@ export default function HistoryPage() {
             Testament is still his wording. &ldquo;Let there be light,&rdquo; &ldquo;the powers that
             be,&rdquo; &ldquo;my brother&rsquo;s keeper,&rdquo; &ldquo;the salt of the earth&rdquo;
             &mdash; all Tyndale. When the <Link href="/translations/esv" className="font-medium text-brand-700 hover:underline">ESV</Link> or{" "}
-            <Link href="/translations/nrsv" className="font-medium text-brand-700 hover:underline">NRSV</Link> calls
+            <Link href="/translations/nrsvue" className="font-medium text-brand-700 hover:underline">NRSVue</Link> calls
             itself part of a translation &ldquo;tradition,&rdquo; this is the tradition it means: the
             RSV revised the 1901 ASV, which revised the 1885 RV, which revised the KJV, which was
             mostly Tyndale.

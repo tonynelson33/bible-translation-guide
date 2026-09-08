@@ -253,7 +253,7 @@ const groups: Group[] = [
               Judith, Sirach, 1&ndash;2 Maccabees, and others &mdash; included in Catholic and
               Orthodox Bibles but not in Protestant ones. They were in the original 1611{" "}
               <Link href="/translations/kjv">KJV</Link>, in a section between the Testaments, and some
-              translations (<Link href="/translations/nrsv">NRSV</Link>,{" "}
+              translations (<Link href="/translations/nrsvue">NRSVue</Link>,{" "}
               <Link href="/translations/ceb">CEB</Link>,{" "}
               <Link href="/translations/esv">ESV</Link>) still publish editions that include them.
             </p>
@@ -298,7 +298,7 @@ const groups: Group[] = [
               The result is that most English translations since about 1970 fall into a few families
               &mdash; the <Link href="/translations/kjv">KJV</Link> line, the 1952 RSV line (
               <Link href="/translations/esv">ESV</Link>,{" "}
-              <Link href="/translations/nrsv">NRSV</Link>), and newer independent efforts (
+              <Link href="/translations/nrsvue">NRSVue</Link>), and newer independent efforts (
               <Link href="/translations/niv">NIV</Link>,{" "}
               <Link href="/translations/nlt">NLT</Link>,{" "}
               <Link href="/translations/csb">CSB</Link>).
