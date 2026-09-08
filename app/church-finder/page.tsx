@@ -48,7 +48,7 @@ export default async function ChurchFinderPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+      <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         Church Finder
       </h1>
       <p className="mt-3 max-w-3xl text-neutral-600">

@@ -49,13 +49,13 @@ export default function TranslationProfile({
         <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wide text-brand-600">
           Translation Profile
         </span>
-        <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           {translation.name}
           <span className="ml-2 align-middle text-lg font-medium text-neutral-400">
             ({translation.abbreviation})
           </span>
         </h1>
-        <p className="mt-3 max-w-2xl font-serif text-lg italic leading-relaxed text-neutral-700">
+        <p className="mt-3 max-w-2xl font-display text-xl italic leading-relaxed text-neutral-700">
           {profile.tagline}
         </p>
 

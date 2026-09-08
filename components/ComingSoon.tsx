@@ -16,7 +16,7 @@ export default function ComingSoon({
           {eyebrow}
         </span>
       )}
-      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">{title}</h1>
+      <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">{title}</h1>
       <p className="mt-4 text-neutral-600">{description}</p>
       <span className="mt-6 inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-800">
         Coming soon

@@ -18,7 +18,7 @@ export default function DifferencesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           Why translations differ
         </h1>
         <p className="mt-3 leading-relaxed text-neutral-700">
@@ -61,15 +61,15 @@ export default function DifferencesPage() {
           id={part.id}
           className="mt-14 scroll-mt-20 border-t border-neutral-200 pt-10"
         >
-          <h2 className="font-serif text-2xl font-semibold text-brand-900 sm:text-3xl">
+          <h2 className="font-display text-2xl font-semibold text-brand-900 sm:text-3xl">
             {part.title}
           </h2>
           <p className="mt-2 max-w-3xl leading-relaxed text-neutral-700">{part.intro}</p>
 
           {part.sections.map((section, sectionIndex) => (
             <div key={section.id} id={section.id} className="mt-11 scroll-mt-20">
-              <h3 className="font-serif text-xl font-semibold text-brand-900">
-                <span className="text-brand-400">{sectionIndex + 1})</span> {section.title}
+              <h3 className="font-display text-xl font-semibold text-brand-900">
+                <span className="text-gild-600">{sectionIndex + 1})</span> {section.title}
               </h3>
               <p className="mt-2 max-w-3xl leading-relaxed text-neutral-700">
                 {section.intro}

@@ -31,7 +31,7 @@ export default function Nav() {
     <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded bg-brand-700 font-serif text-lg font-semibold text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded bg-brand-700 font-display text-lg font-semibold text-white">
             B
           </span>
           <span className="text-base font-semibold tracking-tight text-brand-900">

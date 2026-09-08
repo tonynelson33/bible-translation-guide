@@ -42,7 +42,7 @@ export default function VersesPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
-        <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           Sample Verse Comparison
         </h1>
         <p className="mt-3 text-neutral-600">

@@ -8,3 +8,24 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
+@layer base {
+  /* Display headings carry `font-display` explicitly (Newsreader). Some h2s are
+     small uppercase eyebrow labels and stay sans, so the font isn't set here —
+     only the balance, which is harmless on short labels. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

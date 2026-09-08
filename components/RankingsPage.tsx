@@ -105,7 +105,7 @@ export default function RankingsPage({
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-center font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+      <h1 className="text-center font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         Rankings
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
@@ -135,7 +135,7 @@ export default function RankingsPage({
       )}
 
       <section className="mt-8">
-        <h2 className="font-serif text-2xl font-semibold text-brand-900">{category.title}</h2>
+        <h2 className="font-display text-2xl font-semibold text-brand-900">{category.title}</h2>
         <p className="mt-1 max-w-2xl text-sm text-neutral-600">{category.criteria}</p>
 
         <ul className="mt-4 space-y-3">
