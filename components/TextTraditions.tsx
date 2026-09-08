@@ -1,5 +1,7 @@
 import Link from "next/link";
+import HistoryImage from "@/components/HistoryImage";
 import { translations } from "@/lib/data";
+import { historyImages } from "@/lib/englishBibleHistory";
 
 /**
  * Two small diagrams for /history: which manuscripts the NT is translated from
@@ -139,7 +141,12 @@ export default function TextTraditions() {
             body="Found near Qumran from 1947 on. They push the Hebrew evidence back about a thousand years, and mostly confirm how carefully the text was copied."
           />
         </div>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
+        <HistoryImage
+          image={historyImages.isaiahScroll}
+          className="mt-4"
+          sizes="(max-width: 767px) 92vw, 46rem"
+        />
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-500">
           The Septuagint has been known since antiquity, but the Dead Sea Scrolls only surfaced
           from 1947 on &mdash; so the 1611{" "}
           <Link href="/translations/kjv" className="font-medium text-gild-700 hover:underline">
