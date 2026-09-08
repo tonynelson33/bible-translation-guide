@@ -24,7 +24,9 @@ export const philosophyGlossary: Record<Philosophy, GlossaryEntry> = {
   Mixed: {
     description:
       "Mixed approach: combines translation methods depending on context — generally literal, with extensive translator notes explaining alternate readings and word choices.",
-    className: "bg-purple-50 text-purple-700",
+    // Shares the teal "mediating" band with Optimal — both sit between formal
+    // and dynamic on the spectrum; the descriptions keep them distinct.
+    className: "bg-teal-50 text-teal-700",
   },
 };
 
