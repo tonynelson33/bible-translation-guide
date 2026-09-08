@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import TextTraditions from "@/components/TextTraditions";
 import { timeline, textPrimer } from "@/lib/englishBibleHistory";
 
 export const metadata: Metadata = {
@@ -94,17 +95,28 @@ export default function HistoryPage() {
           assume you know.
         </p>
 
-        <div className="mt-8 space-y-10">
-          {textPrimer.map((section) => (
-            <section key={section.id} id={section.id} className="scroll-mt-20">
-              <h3 className="font-display text-xl font-semibold text-brand-900">{section.heading}</h3>
-              <div className="mt-2 space-y-3 leading-relaxed text-neutral-700">
-                {section.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            </section>
-          ))}
+        <div className="mt-8">
+          <TextTraditions />
+        </div>
+
+        <div className="mt-12 border-t border-neutral-200 pt-10">
+          <p className="text-sm font-semibold uppercase tracking-wide text-neutral-400">
+            In more detail
+          </p>
+          <div className="mt-6 space-y-10">
+            {textPrimer.map((section) => (
+              <section key={section.id} id={section.id} className="scroll-mt-20">
+                <h3 className="font-display text-xl font-semibold text-brand-900">
+                  {section.heading}
+                </h3>
+                <div className="mt-2 space-y-3 leading-relaxed text-neutral-700">
+                  {section.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       </div>
 
