@@ -13,12 +13,13 @@ export default function SiteFooter() {
           <p>&copy; {new Date().getFullYear()} BibleTranslationGuide. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/" className="hover:text-brand-700">Home</Link>
+            <Link href="/compare" className="hover:text-brand-700">Compare</Link>
             <Link href="/church-finder" className="hover:text-brand-700">Church Finder</Link>
-            <Link href="/verses" className="hover:text-brand-700">Sample Verses</Link>
+            <Link href="/verses" className="hover:text-brand-700">Verses</Link>
             <Link href="/rankings" className="hover:text-brand-700">Rankings</Link>
-            <Link href="/blog" className="hover:text-brand-700">Videos</Link>
             <Link href="/differences" className="hover:text-brand-700">Differences</Link>
             <Link href="/faq" className="hover:text-brand-700">FAQ</Link>
+            <Link href="/blog" className="hover:text-brand-700">Videos</Link>
             <Link href="/buy" className="hover:text-brand-700">Buy</Link>
           </div>
         </div>

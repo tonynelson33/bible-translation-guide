@@ -115,7 +115,8 @@ const groups: Group[] = [
             </ul>
             <p>
               <Link href="/rankings">The rankings page</Link> breaks this down by purpose, and every{" "}
-              <Link href="/">translation profile</Link> has a &ldquo;good fit for&rdquo; section.
+              <Link href="/compare">translation profile</Link> has a &ldquo;good fit for&rdquo;
+              section.
             </p>
           </>
         ),
@@ -139,8 +140,8 @@ const groups: Group[] = [
               the original and aren&rsquo;t suited to study. The Passion Translation is a separate
               case &mdash; it&rsquo;s marketed as a translation but was produced largely by one person
               and adds interpretive material, and most scholars don&rsquo;t recommend it. This site
-              profiles <Link href="/">twelve committee translations</Link> and doesn&rsquo;t cover
-              paraphrases.
+              profiles <Link href="/compare">twelve committee translations</Link> and doesn&rsquo;t
+              cover paraphrases.
             </p>
           </>
         ),

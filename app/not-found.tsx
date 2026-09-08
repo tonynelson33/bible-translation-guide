@@ -13,7 +13,7 @@ export default function NotFound() {
         The page you&apos;re looking for doesn&apos;t exist, or may have moved.
       </p>
       <Link href="/" className="mt-8 text-sm font-medium text-brand-700 hover:underline">
-        &larr; Back to the comparison table
+        &larr; Back to the home page
       </Link>
     </div>
   );

@@ -40,8 +40,8 @@ export default function TranslationProfile({
 }) {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <Link href="/" className="text-sm font-medium text-brand-700 hover:underline">
-        &larr; Back to the comparison table
+      <Link href="/compare" className="text-sm font-medium text-brand-700 hover:underline">
+        &larr; Back to all translations
       </Link>
 
       {/* Header */}

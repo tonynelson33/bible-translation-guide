@@ -21,8 +21,8 @@ export default function ComingSoon({
       <span className="mt-6 inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-800">
         Coming soon
       </span>
-      <Link href="/" className="mt-8 text-sm font-medium text-brand-700 hover:underline">
-        &larr; Back to the comparison table
+      <Link href="/compare" className="mt-8 text-sm font-medium text-brand-700 hover:underline">
+        &larr; Back to all translations
       </Link>
     </div>
   );

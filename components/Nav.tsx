@@ -2,35 +2,115 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { translations } from "@/lib/data";
 
-// Church Finder is the site's most distinctive feature, so it sits second —
-// right after Home, ahead of the reference pages.
-const primaryLinks = [
-  { href: "/", label: "Home" },
+type NavLink = { href: string; label: string };
+
+// Desktop order: Compare · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
+// Church Finder rides high because it's the most distinctive feature; the
+// learning pages are grouped under one menu so the bar stays short.
+const beforeTranslations: NavLink[] = [
+  { href: "/compare", label: "Compare" },
   { href: "/church-finder", label: "Church Finder" },
-  { href: "/verses", label: "Sample Verses" },
-  { href: "/rankings", label: "Rankings" },
-  { href: "/blog", label: "Videos" },
-  { href: "/differences", label: "Differences" },
-  { href: "/buy", label: "Buy" },
 ];
+
+const afterTranslations: NavLink[] = [
+  { href: "/verses", label: "Verses" },
+  { href: "/rankings", label: "Rankings" },
+];
+
+const learnLinks: NavLink[] = [
+  { href: "/differences", label: "Why Translations Differ" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/blog", label: "Videos" },
+];
+
+const afterLearn: NavLink[] = [{ href: "/buy", label: "Buy" }];
 
 const sortedTranslations = [...translations].sort((a, b) =>
   a.abbreviation.localeCompare(b.abbreviation),
 );
 
+const linkClass = (active: boolean) =>
+  `rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
+    active ? "text-brand-800" : "text-neutral-600"
+  }`;
+
+function ChevronDown() {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function NavDropdown({
+  label,
+  active,
+  children,
+  width,
+}: {
+  label: string;
+  active: boolean;
+  children: React.ReactNode;
+  width: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={`flex items-center gap-1 ${linkClass(active)}`}
+        aria-expanded={open}
+      >
+        {label}
+        <ChevronDown />
+      </button>
+      {open && (
+        <div
+          className={`absolute left-0 top-full ${width} rounded-md border border-neutral-200 bg-white py-2 shadow-lg`}
+          onClick={() => setOpen(false)}
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Nav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [translationsOpen, setTranslationsOpen] = useState(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const learnActive = learnLinks.some((l) => isActive(l.href));
+
+  const dropdownItemClass =
+    "block whitespace-nowrap px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-paper/95 backdrop-blur">
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded bg-brand-700 font-display text-lg font-semibold text-white">
@@ -43,63 +123,40 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
-          {primaryLinks.slice(0, 2).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
-                isActive(link.href) ? "text-brand-800" : "text-neutral-600"
-              }`}
-            >
+          {beforeTranslations.map((link) => (
+            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
               {link.label}
             </Link>
           ))}
 
-          <div
-            className="relative"
-            onMouseEnter={() => setTranslationsOpen(true)}
-            onMouseLeave={() => setTranslationsOpen(false)}
+          <NavDropdown
+            label="Translations"
+            active={isActive("/translations")}
+            width="w-72"
           >
-            <button
-              type="button"
-              onClick={() => setTranslationsOpen((v) => !v)}
-              className={`flex items-center gap-1 rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
-                isActive("/translations") ? "text-brand-800" : "text-neutral-600"
-              }`}
-              aria-expanded={translationsOpen}
-            >
-              Translations
-              <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            {translationsOpen && (
-              <div className="absolute left-0 top-full w-72 rounded-md border border-neutral-200 bg-white py-2 shadow-lg">
-                {sortedTranslations.map((t) => (
-                  <Link
-                    key={t.id}
-                    href={`/translations/${t.id}`}
-                    className="block whitespace-nowrap px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800"
-                  >
-                    {t.abbreviation} — {t.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+            {sortedTranslations.map((t) => (
+              <Link key={t.id} href={`/translations/${t.id}`} className={dropdownItemClass}>
+                {t.abbreviation} — {t.name}
+              </Link>
+            ))}
+          </NavDropdown>
 
-          {primaryLinks.slice(2).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
-                isActive(link.href) ? "text-brand-800" : "text-neutral-600"
-              }`}
-            >
+          {afterTranslations.map((link) => (
+            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
+              {link.label}
+            </Link>
+          ))}
+
+          <NavDropdown label="Learn" active={learnActive} width="w-64">
+            {learnLinks.map((link) => (
+              <Link key={link.href} href={link.href} className={dropdownItemClass}>
+                {link.label}
+              </Link>
+            ))}
+          </NavDropdown>
+
+          {afterLearn.map((link) => (
+            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
               {link.label}
             </Link>
           ))}
@@ -127,9 +184,9 @@ export default function Nav() {
 
       {/* Mobile panel */}
       {mobileOpen && (
-        <nav className="border-t border-neutral-200 bg-white px-4 py-3 lg:hidden">
+        <nav className="border-t border-neutral-200 bg-paper px-4 py-3 lg:hidden">
           <ul className="flex flex-col gap-1">
-            {primaryLinks.map((link) => (
+            {[...beforeTranslations, ...afterTranslations, ...afterLearn].map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -140,6 +197,26 @@ export default function Nav() {
                 </Link>
               </li>
             ))}
+
+            <li className="mt-2 border-t border-neutral-100 pt-2">
+              <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                Learn
+              </p>
+              <ul className="flex flex-col gap-0.5">
+                {learnLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded px-2 py-1.5 text-sm text-neutral-600 hover:bg-brand-50 hover:text-brand-800"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
             <li className="mt-2 border-t border-neutral-100 pt-2">
               <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-neutral-400">
                 Translations
