@@ -18,6 +18,7 @@ export default function SiteFooter() {
             <Link href="/rankings" className="hover:text-brand-700">Rankings</Link>
             <Link href="/blog" className="hover:text-brand-700">Videos</Link>
             <Link href="/differences" className="hover:text-brand-700">Differences</Link>
+            <Link href="/faq" className="hover:text-brand-700">FAQ</Link>
             <Link href="/buy" className="hover:text-brand-700">Buy</Link>
           </div>
         </div>
