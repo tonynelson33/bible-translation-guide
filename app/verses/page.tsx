@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import VersePicker from "@/components/VersePicker";
 import { sampleVerses, translations, getSampleVerse } from "@/lib/data";
+import { compareReferences } from "@/lib/bibleOrder";
 import { rankingCategories } from "@/lib/rankings";
 import { fetchVerseForTranslation } from "@/lib/verseProviders";
 
@@ -26,13 +27,20 @@ const orderedTranslations = [...translations].sort(
   (a, b) => literalOrder.indexOf(a.id) - literalOrder.indexOf(b.id),
 );
 
+// The picker lists verses in Bible order (Genesis first); the page still
+// opens on John 3:16 when no verse is chosen.
+const versesInBibleOrder = [...sampleVerses].sort((a, b) =>
+  compareReferences(a.reference, b.reference),
+);
+const defaultVerse = getSampleVerse("john-3-16") ?? versesInBibleOrder[0];
+
 export default function VersesPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const requestedId = typeof searchParams.verse === "string" ? searchParams.verse : undefined;
-  const verse = (requestedId && getSampleVerse(requestedId)) || sampleVerses[0];
+  const verse = (requestedId && getSampleVerse(requestedId)) || defaultVerse;
 
   const rows = orderedTranslations.map((t) => ({
     translation: t,
@@ -52,7 +60,7 @@ export default function VersesPage({
       </div>
 
       <div className="mb-8">
-        <VersePicker verses={sampleVerses} selectedId={verse.id} />
+        <VersePicker verses={versesInBibleOrder} selectedId={verse.id} />
       </div>
 
       <div className="divide-y divide-neutral-200 border-y border-neutral-200">

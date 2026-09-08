@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ComingSoon from "@/components/ComingSoon";
 import TranslationProfile from "@/components/TranslationProfile";
-import { translations, sampleVerses, getTranslation } from "@/lib/data";
+import { translations, sampleVerses, getTranslation, getSampleVerse } from "@/lib/data";
 import { translationProfiles } from "@/lib/translationProfiles";
 import { fetchVerseForTranslation } from "@/lib/verseProviders";
 
@@ -33,7 +33,7 @@ export default async function TranslationProfilePage({ params }: { params: { slu
     );
   }
 
-  const sampleVerse = sampleVerses[0];
+  const sampleVerse = getSampleVerse("john-3-16") ?? sampleVerses[0];
   const verseResult = fetchVerseForTranslation(translation, sampleVerse);
 
   return (
