@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Videos",
   description:
-    "A short, curated set of videos on how English Bible translations are made — translation philosophy, the Textus Receptus and Critical Text, gender language, and how to choose a Bible.",
+    "A short, curated set of videos on English Bible translations — the history from Tyndale on, translation philosophy, the Textus Receptus and Critical Text, gender language, and how to choose a Bible.",
   alternates: { canonical: "/blog" },
 };
 
@@ -62,6 +62,12 @@ const startHere: Video[] = [
 
 const goDeeper: Video[] = [
   {
+    id: "boHkVM5id7E",
+    title: "Why Did They Burn William Tyndale?",
+    creator: "Ryan M. Reeves",
+    topic: "The Tyndale story in full",
+  },
+  {
     id: "13gzStbU9qs",
     title: "Why So Many Bible Translations? Which One Is Best?",
     creator: "Sean McDowell, with Mark Ward",
@@ -95,7 +101,7 @@ function VideoCard({ video }: { video: Video }) {
           className="absolute inset-0 h-full w-full"
         />
       </div>
-      <p className="mt-2 text-xs font-medium uppercase tracking-wide text-brand-600">
+      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-gild-700">
         {video.topic}
       </p>
       <a
@@ -114,23 +120,23 @@ function VideoCard({ video }: { video: Video }) {
 export default function VideosPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">Videos</h1>
+      <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">Videos</h1>
       <p className="mt-3 max-w-2xl text-neutral-600">
-        A short set of videos on how English Bible translations are made and how to choose one.
-        Each is hosted on YouTube by its creator &mdash; listing it here isn&rsquo;t an
-        endorsement of everything that creator says.
+        A short set of videos on where the English Bible came from, how translations are made, and
+        how to choose one. Each is hosted on YouTube by its creator &mdash; listing it here
+        isn&rsquo;t an endorsement of everything that creator says.
       </p>
 
-      <h2 className="mt-10 font-serif text-2xl font-semibold text-brand-900">Start here</h2>
+      <h2 className="mt-10 font-display text-2xl font-semibold text-brand-900">Start here</h2>
       <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
         {startHere.map((video) => (
           <VideoCard key={video.id} video={video} />
         ))}
       </ul>
 
-      <h2 className="mt-14 font-serif text-2xl font-semibold text-brand-900">Go deeper</h2>
+      <h2 className="mt-14 font-display text-2xl font-semibold text-brand-900">Go deeper</h2>
       <p className="mt-2 max-w-2xl text-sm text-neutral-500">
-        Longer conversations &mdash; 45 minutes to over an hour.
+        Longer talks and conversations &mdash; roughly 45 minutes to over an hour.
       </p>
       <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
         {goDeeper.map((video) => (

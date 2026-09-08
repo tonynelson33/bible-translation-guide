@@ -3,7 +3,7 @@ import { type ShownVerse, TRANSLATION_LABEL, verseText } from "@/lib/translation
 export default function DiffVerseCard({ verse }: { verse: ShownVerse }) {
   return (
     <li className="mb-4 break-inside-avoid">
-      <p className="font-serif text-[15px] font-semibold text-brand-900">{verse.reference}</p>
+      <p className="font-display text-[15px] font-semibold text-brand-900">{verse.reference}</p>
       <dl className="mt-0.5">
         {verse.show.map((id) => {
           const text = verseText(verse.reference, id);

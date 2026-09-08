@@ -79,7 +79,7 @@ export default function BuyPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">Where to Buy</h1>
+      <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">Where to Buy</h1>
       <p className="mt-3 max-w-2xl text-neutral-600">
         Print and digital editions of each translation — from the publisher directly where one
         exists, plus major retailers — alongside free ways to read the full text online. These are

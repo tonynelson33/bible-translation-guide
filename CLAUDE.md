@@ -35,6 +35,17 @@ automatically. The other four files that must be kept in step per translation (n
 `data/cachedVerses.json` (sample-verse text + attribution), `lib/buyLinks.ts` (buy / read-free
 links), `lib/translationProfiles.ts` (the full profile page — without an entry the route falls
 back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categories).
+`lib/chooseGuide.ts` also references translation ids (its picks resolve through `getTranslation`),
+but a missing translation there just drops that pick rather than breaking anything.
+
+**Site structure (rebuilt 2026-09-07 "site-overhaul" branch)**: `/` is a **landing page**
+(`app/page.tsx`) — hero, four entry cards, the `TranslationSpectrum`, a "the twelve" grid; the
+sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The nav
+(`components/Nav.tsx`) is `Compare · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾
+· Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the Translations menu (all
+12 profiles) and the **Learn** menu (`/history`, `/choose`, `/differences`, `/faq`, `/blog`).
+Footer (`components/SiteFooter.tsx`) is a four-column layout led by a `SpectrumStrip`. When you
+add a route to the nav/footer, add it to `app/sitemap.ts` too.
 
 The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSV, CEB,
 AMP (added 2026-09-06). EHV was added the same day and cut 2026-09-07 (see "The editorial line").
@@ -91,33 +102,50 @@ is **no longer used here** — it survives only as the single-verse card on `/tr
   cover arbitrary user-chosen verses (not a curated list), the caching approach breaks down and
   a live-API layer would need rebuilding.
 
-**Comparison table** (`app/page.tsx` → `components/ComparisonTable.tsx`): a client component
-driven by a `columns` array, where each column defines its own `sortValue()` extractor and
-`render()` function. Sorting state (`sortKey`/`sortDir`) lives in the component and re-sorts via
-the generic `compareValues()` comparator in `lib/sort.ts`, which handles string/number/boolean
+**Comparison table** (`app/compare/page.tsx` → `components/ComparisonTable.tsx`): a client
+component driven by a `columns` array, where each column defines its own `sortValue()` extractor
+and `render()` function. Sorting state (`sortKey`/`sortDir`) lives in the component and re-sorts
+via the generic `compareValues()` comparator in `lib/sort.ts`, which handles string/number/boolean
 columns uniformly. `gradeLevelSortValue()` and `quoteLimitSortValue()` in the same file parse
 free-text fields (e.g. `"7-8"`, `"Unlimited"`, `"~1,000 verses (verify)"`) into sortable numbers.
 The first column is sticky (`position: sticky; left: 0`) for horizontal scroll on mobile — its
 background must stay fully opaque (not the alternating-row-stripe color) or scrolled content
 shows through.
 
-**Styling**: Tailwind, with a custom `brand` (deep blue) color scale in `tailwind.config.ts` as
-the one accent color. `app/layout.tsx` loads two fonts via `next/font/google`: Inter for UI
-(`font-sans`, the default) and Lora for quoted Scripture text specifically (`font-serif`, applied
-deliberately on verse text, not site copy). The philosophy pills (`lib/glossary.ts`) are the only
-other colours — indigo/teal/purple/amber for Formal/Optimal/Mixed/Dynamic; `components/TranslationSpectrum.tsx`
-(an SVG shown only on the `/rankings` "Most Literal" tab) reuses those.
+**Styling**: Tailwind. `tailwind.config.ts` defines: `brand` (deep navy) as the structural
+colour; `gild` (a deep old-gold, 50→900) as the one warm accent, rationed to eyebrows, one CTA,
+callout left-rules, active states; and flat `paper` (#fcfbf8 page ground) + `ink` (#20242c body
+text) neutrals. Three fonts via `next/font/google` in `app/layout.tsx`: **Inter** for UI
+(`font-sans`, default), **Newsreader** for all headings (`font-display` — `adjustFontFallback:
+false`, next/font has no metric data for it), and **Lora** for quoted Scripture only
+(`font-serif`). Sweep any new heading to `font-display`; keep `font-serif` for verse text.
+Philosophy pills (`lib/glossary.ts`) — indigo/teal/purple/amber for Formal/Optimal/Mixed/Dynamic
+— are used consistently on `/`, `/choose`, the profiles, `ComparisonTable`, and both spectrum
+components. `components/TranslationSpectrum.tsx` (the full SVG, `/rankings` "Most Literal" tab +
+`/` — pass `standalone` when it's not under a ranked list); `components/SpectrumStrip.tsx` (the
+slim label-free four-band motif; footer + landing; caller sets the height class).
 
-**`app/globals.css` — `overflow-x` gotcha**: it is set on `<html>` **only**, deliberately. Setting
-it on `<body>` too (as it was until 2026-09-07) makes `<body>` a scroll container, which silently
-kills `position: sticky` on the nav (`components/Nav.tsx` is `sticky top-0`). Don't re-add it to
-`body`. The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
+**`app/globals.css`**: the `@layer base` block sets `text-wrap: balance` on `h1/h2/h3` (font is
+**not** set there — some h2s are small uppercase eyebrow labels that must stay sans) and a
+`prefers-reduced-motion` guard on smooth scroll. **`overflow-x` gotcha**: it is set on `<html>`
+**only**, deliberately. Setting it on `<body>` too (as it was until 2026-09-07) makes `<body>` a
+scroll container, which silently kills `position: sticky` on the nav. Don't re-add it to `body`.
+The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
+
+**Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
+- **`/faq`** — 11 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
+  (rich answer + a self-contained `plain` string for the structured data).
+- **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
+  array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
+  timeline, then a Tyndale narrative and a `textPrimer` (manuscripts / OT text / NT text).
+- **`/choose`** ("How to Choose a Translation") — `lib/chooseGuide.ts`: six purpose `scenarios`,
+  each with 2–3 `picks` (translation id + reason) that must stay consistent with `lib/rankings.ts`.
 
 **No placeholder pages remain.** `/rankings` (`lib/rankings.ts` + `components/RankingsPage.tsx`),
-`/buy` (`lib/buyLinks.ts`), and every `/translations/[slug]` (`lib/translationProfiles.ts`) are
-all real. `components/ComingSoon.tsx` still exists only as the per-route fallback in
-`app/translations/[slug]/page.tsx` for a translation with no `translationProfiles` entry — with
-all 12 profiled, it currently never renders.
+`/buy` (`lib/buyLinks.ts`), `/faq`, `/history`, `/choose`, and every `/translations/[slug]`
+(`lib/translationProfiles.ts`) are all real. `components/ComingSoon.tsx` still exists only as the
+per-route fallback in `app/translations/[slug]/page.tsx` for a translation with no
+`translationProfiles` entry — with all 12 profiled, it currently never renders.
 
 `/rankings`: 7 categories in `rankingCategories` — order is the tab order. As of 2026-09-07:
 popular, literal, memorization, devotions, preaching, study, balance (Serious Study and
@@ -126,14 +154,16 @@ featured tab below the row, `defaultRankingSlug`). `lib/rankings.ts` header comm
 the per-category ranking logic (original 9 keep relative order in the 6 descriptive categories;
 balance is computed). The Most Literal tab also renders `TranslationSpectrum`.
 
-**`/blog`** (nav + footer label "Videos") is a curated library of ~10 embedded YouTube videos
-on translation history, philosophy, Textus Receptus vs. Critical Text, gender language, and
-choosing a Bible — two tiers ("Start here" / "Go deeper"). Static server component, video list
-inlined in `app/blog/page.tsx`. Embeds use `youtube-nocookie.com` (no cookies until play) and
-`loading="lazy"`. The route stayed `/blog` to avoid churning nav/footer/sitemap. Videos were
-picked to be instructive and non-polemical and to represent both the Critical Text and
-Majority/Byzantine (KJV-underlying) text positions; re-check embeds periodically since uploads
-get pulled or have embedding disabled.
+**`/blog`** (nav + footer label "Videos", grouped under the Learn menu) is a curated library of
+~11 embedded YouTube videos on where the English Bible came from, how translations are made,
+Textus Receptus vs. Critical Text, gender language, and choosing a Bible — two tiers ("Start
+here" / "Go deeper"). Static server component, video list inlined in `app/blog/page.tsx`. Embeds
+use `youtube-nocookie.com` (no cookies until play) and `loading="lazy"`. The route stayed
+`/blog` to avoid churning nav/footer/sitemap. Videos are picked to be instructive and
+non-polemical and to represent both the Critical Text and Majority/Byzantine (KJV-underlying)
+text positions; re-check embeds periodically since uploads get pulled or have embedding
+disabled. The Septuagint / OT-text slot is deliberately left empty — the neutral options were
+thin and `/history` covers that material in prose.
 
 **Why Translations Differ** (`/differences`, nav label "Differences"): the verses where
 translations most visibly disagree — a curated set (~52 references, 9 sections) drawn from the
@@ -266,9 +296,11 @@ Every submission lands with `status = 'pending'`;
 there's no admin UI for review yet, so review/merge into `churches` happens by hand via the
 Supabase dashboard's Table Editor.
 
-The home page (`app/page.tsx` callout) and site footer (`components/SiteFooter.tsx`, "Add your
-church →") both link into `/church-finder` specifically to drive these submissions — without
-that the feature is buried and users don't know they can correct their own church's entry.
+Church Finder sits at **nav position 2** and is one of the four landing-page entry cards
+(`app/page.tsx`); the `/compare` page keeps a callout, and the footer has an "Add your church →"
+CTA (`components/SiteFooter.tsx`). All of this is deliberate — the feature drives the
+crowdsourced submissions, and without prominent links it's buried and users don't know they can
+correct their own church's entry.
 
 **Spam/duplicate mitigation on `AddChurchForm`**: the insert-only RLS policy is the primary
 defense — nothing a submitter sends ever reaches the public `churches` table without a human

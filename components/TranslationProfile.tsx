@@ -40,22 +40,22 @@ export default function TranslationProfile({
 }) {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <Link href="/" className="text-sm font-medium text-brand-700 hover:underline">
-        &larr; Back to the comparison table
+      <Link href="/compare" className="text-sm font-medium text-brand-700 hover:underline">
+        &larr; Back to all translations
       </Link>
 
       {/* Header */}
       <div className="mt-4 border-b border-neutral-200 pb-8">
-        <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wide text-brand-600">
+        <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.12em] text-gild-700">
           Translation Profile
         </span>
-        <h1 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           {translation.name}
           <span className="ml-2 align-middle text-lg font-medium text-neutral-400">
             ({translation.abbreviation})
           </span>
         </h1>
-        <p className="mt-3 max-w-2xl font-serif text-lg italic leading-relaxed text-neutral-700">
+        <p className="mt-3 max-w-2xl font-display text-xl italic leading-relaxed text-neutral-700">
           {profile.tagline}
         </p>
 
@@ -177,7 +177,7 @@ export default function TranslationProfile({
             {profile.worthKnowing.map((item, i) => (
               <p
                 key={i}
-                className="rounded-lg border border-brand-100 bg-brand-50/50 px-4 py-3 leading-relaxed text-neutral-700"
+                className="rounded-r-lg border-l-2 border-gild-300 bg-gild-50/70 py-3 pl-4 pr-4 leading-relaxed text-neutral-700"
               >
                 {item}
               </p>
