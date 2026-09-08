@@ -115,7 +115,7 @@
     "redLetter": true,
     "otMarking": {
       "marks": true,
-      "method": "ALL CAPS"
+      "method": "Small caps"
     },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,

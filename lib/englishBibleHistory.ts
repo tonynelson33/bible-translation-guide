@@ -16,10 +16,10 @@ export interface TimelineEntry {
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "c. 990",
+    year: "c. 970",
     title: "Old English glosses",
     detail:
-      "Anglo-Saxon scribes write English word-for-word between the lines of Latin gospels — the Lindisfarne Gospels are the famous example. There is still no continuous English Bible.",
+      "Anglo-Saxon scribes write English word-for-word between the lines of Latin gospels — the gloss added to the Lindisfarne Gospels is the famous example. There is still no continuous English Bible.",
   },
   {
     year: "1382",

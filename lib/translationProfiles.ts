@@ -25,7 +25,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Its roots go back further than most readers realize. The project began in 1984 under Arthur Farstad, general editor of the New King James Version, who originally planned to keep it in the same Received Text tradition as the KJV and NKJV. After Farstad died in 1998, editor Edwin Blum took over a team of roughly 100 scholars from about 20 denominations and steered the project toward the modern Critical Text instead — the textual family the CSB still uses today. What was published as the HCSB in 2004 (revised in 2009) was substantially reworked and relaunched as the CSB in 2017, under translation oversight co-chairs Thomas Schreiner and David Allen.",
       "The CSB describes its own method as “optimal equivalence”: rather than committing wholesale to strict word-for-word translation or thought-for-thought paraphrase, translators lean more formal or more dynamic verse by verse, whichever best balances accuracy with natural, readable English.",
       "The CSB also takes a moderate approach to gender language. When the original Hebrew or Greek is clearly addressing both men and women — the Greek word for “brothers,” for instance, was routinely used to open a letter to an entire congregation — the CSB translates it inclusively, as “brothers and sisters” or “everyone” (about 151 places, versus the HCSB's consistent use of “brothers”). Wherever a passage addresses men specifically, or refers to God, the traditional masculine wording stays. In other words, it's a decision about matching who the original author was writing to, not a stance on modern conversations about gender — and the 2020 update simply refined a handful of these renderings without changing the CSB's overall philosophy or textual basis.",
-      "Since its 2017 launch, the CSB has also become one of the fastest-growing English translations on the market. It broke into the industry's top five best-selling translations within a few years, and for several months in 2023 it ranked as the second best-selling Bible translation in the U.S. — behind only the NIV — according to Evangelical Christian Publishers Association sales data.",
+      "Since its 2017 launch, the CSB has become one of the fastest-growing English translations on the market — now a regular presence on the industry's bestseller lists, near the top six by Evangelical Christian Publishers Association sales data.",
     ],
     distinctives: [
       "Bolds Old Testament quotations that appear in the New Testament, so cross-references are easy to spot at a glance while reading.",
@@ -100,13 +100,13 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     overview: [
       "The New International Version is produced by the Committee on Bible Translation (CBT), a self-governing, international, and interdenominational group of biblical scholars, and published by Biblica and Zondervan. First published in 1978, it quickly became one of the best-selling and most widely read English Bible translations of the modern era.",
       "The NIV takes a dynamic, thought-for-thought approach: rather than tracking the original languages word for word, it prioritizes clear, natural English phrasing that conveys the same meaning a first-century reader would have understood — translated directly from the Hebrew, Aramaic, and Greek by scholars from the US, UK, Canada, Australia, and New Zealand.",
-      "The CBT has continued to update the text since 1978 to keep pace with changes in English usage, including a 1984 revision and a more thoroughly gender-inclusive edition, the Today's New International Version (TNIV), published in 2005. The current 2011 edition builds on both the original NIV and the TNIV, incorporating some — though not all — of the gender-language changes the TNIV had introduced.",
+      "The CBT has continued to update the text since 1978 to keep pace with changes in English usage, including a 1984 revision and a more thoroughly gender-inclusive edition, the Today's New International Version (TNIV), published 2002–2005 and later discontinued. The current 2011 edition builds on both the original NIV and the TNIV, incorporating some — though not all — of the gender-language changes the TNIV had introduced.",
       "On gender language, the current NIV takes an inclusive approach: where the original audience clearly included both men and women, it generally prefers gender-neutral wording — translating generic “man” as “human beings” or “people,” for instance, or recasting a generic singular “he” as a plural construction when that keeps the original meaning intact.",
       "The NIV has been the best-selling modern English Bible translation for most of the past several decades, with an enormous ecosystem of NIV-based study Bibles, commentaries, and church curricula built around it.",
     ],
     distinctives: [
       "Translated fresh from the original languages by an international, interdenominational committee, rather than being a revision of an earlier English translation.",
-      "Undergoes periodic updates to keep pace with changes in English usage — the current 2011 text is the translation's fourth major edition since 1978.",
+      "Undergoes periodic updates to keep pace with changes in English usage — the 1978 original, a 1984 revision, and the current 2011 text, which drew on the gender-inclusive TNIV of 2002–2005.",
       "At a 7th-8th grade reading level, one of the more readable translations on this site while still translating directly from the original languages.",
       "One of the most widely used Bible translations in English-language ministry, and a common default translation across Bible apps and websites.",
     ],
@@ -151,7 +151,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     ],
     distinctives: [
       "A direct update of the NASB 1995 edition, produced to preserve and “more fully implement” that translation's strict literal philosophy for future generations.",
-      "Restores the Hebrew divine name Yahweh in the Old Testament rather than the traditional “Lord” — a choice shared with the NASB tradition but dropped by many modern translations.",
+      "Prints the Hebrew divine name as “Yahweh” throughout the Old Testament, where the NASB it revises — like nearly every English Bible — uses “Lord.” (The 1901 ASV, earlier in the same family, spelled it out as “Jehovah.”)",
       "Translates the Greek word doulos consistently as “slave” rather than “bondservant” or “servant,” aiming to preserve the full weight of the term's original meaning.",
       "Capitalizes pronouns referring to God (He, His, Him) throughout, a formatting convention several other modern translations have moved away from.",
       "Still the newest translation on this site — it doesn't yet have a major study Bible ecosystem, and it currently has no free public Bible-text API.",
@@ -258,7 +258,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Ecumenical settings, and readers who want a formal translation that uses inclusive language for people.",
     ],
     worthKnowing: [
-      "The NRSVue verses shown here are the 2021 text. Where it differs most visibly from the 1989 NRSV is Genesis 1:1: the Updated Edition reads “When God began to create the heavens and the earth,” treating the verse as a dependent clause leading into verse 2, where 1989 kept the traditional standalone “In the beginning, God created…” The Hebrew grammar genuinely allows both.",
+      "The NRSVue verses shown here are the 2021 text. Like the 1989 NRSV before it, it reads Genesis 1:1 as a dependent clause — “When God began to create the heavens and the earth…” — where the 1952 RSV, the ESV, and most others keep the standalone “In the beginning, God created the heavens and the earth.” The Hebrew grammar genuinely allows both; the dependent-clause reading was the NRSV line's break from the RSV, not a change the Updated Edition made.",
       "The NRSV is the most recent line of revision from the King James: KJV (1611) → English Revised Version / ASV (1885–1901) → RSV (1952) → NRSV (1989) → NRSVue (2021). The ESV is a separate 2001 revision of the same RSV, made for a more evangelical readership.",
     ],
   },
@@ -269,7 +269,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     overview: [
       "The Common English Bible was published in 2011 by an alliance of the publishing houses of five mainline Protestant denominations — Chalice Press (Disciples of Christ), Westminster John Knox Press (Presbyterian Church U.S.A.), Church Publishing (Episcopal Church), Abingdon Press (United Methodist Church), and Pilgrim Press (United Church of Christ). About 120 scholars from two dozen traditions translated it, and it was field-tested with 77 reading groups — more than 500 people — before release.",
       "Its central goal is readability. The CEB targets a 7th-grade reading level, comfortable for a majority of English readers, using a functional-equivalence approach that prioritizes clear, natural, contemporary sentences over word-for-word correspondence. It sits roughly between the NIV and the NLT on the literal-to-readable spectrum, and translates from the standard Critical Text.",
-      "The CEB uses gender-inclusive language for humanity and takes contemporary approaches to several traditional phrases: “the Human One” in place of “the Son of Man,” everyday vocabulary in place of church jargon where possible, and — like the NIV's 2011 revision — God as the explicit subject of Romans 8:28 (“God works all things together for good”).",
+      "The CEB uses gender-inclusive language for humanity and takes contemporary approaches to several traditional phrases: “the Human One” in place of “the Son of Man,” everyday vocabulary in place of church jargon where possible, and — following a minority manuscript reading, as the NIV also does — God as the explicit subject of Romans 8:28 (“God works all things together for good”).",
       "It is used across mainline Protestantism, most visibly in United Methodist and Presbyterian settings — the CEB Study Bible is a common confirmation-class and small-group resource — and it appears alongside the NRSV in many mainline pews. Abingdon Press, the United Methodist Church's own publishing house, is one of its five sponsors.",
     ],
     distinctives: [
@@ -277,7 +277,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Built and field-tested for a 7th-grade reading level, with input from 77 reading groups before publication.",
       "Sponsored by an alliance of five mainline denominational publishers (Disciples, PC(USA), Episcopal, UMC, UCC) rather than a single house.",
       "Uses gender-inclusive language for humanity and plain contemporary vocabulary in place of traditional church terms where possible.",
-      "Makes God the explicit subject of Romans 8:28 — “God works all things together for good” — the same choice the NIV made in 2011.",
+      "Makes God the explicit subject of Romans 8:28 — “God works all things together for good” — following a minority manuscript reading, as the NIV also does.",
     ],
     goodFor: [
       "Mainline Protestant small groups, confirmation classes, and daily reading, especially where the CEB Study Bible is already in use.",

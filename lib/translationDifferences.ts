@@ -113,7 +113,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Mark 9:44 and 9:46", show: ["kjv"], note: "Both repeat verse 48; modern texts keep only verse 48." },
           { reference: "Mark 11:26", show: ["kjv"], note: "The same teaching is in Matthew 6:15." },
           { reference: "Mark 15:28", show: ["kjv"], note: "Quotes Isaiah 53:12; Jesus applies that verse to himself in Luke 22:37." },
-          { reference: "Luke 17:36", show: ["kjv"], note: "The previous verse already has the pattern (“two shall be in one bed”)." },
+          { reference: "Luke 17:36", show: ["kjv"], note: "Verses 34–35 already have the pattern — two in one bed, two women grinding." },
           { reference: "Luke 23:17", show: ["kjv"], note: "Pilate’s custom of releasing a prisoner at the feast; stated plainly in Matthew 27:15 and Mark 15:6." },
           { reference: "Acts 8:37", show: ["kjv"], note: "The Ethiopian official’s confession of faith before baptism. Quoted by writers from the 2nd century on, but absent from the earliest manuscripts of Acts." },
           { reference: "Acts 15:34", show: ["kjv"], note: "A note that Silas stayed on at Antioch." },
@@ -199,7 +199,7 @@ export const differenceParts: DiffPart[] = [
         id: "old-testament",
         title: "Old Testament: the Hebrew text and its older witnesses",
         intro:
-          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 100 BC). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
+          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 250 BC to AD 70). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
         shown: [
           { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment and the Septuagint: “the sons of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
           { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew of Saul’s age is incomplete — literally “Saul was … years old.” KJV renders it woodenly; the ESV brackets a guess; the NIV fills in numbers from the Septuagint and Acts 13:21." },
@@ -274,10 +274,10 @@ export const differenceParts: DiffPart[] = [
               "The same Greek word as in 1 Corinthians 6:9 (arsenokoitai), and the same rendering question: KJV “them that defile themselves with mankind,” ESV “men who practice homosexuality,” NIV “those practicing homosexuality.”",
           },
           {
-            reference: "Matthew 4:24",
+            reference: "Romans 3:28",
             show: ["kjv", "esv", "niv"],
             note:
-              "Greek anthrōpous, a generic masculine: KJV “all sick people,” ESV “all the sick,” NIV “all who were ill.” The KJV’s “lunatick” for what the ESV calls “those having seizures” is a separate, unrelated matter of aging vocabulary.",
+              "Greek anthrōpos, a generic “person”: KJV “a man is justified by faith,” ESV “one is justified by faith,” NIV “a person is justified by faith.” No manuscript question here — only how to carry a generic masculine noun into English.",
           },
         ],
       },

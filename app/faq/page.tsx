@@ -69,9 +69,10 @@ const groups: Group[] = [
             </p>
             <p>
               Most translations aren&rsquo;t purely one or the other. The{" "}
-              <Link href="/translations/csb">CSB</Link> and{" "}
-              <Link href="/translations/net">NET</Link> describe their approach as
-              &ldquo;optimal&rdquo; or balanced, landing in the middle. In practice: a passage in the
+              <Link href="/translations/csb">CSB</Link> calls its method &ldquo;optimal
+              equivalence&rdquo; and the <Link href="/translations/net">NET</Link> aims for a similar
+              middle ground, leaning formal but rephrasing where a literal rendering would be
+              unclear. In practice: a passage in the
               NASB will track the Greek clause order; the same passage in the NLT will be broken into
               short, plain sentences. Neither is wrong &mdash; they answer different questions. The{" "}
               <Link href="/rankings">spectrum on the rankings page</Link> shows where each translation
