@@ -87,7 +87,7 @@ export default function HomePage() {
 
       {/* Entry cards */}
       <section className="mx-auto mt-12 max-w-3xl">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {entryCards.map((card) => (
             <Link
               key={card.href}
@@ -133,14 +133,14 @@ export default function HomePage() {
           Ordered most literal to most readable, like the spectrum above. Open any one for a full
           profile.
         </p>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {orderedTranslations.map((t) => (
-            <li key={t.id}>
+            <li key={t.id} className="min-w-0">
               <Link
                 href={`/translations/${t.id}`}
-                className="flex items-baseline gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 transition-colors hover:border-gild-300 hover:bg-gild-50/40"
+                className="flex w-full items-baseline gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 transition-colors hover:border-gild-300 hover:bg-gild-50/40"
               >
-                <span className="font-display text-lg font-semibold text-brand-900">
+                <span className="flex-shrink-0 font-display text-lg font-semibold text-brand-900">
                   {t.abbreviation}
                 </span>
                 <span className="min-w-0 flex-1 truncate text-sm text-neutral-600">{t.name}</span>

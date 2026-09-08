@@ -35,7 +35,7 @@ export default function SiteFooter() {
       <div className="px-4 py-10 sm:px-6 lg:px-8">
         <SpectrumStrip className="mb-8 h-1.5 max-w-[16rem]" />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded bg-brand-700 font-display text-lg font-semibold text-white">
