@@ -5,13 +5,15 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { translations } from "@/lib/data";
 
+// Church Finder is the site's most distinctive feature, so it sits second —
+// right after Home, ahead of the reference pages.
 const primaryLinks = [
   { href: "/", label: "Home" },
+  { href: "/church-finder", label: "Church Finder" },
   { href: "/verses", label: "Sample Verses" },
   { href: "/rankings", label: "Rankings" },
   { href: "/blog", label: "Videos" },
   { href: "/differences", label: "Differences" },
-  { href: "/church-finder", label: "Church Finder" },
   { href: "/buy", label: "Buy" },
 ];
 
