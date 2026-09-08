@@ -7,14 +7,13 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
     links: [
       { href: "/compare", label: "All translations" },
       { href: "/verses", label: "Verses side by side" },
-      { href: "/rankings", label: "Rankings" },
+      { href: "/rankings", label: "Rankings & how to choose" },
     ],
   },
   {
     heading: "Learn",
     links: [
       { href: "/history", label: "How We Got the English Bible" },
-      { href: "/choose", label: "How to Choose a Translation" },
       { href: "/differences", label: "Why Translations Differ" },
       { href: "/faq", label: "FAQ" },
       { href: "/blog", label: "Videos" },

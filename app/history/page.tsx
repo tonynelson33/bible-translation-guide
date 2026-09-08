@@ -113,11 +113,11 @@ export default function HistoryPage() {
         <Link href="/differences" className="font-medium text-gild-700 hover:underline">
           the specific verses
         </Link>{" "}
-        where the manuscript history becomes visible,{" "}
-        <Link href="/choose" className="font-medium text-gild-700 hover:underline">
-          how to choose a translation
+        where the manuscript history becomes visible, the{" "}
+        <Link href="/rankings" className="font-medium text-gild-700 hover:underline">
+          rankings
         </Link>{" "}
-        for your own reading, or{" "}
+        if you&rsquo;re choosing what to read, or{" "}
         <Link href="/blog" className="font-medium text-gild-700 hover:underline">
           videos
         </Link>{" "}

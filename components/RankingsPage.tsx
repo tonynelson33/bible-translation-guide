@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import type { RankingCategory, RankingEntry } from "@/lib/rankings";
 import { getTranslation } from "@/lib/data";
 import TranslationSpectrum from "./TranslationSpectrum";
+
+// The "not sure where to start?" guide — routes into the categories below.
+// The top pick is read from the category's own #1 entry, so it can never
+// disagree with the list it links to.
+const startGuide: { slug: string; when: string }[] = [
+  { slug: "balance", when: "You want just one Bible for everything" },
+  { slug: "devotions", when: "Reading a lot, day to day — also the list for kids and new readers" },
+  { slug: "study", when: "Digging into what the text actually says" },
+  { slug: "preaching", when: "Preaching or teaching from it" },
+  { slug: "memorization", when: "Memorizing verses" },
+];
 
 const medalStyles = [
   "h-9 w-9 text-base bg-amber-400 text-amber-950", // gold
@@ -106,6 +117,12 @@ export default function RankingsPage({
   const category = categories.find((c) => c.slug === activeSlug) ?? categories[0];
   const balanceCategory = categories.find((c) => c.slug === "balance");
   const otherCategories = categories.filter((c) => c.slug !== "balance");
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const goToCategory = (slug: string) => {
+    setActiveSlug(slug);
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -113,11 +130,61 @@ export default function RankingsPage({
         Rankings
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-        Pick a category to see how all twelve translations stack up. There&apos;s no single “best”
-        translation — these are just here as a helpful guide more than anything.
+        How all twelve translations stack up, by purpose. There&apos;s no single “best” &mdash; the
+        right one depends on what you&apos;re doing with it.
       </p>
 
-      <div className="mt-6 flex flex-wrap justify-center gap-2">
+      {/* Quick decision guide */}
+      <div className="mx-auto mt-8 max-w-2xl rounded-xl border border-gild-200 bg-gild-50/60 p-5">
+        <h2 className="font-display text-lg font-semibold text-brand-900">
+          Not sure where to start?
+        </h2>
+        <ul className="mt-3 divide-y divide-gild-200/70">
+          {startGuide.map(({ slug, when }) => {
+            const cat = categories.find((c) => c.slug === slug);
+            if (!cat) return null;
+            const top = getTranslation(cat.entries[0].id);
+            return (
+              <li key={slug}>
+                <button
+                  type="button"
+                  onClick={() => goToCategory(slug)}
+                  className="group flex w-full flex-wrap items-baseline gap-x-2 gap-y-0.5 py-2 text-left text-sm"
+                >
+                  <span className="text-neutral-700">{when}</span>
+                  <span className="font-medium text-gild-700 group-hover:underline">
+                    &rarr; {cat.tabLabel}
+                  </span>
+                  {top && (
+                    <span className="text-neutral-500">
+                      (usually the {top.abbreviation})
+                    </span>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="mt-3 space-y-1.5 border-t border-gild-200 pt-3 text-sm text-neutral-600">
+          <p>
+            <strong className="text-neutral-800">For serious study,</strong> keeping one formal
+            translation and one readable one open together beats agonizing over a single choice.
+          </p>
+          <p>
+            <strong className="text-neutral-800">Coming from the KJV?</strong> The{" "}
+            <Link href="/translations/nkjv" className="font-medium text-gild-700 hover:underline">
+              NKJV
+            </Link>{" "}
+            keeps its Greek text and cadence in modern grammar; the{" "}
+            <Link href="/translations/esv" className="font-medium text-gild-700 hover:underline">
+              ESV
+            </Link>{" "}
+            is a bigger step, in the same formal tradition.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-8 flex flex-wrap justify-center gap-2">
         {otherCategories.map((cat) => (
           <TabButton
             key={cat.slug}
@@ -138,7 +205,7 @@ export default function RankingsPage({
         </div>
       )}
 
-      <section className="mt-8">
+      <section className="mt-8 scroll-mt-4" ref={listRef}>
         <h2 className="font-display text-2xl font-semibold text-brand-900">{category.title}</h2>
         <p className="mt-1 max-w-2xl text-sm text-neutral-600">{category.criteria}</p>
 

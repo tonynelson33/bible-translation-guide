@@ -35,17 +35,16 @@ automatically. The other four files that must be kept in step per translation (n
 `data/cachedVerses.json` (sample-verse text + attribution), `lib/buyLinks.ts` (buy / read-free
 links), `lib/translationProfiles.ts` (the full profile page — without an entry the route falls
 back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categories).
-`lib/chooseGuide.ts` also references translation ids (its picks resolve through `getTranslation`),
-but a missing translation there just drops that pick rather than breaking anything.
 
 **Site structure (rebuilt 2026-09-07 "site-overhaul" branch)**: `/` is a **landing page**
 (`app/page.tsx`) — hero, four entry cards, the `TranslationSpectrum`, a "the twelve" grid; the
 sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The nav
 (`components/Nav.tsx`) is `Compare · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾
-· Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the Translations menu (all
-12 profiles) and the **Learn** menu (`/history`, `/choose`, `/differences`, `/faq`, `/blog`).
+· Where to Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the Translations
+menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/faq`, `/blog`).
 Footer (`components/SiteFooter.tsx`) is a four-column layout led by a `SpectrumStrip`. When you
-add a route to the nav/footer, add it to `app/sitemap.ts` too.
+add a route to the nav/footer, add it to `app/sitemap.ts` too. `next.config.mjs` has the
+redirects: `/translations/nrsv` → `/translations/nrsvue`, `/choose` → `/rankings`.
 
 The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSVue, CEB,
 AMP (added 2026-09-06 — NRSVue as `nrsv`, renamed 2026-09-08 since the verse text is the 2021
@@ -121,11 +120,12 @@ text) neutrals. Three fonts via `next/font/google` in `app/layout.tsx`: **Inter*
 (`font-sans`, default), **Newsreader** for all headings (`font-display` — `adjustFontFallback:
 false`, next/font has no metric data for it), and **Lora** for quoted Scripture only
 (`font-serif`). Sweep any new heading to `font-display`; keep `font-serif` for verse text.
-Philosophy pills (`lib/glossary.ts`) — indigo/teal/purple/amber for Formal/Optimal/Mixed/Dynamic
-— are used consistently on `/`, `/choose`, the profiles, `ComparisonTable`, and both spectrum
-components. `components/TranslationSpectrum.tsx` (the full SVG, `/rankings` "Most Literal" tab +
-`/` — pass `standalone` when it's not under a ranked list); `components/SpectrumStrip.tsx` (the
-slim label-free four-band motif; footer + landing; caller sets the height class).
+Philosophy pills (`lib/glossary.ts`) — **three** zones, not four: indigo (Formal), teal (Optimal
+*and* Mixed — they share the mediating middle), amber (Dynamic). Used consistently on `/`, the
+profiles, `ComparisonTable`, `/buy` monograms, and both spectrum components.
+`components/TranslationSpectrum.tsx` (the full SVG, `/rankings` "Most Literal" tab + `/` — pass
+`standalone` when it's not under a ranked list); `components/SpectrumStrip.tsx` (the slim
+label-free three-band motif; footer + landing; caller sets the height class).
 
 **`app/globals.css`**: the `@layer base` block sets `text-wrap: balance` on `h1/h2/h3` (font is
 **not** set there — some h2s are small uppercase eyebrow labels that must stay sans) and a
@@ -140,11 +140,16 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, then a Tyndale narrative and a `textPrimer` (manuscripts / OT text / NT text).
-- **`/choose`** ("How to Choose a Translation") — `lib/chooseGuide.ts`: six purpose `scenarios`,
-  each with 2–3 `picks` (translation id + reason) that must stay consistent with `lib/rankings.ts`.
+
+There is **no `/choose` page** — it was built then removed 2026-09-08. Its six purpose scenarios
+duplicated `/rankings` categories and the picks kept drifting from the ranked lists they linked
+to. `RankingsPage.tsx` now opens with a "Not sure where to start?" guide: `startGuide` routes to
+five categories, and each row's top pick is read from that category's own `entries[0]` so it can
+never contradict the list. The KJV-bridge and formal+readable advice moved there too.
+`/choose` → `/rankings` redirect.
 
 **No placeholder pages remain.** `/rankings` (`lib/rankings.ts` + `components/RankingsPage.tsx`),
-`/buy` (`lib/buyLinks.ts`), `/faq`, `/history`, `/choose`, and every `/translations/[slug]`
+`/buy` (`lib/buyLinks.ts`), `/faq`, `/history`, and every `/translations/[slug]`
 (`lib/translationProfiles.ts`) are all real. `components/ComingSoon.tsx` still exists only as the
 per-route fallback in `app/translations/[slug]/page.tsx` for a translation with no
 `translationProfiles` entry — with all 12 profiled, it currently never renders.

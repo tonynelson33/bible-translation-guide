@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/rankings",
     "/differences",
     "/history",
-    "/choose",
     "/blog",
     "/faq",
     "/church-finder",
