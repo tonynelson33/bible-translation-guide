@@ -73,8 +73,9 @@ export default function TextTraditions() {
           Choosing the New Testament text
         </h3>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-700">
-          All three approaches work from the same pool of Greek manuscripts. They differ in how
-          much weight they give the oldest copies versus the more numerous later ones.
+          The three differ mainly in how much they lean on the oldest surviving copies. The Textus
+          Receptus was fixed in the 1500s, before most of those were found; the Critical Text
+          weighs all the evidence known today.
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <Card
@@ -125,9 +126,7 @@ export default function TextTraditions() {
             AD 500 and 1000. Every translation here starts from it.
           </p>
         </div>
-        <p className="mt-3 text-sm text-neutral-500">
-          All twelve translations also weigh these two older witnesses, where they help:
-        </p>
+        <p className="mt-3 text-sm text-neutral-500">Translators also weigh two older witnesses:</p>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <Card
             heading="The Septuagint"
@@ -141,7 +140,12 @@ export default function TextTraditions() {
           />
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
-          How far a translation will move from the Masoretic Hebrew varies: the{" "}
+          The Septuagint has been known since antiquity, but the Dead Sea Scrolls only surfaced
+          from 1947 on &mdash; so the 1611{" "}
+          <Link href="/translations/kjv" className="font-medium text-gild-700 hover:underline">
+            KJV
+          </Link>{" "}
+          predates them. Among the modern translations, the{" "}
           <Link href="/translations/nrsvue" className="font-medium text-gild-700 hover:underline">
             NRSVue
           </Link>{" "}
@@ -149,7 +153,7 @@ export default function TextTraditions() {
           <Link href="/translations/net" className="font-medium text-gild-700 hover:underline">
             NET
           </Link>{" "}
-          follow the older witnesses fairly readily and note it in the margin; the{" "}
+          move to the older witnesses fairly readily and note it in the margin; the{" "}
           <Link href="/translations/esv" className="font-medium text-gild-700 hover:underline">
             ESV
           </Link>{" "}
@@ -157,7 +161,7 @@ export default function TextTraditions() {
           <Link href="/translations/niv" className="font-medium text-gild-700 hover:underline">
             NIV
           </Link>{" "}
-          are more cautious about departing from it.
+          stay closer to the Masoretic Hebrew.
         </p>
       </div>
     </div>
