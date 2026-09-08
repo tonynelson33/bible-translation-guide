@@ -7,12 +7,12 @@ import { getTranslation } from "@/lib/data";
 import TranslationSpectrum from "./TranslationSpectrum";
 
 // The "not sure where to start?" guide — routes into the categories below.
-// The top pick is read from the category's own #1 entry, so it can never
-// disagree with the list it links to.
+// The named translation is read from the category's own #1 entry, so it can
+// never disagree with the list it links to.
 const startGuide: { slug: string; when: string }[] = [
-  { slug: "balance", when: "You want just one Bible for everything" },
-  { slug: "devotions", when: "Reading a lot, day to day — also the list for kids and new readers" },
-  { slug: "study", when: "Digging into what the text actually says" },
+  { slug: "balance", when: "One Bible for everything" },
+  { slug: "devotions", when: "Reading through books at a time — also the list for children and new readers" },
+  { slug: "study", when: "Studying a passage closely" },
   { slug: "preaching", when: "Preaching or teaching from it" },
   { slug: "memorization", when: "Memorizing verses" },
 ];
@@ -131,7 +131,7 @@ export default function RankingsPage({
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
         How all twelve translations stack up, by purpose. There&apos;s no single “best” &mdash; the
-        right one depends on what you&apos;re doing with it.
+        right fit depends on how and why you read.
       </p>
 
       {/* Quick decision guide */}
@@ -157,7 +157,7 @@ export default function RankingsPage({
                   </span>
                   {top && (
                     <span className="text-neutral-500">
-                      (usually the {top.abbreviation})
+                      (led by the {top.abbreviation})
                     </span>
                   )}
                 </button>

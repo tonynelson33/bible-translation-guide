@@ -22,7 +22,7 @@ const afterTranslations: NavLink[] = [
 
 const learnLinks: NavLink[] = [
   { href: "/history", label: "How We Got the English Bible" },
-  { href: "/differences", label: "Why Translations Differ" },
+  { href: "/differences", label: "Where Translations Differ" },
   { href: "/faq", label: "FAQ" },
   { href: "/blog", label: "Videos" },
 ];

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { translations } from "@/lib/data";
 
 /**
@@ -72,9 +73,8 @@ export default function TextTraditions() {
           Choosing the New Testament text
         </h3>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-700">
-          All three approaches draw on the same body of roughly 5,800 Greek manuscripts. They
-          differ in how much weight they give the oldest copies versus the more numerous later
-          ones.
+          All three approaches work from the same pool of Greek manuscripts. They differ in how
+          much weight they give the oldest copies versus the more numerous later ones.
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <Card
@@ -96,6 +96,15 @@ export default function TextTraditions() {
             usedBy={[]}
           />
         </div>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
+          No widely used English translation is based on the Majority Text; the NKJV&rsquo;s
+          footnotes are where its readings usually appear. The practical distance between all three
+          is small &mdash;{" "}
+          <Link href="/differences" className="font-medium text-gild-700 hover:underline">
+            where translations differ
+          </Link>{" "}
+          walks through the specific verses.
+        </p>
       </div>
 
       <div>
@@ -116,7 +125,9 @@ export default function TextTraditions() {
             AD 500 and 1000. Every translation here starts from it.
           </p>
         </div>
-        <p className="mt-3 text-sm text-neutral-500">Translators also weigh, where they help:</p>
+        <p className="mt-3 text-sm text-neutral-500">
+          All twelve translations also weigh these two older witnesses, where they help:
+        </p>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <Card
             heading="The Septuagint"
@@ -129,6 +140,25 @@ export default function TextTraditions() {
             body="Found near Qumran from 1947 on. They push the Hebrew evidence back about a thousand years, and mostly confirm how carefully the text was copied."
           />
         </div>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
+          How far a translation will move from the Masoretic Hebrew varies: the{" "}
+          <Link href="/translations/nrsvue" className="font-medium text-gild-700 hover:underline">
+            NRSVue
+          </Link>{" "}
+          and{" "}
+          <Link href="/translations/net" className="font-medium text-gild-700 hover:underline">
+            NET
+          </Link>{" "}
+          follow the older witnesses fairly readily and note it in the margin; the{" "}
+          <Link href="/translations/esv" className="font-medium text-gild-700 hover:underline">
+            ESV
+          </Link>{" "}
+          and{" "}
+          <Link href="/translations/niv" className="font-medium text-gild-700 hover:underline">
+            NIV
+          </Link>{" "}
+          are more cautious about departing from it.
+        </p>
       </div>
     </div>
   );

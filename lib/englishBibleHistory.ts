@@ -101,6 +101,11 @@ export interface HistorySection {
   paragraphs: string[];
 }
 
+/**
+ * One conceptual section; the NT / OT specifics are the two diagrams in
+ * components/TextTraditions.tsx (kept there so the translation buckets stay
+ * data-driven), which sit above this on the page.
+ */
 export const textPrimer: HistorySection[] = [
   {
     id: "manuscripts",
@@ -108,24 +113,6 @@ export const textPrimer: HistorySection[] = [
     paragraphs: [
       "No original manuscript of any biblical book survives. What survives are copies — for the New Testament, around 5,800 in Greek alone, plus ancient translations and quotations in early Christian writers. They were copied by hand for over a thousand years before printing, and hand-copying introduces small differences: a repeated line, a slip of spelling, an explanatory note that a later scribe folds into the text.",
       "The work of comparing those copies to reconstruct the earliest recoverable wording is called textual criticism. It is the reason a modern Bible has footnotes like “some manuscripts read…”. The differences are real, but they are also mapped in detail, and none of them puts a core Christian teaching in doubt.",
-    ],
-  },
-  {
-    id: "old-testament",
-    heading: "The Old Testament text",
-    paragraphs: [
-      "The standard Hebrew text is the Masoretic Text, preserved and standardized by Jewish scribes called the Masoretes between roughly AD 500 and 1000. Until the twentieth century the oldest complete copy dated to about 1008.",
-      "Then in 1947 the first of the Dead Sea Scrolls turned up in caves near the shore of the Dead Sea. They pushed the manuscript evidence back by a thousand years, to between about 250 BC and AD 70 — and they showed that the text had been copied with remarkable stability over that gap.",
-      "There is also the Septuagint, a Greek translation of the Hebrew Scriptures made by Jewish scholars a couple of centuries before Christ. It is often what the New Testament authors quote, and it sometimes preserves a slightly different reading than the Masoretic Text. Modern translations weigh all three.",
-    ],
-  },
-  {
-    id: "new-testament",
-    heading: "The New Testament text",
-    paragraphs: [
-      "The King James New Testament was translated from the Textus Receptus — the printed Greek text descended from Erasmus's 1516 edition, which rested on about six late medieval manuscripts.",
-      "Since then, thousands more manuscripts have been catalogued, including papyrus fragments from the second and third centuries — far older than anything Erasmus had. The Critical Text (also called the Nestle-Aland or eclectic text) is the attempt to weigh all of that evidence, manuscript by manuscript and reading by reading. Almost every modern translation uses it.",
-      "A third approach, the Majority Text, follows whatever reading appears in the largest number of surviving manuscripts — most of which are medieval and Byzantine. The practical distance between these approaches is small: they disagree over a fraction of the New Testament, and the disputed passages are laid out on the “why translations differ” page.",
     ],
   },
 ];

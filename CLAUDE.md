@@ -139,7 +139,11 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   (rich answer + a self-contained `plain` string for the structured data).
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
-  timeline, then a Tyndale narrative and a `textPrimer` (manuscripts / OT text / NT text).
+  timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
+  ("Nobody has the originals" — textual criticism in general) followed by
+  `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
+  `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
+  to sit here was cut 2026-09-08 as redundant with the diagrams.
 
 There is **no `/choose` page** — it was built then removed 2026-09-08. Its six purpose scenarios
 duplicated `/rankings` categories and the picks kept drifting from the ranked lists they linked
@@ -172,8 +176,10 @@ text positions; re-check embeds periodically since uploads get pulled or have em
 disabled. The Septuagint / OT-text slot is deliberately left empty — the neutral options were
 thin and `/history` covers that material in prose.
 
-**Why Translations Differ** (`/differences`, nav label "Differences"): the verses where
-translations most visibly disagree — a curated set (~52 references, 9 sections) drawn from the
+**Where Translations Differ** (`/differences`, nav + footer label "Where Translations Differ" —
+renamed from "Why" 2026-09-08; the page is a catalogue of specific verses, the *why* is in the
+intro): the verses where translations most visibly disagree — a curated set (~52 references, 9
+sections) drawn from the
 ~84 rows tagged "Translation Difference" in `data/verseComparisonList.json`. **No total is stated
 on the page or in the page metadata** (both said "84" / "roughly 85"; removed 2026-09-07 —
 "most visible" has no standard threshold, and the page is a subset of the list anyway). The page

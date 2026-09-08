@@ -39,8 +39,8 @@ const entryCards = [
   },
   {
     href: "/faq",
-    title: "New to this?",
-    body: "Start with the common questions: what “accurate” means, why there are so many, what changed since the KJV.",
+    title: "Common questions",
+    body: "What “accurate” means, why there are so many, what the manuscripts are, what changed since the KJV.",
   },
 ];
 
@@ -167,7 +167,7 @@ export default function HomePage() {
           </Link>{" "}
           and{" "}
           <Link href="/differences" className="font-medium text-brand-700 hover:underline">
-            why translations differ
+            where translations differ
           </Link>
           .
         </p>
