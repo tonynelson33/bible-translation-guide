@@ -175,7 +175,7 @@ closed lists (all of each is on the page); every other section is a representati
 (Leviticus 6:25 was dropped 2026-08 from the JSON and the source xlsx — reads the same in KJV and
 ESV. A "John 8:58" section — a non-difference, "I am" is identical in every version — was cut
 2026-09-07.) Grouped into **Part 1 — Manuscript Differences**
-(Textus Receptus / Byzantine vs. critical text; Masoretic OT vs. Septuagint / Dead Sea Scrolls)
+(Textus Receptus / Byzantine vs. Critical Text; Masoretic OT vs. Septuagint / Dead Sea Scrolls)
 and **Part 2 — English Word Differences** (undisputed text, different English). Content
 structure + every verse's one-line note (and which translations each card shows) live in
 `lib/translationDifferences.ts`; sections are numbered in the page component, not the data.

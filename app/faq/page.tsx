@@ -180,7 +180,7 @@ const groups: Group[] = [
       },
       {
         id: "text-types",
-        q: "Textus Receptus, critical text, Majority Text — what are those?",
+        q: "Textus Receptus, Critical Text, Majority Text — what are those?",
         a: (
           <>
             <p>
@@ -195,7 +195,7 @@ const groups: Group[] = [
                 <Link href="/translations/nkjv">NKJV</Link>.
               </li>
               <li>
-                <strong>Critical text</strong> (also called Nestle-Aland or the
+                <strong>Critical Text</strong> (also called Nestle-Aland or the
                 &ldquo;eclectic&rdquo; text) &mdash; reconstructed by weighing all known manuscripts,
                 including papyri from the 100s&ndash;300s found in the last two centuries. Nearly
                 every modern translation uses it.
@@ -206,13 +206,19 @@ const groups: Group[] = [
               </li>
             </ul>
             <p>
+              Of the twelve translations here, the <Link href="/translations/kjv">KJV</Link> and{" "}
+              <Link href="/translations/nkjv">NKJV</Link> follow the Textus Receptus; the other ten
+              use the Critical Text. None uses the Majority Text as its base &mdash; the
+              NKJV&rsquo;s footnotes are where you&rsquo;ll see Majority Text readings flagged.
+            </p>
+            <p>
               The differences among the three affect a small fraction of the New Testament and no
               major doctrine. <Link href="/differences">The differences page</Link> has the detail.
             </p>
           </>
         ),
         plain:
-          "These are three approaches to choosing which Greek manuscripts the New Testament is translated from. The Textus Receptus, compiled by Erasmus in the 1500s from a few late manuscripts, underlies the KJV and NKJV. The critical or eclectic text is reconstructed by weighing all known manuscripts, including early papyri found in the last two centuries, and is used by almost every modern translation. The Majority Text follows the reading found in the most surviving manuscripts. The differences among them are small and affect no major doctrine.",
+          "These are three approaches to choosing which Greek manuscripts the New Testament is translated from. The Textus Receptus, compiled by Erasmus in the 1500s from a few late manuscripts, underlies the KJV and NKJV. The Critical Text (or eclectic text) is reconstructed by weighing all known manuscripts, including early papyri found in the last two centuries, and is used by almost every modern translation. The Majority Text follows the reading found in the most surviving manuscripts. Of the twelve translations on this site, only the KJV and NKJV use the Textus Receptus; the rest use the Critical Text, and none uses the Majority Text as its base. The differences among the three are small and affect no major doctrine.",
       },
       {
         id: "footnotes",
@@ -315,7 +321,7 @@ const groups: Group[] = [
             </p>
             <p>
               It&rsquo;s a spectrum. Some people simply prefer the KJV&rsquo;s language, or trust its
-              Greek text over the modern critical text &mdash; a defensible position. Others treat any
+              Greek text over the modern Critical Text &mdash; a defensible position. Others treat any
               other translation as dangerous, which most scholars and pastors, including conservative
               ones, regard as untenable. The King James is a landmark of the English language and
               still a fine translation of the text it used. It is not the only reliable one. The{" "}

@@ -30,7 +30,7 @@ const entryCards = [
   {
     href: "/verses",
     title: "Read a verse in every version",
-    body: "Pick a passage and read all twelve side by side, most literal at the top to freest at the bottom.",
+    body: "Pick a passage and read all twelve side by side, ordered word-for-word to thought-for-thought.",
   },
   {
     href: "/church-finder",
@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Spectrum */}
-      <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
+      <section className="mx-auto mt-16 max-w-4xl border-t border-neutral-200 pt-10">
         <h2 className="font-display text-2xl font-semibold text-brand-900">Where each one lands</h2>
         <p className="mt-2 max-w-2xl text-neutral-700">
           Translations sit on a spectrum from word-for-word to thought-for-thought. It&rsquo;s a
@@ -130,12 +130,12 @@ export default function HomePage() {
       <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
         <h2 className="font-display text-2xl font-semibold text-brand-900">The twelve</h2>
         <p className="mt-2 text-neutral-700">
-          Ordered most literal to most readable, like the spectrum above. Open any one for a full
-          profile.
+          Ordered word-for-word to thought-for-thought, like the spectrum above &mdash; read down
+          the left column, then the right. Open any one for a full profile.
         </p>
-        <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <ul className="mt-6 sm:columns-2 sm:gap-3">
           {orderedTranslations.map((t) => (
-            <li key={t.id} className="min-w-0">
+            <li key={t.id} className="mb-3 break-inside-avoid">
               <Link
                 href={`/translations/${t.id}`}
                 className="flex w-full items-baseline gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 transition-colors hover:border-gild-300 hover:bg-gild-50/40"

@@ -220,7 +220,7 @@ export const rankingCategories: RankingCategory[] = [
       },
       { id: "esv", blurb: "The base text for the widely used ESV Study Bible, backed by one of the largest libraries of study notes and commentaries built around any single translation." },
       { id: "lsb", blurb: "Maximally literal and internally consistent, which appeals to readers doing detailed word studies — though its study-resource library is still young." },
-      { id: "nkjv", blurb: "Formal and marginal-note-heavy about where the Majority Text and modern critical text differ, which suits textually-minded study." },
+      { id: "nkjv", blurb: "Formal and marginal-note-heavy about where the Majority Text and the modern Critical Text differ, which suits textually-minded study." },
       { id: "csb", blurb: "The CSB Study Bible and CSB Apologetics Study Bible give it a real study apparatus, even though its main text prioritizes readability over maximal literalness." },
       { id: "niv", blurb: "The NIV Study Bible is one of the best-selling study Bibles ever made — strong supporting material, even though the translation itself is Dynamic, not word-for-word." },
       { id: "kjv", blurb: "The hub of the classic lay-study toolkit — Strong's Concordance, Treasury of Scripture Knowledge, and centuries of verse-keyed commentary are all built on it, and it flags translator-supplied words in italics. What holds it back for this specific question: the Textus Receptus base rather than the older manuscripts scholars now follow, plus 1611 vocabulary that can quietly mislead." },

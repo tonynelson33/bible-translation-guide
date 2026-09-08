@@ -13,9 +13,9 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
   {
     heading: "Learn",
     links: [
-      { href: "/history", label: "How we got the Bible" },
-      { href: "/choose", label: "How to choose" },
-      { href: "/differences", label: "Why translations differ" },
+      { href: "/history", label: "How We Got the English Bible" },
+      { href: "/choose", label: "How to Choose a Translation" },
+      { href: "/differences", label: "Why Translations Differ" },
       { href: "/faq", label: "FAQ" },
       { href: "/blog", label: "Videos" },
     ],
@@ -24,7 +24,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
     heading: "More",
     links: [
       { href: "/church-finder", label: "Church Finder" },
-      { href: "/buy", label: "Where to buy" },
+      { href: "/buy", label: "Where to Buy" },
     ],
   },
 ];

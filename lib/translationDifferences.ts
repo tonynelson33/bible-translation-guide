@@ -55,9 +55,9 @@ export const TRANSLATION_LABEL: Record<TranslationId, string> = {
 export const TRANSLATION_TAG: Record<TranslationId, string> = {
   kjv: "Textus Receptus",
   nkjv: "Textus Receptus",
-  esv: "Critical text",
-  niv: "Critical text",
-  net: "Critical text",
+  esv: "Critical Text",
+  niv: "Critical Text",
+  net: "Critical Text",
 };
 
 export const ATTRIBUTIONS: Record<TranslationId, string> = {
@@ -80,7 +80,7 @@ export const differenceParts: DiffPart[] = [
     id: "manuscripts",
     title: "Part 1 — Manuscript Differences",
     intro:
-      "The KJV and NKJV translate the New Testament from the Textus Receptus, a Greek text compiled in the 1500s from the Byzantine manuscript tradition. Most modern translations use a critical text that also weighs the oldest surviving manuscripts, some from the 300s and earlier, most of them discovered after 1600. Where the two traditions disagree you get bracketed verses, footnotes, and shorter or longer readings. The Old Testament has a parallel situation: the standard Hebrew (Masoretic) text versus older witnesses like the Greek Septuagint and the Dead Sea Scrolls.",
+      "The KJV and NKJV translate the New Testament from the Textus Receptus, a Greek text compiled in the 1500s from the Byzantine manuscript tradition. Most modern translations use the Critical Text, which also weighs the oldest surviving manuscripts, some from the 300s and earlier, most of them discovered after 1600. Where the two traditions disagree you get bracketed verses, footnotes, and shorter or longer readings. The Old Testament has a parallel situation: the standard Hebrew (Masoretic) text versus older witnesses like the Greek Septuagint and the Dead Sea Scrolls.",
     sections: [
       {
         id: "long-passages",
@@ -148,13 +148,13 @@ export const differenceParts: DiffPart[] = [
           "The smallest manuscript differences. Sometimes the Textus Receptus has a word or short phrase the oldest copies lack; more often the two simply read a different word — “Isaiah” for “the prophets” in Mark 1:2, “tree of life” for “book of life” in Revelation 22:19. Modern translations follow the shorter or better-attested reading. KJV and ESV side by side:",
         shown: [
           { reference: "Matthew 27:35", show: ["kjv", "esv"], note: "KJV adds the quotation of Psalm 22:18 (“they parted my garments…”); the fulfilment is stated in John 19:24." },
-          { reference: "Mark 1:2", show: ["kjv", "esv"], note: "KJV: “in the prophets.” Critical text: “in Isaiah the prophet.” The quotation that follows blends Malachi 3:1 with Isaiah 40:3." },
-          { reference: "Mark 9:29", show: ["kjv", "esv"], note: "KJV and NKJV: this kind comes out only “by prayer and fasting.” The critical text has “by prayer.”" },
-          { reference: "Luke 11:2-4", show: ["kjv", "esv"], note: "Luke’s form of the Lord’s Prayer is shorter than the KJV’s — the critical text is shorter still, distinct from Matthew’s fuller version." },
-          { reference: "Romans 14:10", show: ["kjv", "esv"], note: "KJV: “the judgment seat of Christ.” Critical text: “of God.” “Judgment seat of Christ” is uncontested in 2 Corinthians 5:10." },
-          { reference: "1 Corinthians 15:47", show: ["kjv", "esv"], note: "KJV: “the second man is the Lord from heaven.” Critical text: “the second man is from heaven.”" },
-          { reference: "Revelation 22:19", show: ["kjv", "esv"], note: "KJV: “book of life.” Critical text: “tree of life.” Every Greek manuscript reads “tree” here; “book” entered when Erasmus reconstructed the end of Revelation from Latin." },
-          { reference: "Revelation 1:11", show: ["kjv", "esv"], note: "KJV opens the verse with “I am Alpha and Omega, the first and the last”; the critical text starts at “Write what you see.” The title is uncontested in verses 8 and 17." },
+          { reference: "Mark 1:2", show: ["kjv", "esv"], note: "KJV: “in the prophets.” Critical Text: “in Isaiah the prophet.” The quotation that follows blends Malachi 3:1 with Isaiah 40:3." },
+          { reference: "Mark 9:29", show: ["kjv", "esv"], note: "KJV and NKJV: this kind comes out only “by prayer and fasting.” The Critical Text has “by prayer.”" },
+          { reference: "Luke 11:2-4", show: ["kjv", "esv"], note: "Luke’s form of the Lord’s Prayer is shorter than the KJV’s — the Critical Text is shorter still, distinct from Matthew’s fuller version." },
+          { reference: "Romans 14:10", show: ["kjv", "esv"], note: "KJV: “the judgment seat of Christ.” Critical Text: “of God.” “Judgment seat of Christ” is uncontested in 2 Corinthians 5:10." },
+          { reference: "1 Corinthians 15:47", show: ["kjv", "esv"], note: "KJV: “the second man is the Lord from heaven.” Critical Text: “the second man is from heaven.”" },
+          { reference: "Revelation 22:19", show: ["kjv", "esv"], note: "KJV: “book of life.” Critical Text: “tree of life.” Every Greek manuscript reads “tree” here; “book” entered when Erasmus reconstructed the end of Revelation from Latin." },
+          { reference: "Revelation 1:11", show: ["kjv", "esv"], note: "KJV opens the verse with “I am Alpha and Omega, the first and the last”; the Critical Text starts at “Write what you see.” The title is uncontested in verses 8 and 17." },
         ],
       },
       {
@@ -167,31 +167,31 @@ export const differenceParts: DiffPart[] = [
             reference: "1 John 5:7",
             show: ["kjv", "esv"],
             note:
-              "The “Johannine Comma.” The words naming the Father, the Word, and the Holy Spirit as “one” appear in no Greek manuscript before the 1400s and in none of the ancient ones; they entered the printed Greek text through Erasmus’s third edition. KJV-tradition readers value the verse as a plain statement of the Trinity — which the rest of Scripture teaches regardless. The critical text (shown here, with verse 8) reads simply that the Spirit, the water, and the blood testify.",
+              "The “Johannine Comma.” The words naming the Father, the Word, and the Holy Spirit as “one” appear in no Greek manuscript before the 1400s and in none of the ancient ones; they entered the printed Greek text through Erasmus’s third edition. KJV-tradition readers value the verse as a plain statement of the Trinity — which the rest of Scripture teaches regardless. The Critical Text (shown here, with verse 8) reads simply that the Spirit, the water, and the blood testify.",
           },
           {
             reference: "1 Timothy 3:16",
             show: ["kjv", "esv"],
             note:
-              "KJV: “God was manifest in the flesh.” Critical text: “He was manifested…” In the old uncial script the difference is one letter — ΘΣ, “God” abbreviated, versus ΟΣ, “who.” The KJV reading is a direct statement that God was incarnate; the shorter reading leaves “He” to be identified from context as Christ. The incarnation of God is affirmed in John 1:1–14, Colossians 2:9, and Titus 2:13 either way.",
+              "KJV: “God was manifest in the flesh.” Critical Text: “He was manifested…” In the old uncial script the difference is one letter — ΘΣ, “God” abbreviated, versus ΟΣ, “who.” The KJV reading is a direct statement that God was incarnate; the shorter reading leaves “He” to be identified from context as Christ. The incarnation of God is affirmed in John 1:1–14, Colossians 2:9, and Titus 2:13 either way.",
           },
           {
             reference: "John 1:18",
             show: ["kjv", "esv", "niv"],
             note:
-              "KJV: “the only begotten Son.” Critical text: “the only God” / “God the only Son” — one word different in Greek (υἱός vs. θεός), and if anything a stronger statement of Christ’s deity. Both are early readings; translators split on which the earliest manuscripts support.",
+              "KJV: “the only begotten Son.” Critical Text: “the only God” / “God the only Son” — one word different in Greek (υἱός vs. θεός), and if anything a stronger statement of Christ’s deity. Both are early readings; translators split on which the earliest manuscripts support.",
           },
           {
             reference: "Luke 2:14",
             show: ["kjv", "esv"],
             note:
-              "KJV: “peace, good will toward men.” Critical text: “peace among those with whom he is pleased.” The difference is a final letter that turns “good will” from a separate gift announced to everyone into a description of the people the peace comes to. Nothing about the gospel hangs on it, but the sense of the angels’ announcement shifts.",
+              "KJV: “peace, good will toward men.” Critical Text: “peace among those with whom he is pleased.” The difference is a final letter that turns “good will” from a separate gift announced to everyone into a description of the people the peace comes to. Nothing about the gospel hangs on it, but the sense of the angels’ announcement shifts.",
           },
           {
             reference: "Matthew 1:25",
             show: ["kjv", "esv"],
             note:
-              "KJV: Mary’s “firstborn son.” Critical text: “a son.” Some read “firstborn” as implying other children later; others note it is a legal term for the child who opens the womb. “Firstborn” is uncontested in Luke 2:7 in any case.",
+              "KJV: Mary’s “firstborn son.” Critical Text: “a son.” Some read “firstborn” as implying other children later; others note it is a legal term for the child who opens the womb. “Firstborn” is uncontested in Luke 2:7 in any case.",
           },
         ],
       },

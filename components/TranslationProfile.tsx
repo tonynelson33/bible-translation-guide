@@ -5,6 +5,7 @@ import type { SampleVerse } from "@/lib/data";
 import type { VerseFetchResult } from "@/lib/verseProviders";
 import { genderApproachGlossary, philosophyGlossary } from "@/lib/glossary";
 import YesNoIcon from "./YesNoIcon";
+import Tooltip from "./Tooltip";
 import VerseCard from "./VerseCard";
 
 function verifyMark(translation: Translation, field: string) {
@@ -67,16 +68,20 @@ export default function TranslationProfile({
             {translation.latestRevisionYear !== translation.firstPublishedYear &&
               ` · Latest revision ${translation.latestRevisionYear}`}
           </span>
-          <span
-            className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${philosophyGlossary[translation.philosophy].className}`}
-          >
-            {translation.philosophy}
-          </span>
-          <span
-            className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${genderApproachGlossary[translation.genderApproach].className}`}
-          >
-            {translation.genderApproachLabel ?? translation.genderApproach}
-          </span>
+          <Tooltip text={philosophyGlossary[translation.philosophy].description}>
+            <span
+              className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${philosophyGlossary[translation.philosophy].className}`}
+            >
+              {translation.philosophy}
+            </span>
+          </Tooltip>
+          <Tooltip text={genderApproachGlossary[translation.genderApproach].description}>
+            <span
+              className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${genderApproachGlossary[translation.genderApproach].className}`}
+            >
+              {translation.genderApproachLabel ?? translation.genderApproach}
+            </span>
+          </Tooltip>
         </div>
       </div>
 

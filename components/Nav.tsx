@@ -28,7 +28,7 @@ const learnLinks: NavLink[] = [
   { href: "/blog", label: "Videos" },
 ];
 
-const afterLearn: NavLink[] = [{ href: "/buy", label: "Buy" }];
+const afterLearn: NavLink[] = [{ href: "/buy", label: "Where to Buy" }];
 
 const sortedTranslations = [...translations].sort((a, b) =>
   a.abbreviation.localeCompare(b.abbreviation),
@@ -56,11 +56,14 @@ function NavDropdown({
   active,
   children,
   width,
+  align = "left",
 }: {
   label: string;
   active: boolean;
   children: React.ReactNode;
   width: string;
+  /** "right" keeps a menu near the end of the bar from opening off-screen. */
+  align?: "left" | "right";
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -90,7 +93,9 @@ function NavDropdown({
       </button>
       {open && (
         <div
-          className={`absolute left-0 top-full ${width} rounded-md border border-neutral-200 bg-white py-2 shadow-lg`}
+          className={`absolute top-full ${
+            align === "right" ? "right-0" : "left-0"
+          } ${width} rounded-md border border-neutral-200 bg-white py-2 shadow-lg`}
           onClick={() => setOpen(false)}
         >
           {children}
@@ -149,7 +154,7 @@ export default function Nav() {
             </Link>
           ))}
 
-          <NavDropdown label="Learn" active={learnActive} width="w-64">
+          <NavDropdown label="Learn" active={learnActive} width="w-72" align="right">
             {learnLinks.map((link) => (
               <Link key={link.href} href={link.href} className={dropdownItemClass}>
                 {link.label}

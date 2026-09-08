@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 // its publisher's free-quotation allowance for this non-commercial site, with
 // the required attribution shown on the page. See data/cachedVerses.README.md.
 
-// One column, most literal at the top to freest at the bottom, so neighbouring
-// rows are the translations most alike — makes the word choices easy to scan.
+// One column, word-for-word at the top to thought-for-thought at the bottom, so
+// neighbouring rows are the translations most alike — word choices easy to scan.
 // Order is taken from the "Most Literal" ranking (lib/rankings.ts).
 const literalOrder =
   rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
@@ -46,8 +46,8 @@ export default function VersesPage({
           Sample Verse Comparison
         </h1>
         <p className="mt-3 text-neutral-600">
-          Pick a verse and read down the list. It runs most literal at the top to freest at the
-          bottom, so the rows closest together are the ones most alike.
+          Pick a verse and read down the list. It runs word-for-word at the top to
+          thought-for-thought at the bottom, so the rows closest together are the ones most alike.
         </p>
       </div>
 
