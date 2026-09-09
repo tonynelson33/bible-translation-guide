@@ -22,6 +22,96 @@ export interface HistoryImage {
 }
 
 export const historyImages: Record<string, HistoryImage> = {
+  lindisfarneGloss: {
+    src: "/history/lindisfarne-gloss.jpg",
+    width: 760,
+    height: 804,
+    alt: "A column of the Lindisfarne Gospels: large Latin letters with a smaller, cramped Old English translation written above every line.",
+    caption:
+      "The Lindisfarne Gospels, with Aldred’s word-for-word Old English gloss squeezed in above the Latin around 970 — the oldest surviving English translation of the Gospels.",
+    credit: "Lindisfarne, c. 700; gloss c. 970. British Library — public domain.",
+  },
+  wycliffe1382: {
+    src: "/history/wycliffe-john.jpg",
+    width: 620,
+    height: 1043,
+    alt: "The opening of John's Gospel in a handwritten Wycliffite Bible, Middle English in a gothic book hand with a gold and colour initial.",
+    caption:
+      "The opening of John in a Wycliffite Bible — the first complete English Bible, copied by hand from the Latin Vulgate and owned at the risk of a heresy charge.",
+    credit: "England, late 14th century — public domain.",
+  },
+  erasmus1516: {
+    src: "/history/erasmus-1516-title.jpg",
+    width: 660,
+    height: 1008,
+    alt: "The title page of Erasmus's 1516 Greek New Testament, the Latin title set in a tapering block above a printer's device.",
+    caption:
+      "The title page of Erasmus’s 1516 Greek New Testament, the Novum Instrumentum omne — the first Greek New Testament in print, and the root of the Textus Receptus.",
+    credit: "Johann Froben, Basel, 1516 — public domain.",
+  },
+  coverdale1535: {
+    src: "/history/coverdale-1535-title.jpg",
+    width: 660,
+    height: 1006,
+    alt: "The woodcut title border of the 1535 Coverdale Bible: small biblical scenes down both sides, Henry VIII enthroned at the foot handing out books.",
+    caption:
+      "The 1535 Coverdale Bible, the first complete Bible printed in English. The title border is attributed to Hans Holbein the Younger.",
+    credit: "1535 — public domain.",
+  },
+  greatBible1539: {
+    src: "/history/great-bible-1539-title.jpg",
+    width: 660,
+    height: 966,
+    alt: "The 1539 Great Bible title page: Henry VIII enthroned at the top passing Bibles to bishops and nobles, ranks of grateful subjects below.",
+    caption:
+      "The 1539 Great Bible — the first English Bible authorized for reading in churches. Henry VIII, at the top, hands the Word down through Cranmer and Cromwell to the crowd.",
+    credit: "Grafton & Whitchurch, London, 1539 — public domain.",
+  },
+  bishops1568: {
+    src: "/history/bishops-bible-1568.jpg",
+    width: 660,
+    height: 967,
+    alt: "An engraved portrait of Queen Elizabeth I in a decorated oval frame, flanked by allegorical figures, from the 1568 Bishops' Bible.",
+    caption:
+      "Elizabeth I on the title page of the 1568 Bishops’ Bible — the Church of England’s answer to the Geneva Bible, and the text the King James translators were told to revise.",
+    credit: "Engraving by Franz Hogenberg, 1568 — public domain.",
+  },
+  estienne1551: {
+    src: "/history/estienne-1551-nt.jpg",
+    width: 540,
+    height: 887,
+    alt: "The title page of Robert Estienne's 1551 Greek and Latin New Testament, with his olive-tree printer's device.",
+    caption:
+      "Estienne’s 1551 New Testament — a Textus Receptus edition, and the first to carry numbered verses.",
+    credit: "Robert Estienne, Geneva, 1551 — public domain.",
+  },
+  papyrus52: {
+    src: "/history/papyrus-52.jpg",
+    width: 349,
+    height: 549,
+    alt: "Rylands Papyrus 52: a small, ragged fragment of brown papyrus with a few lines of Greek visible along each broken edge.",
+    caption:
+      "Rylands Papyrus 𝔓52, a fragment of John copied around AD 125 — the oldest known piece of any New Testament book.",
+    credit: "John Rylands Library, Manchester — public domain.",
+  },
+  boreelianus: {
+    src: "/history/codex-boreelianus.jpg",
+    width: 560,
+    height: 819,
+    alt: "An illuminated Byzantine Gospel page: the start of Mark under a decorated headpiece, with a large ornamented initial beside columns of Greek majuscule.",
+    caption:
+      "Codex Boreelianus, a ninth-century Byzantine Gospel book — the kind of later, majority manuscript the Byzantine and Majority-Text readings come from.",
+    credit: "9th century — public domain.",
+  },
+  leningrad: {
+    src: "/history/leningrad-codex.jpg",
+    width: 660,
+    height: 729,
+    alt: "A three-column page of the Leningrad Codex: pointed Hebrew consonantal text with tiny masoretic notes filling the margins between and around the columns.",
+    caption:
+      "The Leningrad Codex, finished in 1008 — the oldest complete manuscript of the Hebrew Bible, and the base text behind most modern Old Testaments.",
+    credit: "Cairo, 1008 — public domain.",
+  },
   tyndale1526: {
     src: "/history/tyndale-john-1526.jpg",
     width: 720,
@@ -84,6 +174,7 @@ export const timeline: TimelineEntry[] = [
     title: "Old English glosses",
     detail:
       "Anglo-Saxon scribes write English word-for-word between the lines of Latin gospels — the gloss added to the Lindisfarne Gospels is the famous example. There is still no continuous English Bible.",
+    image: historyImages.lindisfarneGloss,
   },
   {
     year: "1382",
@@ -91,12 +182,14 @@ export const timeline: TimelineEntry[] = [
     detail:
       "The first complete English Bible, translated from the Latin Vulgate by John Wycliffe and his circle and copied by hand. The church condemned it; owning one could be treated as heresy. Decades after his death Wycliffe's bones were dug up and burned.",
     major: true,
+    image: historyImages.wycliffe1382,
   },
   {
     year: "1516",
     title: "Erasmus prints the Greek New Testament",
     detail:
       "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
+    image: historyImages.erasmus1516,
   },
   {
     year: "1526",
@@ -111,12 +204,14 @@ export const timeline: TimelineEntry[] = [
     title: "The Coverdale Bible",
     detail:
       "Miles Coverdale publishes the first complete printed English Bible, filling the gaps Tyndale never reached by working from Latin and German. The Psalms in the Book of Common Prayer are still his.",
+    image: historyImages.coverdale1535,
   },
   {
     year: "1539",
     title: "The Great Bible",
     detail:
       "The first English Bible authorized for public reading in churches, chained to the lectern so it could not be carried off. Largely Tyndale and Coverdale, lightly revised.",
+    image: historyImages.greatBible1539,
   },
   {
     year: "1560",
@@ -131,6 +226,7 @@ export const timeline: TimelineEntry[] = [
     title: "The Bishops' Bible",
     detail:
       "The Church of England's official answer to the Geneva Bible's pointed marginal notes. Never much loved, but it became the starting text for the King James translators.",
+    image: historyImages.bishops1568,
   },
   {
     year: "1611",

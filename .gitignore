@@ -45,3 +45,6 @@ scripts/sbc-fetch.log
 scripts/.ag-fetch-checkpoint*.json
 scripts/ag-churches.test.ndjson
 scripts/ag-fetch.log
+
+# history-page image processing — keep untouched originals locally, do not commit
+public/history/*.src.*
