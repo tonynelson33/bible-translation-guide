@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HistoryImage from "@/components/HistoryImage";
 import TextTraditions from "@/components/TextTraditions";
 import { timeline, textPrimer } from "@/lib/englishBibleHistory";
 
@@ -26,25 +27,57 @@ export default function HistoryPage() {
       {/* Timeline */}
       <div className="mt-10">
         <ol className="relative border-l-2 border-neutral-200">
-          {timeline.map((entry) => (
-            <li key={entry.year} className="ml-6 pb-8 last:pb-0">
-              <span
-                className={`absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 ${
-                  entry.major
-                    ? "border-gild-600 bg-gild-500"
-                    : "border-neutral-300 bg-paper"
-                }`}
-                aria-hidden="true"
-              />
-              <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
-                {entry.year}
-              </p>
-              <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
-                {entry.title}
-              </h2>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
-            </li>
-          ))}
+          {timeline.map((entry) => {
+            const single = entry.images?.length === 1;
+            const gallery = entry.images && entry.images.length > 1;
+            return (
+              <li key={entry.year} className="ml-6 pb-8 last:pb-0">
+                <span
+                  className={`absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 ${
+                    entry.major
+                      ? "border-gild-600 bg-gild-500"
+                      : "border-neutral-300 bg-paper"
+                  }`}
+                  aria-hidden="true"
+                />
+                <div
+                  className={
+                    single
+                      ? "sm:grid sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start sm:gap-6"
+                      : undefined
+                  }
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
+                      {entry.year}
+                    </p>
+                    <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
+                      {entry.title}
+                    </h2>
+                    <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
+                  </div>
+                  {single && (
+                    <HistoryImage
+                      image={entry.images![0]}
+                      className="mt-4 max-w-[15rem] sm:mt-0 sm:max-w-none"
+                      sizes="(max-width: 639px) 15rem, 13rem"
+                    />
+                  )}
+                </div>
+                {gallery && (
+                  <div className="mt-4 grid max-w-[15rem] grid-cols-1 gap-4 sm:max-w-md sm:grid-cols-2">
+                    {entry.images!.map((img) => (
+                      <HistoryImage
+                        key={img.src}
+                        image={img}
+                        sizes="(max-width: 639px) 15rem, 13rem"
+                      />
+                    ))}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </div>
 
@@ -97,11 +130,30 @@ export default function HistoryPage() {
 
         {textPrimer.map((section) => (
           <div key={section.id} id={section.id} className="mt-8 scroll-mt-20">
-            <h3 className="font-display text-xl font-semibold text-brand-900">{section.heading}</h3>
-            <div className="mt-2 space-y-3 leading-relaxed text-neutral-700">
-              {section.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+            <div
+              className={
+                section.image
+                  ? "gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_14rem] sm:items-start"
+                  : undefined
+              }
+            >
+              <div>
+                <h3 className="font-display text-xl font-semibold text-brand-900">
+                  {section.heading}
+                </h3>
+                <div className="mt-2 space-y-3 leading-relaxed text-neutral-700">
+                  {section.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </div>
+              {section.image && (
+                <HistoryImage
+                  image={section.image}
+                  className="mt-4 max-w-[16rem] sm:mt-1 sm:max-w-none"
+                  sizes="(max-width: 639px) 16rem, 14rem"
+                />
+              )}
             </div>
           </div>
         ))}
