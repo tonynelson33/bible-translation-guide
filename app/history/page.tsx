@@ -37,20 +37,30 @@ export default function HistoryPage() {
                 }`}
                 aria-hidden="true"
               />
-              <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
-                {entry.year}
-              </p>
-              <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
-                {entry.title}
-              </h2>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
-              {entry.image && (
-                <HistoryImage
-                  image={entry.image}
-                  className="mt-4 max-w-[17rem]"
-                  sizes="(max-width: 639px) 85vw, 17rem"
-                />
-              )}
+              <div
+                className={
+                  entry.image
+                    ? "sm:grid sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start sm:gap-6"
+                    : undefined
+                }
+              >
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
+                    {entry.year}
+                  </p>
+                  <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
+                    {entry.title}
+                  </h2>
+                  <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
+                </div>
+                {entry.image && (
+                  <HistoryImage
+                    image={entry.image}
+                    className="mt-4 max-w-[15rem] sm:mt-0 sm:max-w-none"
+                    sizes="(max-width: 639px) 15rem, 13rem"
+                  />
+                )}
+              </div>
             </li>
           ))}
         </ol>
