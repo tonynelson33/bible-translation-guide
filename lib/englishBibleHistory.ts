@@ -69,12 +69,12 @@ export const historyImages: Record<string, HistoryImage> = {
   },
   bishops1568: {
     src: "/history/bishops-bible-1568.jpg",
-    width: 660,
-    height: 967,
-    alt: "An engraved portrait of Queen Elizabeth I in a decorated oval frame, flanked by allegorical figures, from the 1568 Bishops' Bible.",
+    width: 640,
+    height: 904,
+    alt: "A page of the Bishops' Bible: Genesis 3–4 in black-letter type, two columns, numbered verses, with notes in the margins.",
     caption:
-      "Elizabeth I on the title page of the 1568 Bishops’ Bible — the Church of England’s answer to the Geneva Bible, and the text the King James translators were told to revise.",
-    credit: "Engraving by Franz Hogenberg, 1568 — public domain.",
+      "The Bishops’ Bible — Genesis 3 and 4, the curse and the first murder. The Church of England’s official reply to the Geneva Bible, and the text the King James translators were told to revise. Shown in a later printing.",
+    credit: "London, 1602 printing of the 1568 translation — public domain, via the Internet Archive.",
   },
   estienne1551: {
     src: "/history/estienne-1551-nt.jpg",
@@ -96,9 +96,9 @@ export const historyImages: Record<string, HistoryImage> = {
   },
   boreelianus: {
     src: "/history/codex-boreelianus.jpg",
-    width: 560,
-    height: 819,
-    alt: "An illuminated Byzantine Gospel page: the start of Mark under a decorated headpiece, with a large ornamented initial beside columns of Greek majuscule.",
+    width: 600,
+    height: 676,
+    alt: "Two columns of Greek from Codex Boreelianus — the opening of Mark in a large uncial hand, with a gold-and-blue decorated initial.",
     caption:
       "Codex Boreelianus, a ninth-century Byzantine Gospel book — the kind of later, majority manuscript the Byzantine and Majority-Text readings come from.",
     credit: "9th century — public domain.",
@@ -129,6 +129,15 @@ export const historyImages: Record<string, HistoryImage> = {
     caption:
       "The title-page woodcut of the 1560 Geneva Bible: Israel at the Red Sea, the pillar of cloud between them and Pharaoh’s army — the Exodus scene the Geneva exiles chose for their Bible.",
     credit: "Geneva, 1560 — public domain.",
+  },
+  geneva1560Text: {
+    src: "/history/geneva-1560-text.jpg",
+    width: 640,
+    height: 830,
+    alt: "A page of the 1560 Geneva Bible in roman type — 1 Samuel, two columns of numbered verses hemmed in on both sides by dense explanatory notes.",
+    caption:
+      "And the inside: 1 Samuel in the 1560 Geneva Bible. The packed margin notes — a running commentary crowding every column — are what made it the Bible of the Puritans, and what the bishops set out to answer.",
+    credit: "Geneva, 1560 — public domain, via the Internet Archive.",
   },
   kjv1611: {
     src: "/history/kjv-1611-title-page.jpg",
@@ -229,7 +238,7 @@ export const timeline: TimelineEntry[] = [
     detail:
       "Made by English Protestants who had fled to Geneva. The first English Bible with numbered verses, printed in readable roman type, and heavily annotated — effectively the first study Bible. It was the Bible of Shakespeare, the Puritans, and the Mayflower.",
     major: true,
-    images: [historyImages.geneva1560],
+    images: [historyImages.geneva1560, historyImages.geneva1560Text],
   },
   {
     year: "1568",
