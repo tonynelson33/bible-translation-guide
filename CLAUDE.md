@@ -135,8 +135,10 @@ scroll container, which silently kills `position: sticky` on the nav. Don't re-a
 The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
 
 **Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
-- **`/faq`** — 11 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
-  (rich answer + a self-contained `plain` string for the structured data).
+- **`/faq`** — 12 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
+  (rich answer + a self-contained `plain` string for the structured data). The "why no
+  translation uses the Majority Text" answer is the one `components/TextTraditions.tsx`
+  deep-links to (`/faq#majority-text`).
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
@@ -144,6 +146,16 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
   `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
   to sit here was cut 2026-09-08 as redundant with the diagrams.
+  **Images** (added 2026-09-09, the only images on the site): 18 public-domain manuscript /
+  title-page / text-page scans, one per timeline entry through 1611 (`images: HistoryImage[]`
+  on each entry — KJV and Geneva carry two, a title image + a page of text, rendered as a
+  2-up row) plus one on each `TextTraditions` card. Data (src/dims/alt/caption/credit +
+  provenance) is in `historyImages` in `lib/englishBibleHistory.ts`; `components/HistoryImage.tsx`
+  wraps `next/image` with a shared sepia filter (`sepia(.24) saturate(.86) contrast(1.03)`).
+  Files in `public/history/`; raw downloads (from Wikimedia Commons + the Internet Archive)
+  are shrunk by `scripts/optimize-history-images.mjs` (one-off; needs `npm i -D sharp` — sharp
+  is a devDep, also what `next/image` wants) and kept as `public/history/*.src.*` (gitignored).
+  No text-page scan exists for the Coverdale or Great Bible, so those keep their title pages.
 
 There is **no `/choose` page** — it was built then removed 2026-09-08. Its six purpose scenarios
 duplicated `/rankings` categories and the picks kept drifting from the ranked lists they linked
