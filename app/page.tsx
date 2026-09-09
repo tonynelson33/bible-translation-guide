@@ -9,7 +9,7 @@ import { rankingCategories } from "@/lib/rankings";
 export const metadata: Metadata = {
   title: "Compare Bible Translations",
   description:
-    "There's no single best English Bible translation — it depends on why you're reading. Compare twelve major translations on how literally they render the original, how they read, where their text comes from, and who each one fits.",
+    "There's no single best English Bible translation — it depends on why you're reading. Compare twelve major translations on how literally they render the original, how they read, where their text comes from, and who each one is for.",
   alternates: { canonical: "/" },
 };
 
@@ -30,12 +30,12 @@ const entryCards = [
   {
     href: "/verses",
     title: "Read a verse in every version",
-    body: "Pick a passage and read all twelve side by side, ordered word-for-word to thought-for-thought.",
+    body: "Pick a popular passage and read all twelve side by side, ordered word-for-word to thought-for-thought.",
   },
   {
     href: "/church-finder",
-    title: "Find your church's Bible",
-    body: "Look up a congregation and see which translation it uses — or add one that's missing.",
+    title: "Find your church",
+    body: "Look up a U.S. church, see its denomination and Bible — and tell us which translation it uses, since most entries don't say yet.",
   },
   {
     href: "/faq",
@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="mx-auto max-w-3xl pt-14 pb-4 sm:pt-20">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gild-700">
-          Compare English Bible Translations
+          English Bible Translations
         </p>
         <h1 className="mt-4 font-display text-4xl font-medium leading-[1.1] text-brand-900 sm:text-5xl">
           Which Bible translation should you read?
@@ -58,7 +58,7 @@ export default function HomePage() {
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-700">
           There&rsquo;s no single best answer &mdash; it depends on why you&rsquo;re reading. This
           site lays out twelve major English translations: how literally each renders the original,
-          how it reads, where its text comes from, and who it fits.
+          how it reads, where its text comes from, and who it&rsquo;s for.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
@@ -71,7 +71,7 @@ export default function HomePage() {
             href="/church-finder"
             className="rounded-lg border border-gild-300 bg-gild-50 px-5 py-2.5 text-sm font-semibold text-gild-800 transition-colors hover:bg-gild-100"
           >
-            Find your church&rsquo;s Bible
+            Find your church
           </Link>
         </div>
       </section>

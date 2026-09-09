@@ -121,11 +121,11 @@ export default function HistoryPage() {
         </h2>
         <p className="mt-3 leading-relaxed text-neutral-700">
           A translation is only as good as the source text behind it, and the source text is itself
-          the product of careful reconstruction. This is the part that{" "}
+          the product of careful reconstruction. This is the part that the{" "}
           <Link href="/differences" className="font-medium text-brand-700 hover:underline">
             where translations differ
           </Link>{" "}
-          assumes you know.
+          page assumes you know.
         </p>
 
         {textPrimer.map((section) => (

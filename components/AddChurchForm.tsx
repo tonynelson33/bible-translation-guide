@@ -78,7 +78,12 @@ export default function AddChurchForm({ defaultOpen = false }: { defaultOpen?: b
       onSubmit={handleSubmit}
       className="space-y-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
     >
-      <h2 className="text-sm font-semibold text-neutral-800">Add a church</h2>
+      <div>
+        <h2 className="font-display text-lg font-semibold text-brand-900">Add a church</h2>
+        <p className="mt-1 text-sm text-neutral-500">
+          Not in the directory? Send it in and we&apos;ll review it before it goes live.
+        </p>
+      </div>
 
       {/* Honeypot field: visually and semantically hidden from real users/screen readers. */}
       <div aria-hidden="true" className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">

@@ -4,7 +4,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import { translations } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Compare All Translations",
+  title: "All Translations at a Glance",
   description:
     "A sortable side-by-side table of twelve widely used English Bible translations — translation philosophy, reading level, NT textual basis, gender-language approach, publisher, and more.",
   alternates: { canonical: "/compare" },
@@ -13,22 +13,14 @@ export const metadata: Metadata = {
 export default function ComparePage() {
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-4 max-w-3xl">
+      <div className="mb-5 max-w-3xl">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-          Compare the translations
+          Every translation at a glance
         </h1>
         <p className="mt-3 text-neutral-700">
-          Twelve widely used English translations, side by side. Tap any column heading to sort;
-          tap a translation to open its full profile.
+          Twelve widely used English translations, side by side. Tap a column to sort, or a
+          translation for its full profile.
         </p>
-      </div>
-
-      <div className="mb-4 max-w-5xl overflow-x-auto whitespace-nowrap rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-neutral-700">
-        Attend a church?{" "}
-        <Link href="/church-finder" className="font-medium text-brand-700 hover:underline">
-          Find it in the Church Finder
-        </Link>{" "}
-        and confirm its denomination and which Bible it uses — or add it if it&apos;s missing.
       </div>
 
       <ComparisonTable translations={translations} />

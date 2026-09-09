@@ -5,8 +5,8 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
   {
     heading: "Compare",
     links: [
-      { href: "/compare", label: "All translations" },
-      { href: "/verses", label: "Verses side by side" },
+      { href: "/compare", label: "All translations at a glance" },
+      { href: "/verses", label: "Popular verses side by side" },
       { href: "/rankings", label: "Rankings & how to choose" },
     ],
   },
