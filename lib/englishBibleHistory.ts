@@ -41,12 +41,12 @@ export const historyImages: Record<string, HistoryImage> = {
     credit: "England, late 14th century — public domain.",
   },
   erasmus1516: {
-    src: "/history/erasmus-1516-title.jpg",
+    src: "/history/erasmus-1516-text.jpg",
     width: 660,
-    height: 1008,
-    alt: "The title page of Erasmus's 1516 Greek New Testament, the Latin title set in a tapering block above a printer's device.",
+    height: 994,
+    alt: "The last page of Erasmus's 1516 Greek New Testament — the end of Revelation, set with his Greek in one column and his own Latin translation beside it.",
     caption:
-      "The title page of Erasmus’s 1516 Greek New Testament, the Novum Instrumentum omne — the first Greek New Testament in print, and the root of the Textus Receptus.",
+      "The final page of Erasmus’s 1516 Greek New Testament — the end of Revelation, his Greek beside his own Latin. It was the first Greek New Testament in print, and the root of the Textus Receptus.",
     credit: "Johann Froben, Basel, 1516 — public domain.",
   },
   coverdale1535: {
@@ -139,6 +139,15 @@ export const historyImages: Record<string, HistoryImage> = {
       "The engraved title page of the 1611 King James Version, designed by Cornelis Boel.",
     credit: "Printed by Robert Barker, London, 1611 — public domain.",
   },
+  kjv1611Genesis: {
+    src: "/history/kjv-1611-genesis.jpg",
+    width: 680,
+    height: 978,
+    alt: "The first page of Genesis in the 1611 King James Bible: a woodcut headpiece over “THE FIRST BOOKE OF MOSES, called GENESIS,” a large decorated initial, and two columns of black-letter type with cross-references down the centre.",
+    caption:
+      "And the inside: the first page of Genesis in the 1611 edition — black-letter type, a decorated “In the beginning,” and cross-references running down the middle.",
+    credit: "Printed by Robert Barker, London, 1611 — public domain.",
+  },
   codexSinaiticus: {
     src: "/history/codex-sinaiticus.jpg",
     width: 960,
@@ -165,7 +174,8 @@ export interface TimelineEntry {
   detail: string;
   /** Pull the eye to the load-bearing moments. */
   major?: boolean;
-  image?: HistoryImage;
+  /** Usually one; the KJV entry carries its title page and a text page. */
+  images?: HistoryImage[];
 }
 
 export const timeline: TimelineEntry[] = [
@@ -174,7 +184,7 @@ export const timeline: TimelineEntry[] = [
     title: "Old English glosses",
     detail:
       "Anglo-Saxon scribes write English word-for-word between the lines of Latin gospels — the gloss added to the Lindisfarne Gospels is the famous example. There is still no continuous English Bible.",
-    image: historyImages.lindisfarneGloss,
+    images: [historyImages.lindisfarneGloss],
   },
   {
     year: "1382",
@@ -182,14 +192,14 @@ export const timeline: TimelineEntry[] = [
     detail:
       "The first complete English Bible, translated from the Latin Vulgate by John Wycliffe and his circle and copied by hand. The church condemned it; owning one could be treated as heresy. Decades after his death Wycliffe's bones were dug up and burned.",
     major: true,
-    image: historyImages.wycliffe1382,
+    images: [historyImages.wycliffe1382],
   },
   {
     year: "1516",
     title: "Erasmus prints the Greek New Testament",
     detail:
       "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
-    image: historyImages.erasmus1516,
+    images: [historyImages.erasmus1516],
   },
   {
     year: "1526",
@@ -197,21 +207,21 @@ export const timeline: TimelineEntry[] = [
     detail:
       "William Tyndale produces the first English New Testament translated directly from Greek, and the first to be printed. Copies are smuggled into England in bales of cloth. He goes on to translate much of the Old Testament from Hebrew before he is betrayed, strangled, and burned near Brussels in 1536.",
     major: true,
-    image: historyImages.tyndale1526,
+    images: [historyImages.tyndale1526],
   },
   {
     year: "1535",
     title: "The Coverdale Bible",
     detail:
       "Miles Coverdale publishes the first complete printed English Bible, filling the gaps Tyndale never reached by working from Latin and German. The Psalms in the Book of Common Prayer are still his.",
-    image: historyImages.coverdale1535,
+    images: [historyImages.coverdale1535],
   },
   {
     year: "1539",
     title: "The Great Bible",
     detail:
       "The first English Bible authorized for public reading in churches, chained to the lectern so it could not be carried off. Largely Tyndale and Coverdale, lightly revised.",
-    image: historyImages.greatBible1539,
+    images: [historyImages.greatBible1539],
   },
   {
     year: "1560",
@@ -219,14 +229,14 @@ export const timeline: TimelineEntry[] = [
     detail:
       "Made by English Protestants who had fled to Geneva. The first English Bible with numbered verses, printed in readable roman type, and heavily annotated — effectively the first study Bible. It was the Bible of Shakespeare, the Puritans, and the Mayflower.",
     major: true,
-    image: historyImages.geneva1560,
+    images: [historyImages.geneva1560],
   },
   {
     year: "1568",
     title: "The Bishops' Bible",
     detail:
       "The Church of England's official answer to the Geneva Bible's pointed marginal notes. Never much loved, but it became the starting text for the King James translators.",
-    image: historyImages.bishops1568,
+    images: [historyImages.bishops1568],
   },
   {
     year: "1611",
@@ -234,7 +244,7 @@ export const timeline: TimelineEntry[] = [
     detail:
       "Commissioned by James I and produced by about 47 scholars in six companies. They revised the Bishops' Bible against the Hebrew and Greek — but leaned so heavily on Tyndale that most studies put 75–85% of the KJV New Testament in his words. The text most people read today is a lightly modernized 1769 edition.",
     major: true,
-    image: historyImages.kjv1611,
+    images: [historyImages.kjv1611, historyImages.kjv1611Genesis],
   },
   {
     year: "1885",

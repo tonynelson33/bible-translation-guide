@@ -27,42 +27,57 @@ export default function HistoryPage() {
       {/* Timeline */}
       <div className="mt-10">
         <ol className="relative border-l-2 border-neutral-200">
-          {timeline.map((entry) => (
-            <li key={entry.year} className="ml-6 pb-8 last:pb-0">
-              <span
-                className={`absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 ${
-                  entry.major
-                    ? "border-gild-600 bg-gild-500"
-                    : "border-neutral-300 bg-paper"
-                }`}
-                aria-hidden="true"
-              />
-              <div
-                className={
-                  entry.image
-                    ? "sm:grid sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start sm:gap-6"
-                    : undefined
-                }
-              >
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
-                    {entry.year}
-                  </p>
-                  <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
-                    {entry.title}
-                  </h2>
-                  <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
+          {timeline.map((entry) => {
+            const single = entry.images?.length === 1;
+            const gallery = entry.images && entry.images.length > 1;
+            return (
+              <li key={entry.year} className="ml-6 pb-8 last:pb-0">
+                <span
+                  className={`absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 ${
+                    entry.major
+                      ? "border-gild-600 bg-gild-500"
+                      : "border-neutral-300 bg-paper"
+                  }`}
+                  aria-hidden="true"
+                />
+                <div
+                  className={
+                    single
+                      ? "sm:grid sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start sm:gap-6"
+                      : undefined
+                  }
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gild-700">
+                      {entry.year}
+                    </p>
+                    <h2 className="mt-0.5 font-display text-lg font-semibold text-brand-900">
+                      {entry.title}
+                    </h2>
+                    <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.detail}</p>
+                  </div>
+                  {single && (
+                    <HistoryImage
+                      image={entry.images![0]}
+                      className="mt-4 max-w-[15rem] sm:mt-0 sm:max-w-none"
+                      sizes="(max-width: 639px) 15rem, 13rem"
+                    />
+                  )}
                 </div>
-                {entry.image && (
-                  <HistoryImage
-                    image={entry.image}
-                    className="mt-4 max-w-[15rem] sm:mt-0 sm:max-w-none"
-                    sizes="(max-width: 639px) 15rem, 13rem"
-                  />
+                {gallery && (
+                  <div className="mt-4 grid max-w-[15rem] grid-cols-1 gap-4 sm:max-w-md sm:grid-cols-2">
+                    {entry.images!.map((img) => (
+                      <HistoryImage
+                        key={img.src}
+                        image={img}
+                        sizes="(max-width: 639px) 15rem, 13rem"
+                      />
+                    ))}
+                  </div>
                 )}
-              </div>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ol>
       </div>
 

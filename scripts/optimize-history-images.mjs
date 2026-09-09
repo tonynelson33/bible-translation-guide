@@ -19,7 +19,8 @@ const DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "histo
 const TARGETS = {
   "lindisfarne-gloss.png": { out: "lindisfarne-gloss.jpg", width: 760 },
   "wycliffe-john.jpg": { width: 620 },
-  "erasmus-1516-title.jpg": { width: 660 },
+  "erasmus-1516-text.jpg": { width: 660 },
+  "kjv-1611-genesis.jpg": { width: 680 },
   "coverdale-1535-title.jpg": { width: 660 },
   "great-bible-1539-title.jpg": { width: 660 },
   "bishops-bible-1568.jpg": { width: 660 },
