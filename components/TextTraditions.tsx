@@ -128,8 +128,11 @@ export default function TextTraditions() {
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
           No widely used English translation is based on the Majority Text; the NKJV&rsquo;s
-          footnotes are where its readings usually appear. The practical distance between all three
-          is small &mdash;{" "}
+          footnotes are where its readings usually appear, and the{" "}
+          <Link href="/faq#majority-text" className="font-medium text-gild-700 hover:underline">
+            FAQ explains why
+          </Link>
+          . The practical distance between all three is small &mdash;{" "}
           <Link href="/differences" className="font-medium text-gild-700 hover:underline">
             where translations differ
           </Link>{" "}
