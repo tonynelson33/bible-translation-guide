@@ -8,9 +8,11 @@
 
 /**
  * A public-domain image for the history page. Files live in public/history/,
- * pulled from Wikimedia Commons; every one is old enough to be public domain.
- * `credit` is shown in the caption even though PD needs no attribution — it is
- * good practice and tells the reader what they are looking at.
+ * pulled from Wikimedia Commons and the Internet Archive; each is a scan of a
+ * work old enough to be public domain (a faithful reproduction of a flat PD
+ * work carries no new copyright). `credit` is shown in the caption even though
+ * PD needs no attribution — it is good practice and tells the reader what they
+ * are looking at.
  */
 export interface HistoryImage {
   src: string;
@@ -46,7 +48,7 @@ export const historyImages: Record<string, HistoryImage> = {
     height: 994,
     alt: "The last page of Erasmus's 1516 Greek New Testament — the end of Revelation, set with his Greek in one column and his own Latin translation beside it.",
     caption:
-      "The final page of Erasmus’s 1516 Greek New Testament — the end of Revelation, his Greek beside his own Latin. It was the first Greek New Testament in print, and the root of the Textus Receptus.",
+      "The final page of Erasmus’s 1516 Greek New Testament — the end of Revelation, his Greek beside his own Latin. His one manuscript of Revelation was missing its last leaf, so he back-translated the closing verses from the Latin; those readings passed into the Textus Receptus and the King James.",
     credit: "Johann Froben, Basel, 1516 — public domain.",
   },
   coverdale1535: {
@@ -91,7 +93,7 @@ export const historyImages: Record<string, HistoryImage> = {
     height: 549,
     alt: "Rylands Papyrus 52: a small, ragged fragment of brown papyrus with a few lines of Greek visible along each broken edge.",
     caption:
-      "Rylands Papyrus 𝔓52, a fragment of John copied around AD 125 — the oldest known piece of any New Testament book.",
+      "Rylands Papyrus 𝔓52, a fragment of John usually dated to the first half of the second century — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
     credit: "John Rylands Library, Manchester — public domain.",
   },
   boreelianus: {
@@ -101,7 +103,7 @@ export const historyImages: Record<string, HistoryImage> = {
     alt: "Two columns of Greek from Codex Boreelianus — the opening of Mark in a large uncial hand, with a gold-and-blue decorated initial.",
     caption:
       "Codex Boreelianus, a ninth-century Byzantine Gospel book — the kind of later, majority manuscript the Byzantine and Majority-Text readings come from.",
-    credit: "9th century — public domain.",
+    credit: "9th century; Utrecht University Library — public domain.",
   },
   leningrad: {
     src: "/history/leningrad-codex.jpg",
@@ -134,10 +136,10 @@ export const historyImages: Record<string, HistoryImage> = {
     src: "/history/geneva-1560-text.jpg",
     width: 640,
     height: 830,
-    alt: "A page of the 1560 Geneva Bible in roman type — 1 Samuel, two columns of numbered verses hemmed in on both sides by dense explanatory notes.",
+    alt: "A page of the Geneva Bible in roman type — 1 Samuel, two columns of numbered verses hemmed in on both sides by dense explanatory notes.",
     caption:
-      "And the inside: 1 Samuel in the 1560 Geneva Bible. The packed margin notes — a running commentary crowding every column — are what made it the Bible of the Puritans, and what the bishops set out to answer.",
-    credit: "Geneva, 1560 — public domain, via the Internet Archive.",
+      "And the inside: 1 Samuel in the Geneva Bible. The packed margin notes — a running commentary crowding every column — are what made it the Bible of the Puritans, and what the bishops set out to answer.",
+    credit: "Geneva Bible, first published 1560 — public domain, via the Internet Archive.",
   },
   kjv1611: {
     src: "/history/kjv-1611-title-page.jpg",

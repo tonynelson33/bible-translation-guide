@@ -9,8 +9,8 @@ import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/engl
  * (Textus Receptus / Critical Text / Majority Text) and which witnesses the OT
  * draws on (Masoretic / Septuagint / Dead Sea Scrolls). The NT buckets are
  * computed from each translation's `textualBasis`, so they stay in step with
- * the data. Each card carries a public-domain image of a representative
- * manuscript (see lib/englishBibleHistory.ts).
+ * the data. The three NT cards each show a representative page (a printed TR
+ * edition, a papyrus, a Byzantine codex); see lib/englishBibleHistory.ts.
  */
 
 const tr = translations
@@ -127,10 +127,10 @@ export default function TextTraditions() {
           />
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
-          No widely used English translation is based on the Majority Text; the NKJV&rsquo;s
-          footnotes are where its readings usually appear, and the{" "}
+          No major English translation is based on the Majority Text; a few smaller ones are, and
+          the NKJV&rsquo;s footnotes are where its readings otherwise show up &mdash; the{" "}
           <Link href="/faq#majority-text" className="font-medium text-gild-700 hover:underline">
-            FAQ explains why
+            FAQ has the detail
           </Link>
           . The practical distance between all three is small &mdash;{" "}
           <Link href="/differences" className="font-medium text-gild-700 hover:underline">
@@ -179,7 +179,7 @@ export default function TextTraditions() {
           </Card>
           <Card
             heading="The Dead Sea Scrolls"
-            sub="Hebrew, ~250 BC – AD 70"
+            sub="Hebrew, ~250 BC – AD 68"
             body="Found near Qumran from 1947 on. They push the Hebrew evidence back about a thousand years, and mostly confirm how carefully the text was copied."
           />
         </div>
