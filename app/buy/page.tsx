@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Philosophy } from "@/lib/types";
 import { translations } from "@/lib/data";
+import { philosophyGlossary } from "@/lib/glossary";
 import { translationLinks } from "@/lib/buyLinks";
 
 export const metadata: Metadata = {
-  title: "Buy",
+  title: "Where to Buy",
+  description:
+    "Where to buy print and digital editions of each of the twelve translations — publisher stores and major retailers — plus the ones you can read in full, free, online. Plain links, no affiliate tracking.",
   alternates: { canonical: "/buy" },
 };
 
@@ -16,10 +19,17 @@ const monogramStyles: Record<Philosophy, string> = {
   Mixed: "bg-teal-600",
 };
 
+// The two translations with a free story beyond the universal Bible Gateway /
+// YouVersion access every translation on this page has.
+const officiallyFree: Record<string, string> = {
+  kjv: "public domain — free to read, copy, and print in any form",
+  net: "the full text and all 60,000 translator's notes, free by design at bible.org",
+};
+
 function Monogram({ abbreviation, philosophy }: { abbreviation: string; philosophy: Philosophy }) {
   return (
     <span
-      className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white ${monogramStyles[philosophy]}`}
+      className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg font-display text-xs font-bold tracking-tight text-white ${monogramStyles[philosophy]}`}
     >
       {abbreviation}
     </span>
@@ -54,7 +64,7 @@ function LinkRow({
   if (links.length === 0) return null;
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-neutral-400">
+      <span className="flex w-20 flex-shrink-0 items-center gap-1 text-xs font-semibold uppercase tracking-wide text-neutral-400">
         {icon}
         {label}
       </span>
@@ -64,7 +74,7 @@ function LinkRow({
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md border border-neutral-200 px-3 py-1.5 text-sm font-medium text-brand-700 hover:border-brand-200 hover:bg-brand-50"
+          className="rounded-md border border-neutral-200 px-3 py-1.5 text-sm font-medium text-brand-700 hover:border-brand-300 hover:bg-brand-50"
         >
           {link.label}
           <span className="sr-only"> (opens in a new tab)</span>
@@ -79,37 +89,106 @@ export default function BuyPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">Where to Buy</h1>
-      <p className="mt-3 max-w-2xl text-neutral-600">
-        Print and digital editions of each translation — from the publisher directly where one
-        exists, plus major retailers — alongside free ways to read the full text online. These are
-        plain links: no affiliate tracking, no cut for this site.
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gild-700">
+        Print &amp; digital
+      </p>
+      <h1 className="mt-3 font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
+        Where to buy
+      </h1>
+      <p className="mt-4 max-w-2xl leading-relaxed text-neutral-700">
+        For each translation: the publisher&rsquo;s own store where there is one, plus the major
+        retailers, and the places to read the full text free. These are plain outbound links &mdash;
+        no affiliate tracking, and this site takes no cut.
+      </p>
+
+      {/* Free to read */}
+      <div className="mt-8 rounded-xl border border-gild-200 bg-gild-50/60 p-5">
+        <h2 className="font-display text-lg font-semibold text-brand-900">
+          You don&rsquo;t have to buy one to read it
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+          Every translation here can be read in full, free, at{" "}
+          <a
+            href="https://www.biblegateway.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-gild-700 hover:underline"
+          >
+            Bible Gateway
+          </a>{" "}
+          or in the{" "}
+          <a
+            href="https://www.bible.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-gild-700 hover:underline"
+          >
+            YouVersion
+          </a>{" "}
+          app. The <Link href="/translations/kjv" className="font-medium text-gild-700 hover:underline">KJV</Link>{" "}
+          is public domain &mdash; free to read, copy, and print in any form. The{" "}
+          <Link href="/translations/net" className="font-medium text-gild-700 hover:underline">NET</Link>,
+          with its 60,000 translator&rsquo;s notes, is free by design at bible.org.
+        </p>
+      </div>
+
+      {/* Translation vs. edition */}
+      <p className="mt-8 max-w-2xl text-sm leading-relaxed text-neutral-500">
+        Each of these is a <em>translation</em>, not one book. Every one is sold in dozens of
+        editions &mdash; study, compact, large-print, journaling, children&rsquo;s, digital &mdash;
+        from a few dollars up past a hundred for premium leather. Pick the translation first; the
+        links below open a store&rsquo;s full range for it.
       </p>
 
       <ul className="mt-8 space-y-4">
         {sorted.map((t) => {
           const links = translationLinks[t.id];
+          const free = officiallyFree[t.id];
           return (
-            <li key={t.id} className="rounded-lg border border-neutral-200 bg-white p-4">
-              <div className="flex items-center gap-3">
+            <li key={t.id} className="rounded-lg border border-neutral-200 bg-white p-4 sm:p-5">
+              <div className="flex items-start gap-3">
                 <Monogram abbreviation={t.abbreviation} philosophy={t.philosophy} />
-                <Link href={`/translations/${t.id}`} className="min-w-0">
-                  <span className="block font-semibold text-brand-800 hover:underline">
-                    {t.abbreviation}
-                  </span>
-                  <span className="block text-sm text-neutral-500">{t.name}</span>
-                </Link>
+                <div className="min-w-0 flex-1">
+                  <Link href={`/translations/${t.id}`} className="group inline-block">
+                    <span className="font-display text-lg font-semibold text-brand-900 group-hover:underline">
+                      {t.abbreviation}
+                    </span>
+                    <span className="ml-2 text-sm text-neutral-500">{t.name}</span>
+                  </Link>
+                  <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-neutral-500">
+                    <span>{t.publisher}</span>
+                    <span className="text-neutral-300">&middot;</span>
+                    <span>{t.firstPublishedYear}</span>
+                    <span className="text-neutral-300">&middot;</span>
+                    <span>reads at grade {t.gradeLevel}</span>
+                    <span
+                      className={`ml-0.5 inline-block rounded-full px-2 py-0.5 text-[0.7rem] font-medium ${philosophyGlossary[t.philosophy].className}`}
+                    >
+                      {t.philosophy}
+                    </span>
+                  </p>
+                </div>
               </div>
+
               {links && (
-                <div className="mt-3 space-y-2 sm:pl-14">
+                <div className="mt-4 space-y-2 sm:pl-[3.75rem]">
                   <LinkRow icon={<BuyIcon />} label="Buy" links={links.buy} />
-                  <LinkRow icon={<ReadIcon />} label="Read Free" links={links.readFree} />
+                  <LinkRow icon={<ReadIcon />} label="Read free" links={links.readFree} />
+                  {free && (
+                    <p className="pt-0.5 text-xs text-neutral-400 sm:pl-[5.5rem]">Free in full: {free}.</p>
+                  )}
                 </div>
               )}
             </li>
           );
         })}
       </ul>
+
+      <p className="mt-8 text-sm leading-relaxed text-neutral-500">
+        Not sure which one? <Link href="/rankings" className="font-medium text-brand-700 hover:underline">The rankings</Link>{" "}
+        sort the twelve by purpose, and <Link href="/compare" className="font-medium text-brand-700 hover:underline">the table</Link>{" "}
+        lines up their reading levels and textual basis side by side.
+      </p>
     </div>
   );
 }
