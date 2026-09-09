@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
 import TextTraditions from "@/components/TextTraditions";
-import { timeline, textPrimer } from "@/lib/englishBibleHistory";
+import { timeline, textPrimer, historyImages } from "@/lib/englishBibleHistory";
 
 export const metadata: Metadata = {
   title: "How We Got the English Bible",
@@ -86,31 +86,51 @@ export default function HistoryPage() {
         <h2 className="font-display text-2xl font-semibold text-brand-900">
           The through-line: Tyndale
         </h2>
-        <div className="mt-3 space-y-4 leading-relaxed text-neutral-700">
-          <p>
-            The single most important figure is the one most people have never heard of. William
-            Tyndale was a gifted linguist who believed an ordinary person should be able to read
-            Scripture in their own language. In 1520s England that was a criminal position, so he
-            went to the Continent, learned enough Hebrew to be among the first Englishmen to use it,
-            and printed a New Testament translated straight from Greek.
-          </p>
-          <p>
-            Copies were smuggled home in cloth and grain shipments; the authorities burned the ones
-            they caught, and eventually they caught Tyndale. He was strangled and burned in 1536.
-            Within four years the same king who had hunted him authorized an English Bible for every
-            parish church &mdash; one built largely on Tyndale&rsquo;s own work.
-          </p>
-          <p>
-            His phrasing carried straight through the Great Bible, the Geneva Bible, and the Bishops&rsquo;
-            Bible into the <Link href="/translations/kjv" className="font-medium text-brand-700 hover:underline">King James Version</Link>, where studies estimate three-quarters or more of the New
-            Testament is still his wording. &ldquo;Let there be light,&rdquo; &ldquo;the powers that
-            be,&rdquo; &ldquo;my brother&rsquo;s keeper,&rdquo; &ldquo;the salt of the earth&rdquo;
-            &mdash; all Tyndale. When the <Link href="/translations/esv" className="font-medium text-brand-700 hover:underline">ESV</Link> or{" "}
-            <Link href="/translations/nrsvue" className="font-medium text-brand-700 hover:underline">NRSVue</Link> calls
-            itself part of a translation &ldquo;tradition,&rdquo; this is the tradition it means: the
-            RSV revised the 1901 ASV, which revised the 1885 RV, which revised the KJV, which was
-            mostly Tyndale.
-          </p>
+        <div className="mt-3 gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start">
+          <div className="space-y-4 leading-relaxed text-neutral-700">
+            <p>
+              The single most important figure is the one most people have never heard of. William
+              Tyndale was a gifted linguist who believed an ordinary person should be able to read
+              Scripture in their own language. In 1520s England that was a criminal position, so he
+              went to the Continent, learned enough Hebrew to be among the first Englishmen to use
+              it, and printed a New Testament translated straight from Greek.
+            </p>
+            <p>
+              Copies were smuggled home in cloth and grain shipments; the authorities burned the
+              ones they caught, and eventually they caught Tyndale. He was strangled and burned in
+              1536. Within four years the same king who had hunted him authorized an English Bible
+              for every parish church &mdash; one built largely on Tyndale&rsquo;s own work.
+            </p>
+            <p>
+              His phrasing carried straight through the Great Bible, the Geneva Bible, and the
+              Bishops&rsquo; Bible into the{" "}
+              <Link href="/translations/kjv" className="font-medium text-brand-700 hover:underline">
+                King James Version
+              </Link>
+              , where studies estimate three-quarters or more of the New Testament is still his
+              wording. &ldquo;Let there be light,&rdquo; &ldquo;the powers that be,&rdquo;
+              &ldquo;my brother&rsquo;s keeper,&rdquo; &ldquo;the salt of the earth&rdquo; &mdash;
+              all Tyndale. When the{" "}
+              <Link href="/translations/esv" className="font-medium text-brand-700 hover:underline">
+                ESV
+              </Link>{" "}
+              or{" "}
+              <Link
+                href="/translations/nrsvue"
+                className="font-medium text-brand-700 hover:underline"
+              >
+                NRSVue
+              </Link>{" "}
+              calls itself part of a translation &ldquo;tradition,&rdquo; this is the tradition it
+              means: the RSV revised the 1901 ASV, which revised the 1885 RV, which revised the
+              KJV, which was mostly Tyndale.
+            </p>
+          </div>
+          <HistoryImage
+            image={historyImages.tyndalePortrait}
+            className="mt-6 max-w-[13rem] sm:mt-0 sm:max-w-none"
+            sizes="(max-width: 639px) 13rem, 13rem"
+          />
         </div>
       </div>
 

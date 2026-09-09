@@ -114,6 +114,16 @@ export const historyImages: Record<string, HistoryImage> = {
       "The Leningrad Codex, finished in 1008 — the oldest complete manuscript of the Hebrew Bible, and the base text behind most modern Old Testaments.",
     credit: "Cairo, 1008 — public domain.",
   },
+  tyndalePortrait: {
+    src: "/history/tyndale-portrait.jpg",
+    width: 620,
+    height: 766,
+    alt: "A half-length portrait engraving of William Tyndale: a bearded man in a dark fur-collared coat and cap, a book in one hand, a Latin inscription around his head naming him a martyr.",
+    caption:
+      "William Tyndale, in a hand-coloured engraving after the portrait at Hertford College, Oxford. No likeness of him survives from his own lifetime — the Hertford painting was made decades after his death.",
+    credit:
+      "From George Offor's 1836 edition of Tyndale's New Testament; Pitts Theology Library, Emory University — public domain.",
+  },
   tyndale1526: {
     src: "/history/tyndale-john-1526.jpg",
     width: 720,

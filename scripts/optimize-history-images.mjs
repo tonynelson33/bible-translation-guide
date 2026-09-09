@@ -29,6 +29,7 @@ async function findSrc(name) {
 const TARGETS = {
   "lindisfarne-gloss.png": { out: "lindisfarne-gloss.jpg", width: 760 },
   "wycliffe-john.jpg": { width: 620 },
+  "tyndale-portrait.jpg": { width: 620 },
   "erasmus-1516-text.jpg": { width: 660 },
   "kjv-1611-genesis.jpg": { width: 680 },
   "coverdale-1535-title.jpg": { width: 660 },
