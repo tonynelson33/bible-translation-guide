@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
+import ImageZoom from "@/components/ImageZoom";
 import { translations } from "@/lib/data";
 import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/englishBibleHistory";
 
@@ -55,7 +56,10 @@ function Card({
   return (
     <div className="flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white">
       {image && (
-        <div className="relative h-28 border-b border-neutral-200 bg-paper">
+        <ImageZoom
+          image={image}
+          className="relative block h-28 w-full border-b border-neutral-200 bg-paper"
+        >
           <Image
             src={image.src}
             alt={image.alt}
@@ -63,7 +67,7 @@ function Card({
             sizes="(max-width: 640px) 92vw, 260px"
             className={`object-cover object-top ${IMG_FILTER}`}
           />
-        </div>
+        </ImageZoom>
       )}
       <div className="flex flex-1 flex-col p-4">
         <p className="font-display text-base font-semibold text-brand-900">{heading}</p>
