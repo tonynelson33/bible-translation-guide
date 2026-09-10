@@ -116,7 +116,14 @@ columns uniformly. `gradeLevelSortValue()` and `quoteLimitSortValue()` in the sa
 free-text fields (e.g. `"7-8"`, `"Unlimited"`, `"~1,000 verses (verify)"`) into sortable numbers.
 The first column is sticky (`position: sticky; left: 0`) for horizontal scroll on mobile — its
 background must stay fully opaque (not the alternating-row-stripe color) or scrolled content
-shows through. `Translation.genderApproachLabel` (a display override for the gender pill) is
+shows through. **Frozen header (2026-09-09):** the wide table's `overflow-x-auto` wrapper is a
+scroll container, so CSS `position: sticky` on `<thead>` pins to the wrapper (useless) not the
+viewport. Instead a small rAF-throttled `scroll`/`resize` handler in `ComparisonTable` reads the
+wrapper's `getBoundingClientRect()` and imperatively sets `thead.style.transform = translateY(navH - top)`
+while the table is under the nav, then clears it. `<thead>` is `position: relative; z-20;
+will-change: transform`; horizontal position is untouched so it still tracks the wrapper's
+left-scroll. If you change the nav height, the handler reads it live (`header.offsetHeight`), no
+constant to update. `Translation.genderApproachLabel` (a display override for the gender pill) is
 defined but unused as of 2026-09-09 — NIV/NASB dropped their "Moderate (2011)"/"(2020)" labels;
 the pill is now just the bare bucket name everywhere, with the year context left to the profile
 prose. The field stays as an escape hatch.
