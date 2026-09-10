@@ -35,7 +35,7 @@ const entryCards = [
   {
     href: "/church-finder",
     title: "Find your church",
-    body: "Look up a U.S. church, and help us by updating its denomination and translation. Most translations used by churches in the pulpit are unknown.",
+    body: "Look up a U.S. church, and help us by updating its denomination and translation. For most churches, the pulpit translation isn't known yet.",
   },
   {
     href: "/faq",
