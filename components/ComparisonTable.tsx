@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/types";
 import { compareValues, gradeLevelSortValue, quoteLimitSortValue } from "@/lib/sort";
@@ -192,6 +192,42 @@ const columns: ColumnDef[] = [
 export default function ComparisonTable({ translations }: { translations: Translation[] }) {
   const [sortKey, setSortKey] = useState<string | null>("firstPublishedYear");
   const [sortDir, setSortDir] = useState<SortDirection>("asc");
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const theadRef = useRef<HTMLTableSectionElement>(null);
+
+  // The horizontal-scroll wrapper is a scroll container, which traps
+  // `position: sticky` — the column headers can't pin to the viewport with CSS
+  // alone. So translate the <thead> down as the table scrolls up under the
+  // sticky nav, keeping the headings in view while you read down the rows.
+  // Horizontal position is untouched, so it still tracks the wrapper's own
+  // left-scroll, and with JS off the headers just scroll away normally.
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    const thead = theadRef.current;
+    const header = document.querySelector("header");
+    if (!wrapper || !thead) return;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const navH = header?.offsetHeight ?? 0;
+      const rect = wrapper.getBoundingClientRect();
+      const pinned = rect.top < navH && rect.bottom > navH + thead.offsetHeight;
+      thead.style.transform = pinned ? `translateY(${navH - rect.top}px)` : "";
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const sorted = useMemo(() => {
     if (!sortKey) return translations;
@@ -215,9 +251,12 @@ export default function ComparisonTable({ translations }: { translations: Transl
   }
 
   return (
-    <div className="w-full min-w-0 overflow-x-auto rounded-lg border border-neutral-200">
+    <div
+      ref={wrapperRef}
+      className="w-full min-w-0 overflow-x-auto rounded-lg border border-neutral-200"
+    >
       <table className="min-w-full table-fixed border-collapse text-sm">
-        <thead>
+        <thead ref={theadRef} className="relative z-20 [will-change:transform]">
           <tr className="bg-neutral-50">
             {columns.map((col, i) => {
               const isSticky = i === 0;
@@ -227,10 +266,10 @@ export default function ComparisonTable({ translations }: { translations: Transl
                   key={col.key}
                   scope="col"
                   style={col.minWidth ? { width: col.minWidth } : undefined}
-                  className={`border-b border-neutral-200 px-2 py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
+                  className={`border-b border-neutral-200 bg-neutral-50 px-2 py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
                     isSticky
-                      ? "sticky left-0 z-20 bg-neutral-50 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]"
-                      : ""
+                      ? "sticky left-0 z-20 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1),0_5px_6px_-6px_rgba(0,0,0,0.18)]"
+                      : "shadow-[0_5px_6px_-6px_rgba(0,0,0,0.18)]"
                   }`}
                 >
                   <button
