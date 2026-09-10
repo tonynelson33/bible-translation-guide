@@ -65,13 +65,13 @@ export default async function ChurchFinderPage({
           <p>
             Protestant churches across the U.S. — the historic Reformation traditions and the
             movements that grew from them. The common thread, and the line for what&apos;s
-            included: God is one in three persons (Father, Son, and Holy Spirit), Jesus Christ is
-            God, and the Bible is the final authority.
+            included: the Trinity — one God in three persons, Father, Son, and Holy Spirit — and
+            the Bible as the final authority.
           </p>
           <p>
-            Nearly half of listings still show &ldquo;Not identified&rdquo; for denomination — the
-            source data didn&apos;t specify one. Those get sorted out by hand over time, along
-            with corrections and new churches people submit.
+            About a third of listings still show &ldquo;Not identified&rdquo; for denomination —
+            the source data didn&apos;t specify one. Those get sorted out one by one over time,
+            along with corrections and new churches people submit.
           </p>
         </div>
       </details>

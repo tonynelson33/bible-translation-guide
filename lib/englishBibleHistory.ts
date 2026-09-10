@@ -114,6 +114,16 @@ export const historyImages: Record<string, HistoryImage> = {
       "The Leningrad Codex, finished in 1008 — the oldest complete manuscript of the Hebrew Bible, and the base text behind most modern Old Testaments.",
     credit: "Cairo, 1008 — public domain.",
   },
+  tyndalePortrait: {
+    src: "/history/tyndale-portrait.jpg",
+    width: 620,
+    height: 766,
+    alt: "A half-length portrait engraving of William Tyndale: a bearded man in a dark fur-collared coat and cap, a book in one hand, a Latin inscription around his head naming him a martyr.",
+    caption:
+      "William Tyndale, in a hand-coloured engraving after the portrait at Hertford College, Oxford. No likeness of him survives from his own lifetime — the Hertford painting was made decades after his death.",
+    credit:
+      "From George Offor's 1836 edition of Tyndale's New Testament; Pitts Theology Library, Emory University — public domain.",
+  },
   tyndale1526: {
     src: "/history/tyndale-john-1526.jpg",
     width: 720,
@@ -191,14 +201,14 @@ export interface TimelineEntry {
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "c. 970",
+    year: "c. 970 · England",
     title: "Old English glosses",
     detail:
       "Anglo-Saxon scribes write English word-for-word between the lines of Latin gospels — the gloss added to the Lindisfarne Gospels is the famous example. There is still no continuous English Bible.",
     images: [historyImages.lindisfarneGloss],
   },
   {
-    year: "1382",
+    year: "1382 · England",
     title: "The Wycliffe Bible",
     detail:
       "The first complete English Bible, translated from the Latin Vulgate by John Wycliffe and his circle and copied by hand. The church condemned it; owning one could be treated as heresy. Decades after his death Wycliffe's bones were dug up and burned.",
@@ -206,14 +216,14 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.wycliffe1382],
   },
   {
-    year: "1516",
+    year: "1516 · Basel",
     title: "Erasmus prints the Greek New Testament",
     detail:
       "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
     images: [historyImages.erasmus1516],
   },
   {
-    year: "1526",
+    year: "1526 · Worms",
     title: "Tyndale's New Testament",
     detail:
       "William Tyndale produces the first English New Testament translated directly from Greek, and the first to be printed. Copies are smuggled into England in bales of cloth. He goes on to translate much of the Old Testament from Hebrew before he is betrayed, strangled, and burned near Brussels in 1536.",
@@ -221,21 +231,21 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.tyndale1526],
   },
   {
-    year: "1535",
+    year: "1535 · Antwerp",
     title: "The Coverdale Bible",
     detail:
       "Miles Coverdale publishes the first complete printed English Bible, filling the gaps Tyndale never reached by working from Latin and German. The Psalms in the Book of Common Prayer are still his.",
     images: [historyImages.coverdale1535],
   },
   {
-    year: "1539",
+    year: "1539 · Paris & London",
     title: "The Great Bible",
     detail:
-      "The first English Bible authorized for public reading in churches, chained to the lectern so it could not be carried off. Largely Tyndale and Coverdale, lightly revised.",
+      "The first English Bible authorized for public reading in churches, chained to the lectern so it could not be carried off. Largely Tyndale and Coverdale, lightly revised. Printing began in Paris until the French authorities intervened; the type and sheets were moved to London to finish.",
     images: [historyImages.greatBible1539],
   },
   {
-    year: "1560",
+    year: "1560 · Geneva",
     title: "The Geneva Bible",
     detail:
       "Made by English Protestants who had fled to Geneva. The first English Bible with numbered verses, printed in readable roman type, and heavily annotated — effectively the first study Bible. It was the Bible of Shakespeare, the Puritans, and the Mayflower.",
@@ -243,14 +253,14 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.geneva1560, historyImages.geneva1560Text],
   },
   {
-    year: "1568",
+    year: "1568 · London",
     title: "The Bishops' Bible",
     detail:
       "The Church of England's official answer to the Geneva Bible's pointed marginal notes. Never much loved, but it became the starting text for the King James translators.",
     images: [historyImages.bishops1568],
   },
   {
-    year: "1611",
+    year: "1611 · London",
     title: "The King James Version",
     detail:
       "Commissioned by James I and produced by about 47 scholars in six companies. They revised the Bishops' Bible against the Hebrew and Greek — but leaned so heavily on Tyndale that most studies put 75–85% of the KJV New Testament in his words. The text most people read today is a lightly modernized 1769 edition.",
@@ -258,20 +268,20 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.kjv1611, historyImages.kjv1611Genesis],
   },
   {
-    year: "1885",
+    year: "1885 · England",
     title: "The Revised Version",
     detail:
       "The first official overhaul of the KJV, incorporating manuscript discoveries of the 1800s. Its American counterpart, the American Standard Version, followed in 1901.",
   },
   {
-    year: "1952",
+    year: "1952 · United States",
     title: "The Revised Standard Version",
     detail:
       "A thorough revision of the ASV in modern English. Controversial in conservative circles — partly over rendering Isaiah 7:14 as “young woman” rather than “virgin” — but it became the trunk from which both the ESV and the NRSV grew.",
     major: true,
   },
   {
-    year: "1971–2017",
+    year: "1971–2017 · United States",
     title: "The modern translations",
     detail:
       "The NASB (1971), NIV (1978), NKJV (1982), NRSV (1989), NLT (1996), ESV (2001), and CSB (2017) arrive in quick succession — the product of better manuscripts, changing English, competing translation philosophies, and a competitive publishing market.",

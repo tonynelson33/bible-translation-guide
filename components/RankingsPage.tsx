@@ -11,7 +11,7 @@ import TranslationSpectrum from "./TranslationSpectrum";
 // never disagree with the list it links to.
 const startGuide: { slug: string; when: string }[] = [
   { slug: "balance", when: "One Bible for everything" },
-  { slug: "devotions", when: "Reading through books at a time — also the list for children and new readers" },
+  { slug: "devotions", when: "Longer reading, plus kids and new readers" },
   { slug: "study", when: "Studying a passage closely" },
   { slug: "preaching", when: "Preaching or teaching from it" },
   { slug: "memorization", when: "Memorizing verses" },
@@ -135,7 +135,7 @@ export default function RankingsPage({
       </p>
 
       {/* Quick decision guide */}
-      <div className="mx-auto mt-8 max-w-2xl rounded-xl border border-gild-200 bg-gild-50/60 p-5">
+      <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-gild-200 bg-gild-50/60 p-5">
         <h2 className="font-display text-lg font-semibold text-brand-900">
           Not sure where to start?
         </h2>

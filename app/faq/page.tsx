@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many, whether modern Bibles removed verses, KJV-onlyism, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
+    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many, whether modern Bibles removed verses, KJV-onlyism, the 1611 King James versus today's, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
   alternates: { canonical: "/faq" },
 };
 
@@ -88,41 +88,45 @@ const groups: Group[] = [
         q: "Which translation should I use — for study, for daily reading, for a child?",
         a: (
           <>
-            <p>The short version:</p>
+            <p>
+              The short version, following the top of each{" "}
+              <Link href="/rankings">ranking</Link>:
+            </p>
             <ul>
               <li>
-                <strong>Close study:</strong> a formal translation &mdash;{" "}
-                <Link href="/translations/esv">ESV</Link>,{" "}
-                <Link href="/translations/nasb">NASB</Link>, or{" "}
-                <Link href="/translations/lsb">LSB</Link> &mdash; ideally with a readable one
-                alongside it for comparison.
+                <strong>Close study:</strong> the translations with the most study help &mdash;
+                the <Link href="/translations/net">NET</Link> (its 60,000 notes), the{" "}
+                <Link href="/translations/nasb">NASB</Link> (word-for-word precision), and the{" "}
+                <Link href="/translations/esv">ESV</Link> (the largest study-Bible library) &mdash;
+                ideally with a readable one open alongside.
               </li>
               <li>
-                <strong>Daily reading:</strong> the <Link href="/translations/niv">NIV</Link>,{" "}
-                <Link href="/translations/csb">CSB</Link>, or{" "}
-                <Link href="/translations/nlt">NLT</Link> &mdash; accurate and easy to read for long
-                stretches.
+                <strong>Daily reading:</strong> the <Link href="/translations/nlt">NLT</Link>,{" "}
+                <Link href="/translations/ceb">CEB</Link>, or{" "}
+                <Link href="/translations/csb">CSB</Link> &mdash; smooth to read for long stretches
+                without slipping into paraphrase.
               </li>
               <li>
                 <strong>A child or someone new to the Bible:</strong> the{" "}
-                <Link href="/translations/nlt">NLT</Link>, which reads at about a sixth-grade level.
+                <Link href="/translations/nlt">NLT</Link>, which reads at about a sixth-grade level,
+                or the <Link href="/translations/ceb">CEB</Link>.
               </li>
               <li>
                 <strong>Reading aloud in a congregation:</strong> the{" "}
-                <Link href="/translations/esv">ESV</Link>,{" "}
-                <Link href="/translations/csb">CSB</Link>, or{" "}
+                <Link href="/translations/csb">CSB</Link>,{" "}
+                <Link href="/translations/esv">ESV</Link>, or{" "}
                 <Link href="/translations/niv">NIV</Link>.
               </li>
             </ul>
             <p>
-              <Link href="/rankings">The rankings page</Link> breaks this down by purpose, and every{" "}
-              <Link href="/compare">translation profile</Link> has a &ldquo;good fit for&rdquo;
-              section.
+              <Link href="/rankings">The rankings page</Link> explains the ordering for each, and
+              every <Link href="/compare">translation profile</Link> has a &ldquo;good fit
+              for&rdquo; section.
             </p>
           </>
         ),
         plain:
-          "For close study, a formal translation such as the ESV, NASB, or LSB, ideally with a more readable one alongside it. For daily reading, the NIV, CSB, or NLT. For a child or a new reader, the NLT, which reads at about a sixth-grade level. For reading aloud in a congregation, the ESV, CSB, or NIV. The rankings page breaks this down by purpose.",
+          "Following the top of each ranking: for close study, the translations with the most study help — the NET (its 60,000 notes), the NASB (word-for-word precision), and the ESV (the largest study-Bible library) — ideally with a readable one alongside. For daily reading, the NLT, CEB, or CSB. For a child or a new reader, the NLT (about a sixth-grade reading level) or the CEB. For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
       },
       {
         id: "paraphrase",
@@ -177,7 +181,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Modern translations print fewer verses than the King James Version in about sixteen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies found since 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually note the missing verse in a footnote. No core Christian teaching depends on any of them.",
+          "Modern translations print fewer verses than the King James Version in about sixteen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies found since 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
       },
       {
         id: "text-types",
@@ -314,12 +318,13 @@ const groups: Group[] = [
             <p>
               This site covers the 66-book Protestant canon and the translations most used in
               Protestant churches, which is why you won&rsquo;t find the Douay-Rheims or the NABRE
-              here. That&rsquo;s a scope decision, not a judgment about those traditions.
+              here. That&rsquo;s a scope decision, not necessarily a judgment about those
+              traditions.
             </p>
           </>
         ),
         plain:
-          "The Apocrypha, or deuterocanonical books — Tobit, Judith, Sirach, 1-2 Maccabees, and others — appear in Catholic and Orthodox Bibles but not in Protestant ones. They were in the original 1611 King James Version between the Testaments, and some translations still publish editions that include them. This site covers the 66-book Protestant canon and the translations most used in Protestant churches, which is a scope decision rather than a judgment about other traditions.",
+          "The Apocrypha, or deuterocanonical books — Tobit, Judith, Sirach, 1-2 Maccabees, and others — appear in Catholic and Orthodox Bibles but not in Protestant ones. They were in the original 1611 King James Version between the Testaments, and some translations still publish editions that include them. This site covers the 66-book Protestant canon and the translations most used in Protestant churches, which is a scope decision, not necessarily a judgment about other traditions.",
       },
     ],
   },
@@ -386,6 +391,35 @@ const groups: Group[] = [
         ),
         plain:
           "KJV-onlyism is the belief that the King James Version is the only trustworthy English Bible, in its strongest form that the KJV itself is divinely preserved and other translations are corrupt. It ranges from a mild preference for the KJV's language or underlying Greek text to the view that other translations are dangerous. The King James is a landmark of English and a fine translation of the manuscripts available in 1611, but it is not the only reliable English Bible.",
+      },
+      {
+        id: "kjv-1611-vs-today",
+        q: "Is the King James Version sold today the same as the 1611 text?",
+        a: (
+          <>
+            <p>
+              In wording, almost exactly &mdash; but not letter for letter. The{" "}
+              <Link href="/translations/kjv">KJV</Link> was re-edited several times over its first
+              150 years, and nearly every King James in print today follows the 1769 Oxford
+              edition, which standardized the spelling, punctuation, and italic type and cleaned up
+              the printing errors that had accumulated in earlier runs. The 1611 also printed the
+              Apocrypha between the Testaments; most modern KJVs leave it out.
+            </p>
+            <p>The spelling is the visible change. John 3:16 as the 1611 edition set it:</p>
+            <p className="border-l-2 border-gild-300 pl-4 font-serif text-neutral-700">
+              &ldquo;For God so loued the world, that he gaue his only begotten Sonne: that
+              whosoeuer beleeueth in him, should not perish, but haue euerlasting life.&rdquo;
+            </p>
+            <p>
+              Every word there is the one still printed now; the 1769 edition brought the spelling
+              into line with modern usage and did the same for thousands of other verses. What it
+              did not do is go back to the Greek and Hebrew and retranslate &mdash; today&rsquo;s
+              KJV rests on the same 1611 scholarship and the same underlying text.
+            </p>
+          </>
+        ),
+        plain:
+          "In wording it is almost exactly the 1611 text, but not letter for letter. The KJV was re-edited several times, and nearly every King James printed today follows the 1769 Oxford edition, which standardized spelling, punctuation, and italic type and cleaned up accumulated printing errors. The 1611 also included the Apocrypha between the Testaments, which most modern KJVs leave out. The visible change is spelling: John 3:16 in the 1611 edition read, “For God so loued the world, that he gaue his only begotten Sonne: that whosoeuer beleeueth in him, should not perish, but haue euerlasting life.” Every word is the one printed today; the 1769 edition modernized the spelling without going back to the Greek and Hebrew to retranslate.",
       },
       {
         id: "who-translates",
@@ -461,12 +495,17 @@ export default function FaqPage() {
         ))}
       </nav>
 
-      {groups.map((group) => (
-        <section key={group.title} className="mt-12">
-          <h2 className="font-display text-2xl font-semibold text-brand-900">{group.title}</h2>
-          <p className="mt-1 text-sm text-neutral-500">{group.intro}</p>
+      {groups.map((group, groupIndex) => (
+        <section
+          key={group.title}
+          className={`border-t-2 border-gild-300 pt-7 ${groupIndex === 0 ? "mt-12" : "mt-16"}`}
+        >
+          <h2 className="font-display text-2xl font-semibold text-brand-900 sm:text-3xl">
+            {group.title}
+          </h2>
+          <p className="mt-2 text-neutral-500">{group.intro}</p>
 
-          <div className="mt-6 space-y-8">
+          <div className="mt-8 space-y-8">
             {group.items.map((item) => (
               <div key={item.id} id={item.id} className="scroll-mt-20">
                 <h3 className="font-display text-xl font-semibold text-brand-900">{item.q}</h3>

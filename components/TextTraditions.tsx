@@ -100,8 +100,8 @@ export default function TextTraditions() {
         </h3>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-700">
           The three differ mainly in how much they lean on the oldest surviving copies. The Textus
-          Receptus was fixed in the 1500s, before most of those were found; the Critical Text
-          weighs all the evidence known today.
+          Receptus was compiled in the 1500s from the manuscripts on hand then, before the older
+          copies came to light; the Critical Text weighs all the evidence known today.
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <Card
@@ -180,7 +180,7 @@ export default function TextTraditions() {
           <Card
             heading="The Dead Sea Scrolls"
             sub="Hebrew, ~250 BC – AD 68"
-            body="Found near Qumran from 1947 on. They push the Hebrew evidence back about a thousand years, and mostly confirm how carefully the text was copied."
+            body="Found from 1947 onward in caves at Qumran, on the northwest shore of the Dead Sea. They push the Hebrew evidence back about a thousand years, and mostly confirm how carefully the text was copied."
           />
         </div>
         <HistoryImage
@@ -189,8 +189,8 @@ export default function TextTraditions() {
           sizes="(max-width: 767px) 92vw, 46rem"
         />
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-500">
-          The Septuagint has been known since antiquity, but the Dead Sea Scrolls only surfaced
-          from 1947 on &mdash; so the 1611{" "}
+          The Septuagint has been known since antiquity, but the Dead Sea Scrolls were not
+          discovered until 1947 &mdash; so the 1611{" "}
           <Link href="/translations/kjv" className="font-medium text-gild-700 hover:underline">
             KJV
           </Link>{" "}

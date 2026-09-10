@@ -19,7 +19,7 @@ export interface Translation {
   publisher: string;
   quoteLimit: string;
   genderApproach: GenderApproach;
-  genderApproachLabel?: string; // display override, e.g. "Moderate (2020)"
+  genderApproachLabel?: string; // display override for the pill, when the bare bucket name needs qualifying
   redLetter: boolean;
   otMarking: OtMarking;
   italicizesTranslatorWords: boolean;

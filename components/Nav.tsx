@@ -7,11 +7,12 @@ import { translations } from "@/lib/data";
 
 type NavLink = { href: string; label: string };
 
-// Desktop order: Compare · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
+// Desktop order: At a Glance · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
 // Church Finder rides high because it's the most distinctive feature; the
-// learning pages are grouped under one menu so the bar stays short.
+// learning pages are grouped under one menu so the bar stays short. "Verses"
+// stays short here; the page itself is titled "Comparison of Popular Verses".
 const beforeTranslations: NavLink[] = [
-  { href: "/compare", label: "Compare" },
+  { href: "/compare", label: "At a Glance" },
   { href: "/church-finder", label: "Church Finder" },
 ];
 

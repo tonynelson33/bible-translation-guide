@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Videos",
   description:
-    "A short, curated set of videos on English Bible translations — the history from Tyndale on, translation philosophy, the Textus Receptus and Critical Text, gender language, and how to choose a Bible.",
+    "A short, curated set of videos on English Bible translations — the history from Tyndale on, translation philosophy, the Textus Receptus and Critical Text, whether the transmitted text is reliable, gender language, and how to choose a Bible.",
   alternates: { canonical: "/blog" },
 };
 
@@ -45,6 +45,12 @@ const startHere: Video[] = [
     title: "Majority Text or Critical Text: Which Is Better?",
     creator: "Ken Yates · Grace Evangelical Society",
     topic: "Textus Receptus vs. Critical Text — the other view",
+  },
+  {
+    id: "iaub_Ch0Auo",
+    title: "Is the Bible We Have What the Original Authors Even Wrote?",
+    creator: "Wes Huff",
+    topic: "Answering the “telephone game” objection",
   },
   {
     id: "Uy1lv9RE8wQ",

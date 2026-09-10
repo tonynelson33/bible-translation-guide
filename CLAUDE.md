@@ -39,9 +39,14 @@ back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categ
 **Site structure (rebuilt 2026-09-07 "site-overhaul" branch)**: `/` is a **landing page**
 (`app/page.tsx`) — hero, four entry cards, the `TranslationSpectrum`, a "the twelve" grid; the
 sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The nav
-(`components/Nav.tsx`) is `Compare · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾
-· Where to Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the Translations
-menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/faq`, `/blog`).
+(`components/Nav.tsx`) is `At a Glance · Church Finder · Translations ▾ · Verses · Rankings ·
+Learn ▾ · Where to Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the
+Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/faq`,
+`/blog`). `/compare` was labelled "Compare" until 2026-09-09 — renamed "At a Glance" (nav, h1
+"Every translation at a glance", metadata title, footer) because "Verses" is where people
+picture a comparison; the route stayed `/compare`. `/verses` is still "Verses" in the nav (the
+longer "Popular Verses" pushed the bar into the logo near 1024px) but its h1/title are
+"Comparison of Popular Verses" and the footer says "Popular verses side by side".
 Footer (`components/SiteFooter.tsx`) is a four-column layout led by a `SpectrumStrip`. When you
 add a route to the nav/footer, add it to `app/sitemap.ts` too. `next.config.mjs` has the
 redirects: `/translations/nrsv` → `/translations/nrsvue`, `/choose` → `/rankings`.
@@ -111,7 +116,10 @@ columns uniformly. `gradeLevelSortValue()` and `quoteLimitSortValue()` in the sa
 free-text fields (e.g. `"7-8"`, `"Unlimited"`, `"~1,000 verses (verify)"`) into sortable numbers.
 The first column is sticky (`position: sticky; left: 0`) for horizontal scroll on mobile — its
 background must stay fully opaque (not the alternating-row-stripe color) or scrolled content
-shows through.
+shows through. `Translation.genderApproachLabel` (a display override for the gender pill) is
+defined but unused as of 2026-09-09 — NIV/NASB dropped their "Moderate (2011)"/"(2020)" labels;
+the pill is now just the bare bucket name everywhere, with the year context left to the profile
+prose. The field stays as an escape hatch.
 
 **Styling**: Tailwind. `tailwind.config.ts` defines: `brand` (deep navy) as the structural
 colour; `gild` (a deep old-gold, 50→900) as the one warm accent, rationed to eyebrows, one CTA,
@@ -135,23 +143,34 @@ scroll container, which silently kills `position: sticky` on the nav. Don't re-a
 The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
 
 **Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
-- **`/faq`** — 12 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
+- **`/faq`** — 13 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
   (rich answer + a self-contained `plain` string for the structured data). The "why no
   translation uses the Majority Text" answer is the one `components/TextTraditions.tsx`
-  deep-links to (`/faq#majority-text`).
+  deep-links to (`/faq#majority-text`). The 3 group `<h2>`s carry a `border-t-2 border-gild-300`
+  rule + bump to `sm:text-3xl` (2026-09-09) so the sections read as sections. `#kjv-1611-vs-today`
+  (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
+  quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
+  "which translation should I use" answer mirrors the top 3 of the matching `rankings` category
+  (study→NET/NASB/ESV, devotions→NLT/CEB/CSB, congregation via preaching→CSB/ESV/NIV) — keep it in
+  step if the rankings move.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
   ("Nobody has the originals" — textual criticism in general) followed by
   `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
   `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
-  to sit here was cut 2026-09-08 as redundant with the diagrams.
-  **Images** (added 2026-09-09, the only images on the site): 18 public-domain manuscript /
-  title-page / text-page scans, one per timeline entry through 1611 (`images: HistoryImage[]`
-  on each entry — KJV and Geneva carry two, a title image + a page of text, rendered as a
-  2-up row) plus one on each `TextTraditions` card. Data (src/dims/alt/caption/credit +
-  provenance) is in `historyImages` in `lib/englishBibleHistory.ts`; `components/HistoryImage.tsx`
-  wraps `next/image` with a shared sepia filter (`sepia(.24) saturate(.86) contrast(1.03)`).
+  to sit here was cut 2026-09-08 as redundant with the diagrams. Each timeline `year` string
+  carries a place (`"1516 · Basel"`) as of 2026-09-09 (Coverdale is "Antwerp" — disputed, but the
+  current scholarly consensus).
+  **Images** (added 2026-09-09, the only images on the site): 19 public-domain manuscript /
+  title-page / text-page / portrait scans — one per timeline entry through 1611 (`images:
+  HistoryImage[]` on each entry — KJV and Geneva carry two, a title image + a page of text,
+  rendered as a 2-up row), one on each `TextTraditions` card, plus a Tyndale portrait
+  (`tyndalePortrait`, a hand-coloured engraving after the Hertford College painting) in the
+  "through-line: Tyndale" narrative, which is a text-left / portrait-right grid. Data
+  (src/dims/alt/caption/credit + provenance) is in `historyImages` in
+  `lib/englishBibleHistory.ts`; `components/HistoryImage.tsx` wraps `next/image` with a shared
+  sepia filter (`sepia(.24) saturate(.86) contrast(1.03)`).
   Files in `public/history/`; raw downloads (from Wikimedia Commons + the Internet Archive)
   are shrunk by `scripts/optimize-history-images.mjs` (one-off; needs `npm i -D sharp` — sharp
   is a devDep, also what `next/image` wants) and kept as `public/history/*.src.*` (gitignored).
@@ -175,12 +194,16 @@ popular, literal, memorization, devotions, preaching, study, balance (Serious St
 Memorization were swapped so the row runs roughly basic → serious; `balance` renders as a
 featured tab below the row, `defaultRankingSlug`). `lib/rankings.ts` header comment documents
 the per-category ranking logic (original 9 keep relative order in the 6 descriptive categories;
-balance is computed). The Most Literal tab also renders `TranslationSpectrum`.
+balance is computed). The Most Literal tab also renders `TranslationSpectrum`. 2026-09-09: in
+**Serious Study**, NRSVue moved 3rd → 5th (below ESV and LSB) — the list is pitched at a lay
+student and NRSVue's study ecosystem is academic; the `balance` blurbs for ESV/LSB/NRSVue and the
+FAQ "which translation" answer were updated to match (`balance` order itself didn't change).
 
 **`/blog`** (nav + footer label "Videos", grouped under the Learn menu) is a curated library of
-~11 embedded YouTube videos on where the English Bible came from, how translations are made,
-Textus Receptus vs. Critical Text, gender language, and choosing a Bible — two tiers ("Start
-here" / "Go deeper"). Static server component, video list inlined in `app/blog/page.tsx`. Embeds
+~12 embedded YouTube videos on where the English Bible came from, how translations are made,
+Textus Receptus vs. Critical Text, whether the transmitted text is reliable (Wes Huff, "Is the
+Bible We Have What the Original Authors Even Wrote?", added 2026-09-09), gender language, and
+choosing a Bible — two tiers ("Start here" / "Go deeper"). Static server component, video list inlined in `app/blog/page.tsx`. Embeds
 use `youtube-nocookie.com` (no cookies until play) and `loading="lazy"`. The route stayed
 `/blog` to avoid churning nav/footer/sitemap. Videos are picked to be instructive and
 non-polemical and to represent both the Critical Text and Majority/Byzantine (KJV-underlying)
@@ -327,10 +350,14 @@ there's no admin UI for review yet, so review/merge into `churches` happens by h
 Supabase dashboard's Table Editor.
 
 Church Finder sits at **nav position 2** and is one of the four landing-page entry cards
-(`app/page.tsx`); the `/compare` page keeps a callout, and the footer has an "Add your church →"
-CTA (`components/SiteFooter.tsx`). All of this is deliberate — the feature drives the
-crowdsourced submissions, and without prominent links it's buried and users don't know they can
-correct their own church's entry.
+(`app/page.tsx` — that card was reworded 2026-09-09 to ask people to tell us the translation,
+since coverage is thin); the footer has an "Add your church →" CTA (`components/SiteFooter.tsx`).
+The `/compare` callout to the Church Finder was **removed 2026-09-09** (owner call — it read as
+clutter above the table). All of this is deliberate — the feature drives the crowdsourced
+submissions, and without prominent links it's buried and users don't know they can correct their
+own church's entry. `components/ChurchSearch.tsx` gained a "Find a church" heading 2026-09-09,
+matched to a bigger "Add a church" heading in `AddChurchForm`, with a `border-t` between the two
+so the search and the submit form read as separate things.
 
 **Spam/duplicate mitigation on `AddChurchForm`**: the insert-only RLS policy is the primary
 defense — nothing a submitter sends ever reaches the public `churches` table without a human
@@ -915,8 +942,10 @@ same day — label only.)
 
 **The editorial line** (as of 2026-09-06, spelled out in the "What churches are listed here?"
 `<details>` on `/church-finder`): the directory is **Trinitarian Protestant** — the historic
-Reformation traditions and the movements that grew from them. Inclusion test: *God is one in
-three persons; Jesus Christ is God; the Bible is the final authority.*
+Reformation traditions and the movements that grew from them. Inclusion test: *the Trinity —
+one God in three persons, Father, Son, and Holy Spirit — and the Bible as the final authority.*
+(The `<details>` copy was trimmed to this on 2026-09-09 — the standalone "Jesus Christ is God"
+clause was redundant once the test names the Trinity. Substance unchanged: Oneness is still out.)
 
 Earlier the line was broader — "the historic Christian traditions (Catholic, Orthodox,
 Protestant)" with a deliberately two-part, *non*-Trinitarian test ("Jesus is God + the Bible is

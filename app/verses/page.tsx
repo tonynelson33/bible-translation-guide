@@ -7,7 +7,9 @@ import { rankingCategories } from "@/lib/rankings";
 import { fetchVerseForTranslation } from "@/lib/verseProviders";
 
 export const metadata: Metadata = {
-  title: "Sample Verse Comparison",
+  title: "Comparison of Popular Verses",
+  description:
+    "Read a well-known passage in all twelve English translations at once, lined up from word-for-word at the top to thought-for-thought at the bottom.",
   alternates: { canonical: "/verses" },
 };
 
@@ -51,10 +53,10 @@ export default function VersesPage({
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-          Sample Verse Comparison
+          Comparison of Popular Verses
         </h1>
         <p className="mt-3 text-neutral-600">
-          Pick a verse and read down the list. It runs word-for-word at the top to
+          Pick a well-known passage and read down the list. It runs word-for-word at the top to
           thought-for-thought at the bottom, so the rows closest together are the ones most alike.
         </p>
       </div>

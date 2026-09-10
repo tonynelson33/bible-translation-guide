@@ -51,7 +51,6 @@
     "publisher": "Biblica / Zondervan",
     "quoteLimit": "500 verses",
     "genderApproach": "Moderate",
-    "genderApproachLabel": "Moderate (2011)",
     "redLetter": true,
     "otMarking": {
       "marks": false
@@ -160,7 +159,6 @@
     "publisher": "Lockman Foundation",
     "quoteLimit": "1,000 verses",
     "genderApproach": "Moderate",
-    "genderApproachLabel": "Moderate (2020)",
     "redLetter": true,
     "otMarking": {
       "marks": true,
