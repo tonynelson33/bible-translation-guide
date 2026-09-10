@@ -190,8 +190,8 @@ export default function HistoryPage() {
           How the twelve are related
         </h2>
         <p className="mt-3 leading-relaxed text-neutral-700">
-          Put the family resemblances on one page. Most of the translations here are branches of the
-          same tree, rooted in Tyndale and the King James Version; a handful are new work from the
+          One picture of everything above. Most of the translations on this site are branches of the
+          same tree, rooted in Tyndale and the King James Version; a handful are fresh work from the
           original languages.
         </p>
         <TranslationFamilyTree />
