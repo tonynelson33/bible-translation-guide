@@ -72,7 +72,7 @@ export default function TranslationFamilyTree() {
           viewBox="0 0 448 440"
           className="mx-auto block h-auto w-full min-w-[340px] max-w-[440px]"
           role="img"
-          aria-label="Family tree of the twelve English Bible translations. William Tyndale's 1526 New Testament leads to the 1611 King James Version. The NKJV (1982) updates the KJV directly. The KJV also leads to the Revised Version (1885) and its American edition, the ASV (1901). Three lines come off the ASV: the RSV (1952), which leads to the ESV (2001) and to the NRSV (1989), updated as the NRSVue (2021); the NASB (1971), revised as the LSB (2021); and the Amplified Bible (1965). The NIV, NLT, NET, CEB and CSB were translated from the original languages and have no King James lineage."
+          aria-label="Family tree of the twelve English Bible translations. William Tyndale's 1526 New Testament leads to the 1611 King James Version. The NKJV (1982) updates the KJV directly. The KJV also leads to the Revised Version (1885) and its American edition, the ASV (1901). Three lines come off the ASV: the RSV (1952), which leads to the ESV (2001) and to the NRSV (1989), updated as the NRSVue (2021); the NASB (1971), which the LSB (2021) is a revision of; and the Amplified Bible (1965). The NIV, NLT, NET, CEB and CSB were translated from the original languages and have no King James lineage."
         >
           {edges.map(([a, b]) => {
             const from = byId[a];
@@ -161,9 +161,9 @@ export default function TranslationFamilyTree() {
         twelve go back to the King James Version &mdash; itself mostly Tyndale&rsquo;s wording. The{" "}
         <strong>NKJV</strong> updates the KJV&rsquo;s English directly; the rest come down through
         the 1901 ASV. The <strong>RSV</strong> branched off it in 1952 and leads to the{" "}
-        <strong>ESV</strong> and the <strong>NRSVue</strong>; the <strong>NASB</strong> (revised as
-        the <strong>LSB</strong>) and the <strong>Amplified Bible</strong> are separate revisions of
-        the ASV. The five below were made from scratch.
+        <strong>ESV</strong> and the <strong>NRSVue</strong>; the <strong>NASB</strong> (which the{" "}
+        <strong>LSB</strong> is a revision of) and the <strong>Amplified Bible</strong> are separate
+        revisions of the ASV. The five below were made from scratch.
       </figcaption>
     </figure>
   );

@@ -39,12 +39,13 @@ back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categ
 **Site structure (rebuilt 2026-09-07 "site-overhaul" branch)**: `/` is a **landing page**
 (`app/page.tsx`) — hero, four entry cards, the `TranslationSpectrum`, a "the twelve" grid; the
 sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The nav
-(`components/Nav.tsx`) is `At a Glance · Church Finder · Translations ▾ · Verses · Rankings ·
-Learn ▾ · Where to Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the
-Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/faq`,
-`/glossary`, `/blog`, `/about` — the last two added 2026-09-10; `/about` and `/glossary` are
-deliberately *only* in the Learn dropdown + footer, not top-level, per owner "the site is about
-maxed out"). `/compare` was labelled "Compare" until 2026-09-09 — renamed "At a Glance" (nav, h1
+(`components/Nav.tsx`) is `Home · At a Glance · Church Finder · Translations ▾ · Verses ·
+Rankings · Learn ▾ · Where to Buy`; the logo also links to `/` (the explicit "Home" was added
+2026-09-11 — owner ask, "it looks cleaner"); a reusable `NavDropdown` powers both the
+Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/blog`,
+`/faq`, `/glossary`, `/about` — `/blog`/`/faq`/`/glossary`/`/about` order set 2026-09-11, Videos
+before FAQ; `/about` and `/glossary` are deliberately *only* in the Learn dropdown + footer, not
+top-level, per owner "the site is about maxed out"). `/compare` was labelled "Compare" until 2026-09-09 — renamed "At a Glance" (nav, h1
 "Every translation at a glance", metadata title, footer) because "Verses" is where people
 picture a comparison; the route stayed `/compare`. `/verses` is still "Verses" in the nav (the
 longer "Popular Verses" pushed the bar into the logo near 1024px) but its h1/title are

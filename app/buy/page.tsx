@@ -97,7 +97,7 @@ export default function BuyPage() {
       </h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-neutral-700">
         For each translation, the publisher&rsquo;s own store where there is one, plus the major
-        retailers, and the places to read the full text free are all provided below. They&rsquo;re
+        retailers, and the places to read the full text free are all listed here. They&rsquo;re
         plain outbound links &mdash; no affiliate tracking, and this site takes no cut.
       </p>
 

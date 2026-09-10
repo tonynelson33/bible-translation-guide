@@ -6,7 +6,7 @@ const fieldClass =
   "rounded-md border border-neutral-300 bg-white px-2.5 py-1.5 text-sm text-neutral-900 focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600";
 
 /**
- * A "suggest a correction" form for anything on the site that isn't a church
+ * A "submit a correction" form for anything on the site that isn't a church
  * listing. Posts to church_suggestions (type "site_correction") via
  * lib/churchSuggestions — insert-only for anon, reviewed by hand.
  */
@@ -47,7 +47,7 @@ export default function SiteCorrectionForm() {
         onClick={() => setOpen(true)}
         className="mt-3 rounded-md border border-brand-200 bg-brand-50 px-3 py-1.5 text-sm font-semibold text-brand-700 hover:border-brand-300 hover:bg-brand-100"
       >
-        Suggest a correction
+        Submit a correction
       </button>
     );
   }

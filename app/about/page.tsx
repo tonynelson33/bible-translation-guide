@@ -95,8 +95,8 @@ const sections: { title: string; body: ReactNode }[] = [
     body: (
       <>
         <p>
-          Church listings have their own forms &mdash; every Church Finder result has a
-          &ldquo;suggest a correction&rdquo; link, and there&rsquo;s a form to add one that&rsquo;s
+          Church listings have their own forms &mdash; every Church Finder result has an
+          &ldquo;update information&rdquo; link, and there&rsquo;s a form to add one that&rsquo;s
           missing. For anything else &mdash; a wrong date, a misquoted verse, an out-of-step
           permission figure, a broken link &mdash; use the form below. It goes to a review queue,
           not straight onto the page.

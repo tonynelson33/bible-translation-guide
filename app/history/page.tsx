@@ -187,12 +187,11 @@ export default function HistoryPage() {
       {/* Family tree */}
       <div className="mt-14 border-t border-neutral-200 pt-10">
         <h2 className="font-display text-2xl font-semibold text-brand-900">
-          How the twelve are related
+          Bible Translation Tree
         </h2>
         <p className="mt-3 leading-relaxed text-neutral-700">
-          One picture of everything above. Most of the translations on this site are branches of the
-          same tree, rooted in Tyndale and the King James Version; a handful are fresh work from the
-          original languages.
+          Many of the translations on this site are branches of the same tree, rooted in Tyndale and
+          the King James Version; a handful are fresh work from the original languages.
         </p>
         <TranslationFamilyTree />
       </div>

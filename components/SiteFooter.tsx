@@ -15,9 +15,9 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
     links: [
       { href: "/history", label: "How We Got the English Bible" },
       { href: "/differences", label: "Translation Differences" },
+      { href: "/blog", label: "Videos" },
       { href: "/faq", label: "FAQ" },
       { href: "/glossary", label: "Glossary" },
-      { href: "/blog", label: "Videos" },
     ],
   },
   {

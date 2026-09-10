@@ -7,11 +7,13 @@ import { translations } from "@/lib/data";
 
 type NavLink = { href: string; label: string };
 
-// Desktop order: At a Glance · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
-// Church Finder rides high because it's the most distinctive feature; the
+// Desktop order: Home · At a Glance · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
+// The logo also links home; the explicit "Home" is there because people look for
+// it. Church Finder rides high because it's the most distinctive feature; the
 // learning pages are grouped under one menu so the bar stays short. "Verses"
 // stays short here; the page itself is titled "Comparison of Popular Verses".
 const beforeTranslations: NavLink[] = [
+  { href: "/", label: "Home" },
   { href: "/compare", label: "At a Glance" },
   { href: "/church-finder", label: "Church Finder" },
 ];
@@ -24,9 +26,9 @@ const afterTranslations: NavLink[] = [
 const learnLinks: NavLink[] = [
   { href: "/history", label: "How We Got the English Bible" },
   { href: "/differences", label: "Translation Differences" },
+  { href: "/blog", label: "Videos" },
   { href: "/faq", label: "FAQ" },
   { href: "/glossary", label: "Glossary" },
-  { href: "/blog", label: "Videos" },
   { href: "/about", label: "About This Site" },
 ];
 
@@ -36,8 +38,11 @@ const sortedTranslations = [...translations].sort((a, b) =>
   a.abbreviation.localeCompare(b.abbreviation),
 );
 
+// px-2.5 (not px-3): the bar carries eight items at the lg breakpoint once
+// "Home" is in, and the tighter padding keeps a gap between the logo and the
+// first link at 1024px.
 const linkClass = (active: boolean) =>
-  `rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
+  `rounded px-2.5 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-800 ${
     active ? "text-brand-800" : "text-neutral-600"
   }`;
 
