@@ -25,7 +25,7 @@ no database, but the Church Finder (`/church-finder`) is backed by a real Postgr
 see that section below before assuming "no database" applies everywhere.
 
 **Data layer**: `data/translations.json` (12 translations, all comparison-table fields) and
-`data/verses.json` (5 sample verse references) are the single source of truth, typed by
+`data/verses.json` (42 sample verse references, Bible order) are the single source of truth, typed by
 `lib/types.ts` and loaded through `lib/data.ts` (`translations`, `sampleVerses`,
 `getTranslation()`, `getSampleVerse()`). Every page/component that needs translation data reads
 through `lib/data.ts` rather than importing the JSON directly. Adding a translation is a
@@ -42,7 +42,9 @@ sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The 
 (`components/Nav.tsx`) is `At a Glance · Church Finder · Translations ▾ · Verses · Rankings ·
 Learn ▾ · Where to Buy`; the logo links to `/`; a reusable `NavDropdown` powers both the
 Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/faq`,
-`/blog`). `/compare` was labelled "Compare" until 2026-09-09 — renamed "At a Glance" (nav, h1
+`/glossary`, `/blog`, `/about` — the last two added 2026-09-10; `/about` and `/glossary` are
+deliberately *only* in the Learn dropdown + footer, not top-level, per owner "the site is about
+maxed out"). `/compare` was labelled "Compare" until 2026-09-09 — renamed "At a Glance" (nav, h1
 "Every translation at a glance", metadata title, footer) because "Verses" is where people
 picture a comparison; the route stayed `/compare`. `/verses` is still "Verses" in the nav (the
 longer "Popular Verses" pushed the bar into the logo near 1024px) but its h1/title are
@@ -68,33 +70,41 @@ fully confirmed against publisher documentation; `ComparisonTable` renders those
 marker.
 
 **Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
-`/verses` compares a **fixed** set of 5 sample verses (`data/verses.json`), so their text is
-**cached, not fetched live**. `data/cachedVerses.json` holds `{ [translationId]: { attribution,
-verses: { [reference]: text } } }` for all 12 translations, and `lib/verseProviders.ts`'s
-`fetchVerseForTranslation` is a plain synchronous lookup — no API keys, no rate limits, no
-network. A translation with no entry for a verse returns `status: "unavailable"`, never throws.
+`/verses` compares a **fixed** set of **42** sample verses (`data/verses.json`, Bible order —
+was 5 until 2026-09-10), so their text is **cached, not fetched live**. `data/cachedVerses.json`
+holds `{ [translationId]: { attribution, verses: { [reference]: text } } }` for all 12
+translations, and `lib/verseProviders.ts`'s `fetchVerseForTranslation` is a plain synchronous
+lookup — no API keys, no rate limits, no network. A translation with no entry for a verse
+returns `status: "unavailable"`, never throws.
 
-`/verses` layout (rewritten 2026-09-07): a single-column list, one row per translation, `max-w-6xl`,
-ordered **most literal → freest** — the order is derived at module load from the `literal` category
-in `lib/rankings.ts` (`rankingCategories.find(c => c.slug === "literal")`), so it self-syncs. Each
-row is a `[abbr | verse text]` grid (stacks on mobile); attributions are collected into one
-fine-print block at the foot of the page (still on-page = licence notice satisfied). `VerseCard.tsx`
-is **no longer used here** — it survives only as the single-verse card on `/translations/[slug]`.
+`/verses` layout (rewritten 2026-09-07): a `<select>` verse picker (`components/VersePicker.tsx`)
+above a single-column list, one row per translation, `max-w-6xl`, ordered **most literal →
+freest** — the order is derived at module load from the `literal` category in `lib/rankings.ts`
+(`rankingCategories.find(c => c.slug === "literal")`), so it self-syncs. The picker groups its 42
+options into Old Testament / Gospels / Acts & the Letters via `referenceSection()` in
+`lib/bibleOrder.ts` (`compareReferences` there also drives the Bible-order sort; page defaults to
+John 3:16). Each row is a `[abbr | verse text]` grid (stacks on mobile); attributions are
+collected into one fine-print block at the foot of the page (still on-page = licence notice
+satisfied). `VerseCard.tsx` is **no longer used here** — it survives only as the single-verse
+card on `/translations/[slug]`.
 
 - **Fidelity**: verse **words and punctuation are exact** — every quotation mark and dash as
   the source publishes it (John 3:16 keeps its opening `"` in ESV/NLT/NASB/LSB, has none in
   KJV/NIV/NKJV/CSB/NET). Only non-verse furniture is removed: verse/chapter numbers, headings,
-  Psalm superscriptions; the small-caps divine name is written `LORD`; line breaks flattened to
-  one line. **Never hand-edit the text** (an earlier bug hand-added `[[ ]]` to Luke 22:43-44 —
-  removed). `components/VerseCard.tsx` adds no quote glyphs of its own. See
-  `data/cachedVerses.README.md`: KJV→bible-api, ESV→api.esv.org (`scripts/fetch-sample-verses.mjs`),
-  NIV/NLT/CSB/NASB/NKJV/NET/LSB→Bible Gateway by hand (no API keeps their small-caps + quotes).
-  NASB is the 2020 edition (matches `latestRevisionYear`).
-- **Why it's legal**: 5 verses per translation is far inside every publisher's
+  Psalm superscriptions, Psalm-119/Lamentations acrostic letters; the small-caps divine name is
+  written `LORD` (`scripts/fetch-sample-verses.mjs` restores it for the api.bible/NET renderings
+  via its `YHWH_VERSES` list); line breaks flattened to one line; em-dashes set tight. The KJV's
+  verse-initial capitals ("…faith, Meekness, temperance") are kept — that is how the KJV prints.
+  **Never hand-edit the text** (an earlier bug hand-added `[[ ]]` to Luke 22:43-44 — removed).
+  See `data/cachedVerses.README.md`: KJV→bible-api, ESV→api.esv.org, NIV/NKJV/CSB→api.bible
+  (HTML mode), NET→labs.bible.org — all in `scripts/fetch-sample-verses.mjs`;
+  NLT/NASB/NRSVue/CEB/AMP→Bible Gateway by hand, LSB→read.lsbible.org by hand (no API keeps
+  their small-caps + quotes). NASB is the 2020 edition (matches `latestRevisionYear`).
+- **Why it's legal**: 42 verses per translation is well inside every publisher's
   quote-without-permission ceiling (verified 2026-09-09: 500 for ESV/NIV/NLT/NRSVue/CEB;
   1,000 for CSB/NKJV/NASB/LSB/AMP — all Lockman titles are 1,000; KJV public domain; NET text
   has **no limit for non-commercial use**). On a **non-commercial** site, with the required
-  notice shown under each verse.
+  notice shown on the page.
 - **Non-commercial still matters**: several of those permissions (ESV especially) are
   *non-commercial only*. Owner confirmed 2026-08-29 the site stays non-commercial and `/buy`
   stays a placeholder. If that changes — affiliate links, ads, sponsorship, donations anywhere
@@ -104,8 +114,10 @@ is **no longer used here** — it survives only as the single-verse card on `/tr
   removed from `.env.example`; the only remaining consumers are the one-off
   `scripts/fetchVerseComparisons.mjs` (for the separate, not-yet-used
   `data/verseComparisons.json` dataset).
-- **Adding a sample verse**: add the ref to `data/verses.json` and its text for every
-  translation to `cachedVerses.json`, from an authoritative source. If `/verses` ever needs to
+- **Adding a sample verse**: add the ref to `data/verses.json` **and** `REFS` in
+  `scripts/fetch-sample-verses.mjs` (keep both in Bible order), run that script for the 6 API
+  translations, hand-source the other 6, and only then commit — a missing translation renders
+  "Text unavailable". Full steps in `data/cachedVerses.README.md`. If `/verses` ever needs to
   cover arbitrary user-chosen verses (not a curated list), the caching approach breaks down and
   a live-API layer would need rebuilding.
 
@@ -183,6 +195,18 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   are shrunk by `scripts/optimize-history-images.mjs` (one-off; needs `npm i -D sharp` — sharp
   is a devDep, also what `next/image` wants) and kept as `public/history/*.src.*` (gitignored).
   No text-page scan exists for the Coverdale or Great Bible, so those keep their title pages.
+  **Family tree** (added 2026-09-10, at the very foot of the page): `components/TranslationFamilyTree.tsx`
+  — a hand-placed SVG showing the twelve as branches of one tree (Tyndale → KJV → RV/ASV → RSV →
+  ESV/NRSVue, NASB → LSB, etc.) with the five that are fresh work from the originals (NIV, NLT,
+  NET, CEB, CSB) as loose chips. Node coordinates are literal constants in the component; there
+  is no data file. Current translations are `fill-brand-800`, ancestors `fill-white`.
+- **`/about`** ("About This Site", added 2026-09-10, Learn dropdown + footer only) — static, all
+  content inline in `app/about/page.tsx` as a `sections` array: what it is, the perspective
+  (descriptive not prescriptive, written from within Protestantism), how the data is made,
+  what's deliberately left out, corrections. No new data files.
+- **`/glossary`** ("Glossary", added 2026-09-10, Learn dropdown + footer only) — static, content
+  inline in `app/glossary/page.tsx` as a `groups` array (~24 terms in 3 groups: how translations
+  are made / where the text comes from / editions & formats). `<dl>` per group.
 
 There is **no `/choose` page** — it was built then removed 2026-09-08. Its six purpose scenarios
 duplicated `/rankings` categories and the picks kept drifting from the ranked lists they linked
@@ -196,6 +220,12 @@ never contradict the list. The KJV-bridge and formal+readable advice moved there
 (`lib/translationProfiles.ts`) are all real. `components/ComingSoon.tsx` still exists only as the
 per-route fallback in `app/translations/[slug]/page.tsx` for a translation with no
 `translationProfiles` entry — with all 12 profiled, it currently never renders.
+
+**`/buy`** — publisher store + major-retailer + read-free links per translation (`lib/buyLinks.ts`).
+Audio is **one prose note** (added 2026-09-10, after the translation-vs-edition paragraph), not
+per-translation links: no single free source narrates all twelve, and 12 fragile deep links
+would rot. It points at YouVersion (free where offered) and the publishers, naming the NKJV's
+*The Word of Promise* as the one with a distinct dramatized edition.
 
 `/rankings`: 7 categories in `rankingCategories` — order is the tab order. As of 2026-09-07:
 popular, literal, memorization, devotions, preaching, study, balance (Serious Study and

@@ -44,3 +44,11 @@ export function compareReferences(a: string, b: string): number {
   const kb = referenceSortKey(b);
   return ka[0] - kb[0] || ka[1] - kb[1] || ka[2] - kb[2];
 }
+
+/** Coarse grouping for the verse picker: Old Testament / Gospels / Acts & the Letters. */
+export function referenceSection(reference: string): string {
+  const [book] = referenceSortKey(reference);
+  if (book <= 38) return "Old Testament";
+  if (book <= 42) return "Gospels"; // Matthew, Mark, Luke, John
+  return "Acts & the Letters";
+}
