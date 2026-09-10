@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
 import TextTraditions from "@/components/TextTraditions";
+import TranslationFamilyTree from "@/components/TranslationFamilyTree";
 import { timeline, textPrimer, historyImages } from "@/lib/englishBibleHistory";
 
 export const metadata: Metadata = {
@@ -181,6 +182,19 @@ export default function HistoryPage() {
         <div className="mt-10">
           <TextTraditions />
         </div>
+      </div>
+
+      {/* Family tree */}
+      <div className="mt-14 border-t border-neutral-200 pt-10">
+        <h2 className="font-display text-2xl font-semibold text-brand-900">
+          How the twelve are related
+        </h2>
+        <p className="mt-3 leading-relaxed text-neutral-700">
+          Put the family resemblances on one page. Most of the translations here are branches of the
+          same tree, rooted in Tyndale and the King James Version; a handful are new work from the
+          original languages.
+        </p>
+        <TranslationFamilyTree />
       </div>
 
       <div className="mt-14 rounded-lg border border-gild-200 bg-gild-50 px-5 py-4 text-sm leading-relaxed text-neutral-700">
