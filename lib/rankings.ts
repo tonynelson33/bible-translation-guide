@@ -33,7 +33,10 @@ export const defaultRankingSlug = "balance";
  * translation-comparison genre). In "Most Literal" 2026-09-07, NET was moved to
  * just past the CSB: its literal renderings live in its footnotes, so the main
  * text reads freer than its "Mixed" label — which is where published spectrum
- * charts put it. "Best Overall Balance" is computed from the other lists.
+ * charts put it. In "Best for Serious Study" 2026-09-09, NRSVue was moved from
+ * 3rd to below the LSB (5th): the category is pitched at a self-directed lay
+ * student, and NRSVue's study ecosystem assumes a seminary or university.
+ * "Best Overall Balance" is computed from the other lists.
  */
 export const rankingCategories: RankingCategory[] = [
   {
@@ -214,12 +217,12 @@ export const rankingCategories: RankingCategory[] = [
         id: "nasb",
         blurb: "Long the standard for close, word-for-word study, especially for readers doing original-language word studies or comparing translations line by line.",
       },
-      {
-        id: "nrsvue",
-        blurb: "The default translation of academic biblical studies — the text behind the New Oxford Annotated and HarperCollins study Bibles and the common version in most non-evangelical seminaries, with formal wording and a serious set of text-critical footnotes.",
-      },
       { id: "esv", blurb: "The base text for the widely used ESV Study Bible, backed by one of the largest libraries of study notes and commentaries built around any single translation." },
       { id: "lsb", blurb: "Maximally literal and internally consistent, which appeals to readers doing detailed word studies — though its study-resource library is still young." },
+      {
+        id: "nrsvue",
+        blurb: "The default translation of academic biblical studies — the text behind the New Oxford Annotated and HarperCollins study Bibles, with formal wording and a serious set of text-critical footnotes. Its ecosystem assumes a seminary or university setting, which is why it sits below the evangelical study Bibles for a self-directed lay reader.",
+      },
       { id: "nkjv", blurb: "Formal and marginal-note-heavy about where the Majority Text and the modern Critical Text differ, which suits textually-minded study." },
       { id: "csb", blurb: "The CSB Study Bible and CSB Apologetics Study Bible give it a real study apparatus, even though its main text prioritizes readability over maximal literalness." },
       { id: "niv", blurb: "The NIV Study Bible is one of the best-selling study Bibles ever made — strong supporting material, even though the translation itself is Dynamic, not word-for-word." },
@@ -239,7 +242,7 @@ export const rankingCategories: RankingCategory[] = [
       {
         id: "esv",
         blurb:
-          "The best average across the four use cases — 2nd for preaching, 3rd for memorization, 4th for serious study, and no worse than 7th (daily devotions). No single specialty, and no real weakness.",
+          "The best average across the four use cases — 2nd for preaching, 3rd for both serious study and memorization, and no worse than 7th (daily devotions). No single specialty, and no real weakness.",
       },
       {
         id: "csb",
@@ -253,11 +256,11 @@ export const rankingCategories: RankingCategory[] = [
       },
       { id: "niv", blurb: "No category win, but 3rd for preaching, 4th for devotions, 5th for memorization, and never lower than 8th — the most consistently useful of the group even when it's not the best." },
       { id: "nkjv", blurb: "The most even spread on the page: 4th to 6th in all four categories, without ever leading one." },
-      { id: "nrsvue", blurb: "Carried by a 3rd for serious study and a 4th for preaching; the formal register and inclusive-language phrasing land it 8th for both personal reading and memorization." },
+      { id: "nrsvue", blurb: "Carried by a 4th for preaching, the mainline lectionary Bible, and a 5th for serious study; the formal register and inclusive-language phrasing land it 8th for both personal reading and memorization." },
       { id: "kjv", blurb: "A clear #1 for memorization and 7th for preaching, weighed against a pair of 9th-place finishes for study and daily reading — the archaic text is the drag on the everyday-use side." },
       { id: "net", blurb: "The #1 translation for serious study, but 11th for both preaching and memorization — the notes that make it exceptional don't help when the text is read aloud." },
       { id: "ceb", blurb: "A strong 2nd for daily devotions carries an otherwise low set of finishes — 8th to 11th in the other three." },
-      { id: "lsb", blurb: "5th for study and 6th for memorization on the back of its precision, but 9th to 11th for the two most public-facing uses." },
+      { id: "lsb", blurb: "4th for study and 6th for memorization on the back of its precision, but 9th to 11th for the two most public-facing uses." },
       { id: "nlt", blurb: "#1 for daily devotions and nowhere else near the top — its thought-for-thought wording is last or near-last for study, preaching, and memorization." },
       { id: "amp", blurb: "A reference tool rather than an everyday Bible — last in three of the four categories, and 10th in the other." },
     ],

@@ -151,8 +151,8 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
   quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
   "which translation should I use" answer mirrors the top 3 of the matching `rankings` category
-  (study→NET/NASB/NRSVue, devotions→NLT/CEB/CSB, preaching→CSB/ESV/NIV) — keep it in step if the
-  rankings move.
+  (study→NET/NASB/ESV, devotions→NLT/CEB/CSB, congregation via preaching→CSB/ESV/NIV) — keep it in
+  step if the rankings move.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
@@ -194,7 +194,10 @@ popular, literal, memorization, devotions, preaching, study, balance (Serious St
 Memorization were swapped so the row runs roughly basic → serious; `balance` renders as a
 featured tab below the row, `defaultRankingSlug`). `lib/rankings.ts` header comment documents
 the per-category ranking logic (original 9 keep relative order in the 6 descriptive categories;
-balance is computed). The Most Literal tab also renders `TranslationSpectrum`.
+balance is computed). The Most Literal tab also renders `TranslationSpectrum`. 2026-09-09: in
+**Serious Study**, NRSVue moved 3rd → 5th (below ESV and LSB) — the list is pitched at a lay
+student and NRSVue's study ecosystem is academic; the `balance` blurbs for ESV/LSB/NRSVue and the
+FAQ "which translation" answer were updated to match (`balance` order itself didn't change).
 
 **`/blog`** (nav + footer label "Videos", grouped under the Learn menu) is a curated library of
 ~12 embedded YouTube videos on where the English Bible came from, how translations are made,

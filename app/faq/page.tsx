@@ -94,11 +94,11 @@ const groups: Group[] = [
             </p>
             <ul>
               <li>
-                <strong>Close study:</strong> the translations with the most help built in &mdash;
-                the <Link href="/translations/net">NET</Link> (60,000 translator&rsquo;s notes),
-                the <Link href="/translations/nasb">NASB</Link>, and the{" "}
-                <Link href="/translations/nrsvue">NRSVue</Link> &mdash; ideally with a readable one
-                open alongside.
+                <strong>Close study:</strong> the translations with the most study help &mdash;
+                the <Link href="/translations/net">NET</Link> (its 60,000 notes), the{" "}
+                <Link href="/translations/nasb">NASB</Link> (word-for-word precision), and the{" "}
+                <Link href="/translations/esv">ESV</Link> (the largest study-Bible library) &mdash;
+                ideally with a readable one open alongside.
               </li>
               <li>
                 <strong>Daily reading:</strong> the <Link href="/translations/nlt">NLT</Link>,{" "}
@@ -126,7 +126,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Following the top of each ranking: for close study, the translations with the most built-in help — the NET (60,000 translator's notes), the NASB, and the NRSVue — ideally with a readable one alongside. For daily reading, the NLT, CEB, or CSB. For a child or a new reader, the NLT (about a sixth-grade reading level) or the CEB. For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
+          "Following the top of each ranking: for close study, the translations with the most study help — the NET (its 60,000 notes), the NASB (word-for-word precision), and the ESV (the largest study-Bible library) — ideally with a readable one alongside. For daily reading, the NLT, CEB, or CSB. For a child or a new reader, the NLT (about a sixth-grade reading level) or the CEB. For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
       },
       {
         id: "paraphrase",
@@ -419,7 +419,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "In wording it is almost exactly the 1611 text, but not letter for letter. The KJV was re-edited several times, and nearly every King James printed today follows the 1769 Oxford edition, which standardized spelling, punctuation, and italic type and cleaned up accumulated printing errors. The 1611 also included the Apocrypha between the Testaments, which most modern KJVs omit. The visible change is spelling: John 3:16 in the 1611 edition read, “For God so loued the world, that he gaue his only begotten Sonne: that whosoeuer beleeueth in him, should not perish, but haue euerlasting life.” Every word is the one printed today; the 1769 edition modernized the spelling without going back to the Greek and Hebrew to retranslate.",
+          "In wording it is almost exactly the 1611 text, but not letter for letter. The KJV was re-edited several times, and nearly every King James printed today follows the 1769 Oxford edition, which standardized spelling, punctuation, and italic type and cleaned up accumulated printing errors. The 1611 also included the Apocrypha between the Testaments, which most modern KJVs leave out. The visible change is spelling: John 3:16 in the 1611 edition read, “For God so loued the world, that he gaue his only begotten Sonne: that whosoeuer beleeueth in him, should not perish, but haue euerlasting life.” Every word is the one printed today; the 1769 edition modernized the spelling without going back to the Greek and Hebrew to retranslate.",
       },
       {
         id: "who-translates",

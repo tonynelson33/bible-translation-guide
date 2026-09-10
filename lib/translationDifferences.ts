@@ -86,12 +86,12 @@ export const differenceParts: DiffPart[] = [
         id: "long-passages",
         title: "Two well-known passages",
         intro:
-          "The woman caught in adultery and the longer ending of Mark. Both are absent from the earliest Greek manuscripts but present in the later Byzantine ones; modern translations keep both, normally in brackets with a note.",
+          "The woman caught in adultery and the longer ending of Mark. Both are in the later Byzantine manuscripts and not the earliest Greek ones; modern translations keep both, normally in brackets with a note.",
         referenced: [
           {
             reference: "John 7:53 – 8:11",
             note:
-              "The woman caught in adultery. Absent from the earliest and best Greek manuscripts; the story is ancient and widely regarded as authentic tradition, but its place in John is uncertain. KJV and NKJV print it without qualification; most others bracket it.",
+              "The woman caught in adultery. Not in the earliest Greek manuscripts, and the later ones that carry it don't all put it in the same place; the story is ancient and widely regarded as authentic tradition, but its place in John is uncertain. KJV and NKJV print it without qualification; most others bracket it.",
           },
           {
             reference: "Mark 16:9 – 20",
@@ -115,7 +115,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Mark 15:28", show: ["kjv"], note: "Quotes Isaiah 53:12; Jesus applies that verse to himself in Luke 22:37." },
           { reference: "Luke 17:36", show: ["kjv"], note: "Verses 34–35 already have the pattern — two in one bed, two women grinding." },
           { reference: "Luke 23:17", show: ["kjv"], note: "Pilate’s custom of releasing a prisoner at the feast; stated plainly in Matthew 27:15 and Mark 15:6." },
-          { reference: "Acts 8:37", show: ["kjv"], note: "The Ethiopian official’s confession of faith before baptism. Quoted by writers from the 2nd century on, but absent from the earliest manuscripts of Acts." },
+          { reference: "Acts 8:37", show: ["kjv"], note: "The Ethiopian official’s confession of faith before baptism. Quoted by writers from the 2nd century on, though not in the earliest manuscripts of Acts." },
           { reference: "Acts 15:34", show: ["kjv"], note: "A note that Silas stayed on at Antioch." },
           { reference: "Acts 24:7", show: ["kjv"], note: "An expansion about the commander Lysias intervening." },
           { reference: "Acts 28:29", show: ["kjv"], note: "A note that the Jews left arguing among themselves." },
@@ -133,7 +133,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Luke 4:8", show: ["kjv", "esv"], note: "KJV adds “Get thee behind me, Satan”; the rebuke is uncontested in Matthew 4:10 and Matthew 16:23." },
           { reference: "Luke 9:55-56", show: ["kjv", "esv"], note: "“Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them.”" },
           { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” Both keep it, but the ESV footnotes it — “Some manuscripts omit verses 43 and 44” — and its print edition sets the verses in double brackets. The manuscript evidence is genuinely divided." },
-          { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts omit it." },
+          { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts lack it." },
           { reference: "Luke 24:12", show: ["kjv", "esv"], note: "Peter running to the empty tomb; kept in most modern texts, footnoted in a few." },
           { reference: "John 5:3-4", show: ["kjv", "esv"], note: "The detail about an angel going down to stir the pool of Bethesda." },
           { reference: "Acts 9:5-6", show: ["kjv", "esv"], note: "“It is hard for thee to kick against the pricks,” and the exchange that follows. The “goads” saying is uncontested in Acts 26:14." },
