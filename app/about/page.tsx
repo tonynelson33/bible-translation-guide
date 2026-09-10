@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import SiteCorrectionForm from "@/components/SiteCorrectionForm";
 
 export const metadata: Metadata = {
   title: "About This Site",
@@ -92,12 +93,16 @@ const sections: { title: string; body: ReactNode }[] = [
   {
     title: "Corrections",
     body: (
-      <p>
-        Every Church Finder result has a &ldquo;suggest a correction&rdquo; form, and there&rsquo;s
-        a form to add a church that&rsquo;s missing. For anything else &mdash; a wrong date, a
-        misquoted verse, an out-of-step permission figure &mdash; corrections are welcome and the
-        site is updated regularly.
-      </p>
+      <>
+        <p>
+          Church listings have their own forms &mdash; every Church Finder result has a
+          &ldquo;suggest a correction&rdquo; link, and there&rsquo;s a form to add one that&rsquo;s
+          missing. For anything else &mdash; a wrong date, a misquoted verse, an out-of-step
+          permission figure, a broken link &mdash; use the form below. It goes to a review queue,
+          not straight onto the page.
+        </p>
+        <SiteCorrectionForm />
+      </>
     ),
   },
 ];

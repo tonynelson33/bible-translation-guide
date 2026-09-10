@@ -190,20 +190,37 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   "through-line: Tyndale" narrative, which is a text-left / portrait-right grid. Data
   (src/dims/alt/caption/credit + provenance) is in `historyImages` in
   `lib/englishBibleHistory.ts`; `components/HistoryImage.tsx` wraps `next/image` with a shared
-  sepia filter (`sepia(.24) saturate(.86) contrast(1.03)`).
+  sepia filter (`sepia(.24) saturate(.86) contrast(1.03)`). Every history image is click-to-zoom
+  via `components/ImageZoom.tsx` (2026-09-10) — a client component that opens the **raw source
+  file** (a plain `<img>`, not a `next/image` variant, and no sepia filter) in a full-screen
+  overlay; backdrop / ✕ / Esc close it, body scroll is locked while open. `HistoryImage` and the
+  `TextTraditions` banner both wrap their `<Image>` in it. The trigger must stay valid inside a
+  `<button>` (an `<img>` is; a `<figure>` is not — `HistoryImage` keeps its `<figcaption>`
+  outside the zoom button).
   Files in `public/history/`; raw downloads (from Wikimedia Commons + the Internet Archive)
   are shrunk by `scripts/optimize-history-images.mjs` (one-off; needs `npm i -D sharp` — sharp
   is a devDep, also what `next/image` wants) and kept as `public/history/*.src.*` (gitignored).
+  Sources are ~500–1280 px wide — enough to enlarge, not so big the page is heavy.
   No text-page scan exists for the Coverdale or Great Bible, so those keep their title pages.
   **Family tree** (added 2026-09-10, at the very foot of the page): `components/TranslationFamilyTree.tsx`
-  — a hand-placed SVG showing the twelve as branches of one tree (Tyndale → KJV → RV/ASV → RSV →
-  ESV/NRSVue, NASB → LSB, etc.) with the five that are fresh work from the originals (NIV, NLT,
-  NET, CEB, CSB) as loose chips. Node coordinates are literal constants in the component; there
-  is no data file. Current translations are `fill-brand-800`, ancestors `fill-white`.
+  — a hand-placed SVG, then an HTML chip row. `nodes` holds `{id,label,year,cx,y,w?,current?,hub?}`
+  with **literal** coordinates chosen so no two `edges` cross (RSV's subtree stays left of
+  NASB's). Genealogy shown: KJV → NKJV (direct) and KJV → Revised Version → ASV; off the ASV,
+  three separate lines — RSV (→ ESV, → NRSV → NRSVue), NASB (→ LSB), and the Amplified Bible.
+  `current: true` = one of the twelve → navy (`fill-brand-800`); the rest are pale ancestors.
+  The five with no KJV lineage (NIV, NLT, NET, CEB, CSB) are the navy chip row below the SVG,
+  under their own label — deliberately outside the diagram since they connect to nothing. All
+  twelve are navy (owner ask). If you edit node positions, re-check that edges don't cross and
+  the aria-label still matches.
 - **`/about`** ("About This Site", added 2026-09-10, Learn dropdown + footer only) — static, all
   content inline in `app/about/page.tsx` as a `sections` array: what it is, the perspective
   (descriptive not prescriptive, written from within Protestantism), how the data is made,
-  what's deliberately left out, corrections. No new data files.
+  what's deliberately left out, corrections. The Corrections section carries
+  `components/SiteCorrectionForm.tsx` — a client "Suggest a correction" button → a page-hint +
+  free-text form that `lib/churchSuggestions.ts`'s `submitSiteCorrection()` writes to
+  `church_suggestions` as `suggestion_type = 'site_correction'` (church-less; the page hint is
+  prefixed into `note` as `[page] …`). The form dynamic-imports the helper on submit so the
+  Supabase client stays out of the initial /about bundle.
 - **`/glossary`** ("Glossary", added 2026-09-10, Learn dropdown + footer only) — static, content
   inline in `app/glossary/page.tsx` as a `groups` array (~24 terms in 3 groups: how translations
   are made / where the text comes from / editions & formats). `<dl>` per group.
@@ -340,13 +357,18 @@ the breakdown tables use for an unknown denomination or translation).
 can't write to it), user submissions go into a separate `church_suggestions` table instead —
 RLS allows anon `insert` only, no `select`/`update`/`delete`, so submitters can't read anyone
 else's suggestions and there's no way to write directly into `churches` from the browser.
-`suggestion_type` is `edit | new_church | closed` (the `closed` value was added 2026-08 —
-widening that CHECK constraint is the only migration if you add another type).
+`suggestion_type` is `edit | new_church | closed | site_correction` (`closed` added 2026-08,
+`site_correction` 2026-09-10 — migration `add_site_correction_suggestion_type` also made
+`church_name` nullable, since a site correction has no church; widening that CHECK is still the
+only migration needed to add a type).
 `components/SuggestCorrectionForm.tsx` (inline on each `ChurchResultCard`) lets a visitor
 correct name / address / denomination / translation / **website**, **or** tick "permanently
 closed" to flag the row for removal (`submitClosedReport`). `components/AddChurchForm.tsx` (in
 the middle column of `/church-finder`, open by default) is for a church not in the directory.
-Both call helpers in `lib/churchSuggestions.ts`.
+`components/SiteCorrectionForm.tsx` (on `/about`) is for everything that isn't a church.
+All call helpers in `lib/churchSuggestions.ts`. Review all four types by hand in the Supabase
+dashboard (`select … where status = 'pending'`); `site_correction` rows put the page hint at
+the front of `note` as `[page] …`.
 
 **`website`** (added 2026-08-30, nullable, on both `churches` and `church_suggestions`): an
 optional church homepage. Stored as a full `https://…` URL. `lib/website.ts` `normalizeWebsite()`
