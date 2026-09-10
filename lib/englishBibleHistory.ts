@@ -216,14 +216,14 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.wycliffe1382],
   },
   {
-    year: "1516 · Basel",
+    year: "1516 · Basel, Switzerland",
     title: "Erasmus prints the Greek New Testament",
     detail:
       "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
     images: [historyImages.erasmus1516],
   },
   {
-    year: "1526 · Worms",
+    year: "1526 · Worms, Germany",
     title: "Tyndale's New Testament",
     detail:
       "William Tyndale produces the first English New Testament translated directly from Greek, and the first to be printed. Copies are smuggled into England in bales of cloth. He goes on to translate much of the Old Testament from Hebrew before he is betrayed, strangled, and burned near Brussels in 1536.",
@@ -231,7 +231,7 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.tyndale1526],
   },
   {
-    year: "1535 · Antwerp",
+    year: "1535 · Antwerp, Belgium",
     title: "The Coverdale Bible",
     detail:
       "Miles Coverdale publishes the first complete printed English Bible, filling the gaps Tyndale never reached by working from Latin and German. The Psalms in the Book of Common Prayer are still his.",
@@ -245,7 +245,7 @@ export const timeline: TimelineEntry[] = [
     images: [historyImages.greatBible1539],
   },
   {
-    year: "1560 · Geneva",
+    year: "1560 · Geneva, Switzerland",
     title: "The Geneva Bible",
     detail:
       "Made by English Protestants who had fled to Geneva. The first English Bible with numbered verses, printed in readable roman type, and heavily annotated — effectively the first study Bible. It was the Bible of Shakespeare, the Puritans, and the Mayflower.",

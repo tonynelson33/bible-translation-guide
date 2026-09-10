@@ -181,8 +181,9 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
   `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
   to sit here was cut 2026-09-08 as redundant with the diagrams. Each timeline `year` string
-  carries a place (`"1516 · Basel"`) as of 2026-09-09 (Coverdale is "Antwerp" — disputed, but the
-  current scholarly consensus).
+  carries a place (`"1516 · Basel, Switzerland"`); the four foreign cities (Basel, Worms, Antwerp,
+  Geneva) name their modern country (2026-09-11 — anachronistic in the strict sense, but it's how
+  readers locate them). Coverdale is "Antwerp" — disputed, but the current scholarly consensus.
   **Images** (added 2026-09-09, the only images on the site): 19 public-domain manuscript /
   title-page / text-page / portrait scans — one per timeline entry through 1611 (`images:
   HistoryImage[]` on each entry — KJV and Geneva carry two, a title image + a page of text,
