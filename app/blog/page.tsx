@@ -23,6 +23,12 @@ const startHere: Video[] = [
     topic: "History of the English Bible",
   },
   {
+    id: "iaub_Ch0Auo",
+    title: "Is the Bible We Have What the Original Authors Even Wrote?",
+    creator: "Wes Huff",
+    topic: "Answering the “telephone game” objection",
+  },
+  {
     id: "EwrxWIgNYZQ",
     title: "Can We Trust Bible Translations?",
     creator: "Bill Mounce · Seedbed",
@@ -45,12 +51,6 @@ const startHere: Video[] = [
     title: "Majority Text or Critical Text: Which Is Better?",
     creator: "Ken Yates · Grace Evangelical Society",
     topic: "Textus Receptus vs. Critical Text — the other view",
-  },
-  {
-    id: "iaub_Ch0Auo",
-    title: "Is the Bible We Have What the Original Authors Even Wrote?",
-    creator: "Wes Huff",
-    topic: "Answering the “telephone game” objection",
   },
   {
     id: "Uy1lv9RE8wQ",
