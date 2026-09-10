@@ -211,10 +211,11 @@ text positions; re-check embeds periodically since uploads get pulled or have em
 disabled. The Septuagint / OT-text slot is deliberately left empty — the neutral options were
 thin and `/history` covers that material in prose.
 
-**Where Translations Differ** (`/differences`, nav + footer label "Where Translations Differ" —
-renamed from "Why" 2026-09-08; the page is a catalogue of specific verses, the *why* is in the
-intro): the verses where translations most visibly disagree — a curated set (~52 references, 9
-sections) drawn from the
+**Translation Differences** (`/differences`, nav + footer label "Translation Differences", h1
+"Translation differences" — was "Why" → "Where Translations Differ" (2026-09-08) →
+"Translation Differences" (2026-09-09); the page is a catalogue of specific verses, the *why* is
+in the intro): the verses where translations most visibly disagree — a curated set (~52
+references, 9 sections) drawn from the
 ~84 rows tagged "Translation Difference" in `data/verseComparisonList.json`. **No total is stated
 on the page or in the page metadata** (both said "84" / "roughly 85"; removed 2026-09-07 —
 "most visible" has no standard threshold, and the page is a subset of the list anyway). The page

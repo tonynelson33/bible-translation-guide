@@ -132,11 +132,11 @@ export default function TextTraditions() {
           <Link href="/faq#majority-text" className="font-medium text-gild-700 hover:underline">
             FAQ has the detail
           </Link>
-          . The practical distance between all three is small &mdash;{" "}
+          . The practical distance between all three is small &mdash; the{" "}
           <Link href="/differences" className="font-medium text-gild-700 hover:underline">
-            where translations differ
+            translation differences
           </Link>{" "}
-          walks through the specific verses.
+          page walks through the specific verses.
         </p>
       </div>
 

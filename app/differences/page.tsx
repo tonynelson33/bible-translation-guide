@@ -8,7 +8,7 @@ import {
 } from "@/lib/translationDifferences";
 
 export const metadata: Metadata = {
-  title: "Where Translations Differ",
+  title: "Translation Differences",
   description:
     "The verses where English Bible translations most visibly disagree — bracketed verses, the Textus Receptus and the Critical Text, the Johannine Comma, 'virgin' vs 'young woman', and inclusive language — grouped by what causes each kind of difference.",
   alternates: { canonical: "/differences" },
@@ -19,7 +19,7 @@ export default function DifferencesPage() {
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-          Where translations differ
+          Translation differences
         </h1>
         <p className="mt-3 leading-relaxed text-neutral-700">
           Most of the Bible reads the same in every English translation. But in many places the

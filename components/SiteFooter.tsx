@@ -14,7 +14,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
     heading: "Learn",
     links: [
       { href: "/history", label: "How We Got the English Bible" },
-      { href: "/differences", label: "Where Translations Differ" },
+      { href: "/differences", label: "Translation Differences" },
       { href: "/faq", label: "FAQ" },
       { href: "/blog", label: "Videos" },
     ],

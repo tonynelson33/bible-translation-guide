@@ -143,7 +143,7 @@ export default function HistoryPage() {
           A translation is only as good as the source text behind it, and the source text is itself
           the product of careful reconstruction. This is the part that the{" "}
           <Link href="/differences" className="font-medium text-brand-700 hover:underline">
-            where translations differ
+            translation differences
           </Link>{" "}
           page assumes you know.
         </p>

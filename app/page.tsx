@@ -167,7 +167,7 @@ export default function HomePage() {
           </Link>{" "}
           and{" "}
           <Link href="/differences" className="font-medium text-brand-700 hover:underline">
-            where translations differ
+            translation differences
           </Link>
           .
         </p>

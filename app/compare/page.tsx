@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ComparePage() {
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-5 max-w-3xl">
+      <div className="mb-5 max-w-4xl">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           Every translation at a glance
         </h1>
