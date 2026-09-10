@@ -9,7 +9,7 @@ import { rankingCategories } from "@/lib/rankings";
 export const metadata: Metadata = {
   title: "Compare Bible Translations",
   description:
-    "There's no single best English Bible translation — it depends on why you're reading. Compare twelve major translations on how literally they render the original, how they read, where their text comes from, and who each one is for.",
+    "There's no single best English Bible translation — it depends on why you're reading. Compare twelve major translations on how literally they render the original, how they read, where their text comes from, and who each one might be best for.",
   alternates: { canonical: "/" },
 };
 
@@ -58,7 +58,7 @@ export default function HomePage() {
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-700">
           There&rsquo;s no single best answer &mdash; it depends on why you&rsquo;re reading. This
           site lays out twelve major English translations: how literally each renders the original,
-          how it reads, where its text comes from, and who it&rsquo;s for.
+          how it reads, where its text comes from, and who it might be best for.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
