@@ -1,20 +1,21 @@
 /**
  * A compact family tree for /history: how the twelve translations on this site
- * descend (or don't) from the King James Version. Hand-placed SVG on a simple
- * three-column grid — the shape is the point, so coordinates are explicit.
+ * descend (or don't) from the King James Version. Hand-placed SVG — the shape is
+ * the point, so coordinates are explicit and chosen so no two edges cross.
  *
- * Navy nodes are the twelve profiled here; outlined nodes are ancestors kept
- * only for the lineage. The five "independent" translations below the rule were
- * made fresh from the original languages and sit outside the KJV line.
+ * All twelve profiled translations are navy (in the SVG and in the chip row
+ * below it); the pale boxes are older Bibles kept only to show the lineage.
+ * The five in the chip row were translated fresh from the original languages
+ * and have no King James ancestry, so they hang off nothing.
  */
 
 type Node = {
   id: string;
   label: string;
   year: string;
-  /** column centre */
+  /** box centre x */
   cx: number;
-  /** box top edge */
+  /** box top edge y */
   y: number;
   w?: number;
   current?: boolean;
@@ -22,25 +23,21 @@ type Node = {
 };
 
 const BOX_H = 34;
-const DEF_W = 92;
-
-// Three columns, seven rows. Time runs top → bottom.
-const COL = { L: 62, C: 210, R: 358 };
-const ROW = [10, 74, 138, 202, 266, 330, 394];
+const DEF_W = 70;
 
 const nodes: Node[] = [
-  { id: "tyndale", label: "Tyndale NT", year: "1526", cx: COL.C, y: ROW[0] },
-  { id: "kjv", label: "KJV", year: "1611", cx: COL.C, y: ROW[1], w: 150, current: true, hub: true },
-  { id: "rv", label: "Revised Version", year: "1885", cx: COL.L, y: ROW[2], w: 116 },
-  { id: "nkjv", label: "NKJV", year: "1982", cx: COL.R, y: ROW[2], current: true },
-  { id: "asv", label: "ASV", year: "1901", cx: COL.L, y: ROW[3], w: 116 },
-  { id: "rsv", label: "RSV", year: "1952", cx: COL.L, y: ROW[4] },
-  { id: "nasb", label: "NASB", year: "1971", cx: COL.C, y: ROW[4], current: true },
-  { id: "amp", label: "AMP", year: "1965", cx: COL.R, y: ROW[4], current: true },
-  { id: "esv", label: "ESV", year: "2001", cx: COL.L, y: ROW[5], current: true },
-  { id: "nrsv", label: "NRSV", year: "1989", cx: COL.C, y: ROW[5] },
-  { id: "lsb", label: "LSB", year: "2021", cx: COL.R, y: ROW[5], current: true },
-  { id: "nrsvue", label: "NRSVue", year: "2021", cx: COL.C, y: ROW[6], current: true },
+  { id: "tyndale", label: "Tyndale NT", year: "1526", cx: 214, y: 10, w: 84 },
+  { id: "kjv", label: "KJV", year: "1611", cx: 214, y: 74, w: 128, current: true, hub: true },
+  { id: "rv", label: "Revised Version", year: "1885", cx: 118, y: 138, w: 132 },
+  { id: "nkjv", label: "NKJV", year: "1982", cx: 336, y: 138, current: true },
+  { id: "asv", label: "ASV", year: "1901", cx: 118, y: 202 },
+  { id: "rsv", label: "RSV", year: "1952", cx: 80, y: 266 },
+  { id: "nasb", label: "NASB", year: "1971", cx: 214, y: 266, current: true },
+  { id: "amp", label: "AMP", year: "1965", cx: 344, y: 266, current: true },
+  { id: "esv", label: "ESV", year: "2001", cx: 44, y: 330, current: true },
+  { id: "nrsv", label: "NRSV", year: "1989", cx: 124, y: 330 },
+  { id: "lsb", label: "LSB", year: "2021", cx: 240, y: 330, current: true },
+  { id: "nrsvue", label: "NRSVue", year: "2021", cx: 124, y: 394, current: true },
 ];
 
 const edges: [string, string][] = [
@@ -72,10 +69,10 @@ export default function TranslationFamilyTree() {
     <figure className="mt-6">
       <div className="overflow-x-auto rounded-lg border border-neutral-200 bg-paper p-4">
         <svg
-          viewBox="0 0 420 452"
+          viewBox="0 0 448 440"
           className="mx-auto block h-auto w-full min-w-[340px] max-w-[440px]"
           role="img"
-          aria-label="Family tree of the twelve English Bible translations. William Tyndale's 1526 New Testament leads to the 1611 King James Version. From the KJV: the NKJV (1982), and the Revised Version (1885), which led to the ASV (1901). From the ASV: the RSV (1952), the NASB (1971), and the AMP (1965). From the RSV: the ESV (2001) and the NRSV (1989), which was updated to the NRSVue (2021). The LSB (2021) is a revision of the NASB. The NIV, NLT, NET, CEB, and CSB were translated fresh from the original languages and do not descend from the KJV."
+          aria-label="Family tree of the twelve English Bible translations. William Tyndale's 1526 New Testament leads to the 1611 King James Version. The NKJV (1982) updates the KJV directly. The KJV also leads to the Revised Version (1885) and its American edition, the ASV (1901). Three lines come off the ASV: the RSV (1952), which leads to the ESV (2001) and to the NRSV (1989), updated as the NRSVue (2021); the NASB (1971), revised as the LSB (2021); and the Amplified Bible (1965). The NIV, NLT, NET, CEB and CSB were translated from the original languages and have no King James lineage."
         >
           {edges.map(([a, b]) => {
             const from = byId[a];
@@ -87,7 +84,7 @@ export default function TranslationFamilyTree() {
                 key={`${a}-${b}`}
                 d={`M ${from.cx} ${y1} V ${mid} H ${to.cx} V ${to.y}`}
                 fill="none"
-                stroke="rgb(212 212 212)"
+                stroke="rgb(203 203 203)"
                 strokeWidth="1.5"
               />
             );
@@ -140,31 +137,33 @@ export default function TranslationFamilyTree() {
               </g>
             );
           })}
-
-          <line x1="8" y1="430" x2="412" y2="430" stroke="rgb(229 229 229)" strokeWidth="1" />
-          <text x="210" y="445" textAnchor="middle" className="fill-neutral-400 text-[9px]">
-            Made fresh from the original languages — outside the King James line
-          </text>
         </svg>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-2">
-        {independents.map((t) => (
-          <span
-            key={t.label}
-            className="rounded-md border border-neutral-300 bg-white px-2.5 py-1 text-xs font-semibold text-neutral-700"
-          >
-            {t.label} <span className="font-normal text-neutral-400">{t.year}</span>
-          </span>
-        ))}
+      <div className="mt-4 border-t border-neutral-200 pt-3">
+        <p className="text-xs font-semibold text-neutral-600">
+          No King James lineage &mdash; translated straight from the Hebrew and Greek
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {independents.map((t) => (
+            <span
+              key={t.label}
+              className="rounded-md bg-brand-800 px-2.5 py-1 text-xs font-semibold text-white"
+            >
+              {t.label} <span className="font-normal text-brand-200">{t.year}</span>
+            </span>
+          ))}
+        </div>
       </div>
 
-      <figcaption className="mt-3 max-w-2xl text-xs leading-snug text-neutral-500">
-        The twelve are in navy. Most descend from the King James Version &mdash; itself mostly
-        Tyndale&rsquo;s wording. The <strong>NKJV</strong> modernizes its language directly; the
-        Revised Version &rarr; ASV &rarr; RSV line branches into the <strong>ESV</strong>,{" "}
-        <strong>NRSVue</strong>, <strong>NASB</strong>, <strong>LSB</strong>, and{" "}
-        <strong>AMP</strong>. The other five were translated from scratch.
+      <figcaption className="mt-4 max-w-2xl text-xs leading-snug text-neutral-500">
+        All twelve are in navy; the pale boxes are older Bibles kept in for the lineage. Most of the
+        twelve go back to the King James Version &mdash; itself mostly Tyndale&rsquo;s wording. The{" "}
+        <strong>NKJV</strong> updates the KJV&rsquo;s English directly; the rest come down through
+        the 1901 ASV. The <strong>RSV</strong> branched off it in 1952 and leads to the{" "}
+        <strong>ESV</strong> and the <strong>NRSVue</strong>; the <strong>NASB</strong> (revised as
+        the <strong>LSB</strong>) and the <strong>Amplified Bible</strong> are separate revisions of
+        the ASV. The five below were made from scratch.
       </figcaption>
     </figure>
   );
