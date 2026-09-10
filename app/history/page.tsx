@@ -93,8 +93,8 @@ export default function HistoryPage() {
               The single most important figure is the one most people have never heard of. William
               Tyndale was a gifted linguist who believed an ordinary person should be able to read
               Scripture in their own language. In 1520s England that was a criminal position, so he
-              went to the Continent, learned enough Hebrew to be among the first Englishmen to use
-              it, and printed a New Testament translated straight from Greek.
+              left for Germany, learned enough Hebrew to be among the first Englishmen to use it,
+              and printed a New Testament translated straight from Greek.
             </p>
             <p>
               Copies were smuggled home in cloth and grain shipments; the authorities burned the
