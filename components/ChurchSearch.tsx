@@ -128,96 +128,96 @@ export default function ChurchSearch({
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h2 className="font-display text-lg font-semibold text-brand-900">Find a church</h2>
-        <p className="mb-3 mt-1 text-sm text-neutral-500">
-          Search by name, denomination, city, or ZIP code.
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
-        >
-          <div className="flex flex-wrap items-end gap-2">
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              Church name
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. First Baptist"
-                className={`w-56 ${inputClass}`}
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              Denomination
-              <select
-                value={denomination}
-                onChange={(e) => setDenomination(e.target.value)}
-                className={`w-56 ${inputClass}`}
-              >
-                <option value="">Any denomination</option>
-                {denomOptions.map((d) => (
-                  <option key={d.value} value={d.value as string}>
-                    {d.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              City
-              <input
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                disabled={zipActive}
-                placeholder="e.g. Austin"
-                className={`w-40 ${inputClass}`}
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              State
-              <select
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                disabled={zipActive}
-                className={`w-40 ${inputClass}`}
-              >
-                <option value="">Any state</option>
-                {US_STATES.map((s) => (
-                  <option key={s.code} value={s.code}>
-                    {s.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <span className="pb-2 text-sm text-neutral-400">or</span>
-            <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
-              Zip code
-              <input
-                type="text"
-                inputMode="numeric"
-                value={zip}
-                onChange={(e) => setZip(e.target.value.replace(/\D/g, "").slice(0, 5))}
-                placeholder="78701"
-                className={`w-24 ${inputClass}`}
-              />
-            </label>
-            <button
-              type="submit"
-              disabled={loading}
-              className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800 disabled:cursor-not-allowed disabled:opacity-50"
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
+      >
+        <div>
+          <h2 className="font-display text-lg font-semibold text-brand-900">Find a church</h2>
+          <p className="mt-1 text-sm text-neutral-500">
+            Search by name, denomination, city, or ZIP code.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-end gap-2">
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            Church name
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. First Baptist"
+              className={`w-56 ${inputClass}`}
+            />
+          </label>
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            Denomination
+            <select
+              value={denomination}
+              onChange={(e) => setDenomination(e.target.value)}
+              className={`w-56 ${inputClass}`}
             >
-              {loading ? "Searching…" : "Search"}
-            </button>
-          </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {zipActive && (
-            <p className="text-xs text-neutral-400">
-              Searching by zip code — city and state are ignored.
-            </p>
-          )}
-        </form>
-      </div>
+              <option value="">Any denomination</option>
+              {denomOptions.map((d) => (
+                <option key={d.value} value={d.value as string}>
+                  {d.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            City
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              disabled={zipActive}
+              placeholder="e.g. Austin"
+              className={`w-40 ${inputClass}`}
+            />
+          </label>
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            State
+            <select
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              disabled={zipActive}
+              className={`w-40 ${inputClass}`}
+            >
+              <option value="">Any state</option>
+              {US_STATES.map((s) => (
+                <option key={s.code} value={s.code}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <span className="pb-2 text-sm text-neutral-400">or</span>
+          <label className="flex flex-col gap-1 text-sm font-medium text-neutral-700">
+            Zip code
+            <input
+              type="text"
+              inputMode="numeric"
+              value={zip}
+              onChange={(e) => setZip(e.target.value.replace(/\D/g, "").slice(0, 5))}
+              placeholder="78701"
+              className={`w-24 ${inputClass}`}
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={loading}
+            className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? "Searching…" : "Search"}
+          </button>
+        </div>
+        {error && <p className="text-sm text-red-600">{error}</p>}
+        {zipActive && (
+          <p className="text-xs text-neutral-400">
+            Searching by zip code — city and state are ignored.
+          </p>
+        )}
+      </form>
 
       {searched && !loading && (
         <div>
