@@ -347,8 +347,9 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~2.8% of churches have a confirmed `bible_translation` (~9,890 rows — 7,911 Episcopal / ELCA
-/ PC(USA) / UMC / UCC → NRSV, 1,933 PCA / OPC → ESV, 39 Life.Church → NLT, 6 Saddleback → NIV,
+Only ~2.8% of churches have a confirmed `bible_translation` (~9,930 rows — 7,911 Episcopal / ELCA
+/ PC(USA) / UMC / UCC → NRSV, ~1,933 PCA / OPC → ESV, ~80 megachurch-network campuses
+(Life.Church/Gateway → NLT, Elevation → ESV, North Point/Saddleback → NIV, Potter's House → KJV),
 the rest per-church research). It was ~8.5% before 2026-09-06, but the Catholic → NABRE default
 (~22,300 rows) went away with the Catholic bucket. Translation is inherently a long-tail research problem for the
 Protestant free-church world where the pastor picks (see "Church data pipeline" below), not a bug.
@@ -492,13 +493,16 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   an open-ended task, not something to "finish."
 - **Megachurch multi-site networks** (2026-09-11, `assign_*_network_translation_2026_09_11`
   migrations; rollback `sync_archive.*_network_before_2026_09_11`): the big non-denominational
-  networks teach from a known translation, so a network-level fill is defensible. Applied so far:
-  **Life.Church → NLT** (39 rows, dotted `name ~ 'Life\.Church'` brand; Groeschel preaches NLT,
-  NIV via YouVersion is the noted secondary) and **Saddleback → NIV** (6 CA worship campuses;
-  Warren "bases teaching on the NIV"). Both also moved `church_cathedral` → `non_denominational`.
-  Not done: Elevation / North Point / Gateway / Potter's House — their campus names are too
-  common to name-match, so each needs the network's own campus address list for a location match
-  (see [[reference_bible_guide_megachurch_translations]]).
+  networks teach from a known translation, so a network-level fill against the network's own
+  campus list is defensible. Applied: **Life.Church → NLT** (39), **Elevation → ESV** (17),
+  **Gateway → NLT** (8), **North Point → NIV** (7), **Saddleback → NIV** (6), **Potter's House →
+  KJV** (4, medium confidence — Jakes's pulpit style, not an official statement). ~81 rows; each
+  also `church_cathedral`/`baptist_church` → `non_denominational` and carries a
+  `bible_translation_notes` citation. The matching is fiddly — "Elevation Church" / "Gateway
+  Church" / "The Potter's House" are all common names with mostly-unrelated rows nationwide (the
+  ~200 "Potter's House" rows are largely the Wayman Mitchell / CFM / "The Door" movement, which
+  must not be touched). Method + per-network notes + the still-unresearched list are in
+  [[reference_bible_guide_megachurch_translations]].
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out: LCMS's locator actively rate-limits automated access, ELCA/PCUSA have no bulk
   export, and third-party aggregators like faithstreet.com block automated fetches (403) despite
