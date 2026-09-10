@@ -34,6 +34,13 @@ export interface NewChurchSuggestion {
   website?: string;
 }
 
+export interface SiteCorrection {
+  /** Which page / section the correction is about (free text, optional). */
+  page?: string;
+  /** What's wrong and, ideally, how the submitter knows. */
+  note: string;
+}
+
 export interface SubmitResult {
   ok: boolean;
   error?: string;
@@ -67,6 +74,24 @@ export async function submitClosedReport(input: ClosedReport): Promise<SubmitRes
     church_id: input.churchId,
     church_name: input.churchName,
     note: input.note || null,
+  });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+/**
+ * A correction to the site itself (a wrong date, a misquoted verse, a stale
+ * permission figure) — anything that isn't a church listing. Lands in
+ * church_suggestions with type "site_correction" and no church, reviewed by hand.
+ */
+export async function submitSiteCorrection(input: SiteCorrection): Promise<SubmitResult> {
+  if (!supabase) return { ok: false, error: "Not configured." };
+  const trimmed = input.note.trim();
+  if (!trimmed) return { ok: false, error: "Nothing to submit." };
+  const page = input.page?.trim();
+  const { error } = await supabase.from("church_suggestions").insert({
+    suggestion_type: "site_correction",
+    note: page ? `[${page}] ${trimmed}` : trimmed,
   });
   if (error) return { ok: false, error: error.message };
   return { ok: true };

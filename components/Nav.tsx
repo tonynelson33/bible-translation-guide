@@ -25,7 +25,9 @@ const learnLinks: NavLink[] = [
   { href: "/history", label: "How We Got the English Bible" },
   { href: "/differences", label: "Translation Differences" },
   { href: "/faq", label: "FAQ" },
+  { href: "/glossary", label: "Glossary" },
   { href: "/blog", label: "Videos" },
+  { href: "/about", label: "About This Site" },
 ];
 
 const afterLearn: NavLink[] = [{ href: "/buy", label: "Where to Buy" }];

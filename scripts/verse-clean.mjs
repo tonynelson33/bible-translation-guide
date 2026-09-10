@@ -9,7 +9,11 @@
 //     on one line in a comparison card — standard practice for quoting a verse
 //     inline, and not a change to the text itself.
 
-const SUPERSCRIPTION = /^(A|To the choirmaster\.?)[^.]*\bof David\.?\s*/i;
+// Psalm superscriptions the text APIs sometimes prepend to verse 1: the long
+// form ("A Psalm of David.", "To the choirmaster. A Maskil of David.") and the
+// bare forms the ESV ("Of David.") and NET ("By David.") use.
+const SUPERSCRIPTION =
+  /^(?:(?:A|To the choirmaster\.?)[^.]*\bof David\.?|(?:Of|By) David\.)\s*/i;
 
 /** bible-api.com (KJV), labs.bible.org (NET), api.scripture.api.bible */
 export function cleanPlain(raw) {

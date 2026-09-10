@@ -140,6 +140,13 @@ export default function BuyPage() {
         links below open a store&rsquo;s full range for it.
       </p>
 
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
+        <strong className="font-semibold text-neutral-700">Prefer to listen?</strong> Most of these
+        have a narrated audio edition &mdash; free in the YouVersion app where it&rsquo;s offered,
+        and as standalone or dramatized recordings (the NKJV&rsquo;s is <em>The Word of Promise</em>)
+        from the publishers linked below.
+      </p>
+
       <ul className="mt-8 space-y-4">
         {sorted.map((t) => {
           const links = translationLinks[t.id];

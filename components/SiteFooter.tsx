@@ -16,6 +16,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
       { href: "/history", label: "How We Got the English Bible" },
       { href: "/differences", label: "Translation Differences" },
       { href: "/faq", label: "FAQ" },
+      { href: "/glossary", label: "Glossary" },
       { href: "/blog", label: "Videos" },
     ],
   },
@@ -24,6 +25,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
     links: [
       { href: "/church-finder", label: "Church Finder" },
       { href: "/buy", label: "Where to Buy" },
+      { href: "/about", label: "About This Site" },
     ],
   },
 ];
