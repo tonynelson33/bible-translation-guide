@@ -23,7 +23,10 @@ interface ColumnDef {
 function verifyMark(t: Translation, field: string) {
   if (t.verifyFields?.includes(field)) {
     return (
-      <sup className="ml-0.5 text-brand-600" title="Flagged for manual verification before launch">
+      <sup
+        className="ml-0.5 text-brand-600"
+        title="Not fully confirmed against current publisher documentation"
+      >
         †
       </sup>
     );

@@ -91,9 +91,10 @@ is **no longer used here** — it survives only as the single-verse card on `/tr
   NIV/NLT/CSB/NASB/NKJV/NET/LSB→Bible Gateway by hand (no API keeps their small-caps + quotes).
   NASB is the 2020 edition (matches `latestRevisionYear`).
 - **Why it's legal**: 5 verses per translation is far inside every publisher's
-  quote-without-permission ceiling (~500 for ESV/NIV/NLT/CSB/NASB, ~1,000 for NKJV/LSB, KJV
-  public domain, NET generous) on a **non-commercial** site, with the required notice shown
-  under each verse.
+  quote-without-permission ceiling (verified 2026-09-09: 500 for ESV/NIV/NLT/NRSVue/CEB;
+  1,000 for CSB/NKJV/NASB/LSB/AMP — all Lockman titles are 1,000; KJV public domain; NET text
+  has **no limit for non-commercial use**). On a **non-commercial** site, with the required
+  notice shown under each verse.
 - **Non-commercial still matters**: several of those permissions (ESV especially) are
   *non-commercial only*. Owner confirmed 2026-08-29 the site stays non-commercial and `/buy`
   stays a placeholder. If that changes — affiliate links, ads, sponsorship, donations anywhere

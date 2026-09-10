@@ -53,12 +53,12 @@ without written permission, on a **non-commercial** site, with the copyright
 notice shown and the quotation not amounting to a whole book / large fraction
 of the work:
 
-| Translation | Free quotation ceiling |
+| Translation | Free quotation ceiling (verified 2026-09-09) |
 | --- | --- |
-| ESV, NIV, NLT, CSB, NASB, NRSVue, CEB, AMP | ~500 verses |
-| NKJV, LSB | ~1,000 verses |
+| ESV, NIV, NLT, NRSVue, CEB | 500 verses |
+| CSB, NKJV, NASB, LSB, AMP | 1,000 verses (the three Lockman titles — NASB/LSB/AMP — are all 1,000) |
 | KJV | public domain |
-| NET | generous; permission notice required |
+| NET | no verse limit for non-commercial use; permission notice required |
 
 Five verses per translation is trivially inside all of these. Each notice is in
 its `attribution` string and renders under the verse in

@@ -9,7 +9,7 @@
     "philosophy": "Formal",
     "textualBasis": "Critical Text",
     "publisher": "Crossway",
-    "quoteLimit": "1,000 verses",
+    "quoteLimit": "500 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -134,18 +134,15 @@
     "philosophy": "Formal",
     "textualBasis": "Textus Receptus",
     "publisher": "Thomas Nelson",
-    "quoteLimit": "~1,000 verses (verify)",
+    "quoteLimit": "1,000 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
       "marks": false
     },
     "italicizesTranslatorWords": true,
-    "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "quoteLimit"
-    ]
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": true
   },
   {
     "id": "nasb",
@@ -178,7 +175,7 @@
     "philosophy": "Mixed",
     "textualBasis": "Critical Text",
     "publisher": "Biblical Studies Press",
-    "quoteLimit": "Generous (verify)",
+    "quoteLimit": "Unlimited (non-commercial)",
     "genderApproach": "Moderate",
     "redLetter": false,
     "otMarking": {
@@ -186,10 +183,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "quoteLimit"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "nrsvue",
@@ -223,16 +217,13 @@
     "publisher": "Common English Bible (mainline alliance)",
     "quoteLimit": "500 verses",
     "genderApproach": "Inclusive",
-    "redLetter": false,
+    "redLetter": true,
     "otMarking": {
       "marks": false
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "amp",
@@ -244,9 +235,9 @@
     "philosophy": "Formal",
     "textualBasis": "Critical Text",
     "publisher": "Lockman Foundation",
-    "quoteLimit": "500 verses",
+    "quoteLimit": "1,000 verses",
     "genderApproach": "Traditional",
-    "redLetter": true,
+    "redLetter": false,
     "otMarking": {
       "marks": false
     },
@@ -254,8 +245,7 @@
     "capitalizesDeityPronouns": true,
     "quotationMarksForDialogue": true,
     "verifyFields": [
-      "gradeLevel",
-      "redLetter"
+      "gradeLevel"
     ]
   }
 ]

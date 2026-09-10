@@ -179,6 +179,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Translated from the same Textus Receptus base as the original KJV, rather than switching to the modern Critical Text; the margins note where both the Majority Text and the Critical Text diverge from it.",
       "Modernizes the KJV's archaic pronouns (“thee,” “thou”) and verb endings (“-eth,” “-est”) while preserving much of its sentence structure and literary rhythm.",
       "Notes in the margin where the Majority Text and the modern Critical Text differ, rather than silently picking one reading.",
+      "Capitalizes pronouns referring to God (“He,” “His,” “Him”) throughout — for reverence and to keep antecedents clear — a convention the KJV itself did not follow.",
     ],
     goodFor: [
       "Readers who love the King James's tradition and cadence but want its archaic pronouns and verb endings modernized.",
