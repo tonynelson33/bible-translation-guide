@@ -4,7 +4,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import { translations } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "All Translations at a Glance",
+  title: "Full Comparison",
   description:
     "A sortable side-by-side table of twelve widely used English Bible translations — translation philosophy, reading level, NT textual basis, gender-language approach, publisher, and more.",
   alternates: { canonical: "/compare" },
@@ -15,7 +15,7 @@ export default function ComparePage() {
     <div className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-5 max-w-4xl">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-          Every translation at a glance
+          The full comparison
         </h1>
         <p className="mt-3 text-neutral-700">
           Twelve widely used English translations, side by side. Tap a column to sort, or a
