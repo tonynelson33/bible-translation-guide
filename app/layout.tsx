@@ -34,7 +34,7 @@ const newsreader = Newsreader({
 });
 
 const siteDescription =
-  "A clear, side-by-side comparison of ESV, KJV, NIV, NLT, CSB, LSB, NKJV, NASB, and NET — translation philosophy, reading level, textual basis, and more.";
+  "A clear, side-by-side comparison of twelve English Bible translations — from the KJV to the NLT — covering translation philosophy, reading level, textual basis, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bibletranslationguide.vercel.app"),

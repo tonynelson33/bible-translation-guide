@@ -24,7 +24,7 @@ const orderedTranslations = [...translations].sort(
 const entryCards = [
   {
     href: "/compare",
-    title: "Compare all twelve",
+    title: "All translations at a glance",
     body: "The full table — philosophy, reading level, textual basis, publisher, and more, sortable by any column.",
   },
   {
@@ -65,7 +65,7 @@ export default function HomePage() {
             href="/compare"
             className="rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
           >
-            Compare the translations
+            See all twelve at a glance
           </Link>
           <Link
             href="/church-finder"
