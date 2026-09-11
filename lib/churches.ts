@@ -10,6 +10,14 @@ export interface Church {
   zip: string | null;
   country: string;
   category: string | null;
+  /**
+   * How `category` (and, where set, `bibleTranslation`) was established.
+   * "directory" — matched against the denomination/network's own official roster (highest
+   * confidence). "crowd" — matched via OpenStreetMap tags or a third-party aggregator (decent,
+   * not denomination-verified). null — the original bulk name-pattern classifier, or the church
+   * is still unidentified. Purely informational; never filtered/searched on.
+   */
+  categoryConfidence: "directory" | "crowd" | null;
   bibleTranslation: string | null;
   bibleTranslationNotes: string | null;
   /** Full https:// URL, or null. */
@@ -99,6 +107,7 @@ function rowToChurch(row: Record<string, unknown>): Church {
     zip: (row.zip as string | null) ?? null,
     country: row.country as string,
     category: (row.category as string | null) ?? null,
+    categoryConfidence: (row.category_confidence as "directory" | "crowd" | null) ?? null,
     bibleTranslation: (row.bible_translation as string | null) || null,
     bibleTranslationNotes: (row.bible_translation_notes as string | null) || null,
     website: (row.website as string | null) || null,

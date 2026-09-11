@@ -2,6 +2,7 @@ import type { Church } from "@/lib/churches";
 import { humanizeCategory } from "@/lib/churches";
 import { prettyWebsite } from "@/lib/website";
 import Tooltip from "./Tooltip";
+import ConfidenceBadge from "./ConfidenceBadge";
 import SuggestCorrectionForm from "./SuggestCorrectionForm";
 
 export default function ChurchResultCard({ church }: { church: Church }) {
@@ -20,6 +21,7 @@ export default function ChurchResultCard({ church }: { church: Church }) {
           <dt className="font-semibold text-neutral-600">Denomination:</dt>
           <dd className={hasDenomination ? "font-semibold text-neutral-900" : "text-neutral-400"}>
             {humanizeCategory(church.category)}
+            {hasDenomination && <ConfidenceBadge confidence={church.categoryConfidence} />}
           </dd>
         </div>
         <div className="flex gap-1.5">

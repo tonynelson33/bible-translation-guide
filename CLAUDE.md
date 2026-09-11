@@ -453,6 +453,52 @@ privileges unless told otherwise, which would silently bypass `churches`' RLS po
 this wrong and Supabase's security advisor flags it immediately (`security_definer_view`,
 ERROR level) — worth re-running `get_advisors` after any new view.
 
+**`churches.category_confidence`** (added 2026-09-11): provenance tier for how `category` (and,
+where set, `bible_translation`) was established — `'directory'` (matched against the
+denomination/network's own official roster — EFCA/SBC/AG/TEC/UMC/megachurch campus lists/etc.,
+75,316 rows), `'crowd'` (OpenStreetMap tags or a third-party aggregator like usachurches.org —
+decent, not denomination-verified, 9,593 rows), or `NULL` (the original bulk name-pattern
+classifier, or still `church_cathedral` — no external corroboration, 262,759 rows). A `CHECK`
+constraint enforces the two-value enum. Backfilled once from the `sync_archive` rollback-table
+ledger by table-name convention (every `*_sync_relabel_before_*`/`*_sync_inserted_*`/
+`*_network_before_*` style table records exactly which `church.id`s that operation touched, so
+this is reconstructed, not guessed — see the migration `add_category_confidence_signal` for the
+exact prefix lists). Deliberately conservative: any table not confidently classified is left out,
+so a row can only be *under*-credited, never over-credited. Rendered by
+`components/ConfidenceBadge.tsx` (a small pill + `Tooltip`, wired into `ChurchResultCard.tsx`
+right after the denomination value) — renders nothing for the `NULL` case, since this is additive
+signal on a real match, not a warning label on a doubtful one. New syncs going forward should set
+this explicitly rather than leaving it to a future backfill.
+
+**Data integrity checks** (`scripts/check-data-integrity.mjs`, `npm run check:data`): content-level
+invariants over the public anon key (same key every `scripts/*.mjs` here uses) — `category` and
+`bible_translation` are always a recognized value (parsed live from `lib/suggestionOptions.ts` /
+`data/translations.json`, so the check can't drift from the real dropdown), no confirmed
+translation on a still-`church_cathedral` row, required text fields are never empty strings,
+`category_confidence` matches its enum, and a row-count-per-category regression check against a
+committed baseline (`scripts/data-integrity-baseline.json`, refresh with `--update-baseline` after
+confirming a shrink is intentional — a suggestion-driven correction can legitimately shrink a
+bucket, so this warns rather than fails). Deliberately can't check RLS-enabled or a view's
+`security_invoker` — those aren't visible over the anon key/PostgREST; verify those via
+`get_advisors` instead, as above. Caught a real (if benign) surprise on the first run: 137 rows
+have `bible_translation_notes` set with no `bible_translation` — not a bug, `_notes` turns out to
+double as a general classification citation ("Assemblies of God — reclassified from
+church_cathedral 2026-08-30") for rows where the category was verified but no translation was
+ever pinned down. Left as an informational count, not a failure — but worth knowing
+`ChurchResultCard.tsx` only renders that tooltip when `bibleTranslation` is *also* set, so these
+citations are currently stored and never shown; a real (separate, not yet done) small fix would be
+showing the note next to Denomination too when `bibleTranslation` is null.
+
+**`sync_archive` schema RLS** (2026-09-11): every table in `sync_archive` now has
+`ALTER TABLE ... ENABLE ROW LEVEL SECURITY` with **no policies** — these are pure internal
+scratch/rollback tables, never queried by the app, so zero anon/authenticated access is exactly
+right (this doesn't affect this project's own migrations/queries, which run as the table owner —
+RLS doesn't restrict that without `FORCE ROW LEVEL SECURITY`). Turned Supabase's advisor finding
+from a `critical` "RLS Disabled" into an `INFO`-level "RLS enabled, no policies" — the correct
+resting state for tables nothing but this project's own tooling should ever touch. Apply the same
+`enable row level security` (no policies) to any *new* `sync_archive` table as a matter of course
+— don't wait for another advisor sweep to notice.
+
 **Church data pipeline** (`scripts/`, all one-off Node scripts, safe to re-run): the source
 data (`churches-combined.csv`, ~110MB, gitignored — exceeds GitHub's 100MB limit and is fully
 regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churches-data*.js` and
