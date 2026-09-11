@@ -131,7 +131,7 @@ export default function HomePage() {
         <h2 className="font-display text-2xl font-semibold text-brand-900">The twelve</h2>
         <p className="mt-2 text-neutral-700">
           Ordered word-for-word to thought-for-thought, like the spectrum above &mdash; read down
-          the left column, then the right. Open any one for a full profile.
+          the left column, then the right. Tap any one for a full profile.
         </p>
         <ul className="mt-6 sm:columns-2 sm:gap-3">
           {orderedTranslations.map((t) => (
