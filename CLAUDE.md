@@ -503,11 +503,34 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   ~200 "Potter's House" rows are largely the Wayman Mitchell / CFM / "The Door" movement, which
   must not be touched). Method + per-network notes + the still-unresearched list are in
   [[reference_bible_guide_megachurch_translations]].
+- **UMC directory sync** (2026-09-10, `umc_directory_sync_relabel_2026_09_10`; rollback
+  `sync_archive.umc_relabel_before_2026_09_10`, plan in `sync_archive.umc_match_plan`): the
+  United Methodist Church's own `umc.org/find-a-church` locator (a Salesforce API, `POST
+  /ChurchesFeature/Churches/GetChurches`) has no bulk/by-state mode and caps at ~100 results per
+  query point, so `scripts/fetch-umc-churches.mjs` grid-queried it (3,453 points, `reference-us-
+  zips.csv` snapped to a 0.5° grid) for **19,266 unique churches** (committed
+  `scripts/umc-churches.ndjson`, pulled into `sync_archive.umc_import` via `http_get` on the raw
+  GitHub URL). No street address in the feed, only city/state/zip/lat/lng, so matching used
+  haversine distance (plain SQL, no PostGIS) instead of the usual address tier — tight (<150m)
+  distances trust a weak name match (real rebrands: "LifeWay Church" for a UMC congregation, "St.
+  Johns Downtown" for "Saint Johns United Methodist Church"), looser distances (<800m, <3km+zip)
+  require high similarity on the denomination-boilerplate-stripped "core" name, plus a guard
+  against candidates whose name flags a *different* tradition (UCC, Christian Church, Church of
+  God, Free Will Baptist, Cowboy Church, and the New England "First Parish of X"/"First Church in
+  X" Congregational pattern) — raw name similarity on full names is misleadingly high between two
+  different real "X United Methodist Church"es in the same town otherwise. **Relabel-only**
+  (`churches.address` is `NOT NULL`, and the feed has none to insert with): **973** rows moved
+  `church_cathedral` → `methodist_church` (117,517 → 116,544 "not identified"; `methodist_church`
+  26,417 → 27,390), plus **6,007 website backfills** across matched rows (blank → the UMC-listed
+  site) — no translation default (UMC has no single denomination-wide pulpit Bible the way TEC
+  does; NRSV/CEB/NIV are all genuinely in use). Full methodology + the false-positive lessons are
+  in [[reference_denomination_directory_sync]].
 - A bulk cross-reference via each denomination's official congregation locator was considered
-  but ruled out: LCMS's locator actively rate-limits automated access, ELCA/PCUSA have no bulk
-  export, and third-party aggregators like faithstreet.com block automated fetches (403) despite
-  a permissive robots.txt. Don't re-attempt this without a different approach (e.g. the
-  denomination granting explicit data access) - it's not a matter of trying harder.
+  but ruled out for LCMS/ELCA/PCUSA specifically: LCMS's locator actively rate-limits automated
+  access, ELCA/PCUSA have no bulk export, and third-party aggregators like faithstreet.com block
+  automated fetches (403) despite a permissive robots.txt. Don't re-attempt those three without a
+  different approach (e.g. the denomination granting explicit data access) - it's not a matter of
+  trying harder. (UMC's own locator, above, turned out not to have this problem.)
 - `reference-us-zips.csv`: a free public-domain zip/city/state dataset (SimpleMaps), used for
   the address backfill and reusable for future geocoding needs.
 
