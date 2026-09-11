@@ -44,6 +44,26 @@ const entryCards = [
   },
 ];
 
+// A second, lighter row — content to go deeper on rather than core site tools,
+// placed near the bottom so the four above still read as the main entry points.
+const goDeeperCards = [
+  {
+    href: "/history",
+    title: "How we got the English Bible",
+    body: "Tyndale's martyrdom, the King James Version, and the six-hundred-year story behind the twelve translations above.",
+  },
+  {
+    href: "/differences",
+    title: "Where translations disagree",
+    body: "The specific verses where the wording visibly differs, and why — bracketed passages, the Textus Receptus, and more.",
+  },
+  {
+    href: "/blog",
+    title: "Watch instead",
+    body: "A short, curated set of videos on where the English Bible came from and how to choose one.",
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -155,21 +175,35 @@ export default function HomePage() {
         </ul>
       </section>
 
+      {/* Go deeper */}
+      <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {goDeeperCards.map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="group rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-gild-300 hover:bg-gild-50/40"
+            >
+              <h2 className="font-display text-lg font-semibold text-brand-900">
+                {card.title}
+                <span
+                  aria-hidden="true"
+                  className="ml-1 inline-block text-gild-600 transition-transform group-hover:translate-x-0.5"
+                >
+                  &rarr;
+                </span>
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{card.body}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Closing */}
       <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 py-10">
         <p className="text-sm leading-relaxed text-neutral-500">
           BibleTranslationGuide is a non-commercial project with no affiliation to any publisher. It
           covers the 66-book Protestant canon and the translations most used in Protestant churches.
-          For the questions behind all of this &mdash; the manuscripts, the KJV, why the wording
-          changes &mdash; see{" "}
-          <Link href="/faq" className="font-medium text-brand-700 hover:underline">
-            the FAQ
-          </Link>{" "}
-          and{" "}
-          <Link href="/differences" className="font-medium text-brand-700 hover:underline">
-            translation differences
-          </Link>
-          .
         </p>
       </section>
     </div>
