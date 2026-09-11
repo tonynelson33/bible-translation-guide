@@ -525,6 +525,41 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   site) — no translation default (UMC has no single denomination-wide pulpit Bible the way TEC
   does; NRSV/CEB/NIV are all genuinely in use). Full methodology + the false-positive lessons are
   in [[reference_denomination_directory_sync]].
+- **UCC / Disciples of Christ via the 2026-09-01 OSM cross-match's leftovers** (2026-09-11,
+  `osm_ucc_doc_relabel_2026_09_11`; rollback `sync_archive.ucc_doc_relabel_before_2026_09_11`):
+  UCC's own locator (`ucc.org/church-finder` → iframe `engage.suran.com/ucc/s/church-finder`, a
+  Suran "CDM+ Engage" church-management SaaS product) has a real API (`GET /api/v2/church-finder`,
+  full street addresses) but every call requires a `Provision` request header the client computes
+  somewhere not found in the shipped JS bundle, and even the page's *own* in-browser requests came
+  back `422 "Provision is incorrect"` during a real interactive session — the same shape as the
+  LCMS block (a signed/derived header, not a plain tenant slug), so left alone rather than reverse
+  engineered. Instead, revisited `sync_archive.osm_relabel_plan` — the 2026-09-01 OSM
+  denomination-tag cross-match's ~32k *held* (never-applied) candidates — filtered to
+  `denomination` ∈ {united_church_of_christ, congregational, congregationalist,
+  disciples_of_christ, christian_church_(disciples_of_christ), …} and `action = 'hold_slug_conflict'`
+  (held only because *multiple* nearby churches disagreed on category, not because the evidence
+  was weak — the `hold_weak` / `hold_name_disagrees` rows in the same pool were re-checked too and
+  correctly stayed held, e.g. an OSM-tagged "Saint Paul's United Church of Christ" 5m from our
+  "GracePoint Church Toledo" — 0% name overlap even after stripping boilerplate, almost certainly a
+  different congregation now in that building). Re-scored with the UMC technique (boilerplate-
+  stripped core-name similarity, re-picking the *best* nearby candidate rather than trusting the
+  2026-09-01 script's original pick) recovered **92** confident, still-"not identified" rows:
+  **50 → `congregational_church`**, **42 → `disciples_of_christ_church`** (195 → 237, a 21%
+  jump for a bucket that small). The same technique tried against `denomination = 'church_of_christ'`
+  (94 held candidates) was **reverted** — only 12 candidates surfaced and ~3/4 were OSM source
+  mistagging (a "Church of Christ"-tagged POI whose own name said Unity/Church of
+  God/UCC/"Christian Church" — the last being the real trap: Christian Church (Disciples of
+  Christ) and instrumental/independent Christian Churches use near-identical naming to a cappella
+  Church of Christ congregations and are genuinely hard to tell apart without more than a name).
+  **Church of Christ has no central denomination-wide locator to fall back on either** — it's
+  congregationalist with "no central associations, organizations or hierarchies of any kind" by
+  its own adherents' account — so the only remaining avenue was third-party aggregators, all
+  closed: `churchofchristlist.org`'s ToS explicitly bars "scrape, copy, or republish... automated
+  tools, bots, or scripts" despite a permissive robots.txt (the FaithStreet situation again);
+  `churchofchristdirectory.com`'s robots.txt blanket-disallows all bots; `church-of-christ.org` is
+  behind an active Cloudflare managed challenge; `directoryofchurches.net` is just a links page to
+  other small directories, not a bulk source itself. Don't re-attempt Church of Christ without a
+  new angle.
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out for LCMS/ELCA/PCUSA specifically: LCMS's locator actively rate-limits automated
   access, ELCA/PCUSA have no bulk export, and third-party aggregators like faithstreet.com block
