@@ -23,6 +23,11 @@ const orderedTranslations = [...translations].sort(
 
 const entryCards = [
   {
+    href: "/rankings",
+    title: "Rankings, by purpose",
+    body: "Best for daily reading, preaching, memorization, or serious study — each use ranked and explained, not just listed.",
+  },
+  {
     href: "/compare",
     title: "Full comparison",
     body: "The full table — philosophy, reading level, textual basis, publisher, and more, sortable by any column.",
