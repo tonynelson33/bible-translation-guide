@@ -560,6 +560,50 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
   behind an active Cloudflare managed challenge; `directoryofchurches.net` is just a links page to
   other small directories, not a bulk source itself. Don't re-attempt Church of Christ without a
   new angle.
+- **PCUSA / COGIC re-checked 2026-09-11 — still no path.** PCUSA's site has been rebuilt on
+  Drupal since the last check; its "Find A Church" nav item now routes to `pcusa.org/search`, a
+  sitewide Algolia widget (`modules/custom/apax_algolia`) with **no congregation index at all** —
+  confirmed live (a zip-code query returned generic news/staff/grant-program hits, "Page 1 of 40",
+  nothing church-shaped). COGIC's `/find-a-church/` still 500s and the homepage links nowhere
+  church-related except Facebook/YouTube. Neither is a "try harder" situation; both need the
+  denomination to actually ship a directory before this is revisitable.
+- **OSM held-candidate sweep, round 2** (2026-09-11, one migration per denomination —
+  `osm_<family>_relabel_2026_09_11`; rollback `sync_archive.<family>_relabel_before_2026_09_11`):
+  extended the UCC/DOC rescue technique to every other `hold_slug_conflict` pool in
+  `sync_archive.osm_relabel_plan` worth having (skipping Catholic/Orthodox — out of scope).
+  **345 rows relabelled**: Baptist +140, Methodist +83, Presbyterian +49, Lutheran +36,
+  Anglican/Episcopal +18, Adventist +9, Assembly of God +7, AME/CME +3 (`methodist_ame` — a
+  handful of `christian_methodist_episcopal`/`cme`-tagged rows were folded in too; CME has no
+  slug of its own here, and "Historically Black" is what `methodist_ame`'s label actually covers).
+  `church_cathedral` 116,452 → 116,107. Two things that don't matter at UCC/DOC's scale started
+  mattering here:
+  - **A naive nationwide neighbor search blew the temp-file quota** (`No space left on device` —
+    the *scratch* disk, not the 500MB DB quota; `pg_database_size` was still only ~220MB) once the
+    candidate-side bucket was `baptist_church` (51k rows) instead of `congregational_church`
+    (3.6k). Fix: `LEFT JOIN LATERAL (... ORDER BY <cheap Manhattan proxy> LIMIT 8)` per anchor
+    instead of one big join + window function over the whole candidate set — caps the work per
+    anchor regardless of how big the target bucket is. Use this shape whenever the candidate
+    bucket is large.
+  - **The confidence floor isn't one-size-fits-all.** UMC/UCC/DOC held up fine at core_sim ≥ 0.3;
+    Baptist and Methodist did not — their naming is far more heterogeneous (Baptist especially:
+    "Temple", "Tabernacle", "Deliverance", "Full Gospel", Hispanic "Casa de Oración" — all
+    overlap heavily with independent/Pentecostal naming) and needed ≥ 0.42-0.45 plus a wider
+    guard list to hold real precision; Lutheran/Episcopal/Presbyterian's more standardized
+    institutional naming stayed clean even at the lower end. Check a sample before trusting a
+    floor number across denominations.
+  - **New guard terms this round, all found by sampling near the floor before applying**:
+    `masonic` (a "Tenafly Masonic Temple" — a lodge, not a church — nearly got labeled Methodist
+    off a shared town name), `celebrate recovery` and `student ministr(y)`/`kids life` (our own
+    sub-ministry/program junk rows, same watch-out as the denomination-directory syncs), `\ystake\y`/
+    `\yward\y` (LDS terminology — an OSM "Assembly of God" point 0m from an LDS stake center),
+    and — the trickiest — **abbreviated denominations evade a plain-word guard**: "First Pres."
+    (Presbyterian) and "C.M.E." (Christian Methodist Episcopal) don't contain the literal
+    substrings `presbyterian`/`cme` once punctuated, so the guard needs the dotted-abbreviation
+    form too (`\yc\.?\s?m\.?\s?e\.?\y` etc.), and it has to run against **both** the OSM name and
+    the candidate's current name — the OSM tag on several C.M.E. churches was the generic
+    `methodist`, so only the *name itself* revealed the actual (different, unslugged) tradition.
+  Full technique + the specific bad matches these guards caught are in
+  [[reference_denomination_directory_sync]].
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out for LCMS/ELCA/PCUSA specifically: LCMS's locator actively rate-limits automated
   access, ELCA/PCUSA have no bulk export, and third-party aggregators like faithstreet.com block
