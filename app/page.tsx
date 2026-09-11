@@ -53,10 +53,10 @@ export default function HomePage() {
           English Bible Translations
         </p>
         <h1 className="mt-4 font-display text-4xl font-medium leading-[1.1] text-brand-900 sm:text-5xl">
-          Which Bible translation should you read?
+          Which Bible translation should you use?
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-700">
-          There&rsquo;s no single best answer &mdash; it depends on why you&rsquo;re reading. This
+          There&rsquo;s no single best answer &mdash; it depends what you&rsquo;re using it for. This
           site lays out twelve major English translations: how literally each renders the original,
           how it reads, where its text comes from, and who it might be best for.
         </p>
