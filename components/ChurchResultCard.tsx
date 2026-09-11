@@ -37,6 +37,15 @@ export default function ChurchResultCard({ church }: { church: Church }) {
               ) : (
                 <span className="font-semibold text-brand-800">{church.bibleTranslation}</span>
               )
+            ) : church.bibleTranslationNotes ? (
+              // The translation itself isn't known, but the category was verified with a
+              // citation (e.g. a directory/OSM match) — surface it here too rather than
+              // burying a real note behind an untouched "Not identified".
+              <Tooltip text={church.bibleTranslationNotes}>
+                <span className="cursor-help text-neutral-400 underline decoration-dotted underline-offset-2">
+                  Not identified
+                </span>
+              </Tooltip>
             ) : (
               <span className="text-neutral-400">Not identified</span>
             )}
