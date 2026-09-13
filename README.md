@@ -12,7 +12,8 @@ is backed by a Supabase Postgres database.
   translations (text is cached in `data/cachedVerses.json`, not fetched live)
 - `/translations/[slug]` — a full profile page per translation
 - `/rankings` — criteria-based rankings across seven categories
-- `/church-finder` — search ~348,000 U.S. Protestant churches by name / denomination / location
+- `/church-finder` — search ~352,000 U.S. Protestant churches by name / denomination / location
+  (the count is computed live from the DB, rounded to the nearest thousand — not hardcoded)
 - `/blog` (nav label "Videos"), `/differences`, `/buy` — supporting content pages
 
 ## Getting started

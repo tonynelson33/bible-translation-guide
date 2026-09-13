@@ -300,9 +300,14 @@ Attributions reuse `cachedVerses.json`. Tone is
 deliberately neutral — "present in the Byzantine manuscripts, absent from the earliest," never
 "added" / "removed." Same non-commercial-quotation basis as `/verses`.
 
-**Church Finder** (`/church-finder`): search ~348,000 U.S. **Protestant** churches by church name,
-denomination, city+state, or zip, showing each one's confirmed Bible translation where known. Backed by a Supabase Postgres
-project (`churches` table, ~348,000 rows — US only; non-congregations removed 2026-08-30; and
+**Church Finder** (`/church-finder`): search ~352,000 U.S. **Protestant** churches by church name,
+denomination, city+state, or zip, showing each one's confirmed Bible translation where known. The
+"~352,000" (and the matching figure in the page's own copy/description) is computed live from
+`count(*)` on `churches`, rounded to the nearest thousand — see `getTotalChurchCount()` /
+`roundToNearestThousand()` in `lib/churches.ts` — never hand-edit a hardcoded number here or on the
+page again; whoever's reading this, if it still says a stale number, the live count replaced it
+already and this paragraph just needs a refresh. Backed by a Supabase Postgres
+project (`churches` table, ~352,000 rows — US only; non-congregations removed 2026-08-30; and
 **Catholic, Orthodox, and Oneness/Apostolic congregations removed 2026-09-06** (~29,700 — the
 directory is now Trinitarian Protestant only, see "Denomination taxonomy" and the editorial-line
 section below) — with 31 distinct `category` values: `church_cathedral` plus all 30 dropdown
@@ -351,12 +356,16 @@ outside any request's caching context and `force-dynamic` alone doesn't reach it
 deploys), so edits made straight against the DB can take up to an hour to surface. This cost
 real debugging time once; don't drop either half.
 
-Only ~2.8% of churches have a confirmed `bible_translation` (~9,930 rows — 7,911 Episcopal / ELCA
-/ PC(USA) / UMC / UCC → NRSV, ~1,933 PCA / OPC → ESV, ~80 megachurch-network campuses
-(Life.Church/Gateway → NLT, Elevation → ESV, North Point/Saddleback → NIV, Potter's House → KJV),
-the rest per-church research). It was ~8.5% before 2026-09-06, but the Catholic → NABRE default
-(~22,300 rows) went away with the Catholic bucket. Translation is inherently a long-tail research problem for the
-Protestant free-church world where the pastor picks (see "Church data pipeline" below), not a bug.
+~5.9% of churches have a confirmed `bible_translation` (20,919 rows — 7,911 Episcopal / ELCA /
+PC(USA) / UMC / UCC → NRSV, ~1,933 PCA / OPC → ESV, ~80 megachurch-network campuses (Life.Church/
+Gateway → NLT, Elevation → ESV, North Point/Saddleback → NIV, Potter's House → KJV), **10,989 KJV
+from the kjvchurches.com sync** (706 matched in the original relabel phase + 4,550 genuinely-new
+churches inserted + 5,733 more backfilled by the 2026-09-13 dedup correction, after 5,734 of the
+sync's original 10,284 raw inserts turned out to be duplicates of existing rows and were removed —
+see "Church data pipeline" below), the rest per-church research). It was ~8.5% before 2026-09-06, dropped to ~2.8% when the
+Catholic → NABRE default (~22,300 rows) went away with the Catholic bucket, then rose to ~5.9% with
+the 2026-09-11 KJV sync (net of the 2026-09-13 dedup correction). Translation is inherently a long-tail research problem for the Protestant
+free-church world where the pastor picks (see "Church data pipeline" below), not a bug.
 Most results correctly show "Not identified" for the translation (same label the result card and
 the breakdown tables use for an unknown denomination or translation).
 
@@ -460,9 +469,11 @@ ERROR level) — worth re-running `get_advisors` after any new view.
 **`churches.category_confidence`** (added 2026-09-11): provenance tier for how `category` (and,
 where set, `bible_translation`) was established — `'directory'` (matched against the
 denomination/network's own official roster — EFCA/SBC/AG/TEC/UMC/megachurch campus lists/etc.,
-75,316 rows), `'crowd'` (OpenStreetMap tags or a third-party aggregator like usachurches.org —
-decent, not denomination-verified, 9,593 rows), or `NULL` (the original bulk name-pattern
-classifier, or still `church_cathedral` — no external corroboration, 262,759 rows). A `CHECK`
+75,315 rows), `'crowd'` (OpenStreetMap tags or a third-party aggregator like usachurches.org or
+kjvchurches.com — decent, not denomination-verified, 20,190 rows as of the 2026-09-13 kjvchurches.com
+dedup correction, up from 9,593 before that whole sync), or `NULL` (the original bulk name-pattern
+classifier, or still `church_cathedral` — no external corroboration, 256,713 rows, down from
+262,759). A `CHECK`
 constraint enforces the two-value enum. Backfilled once from the `sync_archive` rollback-table
 ledger by table-name convention (every `*_sync_relabel_before_*`/`*_sync_inserted_*`/
 `*_network_before_*` style table records exactly which `church.id`s that operation touched, so
@@ -654,6 +665,80 @@ regenerable) was cleaned (deduped, bad zips/addresses fixed via `cleanup-churche
     `methodist`, so only the *name itself* revealed the actual (different, unslugged) tradition.
   Full technique + the specific bad matches these guards caught are in
   [[reference_denomination_directory_sync]].
+- **kjvchurches.com sync** (2026-09-11; rollback `sync_archive.kjv_relabel_before_2026_09_11` for
+  the relabel/backfill phase, `sync_archive.kjv_insert_rollback` for the insert phase): unlike the
+  syncs above, the source here isn't a denomination's own locator — KJV-only independent
+  Baptist/Bible congregations have no central body to publish one — it's `kjvchurches.com`, a
+  third-party crowd-sourced directory with nothing on the site restricting reuse. Turned out to be
+  a clean case, not a scrape: the site runs WordPress + the GeoDirectory plugin, which exposes its
+  whole listing as a standard, public, unauthenticated JSON REST endpoint
+  (`/wp-json/geodir/v2/churches`, `scripts/fetch-kjvchurches.mjs`) — paginated at 100/page, ~119
+  requests for the full directory. Throttled to one request per ~3s anyway (well under 10 minutes
+  total) purely out of courtesy — "a small, single-missionary-run site, not a corporate API," per
+  the fetch script's own header — not because anything on the site required it.
+  `scripts/kjvchurches.ndjson` (11,822 rows, all countries) → filtered to
+  `scripts/kjvchurches-us.ndjson`, **11,034** US rows. Matching reused
+  the UMC/OSM technique (denomination-boilerplate-stripped core-name similarity + haversine
+  distance, plus a guard against other-tradition names — including Spanish-language Oneness/
+  Pentecostal ones — false-matching a nearby KJV Baptist row) — full method in
+  [[reference_denomination_directory_sync]]. **Phase 1 (relabel): 706** existing churches matched
+  → `bible_translation` set to `KJV` (17 of the 706 also relabelled `church_cathedral` →
+  `baptist_church`/`bible_church`; the rest were already correctly bucketed and only needed the
+  translation + notes backfill). The 11,034-row US ndjson landed in a lean staging table first —
+  `scripts/build-kjvchurches-insert-sql.mjs` batches it (400 rows/file) into
+  `scripts/kjvchurches-batches/batch_0NN.sql`, `insert into sync_archive.kjvchurches_raw (ext_id,
+  name, category, city, region, zip, lat, lon) ... on conflict (ext_id) do nothing` — before
+  matching/insert-planning pulled street/phone/website back in only for the rows that actually
+  needed them. **Phase 2 (insert): 10,284** new churches inserted into `public.churches` across 35
+  hand-vetted SQL batches (`baptist_church` **10,077** / `bible_church` **207**) — turned out to
+  include 5,734 undetected duplicates of existing rows, see the dedup correction below —
+  deterministic id `md5('kjv:'||ext_id)::uuid` from the scrape's small integer keys, cheaper than
+  embedding random-hex UUID text per row across that many batch files. Both phases set
+  `category_confidence = 'crowd'`; distinct `bible_translation_notes` citations distinguish them
+  (`'KJV — matched to kjvchurches.com church directory, 2026-09-11'` for phase 1 vs. `'KJV —
+  sourced from the kjvchurches.com independent Baptist/Bible church directory, 2026-09-11'` for
+  phase 2) so either phase can be rolled back independently of the other. The raw scrape needed
+  real per-batch cleanup that the JSON-feed syncs above didn't: mis-escaped apostrophes in
+  locality names (a stray backslash before a doubled quote — `Lee\''s Summit`, `Coeur d\''Alene`,
+  `Land O\'' Lakes`), ~230 New England zip codes (NJ/CT/RI/NH/VT/ME) that had lost a leading zero,
+  a duplicated URL scheme (`https://http:s//…` → `https://…`) on a handful of websites, one stray
+  trailing backtick on a website, and two zip typos caught only by comparing against sibling rows
+  in the same batch (a digit transposition in Mitchell, SD; a Virginia-range zip on a Valley, AL
+  row corrected to its real 368xx zip). `churches` **347,668 → 357,952**. KJV now **10,996**
+  site-wide (706 + 10,284 = 10,990 from this sync; the remaining 6 predate it — almost certainly
+  the Potter's House megachurch-network fill, [[reference_bible_guide_megachurch_translations]]).
+  **These counts were wrong** — see the dedup correction immediately below, which is what's
+  actually true as of 2026-09-13.
+- **kjvchurches.com dedup correction** (2026-09-13; audit/rollback
+  `sync_archive.kjv_dedup_removed_2026_09_13`, full original row + which existing row it was
+  merged into, RLS-enabled): the kjvchurches.com Phase 2 insert above turned out to duplicate a
+  huge share of what it inserted — the original matching pass should have caught these as existing
+  churches and didn't. Found by re-checking all 10,284 inserted rows against the other 347,668 on
+  exact name + city + state, then confirming each candidate with a second, independent signal
+  (normalized-street-address equality, or the two rows sitting within 300m of each other) — plain
+  name+city+state alone wasn't enough on its own for generic names ("Calvary Baptist Church",
+  "Bible Baptist Church" recur legitimately many times per state; requiring the address/geo
+  confirmation too is what kept those distinct). **5,734 of the 10,284 (55.8%) confirmed
+  duplicates** — e.g. "Hamilton Acres Baptist Church," Fairbanks AK, same address, inserted fresh
+  under a new id when it already existed with zip `99701-3624` vs. the new row's plain `99701`.
+  6 candidates were deliberately excluded from the merge despite matching on address/geo: the
+  existing side belonged to a *different*, already directory-or-pattern-confirmed denomination
+  (e.g. an OPC congregation, ESV, matched to opc.org's own roster — merging KJV/Baptist onto that
+  would trade a correct classification for a wrong one on a same-name coincidence, not fix a dupe).
+  Fix: backfilled `bible_translation = 'KJV'` (+ `category_confidence = coalesce(existing, 'crowd')`,
+  never downgrading an existing `'directory'` row, + a new notes citation — `'KJV — kjvchurches.com
+  sync, matched via post-insert duplicate cleanup, 2026-09-13'` — so this cleanup pass is
+  distinguishable from the original two phases) onto the **5,733** correct pre-existing rows (1 of
+  the 5,734 already had `bible_translation = 'KJV'` set), full original rows backed up, then
+  **deleted the 5,734 duplicate rows**. Real net-new churches from this whole sync: **4,550**, not
+  10,284. Corrected counts: `churches` **357,952 → 352,218**; KJV **10,996 → 10,995** (net -1: +5,733
+  from the backfill, -5,734 removed duplicates); confirmed `bible_translation` (any) **20,920 →
+  20,919**; `category_confidence = 'crowd'` **20,487 → 20,190** (`'directory'` untouched at 75,315,
+  confirming the fix never downgraded a higher-confidence row). **Lesson for any future
+  denomination/directory sync that inserts rows**: re-run a plain name+city+state collision check
+  against the *rest* of the table right after inserting, before trusting the "no match found"
+  result the matching pass produced — the matching technique that decides what's *not* already
+  there needs the same scrutiny as the technique that decides what *is*.
 - A bulk cross-reference via each denomination's official congregation locator was considered
   but ruled out for LCMS/ELCA/PCUSA specifically: LCMS's locator actively rate-limits automated
   access, ELCA/PCUSA have no bulk export, and third-party aggregators like faithstreet.com block

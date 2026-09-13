@@ -6,16 +6,24 @@ import {
   validateSearchParams,
   getDenominationCounts,
   getTranslationCounts,
+  getTotalChurchCount,
+  roundToNearestThousand,
   type ChurchSearchParams,
 } from "@/lib/churches";
 import { supabase } from "@/lib/supabase";
 
-export const metadata: Metadata = {
-  title: "Church Finder",
-  description:
-    "Search 340,000+ U.S. Protestant churches by city or zip and see which Bible translation each one uses.",
-  alternates: { canonical: "/church-finder" },
-};
+// Dynamic (not a static `metadata` export) so the church count in the description
+// always reflects the live row count, rounded to the nearest thousand, instead of
+// a hardcoded figure that drifts every time a sync adds or removes rows.
+export async function generateMetadata(): Promise<Metadata> {
+  const total = await getTotalChurchCount();
+  const countPhrase = total ? `~${roundToNearestThousand(total)}` : "hundreds of thousands of";
+  return {
+    title: "Church Finder",
+    description: `Search ${countPhrase} U.S. Protestant churches by city or zip and see which Bible translation each one uses.`,
+    alternates: { canonical: "/church-finder" },
+  };
+}
 
 // The breakdown-table counts and search results come from Supabase. Render on
 // every request (no Data Cache) so church-data edits — including ones made
@@ -42,9 +50,10 @@ export default async function ChurchFinderPage({
   const initialResult = canSearch
     ? await searchChurches(initialParams)
     : { churches: [], total: 0 };
-  const [denominationCounts, translationCounts] = supabase
-    ? await Promise.all([getDenominationCounts(), getTranslationCounts()])
-    : [[], []];
+  const [denominationCounts, translationCounts, totalChurchCount] = supabase
+    ? await Promise.all([getDenominationCounts(), getTranslationCounts(), getTotalChurchCount()])
+    : [[], [], null];
+  const countPhrase = totalChurchCount ? `~${roundToNearestThousand(totalChurchCount)}` : "hundreds of thousands of";
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -52,7 +61,7 @@ export default async function ChurchFinderPage({
         Church Finder
       </h1>
       <p className="mt-3 max-w-3xl text-neutral-600">
-        Search over 340,000 U.S. Protestant churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
+        Search {countPhrase} U.S. Protestant churches by name, denomination, city, or zip code. Where we&apos;ve confirmed which
         Bible translation a church or its denomination uses, it&apos;s shown below — most
         churches don&apos;t have this confirmed yet, since it&apos;s researched one at a time.
       </p>

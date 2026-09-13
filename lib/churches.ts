@@ -163,6 +163,28 @@ export async function getTranslationCounts(): Promise<CountRow[]> {
   });
 }
 
+/**
+ * Live row count for the whole `churches` table — the "search N churches" copy on
+ * /church-finder reads this instead of a hardcoded figure, so it never goes stale as
+ * syncs add or remove rows. null when Supabase isn't configured or the count fails.
+ */
+export async function getTotalChurchCount(): Promise<number | null> {
+  if (!supabase) return null;
+  const { count, error } = await supabase
+    .from("churches")
+    .select("*", { count: "exact", head: true });
+  if (error) {
+    console.error("getTotalChurchCount error:", error.message);
+    return null;
+  }
+  return count ?? null;
+}
+
+/** Rounds to the nearest thousand and formats with commas, e.g. 357952 -> "358,000". */
+export function roundToNearestThousand(count: number): string {
+  return (Math.round(count / 1000) * 1000).toLocaleString("en-US");
+}
+
 export interface SimilarChurchMatch {
   id: string;
   name: string;
