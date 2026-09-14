@@ -106,6 +106,7 @@ export const differenceParts: DiffPart[] = [
         intro:
           "Each of these is a complete verse in the Textus Receptus that the earliest manuscripts do not have. Modern translations either skip the verse number — leaving a visible gap — or move it to a footnote. In almost every case the same thought appears elsewhere in Scripture. The KJV reading:",
         shown: [
+          { reference: "Matthew 12:47", show: ["kjv"], note: "A bystander tells Jesus his mother and brothers are outside. The scene continues without it in verse 48 either way — “Who is my mother? and who are my brethren?” — since it just restates what verse 46 already said." },
           { reference: "Matthew 17:21", show: ["kjv"], note: "The same teaching is in the Mark 9:29 parallel." },
           { reference: "Matthew 18:11", show: ["kjv"], note: "Uncontested in Luke 19:10." },
           { reference: "Matthew 23:14", show: ["kjv"], note: "A woe about devouring widows’ houses; paralleled in Mark 12:40 and Luke 20:47." },
@@ -115,6 +116,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Mark 15:28", show: ["kjv"], note: "Quotes Isaiah 53:12; Jesus applies that verse to himself in Luke 22:37." },
           { reference: "Luke 17:36", show: ["kjv"], note: "Verses 34–35 already have the pattern — two in one bed, two women grinding." },
           { reference: "Luke 23:17", show: ["kjv"], note: "Pilate’s custom of releasing a prisoner at the feast; stated plainly in Matthew 27:15 and Mark 15:6." },
+          { reference: "John 5:4", show: ["kjv"], note: "The explanation that an angel stirred the pool of Bethesda, which is why the sick waited by it. Nothing in the healing that follows depends on it." },
           { reference: "Acts 8:37", show: ["kjv"], note: "The Ethiopian official’s confession of faith before baptism. Quoted by writers from the 2nd century on, though not in the earliest manuscripts of Acts." },
           { reference: "Acts 15:34", show: ["kjv"], note: "A note that Silas stayed on at Antioch." },
           { reference: "Acts 24:7", show: ["kjv"], note: "An expansion about the commander Lysias intervening." },
@@ -135,7 +137,6 @@ export const differenceParts: DiffPart[] = [
           { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” Both keep it, but the ESV footnotes it — “Some manuscripts omit verses 43 and 44” — and its print edition sets the verses in double brackets. The manuscript evidence is genuinely divided." },
           { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts lack it." },
           { reference: "Luke 24:12", show: ["kjv", "esv"], note: "Peter running to the empty tomb; kept in most modern texts, footnoted in a few." },
-          { reference: "John 5:3-4", show: ["kjv", "esv"], note: "The detail about an angel going down to stir the pool of Bethesda." },
           { reference: "Acts 9:5-6", show: ["kjv", "esv"], note: "“It is hard for thee to kick against the pricks,” and the exchange that follows. The “goads” saying is uncontested in Acts 26:14." },
           { reference: "Romans 8:1", show: ["kjv", "esv"], note: "KJV adds “who walk not after the flesh, but after the Spirit.” That exact clause appears in verse 4 without dispute." },
           { reference: "Colossians 1:14", show: ["kjv", "esv"], note: "KJV: “redemption through his blood.” The phrase is uncontested in the parallel at Ephesians 1:7." },
@@ -199,7 +200,7 @@ export const differenceParts: DiffPart[] = [
         id: "old-testament",
         title: "Old Testament: the Hebrew text and its older witnesses",
         intro:
-          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 250 BC to AD 70). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
+          "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 250 BC to AD 68). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
         shown: [
           { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment and the Septuagint: “the sons of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
           { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew of Saul’s age is incomplete — literally “Saul was … years old.” KJV renders it woodenly; the ESV brackets a guess; the NIV fills in numbers from the Septuagint and Acts 13:21." },

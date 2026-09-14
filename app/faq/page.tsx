@@ -172,7 +172,7 @@ const groups: Group[] = [
             <p>
               The <Link href="/translations/kjv">King James</Link> New Testament was translated from a
               small set of late Greek manuscripts. Since 1611, scholars have found many older copies
-              &mdash; some more than a thousand years older &mdash; and in about sixteen places those
+              &mdash; some more than a thousand years older &mdash; and in seventeen places those
               older copies don&rsquo;t contain a verse the KJV has. Modern translations follow the
               older evidence, usually keeping the verse in a footnote. Nothing that touches a core
               Christian teaching depends on these verses. The full list, with what each one says, is
@@ -181,7 +181,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Modern translations print fewer verses than the King James Version in about sixteen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies found since 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
+          "Modern translations print fewer verses than the King James Version in seventeen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies found since 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
       },
       {
         id: "text-types",

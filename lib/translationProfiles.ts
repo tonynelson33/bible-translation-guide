@@ -29,7 +29,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     ],
     distinctives: [
       "Bolds Old Testament quotations that appear in the New Testament, so cross-references are easy to spot at a glance while reading.",
-      "Renders the Hebrew divine name (YHWH) as “Lord,” the traditional style — a change from its predecessor, the HCSB, which had rendered it “Yahweh” roughly 600 times in the Old Testament.",
+      "Renders the Hebrew divine name (YHWH) as “Lord,” the traditional style — a change from its predecessor, the HCSB, which had rendered it “Yahweh” nearly 500 times in the Old Testament (495 in the 2009 HCSB revision, up from just 78 in the original 2004 edition).",
       "Targets roughly a 7th-8th grade reading level — more readable than formal translations like the ESV or NASB, without moving as far toward paraphrase as the NLT.",
       "Translated from the same critical-text family as most modern translations — the Nestle-Aland/UBS Greek New Testament and the Biblia Hebraica Stuttgartensia Old Testament — putting it in the same textual lineage as the ESV, NIV, and NASB.",
       "Anchors a growing shelf of study editions, including the CSB Study Bible, the CSB Apologetics Study Bible, the CSB Tony Evans Study Bible, and the CSB She Reads Truth Bible, and is widely used in Southern Baptist and other evangelical churches for preaching and small groups.",
@@ -50,13 +50,13 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     overview: [
       "The English Standard Version is published by Crossway and produced by a translation oversight committee of evangelical scholars. First released in 2001 and most recently revised in 2016, it was built as a revision of the 1971 edition of the Revised Standard Version (RSV) — reworked line by line to align it with a more formal, “essentially literal” translation philosophy while keeping much of the RSV's literary quality.",
       "The ESV aims to be as literal as it can be while still reading as natural English — favoring word-for-word correspondence to the original Hebrew, Aramaic, and Greek wherever that's readable, and adjusting only where a strictly literal rendering would be genuinely unclear to a modern reader.",
-      "On gender language, the ESV takes a traditional approach: it translates generic masculine terms — “brothers,” “man,” “he” — as they appear in the original text, without adding inclusive alternatives like “brothers and sisters.” The idea is to let the English wording match the original wording as closely as possible and leave it to the reader, in context, to recognize when a passage is addressing everyone.",
+      "On gender language, the ESV takes a traditional approach: it predominantly translates generic masculine terms — “brothers,” “man,” “he” — as they appear in the original text, rather than systematically adding inclusive alternatives like “brothers and sisters” (a small number of exceptions exist where the ESV does use gender-inclusive wording for a clearly mixed audience). The idea is to let the English wording match the original wording as closely as possible and leave it to the reader, in context, to recognize when a passage is addressing everyone.",
       "The ESV has become one of the most widely used translations in English-speaking evangelicalism since its release, especially in Reformed and broadly Reformed circles, and is the base text for the popular ESV Study Bible and a large library of ESV-based commentaries and devotionals.",
     ],
     distinctives: [
       "A revision of the 1971 Revised Standard Version, reworked into a more formal, essentially literal translation while preserving much of the RSV's literary quality.",
       "At a 10th-grade reading level, it sits between highly literal translations like the NASB and more conversational ones like the NIV or CSB.",
-      "Keeps traditional, generic masculine language throughout rather than adding inclusive alternatives — one of the more literal approaches to gender language among modern translations.",
+      "Keeps traditional, generic masculine language in all but a handful of places, rather than systematically adding inclusive alternatives — one of the more literal approaches to gender language among modern translations.",
       "Underpins the widely used ESV Study Bible and a large library of ESV-based commentaries, devotionals, and study resources.",
     ],
     goodFor: [
@@ -73,25 +73,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     tagline: "The original English translation whose language still echoes through English idiom, hymnody, and worship four centuries later.",
     overview: [
       "The King James Version — also known as the Authorized Version — was commissioned by King James I of England and first published in 1611. It's the oldest translation on this site by far, and remains one of the most widely recognized and read English Bibles today, more than four hundred years after its release.",
-      "The work was carried out by 47 scholars organized into six translation companies working at Westminster, Oxford, and Cambridge, each assigned a different section of Scripture, with Archbishop Richard Bancroft overseeing the project. The translators drew on earlier English Bibles — including Tyndale's New Testament and the Geneva Bible — as a starting point rather than beginning from nothing.",
-      "It's translated in a formal, word-for-word style from the Textus Receptus, a Greek New Testament text tradition compiled in the 16th century — a different textual lineage from the modern Critical Text that most newer translations, including its own successor the NKJV's marginal notes, now draw from.",
+      "The work was carried out by 47 scholars organized into six translation companies working at Westminster, Oxford, and Cambridge, each assigned a different section of Scripture, with Archbishop Richard Bancroft overseeing the project. Their instructions were to revise the 1568 Bishops' Bible — the Church of England's official, if never very popular, translation — as the base text. In practice they leaned so heavily on earlier English Bibles instead, especially Tyndale's New Testament and the Geneva Bible, that most studies put 75-85% of the KJV New Testament in Tyndale's own words.",
+      "It's translated in a formal, word-for-word style from the Textus Receptus for the New Testament — a Greek text tradition compiled in the 16th century, a different textual lineage from the modern Critical Text that most newer translations, including its own successor the NKJV's marginal notes, now draw from — and from the Masoretic Text, the standard medieval Hebrew text, for the Old Testament.",
       "Its gender language is traditional simply because it predates the modern conversation about it by centuries: it renders the generic masculine language of its source text — “brethren,” generic “he,” “man” — directly, in the same Early Modern English idiom as the rest of the translation.",
       "The KJV remains the best-selling Bible translation of all time and continues to be widely used today, especially in traditional and liturgical congregations, and its phrasing is woven deeply into English literature, hymnody, and everyday idiom.",
     ],
     distinctives: [
       "Produced by 47 scholars working in six teams at Westminster, Oxford, and Cambridge, commissioned by King James I and first published in 1611.",
       "Translated from the Textus Receptus, a Greek New Testament text tradition distinct from the modern Critical Text used by most other major translations today.",
-      "Fully in the public domain, so it can be freely copied, quoted, and republished without permission or restriction.",
+      "Fully in the public domain in the United States, so it can be freely copied, quoted, and republished there without permission or restriction. (The United Kingdom is the exception: the Crown holds a perpetual copyright there, and commercial publication needs a license from the King's Printer.)",
       "At a 12th-grade reading level, its Early Modern English vocabulary and sentence structure make it the most formal, least conversational translation on this site.",
     ],
     goodFor: [
       "Traditional and liturgical congregations, especially those with a long-standing King James heritage in their worship and preaching.",
       "Readers who value the KJV's literary cadence and its enormous influence on English devotional writing, hymnody, and idiom.",
-      "Anyone wanting Scripture that's fully public domain — freely quotable and reproducible without any copyright restriction.",
+      "Anyone in the US wanting Scripture that's fully public domain — freely quotable and reproducible without needing permission.",
     ],
     worthKnowing: [
       "The King James Version most people read today isn't quite the original 1611 printing. In 1769, Oxford scholar Benjamin Blayney standardized its spelling and punctuation — correcting tens of thousands of small inconsistencies across earlier printings — without changing the wording itself. That 1769 edition is the text virtually all modern KJV Bibles use.",
-      "Many everyday English expressions actually originated in the KJV's phrasing — “the writing on the wall” (Daniel 5), “a drop in the bucket” (Isaiah 40:15), “the powers that be” (Romans 13:1), and “a man after his own heart” (1 Samuel 13:14) all trace back to this translation, entering the language so thoroughly that most people who use them today don't realize they're quoting Scripture.",
+      "Several everyday English expressions trace back to the KJV's phrasing. “The powers that be” (Romans 13:1) and “a man after his own heart” (1 Samuel 13:14) are exact quotes, word for word. Two more are close paraphrases rather than direct quotes: Daniel 5's story of mysterious handwriting appearing during Belshazzar's feast gave English the idiom “the writing on the wall,” though that exact phrase isn't in the text, and Isaiah 40:15's “a drop of a bucket” became today's slightly reworded “a drop in the bucket.” Most people who use any of these don't realize they're quoting, or echoing, Scripture.",
     ],
   },
 
@@ -170,7 +170,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     tagline: "The King James's language modernized, without changing the underlying text it's translated from.",
     overview: [
       "The New King James Version is published by Thomas Nelson and was commissioned in 1975 under executive editor Arthur Farstad. More than 130 scholars, editors, and church leaders worked on it over seven years — one of the largest translation committees ever assembled for an English Bible — with the New Testament published in 1979, the Psalms in 1980, and the complete Bible in 1982, followed by a minor revision in 1984.",
-      "Rather than translating from scratch, the NKJV set out to update the King James Version's language while deliberately keeping the same underlying Greek text — the Textus Receptus, part of the broader Byzantine tradition — rather than the modern Critical Text most other contemporary translations use. In practice, that means modernizing the KJV's archaic pronouns (“thee,” “thou”) and verb endings (“-eth,” “-est”) while preserving much of its sentence structure and literary rhythm — and noting in the margin, rather than silently choosing, where both the Majority Text and the modern Critical Text differ from that base.",
+      "Rather than translating from scratch, the NKJV set out to update the King James Version's language while deliberately keeping the same underlying text — the Textus Receptus for the New Testament (part of the broader Byzantine tradition) and the Masoretic Text for the Old Testament — rather than the modern Critical Text most other contemporary translations use for the NT. In practice, that means modernizing the KJV's archaic pronouns (“thee,” “thou”) and verb endings (“-eth,” “-est”) while preserving much of its sentence structure and literary rhythm — and noting in the margin, rather than silently choosing, where both the Majority Text and the modern Critical Text differ from that base.",
       "Its gender language stays traditional, consistent with the KJV it updates: generic masculine terms are translated as they appear in the original text, without inclusive alternatives.",
       "The NKJV remains one of the top-selling English translations, especially popular among readers who love the King James's literary tradition but want its grammar and vocabulary in contemporary English.",
     ],

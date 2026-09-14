@@ -8,10 +8,6 @@
     "kjv": "And he said, Who art thou, Lord? And the Lord said, I am Jesus whom thou persecutest: it is hard for thee to kick against the pricks. And he trembling and astonished said, Lord, what wilt thou have me to do? And the Lord said unto him, Arise, and go into the city, and it shall be told thee what thou must do.",
     "esv": "And he said, “Who are you, Lord?” And he said, “I am Jesus, whom you are persecuting. But rise and enter the city, and you will be told what you are to do.”"
   },
-  "John 5:3-4": {
-    "kjv": "In these lay a great multitude of impotent folk, of blind, halt, withered, waiting for the moving of the water. For an angel went down at a certain season into the pool, and troubled the water: whosoever then first after the troubling of the water stepped in was made whole of whatsoever disease he had.",
-    "esv": "In these lay a multitude of invalids—blind, lame, and paralyzed."
-  },
   "Luke 9:55-56": {
     "kjv": "But he turned, and rebuked them, and said, Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them. And they went to another village.",
     "esv": "But he turned and rebuked them. And they went on to another village."
@@ -161,6 +157,9 @@
     "esv": "So his fame spread throughout all Syria, and they brought him all the sick, those afflicted with various diseases and pains, those oppressed by demons, those having seizures, and paralytics, and he healed them.",
     "niv": "News about him spread all over Syria, and people brought to him all who were ill with various diseases, those suffering severe pain, the demon-possessed, those having seizures, and the paralyzed; and he healed them."
   },
+  "Matthew 12:47": {
+    "kjv": "Then one said unto him, Behold, thy mother and thy brethren stand without, desiring to speak with thee."
+  },
   "Matthew 17:21": {
     "kjv": "Howbeit this kind goeth not out but by prayer and fasting."
   },
@@ -187,6 +186,9 @@
   },
   "Luke 23:17": {
     "kjv": "(For of necessity he must release one unto them at the feast.)"
+  },
+  "John 5:4": {
+    "kjv": "For an angel went down at a certain season into the pool, and troubled the water: whosoever then first after the troubling of the water stepped in was made whole of whatsoever disease he had."
   },
   "Acts 8:37": {
     "kjv": "And Philip said, If thou believest with all thine heart, thou mayest. And he answered and said, I believe that Jesus Christ is the Son of God."

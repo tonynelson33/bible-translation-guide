@@ -22,7 +22,7 @@ const monogramStyles: Record<Philosophy, string> = {
 // The two translations with a free story beyond the universal Bible Gateway /
 // YouVersion access every translation on this page has.
 const officiallyFree: Record<string, string> = {
-  kjv: "public domain — free to read, copy, and print in any form",
+  kjv: "public domain in the US — free to read, copy, and print there without permission",
   net: "the full text and all 60,000 translator's notes, free by design at bible.org",
 };
 
@@ -126,7 +126,8 @@ export default function BuyPage() {
             YouVersion
           </a>{" "}
           app. The <Link href="/translations/kjv" className="font-medium text-gild-700 hover:underline">KJV</Link>{" "}
-          is public domain &mdash; free to read, copy, and print in any form. The{" "}
+          is public domain in the US &mdash; free to read, copy, and print there without permission
+          (the UK is the exception, where the Crown holds a perpetual copyright). The{" "}
           <Link href="/translations/net" className="font-medium text-gild-700 hover:underline">NET</Link>,
           with its 60,000 translator&rsquo;s notes, is free by design at bible.org.
         </p>

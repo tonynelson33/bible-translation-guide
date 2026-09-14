@@ -49,29 +49,29 @@ export const rankingCategories: RankingCategory[] = [
       {
         id: "niv",
         blurb:
-          "The best-selling modern English translation for most of the past several decades, and still reliably in the top two or three spots on ECPA's monthly bestseller list.",
+          "#1 on ECPA's September 2026 bestseller list, and has been the best-selling modern English translation for most of the past several decades.",
       },
       {
         id: "esv",
         blurb:
-          "The runner-up on ECPA's 2024 year-end list — a fixture near the top of the charts for years, especially strong in Reformed and broadly evangelical retail.",
+          "#2 on ECPA's September 2026 bestseller list — a fixture near the top of the charts for years, especially strong in Reformed and broadly evangelical retail.",
       },
       {
         id: "kjv",
         blurb:
-          "Still holds a top-three spot on current bestseller charts, and remains the best-selling Bible translation of all time by a wide margin thanks to a 400-year head start and being fully public domain.",
+          "#3 on ECPA's September 2026 bestseller list, and remains the best-selling Bible translation of all time by a wide margin thanks to a 400-year head start and being fully public domain.",
       },
-      { id: "nlt", blurb: "Right behind the KJV on the 2024 year-end list — and in parts of 2025, Christian-retail data briefly had it outselling the NIV, a reminder of how much this list moves." },
-      { id: "nkjv", blurb: "Still a consistent top-ten seller, popular with readers who want the King James tradition in modern grammar." },
-      { id: "csb", blurb: "One of the fastest-growing translations in recent years, breaking into the top six on ECPA's 2024 year-end list." },
-      { id: "nasb", blurb: "A perennial top-ten seller, even though its audience is more specialized than the translations above it." },
-      { id: "nrsvue", blurb: "The standard translation of mainline Protestant churches and the academic world — modest retail numbers, but a large everyday footprint across seminaries, universities, and mainline pews." },
+      { id: "nlt", blurb: "#4 on ECPA's September 2026 bestseller list, right behind the KJV — and in parts of 2025, Christian-retail data briefly had it outselling the NIV, a reminder of how much this list moves." },
+      { id: "nkjv", blurb: "#5 on ECPA's September 2026 bestseller list, popular with readers who want the King James tradition in modern grammar." },
+      { id: "csb", blurb: "One of the fastest-growing translations in recent years — 7th overall on ECPA's September 2026 bestseller list (6th among the twelve translations here)." },
+      { id: "nasb", blurb: "9th overall on ECPA's September 2026 bestseller list (7th among the twelve here) — a perennial top-ten seller, even though its audience is more specialized than the translations above it." },
+      { id: "nrsvue", blurb: "10th overall on ECPA's September 2026 bestseller list (8th among the twelve here), listed there as “New Revised Standard Version” — the standard translation of mainline Protestant churches and the academic world, with a much larger everyday footprint across seminaries, universities, and mainline pews than its retail rank alone suggests." },
       { id: "amp", blurb: "A steady mid-list seller for decades, with a following among charismatic readers and study-Bible shoppers that keeps it on ECPA's monthly lists." },
       { id: "lsb", blurb: "The newest translation here by far (2021), with sales concentrated in Reformed and MacArthur-affiliated ministry circles rather than the general market." },
       { id: "ceb", blurb: "Sells steadily into United Methodist and other mainline congregations, but has little presence in the evangelical retail that drives the bestseller lists." },
       { id: "net", blurb: "Doesn't chart on print bestseller lists at all — it was built for free online distribution from day one, not retail sales." },
     ],
-    note: "Positions 1-6 follow ECPA's 2024 year-end bestseller list in order (NIV, ESV, KJV, NLT, NKJV, CSB). Everything below that — NASB, NRSVue, AMP, LSB, CEB, NET — blends occasional bestseller-list appearances with overall real-world use and is less precisely documented. Exact order also shifts month to month, so treat this as a general picture rather than a fixed, permanent order.",
+    note: "Positions 1-8 follow ECPA's September 2026 monthly bestseller list in order (NIV, ESV, KJV, NLT, NKJV, CSB, NASB, and NRSVue — listed there as “New Revised Standard Version”). That list also includes Reina Valera (a Spanish translation) at 6th and the New International Reader's Version at 8th overall, which aren't profiled on this site — that's why CSB's and NASB's overall chart positions skip past those two spots. Everything below 8th here — AMP, LSB, CEB, NET — blends occasional bestseller-list appearances with overall real-world use and is less precisely documented. Exact order shifts month to month (ECPA compiles it from Circana BookScan retail data), so treat this as a general picture rather than a fixed, permanent order, and check ECPA's current list for the latest.",
   },
   {
     slug: "literal",
@@ -247,7 +247,7 @@ export const rankingCategories: RankingCategory[] = [
       {
         id: "csb",
         blurb:
-          "The only translation here that wins a category outright (preaching), plus a 3rd for daily devotions — held back a little by a middling 7th for both study and memorization.",
+          "Wins Best for Preaching outright, plus a 3rd for daily devotions — held back a little by a middling 7th for both study and memorization.",
       },
       {
         id: "nasb",
