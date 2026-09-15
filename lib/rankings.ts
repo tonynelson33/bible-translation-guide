@@ -130,8 +130,8 @@ export const rankingCategories: RankingCategory[] = [
       },
       { id: "nkjv", blurb: "Carries much of the KJV's memorable cadence, in grammar that's easier to commit to memory today." },
       { id: "niv", blurb: "Being the translation most people around you already know makes group memorization and recitation easier." },
-      { id: "lsb", blurb: "Its consistent, literal renderings suit precision-focused memorization, though it's too new to have an established memory-verse tradition yet." },
       { id: "csb", blurb: "Used in some LifeWay children's and student curricula for Scripture memory, with clear, consistent phrasing." },
+      { id: "lsb", blurb: "Its consistent, literal renderings suit precision-focused memorization, though it's too new to have an established memory-verse tradition yet." },
       { id: "nrsvue", blurb: "No real memory-verse tradition, and reshaping familiar singular lines for inclusive language (“Blessed are those…”) works against the crisp, fixed phrasing that memorization rewards." },
       { id: "ceb", blurb: "Plain vocabulary helps, but its loose, conversational phrasing gives exact wording less of a fixed shape to hold onto." },
       { id: "nlt", blurb: "Its more flexible, thought-for-thought phrasing makes exact word-for-word recall harder than with a more literal translation." },
@@ -247,7 +247,7 @@ export const rankingCategories: RankingCategory[] = [
       {
         id: "csb",
         blurb:
-          "Wins Best for Preaching outright, plus a 3rd for daily devotions — held back a little by a middling 7th for both study and memorization.",
+          "Wins Best for Preaching outright, plus a 3rd for daily devotions — held back a little by a middling 6th for memorization and 7th for study.",
       },
       {
         id: "nasb",
@@ -260,7 +260,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "kjv", blurb: "A clear #1 for memorization and 7th for preaching, weighed against a pair of 9th-place finishes for study and daily reading — the archaic text is the drag on the everyday-use side." },
       { id: "net", blurb: "The #1 translation for serious study, but 11th for both preaching and memorization — the notes that make it exceptional don't help when the text is read aloud." },
       { id: "ceb", blurb: "A strong 2nd for daily devotions carries an otherwise low set of finishes — 8th to 11th in the other three." },
-      { id: "lsb", blurb: "4th for study and 6th for memorization on the back of its precision, but 9th to 11th for the two most public-facing uses." },
+      { id: "lsb", blurb: "4th for study and 7th for memorization on the back of its precision, but 9th to 11th for the two most public-facing uses." },
       { id: "nlt", blurb: "#1 for daily devotions and nowhere else near the top — its thought-for-thought wording is last or near-last for study, preaching, and memorization." },
       { id: "amp", blurb: "A reference tool rather than an everyday Bible — last in three of the four categories, and 10th in the other." },
     ],
