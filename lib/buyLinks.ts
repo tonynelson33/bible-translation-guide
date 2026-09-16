@@ -25,7 +25,6 @@ export interface TranslationLinks {
  * A couple of intentional gaps remain:
  *  - NET doesn't operate its own store, but has an official free-reading
  *    site (bible.org).
- *  - LSB isn't available on Bible Gateway at all.
  *  - KJV has no single publisher (public domain), so there's no "official"
  *    buy link for it — just retailers.
  *  - NRSVue is the same: the NCC licenses it to many houses, so no one store
@@ -94,6 +93,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
     ],
     readFree: [
       { label: "LSBible.org (official)", url: "https://read.lsbible.org/" },
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=LSB" },
       { label: "YouVersion", url: "https://www.bible.com/versions/3345" },
     ],
   },
