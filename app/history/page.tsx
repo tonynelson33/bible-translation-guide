@@ -99,8 +99,11 @@ export default function HistoryPage() {
             <p>
               Copies were smuggled home in cloth and grain shipments; the authorities burned the
               ones they caught, and eventually they caught Tyndale. He was strangled and burned in
-              1536. Within four years the same king who had hunted him authorized an English Bible
-              for every parish church &mdash; one built largely on Tyndale&rsquo;s own work.
+              1536. The next year, the same king&rsquo;s government licensed a Bible built
+              substantially on Tyndale&rsquo;s own translation &mdash; published under the fake
+              name &ldquo;Thomas Matthew&rdquo; to hide whose work it really was. Two years after
+              that, an English Bible went into every parish church, openly built on
+              Tyndale&rsquo;s work this time.
             </p>
             <p>
               His phrasing carried straight through the Great Bible, the Geneva Bible, and the
