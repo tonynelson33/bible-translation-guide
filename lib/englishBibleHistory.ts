@@ -267,7 +267,14 @@ export const timeline: TimelineEntry[] = [
     year: "1885 · England",
     title: "The Revised Version",
     detail:
-      "The first official overhaul of the KJV, incorporating manuscript discoveries of the 1800s. Its American counterpart, the American Standard Version, followed in 1901.",
+      "The first official overhaul of the KJV, incorporating manuscript discoveries of the 1800s.",
+  },
+  {
+    year: "1901 · United States",
+    title: "The American Standard Version",
+    detail:
+      "The American members of the Revised Version's translation committee publish their own preferred edition — restoring “Jehovah” for the divine name, American spelling and idiom — once the 14-year agreement not to compete with the British edition expires. Barely read on its own, but its literal, precise style becomes the base text for the NASB, the Amplified Bible, and the RSV. Close to half the translations on this site trace back to this one 1901 revision.",
+    major: true,
   },
   {
     year: "1952 · United States",
