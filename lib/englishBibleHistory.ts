@@ -51,24 +51,6 @@ export const historyImages: Record<string, HistoryImage> = {
       "The final page of Erasmus’s 1516 Greek New Testament — the end of Revelation, his Greek beside his own Latin. His one manuscript of Revelation was missing its last leaf, so he back-translated the closing verses from the Latin; those readings passed into the Textus Receptus and the King James.",
     credit: "Johann Froben, Basel, 1516 — public domain.",
   },
-  coverdale1535: {
-    src: "/history/coverdale-1535-title.jpg",
-    width: 660,
-    height: 1006,
-    alt: "The woodcut title border of the 1535 Coverdale Bible: small biblical scenes down both sides, Henry VIII enthroned at the foot handing out books.",
-    caption:
-      "The 1535 Coverdale Bible, the first complete Bible printed in English. The title border is attributed to Hans Holbein the Younger.",
-    credit: "1535 — public domain.",
-  },
-  matthewsBible1537: {
-    src: "/history/matthews-bible-1537.png",
-    width: 594,
-    height: 835,
-    alt: "The title page of Matthew's Bible, 1537: an elaborate woodcut border of biblical scenes framing the title in black-letter type, dated M.D.XXXVII.",
-    caption:
-      "The title page of Matthew's Bible, 1537 — published under the pseudonym “Thomas Matthew” to hide that it was substantially William Tyndale's own banned translation.",
-    credit: "Antwerp, 1537 — public domain, via Wikimedia Commons.",
-  },
   greatBible1539: {
     src: "/history/great-bible-1539-title.jpg",
     width: 660,
@@ -244,14 +226,12 @@ export const timeline: TimelineEntry[] = [
     title: "The Coverdale Bible",
     detail:
       "Miles Coverdale publishes the first complete printed English Bible, filling the gaps Tyndale never reached by working from Latin and German. The Psalms in the Book of Common Prayer are still his.",
-    images: [historyImages.coverdale1535],
   },
   {
     year: "1537 · Antwerp, Belgium",
     title: "Matthew's Bible",
     detail:
       "John Rogers, a friend of Tyndale's, publishes it under the pseudonym “Thomas Matthew” to hide that it's substantially Tyndale's own banned work — his New Testament and the Old Testament books he'd finished before his execution, with Coverdale filling the rest. The first time Tyndale's actual Old Testament translation appears in print. Archbishop Cranmer gets it in front of Henry VIII, who licenses it for sale and reading throughout England within ten days — one year after his government hunted Tyndale to his death.",
-    images: [historyImages.matthewsBible1537],
   },
   {
     year: "1539 · Paris & London",
