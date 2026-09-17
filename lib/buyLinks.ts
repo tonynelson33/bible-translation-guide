@@ -211,4 +211,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/110-nirv-new-international-readers-version" },
     ],
   },
+  isv: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=International+Standard+Version+Bible" },
+    ],
+    readFree: [
+      { label: "ISV Foundation (official)", url: "https://isvbible.org/" },
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=ISV" },
+    ],
+  },
 };

@@ -430,4 +430,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "A stepping-stone Bible for readers who will likely move to the full NIV later, since the two share the same underlying text and philosophy.",
     ],
   },
+
+  isv: {
+    tagline: "A \"Literal-Idiomatic\" translation aiming for a middle path between strict word-for-word accuracy and readable modern English.",
+    overview: [
+      "The International Standard Version began in 1996 under the ISV Foundation, a California nonprofit, envisioned by biblical scholar and technologist Dr. William H. Welty. Portions were released over the following years, and the complete Bible — Old and New Testaments — was published electronically in 2011.",
+      "The ISV describes its own approach as \"Literal-Idiomatic\": a deliberate middle path between strict formal equivalence, which its translators felt could produce stiff or unclear English, and freer thought-for-thought translation, which they felt could drift too far from the original wording. In practice this places it alongside other modern translations that blend the two approaches verse by verse, like the CSB and BSB.",
+      "One distinctive of the ISV's Old Testament work is its use of Dead Sea Scrolls scholarship: Dr. Peter Flint, a leading authority on the Qumran scrolls, produced a fresh translation of the Great Isaiah Scroll specifically for the ISV's book of Isaiah, giving that book access to a significant ancient witness a millennium older than the standard medieval Hebrew text.",
+      "On gender language, the ISV takes a traditional approach, keeping generic masculine wording — \"brothers,\" \"mankind,\" generic \"he\" — rather than substituting inclusive alternatives.",
+    ],
+    distinctives: [
+      "Self-described \"Literal-Idiomatic\" translation philosophy, aiming for a middle path between formal and dynamic equivalence rather than committing fully to either.",
+      "Produced entirely by the ISV Foundation, an independent nonprofit, rather than an existing denominational publisher or seminary.",
+      "Its Isaiah translation draws on a dedicated fresh reading of the Great Isaiah Scroll from the Dead Sea Scrolls, produced by Qumran specialist Dr. Peter Flint specifically for this edition.",
+      "Published electronically from the start (2011), with print editions following later — a digital-first release pattern shared with several other newer, independently produced translations.",
+    ],
+    goodFor: [
+      "Readers who want a translation that explicitly aims for a middle ground between the ESV's formality and the NLT's or CEV's free paraphrase-adjacent style.",
+      "Readers interested in the Dead Sea Scrolls' impact on Old Testament translation, particularly in Isaiah.",
+      "A second translation to compare against a primary Bible, given its independent, foundation-driven translation process outside the usual denominational or publishing-house pipelines.",
+    ],
+  },
 };

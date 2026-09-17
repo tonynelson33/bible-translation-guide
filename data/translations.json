@@ -364,5 +364,29 @@
     "verifyFields": [
       "redLetter"
     ]
+  },
+  {
+    "id": "isv",
+    "name": "International Standard Version",
+    "abbreviation": "ISV",
+    "latestRevisionYear": 2011,
+    "firstPublishedYear": 2011,
+    "gradeLevel": "7-8",
+    "philosophy": "Optimal",
+    "textualBasis": "Critical Text",
+    "publisher": "ISV Foundation",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter",
+      "italicizesTranslatorWords"
+    ]
   }
 ]
