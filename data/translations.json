@@ -293,5 +293,29 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "gnt",
+    "name": "Good News Translation",
+    "abbreviation": "GNT",
+    "latestRevisionYear": 1992,
+    "firstPublishedYear": 1976,
+    "gradeLevel": "5-6",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical Text",
+    "publisher": "American Bible Society",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": true,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "italicizesTranslatorWords"
+    ]
   }
 ]

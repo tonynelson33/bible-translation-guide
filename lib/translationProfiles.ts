@@ -364,4 +364,28 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Michael Paul Johnson originally attempted a fresh translation from the original languages, starting with the Gospel of John, before concluding the pace was too slow for one person working in his spare time. Switching to a computer-assisted modernization of the public-domain ASV — using custom software he wrote himself to flag archaic words for review — is what actually made the project finishable.",
     ],
   },
+
+  gnt: {
+    tagline: "A dynamic-equivalence translation written in plain, common English for readers with little or no church background.",
+    overview: [
+      "The Good News Translation began as a New Testament, published by the American Bible Society in 1966 under the title Good News for Modern Man. Translator Robert G. Bratcher, working under ABS translation-department head Eugene Nida, built it explicitly around Nida's own theory of \"dynamic equivalence\" — the idea, developed in part for missionary translators working in languages with no existing Bible, that a translation should reproduce the effect of the original on its first readers rather than its exact wording. The complete Bible followed in 1976 as the Good News Bible, with a further revision — including a move toward gender-inclusive language in places where the original text addresses both men and women — in 1992.",
+      "The translation was deliberately written in what the ABS called \"common language\": vocabulary and sentence structure plain enough for both native and non-native English speakers, children, and adults with little formal education, while still ranking as an accurate, scholarly translation from the Hebrew, Aramaic, and Greek. It has sold widely since — more than 244 million copies distributed worldwide by ABS's own count — and remains a common choice for literacy ministries, children's Bibles, and international English-language outreach.",
+      "On gender language, the GNT's 1992 revision moved further toward inclusive wording than most of its contemporaries, translating the Hebrew adam as \"human beings\" rather than \"man\" and using similar gender-neutral phrasing wherever the original addresses people in general rather than a specific man or group of men.",
+      "The GNT's plain, simplified style has always drawn both praise and criticism. Its priority on immediate clarity over precise, word-level correspondence to the Hebrew and Greek means some theologically loaded terms are paraphrased rather than translated directly — most famously Isaiah 7:14's \"virgin,\" which the GNT renders \"young woman,\" and several New Testament references to the \"blood\" of Christ, which it renders as his \"death.\" Both choices reflect real, if contested, judgments about what the underlying Hebrew and Greek words most naturally mean, but they drew — and still draw — real criticism from readers who see them as blurring specific doctrinal language the original text uses.",
+    ],
+    distinctives: [
+      "Written in ABS's own \"common language\" style — deliberately plain vocabulary and sentence structure, aimed at readers with limited English or limited exposure to church language, including as a second-language and literacy-ministry tool internationally.",
+      "Built directly around Eugene Nida's \"dynamic equivalence\" translation theory, which the GNT helped popularize as a mainstream approach to Bible translation.",
+      "Revised in 1992 to use gender-inclusive language more thoroughly than most translations from its era, including rendering the Hebrew adam as \"human beings\" rather than \"man.\"",
+      "Its handling of a few theologically sensitive terms — \"young woman\" at Isaiah 7:14, \"death of Christ\" in places other translations render \"blood of Christ\" — has drawn sustained criticism from readers who see those as doctrinally significant word choices, not just stylistic ones.",
+    ],
+    goodFor: [
+      "Readers with limited English, limited reading ability, or little prior exposure to church vocabulary, including literacy and second-language ministry settings.",
+      "Children's Bibles and first-time readers who need the clearest, plainest possible entry point into the text.",
+      "Read-through-the-Bible plans where speed and comprehension matter more than word-for-word precision.",
+    ],
+    worthKnowing: [
+      "Robert Bratcher, the GNT's principal translator, was an outspoken critic of biblical inerrancy in his later career, at one point publicly calling the doctrine \"a fetish of Bible worship\" — comments that drew heavy backlash from conservative evangelicals and, by some accounts, cost the American Bible Society real financial support from that wing of its donor base. That controversy was about Bratcher's own public statements, not a documented flaw in the translation itself, but it's part of why the GNT carries a more contested reputation in conservative circles than its plain, functional prose might otherwise suggest.",
+    ],
+  },
 };

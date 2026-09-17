@@ -180,4 +180,15 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/206-web-world-english-bible" },
     ],
   },
+  gnt: {
+    buy: [
+      { label: "Bibles.com (American Bible Society, official)", url: "https://www.bibles.com/good-news-translation-gnt-bible-5.html" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Good+News+Translation+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/gnt" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=GNT" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/68-gnt-good-news-translation" },
+    ],
+  },
 };
