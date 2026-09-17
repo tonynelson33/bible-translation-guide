@@ -339,4 +339,29 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "The Berean Standard Bible and the Majority Standard Bible are, in a real sense, siblings rather than two unrelated translations: they share the same Old Testament and the same translation team, differing only in which Greek New Testament tradition — Critical Text or Majority/Byzantine Text — their New Testament is built from.",
     ],
   },
+
+  web: {
+    tagline: "A free, public-domain modernization of the 1901 ASV, built on the Majority Text rather than the Critical Text.",
+    overview: [
+      "The World English Bible traces back to 1994, when Michael Paul Johnson set out to build a Bible translation that would be permanently free to copy, publish, and distribute — anticipating how much easier that would become as computers and the internet spread. Working through Rainbow Missions, Inc., the nonprofit he and his wife Lori had incorporated in 1985, Johnson and a large team of volunteer editors and proofreaders modernized the archaic vocabulary and grammar of the 1901 American Standard Version — itself already in the public domain — verse by verse. The New Testament was first released in 1997; the full text reached what the project calls its “stable text edition,” with wording essentially frozen aside from typo fixes, in 2020.",
+      "Rather than a translation built fresh from the original languages, the WEB is explicitly an update of the ASV's wording — closer in spirit to how the NKJV updates the KJV than to a new translation like the NIV or CSB. Where it departs from a simple modernization is the New Testament's underlying Greek text: the ASV had used the same Critical Text tradition as its era's other scholarly translations, but the WEB's team ultimately based its New Testament on the Byzantine Majority Text instead — the text type found in the largest number of surviving Greek manuscripts, most of them medieval copies from the Byzantine church.",
+      "On gender language, the WEB keeps the ASV's traditional wording — generic \"brothers,\" \"he,\" and \"man\" render the original languages' own generic-masculine forms directly, without inclusive substitutes.",
+      "Because the entire text is dedicated to the public domain, the WEB has become a popular base for other free projects, including a British-spelling edition, a Messianic Jewish edition that restores Hebrew names and the divine name \"Yahweh\" throughout, and an included, separately public-domain Apocrypha.",
+    ],
+    distinctives: [
+      "Fully public domain worldwide — free to copy, quote, adapt, and republish without permission, the same legal status as the KJV.",
+      "Modernizes the 1901 American Standard Version's language rather than translating fresh from the original languages, similar in spirit to how the NKJV updates the KJV.",
+      "Built on the Byzantine Majority Text for its New Testament — a different Greek text tradition from the Critical Text nearly every other modern translation on this site uses.",
+      "Renders the Hebrew divine name as \"Yahweh\" throughout the Old Testament rather than the traditional \"LORD,\" following the same choice as its ASV ancestor's \"Jehovah.\"",
+      "Produced entirely by volunteers coordinated through a small nonprofit, Rainbow Missions, Inc., rather than a denomination, seminary, or publishing house.",
+    ],
+    goodFor: [
+      "Anyone who wants a free, unrestricted translation to quote, print, or build software and apps on top of.",
+      "Readers curious what an English Bible built on the Majority Text — rather than the Critical Text most modern translations share — actually reads like, without the KJV's Early Modern English.",
+      "Readers who want a translation in the same literal, ASV-descended tradition as the NASB or LSB, at no cost and with no usage restrictions.",
+    ],
+    worthKnowing: [
+      "Michael Paul Johnson originally attempted a fresh translation from the original languages, starting with the Gospel of John, before concluding the pace was too slow for one person working in his spare time. Switching to a computer-assisted modernization of the public-domain ASV — using custom software he wrote himself to flag archaic words for review — is what actually made the project finishable.",
+    ],
+  },
 };

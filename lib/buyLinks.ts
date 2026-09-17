@@ -171,4 +171,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/3034-bsb-english-berean-standard-bible" },
     ],
   },
+  web: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=World+English+Bible" },
+    ],
+    readFree: [
+      { label: "World English Bible (official)", url: "https://worldenglish.bible/" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/206-web-world-english-bible" },
+    ],
+  },
 };

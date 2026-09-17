@@ -270,5 +270,28 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "web",
+    "name": "World English Bible",
+    "abbreviation": "WEB",
+    "latestRevisionYear": 2020,
+    "firstPublishedYear": 1997,
+    "gradeLevel": "9-10",
+    "philosophy": "Formal",
+    "textualBasis": "Majority Text",
+    "publisher": "Rainbow Missions",
+    "quoteLimit": "Unlimited",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel"
+    ]
   }
 ]

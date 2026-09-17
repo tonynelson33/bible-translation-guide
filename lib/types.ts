@@ -1,5 +1,5 @@
 export type Philosophy = "Formal" | "Dynamic" | "Optimal" | "Mixed";
-export type TextualBasis = "Critical Text" | "Textus Receptus";
+export type TextualBasis = "Critical Text" | "Textus Receptus" | "Majority Text" | "Textus Receptus / Majority Text";
 export type GenderApproach = "Traditional" | "Moderate" | "Inclusive";
 
 export interface OtMarking {
