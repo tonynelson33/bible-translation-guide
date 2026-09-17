@@ -239,4 +239,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/105-ncv-new-century-version" },
     ],
   },
+  mev: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Modern+English+Version+Bible" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=MEV" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/1171-mev-modern-english-version" },
+    ],
+  },
 };

@@ -436,5 +436,28 @@
     "verifyFields": [
       "italicizesTranslatorWords"
     ]
+  },
+  {
+    "id": "mev",
+    "name": "Modern English Version",
+    "abbreviation": "MEV",
+    "latestRevisionYear": 2014,
+    "firstPublishedYear": 2014,
+    "gradeLevel": "7",
+    "philosophy": "Formal",
+    "textualBasis": "Textus Receptus",
+    "publisher": "Passio / Charisma House",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Traditional",
+    "redLetter": true,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": true,
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel"
+    ]
   }
 ]

@@ -493,4 +493,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Read-aloud settings in the home or classroom where short sentences and plain vocabulary make listening comprehension easier.",
     ],
   },
+
+  mev: {
+    tagline: "A fresh, formal-equivalence update of the King James tradition, translated directly from the same Hebrew and Greek base texts.",
+    overview: [
+      "The Modern English Version is a from-scratch translation in the King James tradition, begun in 2005 under executive director James F. Linzey and drawing on translators from a range of Christian traditions. The New Testament was completed in 2011 and the Old Testament in 2014, when the complete Bible was published by Passio, an imprint of Charisma House.",
+      "Rather than reworking the KJV's own centuries-old English word by word the way the NKJV does, the MEV is translated fresh from the Masoretic Text and the Textus Receptus — the same source texts behind the KJV — aiming to combine that tradition's formal, word-for-word accuracy with contemporary English grammar and vocabulary.",
+      "On gender language, the MEV keeps the KJV tradition's generic masculine wording, and, like the NKJV, capitalizes pronouns referring to God (He, His, Him) and italicizes words the translators added for clarity that have no direct equivalent in the underlying Hebrew or Greek — both classic King James-family conventions.",
+      "The MEV positions itself as a Textus Receptus alternative for readers who want that textual tradition and the KJV's formal style, but in fully contemporary English rather than the NKJV's more measured modernization of the KJV's own historic wording.",
+    ],
+    distinctives: [
+      "A fresh translation from the Masoretic Text and Textus Receptus, not a word-by-word update of the KJV's own English the way the NKJV is.",
+      "Keeps classic King James-family conventions: capitalized pronouns for God and italicized translator-supplied words.",
+      "Completed relatively recently (2014), making it one of the newest translations still working from the Textus Receptus rather than the modern Critical Text.",
+      "Drew translators from a deliberately broad range of Christian traditions rather than a single denomination or seminary.",
+    ],
+    goodFor: [
+      "Readers who want the Textus Receptus and a formal, word-for-word style, but in fully contemporary English rather than the KJV's or NKJV's more archaic-adjacent phrasing.",
+      "Congregations and readers with a KJV-tradition background who want a modern-language option that keeps the same underlying text.",
+      "A second translation to compare against the NKJV, since both descend from the same textual tradition by different routes.",
+    ],
+  },
 };
