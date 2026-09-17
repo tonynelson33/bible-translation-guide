@@ -409,4 +409,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "First exposure to the Bible for readers with no prior church background or familiarity with traditional biblical vocabulary.",
     ],
   },
+
+  nirv: {
+    tagline: "The NIV's own text and translation philosophy, simplified in vocabulary and sentence length to a third-grade reading level.",
+    overview: [
+      "The New International Reader's Version isn't a separate translation from the original languages — it's a deliberately simplified edition of the NIV, produced by the same publisher, Biblica (with Zondervan), starting from guidelines Zondervan wrote in 1991. The New Testament appeared in 1994 and the complete Bible in 1996, aimed at children, developing readers, and adults learning English as a second language.",
+      "Wherever the NIV's own wording is already clear at a third-grade level, the NIrV keeps it word for word; where it isn't, editors shortened sentences and replaced harder vocabulary and figures of speech with simpler equivalents, while keeping the same underlying meaning and the NIV's same translation philosophy and source texts.",
+      "The NIrV was revised in 1998 and again in 2014, with the 2014 revision specifically bringing its treatment of gender language into line with the 2011 NIV update — so the NIrV shares the current NIV's moderate approach to gender-inclusive language, translating generic references to people inclusively while keeping masculine language for God and clearly male-specific passages.",
+      "Because it's a controlled simplification of an existing, already-verified translation rather than an independent rendering of the Hebrew and Greek, the NIrV's accuracy stands or falls with the NIV's own — the two are best understood as the same translation at two different reading levels, not as competing translations of the same text.",
+    ],
+    distinctives: [
+      "A simplified edition of the NIV itself, not an independent translation — same publisher, same underlying philosophy and source texts, adapted for a third-grade reading level.",
+      "The most elementary-reading-level translation on this site apart from the CEV, aimed specifically at children, developing readers, and English-language learners.",
+      "Updated in 2014 to match the current NIV's gender-language approach, keeping the two translations in step with each other.",
+      "Popular in children's ministry, ESL Bible study, and literacy-focused outreach precisely because it carries the NIV's mainstream reputation into a much easier reading level.",
+    ],
+    goodFor: [
+      "Children and early readers who need a genuinely easy reading level without switching to a completely different translation family.",
+      "English-language learners and literacy ministry settings, where the NIV's familiar phrasing at a third-grade level bridges into the wider NIV ecosystem.",
+      "A stepping-stone Bible for readers who will likely move to the full NIV later, since the two share the same underlying text and philosophy.",
+    ],
+  },
 };

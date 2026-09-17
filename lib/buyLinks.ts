@@ -201,4 +201,14 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/392-cev-contemporary-english-version" },
     ],
   },
+  nirv: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=NIrV+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/nirv" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NIRV" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/110-nirv-new-international-readers-version" },
+    ],
+  },
 };

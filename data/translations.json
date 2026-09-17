@@ -341,5 +341,28 @@
       "redLetter",
       "italicizesTranslatorWords"
     ]
+  },
+  {
+    "id": "nirv",
+    "name": "New International Reader's Version",
+    "abbreviation": "NIrV",
+    "latestRevisionYear": 2014,
+    "firstPublishedYear": 1996,
+    "gradeLevel": "3",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical Text",
+    "publisher": "Biblica / Zondervan",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Moderate",
+    "redLetter": true,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter"
+    ]
   }
 ]
