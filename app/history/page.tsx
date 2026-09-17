@@ -3,6 +3,8 @@ import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
 import TextTraditions from "@/components/TextTraditions";
 import TranslationFamilyTree from "@/components/TranslationFamilyTree";
+import CandidateTranslationTree from "@/components/CandidateTranslationTree";
+import CandidateTranslationSpectrum from "@/components/CandidateTranslationSpectrum";
 import { timeline, textPrimer, historyImages } from "@/lib/englishBibleHistory";
 
 export const metadata: Metadata = {
@@ -197,6 +199,25 @@ export default function HistoryPage() {
           the King James Version; a handful are fresh work from the original languages.
         </p>
         <TranslationFamilyTree />
+      </div>
+
+      {/* Candidate translations — decision-support only, not yet part of the guide */}
+      <div className="mt-14 border-t border-neutral-200 pt-10">
+        <h2 className="font-display text-2xl font-semibold text-brand-900">
+          Translations we&rsquo;re weighing
+        </h2>
+        <p className="mt-3 leading-relaxed text-neutral-700">
+          These fourteen aren&rsquo;t part of the guide yet &mdash; thirteen real translations plus
+          The Message, the one paraphrase good enough to weigh alongside them &mdash; being
+          considered for addition, weighed by how people actually read Scripture today rather than
+          by pulpit or denominational use. The tree and spectrum below place them alongside the
+          twelve translations already on the site, in the same visual language, so the real
+          lineage and philosophy differences are visible at a glance.
+        </p>
+        <CandidateTranslationTree />
+        <div className="mt-10">
+          <CandidateTranslationSpectrum />
+        </div>
       </div>
 
       <div className="mt-14 rounded-lg border border-gild-200 bg-gild-50 px-5 py-4 text-sm leading-relaxed text-neutral-700">
