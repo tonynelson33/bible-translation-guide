@@ -482,5 +482,29 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "voice",
+    "name": "The Voice",
+    "abbreviation": "The Voice",
+    "latestRevisionYear": 2012,
+    "firstPublishedYear": 2012,
+    "gradeLevel": "6-8",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical Text",
+    "publisher": "Thomas Nelson / Ecclesia Bible Society",
+    "quoteLimit": "250 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": true,
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": false,
+    "verifyFields": [
+      "gradeLevel",
+      "redLetter"
+    ]
   }
 ]

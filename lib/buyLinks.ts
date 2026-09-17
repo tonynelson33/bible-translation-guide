@@ -257,4 +257,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/90-leb-lexham-english-bible" },
     ],
   },
+  voice: {
+    buy: [
+      { label: "Thomas Nelson (official)", url: "https://www.thomasnelsonbibles.com/the-voice/" },
+      { label: "Amazon", url: "https://www.amazon.com/s?k=The+Voice+Bible" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=VOICE" },
+    ],
+  },
 };

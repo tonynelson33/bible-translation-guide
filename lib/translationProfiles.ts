@@ -535,4 +535,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Readers already using Logos Bible Software or similar original-language study tools, since the LEB was built as part of that same ecosystem.",
     ],
   },
+
+  voice: {
+    tagline: "A screenplay-formatted retelling that renders dialogue without quotation marks and translates \"Christ\" as a title, not a name.",
+    overview: [
+      "The Voice was produced by Thomas Nelson and the Ecclesia Bible Society, a project pastor Chris Seay helped lead, bringing together roughly 120 contributors — biblical scholars alongside novelists, poets, musicians, and screenwriters (including Brian McLaren, Lauren Winner, and Blue Like Jazz director Steve Taylor). An initial New Testament appeared in 2011, revised later that same year, with the complete Bible following in 2012.",
+      "Its most visible distinctive is format: dialogue is set out screenplay-style, with the speaker's name on its own line before their words, rather than embedded in prose with quotation marks and \"he said\" — a choice the team made after finding that reading Scripture aloud this way changed how listeners engaged with it. Words and phrases the translators added for narrative flow, not present in the original Hebrew or Greek, are italicized throughout.",
+      "The Voice's most-discussed translation choice is its handling of the Greek title Christos: rather than transliterating it as \"Christ\" — which lead scholar David Capes and the team felt many readers mistake for part of Jesus's name rather than a title meaning \"anointed one\" — The Voice renders it as \"the Anointed\" or \"the Anointed One,\" and in places expands it further to \"the Liberating King.\"",
+      "That choice, combined with including working novelists and poets on the translation team rather than scholars alone, drew real controversy on release, including the pointed nickname \"the Bible without Jesus Christ\" from critics who felt the name itself carries theological weight the paraphrase-style rendering loses, and questions about whether creative writers belonged on a translation team at all.",
+    ],
+    distinctives: [
+      "Formats all dialogue screenplay-style — speaker names on their own line, no quotation marks — rather than as conventional prose.",
+      "Renders the Greek title Christos as \"the Anointed\" or \"the Anointed One\" (sometimes \"the Liberating King\") instead of transliterating it as \"Christ,\" a deliberate choice that draws real, ongoing criticism.",
+      "Produced by a team of roughly 120 contributors that deliberately included novelists, poets, and screenwriters alongside biblical scholars — an unusual composition for a Bible translation team.",
+      "Includes italicized narrative-bridge text and expanded renderings throughout, closer to a dramatized retelling than a word-for-word or even standard thought-for-thought translation.",
+    ],
+    goodFor: [
+      "Group and dramatic public readings, since its screenplay format was specifically designed to be read aloud with parts assigned to different readers.",
+      "Readers who find Scripture's narrative sections easier to follow in a script-like format than dense prose.",
+      "A supplementary, discussion-generating read for readers who already have a primary, more standard translation — not recommended as a first or only Bible given its unconventional renderings and real, documented controversy.",
+    ],
+  },
 };
