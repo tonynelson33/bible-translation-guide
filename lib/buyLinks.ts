@@ -220,4 +220,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=ISV" },
     ],
   },
+  gw: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=GOD%27S+WORD+Translation+Bible" },
+    ],
+    readFree: [
+      { label: "GOD'S WORD to the Nations (official)", url: "https://godsword.org/" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/70-gw-gods-word" },
+    ],
+  },
 };

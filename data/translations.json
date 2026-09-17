@@ -388,5 +388,30 @@
       "redLetter",
       "italicizesTranslatorWords"
     ]
+  },
+  {
+    "id": "gw",
+    "name": "GOD'S WORD Translation",
+    "abbreviation": "GW",
+    "latestRevisionYear": 1995,
+    "firstPublishedYear": 1995,
+    "gradeLevel": "3-4",
+    "philosophy": "Optimal",
+    "textualBasis": "Critical Text",
+    "publisher": "God's Word to the Nations / Baker Publishing Group",
+    "quoteLimit": "250 verses",
+    "genderApproach": "Moderate",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "redLetter",
+      "italicizesTranslatorWords"
+    ]
   }
 ]
