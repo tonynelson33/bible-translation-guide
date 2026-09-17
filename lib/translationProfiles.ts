@@ -388,4 +388,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Robert Bratcher, the GNT's principal translator, was an outspoken critic of biblical inerrancy in his later career, at one point publicly calling the doctrine \"a fetish of Bible worship\" — comments that drew heavy backlash from conservative evangelicals and, by some accounts, cost the American Bible Society real financial support from that wing of its donor base. That controversy was about Bratcher's own public statements, not a documented flaw in the translation itself, but it's part of why the GNT carries a more contested reputation in conservative circles than its plain, functional prose might otherwise suggest.",
     ],
   },
+
+  cev: {
+    tagline: "A 4th-grade-level translation written to be read aloud clearly, for readers with little or no church background.",
+    overview: [
+      "The Contemporary English Version grew out of research Dr. Barclay M. Newman began in 1984 for the American Bible Society, studying how ordinary English is actually spoken and heard — in books, magazines, television, and everyday conversation — rather than how it's written for silent, literate readers. The New Testament was published in 1991, for the American Bible Society's 175th anniversary, and the complete Bible followed in 1995.",
+      "The CEV's guiding principle, in Newman's own words, was that the text \"must be understood by people without stumbling in speech\" when read aloud, and \"must be understood by those with little or no comprehension of 'Bible' language.\" That put oral clarity — not just silent readability — at the center of the translation process in a way most other translations don't emphasize as explicitly; drafts were tested by reading them aloud to listeners, including children, rather than only checked on the page.",
+      "Like its ABS sibling the Good News Translation, the CEV uses a dynamic, thought-for-thought approach, and was produced by a team of more than a hundred scholars across the original languages, linguistics, and English style, drawn from a range of church traditions.",
+      "On gender language, the CEV takes an inclusive approach, translating generic references to people — “everyone,” “humans,” “men and women” — rather than defaulting to generic masculine terms wherever the original addresses people in general rather than a specific man.",
+    ],
+    distinctives: [
+      "Targets a 4th-grade reading level — the most elementary reading level of any translation on this site — while still translating from the Hebrew, Aramaic, and Greek rather than paraphrasing an existing English Bible.",
+      "Specifically designed and tested for being read aloud clearly, not just read silently — an explicit design goal that shaped its translation process from the start.",
+      "Shares its dynamic-equivalence approach and American Bible Society origin with the Good News Translation, though the two were produced years apart with different lead translators and a lower target reading level for the CEV.",
+      "Uses inclusive, gender-neutral language for generic references to people throughout.",
+    ],
+    goodFor: [
+      "Children, new readers, and adults with limited literacy or English proficiency, where a 4th-grade reading level removes the biggest barrier to reading Scripture at all.",
+      "Reading aloud in group settings — children's ministry, congregational call-and-response, audio Bibles — where its oral-clarity design goal was built for exactly this use.",
+      "First exposure to the Bible for readers with no prior church background or familiarity with traditional biblical vocabulary.",
+    ],
+  },
 };

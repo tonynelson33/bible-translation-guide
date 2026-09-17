@@ -317,5 +317,29 @@
       "gradeLevel",
       "italicizesTranslatorWords"
     ]
+  },
+  {
+    "id": "cev",
+    "name": "Contemporary English Version",
+    "abbreviation": "CEV",
+    "latestRevisionYear": 1995,
+    "firstPublishedYear": 1995,
+    "gradeLevel": "4",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical Text",
+    "publisher": "American Bible Society",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter",
+      "italicizesTranslatorWords"
+    ]
   }
 ]

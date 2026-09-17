@@ -191,4 +191,14 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/68-gnt-good-news-translation" },
     ],
   },
+  cev: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Contemporary+English+Version+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/cev" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=CEV" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/392-cev-contemporary-english-version" },
+    ],
+  },
 };
