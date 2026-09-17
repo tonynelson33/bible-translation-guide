@@ -556,4 +556,26 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "A supplementary, discussion-generating read for readers who already have a primary, more standard translation — not recommended as a first or only Bible given its unconventional renderings and real, documented controversy.",
     ],
   },
+
+  lsv: {
+    tagline: "An explicit modernization of Young's Literal Translation, aiming to be the most literal English Bible currently available.",
+    overview: [
+      "The Literal Standard Version was published in 2020 by Covenant Press, the publishing arm of the Covenant Christian Coalition. It's a direct, thorough revision of Robert Young's 1862 Young's Literal Translation — the same kind of relationship the ESV has to the RSV, or the NKJV and MEV have to the KJV — updating Young's own translation's archaic vocabulary and grammar while intensifying, rather than relaxing, its commitment to strict formal equivalence.",
+      "Unusually among English translations, the LSV's New Testament draws on both the Textus Receptus and the Byzantine Majority Text, consulting other manuscript traditions as well where the editors judged the evidence compelling — rather than committing to a single textual family the way most translations on this site do.",
+      "The LSV's stated goal is consistency: the same Hebrew or Greek word is rendered the same way in English wherever possible, verb tenses are preserved rather than smoothed into conventional English narrative past tense, and original word order is kept as far as English grammar allows. One striking result is that much of its Old Testament narrative reads in present tense — \"God creates,\" not \"God created\" — reflecting a translation choice about how to render Hebrew's own narrative verb forms rather than an error.",
+      "On gender language, the LSV keeps fully traditional wording, translating generic terms as \"man\" rather than any inclusive alternative, and — like the NKJV — capitalizes pronouns referring to God, extending that convention further than most translations to titles and nouns for God, Christ, and the Holy Spirit as well.",
+    ],
+    distinctives: [
+      "An explicit, thorough modernization of Young's Literal Translation (1862), intensifying rather than relaxing its strict formal-equivalence approach.",
+      "Draws on both the Textus Receptus and the Majority Text for its New Testament, rather than committing to one textual tradition alone.",
+      "Renders much Old Testament narrative in present tense to reflect the underlying Hebrew verb forms directly, producing a noticeably different reading experience from virtually every other English translation.",
+      "Released under a Creative Commons Attribution-ShareAlike license — free for commercial and non-commercial redistribution with attribution, one of the most permissive licenses of any translation on this site.",
+      "Marks translator-supplied words with brackets rather than the italics the KJV, NKJV, and MEV use for the same purpose.",
+    ],
+    goodFor: [
+      "Readers who want the most literal possible window into the Hebrew and Greek word order and verb forms, more so than even the NASB or ESV.",
+      "Word studies and close textual comparison, where consistent one-to-one word rendering matters more than smooth English style.",
+      "Readers curious how a Majority-Text-influenced modernization of Young's Literal Translation reads, as a comparison point against Critical Text and pure-Textus-Receptus translations.",
+    ],
+  },
 };

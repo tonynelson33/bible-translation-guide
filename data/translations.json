@@ -506,5 +506,28 @@
       "gradeLevel",
       "redLetter"
     ]
+  },
+  {
+    "id": "lsv",
+    "name": "Literal Standard Version",
+    "abbreviation": "LSV",
+    "latestRevisionYear": 2020,
+    "firstPublishedYear": 2020,
+    "gradeLevel": "10-11",
+    "philosophy": "Formal",
+    "textualBasis": "Textus Receptus / Majority Text",
+    "publisher": "Covenant Press",
+    "quoteLimit": "Unlimited",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter"
+    ]
   }
 ]

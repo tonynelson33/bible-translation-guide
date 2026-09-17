@@ -266,4 +266,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=VOICE" },
     ],
   },
+  lsv: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Literal+Standard+Version+Bible" },
+    ],
+    readFree: [
+      { label: "LSV Bible (official)", url: "https://www.lsvbible.com/" },
+      { label: "Bible Hub", url: "https://biblehub.com/lsv/" },
+    ],
+  },
 };
