@@ -262,15 +262,13 @@
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
-      "marks": true,
-      "method": "Small caps"
+      "marks": false
     },
     "italicizesTranslatorWords": false,
-    "capitalizesDeityPronouns": false,
+    "capitalizesDeityPronouns": true,
     "quotationMarksForDialogue": true,
     "verifyFields": [
-      "gradeLevel",
-      "capitalizesDeityPronouns"
+      "gradeLevel"
     ]
   }
 ]
