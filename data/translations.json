@@ -529,5 +529,28 @@
     "verifyFields": [
       "redLetter"
     ]
+  },
+  {
+    "id": "msb",
+    "name": "Majority Standard Bible",
+    "abbreviation": "MSB",
+    "latestRevisionYear": 2023,
+    "firstPublishedYear": 2022,
+    "gradeLevel": "8-9",
+    "philosophy": "Optimal",
+    "textualBasis": "Majority Text",
+    "publisher": "Bible Hub",
+    "quoteLimit": "Unlimited",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": true,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel"
+    ]
   }
 ]

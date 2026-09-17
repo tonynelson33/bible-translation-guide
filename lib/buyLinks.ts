@@ -275,4 +275,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible Hub", url: "https://biblehub.com/lsv/" },
     ],
   },
+  msb: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Majority+Standard+Bible" },
+    ],
+    readFree: [
+      { label: "Majority Bible (official)", url: "https://majoritybible.com/" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/4754-msb-majority-standard-bible" },
+    ],
+  },
 };

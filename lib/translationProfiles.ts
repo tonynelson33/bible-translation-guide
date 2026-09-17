@@ -578,4 +578,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Readers curious how a Majority-Text-influenced modernization of Young's Literal Translation reads, as a comparison point against Critical Text and pure-Textus-Receptus translations.",
     ],
   },
+
+  msb: {
+    tagline: "The Berean Standard Bible's Old Testament paired with a New Testament translated fresh from the Byzantine Majority Text.",
+    overview: [
+      "The Majority Standard Bible is, in the most literal sense, the BSB's sibling rather than an independent translation: it was produced by the same team — Bible Hub, the Discovery Bible team, and the Berean Bible Translation Committee — using the exact same Old Testament as the Berean Standard Bible. The one difference is the New Testament, which the MSB's editors translated fresh from the Robinson-Pierpont Byzantine Majority Text rather than the modern Critical Text the BSB's New Testament uses.",
+      "Like the BSB, the complete MSB was dedicated to the public domain in April 2023, with no licensing restrictions on copying, quoting, or redistributing it.",
+      "The MSB's New Testament footnotes go further than most Majority-Text translations by explicitly documenting where its readings differ from both the modern Critical Text (Nestle-Aland, SBL, and the Editio Critica Maior) and the Textus Receptus behind the KJV — letting a reader see, verse by verse, exactly where all three textual traditions agree and where they part ways.",
+      "Outside its New Testament's textual basis, the MSB shares the BSB's translation approach: the same blend of word-for-word and thought-for-thought rendering, the same traditional gender language, and the same broader goal of a free, unrestricted, interlinear-linked translation.",
+    ],
+    distinctives: [
+      "Shares its entire Old Testament and translation team with the Berean Standard Bible — the two are companion editions, not independent translations, differing only in New Testament textual basis.",
+      "One of very few modern English translations with a New Testament built on the Byzantine Majority Text (Robinson-Pierpont edition) rather than the Critical Text or Textus Receptus.",
+      "Footnotes explicitly track where its readings diverge from both the Critical Text and the Textus Receptus, verse by verse — a level of three-way textual transparency unusual even among Majority-Text translations.",
+      "Fully public domain since April 2023, alongside the BSB.",
+    ],
+    goodFor: [
+      "Readers specifically interested in the Byzantine Majority Text tradition who want a genuinely free, modern-English option built on it.",
+      "Comparing against the BSB directly, since the two share everything except New Testament textual basis — a clean way to see what the Majority Text actually changes.",
+      "Anyone who wants a free, unrestricted Majority-Text translation to quote, print, or build tools on top of.",
+    ],
+  },
 };
