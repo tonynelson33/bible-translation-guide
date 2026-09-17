@@ -1,4 +1,4 @@
-export type Philosophy = "Formal" | "Dynamic" | "Optimal" | "Mixed";
+export type Philosophy = "Formal" | "Dynamic" | "Optimal" | "Mixed" | "Paraphrase";
 export type TextualBasis = "Critical Text" | "Textus Receptus" | "Majority Text" | "Textus Receptus / Majority Text";
 export type GenderApproach = "Traditional" | "Moderate" | "Inclusive";
 

@@ -284,4 +284,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/4754-msb-majority-standard-bible" },
     ],
   },
+  message: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=The+Message+Bible+Eugene+Peterson" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=MSG" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/97-msg-the-message" },
+    ],
+  },
 };

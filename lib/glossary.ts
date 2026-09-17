@@ -28,6 +28,11 @@ export const philosophyGlossary: Record<Philosophy, GlossaryEntry> = {
     // and dynamic on the spectrum; the descriptions keep them distinct.
     className: "bg-teal-50 text-teal-700",
   },
+  Paraphrase: {
+    description:
+      "Paraphrase: restates the text's meaning freely in the translator's own words, well beyond thought-for-thought translation — a distinct category from the other four, not simply the far end of the dynamic scale.",
+    className: "bg-stone-100 text-stone-700",
+  },
 };
 
 export const genderApproachGlossary: Record<GenderApproach, GlossaryEntry> = {

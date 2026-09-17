@@ -21,17 +21,19 @@ interface Marker {
 }
 
 /**
- * A visual restatement of the "Most Literal" ranking: the same 12 translations
+ * A visual restatement of the "Most Literal" ranking: the same translations
  * in the same left-to-right order, grouped into the three bands every published
  * translation-spectrum chart uses (formal / mediating / dynamic), plus a
- * paraphrase zone the site doesn't cover. Band colors echo the philosophy pills
- * in lib/glossary.ts. Positions are hand-set so the tight clusters stay visible.
+ * paraphrase zone — mostly reference points this site doesn't profile, except
+ * The Message, which is (see its own Philosophy: "Paraphrase" classification).
+ * Band colors echo the philosophy pills in lib/glossary.ts. Positions are
+ * hand-set so the tight clusters stay visible.
  */
 const BANDS: Band[] = [
   { label: "Formal", sub: "word-for-word", from: 0, to: 40, fill: "#eef2ff", stroke: "#c7d2fe" },
   { label: "Mediating", sub: "optimal + mixed", from: 43, to: 57, fill: "#f0fdfa", stroke: "#99f6e4" },
   { label: "Dynamic", sub: "thought-for-thought", from: 60, to: 82, fill: "#fffbeb", stroke: "#fde68a" },
-  { label: "Paraphrase", sub: "not on this site", from: 84, to: 100, fill: "#f1f5f9", stroke: "#cbd5e1" },
+  { label: "Paraphrase", sub: "The Message, plus references", from: 84, to: 100, fill: "#f1f5f9", stroke: "#cbd5e1" },
 ];
 
 const MARKERS: Marker[] = [
@@ -65,7 +67,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 820 126"
           className="w-full min-w-[820px]"
           role="img"
-          aria-label="Translation spectrum, in the same left-to-right order as the ranking. Formal, word-for-word: LSB, NASB, ESV, KJV, NKJV, AMP, NRSVue. Mediating: CSB, NET. Dynamic, thought-for-thought: NIV, CEB, NLT. A separate paraphrase zone this site does not cover: The Message, The Passion, the Living Bible."
+          aria-label="Translation spectrum, in the same left-to-right order as the ranking. Formal, word-for-word: LSB, NASB, ESV, KJV, NKJV, AMP, NRSVue. Mediating: CSB, NET. Dynamic, thought-for-thought: NIV, CEB, NLT. A separate paraphrase zone: The Message, which this site does profile, plus two references it doesn't, The Passion and the Living Bible."
         >
           {BANDS.map((band) => {
             const x = px(band.from);
@@ -105,10 +107,12 @@ export default function TranslationSpectrum({
       </div>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-500">
         {standalone
-          ? "The twelve translations in translation-method order, "
+          ? "The translations in translation-method order, "
           : "The same order as the list, "}
-        in the three bands that published spectrum charts use, plus a paraphrase zone the site
-        doesn&apos;t profile. The axis is translation method, not reading difficulty.{" "}
+        in the three bands that published spectrum charts use, plus a paraphrase zone &mdash; The
+        Message is a genuine paraphrase this site does profile; The Passion and the Living Bible
+        stay as plain references, not profiled here. The axis is translation method, not reading
+        difficulty.{" "}
         <span aria-hidden="true">*</span> The Amplified&apos;s base text is as formal as the NASB; the
         bracketed expansions pull the printed page rightward.
       </p>

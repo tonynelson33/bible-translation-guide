@@ -599,4 +599,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Anyone who wants a free, unrestricted Majority-Text translation to quote, print, or build tools on top of.",
     ],
   },
+
+  message: {
+    tagline: "A paraphrase, not a translation in the same sense as the rest of this list — but one built directly from the Hebrew and Greek rather than from an existing English Bible.",
+    overview: [
+      "The Message is Eugene Peterson's rendering of the Bible into contemporary, conversational American English, published by NavPress. The New Testament appeared in 1993, and the complete Bible — a project that took Peterson roughly ten years altogether — was finished in 2002. Peterson was a pastor, seminary professor, and poet who had spent decades teaching and preaching before beginning the project, aiming to recapture, in his words, the tone and conversational energy of the original Greek and Hebrew for readers who found Scripture either too distant or too familiar to really hear anymore.",
+      "What sets The Message apart from this site's other translations is category, not just style: it's a genuine paraphrase, restating the text's meaning in Peterson's own words well past the point of thought-for-thought translation, rather than tracking the original wording and structure the way even the freest translations here do. That puts it in a different bucket from every other entry on this site, which is why its Philosophy classification is \"Paraphrase\" rather than a place further along the Formal-to-Dynamic scale.",
+      "It's also a different kind of paraphrase than most: Peterson worked directly from the Hebrew, Aramaic, and Greek himself rather than restating an existing English translation the way, for instance, the 1971 Living Bible restated the 1901 ASV. His work was then reviewed by a team of twenty Old and New Testament scholars from major evangelical seminaries for faithfulness to the original languages — a level of scholarly oversight most paraphrases don't have.",
+      "On gender language, The Message generally uses inclusive phrasing for people in general — \"human beings\" rather than \"man\" — consistent with its overall goal of natural, contemporary English. Formatted as continuous prose in a single column, without verse-by-verse line breaks, it reads more like a book than a reference text.",
+    ],
+    distinctives: [
+      "A genuine paraphrase — restating meaning in Peterson's own words — rather than a translation in the formal, optimal, or dynamic sense every other entry on this site uses; classified separately as \"Paraphrase\" for exactly that reason.",
+      "Unlike most paraphrases, translated directly from the Hebrew, Aramaic, and Greek by a single scholar-translator, then reviewed by twenty Old and New Testament scholars for faithfulness — not a restatement of an existing English Bible.",
+      "Formatted as continuous prose without verse-by-verse line breaks, designed to be read like a book rather than consulted like a reference.",
+      "Its very free style has drawn real criticism from some conservative reviewers over specific word choices and added phrases in a handful of passages — worth knowing going in, alongside its real scholarly credentials.",
+    ],
+    goodFor: [
+      "Reading familiar passages with fresh eyes, since its very different wording can break through over-familiarity with a well-known text.",
+      "Long-form, book-like reading rather than verse-by-verse study or memorization, given its continuous-prose format.",
+      "Pairing alongside a standard translation, rather than using it as a primary or only Bible — its own translator intended it as a supplement to, not a replacement for, a more literal translation.",
+    ],
+  },
 };

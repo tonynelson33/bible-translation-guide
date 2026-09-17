@@ -552,5 +552,29 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "message",
+    "name": "The Message",
+    "abbreviation": "MSG",
+    "latestRevisionYear": 2002,
+    "firstPublishedYear": 2002,
+    "gradeLevel": "5-6",
+    "philosophy": "Paraphrase",
+    "textualBasis": "Critical Text",
+    "publisher": "NavPress",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "redLetter"
+    ]
   }
 ]

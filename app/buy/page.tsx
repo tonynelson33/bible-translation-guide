@@ -17,6 +17,7 @@ const monogramStyles: Record<Philosophy, string> = {
   Dynamic: "bg-amber-600",
   Optimal: "bg-teal-600",
   Mixed: "bg-teal-600",
+  Paraphrase: "bg-stone-500",
 };
 
 // The two translations with a free story beyond the universal Bible Gateway /
