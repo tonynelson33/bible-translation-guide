@@ -211,10 +211,16 @@ const groups: Group[] = [
               </li>
             </ul>
             <p>
-              Of the twelve translations here, the <Link href="/translations/kjv">KJV</Link> and{" "}
-              <Link href="/translations/nkjv">NKJV</Link> follow the Textus Receptus; the other ten
-              use the Critical Text. None uses the Majority Text as its base &mdash; the
-              NKJV&rsquo;s footnotes are where you&rsquo;ll see Majority Text readings flagged.
+              The <Link href="/translations/kjv">KJV</Link>,{" "}
+              <Link href="/translations/nkjv">NKJV</Link>, and{" "}
+              <Link href="/translations/mev">MEV</Link> follow the Textus Receptus; most
+              translations here use the Critical Text; the{" "}
+              <Link href="/translations/web">WEB</Link> and{" "}
+              <Link href="/translations/msb">MSB</Link> build their New Testaments on the Majority
+              Text outright, and the <Link href="/translations/lsv">LSV</Link> draws on both the
+              Textus Receptus and the Majority Text. The NKJV&rsquo;s own footnotes are also a good
+              place to see Majority Text readings flagged, even though its own main text follows
+              the Textus Receptus instead.
             </p>
             <p>
               The differences among the three affect a small fraction of the New Testament and no
@@ -223,7 +229,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "These are three approaches to choosing which Greek manuscripts the New Testament is translated from. The Textus Receptus, compiled by Erasmus in the 1500s from a few late manuscripts, underlies the KJV and NKJV. The Critical Text (or eclectic text) is reconstructed by weighing all known manuscripts, including early papyri found in the last two centuries, and is used by almost every modern translation. The Majority Text follows the reading found in the most surviving manuscripts. Of the twelve translations on this site, only the KJV and NKJV use the Textus Receptus; the rest use the Critical Text, and none uses the Majority Text as its base. The differences among the three are small and affect no major doctrine.",
+          "These are three approaches to choosing which Greek manuscripts the New Testament is translated from. The Textus Receptus, compiled by Erasmus in the 1500s from a few late manuscripts, underlies the KJV, NKJV, and MEV. The Critical Text (or eclectic text) is reconstructed by weighing all known manuscripts, including early papyri found in the last two centuries, and is used by most translations on this site. The Majority Text follows the reading found in the most surviving manuscripts, and underlies the WEB and MSB directly, with the LSV drawing on both it and the Textus Receptus. The differences among the three are small and affect no major doctrine.",
       },
       {
         id: "majority-text",
@@ -231,27 +237,33 @@ const groups: Group[] = [
         a: (
           <>
             <p>
-              A few small ones do &mdash; the <strong>World English Bible</strong>&rsquo;s New
-              Testament, the English Majority Text Version, and the Analytical-Literal Translation
-              are all built on a printed Majority Text (the Robinson&ndash;Pierpont or
-              Hodges&ndash;Farstad Greek edition). But no major committee translation uses it, and
-              none of the twelve here.
+              Yes, three on this site: the <Link href="/translations/web">WEB</Link>&rsquo;s New
+              Testament and the <Link href="/translations/msb">MSB</Link> are both built on a
+              printed Majority Text (the Robinson&ndash;Pierpont edition), and the{" "}
+              <Link href="/translations/lsv">LSV</Link> draws on both it and the Textus Receptus.
+              Beyond this site, the English Majority Text Version and the Analytical-Literal
+              Translation are built the same way, sometimes on the alternative
+              Hodges&ndash;Farstad Greek edition instead. Still, no major, long-established
+              committee translation &mdash; the kind with a denominational or publishing-house
+              backing going back decades &mdash; uses it as its primary base text.
             </p>
             <p>
-              The King James line doesn&rsquo;t count: the{" "}
-              <Link href="/translations/kjv">KJV</Link> and{" "}
-              <Link href="/translations/nkjv">NKJV</Link> follow the{" "}
-              <strong>Textus Receptus</strong>, which is a different text. It disagrees with the
-              Majority Text in roughly 1,800 places, and it carries a handful of readings almost no
-              Greek manuscript has &mdash; the &ldquo;three that bear witness in heaven&rdquo; of
-              1&nbsp;John 5:7 among them.
+              The King James line doesn&rsquo;t count as Majority Text either: the{" "}
+              <Link href="/translations/kjv">KJV</Link>,{" "}
+              <Link href="/translations/nkjv">NKJV</Link>, and{" "}
+              <Link href="/translations/mev">MEV</Link> follow the{" "}
+              <strong>Textus Receptus</strong>, which is a related but different text. It disagrees
+              with the Majority Text in roughly 1,800 places, and it carries a handful of readings
+              almost no Greek manuscript has &mdash; the &ldquo;three that bear witness in
+              heaven&rdquo; of 1&nbsp;John 5:7 among them.
             </p>
-            <p>The Majority Text never got a mainstream translation for reasons that stack up:</p>
+            <p>The Majority Text stayed a niche choice, rather than a mainstream one, for reasons that stack up:</p>
             <ul>
               <li>
                 <strong>It arrived late.</strong> No printed Majority Text Greek New Testament
-                existed until the 1980s. By then every major English translation was already in print
-                and settled on a base text.
+                existed until the 1980s. By then every long-established major English translation
+                was already in print and settled on a base text — a new translation had to come
+                along specifically to use it, rather than an existing one switching over.
               </li>
               <li>
                 <strong>It has no natural constituency.</strong> Readers who want a traditional text
@@ -270,13 +282,15 @@ const groups: Group[] = [
             </ul>
             <p>
               And the stakes are small. The Majority Text and the Critical Text agree across the
-              great bulk of the New Testament, so a Majority Text Bible reads almost exactly like
-              the NKJV &mdash; whose footnotes are already where its distinctive readings appear.
+              great bulk of the New Testament, so a Majority Text Bible reads close to a Critical
+              Text one in most places &mdash; and close to the NKJV specifically, whose own
+              footnotes are where its distinctive readings show up in a Textus Receptus
+              translation.
             </p>
           </>
         ),
         plain:
-          "A few small translations use the Majority Text — the World English Bible's New Testament, the English Majority Text Version, and the Analytical-Literal Translation, all built on a printed Majority Text edition (Robinson–Pierpont or Hodges–Farstad). But no major committee translation uses it, and none of the twelve on this site. The KJV and NKJV do not count: they follow the Textus Receptus, a different text that disagrees with the Majority Text in roughly 1,800 places. The Majority Text never got a mainstream translation because it arrived late (no printed edition until the 1980s), because it has no constituency between the Textus Receptus and the Critical Text, and because most textual scholars weigh manuscripts rather than count them — the Byzantine text is the majority mainly because it was the standard Bible of the Greek-speaking church for a thousand years. In practice a Majority Text Bible reads almost exactly like the NKJV, whose footnotes already flag its distinctive readings.",
+          "Yes, three translations on this site use it: the WEB's New Testament and the MSB are both built on a printed Majority Text edition (Robinson–Pierpont), and the LSV draws on both the Majority Text and the Textus Receptus. Beyond this site, the English Majority Text Version and the Analytical-Literal Translation are built the same way. Still, no major, long-established committee translation uses it as its primary base text. The KJV, NKJV, and MEV do not count as Majority Text: they follow the Textus Receptus, a related but different text that disagrees with the Majority Text in roughly 1,800 places. The Majority Text stayed a niche rather than mainstream choice because it arrived late (no printed edition until the 1980s, by which point established translations had already settled on a different base text), because it has no natural constituency between the Textus Receptus and the Critical Text, and because most textual scholars weigh manuscripts rather than count them — the Byzantine text is the majority mainly because it was the standard Bible of the Greek-speaking church for a thousand years. In practice a Majority Text Bible reads close to a Critical Text one in most places, and close to the NKJV specifically, whose footnotes already flag its distinctive readings.",
       },
       {
         id: "footnotes",

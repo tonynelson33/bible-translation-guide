@@ -15,10 +15,13 @@ import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/engl
  */
 
 const tr = translations
-  .filter((t) => t.textualBasis === "Textus Receptus")
+  .filter((t) => t.textualBasis === "Textus Receptus" || t.textualBasis === "Textus Receptus / Majority Text")
   .map((t) => t.abbreviation);
 const critical = translations
   .filter((t) => t.textualBasis === "Critical Text")
+  .map((t) => t.abbreviation);
+const majorityText = translations
+  .filter((t) => t.textualBasis === "Majority Text" || t.textualBasis === "Textus Receptus / Majority Text")
   .map((t) => t.abbreviation);
 
 const IMG_FILTER = "[filter:sepia(0.24)_saturate(0.86)_contrast(1.03)]";
@@ -127,12 +130,26 @@ export default function TextTraditions() {
             sub="whatever the most copies say"
             body="Follows the reading found in the greatest number of surviving manuscripts — most of which are Byzantine and medieval."
             image={historyImages.boreelianus}
-            usedBy={[]}
+            usedBy={majorityText}
           />
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-500">
-          No major English translation is based on the Majority Text; a few smaller ones are, and
-          the NKJV&rsquo;s footnotes are where its readings otherwise show up &mdash; the{" "}
+          No major committee translation is based on the Majority Text, but it isn&rsquo;t
+          untranslated either: the{" "}
+          <Link href="/translations/web" className="font-medium text-gild-700 hover:underline">
+            WEB
+          </Link>{" "}
+          and{" "}
+          <Link href="/translations/msb" className="font-medium text-gild-700 hover:underline">
+            MSB
+          </Link>{" "}
+          build their New Testaments on it outright, and the{" "}
+          <Link href="/translations/lsv" className="font-medium text-gild-700 hover:underline">
+            LSV
+          </Link>{" "}
+          draws on both it and the Textus Receptus; the NKJV&rsquo;s footnotes are where its
+          readings otherwise show up in a translation that doesn&rsquo;t use it directly &mdash;
+          the{" "}
           <Link href="/faq#majority-text" className="font-medium text-gild-700 hover:underline">
             FAQ has the detail
           </Link>
