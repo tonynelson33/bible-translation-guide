@@ -247,5 +247,30 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "bsb",
+    "name": "Berean Standard Bible",
+    "abbreviation": "BSB",
+    "latestRevisionYear": 2023,
+    "firstPublishedYear": 2022,
+    "gradeLevel": "8-9",
+    "philosophy": "Optimal",
+    "textualBasis": "Critical Text",
+    "publisher": "Bible Hub",
+    "quoteLimit": "Unlimited",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": true,
+      "method": "Small caps"
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel",
+      "capitalizesDeityPronouns"
+    ]
   }
 ]

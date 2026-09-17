@@ -315,4 +315,28 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "The Amplified's method carries a risk its own translators acknowledged: when every possible shade of a word is laid out in brackets, a reader can be tempted to pick whichever meaning fits what they already want the verse to say. A word's range of possible meanings is not the same as its meaning in a given sentence, which the context usually settles. The Amplified helps most when it prompts a closer look, and least when it is treated as license to choose.",
     ],
   },
+
+  bsb: {
+    tagline: "A free, public-domain translation built with every word linked back to its Hebrew or Greek root.",
+    overview: [
+      "The Berean Standard Bible began in 2016 as the Berean Study Bible, a project of Bible Hub — the free online study-tools site — working with the Discovery Bible team under an advisory committee that included Dr. Grant Osborne (New Testament lead) and Dr. Eugene H. Merrill (Old Testament lead). The translation reached its current, complete form and was renamed the Berean Standard Bible in 2022.",
+      "In April 2023, the team dedicated the entire text to the public domain outright, stating that removing all licensing restrictions — rather than just offering a generous free-use policy — better served their goal of letting the translation be read, copied, and shared without needing anyone's permission.",
+      "The BSB blends word-for-word and thought-for-thought translation verse by verse, aiming to stay close to the structure of the original Hebrew and Greek without producing English that reads stiffly — reviewers place it stylistically between the ESV and the CSB. Its signature feature is that every word links back to an interlinear Hebrew or Greek entry, a legacy of its origin alongside Bible Hub's interlinear tools and its own literal sibling, the Berean Literal Bible.",
+      "On gender language, the BSB takes a traditional approach, translating the gender of the original text as written rather than substituting inclusive alternatives.",
+    ],
+    distinctives: [
+      "Fully in the public domain worldwide since April 2023 — not just free to read, but free to copy, reprint, and republish without a license or permission request, the same legal status as the KJV.",
+      "Every word is cross-linked to its underlying Hebrew or Greek term, a direct outgrowth of Bible Hub's interlinear Bible tools.",
+      "Has a Majority Text sibling edition, the Majority Standard Bible (MSB) — the same Old Testament and translation team, with the New Testament retranslated from the Byzantine/Majority Text tradition instead of the Critical Text.",
+      "Produced and coordinated entirely outside traditional denominational or publishing-house structures, by Bible Hub and the Discovery Bible team rather than a seminary or publishing imprint.",
+    ],
+    goodFor: [
+      "Anyone who wants a free, unrestricted translation to quote, reprint, or build tools and apps on top of without clearing permissions.",
+      "Readers who like following a translation back to its original-language roots — every word links to its Hebrew or Greek source term.",
+      "A modern, moderately literal reading Bible for people who want something between the ESV's formality and the CSB's or NIV's smoother prose.",
+    ],
+    worthKnowing: [
+      "The Berean Standard Bible and the Majority Standard Bible are, in a real sense, siblings rather than two unrelated translations: they share the same Old Testament and the same translation team, differing only in which Greek New Testament tradition — Critical Text or Majority/Byzantine Text — their New Testament is built from.",
+    ],
+  },
 };

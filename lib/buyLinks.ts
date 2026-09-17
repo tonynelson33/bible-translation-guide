@@ -162,4 +162,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=AMP" },
     ],
   },
+  bsb: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=Berean+Standard+Bible" },
+    ],
+    readFree: [
+      { label: "Berean Bible (official)", url: "https://bereanbible.com/" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/3034-bsb-english-berean-standard-bible" },
+    ],
+  },
 };
