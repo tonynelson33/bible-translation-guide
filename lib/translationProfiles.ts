@@ -514,4 +514,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "A second translation to compare against the NKJV, since both descend from the same textual tradition by different routes.",
     ],
   },
+
+  leb: {
+    tagline: "A highly literal translation built to be read alongside the original Hebrew and Greek, not as a stand-alone reading Bible.",
+    overview: [
+      "The Lexham English Bible was produced by Lexham Press, the publishing arm of Logos Bible Software, with the New Testament released in 2010 and the Old Testament in 2011 under general editor Dr. W. Hall Harris III — a Dallas Theological Seminary professor who also directs the New English Translation (NET) project. The LEB grew directly out of interlinear-translation work inside Logos's own software, where every English word or phrase is tied back to a specific word in the underlying Hebrew, Aramaic, or Greek.",
+      "The LEB's own foreword states its goal plainly: \"unparalleled transparency with the original language text.\" It's a formal-equivalence translation deliberately built to be read alongside the Hebrew and Greek as a study aid, not necessarily as a stand-alone reading Bible — closer in spirit to a highly readable interlinear than to a pulpit or devotional translation.",
+      "Two features carry that purpose into the English text itself: corner brackets mark English idioms that don't correspond word-for-word to the original phrasing, and italics mark words the translators added for readability with no direct equivalent in the source text — letting a reader see exactly where the English departs from a strict literal rendering.",
+      "On gender language, the LEB keeps the original text's own grammatical gender rather than substituting inclusive alternatives — \"brothers,\" not \"brothers and sisters,\" wherever the Greek says adelphoi.",
+    ],
+    distinctives: [
+      "Built directly from interlinear-translation work inside Logos Bible Software, with every phrase traceable back to its specific Hebrew, Aramaic, or Greek source.",
+      "Uses corner brackets to flag English idioms and italics to flag translator-supplied words — two visible markers of exactly where the English diverges from a strictly literal rendering.",
+      "Released under a permissive, royalty-free license for commercial and non-commercial use alike, with no printed edition — it exists only digitally, distributed through Logos, e-Sword, the SWORD Project, and various Bible websites and apps.",
+      "General editor W. Hall Harris III also directs the NET Bible project, giving the LEB an institutional connection to another translation already on this site.",
+    ],
+    goodFor: [
+      "Bible-study settings where seeing exactly how the English tracks (or diverges from) the underlying Hebrew or Greek matters more than smooth, idiomatic prose.",
+      "A secondary, highly literal cross-reference translation to consult alongside a primary reading Bible.",
+      "Readers already using Logos Bible Software or similar original-language study tools, since the LEB was built as part of that same ecosystem.",
+    ],
+  },
 };

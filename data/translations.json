@@ -459,5 +459,28 @@
     "verifyFields": [
       "gradeLevel"
     ]
+  },
+  {
+    "id": "leb",
+    "name": "Lexham English Bible",
+    "abbreviation": "LEB",
+    "latestRevisionYear": 2012,
+    "firstPublishedYear": 2011,
+    "gradeLevel": "10-11",
+    "philosophy": "Formal",
+    "textualBasis": "Critical Text",
+    "publisher": "Lexham Press / Logos Bible Software",
+    "quoteLimit": "Unlimited",
+    "genderApproach": "Traditional",
+    "redLetter": false,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": true,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel"
+    ]
   }
 ]

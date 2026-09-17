@@ -248,4 +248,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/1171-mev-modern-english-version" },
     ],
   },
+  leb: {
+    buy: [
+      { label: "Lexham Press (official)", url: "https://lexhamenglishbible.com/" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=LEB" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/90-leb-lexham-english-bible" },
+    ],
+  },
 };
