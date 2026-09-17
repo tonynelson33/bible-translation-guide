@@ -472,4 +472,25 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Personal devotional reading where smooth, idiomatic phrasing matters more than tracking a translation's word-for-word structure.",
     ],
   },
+
+  ncv: {
+    tagline: "An easy-reading translation that grew out of a Bible originally built for deaf readers and children.",
+    overview: [
+      "The New Century Version has an unusual lineage: it descends from the English Version for the Deaf, a translation begun in 1973 specifically for deaf readers and people with limited vocabulary, published in 1978. That text was revised into the International Children's Bible New Testament in 1983, and the complete International Children's Bible followed in 1986 — the first Bible ever translated from the original languages specifically for children. Thomas Nelson then adapted that same base text for a general adult and family readership, publishing it as the New Century Version, with a further, more thoroughly gender-neutral revision in 1991.",
+      "Around fifty scholars and translators worked on the NCV, several of whom had also contributed to the NIV, NKJV, or NASB — giving a translation built for simplicity real mainstream scholarly backing rather than being a standalone project.",
+      "The NCV uses a dynamic, thought-for-thought approach, prioritizing plain, contemporary vocabulary and short sentences — a direct legacy of its origin as a Bible for deaf readers and children, where clarity couldn't be assumed the way it can with a general adult readership.",
+      "On gender language, the 1991 revision moved toward inclusive wording — \"human beings\" rather than \"man\" in Genesis, for instance — similar to the approach the Good News Translation and CEV also took around the same period.",
+    ],
+    distinctives: [
+      "Descends from the English Version for the Deaf (1978) and the International Children's Bible (1986) — a lineage built for readers who couldn't be assumed to know churchy vocabulary, rather than a simplification of an existing adult translation.",
+      "At a 5th-grade reading level, it sits between the CEV/NLT and more standard translations like the NIV — easy without being the most elementary option on this site.",
+      "Produced by around 50 scholars, several of whom also worked on the NIV, NKJV, or NASB.",
+      "Marketed by Thomas Nelson as \"the easiest-to-understand translation\" and also sold under the names The Everyday Bible and The Youth Bible.",
+    ],
+    goodFor: [
+      "Family Bible reading and children old enough to move beyond a dedicated children's Bible but not yet ready for a standard adult translation.",
+      "Readers who want an easy reading level with a direct link back to a translation built for deaf readers and children, rather than a simplification of an adult text.",
+      "Read-aloud settings in the home or classroom where short sentences and plain vocabulary make listening comprehension easier.",
+    ],
+  },
 };

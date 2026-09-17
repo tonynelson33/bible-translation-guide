@@ -229,4 +229,14 @@ export const translationLinks: Record<string, TranslationLinks> = {
       { label: "YouVersion", url: "https://www.bible.com/versions/70-gw-gods-word" },
     ],
   },
+  ncv: {
+    buy: [
+      { label: "Amazon", url: "https://www.amazon.com/s?k=New+Century+Version+Bible" },
+      { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/ncv" },
+    ],
+    readFree: [
+      { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=NCV" },
+      { label: "YouVersion", url: "https://www.bible.com/versions/105-ncv-new-century-version" },
+    ],
+  },
 };

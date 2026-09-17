@@ -413,5 +413,28 @@
       "redLetter",
       "italicizesTranslatorWords"
     ]
+  },
+  {
+    "id": "ncv",
+    "name": "New Century Version",
+    "abbreviation": "NCV",
+    "latestRevisionYear": 1991,
+    "firstPublishedYear": 1987,
+    "gradeLevel": "5",
+    "philosophy": "Dynamic",
+    "textualBasis": "Critical Text",
+    "publisher": "Thomas Nelson",
+    "quoteLimit": "500 verses",
+    "genderApproach": "Inclusive",
+    "redLetter": true,
+    "otMarking": {
+      "marks": false
+    },
+    "italicizesTranslatorWords": false,
+    "capitalizesDeityPronouns": false,
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "italicizesTranslatorWords"
+    ]
   }
 ]
