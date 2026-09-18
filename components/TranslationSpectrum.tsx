@@ -71,7 +71,7 @@ const BANDS: Band[] = [
   { label: "Formal", sub: "word-for-word", from: 0, to: 44, fill: "#eef2ff", stroke: "#c7d2fe" },
   { label: "Mediating", sub: "optimal + mixed", from: 46.5, to: 63, fill: "#f0fdfa", stroke: "#99f6e4" },
   { label: "Dynamic", sub: "thought-for-thought", from: 65.5, to: 91.5, fill: "#fffbeb", stroke: "#fde68a" },
-  { label: "Paraphrase", sub: "The Message", from: 94, to: 100, fill: "#f1f5f9", stroke: "#cbd5e1" },
+  { label: "Paraphrase", sub: "freely restated", from: 94, to: 100, fill: "#f1f5f9", stroke: "#cbd5e1" },
 ];
 
 const MARKERS: Marker[] = [

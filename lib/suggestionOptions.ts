@@ -108,35 +108,50 @@ export const denominationOptions: Option[] = [
 
 /**
  * Bible translation choices for the "add a church" / "suggest a correction"
- * forms — curated to what a church member would realistically pick as their
- * congregation's *pulpit* Bible. Same set the site profiles in depth
- * (data/translations.json), with one deliberate difference: the site profiles
- * the 2021 "NRSVue" text, but the form keeps `value: "NRSV"` — that matches the
- * ~7,900 stored `bible_translation = 'NRSV'` rows, and a mainline church that
- * says it uses "the NRSV" usually means the 1989 lectionary text, not the 2021
- * edition specifically. The label names both.
+ * forms. Same set the site profiles in depth (data/translations.json), with
+ * one deliberate difference: the site profiles the 2021 "NRSVue" text, but
+ * the form keeps `value: "NRSV"` — that matches the ~7,900 stored
+ * `bible_translation = 'NRSV'` rows, and a mainline church that says it uses
+ * "the NRSV" usually means the 1989 lectionary text, not the 2021 edition
+ * specifically. The label names both.
  *
- * Trimmed 2026-09-06 — the English Bibles a Protestant congregation would
- * realistically pick as its pulpit Bible. Removed: NJB / Douay-Rheims / NABRE
- * (Catholic — out of scope, see the denomination note above), OSB (Orthodox —
- * same), CEV / GNT (readability editions, not primary pulpit Bibles), WEB
- * (public-domain, near-zero church use), RSV (essentially no church still uses
- * the 1952 text). Then EHV removed 2026-09-07 — WELS / ELS (its only real
- * constituency) already use NIV / ESV / CSB, all listed, and it's absent from
- * the translation-comparison genre. This list is form-only — removing an entry
- * does not affect how a stored `bible_translation` value renders.
+ * Originally trimmed 2026-09-06 to just the 12 translations most
+ * realistically a Protestant congregation's *pulpit* Bible (removed NJB /
+ * Douay-Rheims / NABRE / OSB as Catholic or Orthodox — out of scope, see the
+ * denomination note above — plus CEV / GNT / WEB / RSV / EHV as unlikely
+ * pulpit picks). **Reopened 2026-09-18**, once the site's own profiled set
+ * grew to 26: a submitter's own church may well use one of the other 14
+ * (a paraphrase-leaning congregation reading The Message, a Majority-Text
+ * church on the MSB, etc.), and the dropdown shouldn't force a "closest
+ * match" guess when the exact answer is right there. All 26 now listed.
+ * This list is form-only — removing an entry does not affect how a stored
+ * `bible_translation` value renders.
  */
 export const translationOptions: Option[] = [
   { value: "AMP", label: "AMP — Amplified Bible" },
+  { value: "BSB", label: "BSB — Berean Standard Bible" },
   { value: "CEB", label: "CEB — Common English Bible" },
+  { value: "CEV", label: "CEV — Contemporary English Version" },
   { value: "CSB", label: "CSB — Christian Standard Bible" },
   { value: "ESV", label: "ESV — English Standard Version" },
+  { value: "GNT", label: "GNT — Good News Translation" },
+  { value: "GW", label: "GW — GOD'S WORD Translation" },
+  { value: "ISV", label: "ISV — International Standard Version" },
   { value: "KJV", label: "KJV — King James Version" },
+  { value: "LEB", label: "LEB — Lexham English Bible" },
   { value: "LSB", label: "LSB — Legacy Standard Bible" },
+  { value: "LSV", label: "LSV — Literal Standard Version" },
+  { value: "MEV", label: "MEV — Modern English Version" },
+  { value: "MSB", label: "MSB — Majority Standard Bible" },
+  { value: "MSG", label: "MSG — The Message" },
   { value: "NASB", label: "NASB — New American Standard Bible" },
+  { value: "NCV", label: "NCV — New Century Version" },
   { value: "NET", label: "NET — New English Translation" },
+  { value: "NIrV", label: "NIrV — New International Reader's Version" },
   { value: "NIV", label: "NIV — New International Version" },
   { value: "NKJV", label: "NKJV — New King James Version" },
   { value: "NLT", label: "NLT — New Living Translation" },
   { value: "NRSV", label: "NRSV / NRSVue — New Revised Standard Version" },
+  { value: "VOICE", label: "VOICE — The Voice" },
+  { value: "WEB", label: "WEB — World English Bible" },
 ];

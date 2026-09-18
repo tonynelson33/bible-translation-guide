@@ -347,15 +347,20 @@ export default function TranslationFamilyTree() {
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Formal }} />Formal</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Mediating }} />Mediating</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Dynamic }} />Dynamic</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Paraphrase }} />Paraphrase (The Message only)</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Paraphrase }} />Paraphrase</span>
         <span className="font-semibold text-neutral-600">Hover any abbreviation for its full name.</span>
       </div>
 
       <figcaption className="mt-4 max-w-2xl text-xs leading-relaxed text-neutral-500">
-        The red <strong>ASV</strong> box is a cross-reference, not a real translation &mdash;
-        it&rsquo;s there so the <strong>WEB</strong>&rsquo;s line back to the real ASV
-        doesn&rsquo;t have to cross the whole diagram, not because the ASV itself is Majority
-        Text. Hover any abbreviation for its full name.
+        The red <strong>ASV</strong> box is there so the <strong>WEB</strong>&rsquo;s line back to
+        the real ASV doesn&rsquo;t have to cross the whole diagram, not because the ASV itself is
+        Majority Text. Top to bottom follows a strict year axis &mdash; no box sits lower than
+        another with a later year, in any zone. <strong>YLT</strong> leads to the{" "}
+        <strong>LSV</strong>; the <strong>BSB</strong>&rsquo;s Majority Text sibling, the{" "}
+        <strong>MSB</strong>, is the same translation and team with its New Testament swapped to
+        the Majority Text. The <strong>NIrV</strong> is the NIV simplified to a third-grade
+        reading level; the <strong>NCV</strong> descends from the International Children&rsquo;s
+        Bible. Hover any abbreviation for its full name.
       </figcaption>
     </figure>
   );
