@@ -47,7 +47,7 @@ export default function SiteFooter() {
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutral-500">
-              A non-commercial guide to the twelve English translations most used in Protestant
+              A non-commercial guide to the twenty-six English translations most used in Protestant
               churches.
             </p>
             <Link

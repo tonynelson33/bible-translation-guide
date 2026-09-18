@@ -1,7 +1,7 @@
 /**
  * The three translation-philosophy zones as a slim, label-free bar — the site's
  * recurring visual motif. Formal (indigo), the mediating middle that holds both
- * Optimal and Mixed (teal), and Dynamic (amber). Widths echo how the twelve
+ * Optimal and Mixed (teal), and Dynamic (amber). Widths echo how the twenty-six
  * cluster on the full spectrum (components/TranslationSpectrum.tsx). Decorative,
  * so aria-hidden.
  */

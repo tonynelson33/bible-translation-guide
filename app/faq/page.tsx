@@ -145,7 +145,7 @@ const groups: Group[] = [
               the original and aren&rsquo;t suited to study. The Passion Translation is a separate
               case &mdash; it&rsquo;s marketed as a translation but was produced largely by one person
               and adds interpretive material, and most scholars don&rsquo;t recommend it. This site
-              profiles <Link href="/compare">twelve committee translations</Link> and doesn&rsquo;t
+              profiles <Link href="/compare">twenty-six committee translations</Link> and doesn&rsquo;t
               cover paraphrases.
             </p>
           </>
@@ -534,7 +534,7 @@ export default function FaqPage() {
 
       <div className="mt-14 rounded-lg border border-gild-200 bg-gild-50 px-5 py-4 text-sm leading-relaxed text-neutral-700">
         Still stuck on which one to read? <Link href="/rankings" className="font-medium text-gild-700 hover:underline">The rankings</Link>{" "}
-        sort the twelve by purpose, and <Link href="/differences" className="font-medium text-gild-700 hover:underline">the differences page</Link>{" "}
+        sort the twenty-six by purpose, and <Link href="/differences" className="font-medium text-gild-700 hover:underline">the differences page</Link>{" "}
         walks through the specific verses people ask about.
       </div>
     </div>

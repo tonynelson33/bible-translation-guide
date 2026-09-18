@@ -173,7 +173,7 @@ export default function TextTraditions() {
           <div>
             <p className="font-display text-base font-semibold text-brand-900">Masoretic Text</p>
             <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-gild-700">
-              the base for all twelve
+              the base for all twenty-six
             </p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-700">
               The standard Hebrew text, preserved and standardized by Jewish scribes between roughly

@@ -8,7 +8,7 @@ import { translationLinks } from "@/lib/buyLinks";
 export const metadata: Metadata = {
   title: "Where to Buy",
   description:
-    "Where to buy print and digital editions of each of the twelve translations — publisher stores and major retailers — plus the ones you can read in full, free, online. Plain links, no affiliate tracking.",
+    "Where to buy print and digital editions of each of the twenty-six translations — publisher stores and major retailers — plus the ones you can read in full, free, online. Plain links, no affiliate tracking.",
   alternates: { canonical: "/buy" },
 };
 
@@ -195,7 +195,7 @@ export default function BuyPage() {
 
       <p className="mt-8 text-sm leading-relaxed text-neutral-500">
         Not sure which one? <Link href="/rankings" className="font-medium text-brand-700 hover:underline">The rankings</Link>{" "}
-        sort the twelve by purpose, and <Link href="/compare" className="font-medium text-brand-700 hover:underline">the table</Link>{" "}
+        sort the twenty-six by purpose, and <Link href="/compare" className="font-medium text-brand-700 hover:underline">the table</Link>{" "}
         lines up their reading levels and textual basis side by side.
       </p>
     </div>

@@ -9,7 +9,7 @@ import { fetchVerseForTranslation } from "@/lib/verseProviders";
 export const metadata: Metadata = {
   title: "Comparison of Popular Verses",
   description:
-    "Read a well-known passage in all twelve English translations at once, lined up from word-for-word at the top to thought-for-thought at the bottom.",
+    "Read a well-known passage in all twenty-six English translations at once, lined up from word-for-word at the top to thought-for-thought at the bottom.",
   alternates: { canonical: "/verses" },
 };
 

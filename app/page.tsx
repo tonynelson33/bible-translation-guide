@@ -9,11 +9,11 @@ import { rankingCategories } from "@/lib/rankings";
 export const metadata: Metadata = {
   title: "Compare Bible Translations",
   description:
-    "There's no single best English Bible translation — it depends on why you're reading. Compare twelve major translations on how literally they render the original, how they read, where their text comes from, and who each one might be best for.",
+    "There's no single best English Bible translation — it depends on why you're reading. Compare twenty-six major translations on how literally they render the original, how they read, where their text comes from, and who each one might be best for.",
   alternates: { canonical: "/" },
 };
 
-// The twelve, ordered most literal to most readable — the same order as the
+// The twenty-six, ordered most literal to most readable — the same order as the
 // spectrum, so the two sections echo each other.
 const literalOrder =
   rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
@@ -35,7 +35,7 @@ const entryCards = [
   {
     href: "/verses",
     title: "Read a verse in every version",
-    body: "Pick a popular passage and read all twelve side by side, ordered word-for-word to thought-for-thought.",
+    body: "Pick a popular passage and read all twenty-six side by side, ordered word-for-word to thought-for-thought.",
   },
   {
     href: "/church-finder",
@@ -55,7 +55,7 @@ const goDeeperCards = [
   {
     href: "/history",
     title: "How we got the English Bible",
-    body: "Tyndale's martyrdom, the King James Version, and the six-hundred-year story behind the twelve translations above.",
+    body: "Tyndale's martyrdom, the King James Version, and the six-hundred-year story behind the translations above.",
   },
   {
     href: "/differences",
@@ -82,7 +82,7 @@ export default function HomePage() {
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-700">
           There&rsquo;s no single best answer &mdash; it depends what you&rsquo;re using it for. This
-          site lays out twelve major English translations: how literally each renders the original,
+          site lays out twenty-six major English translations: how literally each renders the original,
           how it reads, where its text comes from, and who it might be best for.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
@@ -160,9 +160,9 @@ export default function HomePage() {
         </Link>
       </section>
 
-      {/* The twelve */}
+      {/* The twenty-six */}
       <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
-        <h2 className="font-display text-2xl font-semibold text-brand-900">The twelve</h2>
+        <h2 className="font-display text-2xl font-semibold text-brand-900">The twenty-six</h2>
         <p className="mt-2 text-neutral-700">
           Ordered word-for-word to thought-for-thought, like the spectrum above &mdash; read down
           the left column, then the right. Tap any one for a full profile.

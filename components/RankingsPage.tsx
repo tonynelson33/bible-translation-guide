@@ -130,7 +130,7 @@ export default function RankingsPage({
         Rankings
       </h1>
       <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-        How all twelve translations stack up, by purpose. There&apos;s no single “best” &mdash; the
+        How all twenty-six translations stack up, by purpose. There&apos;s no single “best” &mdash; the
         right fit depends on how and why you read.
       </p>
 

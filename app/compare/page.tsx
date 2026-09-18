@@ -6,7 +6,7 @@ import { translations } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Full Comparison",
   description:
-    "A sortable side-by-side table of twelve widely used English Bible translations — translation philosophy, reading level, NT textual basis, gender-language approach, publisher, and more.",
+    "A sortable side-by-side table of twenty-six widely used English Bible translations — translation philosophy, reading level, NT textual basis, gender-language approach, publisher, and more.",
   alternates: { canonical: "/compare" },
 };
 
@@ -18,7 +18,7 @@ export default function ComparePage() {
           The full comparison
         </h1>
         <p className="mt-3 text-neutral-700">
-          Twelve widely used English translations, side by side. Tap a column to sort, or a
+          Twenty-six widely used English translations, side by side. Tap a column to sort, or a
           translation for its full profile.
         </p>
       </div>

@@ -18,7 +18,7 @@ const sections: { title: string; body: ReactNode }[] = [
         <p>
           BibleTranslationGuide is a non-commercial guide to the English Bible translations most
           used in Protestant churches in the United States. It profiles{" "}
-          <Link href="/compare">twelve of them</Link> in depth, covers the 66-book Protestant
+          <Link href="/compare">twenty-six of them</Link> in depth, covers the 66-book Protestant
           canon, and has no affiliation with any publisher &mdash; the buy links are plain outbound
           links with no affiliate tracking.
         </p>
