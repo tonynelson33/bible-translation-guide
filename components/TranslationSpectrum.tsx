@@ -80,20 +80,24 @@ const MARKERS: Marker[] = [
   { label: "LSB", pos: 5.5, above: false },
   { label: "NASB", pos: 8.5, above: true },
   { label: "LEB", pos: 11, above: false },
-  { label: "MSB", pos: 14, above: true },
-  { label: "BSB", pos: 16.5, above: false },
-  { label: "ESV", pos: 20, above: true },
-  { label: "KJV", pos: 23, above: false },
-  { label: "WEB", pos: 26, above: true },
-  { label: "NKJV", pos: 29.5, above: false },
-  { label: "MEV", pos: 32.5, above: true },
-  { label: "AMP *", pos: 37, above: false },
-  { label: "NRSVue", pos: 41.5, above: true },
-  // Mediating
-  { label: "ISV", pos: 48, above: false },
-  { label: "CSB", pos: 52.5, above: true },
-  { label: "NET", pos: 56.5, above: false },
-  { label: "GW", pos: 61, above: true },
+  { label: "ESV", pos: 15, above: true },
+  { label: "KJV", pos: 18, above: false },
+  { label: "WEB", pos: 21, above: true },
+  { label: "NKJV", pos: 24.5, above: false },
+  { label: "MEV", pos: 27.5, above: true },
+  { label: "AMP *", pos: 32, above: false },
+  { label: "NRSVue", pos: 36.5, above: true },
+  // Mediating — order here (BSB, MSB, ISV, CSB, GW, NET) matches the
+  // "Most Literal" ranking's own most-to-least-literal sequence for this
+  // cluster, not just an even split; NET in particular lands after GW
+  // because its literal renderings live in its footnotes, not its main
+  // text (see that ranking's own note).
+  { label: "BSB", pos: 47, above: false },
+  { label: "MSB", pos: 49.5, above: true },
+  { label: "ISV", pos: 52, above: false },
+  { label: "CSB", pos: 55, above: true },
+  { label: "GW", pos: 58.5, above: false },
+  { label: "NET", pos: 62, above: true },
   // Dynamic
   { label: "NIV", pos: 65.5, above: false },
   { label: "NIrV", pos: 68.5, above: true },
@@ -121,7 +125,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 860 140"
           className="mx-auto block h-auto w-full max-w-[860px]"
           role="img"
-          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, NASB, LEB, MSB, BSB, ESV, KJV, WEB, NKJV, MEV, AMP, and NRSVue. Mediating: ISV, CSB, NET, and GW. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, The Voice, and CEV. The Message sits alone in its own Paraphrase zone."
+          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, NASB, LEB, ESV, KJV, WEB, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, The Voice, and CEV. The Message sits alone in its own Paraphrase zone."
         >
           {BANDS.map((band) => {
             const x = px(band.from);

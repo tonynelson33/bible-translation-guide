@@ -373,7 +373,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "ceb", blurb: "A strong 5th for daily devotions carries an otherwise middling set of finishes — 8th to 18th in the other three." },
       { id: "bsb", blurb: "A real 9th for study on the strength of its interlinear word-linking, with 11th to 18th finishes everywhere else — solid, unspecialized, and still building a track record." },
       { id: "nirv", blurb: "A strong 7th for both memorization and devotions on the strength of the NIV's own familiar, simplified text, but 19th and 21st for preaching and study — its third-grade level works against both." },
-      { id: "nlt", blurb: "#1 for daily devotions and nowhere else near the top — its thought-for-thought wording lands 20th to 22nd for study, preaching, and memorization." },
+      { id: "nlt", blurb: "#1 for daily devotions and nowhere else near the top — its thought-for-thought wording lands 20th for study and 22nd for memorization, with a more middling 12th for preaching." },
       { id: "gnt", blurb: "3rd for daily devotions on real oral-clarity credentials, but its willingness to paraphrase for plain clarity costs it everywhere else — 14th to 23rd across the other three." },
       { id: "net", blurb: "The #1 translation for serious study, but 21st for preaching and 24th for memorization — the notes that make it exceptional don't help when the text is read aloud." },
       { id: "web", blurb: "A workmanlike, unspecialized spread — 10th to 19th in all four categories — carried mainly by its formal, ASV-descended consistency rather than any single standout use." },

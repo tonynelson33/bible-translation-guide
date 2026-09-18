@@ -120,7 +120,7 @@ const nodes: Node[] = [
   { id: "nrsv", label: "NRSV", year: 1989, cx: 390, basis: "CT", phil: "Formal" },
   { id: "lsb", label: "LSB", year: 2021, cx: 510, current: true, basis: "CT", phil: "Formal" },
   { id: "nrsvue", label: "NRSVue", year: 2021, cx: 390, w: 84, current: true, basis: "CT", phil: "Formal" },
-  { id: "bsb", label: "BSB", year: 2023, cx: 510, current: true, basis: "CT", phil: "Formal" },
+  { id: "bsb", label: "BSB", year: 2023, cx: 510, current: true, basis: "CT", phil: "Mediating" },
 
   // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}.
   { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 750, w: 90, basis: "TR", phil: "Formal" },
@@ -133,7 +133,7 @@ const nodes: Node[] = [
   { id: "ylt", label: "YLT", year: 1862, cx: 850, basis: "TR", phil: "Formal" },
   { id: "lsv", label: "LSV", year: 2020, cx: 900, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
   { id: "web", label: "WEB", year: 2020, cx: 1020, current: true, basis: "MT", phil: "Formal" },
-  { id: "msb", label: "MSB", year: 2023, cx: 1020, current: true, basis: "MT", phil: "Formal" },
+  { id: "msb", label: "MSB", year: 2023, cx: 1020, current: true, basis: "MT", phil: "Mediating" },
 ];
 
 // Shared chronological rank: every distinct year among the nodes above gets
