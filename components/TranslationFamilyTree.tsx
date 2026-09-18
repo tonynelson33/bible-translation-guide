@@ -263,11 +263,17 @@ export default function TranslationFamilyTree() {
             {independents.map((t) => (
               <span
                 key={t.id}
-                title={`${FULL_NAME[t.id]} — ${t.year}, ${t.basis}`}
-                className="flex items-center gap-1 rounded bg-brand-800 px-1.5 py-0.5 text-[10px] font-semibold text-white"
+                title={FULL_NAME[t.id]}
+                className="flex items-start gap-1 rounded bg-brand-800 px-1.5 py-1 text-[10px] font-semibold leading-tight text-white"
               >
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
-                <span className="truncate">{t.label}</span>
+                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
+                <span>
+                  {t.label}
+                  <br />
+                  <span className="font-normal text-brand-200">
+                    {t.year} {t.basis}
+                  </span>
+                </span>
               </span>
             ))}
           </div>
@@ -287,7 +293,7 @@ export default function TranslationFamilyTree() {
                   <line x1={b.x1} y1={8} x2={b.x2} y2={8} stroke="#a3a3a3" strokeWidth={1.5} />
                   <line x1={b.x1} y1={3} x2={b.x1} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />
                   <line x1={b.x2} y1={3} x2={b.x2} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />
-                  <rect x={cx - 12} y={0} width={24} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
+                  <rect x={cx - 54} y={0} width={108} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
                   <text x={cx} y={12} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
                     {b.label}
                   </text>
@@ -311,12 +317,13 @@ export default function TranslationFamilyTree() {
               stroke="rgb(203 203 203)"
               strokeWidth="1.5"
             />
-            {/* ASV stand-in -> WEB (red) */}
+            {/* ASV stand-in -> WEB (red, kept thin so it doesn't outweigh the
+                real lineage lines just because of its color) */}
             <path
               d={`M ${ASV_STANDIN.cx} ${ASV_STANDIN.y + BOX_H} V ${box("web").y}`}
               fill="none"
               stroke="#dc2626"
-              strokeWidth="1.5"
+              strokeWidth="1"
             />
 
             {nodes.map((n) => {

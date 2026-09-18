@@ -12,7 +12,7 @@
  */
 const ZONES = [
   { name: "Formal", method: "word-for-word", flex: 3, bg: "bg-indigo-300" },
-  { name: "Optimal · Mixed", method: "optimal + mixed", flex: 2.1, bg: "bg-teal-300" },
+  { name: "Mediating", method: "optimal + mixed", flex: 2.1, bg: "bg-teal-300" },
   { name: "Dynamic", method: "thought-for-thought", flex: 2.4, bg: "bg-amber-300" },
   { name: "Paraphrase", method: "freely restated", flex: 0.6, bg: "bg-stone-300" },
 ];

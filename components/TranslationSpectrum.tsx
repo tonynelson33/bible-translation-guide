@@ -39,7 +39,7 @@ const FULL_NAME: Record<string, string> = {
   NET: "New English Translation",
   GW: "GOD'S WORD Translation",
   NIV: "New International Version",
-  "NIrV *": "New International Reader's Version",
+  NIrV: "New International Reader's Version",
   CEB: "Common English Bible",
   NCV: "New Century Version",
   NLT: "New Living Translation",
@@ -96,7 +96,7 @@ const MARKERS: Marker[] = [
   { label: "GW", pos: 61, above: true },
   // Dynamic
   { label: "NIV", pos: 65.5, above: false },
-  { label: "NIrV *", pos: 68.5, above: true },
+  { label: "NIrV", pos: 68.5, above: true },
   { label: "CEB", pos: 72, above: false },
   { label: "NCV", pos: 75.5, above: true },
   { label: "NLT", pos: 79, above: false },
@@ -170,18 +170,9 @@ export default function TranslationSpectrum({
         {standalone
           ? "The translations in translation-method order, "
           : "The same order as the list, "}
-        word-for-word (Formal) on the left, thought-for-thought (Dynamic) toward the right, with
-        two flavors of middle ground between, and <strong>The Message</strong> alone in its own
-        Paraphrase zone &mdash; the only paraphrase this site profiles.{" "}
+        word-for-word (Formal) on the left, thought-for-thought (Dynamic) toward the right.{" "}
         <span aria-hidden="true">*</span> The Amplified&apos;s asterisk marks its bracketed
-        expansions pulling the printed page rightward of its NASB-level base text; the{" "}
-        <strong>NIrV</strong>&rsquo;s marks the same idea in reverse &mdash; it&rsquo;s the
-        NIV&rsquo;s own text and method, simplified in vocabulary for a third-grade reading level,
-        not a separate philosophy, so it sits beside its parent rather than further right. Five of
-        the translations (<strong>WEB</strong>, <strong>LSV</strong>, <strong>MSB</strong>, and
-        &mdash; like the <strong>NKJV</strong> &mdash; <strong>MEV</strong>) draw on the
-        Byzantine Majority Text or the Textus Receptus rather than the modern Critical Text most
-        of the rest use.
+        expansions pulling the printed page rightward of its NASB-level base text.
       </p>
     </div>
   );
