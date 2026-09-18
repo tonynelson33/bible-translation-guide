@@ -102,7 +102,7 @@ function NavDropdown({
         <div
           className={`absolute top-full ${
             align === "right" ? "right-0" : "left-0"
-          } ${width} rounded-md border border-neutral-200 bg-white py-2 shadow-lg`}
+          } ${width} max-h-[70vh] overflow-y-auto rounded-md border border-neutral-200 bg-white py-2 shadow-lg`}
           onClick={() => setOpen(false)}
         >
           {children}

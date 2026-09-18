@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import VersePicker from "@/components/VersePicker";
+import VerseComparisonList from "@/components/VerseComparisonList";
 import { sampleVerses, translations, getSampleVerse } from "@/lib/data";
 import { compareReferences } from "@/lib/bibleOrder";
 import { rankingCategories } from "@/lib/rankings";
@@ -21,12 +21,19 @@ export const metadata: Metadata = {
 
 // One column, word-for-word at the top to thought-for-thought at the bottom, so
 // neighbouring rows are the translations most alike — word choices easy to scan.
-// Order is taken from the "Most Literal" ranking (lib/rankings.ts).
+// Order is taken from the "Most Literal" ranking (lib/rankings.ts). A translation
+// absent from that category (just The Message, a paraphrase) has no rank to
+// inherit — indexOf(-1) would otherwise sort it first, not last, so it's pinned
+// to the end instead.
 const literalOrder =
   rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
+const literalRank = (id: string) => {
+  const i = literalOrder.indexOf(id);
+  return i === -1 ? literalOrder.length : i;
+};
 
 const orderedTranslations = [...translations].sort(
-  (a, b) => literalOrder.indexOf(a.id) - literalOrder.indexOf(b.id),
+  (a, b) => literalRank(a.id) - literalRank(b.id),
 );
 
 // The picker lists verses in Bible order (Genesis first); the page still
@@ -61,32 +68,11 @@ export default function VersesPage({
         </p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-6">
         <VersePicker verses={versesInBibleOrder} selectedId={verse.id} />
       </div>
 
-      <div className="divide-y divide-neutral-200 border-y border-neutral-200">
-        {rows.map(({ translation: t, result }) => (
-          <div key={t.id} className="py-4 sm:grid sm:grid-cols-[4rem_1fr] sm:gap-x-6">
-            <Link
-              href={`/translations/${t.id}`}
-              title={t.name}
-              className="text-sm font-semibold text-brand-800 hover:underline sm:pt-1"
-            >
-              {t.abbreviation}
-            </Link>
-            {result.status === "ok" && result.text ? (
-              <p className="mt-1 font-serif text-lg leading-relaxed text-neutral-800 sm:mt-0">
-                {result.text}
-              </p>
-            ) : (
-              <p className="mt-1 text-sm text-neutral-500 sm:mt-0 sm:pt-1">
-                Text unavailable{result.message ? ` — ${result.message}` : ""}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
+      <VerseComparisonList rows={rows} />
 
       <div className="mt-8 space-y-1 text-xs leading-snug text-neutral-400">
         <p>

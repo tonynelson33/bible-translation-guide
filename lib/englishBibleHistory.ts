@@ -284,10 +284,10 @@ export const timeline: TimelineEntry[] = [
     major: true,
   },
   {
-    year: "1971–2017 · United States",
+    year: "1971–present · United States",
     title: "The modern translations",
     detail:
-      "The NASB (1971), NIV (1978), NKJV (1982), NRSV (1989), NLT (1996), ESV (2001), and CSB (2017) arrive in quick succession — the product of better manuscripts, changing English, competing translation philosophies, and a competitive publishing market.",
+      "The NASB (1971), NIV (1978), NKJV (1982), NRSV (1989), NLT (1996), ESV (2001), and CSB (2017) arrive in quick succession, and new translations keep coming — the product of better manuscripts, changing English, competing translation philosophies, and a competitive publishing market.",
     major: true,
   },
 ];

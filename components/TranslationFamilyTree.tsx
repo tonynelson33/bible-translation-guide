@@ -217,9 +217,9 @@ const independents: Chip[] = [
 const VIEW_W = 1090;
 const VIEW_H = TOP + rankedYears.length * PITCH + 30;
 const BRACKETS: { label: string; x1: number; x2: number }[] = [
-  { label: "CT", x1: 15, x2: 645 },
-  { label: "TR", x1: 655, x2: 900 },
-  { label: "MT", x1: 910, x2: 1075 },
+  { label: "Critical Text", x1: 15, x2: 645 },
+  { label: "Textus Receptus", x1: 655, x2: 900 },
+  { label: "Majority Text", x1: 910, x2: 1075 },
 ];
 
 function PhilDot({ cx, cy, phil }: { cx: number; cy: number; phil: Philosophy }) {
@@ -254,27 +254,29 @@ function NodeBox({
 export default function TranslationFamilyTree() {
   return (
     <figure className="mt-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        <div className="rounded-lg border border-neutral-300 p-3 sm:w-48 sm:shrink-0 sm:mt-[180px]">
-          <p className="mb-2 text-xs font-semibold text-neutral-600">No documented lineage at all</p>
-          <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+        <div className="rounded-lg border border-neutral-300 p-2 sm:w-28 sm:shrink-0 sm:mt-[180px]">
+          <p className="mb-1.5 text-[10px] font-semibold leading-tight text-neutral-600">
+            No documented lineage
+          </p>
+          <div className="flex flex-col gap-1">
             {independents.map((t) => (
               <span
                 key={t.id}
-                title={FULL_NAME[t.id]}
-                className="inline-flex items-center gap-1.5 rounded-md bg-brand-800 px-2.5 py-1 text-xs font-semibold text-white"
+                title={`${FULL_NAME[t.id]} — ${t.year}, ${t.basis}`}
+                className="flex items-center gap-1 rounded bg-brand-800 px-1.5 py-0.5 text-[10px] font-semibold text-white"
               >
-                <span className="h-2 w-2 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
-                {t.label} <span className="font-normal text-brand-200">{t.year} {t.basis}</span>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
+                <span className="truncate">{t.label}</span>
               </span>
             ))}
           </div>
         </div>
 
-        <div className="overflow-x-auto rounded-lg border border-neutral-200 bg-paper p-4">
+        <div className="min-w-0 flex-1 rounded-lg border border-neutral-200 bg-paper p-4">
           <svg
             viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-            className="mx-auto block h-auto w-full min-w-[900px] max-w-[1090px]"
+            className="mx-auto block h-auto w-full max-w-[1090px]"
             role="img"
             aria-label="Every translation on the site with a documented lineage, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no lineage at all are listed separately, not part of this diagram."
           >
@@ -350,38 +352,10 @@ export default function TranslationFamilyTree() {
       </div>
 
       <figcaption className="mt-4 max-w-2xl text-xs leading-relaxed text-neutral-500">
-        Left to right, three loose zones by New Testament textual basis &mdash;{" "}
-        <strong>Critical Text</strong>, the King James <strong>Textus Receptus</strong>, and{" "}
-        <strong>Majority Text</strong> &mdash; the KJV&rsquo;s own Critical-Text descendants (
-        <strong>ASV</strong>, <strong>RSV</strong>, <strong>NASB</strong>, <strong>ESV</strong>,{" "}
-        <strong>NRSV</strong>/<strong>NRSVue</strong>, <strong>AMP</strong>,{" "}
-        <strong>LSB</strong>, and <strong>BSB</strong>) still hang off their real KJV-line parents
-        even where that reads as inside the Textus Receptus bracket. Top to bottom is a strict
-        shared year axis: no box sits lower than another box with a later year, in any zone or
-        branch &mdash; the reason the <strong>NKJV</strong> (1982) sits well below the
-        ASV-descended translations that came out between it and the KJV, and{" "}
-        <strong>AMP</strong> (1965) sits just above <strong>NASB</strong> (1971) rather than
-        beside it. <strong>YLT</strong> leads to the <strong>LSV</strong>; the{" "}
-        <strong>BSB</strong>&rsquo;s Majority Text sibling, the <strong>MSB</strong> &mdash; the
-        same translation with its New Testament swapped to the Majority Text, from the same team
-        on the same day in 2023 &mdash; sits on the right with a connector back to it. The red{" "}
-        <strong>ASV</strong> box, at the real ASV&rsquo;s own row, is a cross-reference rather
-        than a fourth Majority Text translation &mdash; it carries no year or code for that
-        reason, and its one red line to the <strong>WEB</strong> (a modernization of the
-        ASV&rsquo;s own wording) is what lets that connection skip crossing the whole diagram.
-        The <strong>NIrV</strong> is the NIV&rsquo;s own text simplified to a third-grade reading
-        level; the <strong>NCV</strong> a 1991 revision of the International Children&rsquo;s
-        Bible. To the left, the fully independent translations &mdash; no documented lineage at
-        all &mdash; are their own list, sorted by year but not held to the tree&rsquo;s shared
-        axis. Hover any abbreviation for its full name.
-        <br />
-        <br />
-        <strong>The Message</strong> is the one paraphrase here, not a translation in the same
-        sense as the rest &mdash; its dot is gray rather than a philosophy color for that reason.
-        Eugene Peterson held a Master&rsquo;s in Semitic Languages and worked directly from the
-        Hebrew and Greek himself, and twenty biblical scholars reviewed the result. (The site also
-        tracks two other paraphrases in its glossary and history, the Living Bible and The
-        Passion Translation, but neither is profiled here.)
+        The red <strong>ASV</strong> box is a cross-reference, not a real translation &mdash;
+        it&rsquo;s there so the <strong>WEB</strong>&rsquo;s line back to the real ASV
+        doesn&rsquo;t have to cross the whole diagram, not because the ASV itself is Majority
+        Text. Hover any abbreviation for its full name.
       </figcaption>
     </figure>
   );

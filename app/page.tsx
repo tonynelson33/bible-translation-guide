@@ -14,11 +14,17 @@ export const metadata: Metadata = {
 };
 
 // The twenty-six, ordered most literal to most readable — the same order as the
-// spectrum, so the two sections echo each other.
+// spectrum, so the two sections echo each other. A translation absent from the
+// "literal" category (just The Message, a paraphrase) has no rank to inherit —
+// indexOf(-1) would otherwise sort it first, not last, so it's pinned to the end.
 const literalOrder =
   rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
+const literalRank = (id: string) => {
+  const i = literalOrder.indexOf(id);
+  return i === -1 ? literalOrder.length : i;
+};
 const orderedTranslations = [...translations].sort(
-  (a, b) => literalOrder.indexOf(a.id) - literalOrder.indexOf(b.id),
+  (a, b) => literalRank(a.id) - literalRank(b.id),
 );
 
 const entryCards = [
@@ -103,11 +109,7 @@ export default function HomePage() {
 
       {/* Philosophy band — decorative restatement of the spectrum */}
       <section className="mx-auto mt-10 max-w-3xl">
-        <SpectrumStrip className="h-2" />
-        <div className="mt-1.5 flex justify-between text-xs text-neutral-500">
-          <span>word-for-word</span>
-          <span>thought-for-thought</span>
-        </div>
+        <SpectrumStrip className="h-2" showLabels />
       </section>
 
       {/* Entry cards */}
