@@ -13,7 +13,7 @@ export interface RankingCategory {
   tabLabel: string;
   /** What this category is actually measuring. */
   criteria: string;
-  /** All 12 translations, ranked best to worst for this criterion. */
+  /** All 26 translations, ranked best to worst for this criterion. */
   entries: RankingEntry[];
   /** Trailing context/caveat shown after the ranked list. */
   note?: string;
