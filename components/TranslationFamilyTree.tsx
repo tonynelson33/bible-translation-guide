@@ -22,13 +22,11 @@
  * than another node with a later year, full stop, regardless of which
  * branch or zone either one is in.
  *
- * One deliberate exception to "real tree shape": a second, plain box labeled
- * just "ASV" (no year/code, so it can't be mistaken for a genuine Majority
- * Text translation) sits beside the WEB, joined to it by a red connector —
- * a cross-reference, not a real node, there only so the WEB's own line
- * doesn't have to cross the whole diagram to reach the real ASV. It carries
- * no line back to the real ASV itself; the shared label and hover tooltip
- * are what tie the two together.
+ * One deliberate exception to "real tree shape": the WEB's line back to the
+ * ASV, its real parent, is drawn in red and runs the full width of the
+ * diagram instead of a short jog to a nearby column — the one connection
+ * here that visibly crosses between zones, colored red so it doesn't read
+ * as an ordinary Majority Text lineage line.
  *
  * Two more data layers ride along on every node/chip: a corner dot for
  * philosophy (indigo/teal/amber — the same three colors as lib/glossary.ts
@@ -192,13 +190,6 @@ function edgePath(from: string, to: string, jogY?: number) {
   return `M ${a.cx} ${a.bottom} V ${mid} H ${b.cx} V ${b.y}`;
 }
 
-// The ASV stand-in: a plain box, same style as the other non-current
-// ancestors, at the real ASV's own row. Only its connector down to the WEB
-// is red — a cross-reference, not a real fourth Majority Text translation —
-// and it carries no separate line back to the real ASV; the shared label
-// and tooltip do that work instead.
-const ASV_STANDIN = { cx: 1020, y: yOf["asv"], w: 70 };
-
 type Chip = { id: string; label: string; year: number; basis: TextualBasis; phil: Philosophy; w?: number };
 const independents: Chip[] = [
   { id: "gnt", label: "GNT", year: 1976, basis: "CT", phil: "Dynamic" },
@@ -286,7 +277,7 @@ export default function TranslationFamilyTree() {
               viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
               className="block h-auto w-full max-w-[1090px]"
               role="img"
-              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
+              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
             >
               {BRACKETS.map((b) => {
               const cx = (b.x1 + b.x2) / 2;
@@ -319,14 +310,16 @@ export default function TranslationFamilyTree() {
               stroke="rgb(203 203 203)"
               strokeWidth="1.5"
             />
-            {/* ASV stand-in -> WEB (red, kept thin so it doesn't outweigh the
-                real lineage lines just because of its color) */}
+            {/* WEB -> its real parent, the ASV (red, kept thin so it doesn't
+                outweigh the real lineage lines just because of its color) */}
             <path
-              d={`M ${ASV_STANDIN.cx} ${ASV_STANDIN.y + BOX_H} V ${box("web").y}`}
+              d={`M ${box("asv").x + box("asv").w} ${box("asv").midY} H ${box("web").cx} V ${box("web").y}`}
               fill="none"
               stroke="#dc2626"
               strokeWidth="1"
-            />
+            >
+              <title>The WEB is a modernization of the ASV&rsquo;s own wording.</title>
+            </path>
 
             {nodes.map((n) => {
               const p = box(n.id);
@@ -339,14 +332,6 @@ export default function TranslationFamilyTree() {
                 </g>
               );
             })}
-
-            <g>
-              <rect x={ASV_STANDIN.cx - ASV_STANDIN.w / 2} y={ASV_STANDIN.y} width={ASV_STANDIN.w} height={BOX_H} rx="5" strokeWidth="1.5" className="fill-white stroke-neutral-300" />
-              <title>American Standard Version (cross-reference — see the real ASV on the left)</title>
-              <text x={ASV_STANDIN.cx} y={ASV_STANDIN.y + BOX_H / 2 + 3.5} textAnchor="middle" fill="#dc2626" className="text-[9px] font-semibold">
-                ASV
-              </text>
-            </g>
           </svg>
           </div>
         </div>
@@ -362,9 +347,9 @@ export default function TranslationFamilyTree() {
       </div>
 
       <figcaption className="mt-4 max-w-2xl text-xs leading-relaxed text-neutral-500">
-        The red <strong>ASV</strong> box is there so the <strong>WEB</strong>&rsquo;s line back to
-        the real ASV doesn&rsquo;t have to cross the whole diagram, not because the ASV itself is
-        Majority Text. Top to bottom follows a strict year axis &mdash; no box sits lower than
+        The red line traces the <strong>WEB</strong>&rsquo;s descent from the <strong>ASV</strong>,
+        the one connection here that crosses the whole diagram instead of a short jog to a nearby
+        column. Top to bottom follows a strict year axis &mdash; no box sits lower than
         another with a later year, in any zone. <strong>YLT</strong> leads to the{" "}
         <strong>LSV</strong>; the <strong>BSB</strong>&rsquo;s Majority Text sibling, the{" "}
         <strong>MSB</strong>, is the same translation and team with its New Testament swapped to
