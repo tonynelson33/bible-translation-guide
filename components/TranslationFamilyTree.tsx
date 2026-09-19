@@ -7,10 +7,10 @@
  * colored by its translation philosophy (indigo/teal/amber — the same
  * colors as lib/glossary.ts and the spectrum; a fourth stone tone marks
  * The Message as a paraphrase, off that axis entirely): filled with that
- * color, it's one of the twenty-six; white with just a thick border in
- * that color, it's an older Bible (Tyndale, the Revised Version, the ASV,
- * Young's Literal Translation, the International Children's Bible) kept
- * only to show the lineage.
+ * color, it's one of the twenty-six; white (same border, same weight —
+ * only the fill differs), it's an older Bible (Tyndale, the Revised
+ * Version, the ASV, Young's Literal Translation, the International
+ * Children's Bible) kept only to show the lineage.
  *
  * Layout: hand-placed x — a literal cx per node, chosen so no edge runs
  * through a box. Three loose zones read left to right by New Testament
@@ -125,8 +125,8 @@ const nodes: Node[] = [
   { id: "bsb", label: "BSB", year: 2023, cx: 510, current: true, basis: "CT", phil: "Mediating" },
 
   // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}.
-  { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 750, w: 90, basis: "TR", phil: "Formal" },
-  { id: "kjv", label: "KJV", year: 1611, cx: 750, w: 128, current: true, basis: "TR", phil: "Formal" },
+  { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 750, w: 100, basis: "TR", phil: "Formal" },
+  { id: "kjv", label: "KJV", year: 1611, cx: 750, w: 108, current: true, basis: "TR", phil: "Formal" },
   { id: "nkjv", label: "NKJV", year: 1982, cx: 770, current: true, basis: "TR", phil: "Formal" },
   { id: "mev", label: "MEV", year: 2014, cx: 710, current: true, basis: "TR", phil: "Formal" },
 
@@ -230,7 +230,7 @@ function NodeBox({
     <g>
       <rect
         x={x} y={y} width={w} height={BOX_H} rx="5"
-        strokeWidth={current ? 1.5 : 2}
+        strokeWidth={1.5}
         className={`${current ? style.fill : "fill-white"} ${style.border}`}
       />
       {title && <title>{title}</title>}
@@ -343,7 +343,7 @@ export default function TranslationFamilyTree() {
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-teal-500 bg-teal-50" />Mediating</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-amber-500 bg-amber-50" />Dynamic</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-stone-500 bg-stone-100" />Paraphrase</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border-2 border-neutral-500 bg-white" />Thick border = not one of the twenty-six</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-neutral-400 bg-white" />White fill = not one of the twenty-six</span>
         <span className="font-semibold text-neutral-600">Hover any abbreviation for its full name.</span>
       </div>
 
