@@ -495,15 +495,15 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
   },
 
   mev: {
-    tagline: "A fresh, formal-equivalence update of the King James tradition, translated directly from the same Hebrew and Greek base texts.",
+    tagline: "An explicit update of the King James Version, re-translated directly from its Hebrew and Greek source texts rather than modernized word by word.",
     overview: [
-      "The Modern English Version is a from-scratch translation in the King James tradition, begun in 2005 under executive director James F. Linzey and drawing on translators from a range of Christian traditions. The New Testament was completed in 2011 and the Old Testament in 2014, when the complete Bible was published by Passio, an imprint of Charisma House.",
-      "Rather than reworking the KJV's own centuries-old English word by word the way the NKJV does, the MEV is translated fresh from the Masoretic Text and the Textus Receptus — the same source texts behind the KJV — aiming to combine that tradition's formal, word-for-word accuracy with contemporary English grammar and vocabulary.",
+      "The Modern English Version is an update of the King James Version, begun in 2005 under executive director James F. Linzey and drawing on translators from a range of Christian traditions. The New Testament was completed in 2011 and the Old Testament in 2014, when the complete Bible was published by Passio, an imprint of Charisma House.",
+      "The MEV's own FAQ describes it in direct terms as \"an accurate and responsible update of the King James Version,\" using the KJV as its base manuscript — the same kind of project as the NKJV, in the same lineage. Where it differs is process: rather than modernizing the KJV's existing wording word by word, the committee re-translated the Masoretic Text and the Textus Receptus directly, using the KJV as the base and reference throughout — the MEV's own materials illustrate this with a sample verse run across Tyndale, the 1611 and 1769 KJV, the NKJV, and the MEV as one continuous chain of updates to the same text.",
       "On gender language, the MEV keeps the KJV tradition's generic masculine wording, and, like the NKJV, capitalizes pronouns referring to God (He, His, Him) and italicizes words the translators added for clarity that have no direct equivalent in the underlying Hebrew or Greek — both classic King James-family conventions.",
-      "The MEV positions itself as a Textus Receptus alternative for readers who want that textual tradition and the KJV's formal style, but in fully contemporary English rather than the NKJV's more measured modernization of the KJV's own historic wording.",
+      "The MEV's own FAQ makes its place in the King James line explicit: it was dedicated to Queen Elizabeth II specifically because, in the FAQ's own words, \"it is an update of the Authorized Version, commonly known as the King James Version, which was dedicated to His Royal Highness James I.\" Where it departs from a translation like the NKJV is in degree, not in lineage — retranslating the underlying Greek and Hebrew more freely (its FAQ walks through specific spots where it declines to translate a word the KJV did) rather than modernizing the KJV's own phrasing word by word.",
     ],
     distinctives: [
-      "A fresh translation from the Masoretic Text and Textus Receptus, not a word-by-word update of the KJV's own English the way the NKJV is.",
+      "An explicit update of the King James Version — its own FAQ calls the KJV its \"base manuscript\" — arrived at by re-translating the Masoretic Text and Textus Receptus directly, rather than modernizing the KJV's existing wording word by word the way the NKJV does.",
       "Keeps classic King James-family conventions: capitalized pronouns for God and italicized translator-supplied words.",
       "Completed relatively recently (2014), making it one of the newest translations still working from the Textus Receptus rather than the modern Critical Text.",
       "Drew translators from a deliberately broad range of Christian traditions rather than a single denomination or seminary.",
