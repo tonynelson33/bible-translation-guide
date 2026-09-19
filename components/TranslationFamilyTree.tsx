@@ -205,19 +205,19 @@ const independents: Chip[] = [
   { id: "cev", label: "CEV", year: 1995, basis: "CT", phil: "Dynamic" },
   { id: "gw", label: "GW", year: 1995, basis: "CT", phil: "Mediating" },
   { id: "nlt", label: "NLT", year: 1996, basis: "CT", phil: "Dynamic" },
-  { id: "message", label: "The Message", year: 2002, basis: "CT", phil: "Paraphrase", w: 104 },
+  { id: "message", label: "The Message", year: 2002, basis: "CT", phil: "Paraphrase", w: 124 },
   { id: "net", label: "NET", year: 2005, basis: "CT", phil: "Mediating" },
   { id: "ceb", label: "CEB", year: 2011, basis: "CT", phil: "Dynamic" },
   { id: "isv", label: "ISV", year: 2011, basis: "CT", phil: "Mediating" },
   { id: "leb", label: "LEB", year: 2011, basis: "CT", phil: "Formal" },
-  { id: "voice", label: "The Voice", year: 2012, basis: "CT", phil: "Dynamic", w: 92 },
+  { id: "voice", label: "The Voice", year: 2012, basis: "CT", phil: "Dynamic", w: 106 },
   { id: "csb", label: "CSB", year: 2017, basis: "CT", phil: "Mediating" },
 ].sort((a, b) => a.year - b.year) as Chip[];
 
 const VIEW_W = 1090;
 const VIEW_H = TOP + rankedYears.length * PITCH + 30;
-const BRACKETS: { label: string; x1: number; x2: number }[] = [
-  { label: "Critical Text", x1: 15, x2: 645 },
+const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] = [
+  { label: "Critical Text", x1: 15, x2: 645, openLeft: true },
   { label: "Textus Receptus", x1: 655, x2: 900 },
   { label: "Majority Text", x1: 910, x2: 1075 },
 ];
@@ -256,23 +256,26 @@ export default function TranslationFamilyTree() {
     <figure className="mt-6">
       <div className="rounded-lg border border-neutral-200 bg-paper p-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <div className="flex shrink-0 flex-col items-start gap-1 sm:mt-[190px]">
-            <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
-            {independents.map((t) => (
-              <span
-                key={t.id}
-                title={FULL_NAME[t.id]}
-                style={{ width: t.w ?? DEF_W }}
-                className="flex h-6 items-center justify-center gap-1 rounded-[5px] bg-brand-800 px-1 text-[9px] leading-none text-white"
-              >
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
-                <span className="whitespace-nowrap">
-                  <span className="font-semibold">{t.label}</span>
-                  <span className="text-brand-200"> {t.year} </span>
-                  <span className="font-bold text-brand-200">{t.basis}</span>
+          <div className="flex shrink-0 flex-col sm:self-stretch">
+            <div className="hidden border-t border-neutral-400 sm:block" aria-hidden="true" />
+            <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
+              <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
+              {independents.map((t) => (
+                <span
+                  key={t.id}
+                  title={FULL_NAME[t.id]}
+                  style={{ width: t.w ?? DEF_W }}
+                  className="flex h-6 items-center justify-center gap-1 rounded-[5px] bg-brand-800 px-1 text-[9px] leading-none text-white"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
+                  <span className="whitespace-nowrap">
+                    <span className="font-semibold">{t.label}</span>
+                    <span className="text-brand-200"> {t.year} </span>
+                    <span className="font-bold text-brand-200">{t.basis}</span>
+                  </span>
                 </span>
-              </span>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="min-w-0 flex-1">
@@ -287,7 +290,7 @@ export default function TranslationFamilyTree() {
               return (
                 <g key={b.label}>
                   <line x1={b.x1} y1={8} x2={b.x2} y2={8} stroke="#a3a3a3" strokeWidth={1.5} />
-                  <line x1={b.x1} y1={3} x2={b.x1} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />
+                  {!b.openLeft && <line x1={b.x1} y1={3} x2={b.x1} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />}
                   <line x1={b.x2} y1={3} x2={b.x2} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />
                   <rect x={cx - 54} y={0} width={108} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
                   <text x={cx} y={12} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
