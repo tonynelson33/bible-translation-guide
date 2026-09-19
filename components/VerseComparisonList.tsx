@@ -7,16 +7,25 @@ import type { VerseFetchResult } from "@/lib/verseProviders";
 
 type Row = { translation: Translation; result: VerseFetchResult };
 
+const MIN_FONT_PX = 11;
+const MAX_FONT_PX = 19;
+const DEFAULT_FONT_PX = 13;
+const FONT_STEP_PX = 2;
+
 /**
  * The /verses comparison list, plus a checkbox panel above it for narrowing
  * which translations show — added once there were 26 rows to scroll through
  * and comparing "just these few" needed the rest out of the way. Client-only
- * (visibility is a viewing preference, not part of the page's URL/shareable
- * state, so it resets on reload rather than round-tripping through the
- * server); the verse itself is still chosen via VersePicker's own URL param.
+ * (visibility and text size are viewing preferences, not part of the page's
+ * URL/shareable state, so they reset on reload rather than round-tripping
+ * through the server); the verse itself is still chosen via VersePicker's
+ * own URL param. The checkbox panel is alphabetical by abbreviation (for
+ * finding one translation quickly) even though the rows below stay in
+ * literal-to-freest order, like every other list on the site.
  */
 export default function VerseComparisonList({ rows }: { rows: Row[] }) {
   const [visible, setVisible] = useState<Set<string>>(() => new Set(rows.map((r) => r.translation.id)));
+  const [fontPx, setFontPx] = useState(DEFAULT_FONT_PX);
 
   const allOn = visible.size === rows.length;
   const someOn = visible.size > 0;
@@ -34,27 +43,56 @@ export default function VerseComparisonList({ rows }: { rows: Row[] }) {
     setVisible(allOn ? new Set() : new Set(rows.map((r) => r.translation.id)));
   }
 
+  const pickerRows = [...rows].sort((a, b) =>
+    a.translation.abbreviation.localeCompare(b.translation.abbreviation),
+  );
   const shownRows = rows.filter((r) => visible.has(r.translation.id));
 
   return (
     <>
       <div className="mb-6 rounded-lg border border-neutral-200 bg-white p-3">
-        <label className="flex items-center gap-2 border-b border-neutral-100 pb-2 text-sm font-semibold text-neutral-700">
-          <input
-            type="checkbox"
-            checked={allOn}
-            ref={(el) => {
-              if (el) el.indeterminate = someOn && !allOn;
-            }}
-            onChange={toggleAll}
-            className="h-4 w-4 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
-          />
-          Show all ({visible.size}/{rows.length})
-        </label>
+        <div className="flex items-center justify-between gap-3 border-b border-neutral-100 pb-2">
+          <label className="flex items-center gap-2 text-sm font-semibold text-neutral-700">
+            <input
+              type="checkbox"
+              checked={allOn}
+              ref={(el) => {
+                if (el) el.indeterminate = someOn && !allOn;
+              }}
+              onChange={toggleAll}
+              className="h-4 w-4 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
+            />
+            Show all ({visible.size}/{rows.length})
+          </label>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-neutral-500">Text size</span>
+            <button
+              type="button"
+              onClick={() => setFontPx((s) => Math.max(MIN_FONT_PX, s - FONT_STEP_PX))}
+              disabled={fontPx <= MIN_FONT_PX}
+              aria-label="Decrease verse text size"
+              title="Decrease verse text size"
+              className="rounded border border-neutral-300 px-1.5 py-0.5 text-xs font-semibold text-neutral-600 hover:border-neutral-400 hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              A
+            </button>
+            <button
+              type="button"
+              onClick={() => setFontPx((s) => Math.min(MAX_FONT_PX, s + FONT_STEP_PX))}
+              disabled={fontPx >= MAX_FONT_PX}
+              aria-label="Increase verse text size"
+              title="Increase verse text size"
+              className="rounded border border-neutral-300 px-1.5 py-0.5 text-base font-semibold text-neutral-600 hover:border-neutral-400 hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              A
+            </button>
+          </div>
+        </div>
         <div className="mt-2 grid grid-cols-3 gap-x-3 gap-y-1.5 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
-          {rows.map(({ translation: t }) => (
+          {pickerRows.map(({ translation: t }) => (
             <label
               key={t.id}
+              title={t.name}
               className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900"
             >
               <input
@@ -85,7 +123,12 @@ export default function VerseComparisonList({ rows }: { rows: Row[] }) {
                 {t.abbreviation}
               </Link>
               {result.status === "ok" && result.text ? (
-                <p className="font-serif text-[13px] leading-tight text-neutral-800">{result.text}</p>
+                <p
+                  className="font-serif leading-tight text-neutral-800"
+                  style={{ fontSize: fontPx }}
+                >
+                  {result.text}
+                </p>
               ) : (
                 <p className="text-xs text-neutral-500">
                   Text unavailable{result.message ? ` — ${result.message}` : ""}
