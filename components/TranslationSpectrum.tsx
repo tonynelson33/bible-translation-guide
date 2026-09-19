@@ -78,11 +78,11 @@ const MARKERS: Marker[] = [
   // Formal
   { label: "LSV", pos: 2, above: true },
   { label: "LSB", pos: 5.5, above: false },
-  { label: "NASB", pos: 8.5, above: true },
-  { label: "LEB", pos: 11, above: false },
+  { label: "LEB", pos: 8.5, above: true },
+  { label: "NASB", pos: 11, above: false },
   { label: "ESV", pos: 15, above: true },
-  { label: "KJV", pos: 18, above: false },
-  { label: "WEB", pos: 21, above: true },
+  { label: "WEB", pos: 18, above: false },
+  { label: "KJV", pos: 21, above: true },
   { label: "NKJV", pos: 24.5, above: false },
   { label: "MEV", pos: 27.5, above: true },
   { label: "AMP *", pos: 32, above: false },
@@ -105,8 +105,8 @@ const MARKERS: Marker[] = [
   { label: "NCV", pos: 75.5, above: true },
   { label: "NLT", pos: 79, above: false },
   { label: "GNT", pos: 82.5, above: true },
-  { label: "The Voice", pos: 86, above: false },
-  { label: "CEV", pos: 89.5, above: true },
+  { label: "CEV", pos: 86, above: false },
+  { label: "The Voice", pos: 89.5, above: true },
   // Paraphrase — the one translation this site profiles at this end of the
   // spectrum.
   { label: "The Message", pos: 97, above: false },
@@ -125,7 +125,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 860 140"
           className="mx-auto block h-auto w-full max-w-[860px]"
           role="img"
-          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, NASB, LEB, ESV, KJV, WEB, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, The Voice, and CEV. The Message sits alone in its own Paraphrase zone."
+          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, LEB, NASB, ESV, WEB, KJV, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, CEV, and The Voice. The Message sits alone in its own Paraphrase zone."
         >
           {BANDS.map((band) => {
             const x = px(band.from);
