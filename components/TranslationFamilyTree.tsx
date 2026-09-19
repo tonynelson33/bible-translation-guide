@@ -217,7 +217,7 @@ const independents: Chip[] = [
 const VIEW_W = 1090;
 const VIEW_H = TOP + rankedYears.length * PITCH + 30;
 const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] = [
-  { label: "Critical Text", x1: 15, x2: 645, openLeft: true },
+  { label: "Critical Text", x1: 0, x2: 645, openLeft: true },
   { label: "Textus Receptus", x1: 655, x2: 900 },
   { label: "Majority Text", x1: 910, x2: 1075 },
 ];
@@ -258,8 +258,8 @@ export default function TranslationFamilyTree() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-2">
           <div className="flex shrink-0 flex-col sm:self-stretch">
             <div className="relative hidden sm:block" aria-hidden="true">
-              <div className="absolute left-0 right-[-24px] top-0 border-t border-neutral-400" />
-              <div className="absolute left-0 top-[-5px] h-[10px] border-l border-neutral-400" />
+              <div className="absolute left-0 right-[-14px] top-[6px] border-t-[1.5px] border-neutral-400" />
+              <div className="absolute left-0 top-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
             </div>
             <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
               <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
