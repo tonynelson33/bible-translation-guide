@@ -103,10 +103,10 @@ type Node = {
 // pass of this diagram (see the git history for that lesson).
 const nodes: Node[] = [
   // NIV -> NIrV and ICB -> NCV: two small independent-of-KJV pairs, CT basis.
-  { id: "niv", label: "NIV", year: 1978, cx: 120, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "nirv", label: "NIrV", year: 1996, cx: 120, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "icb", label: "ICB", year: 1986, cx: 220, basis: "CT", phil: "Dynamic" },
-  { id: "ncv", label: "NCV", year: 1991, cx: 220, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "niv", label: "NIV", year: 1978, cx: 75, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "nirv", label: "NIrV", year: 1996, cx: 75, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "icb", label: "ICB", year: 1986, cx: 175, basis: "CT", phil: "Dynamic" },
+  { id: "ncv", label: "NCV", year: 1991, cx: 175, current: true, basis: "CT", phil: "Dynamic" },
 
   // The KJV tree's own CT-basis branch: RV -> ASV -> {RSV -> (ESV, NRSV ->
   // NRSVue), NASB -> LSB, AMP}, plus BSB hanging off on its own (its MT
@@ -255,9 +255,12 @@ export default function TranslationFamilyTree() {
   return (
     <figure className="mt-6">
       <div className="rounded-lg border border-neutral-200 bg-paper p-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-2">
           <div className="flex shrink-0 flex-col sm:self-stretch">
-            <div className="hidden border-t border-neutral-400 sm:block" aria-hidden="true" />
+            <div className="relative hidden sm:block" aria-hidden="true">
+              <div className="absolute left-0 right-[-24px] top-0 border-t border-neutral-400" />
+              <div className="absolute left-0 top-[-5px] h-[10px] border-l border-neutral-400" />
+            </div>
             <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
               <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
               {independents.map((t) => (
@@ -281,7 +284,7 @@ export default function TranslationFamilyTree() {
           <div className="min-w-0 flex-1">
             <svg
               viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-              className="mx-auto block h-auto w-full max-w-[1090px]"
+              className="block h-auto w-full max-w-[1090px]"
               role="img"
               aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
             >
