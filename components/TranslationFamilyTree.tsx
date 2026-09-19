@@ -95,7 +95,6 @@ type Node = {
   cx: number;
   w?: number;
   current?: boolean;
-  hub?: boolean;
   basis: TextualBasis;
   phil: Philosophy;
 };
@@ -127,7 +126,7 @@ const nodes: Node[] = [
 
   // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}.
   { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 750, w: 90, basis: "TR", phil: "Formal" },
-  { id: "kjv", label: "KJV", year: 1611, cx: 750, w: 128, current: true, hub: true, basis: "TR", phil: "Formal" },
+  { id: "kjv", label: "KJV", year: 1611, cx: 750, w: 128, current: true, basis: "TR", phil: "Formal" },
   { id: "nkjv", label: "NKJV", year: 1982, cx: 770, current: true, basis: "TR", phil: "Formal" },
   { id: "mev", label: "MEV", year: 2014, cx: 710, current: true, basis: "TR", phil: "Formal" },
 
@@ -231,7 +230,7 @@ function NodeBox({
     <g>
       <rect
         x={x} y={y} width={w} height={BOX_H} rx="5"
-        strokeWidth={current ? 1.5 : 3}
+        strokeWidth={current ? 1.5 : 2}
         className={`${current ? style.fill : "fill-white"} ${style.border}`}
       />
       {title && <title>{title}</title>}
@@ -329,9 +328,6 @@ export default function TranslationFamilyTree() {
               const p = box(n.id);
               return (
                 <g key={n.id}>
-                  {n.hub && (
-                    <rect x={p.x - 3} y={p.y - 3} width={p.w + 6} height={BOX_H + 6} rx="7" fill="none" className="stroke-gild-400" strokeWidth="1.5" />
-                  )}
                   <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
                 </g>
               );
