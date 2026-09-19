@@ -199,18 +199,18 @@ function edgePath(from: string, to: string, jogY?: number) {
 // and tooltip do that work instead.
 const ASV_STANDIN = { cx: 1020, y: yOf["asv"], w: 70 };
 
-type Chip = { id: string; label: string; year: number; basis: TextualBasis; phil: Philosophy };
+type Chip = { id: string; label: string; year: number; basis: TextualBasis; phil: Philosophy; w?: number };
 const independents: Chip[] = [
   { id: "gnt", label: "GNT", year: 1976, basis: "CT", phil: "Dynamic" },
   { id: "cev", label: "CEV", year: 1995, basis: "CT", phil: "Dynamic" },
   { id: "gw", label: "GW", year: 1995, basis: "CT", phil: "Mediating" },
   { id: "nlt", label: "NLT", year: 1996, basis: "CT", phil: "Dynamic" },
-  { id: "message", label: "The Message", year: 2002, basis: "CT", phil: "Paraphrase" },
+  { id: "message", label: "The Message", year: 2002, basis: "CT", phil: "Paraphrase", w: 104 },
   { id: "net", label: "NET", year: 2005, basis: "CT", phil: "Mediating" },
   { id: "ceb", label: "CEB", year: 2011, basis: "CT", phil: "Dynamic" },
   { id: "isv", label: "ISV", year: 2011, basis: "CT", phil: "Mediating" },
   { id: "leb", label: "LEB", year: 2011, basis: "CT", phil: "Formal" },
-  { id: "voice", label: "The Voice", year: 2012, basis: "CT", phil: "Dynamic" },
+  { id: "voice", label: "The Voice", year: 2012, basis: "CT", phil: "Dynamic", w: 92 },
   { id: "csb", label: "CSB", year: 2017, basis: "CT", phil: "Mediating" },
 ].sort((a, b) => a.year - b.year) as Chip[];
 
@@ -255,21 +255,21 @@ export default function TranslationFamilyTree() {
   return (
     <figure className="mt-6">
       <div className="rounded-lg border border-neutral-200 bg-paper p-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <div className="flex shrink-0 flex-col gap-1 sm:w-28">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+          <div className="flex shrink-0 flex-col items-start gap-1 sm:mt-[190px]">
+            <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
             {independents.map((t) => (
               <span
                 key={t.id}
                 title={FULL_NAME[t.id]}
-                className="flex items-start gap-1 rounded bg-brand-800 px-1.5 py-1 text-[10px] font-semibold leading-tight text-white"
+                style={{ width: t.w ?? DEF_W }}
+                className="flex h-6 items-center justify-center gap-1 rounded-[5px] bg-brand-800 px-1 text-[9px] leading-none text-white"
               >
-                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
-                <span>
-                  {t.label}
-                  <br />
-                  <span className="font-normal text-brand-200">
-                    {t.year} {t.basis}
-                  </span>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
+                <span className="whitespace-nowrap">
+                  <span className="font-semibold">{t.label}</span>
+                  <span className="text-brand-200"> {t.year} </span>
+                  <span className="font-bold text-brand-200">{t.basis}</span>
                 </span>
               </span>
             ))}
@@ -280,7 +280,7 @@ export default function TranslationFamilyTree() {
               viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
               className="mx-auto block h-auto w-full max-w-[1090px]"
               role="img"
-              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no documented lineage of their own sit in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
+              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
             >
               {BRACKETS.map((b) => {
               const cx = (b.x1 + b.x2) / 2;
