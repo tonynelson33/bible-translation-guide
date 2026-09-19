@@ -66,7 +66,7 @@ export default function VerseComparisonList({
 
   return (
     <>
-      <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
+      <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
         <div className="lg:w-64 lg:shrink-0">
           <VersePicker verses={verses} selectedId={selectedVerseId} />
           <div className="mt-3 flex items-center gap-1.5">
