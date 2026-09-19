@@ -105,10 +105,10 @@ type Node = {
 // pass of this diagram (see the git history for that lesson).
 const nodes: Node[] = [
   // NIV -> NIrV and ICB -> NCV: two small independent-of-KJV pairs, CT basis.
-  { id: "niv", label: "NIV", year: 1978, cx: 55, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "nirv", label: "NIrV", year: 1996, cx: 55, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "icb", label: "ICB", year: 1986, cx: 150, basis: "CT", phil: "Dynamic" },
-  { id: "ncv", label: "NCV", year: 1991, cx: 150, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "niv", label: "NIV", year: 1978, cx: 65, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "nirv", label: "NIrV", year: 1996, cx: 65, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "icb", label: "ICB", year: 1986, cx: 172, basis: "CT", phil: "Dynamic" },
+  { id: "ncv", label: "NCV", year: 1991, cx: 172, current: true, basis: "CT", phil: "Dynamic" },
 
   // The KJV tree's own CT-basis branch: RV -> ASV -> {RSV -> (ESV, NRSV ->
   // NRSVue), NASB -> LSB, AMP}, plus BSB hanging off on its own (its MT
@@ -279,30 +279,41 @@ export default function TranslationFamilyTree() {
     <figure className="mt-6">
       <div className="rounded-lg border border-neutral-200 bg-paper p-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-2">
-          <div className="flex shrink-0 flex-col sm:self-stretch">
-            <div className="relative hidden sm:block" aria-hidden="true">
+          <div className="relative flex shrink-0 flex-col sm:self-stretch">
+            {/* Top continuation of the Critical Text line, mirrored at the
+                bottom below — both run past the independents box itself,
+                not just the gap to the SVG, so the box visibly sits inside
+                the same zone rather than beside it. */}
+            <div className="absolute inset-x-0 top-0 hidden sm:block" aria-hidden="true">
               <div className="absolute left-0 right-[-14px] top-[6px] border-t-[1.5px] border-neutral-400" />
               <div className="absolute left-0 top-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
             </div>
-            <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
+            <div className="absolute inset-x-0 bottom-0 hidden sm:block" aria-hidden="true">
+              <div className="absolute left-0 right-[-14px] bottom-[6px] border-b-[1.5px] border-neutral-400" />
+              <div className="absolute left-0 bottom-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
+            </div>
+
+            <div className="rounded-lg border border-neutral-300 p-2 sm:mt-[165px]">
               <p className="mb-1 w-full text-center text-[11px] font-semibold text-neutral-500">Independents</p>
-              {independents.map((t) => {
-                const style = PHIL[t.phil];
-                return (
-                  <span
-                    key={t.id}
-                    title={FULL_NAME[t.id]}
-                    style={{ width: t.w ?? DEF_W }}
-                    className={`flex h-6 items-center justify-center rounded-[5px] border-[1.5px] px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
-                  >
-                    <span className="whitespace-nowrap">
-                      <span className="font-semibold">{t.label}</span>
-                      <span className="opacity-70"> {t.year} </span>
-                      <span className="font-bold opacity-70">{t.basis}</span>
+              <div className="flex flex-col items-start gap-1">
+                {independents.map((t) => {
+                  const style = PHIL[t.phil];
+                  return (
+                    <span
+                      key={t.id}
+                      title={FULL_NAME[t.id]}
+                      style={{ width: t.w ?? DEF_W }}
+                      className={`flex h-6 items-center justify-center rounded-[5px] border-[1.5px] px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
+                    >
+                      <span className="whitespace-nowrap">
+                        <span className="font-semibold">{t.label}</span>
+                        <span className="opacity-70"> {t.year} </span>
+                        <span className="font-bold opacity-70">{t.basis}</span>
+                      </span>
                     </span>
-                  </span>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -314,7 +325,7 @@ export default function TranslationFamilyTree() {
               aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
             >
               <BracketRow bandTop={0} suppressOpenLeftTick />
-              <BracketRow bandTop={VIEW_H - 16} suppressOpenLeftTick={false} />
+              <BracketRow bandTop={VIEW_H - 16} suppressOpenLeftTick />
 
             {edges.map((e) => (
               <path
