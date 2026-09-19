@@ -107,7 +107,7 @@ export default function VerseComparisonList({
             />
             Show all ({visible.size}/{rows.length})
           </label>
-          <div className="mt-2 grid grid-cols-3 gap-x-3 gap-y-1.5 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(82px,1fr))] gap-x-3 gap-y-1.5">
             {pickerRows.map(({ translation: t }) => (
               <label
                 key={t.id}
