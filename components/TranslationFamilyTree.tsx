@@ -105,10 +105,10 @@ type Node = {
 // pass of this diagram (see the git history for that lesson).
 const nodes: Node[] = [
   // NIV -> NIrV and ICB -> NCV: two small independent-of-KJV pairs, CT basis.
-  { id: "niv", label: "NIV", year: 1978, cx: 75, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "nirv", label: "NIrV", year: 1996, cx: 75, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "icb", label: "ICB", year: 1986, cx: 175, basis: "CT", phil: "Dynamic" },
-  { id: "ncv", label: "NCV", year: 1991, cx: 175, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "niv", label: "NIV", year: 1978, cx: 55, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "nirv", label: "NIrV", year: 1996, cx: 55, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "icb", label: "ICB", year: 1986, cx: 150, basis: "CT", phil: "Dynamic" },
+  { id: "ncv", label: "NCV", year: 1991, cx: 150, current: true, basis: "CT", phil: "Dynamic" },
 
   // The KJV tree's own CT-basis branch: RV -> ASV -> {RSV -> (ESV, NRSV ->
   // NRSVue), NASB -> LSB, AMP}, plus BSB hanging off on its own (its MT
@@ -210,12 +210,43 @@ const independents: Chip[] = [
 ].sort((a, b) => a.year - b.year) as Chip[];
 
 const VIEW_W = 1090;
-const VIEW_H = TOP + rankedYears.length * PITCH + 30;
+// +50, not +30: the last node row needs room to breathe before the bottom
+// copy of the bracket row (see BracketRow) starts.
+const VIEW_H = TOP + rankedYears.length * PITCH + 50;
 const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] = [
   { label: "Critical Text", x1: 0, x2: 645, openLeft: true },
   { label: "Textus Receptus", x1: 655, x2: 900 },
   { label: "Majority Text", x1: 910, x2: 1075 },
 ];
+
+// The zone brackets, rendered once above the diagram and again, identically,
+// along its bottom edge (bandTop = VIEW_H - 16) — a diagram this tall
+// otherwise leaves the top labels scrolled out of view by the time a reader
+// reaches the lower rows, with no way to tell which zone they're looking at
+// without scrolling back up.
+function BracketRow({ bandTop, suppressOpenLeftTick }: { bandTop: number; suppressOpenLeftTick: boolean }) {
+  return (
+    <>
+      {BRACKETS.map((b) => {
+        const cx = (b.x1 + b.x2) / 2;
+        const lineY = bandTop + 8;
+        return (
+          <g key={`${bandTop}-${b.label}`}>
+            <line x1={b.x1} y1={lineY} x2={b.x2} y2={lineY} stroke="#a3a3a3" strokeWidth={1.5} />
+            {!(b.openLeft && suppressOpenLeftTick) && (
+              <line x1={b.x1} y1={lineY - 5} x2={b.x1} y2={lineY + 5} stroke="#a3a3a3" strokeWidth={1.5} />
+            )}
+            <line x1={b.x2} y1={lineY - 5} x2={b.x2} y2={lineY + 5} stroke="#a3a3a3" strokeWidth={1.5} />
+            <rect x={cx - 54} y={bandTop} width={108} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
+            <text x={cx} y={bandTop + 12} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
+              {b.label}
+            </text>
+          </g>
+        );
+      })}
+    </>
+  );
+}
 
 function NodeBox({
   x, y, w, cx, current, label, year, basis, phil, title,
@@ -254,7 +285,7 @@ export default function TranslationFamilyTree() {
               <div className="absolute left-0 top-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
             </div>
             <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
-              <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
+              <p className="mb-1 w-full text-center text-[11px] font-semibold text-neutral-500">Independents</p>
               {independents.map((t) => {
                 const style = PHIL[t.phil];
                 return (
@@ -262,7 +293,7 @@ export default function TranslationFamilyTree() {
                     key={t.id}
                     title={FULL_NAME[t.id]}
                     style={{ width: t.w ?? DEF_W }}
-                    className={`flex h-6 items-center justify-center rounded-[5px] border px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
+                    className={`flex h-6 items-center justify-center rounded-[5px] border-[1.5px] px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
                   >
                     <span className="whitespace-nowrap">
                       <span className="font-semibold">{t.label}</span>
@@ -280,22 +311,10 @@ export default function TranslationFamilyTree() {
               viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
               className="block h-auto w-full max-w-[1090px]"
               role="img"
-              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
+              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
             >
-              {BRACKETS.map((b) => {
-              const cx = (b.x1 + b.x2) / 2;
-              return (
-                <g key={b.label}>
-                  <line x1={b.x1} y1={8} x2={b.x2} y2={8} stroke="#a3a3a3" strokeWidth={1.5} />
-                  {!b.openLeft && <line x1={b.x1} y1={3} x2={b.x1} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />}
-                  <line x1={b.x2} y1={3} x2={b.x2} y2={13} stroke="#a3a3a3" strokeWidth={1.5} />
-                  <rect x={cx - 54} y={0} width={108} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
-                  <text x={cx} y={12} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
-                    {b.label}
-                  </text>
-                </g>
-              );
-            })}
+              <BracketRow bandTop={0} suppressOpenLeftTick />
+              <BracketRow bandTop={VIEW_H - 16} suppressOpenLeftTick={false} />
 
             {edges.map((e) => (
               <path
