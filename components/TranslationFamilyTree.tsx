@@ -3,10 +3,14 @@
  * translations descend (or don't) from the King James Version. Extended
  * 2026-09-18 from the original twelve to all twenty-six, once the other
  * fourteen (BSB, WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, The Voice,
- * LSV, MSB, The Message) were added to the site for real. Navy boxes are
- * every translation on the site; pale boxes are older Bibles (Tyndale, the
- * Revised Version, the ASV, Young's Literal Translation, the International
- * Children's Bible) kept only to show the lineage.
+ * LSV, MSB, The Message) were added to the site for real. Every box is
+ * colored by its translation philosophy (indigo/teal/amber — the same
+ * colors as lib/glossary.ts and the spectrum; a fourth stone tone marks
+ * The Message as a paraphrase, off that axis entirely): filled with that
+ * color, it's one of the twenty-six; white with just a thick border in
+ * that color, it's an older Bible (Tyndale, the Revised Version, the ASV,
+ * Young's Literal Translation, the International Children's Bible) kept
+ * only to show the lineage.
  *
  * Layout: hand-placed x — a literal cx per node, chosen so no edge runs
  * through a box. Three loose zones read left to right by New Testament
@@ -28,22 +32,23 @@
  * here that visibly crosses between zones, colored red so it doesn't read
  * as an ordinary Majority Text lineage line.
  *
- * Two more data layers ride along on every node/chip: a corner dot for
- * philosophy (indigo/teal/amber — the same three colors as lib/glossary.ts
- * and the spectrum; a fourth gray tone marks The Message as a paraphrase,
- * off that axis entirely), and a short code after the year for New
- * Testament textual basis (TR/CT/MT). Every abbreviation carries a native
- * tooltip (SVG <title> / HTML title=) spelling out the full name on hover.
+ * A short code after the year marks New Testament textual basis (TR/CT/MT).
+ * Every abbreviation carries a native tooltip (SVG <title> / HTML title=)
+ * spelling out the full name on hover.
  */
 
 type Philosophy = "Formal" | "Mediating" | "Dynamic" | "Paraphrase";
 type TextualBasis = "TR" | "CT" | "MT" | "TR/MT";
 
-const PHIL_COLOR: Record<Philosophy, string> = {
-  Formal: "#6366f1",
-  Mediating: "#14b8a6",
-  Dynamic: "#f59e0b",
-  Paraphrase: "#78716c",
+// Same four hues as lib/glossary.ts's philosophy pills (indigo/teal/amber,
+// plus stone for the paraphrase). SVG needs fill-*/stroke-* classes rather
+// than glossary's bg-*/text-*, so this is its own map, not an import — but
+// the actual colors are the same ones on purpose.
+const PHIL: Record<Philosophy, { fill: string; text: string; border: string; htmlBg: string; htmlText: string; htmlBorder: string }> = {
+  Formal: { fill: "fill-indigo-50", text: "fill-indigo-700", border: "stroke-indigo-500", htmlBg: "bg-indigo-50", htmlText: "text-indigo-700", htmlBorder: "border-indigo-500" },
+  Mediating: { fill: "fill-teal-50", text: "fill-teal-700", border: "stroke-teal-500", htmlBg: "bg-teal-50", htmlText: "text-teal-700", htmlBorder: "border-teal-500" },
+  Dynamic: { fill: "fill-amber-50", text: "fill-amber-700", border: "stroke-amber-500", htmlBg: "bg-amber-50", htmlText: "text-amber-700", htmlBorder: "border-amber-500" },
+  Paraphrase: { fill: "fill-stone-100", text: "fill-stone-700", border: "stroke-stone-500", htmlBg: "bg-stone-100", htmlText: "text-stone-700", htmlBorder: "border-stone-500" },
 };
 
 const FULL_NAME: Record<string, string> = {
@@ -213,31 +218,28 @@ const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] 
   { label: "Majority Text", x1: 910, x2: 1075 },
 ];
 
-function PhilDot({ cx, cy, phil }: { cx: number; cy: number; phil: Philosophy }) {
-  return <circle cx={cx} cy={cy} r={4} fill={PHIL_COLOR[phil]} stroke="white" strokeWidth={1} />;
-}
-
 function NodeBox({
   x, y, w, cx, current, label, year, basis, phil, title,
 }: {
   x: number; y: number; w: number; cx: number; current?: boolean;
   label: string; year: string; basis: TextualBasis; phil: Philosophy; title?: string;
 }) {
-  const labelColor = current ? "fill-white" : "fill-neutral-700";
-  const metaColor = current ? "fill-brand-200" : "fill-neutral-400";
+  const style = PHIL[phil];
+  const labelColor = current ? style.text : "fill-neutral-700";
+  const metaColor = current ? style.text : "fill-neutral-400";
   return (
     <g>
       <rect
-        x={x} y={y} width={w} height={BOX_H} rx="5" strokeWidth="1.5"
-        className={current ? "fill-brand-800 stroke-brand-800" : "fill-white stroke-neutral-300"}
+        x={x} y={y} width={w} height={BOX_H} rx="5"
+        strokeWidth={current ? 1.5 : 3}
+        className={`${current ? style.fill : "fill-white"} ${style.border}`}
       />
       {title && <title>{title}</title>}
       <text x={cx} y={y + BOX_H / 2 + 3.5} textAnchor="middle" className="text-[9px]">
         <tspan fontWeight={600} className={labelColor}>{label}</tspan>
-        <tspan className={metaColor}> {year} </tspan>
-        <tspan fontWeight={700} className={metaColor}>{basis}</tspan>
+        <tspan className={`${metaColor} ${current ? "opacity-70" : ""}`}> {year} </tspan>
+        <tspan fontWeight={700} className={`${metaColor} ${current ? "opacity-70" : ""}`}>{basis}</tspan>
       </text>
-      <PhilDot cx={x + w} cy={y} phil={phil} />
     </g>
   );
 }
@@ -254,21 +256,23 @@ export default function TranslationFamilyTree() {
             </div>
             <div className="flex flex-col items-start gap-1 sm:mt-[150px]">
               <p className="mb-1 text-[11px] font-semibold text-neutral-500">Independents</p>
-              {independents.map((t) => (
-                <span
-                  key={t.id}
-                  title={FULL_NAME[t.id]}
-                  style={{ width: t.w ?? DEF_W }}
-                  className="flex h-6 items-center justify-center gap-1 rounded-[5px] bg-brand-800 px-1 text-[9px] leading-none text-white"
-                >
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: PHIL_COLOR[t.phil] }} />
-                  <span className="whitespace-nowrap">
-                    <span className="font-semibold">{t.label}</span>
-                    <span className="text-brand-200"> {t.year} </span>
-                    <span className="font-bold text-brand-200">{t.basis}</span>
+              {independents.map((t) => {
+                const style = PHIL[t.phil];
+                return (
+                  <span
+                    key={t.id}
+                    title={FULL_NAME[t.id]}
+                    style={{ width: t.w ?? DEF_W }}
+                    className={`flex h-6 items-center justify-center rounded-[5px] border px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
+                  >
+                    <span className="whitespace-nowrap">
+                      <span className="font-semibold">{t.label}</span>
+                      <span className="opacity-70"> {t.year} </span>
+                      <span className="font-bold opacity-70">{t.basis}</span>
+                    </span>
                   </span>
-                </span>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -338,11 +342,12 @@ export default function TranslationFamilyTree() {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-neutral-200 pt-3 text-[11px] text-neutral-500">
-        <span className="font-semibold text-neutral-600">Corner dot = philosophy:</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Formal }} />Formal</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Mediating }} />Mediating</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Dynamic }} />Dynamic</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PHIL_COLOR.Paraphrase }} />Paraphrase</span>
+        <span className="font-semibold text-neutral-600">Fill = philosophy:</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-indigo-500 bg-indigo-50" />Formal</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-teal-500 bg-teal-50" />Mediating</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-amber-500 bg-amber-50" />Dynamic</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-stone-500 bg-stone-100" />Paraphrase</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border-2 border-neutral-500 bg-white" />Thick border = not one of the twenty-six</span>
         <span className="font-semibold text-neutral-600">Hover any abbreviation for its full name.</span>
       </div>
 
