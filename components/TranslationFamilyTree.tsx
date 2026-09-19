@@ -254,12 +254,9 @@ function NodeBox({
 export default function TranslationFamilyTree() {
   return (
     <figure className="mt-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-        <div className="rounded-lg border border-neutral-300 p-2 sm:w-28 sm:shrink-0 sm:mt-[180px]">
-          <p className="mb-1.5 text-[10px] font-semibold leading-tight text-neutral-600">
-            No documented lineage
-          </p>
-          <div className="flex flex-col gap-1">
+      <div className="rounded-lg border border-neutral-200 bg-paper p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex shrink-0 flex-col gap-1 sm:w-28">
             {independents.map((t) => (
               <span
                 key={t.id}
@@ -277,16 +274,15 @@ export default function TranslationFamilyTree() {
               </span>
             ))}
           </div>
-        </div>
 
-        <div className="min-w-0 flex-1 rounded-lg border border-neutral-200 bg-paper p-4">
-          <svg
-            viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-            className="mx-auto block h-auto w-full max-w-[1090px]"
-            role="img"
-            aria-label="Every translation on the site with a documented lineage, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no lineage at all are listed separately, not part of this diagram."
-          >
-            {BRACKETS.map((b) => {
+          <div className="min-w-0 flex-1">
+            <svg
+              viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+              className="mx-auto block h-auto w-full max-w-[1090px]"
+              role="img"
+              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A second, plain box labeled just ASV sits at the real ASV's own row beside the WEB, joined to the WEB by a red connector — a cross-reference, not a real fourth Majority Text translation. Translations with no documented lineage of their own sit in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
+            >
+              {BRACKETS.map((b) => {
               const cx = (b.x1 + b.x2) / 2;
               return (
                 <g key={b.label}>
@@ -346,6 +342,7 @@ export default function TranslationFamilyTree() {
               </text>
             </g>
           </svg>
+          </div>
         </div>
       </div>
 
