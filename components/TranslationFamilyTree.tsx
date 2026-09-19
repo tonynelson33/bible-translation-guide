@@ -12,19 +12,31 @@
  * Version, the ASV, Young's Literal Translation, the International
  * Children's Bible) kept only to show the lineage.
  *
+ * Everything here — every node, both bracket rows, and the eleven
+ * translations with no documented lineage in their own bordered box on
+ * the left — is one SVG, on purpose. An earlier version kept that box in
+ * HTML beside the SVG, hand-tuned in pixels to line up with it; that only
+ * held at the one zoom level it was tuned at; at any other zoom the two
+ * drifted apart and the "single line" across the top visibly broke in
+ * two. A single SVG scales as one unit at any zoom or viewport, so
+ * there's nothing left that can drift.
+ *
  * Layout: hand-placed x — a literal cx per node, chosen so no edge runs
  * through a box. Three loose zones read left to right by New Testament
  * textual basis (Critical Text / Textus Receptus / Majority Text, marked by
  * a bracket overhead), but the tree shape itself — who descends from whom —
  * is untouched; a CT-basis descendant of the KJV (RSV, NASB, ESV, AMP,
  * NRSV/ue, LSB) still hangs off its real parent, even where that reads as
- * "inside" the TR bracket's span.
+ * "inside" the TR bracket's span. The Critical Text zone starts at x=0 and
+ * runs wide enough to hold the independents box before the NIV reaches it.
  *
- * The y axis is not hand-placed at all — it's a strict, shared chronological
- * rank across every node here (the independents list excluded; see below):
- * every unique year gets the next row down, so a node can never sit lower
- * than another node with a later year, full stop, regardless of which
- * branch or zone either one is in.
+ * The y axis is not hand-placed for the real tree — it's a strict, shared
+ * chronological rank across every node in `nodes`: every unique year gets
+ * the next row down, so a node can never sit lower than another node with
+ * a later year, full stop, regardless of which branch or zone either one
+ * is in. The independents don't join that rank (they have no real lineage
+ * to keep in step with) — they're stacked in their own fixed-pitch column
+ * instead, sorted by year but not sharing the tree's rows.
  *
  * One deliberate exception to "real tree shape": the WEB's line back to the
  * ASV, its real parent, is drawn in red and runs the full width of the
@@ -33,22 +45,22 @@
  * as an ordinary Majority Text lineage line.
  *
  * A short code after the year marks New Testament textual basis (TR/CT/MT).
- * Every abbreviation carries a native tooltip (SVG <title> / HTML title=)
- * spelling out the full name on hover.
+ * Every abbreviation carries a native SVG <title> tooltip spelling out the
+ * full name on hover.
  */
 
 type Philosophy = "Formal" | "Mediating" | "Dynamic" | "Paraphrase";
 type TextualBasis = "TR" | "CT" | "MT" | "TR/MT";
 
 // Same four hues as lib/glossary.ts's philosophy pills (indigo/teal/amber,
-// plus stone for the paraphrase). SVG needs fill-*/stroke-* classes rather
-// than glossary's bg-*/text-*, so this is its own map, not an import — but
-// the actual colors are the same ones on purpose.
-const PHIL: Record<Philosophy, { fill: string; text: string; border: string; htmlBg: string; htmlText: string; htmlBorder: string }> = {
-  Formal: { fill: "fill-indigo-50", text: "fill-indigo-700", border: "stroke-indigo-500", htmlBg: "bg-indigo-50", htmlText: "text-indigo-700", htmlBorder: "border-indigo-500" },
-  Mediating: { fill: "fill-teal-50", text: "fill-teal-700", border: "stroke-teal-500", htmlBg: "bg-teal-50", htmlText: "text-teal-700", htmlBorder: "border-teal-500" },
-  Dynamic: { fill: "fill-amber-50", text: "fill-amber-700", border: "stroke-amber-500", htmlBg: "bg-amber-50", htmlText: "text-amber-700", htmlBorder: "border-amber-500" },
-  Paraphrase: { fill: "fill-stone-100", text: "fill-stone-700", border: "stroke-stone-500", htmlBg: "bg-stone-100", htmlText: "text-stone-700", htmlBorder: "border-stone-500" },
+// plus stone for the paraphrase) — its own map since SVG needs fill-*/
+// stroke-* classes rather than glossary's bg-*/text-*, but the colors
+// match on purpose.
+const PHIL: Record<Philosophy, { fill: string; text: string; border: string }> = {
+  Formal: { fill: "fill-indigo-50", text: "fill-indigo-700", border: "stroke-indigo-500" },
+  Mediating: { fill: "fill-teal-50", text: "fill-teal-700", border: "stroke-teal-500" },
+  Dynamic: { fill: "fill-amber-50", text: "fill-amber-700", border: "stroke-amber-500" },
+  Paraphrase: { fill: "fill-stone-100", text: "fill-stone-700", border: "stroke-stone-500" },
 };
 
 const FULL_NAME: Record<string, string> = {
@@ -105,41 +117,71 @@ type Node = {
 // pass of this diagram (see the git history for that lesson).
 const nodes: Node[] = [
   // NIV -> NIrV and ICB -> NCV: two small independent-of-KJV pairs, CT basis.
-  { id: "niv", label: "NIV", year: 1978, cx: 65, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "nirv", label: "NIrV", year: 1996, cx: 65, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "icb", label: "ICB", year: 1986, cx: 172, basis: "CT", phil: "Dynamic" },
-  { id: "ncv", label: "NCV", year: 1991, cx: 172, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "niv", label: "NIV", year: 1978, cx: 215, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "nirv", label: "NIrV", year: 1996, cx: 215, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "icb", label: "ICB", year: 1986, cx: 322, basis: "CT", phil: "Dynamic" },
+  { id: "ncv", label: "NCV", year: 1991, cx: 322, current: true, basis: "CT", phil: "Dynamic" },
 
   // The KJV tree's own CT-basis branch: RV -> ASV -> {RSV -> (ESV, NRSV ->
   // NRSVue), NASB -> LSB, AMP}, plus BSB hanging off on its own (its MT
   // sibling MSB is over on the right).
-  { id: "rv", label: "Revised Version", year: 1885, cx: 410, w: 140, basis: "CT", phil: "Formal" },
-  { id: "asv", label: "ASV", year: 1901, cx: 410, basis: "CT", phil: "Formal" },
-  { id: "rsv", label: "RSV", year: 1952, cx: 350, basis: "CT", phil: "Formal" },
-  { id: "nasb", label: "NASB", year: 1971, cx: 470, current: true, basis: "CT", phil: "Formal" },
-  { id: "amp", label: "AMP", year: 1965, cx: 590, current: true, basis: "CT", phil: "Formal" },
-  { id: "esv", label: "ESV", year: 2001, cx: 280, current: true, basis: "CT", phil: "Formal" },
-  { id: "nrsv", label: "NRSV", year: 1989, cx: 390, basis: "CT", phil: "Formal" },
-  { id: "lsb", label: "LSB", year: 2021, cx: 510, current: true, basis: "CT", phil: "Formal" },
-  { id: "nrsvue", label: "NRSVue", year: 2021, cx: 390, w: 84, current: true, basis: "CT", phil: "Formal" },
-  { id: "bsb", label: "BSB", year: 2023, cx: 510, current: true, basis: "CT", phil: "Mediating" },
+  { id: "rv", label: "Revised Version", year: 1885, cx: 560, w: 140, basis: "CT", phil: "Formal" },
+  { id: "asv", label: "ASV", year: 1901, cx: 560, basis: "CT", phil: "Formal" },
+  { id: "rsv", label: "RSV", year: 1952, cx: 500, basis: "CT", phil: "Formal" },
+  { id: "nasb", label: "NASB", year: 1971, cx: 620, current: true, basis: "CT", phil: "Formal" },
+  { id: "amp", label: "AMP", year: 1965, cx: 740, current: true, basis: "CT", phil: "Formal" },
+  { id: "esv", label: "ESV", year: 2001, cx: 430, current: true, basis: "CT", phil: "Formal" },
+  { id: "nrsv", label: "NRSV", year: 1989, cx: 540, basis: "CT", phil: "Formal" },
+  { id: "lsb", label: "LSB", year: 2021, cx: 660, current: true, basis: "CT", phil: "Formal" },
+  { id: "nrsvue", label: "NRSVue", year: 2021, cx: 540, w: 84, current: true, basis: "CT", phil: "Formal" },
+  { id: "bsb", label: "BSB", year: 2023, cx: 660, current: true, basis: "CT", phil: "Mediating" },
 
   // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}.
-  { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 750, w: 100, basis: "TR", phil: "Formal" },
-  { id: "kjv", label: "KJV", year: 1611, cx: 750, w: 108, current: true, basis: "TR", phil: "Formal" },
-  { id: "nkjv", label: "NKJV", year: 1982, cx: 770, current: true, basis: "TR", phil: "Formal" },
-  { id: "mev", label: "MEV", year: 2014, cx: 710, current: true, basis: "TR", phil: "Formal" },
+  { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 900, w: 100, basis: "TR", phil: "Formal" },
+  { id: "kjv", label: "KJV", year: 1611, cx: 900, w: 108, current: true, basis: "TR", phil: "Formal" },
+  { id: "nkjv", label: "NKJV", year: 1982, cx: 920, current: true, basis: "TR", phil: "Formal" },
+  { id: "mev", label: "MEV", year: 2014, cx: 860, current: true, basis: "TR", phil: "Formal" },
 
   // Majority Text, on the right: YLT -> LSV (standalone), and separately
   // WEB / MSB (MSB is BSB's MT sibling, over on the CT side).
-  { id: "ylt", label: "YLT", year: 1862, cx: 850, basis: "TR", phil: "Formal" },
-  { id: "lsv", label: "LSV", year: 2020, cx: 900, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
-  { id: "web", label: "WEB", year: 2020, cx: 1020, current: true, basis: "MT", phil: "Formal" },
-  { id: "msb", label: "MSB", year: 2023, cx: 1020, current: true, basis: "MT", phil: "Mediating" },
+  { id: "ylt", label: "YLT", year: 1862, cx: 1000, basis: "TR", phil: "Formal" },
+  { id: "lsv", label: "LSV", year: 2020, cx: 1050, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
+  { id: "web", label: "WEB", year: 2020, cx: 1170, current: true, basis: "MT", phil: "Formal" },
+  { id: "msb", label: "MSB", year: 2023, cx: 1170, current: true, basis: "MT", phil: "Mediating" },
 ];
 
-// Shared chronological rank: every distinct year among the nodes above gets
-// the next row down, in order — the one rule the whole diagram must obey.
+// The eleven with no documented lineage of their own: not part of the real
+// tree (no edges, no shared year rank — see file header), just stacked in
+// their own column at a fixed pitch, sorted by year for a sensible reading
+// order top to bottom. Two get a wider box for their longer full-name label.
+const INDEP_CX = 75;
+const independents: Node[] = [
+  { id: "gnt", label: "GNT", year: 1976, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "cev", label: "CEV", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "gw", label: "GW", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "nlt", label: "NLT", year: 1996, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "message", label: "The Message", year: 2002, cx: INDEP_CX, w: 112, current: true, basis: "CT", phil: "Paraphrase" },
+  { id: "net", label: "NET", year: 2005, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "ceb", label: "CEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "isv", label: "ISV", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "leb", label: "LEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Formal" },
+  { id: "voice", label: "The Voice", year: 2012, cx: INDEP_CX, w: 100, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "csb", label: "CSB", year: 2017, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+].sort((a, b) => a.year - b.year) as Node[];
+
+// Independents' own vertical rhythm — chosen so the eleven-row stack lands
+// roughly centered on the NIV/NIrV pair beside it, not tied to PITCH/TOP.
+const INDEP_FIRST_Y = 188;
+const INDEP_PITCH = 28;
+// The box drawn around the independents column: wide enough for "The
+// Message" (its widest label) plus padding, tall enough for the
+// "Independents" title plus all eleven rows plus padding.
+const INDEP_LABEL_Y = 172;
+const INDEP_BOX = { x: 9, y: 156, w: 132, h: 344 };
+
+// Shared chronological rank: every distinct year among the real tree nodes
+// gets the next row down, in order — the one rule the tree itself must obey
+// (the independents keep their own separate rhythm; see above).
 const rankedYears = [...new Set(nodes.map((n) => n.year))].sort((a, b) => a - b);
 const rowOf = Object.fromEntries(rankedYears.map((y, i) => [y, i]));
 
@@ -153,9 +195,14 @@ const yNudge: Record<string, number> = {
   bsb: 14, // more room below LSB
   msb: 14, // stays level with BSB
 };
-const yOf = Object.fromEntries(nodes.map((n) => [n.id, TOP + rowOf[n.year] * PITCH + (yNudge[n.id] ?? 0)]));
+const yOf: Record<string, number> = Object.fromEntries(
+  nodes.map((n) => [n.id, TOP + rowOf[n.year] * PITCH + (yNudge[n.id] ?? 0)]),
+);
+independents.forEach((c, i) => {
+  yOf[c.id] = INDEP_FIRST_Y + i * INDEP_PITCH;
+});
 
-const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+const byId: Record<string, Node> = Object.fromEntries([...nodes, ...independents].map((n) => [n.id, n]));
 
 function box(id: string) {
   const n = byId[id];
@@ -194,29 +241,14 @@ function edgePath(from: string, to: string, jogY?: number) {
   return `M ${a.cx} ${a.bottom} V ${mid} H ${b.cx} V ${b.y}`;
 }
 
-type Chip = { id: string; label: string; year: number; basis: TextualBasis; phil: Philosophy; w?: number };
-const independents: Chip[] = [
-  { id: "gnt", label: "GNT", year: 1976, basis: "CT", phil: "Dynamic" },
-  { id: "cev", label: "CEV", year: 1995, basis: "CT", phil: "Dynamic" },
-  { id: "gw", label: "GW", year: 1995, basis: "CT", phil: "Mediating" },
-  { id: "nlt", label: "NLT", year: 1996, basis: "CT", phil: "Dynamic" },
-  { id: "message", label: "The Message", year: 2002, basis: "CT", phil: "Paraphrase", w: 124 },
-  { id: "net", label: "NET", year: 2005, basis: "CT", phil: "Mediating" },
-  { id: "ceb", label: "CEB", year: 2011, basis: "CT", phil: "Dynamic" },
-  { id: "isv", label: "ISV", year: 2011, basis: "CT", phil: "Mediating" },
-  { id: "leb", label: "LEB", year: 2011, basis: "CT", phil: "Formal" },
-  { id: "voice", label: "The Voice", year: 2012, basis: "CT", phil: "Dynamic", w: 106 },
-  { id: "csb", label: "CSB", year: 2017, basis: "CT", phil: "Mediating" },
-].sort((a, b) => a.year - b.year) as Chip[];
-
-const VIEW_W = 1090;
+const VIEW_W = 1240;
 // +50, not +30: the last node row needs room to breathe before the bottom
 // copy of the bracket row (see BracketRow) starts.
 const VIEW_H = TOP + rankedYears.length * PITCH + 50;
-const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] = [
-  { label: "Critical Text", x1: 0, x2: 645, openLeft: true },
-  { label: "Textus Receptus", x1: 655, x2: 900 },
-  { label: "Majority Text", x1: 910, x2: 1075 },
+const BRACKETS: { label: string; x1: number; x2: number }[] = [
+  { label: "Critical Text", x1: 0, x2: 795 },
+  { label: "Textus Receptus", x1: 805, x2: 1050 },
+  { label: "Majority Text", x1: 1060, x2: 1225 },
 ];
 
 // The zone brackets, rendered once above the diagram and again, identically,
@@ -224,7 +256,7 @@ const BRACKETS: { label: string; x1: number; x2: number; openLeft?: boolean }[] 
 // otherwise leaves the top labels scrolled out of view by the time a reader
 // reaches the lower rows, with no way to tell which zone they're looking at
 // without scrolling back up.
-function BracketRow({ bandTop, suppressOpenLeftTick }: { bandTop: number; suppressOpenLeftTick: boolean }) {
+function BracketRow({ bandTop }: { bandTop: number }) {
   return (
     <>
       {BRACKETS.map((b) => {
@@ -233,9 +265,7 @@ function BracketRow({ bandTop, suppressOpenLeftTick }: { bandTop: number; suppre
         return (
           <g key={`${bandTop}-${b.label}`}>
             <line x1={b.x1} y1={lineY} x2={b.x2} y2={lineY} stroke="#a3a3a3" strokeWidth={1.5} />
-            {!(b.openLeft && suppressOpenLeftTick) && (
-              <line x1={b.x1} y1={lineY - 5} x2={b.x1} y2={lineY + 5} stroke="#a3a3a3" strokeWidth={1.5} />
-            )}
+            <line x1={b.x1} y1={lineY - 5} x2={b.x1} y2={lineY + 5} stroke="#a3a3a3" strokeWidth={1.5} />
             <line x1={b.x2} y1={lineY - 5} x2={b.x2} y2={lineY + 5} stroke="#a3a3a3" strokeWidth={1.5} />
             <rect x={cx - 54} y={bandTop} width={108} height={16} fill="var(--paper, #fcfbf8)" className="fill-paper" />
             <text x={cx} y={bandTop + 12} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
@@ -278,93 +308,67 @@ export default function TranslationFamilyTree() {
   return (
     <figure className="mt-6">
       <div className="rounded-lg border border-neutral-200 bg-paper p-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-2">
-          <div className="relative flex shrink-0 flex-col sm:self-stretch">
-            {/* Top continuation of the Critical Text line, mirrored at the
-                bottom below — both run past the independents box itself,
-                not just the gap to the SVG, so the box visibly sits inside
-                the same zone rather than beside it. */}
-            <div className="absolute inset-x-0 top-0 hidden sm:block" aria-hidden="true">
-              <div className="absolute left-0 right-[-14px] top-[6px] border-t-[1.5px] border-neutral-400" />
-              <div className="absolute left-0 top-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 hidden sm:block" aria-hidden="true">
-              <div className="absolute left-0 right-[-14px] bottom-[6px] border-b-[1.5px] border-neutral-400" />
-              <div className="absolute left-0 bottom-[1px] h-[10px] border-l-[1.5px] border-neutral-400" />
-            </div>
+        <svg
+          viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+          className="mx-auto block h-auto w-full max-w-[1240px]"
+          role="img"
+          aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom for the real tree: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Eleven translations with no documented lineage of their own sit in a bordered box on the left, labeled Independents, stacked in their own column beside the NIV and NIrV, inside the same Critical Text zone."
+        >
+          <BracketRow bandTop={0} />
+          <BracketRow bandTop={VIEW_H - 16} />
 
-            <div className="rounded-lg border border-neutral-300 p-2 sm:mt-[165px]">
-              <p className="mb-1 w-full text-center text-[11px] font-semibold text-neutral-500">Independents</p>
-              <div className="flex flex-col items-start gap-1">
-                {independents.map((t) => {
-                  const style = PHIL[t.phil];
-                  return (
-                    <span
-                      key={t.id}
-                      title={FULL_NAME[t.id]}
-                      style={{ width: t.w ?? DEF_W }}
-                      className={`flex h-6 items-center justify-center rounded-[5px] border-[1.5px] px-1 text-[9px] leading-none ${style.htmlBg} ${style.htmlBorder} ${style.htmlText}`}
-                    >
-                      <span className="whitespace-nowrap">
-                        <span className="font-semibold">{t.label}</span>
-                        <span className="opacity-70"> {t.year} </span>
-                        <span className="font-bold opacity-70">{t.basis}</span>
-                      </span>
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          <rect
+            x={INDEP_BOX.x} y={INDEP_BOX.y} width={INDEP_BOX.w} height={INDEP_BOX.h} rx={8}
+            fill="none" className="stroke-neutral-300" strokeWidth={1.5}
+          />
+          <text x={INDEP_CX} y={INDEP_LABEL_Y} textAnchor="middle" className="text-[11px] font-semibold fill-neutral-500">
+            Independents
+          </text>
 
-          <div className="min-w-0 flex-1">
-            <svg
-              viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-              className="block h-auto w-full max-w-[1090px]"
-              role="img"
-              aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Translations with no documented lineage of their own are labeled Independents in a column at the left, beside the NIV and NIrV, inside the same Critical Text zone."
-            >
-              <BracketRow bandTop={0} suppressOpenLeftTick />
-              <BracketRow bandTop={VIEW_H - 16} suppressOpenLeftTick />
-
-            {edges.map((e) => (
-              <path
-                key={`${e.from}-${e.to}`}
-                d={edgePath(e.from, e.to, e.jogY)}
-                fill="none"
-                stroke="rgb(203 203 203)"
-                strokeWidth="1.5"
-              />
-            ))}
-            {/* BSB -> MSB: same translation, MT-basis New Testament. */}
+          {edges.map((e) => (
             <path
-              d={`M ${box("bsb").x + box("bsb").w} ${box("bsb").midY} H ${box("msb").x}`}
+              key={`${e.from}-${e.to}`}
+              d={edgePath(e.from, e.to, e.jogY)}
               fill="none"
               stroke="rgb(203 203 203)"
               strokeWidth="1.5"
             />
-            {/* WEB -> its real parent, the ASV (red, kept thin so it doesn't
-                outweigh the real lineage lines just because of its color) */}
-            <path
-              d={`M ${box("asv").x + box("asv").w} ${box("asv").midY} H ${box("web").cx} V ${box("web").y}`}
-              fill="none"
-              stroke="#dc2626"
-              strokeWidth="1"
-            >
-              <title>The WEB is a modernization of the ASV&rsquo;s own wording.</title>
-            </path>
+          ))}
+          {/* BSB -> MSB: same translation, MT-basis New Testament. */}
+          <path
+            d={`M ${box("bsb").x + box("bsb").w} ${box("bsb").midY} H ${box("msb").x}`}
+            fill="none"
+            stroke="rgb(203 203 203)"
+            strokeWidth="1.5"
+          />
+          {/* WEB -> its real parent, the ASV (red, kept thin so it doesn't
+              outweigh the real lineage lines just because of its color) */}
+          <path
+            d={`M ${box("asv").x + box("asv").w} ${box("asv").midY} H ${box("web").cx} V ${box("web").y}`}
+            fill="none"
+            stroke="#dc2626"
+            strokeWidth="1"
+          >
+            <title>The WEB is a modernization of the ASV&rsquo;s own wording.</title>
+          </path>
 
-            {nodes.map((n) => {
-              const p = box(n.id);
-              return (
-                <g key={n.id}>
-                  <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
-                </g>
-              );
-            })}
-          </svg>
-          </div>
-        </div>
+          {nodes.map((n) => {
+            const p = box(n.id);
+            return (
+              <g key={n.id}>
+                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
+              </g>
+            );
+          })}
+          {independents.map((n) => {
+            const p = box(n.id);
+            return (
+              <g key={n.id}>
+                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
+              </g>
+            );
+          })}
+        </svg>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-neutral-200 pt-3 text-[11px] text-neutral-500">
