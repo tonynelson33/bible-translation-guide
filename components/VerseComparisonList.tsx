@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import VersePicker from "@/components/VersePicker";
+import type { SampleVerse } from "@/lib/data";
 import type { Translation } from "@/lib/types";
 import type { VerseFetchResult } from "@/lib/verseProviders";
 
@@ -13,17 +15,31 @@ const DEFAULT_FONT_PX = 13;
 const FONT_STEP_PX = 2;
 
 /**
- * The /verses comparison list, plus a checkbox panel above it for narrowing
- * which translations show — added once there were 26 rows to scroll through
- * and comparing "just these few" needed the rest out of the way. Client-only
+ * The /verses page's whole interactive body: the verse picker and text-size
+ * controls in a left column, the checkbox panel for narrowing which
+ * translations show to its right (added once there were 26 rows to scroll
+ * through and comparing "just these few" needed the rest out of the way),
+ * and the comparison rows full-width below both. VersePicker lives here
+ * (rather than back in the server page) so it can sit in the same flex row
+ * as the checkbox panel — they need to size against each other. Client-only
  * (visibility and text size are viewing preferences, not part of the page's
  * URL/shareable state, so they reset on reload rather than round-tripping
  * through the server); the verse itself is still chosen via VersePicker's
- * own URL param. The checkbox panel is alphabetical by abbreviation (for
- * finding one translation quickly) even though the rows below stay in
- * literal-to-freest order, like every other list on the site.
+ * own URL param, which is why it's the one piece here backed by server data
+ * (verses, selectedVerseId) rather than local state. The checkbox panel is
+ * alphabetical by abbreviation (for finding one translation quickly) even
+ * though the rows below stay in literal-to-freest order, like every other
+ * list on the site.
  */
-export default function VerseComparisonList({ rows }: { rows: Row[] }) {
+export default function VerseComparisonList({
+  rows,
+  verses,
+  selectedVerseId,
+}: {
+  rows: Row[];
+  verses: SampleVerse[];
+  selectedVerseId: string;
+}) {
   const [visible, setVisible] = useState<Set<string>>(() => new Set(rows.map((r) => r.translation.id)));
   const [fontPx, setFontPx] = useState(DEFAULT_FONT_PX);
 
@@ -50,21 +66,10 @@ export default function VerseComparisonList({ rows }: { rows: Row[] }) {
 
   return (
     <>
-      <div className="mb-6 rounded-lg border border-neutral-200 bg-white p-3">
-        <div className="flex items-center justify-between gap-3 border-b border-neutral-100 pb-2">
-          <label className="flex items-center gap-2 text-sm font-semibold text-neutral-700">
-            <input
-              type="checkbox"
-              checked={allOn}
-              ref={(el) => {
-                if (el) el.indeterminate = someOn && !allOn;
-              }}
-              onChange={toggleAll}
-              className="h-4 w-4 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
-            />
-            Show all ({visible.size}/{rows.length})
-          </label>
-          <div className="flex items-center gap-1.5">
+      <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
+        <div className="lg:w-64 lg:shrink-0">
+          <VersePicker verses={verses} selectedId={selectedVerseId} />
+          <div className="mt-3 flex items-center gap-1.5">
             <span className="text-xs text-neutral-500">Text size</span>
             <button
               type="button"
@@ -88,22 +93,37 @@ export default function VerseComparisonList({ rows }: { rows: Row[] }) {
             </button>
           </div>
         </div>
-        <div className="mt-2 grid grid-cols-3 gap-x-3 gap-y-1.5 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
-          {pickerRows.map(({ translation: t }) => (
-            <label
-              key={t.id}
-              title={t.name}
-              className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900"
-            >
-              <input
-                type="checkbox"
-                checked={visible.has(t.id)}
-                onChange={() => toggle(t.id)}
-                className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
-              />
-              {t.abbreviation}
-            </label>
-          ))}
+
+        <div className="min-w-0 flex-1 rounded-lg border border-neutral-200 bg-white p-3">
+          <label className="flex items-center gap-2 border-b border-neutral-100 pb-2 text-sm font-semibold text-neutral-700">
+            <input
+              type="checkbox"
+              checked={allOn}
+              ref={(el) => {
+                if (el) el.indeterminate = someOn && !allOn;
+              }}
+              onChange={toggleAll}
+              className="h-4 w-4 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
+            />
+            Show all ({visible.size}/{rows.length})
+          </label>
+          <div className="mt-2 grid grid-cols-3 gap-x-3 gap-y-1.5 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
+            {pickerRows.map(({ translation: t }) => (
+              <label
+                key={t.id}
+                title={t.name}
+                className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900"
+              >
+                <input
+                  type="checkbox"
+                  checked={visible.has(t.id)}
+                  onChange={() => toggle(t.id)}
+                  className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
+                />
+                {t.abbreviation}
+              </label>
+            ))}
+          </div>
         </div>
       </div>
 

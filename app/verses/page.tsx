@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import VersePicker from "@/components/VersePicker";
 import VerseComparisonList from "@/components/VerseComparisonList";
 import { sampleVerses, translations, getSampleVerse } from "@/lib/data";
 import { compareReferences } from "@/lib/bibleOrder";
@@ -68,11 +67,7 @@ export default function VersesPage({
         </p>
       </div>
 
-      <div className="mb-6">
-        <VersePicker verses={versesInBibleOrder} selectedId={verse.id} />
-      </div>
-
-      <VerseComparisonList rows={rows} />
+      <VerseComparisonList rows={rows} verses={versesInBibleOrder} selectedVerseId={verse.id} />
 
       <div className="mt-8 space-y-1 text-xs leading-snug text-neutral-400">
         <p>
