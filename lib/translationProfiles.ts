@@ -385,7 +385,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Read-through-the-Bible plans where speed and comprehension matter more than word-for-word precision.",
     ],
     worthKnowing: [
-      "Robert Bratcher, the GNT's principal translator, was an outspoken critic of biblical inerrancy in his later career, at one point publicly calling the doctrine \"a fetish of Bible worship\" — comments that drew heavy backlash from conservative evangelicals and, by some accounts, cost the American Bible Society real financial support from that wing of its donor base. That controversy was about Bratcher's own public statements, not a documented flaw in the translation itself, but it's part of why the GNT carries a more contested reputation in conservative circles than its plain, functional prose might otherwise suggest.",
+      "Robert Bratcher, the GNT's principal translator, was an outspoken critic of biblical inerrancy in his later career. Addressing the Southern Baptist Convention's Christian Life Commission in 1981, he said that \"only willful ignorance or intellectual dishonesty can account for the claim that the Bible is inerrant and infallible\" and that treating it as such was \"to idolatrize it, to transform it into a false god\" — comments that made the New York Times, drew heavy backlash from conservative evangelicals, and by most accounts cost the American Bible Society real financial support from that wing of its donor base. That controversy was about Bratcher's own public statements, not a documented flaw in the translation itself, but it's part of why the GNT carries a more contested reputation in conservative circles than its plain, functional prose might otherwise suggest.",
     ],
   },
 

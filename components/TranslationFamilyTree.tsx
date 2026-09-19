@@ -136,7 +136,12 @@ const nodes: Node[] = [
   { id: "nrsvue", label: "NRSVue", year: 2021, cx: 540, w: 84, current: true, basis: "CT", phil: "Formal" },
   { id: "bsb", label: "BSB", year: 2023, cx: 660, current: true, basis: "CT", phil: "Mediating" },
 
-  // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}.
+  // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV}. The MEV sits
+  // in the same TR zone and year-axis, but with no edge to the KJV: per its
+  // own profile it's a fresh translation from the KJV's source texts
+  // (Masoretic + Textus Receptus), not a revision of the KJV's own wording
+  // the way the NKJV is — drawing a lineage line for it would claim a
+  // relationship the site's own translation-profile copy explicitly denies.
   { id: "tyndale", label: "Tyndale NT", year: 1526, cx: 900, w: 100, basis: "TR", phil: "Formal" },
   { id: "kjv", label: "KJV", year: 1611, cx: 900, w: 108, current: true, basis: "TR", phil: "Formal" },
   { id: "nkjv", label: "NKJV", year: 1982, cx: 920, current: true, basis: "TR", phil: "Formal" },
@@ -228,7 +233,6 @@ const edges: { from: string; to: string; jogY?: number }[] = [
   { from: "tyndale", to: "kjv" },
   { from: "kjv", to: "rv", jogY: 102 },
   { from: "kjv", to: "nkjv", jogY: 186 },
-  { from: "kjv", to: "mev", jogY: 270 },
   { from: "ylt", to: "lsv", jogY: 298 },
 ];
 
