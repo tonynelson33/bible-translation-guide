@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { slugifyGlossaryTerm } from "@/lib/glossarySlug";
 
 export const metadata: Metadata = {
   title: "Glossary",
@@ -128,7 +129,7 @@ export default function GlossaryPage() {
           <h2 className="font-display text-2xl font-semibold text-brand-900">{group.title}</h2>
           <dl className="mt-6 space-y-6">
             {group.terms.map((t) => (
-              <div key={t.term}>
+              <div key={t.term} id={slugifyGlossaryTerm(t.term)} className="scroll-mt-20">
                 <dt className="font-display text-base font-semibold text-brand-900">{t.term}</dt>
                 <dd className="mt-1 leading-relaxed text-neutral-700">{t.def}</dd>
               </div>

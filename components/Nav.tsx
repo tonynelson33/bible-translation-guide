@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { translations } from "@/lib/data";
+import SiteSearch from "./SiteSearch";
 
 type NavLink = { href: string; label: string };
 
@@ -135,72 +136,78 @@ export default function Nav() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
-          {beforeTranslations.map((link) => (
-            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
-              {link.label}
-            </Link>
-          ))}
-
-          <NavDropdown
-            label="Translations"
-            active={isActive("/translations")}
-            width="w-96"
-          >
-            <Link
-              href="/translations"
-              className={`${dropdownItemClass} border-b border-neutral-100 font-medium text-brand-700`}
-            >
-              See all 26, with a summary →
-            </Link>
-            {sortedTranslations.map((t) => (
-              <Link key={t.id} href={`/translations/${t.id}`} className={dropdownItemClass}>
-                {t.abbreviation}
-                {t.abbreviation !== t.name && ` — ${t.name}`}
-              </Link>
-            ))}
-          </NavDropdown>
-
-          {afterTranslations.map((link) => (
-            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
-              {link.label}
-            </Link>
-          ))}
-
-          <NavDropdown label="Learn" active={learnActive} width="w-72" align="right">
-            {learnLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={dropdownItemClass}>
+        {/* Right side: desktop nav or mobile menu button, whichever the
+            breakpoint shows, plus search grouped with it either way. */}
+        <div className="flex items-center gap-1">
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-1 lg:flex">
+            {beforeTranslations.map((link) => (
+              <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
                 {link.label}
               </Link>
             ))}
-          </NavDropdown>
 
-          {afterLearn.map((link) => (
-            <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+            <NavDropdown
+              label="Translations"
+              active={isActive("/translations")}
+              width="w-96"
+            >
+              <Link
+                href="/translations"
+                className={`${dropdownItemClass} border-b border-neutral-100 font-medium text-brand-700`}
+              >
+                See all 26, with a summary →
+              </Link>
+              {sortedTranslations.map((t) => (
+                <Link key={t.id} href={`/translations/${t.id}`} className={dropdownItemClass}>
+                  {t.abbreviation}
+                  {t.abbreviation !== t.name && ` — ${t.name}`}
+                </Link>
+              ))}
+            </NavDropdown>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded p-2 text-neutral-600 hover:bg-brand-50 lg:hidden"
-          aria-expanded={mobileOpen}
-          aria-label="Toggle navigation menu"
-        >
-          {mobileOpen ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-            </svg>
-          )}
-        </button>
+            {afterTranslations.map((link) => (
+              <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
+                {link.label}
+              </Link>
+            ))}
+
+            <NavDropdown label="Learn" active={learnActive} width="w-72" align="right">
+              {learnLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={dropdownItemClass}>
+                  {link.label}
+                </Link>
+              ))}
+            </NavDropdown>
+
+            {afterLearn.map((link) => (
+              <Link key={link.href} href={link.href} className={linkClass(isActive(link.href))}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <SiteSearch />
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded p-2 text-neutral-600 hover:bg-brand-50 lg:hidden"
+            aria-expanded={mobileOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile panel */}
