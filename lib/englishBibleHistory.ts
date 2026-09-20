@@ -37,7 +37,7 @@ export const historyImages: Record<string, HistoryImage> = {
     src: "/history/wycliffe-john.jpg",
     width: 620,
     height: 1043,
-    alt: "The opening of John's Gospel in a handwritten Wycliffite Bible, Middle English in a gothic book hand with a gold and colour initial.",
+    alt: "The opening of John's Gospel in a handwritten Wycliffite Bible, Middle English in a gothic book hand with a blue and red decorated initial.",
     caption:
       "The opening of John in a Wycliffite Bible — the first complete English Bible, copied by hand from the Latin Vulgate and owned at the risk of a heresy charge.",
     credit: "England, late 14th century — public domain.",
