@@ -2,8 +2,8 @@
  * A family tree for /history: how the site's twenty-six English Bible
  * translations descend (or don't) from the King James Version. Extended
  * 2026-09-18 from the original twelve to all twenty-six, once the other
- * fourteen (BSB, WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, The Voice,
- * LSV, MSB, The Message) were added to the site for real. Every box is
+ * fourteen (BSB, WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, VOICE,
+ * LSV, MSB, MSG) were added to the site for real. Every box is
  * colored by its translation philosophy (indigo/teal/amber — the same
  * colors as lib/glossary.ts and the spectrum; a fourth stone tone marks
  * The Message as a paraphrase, off that axis entirely): filled with that
@@ -93,6 +93,8 @@ const FULL_NAME: Record<string, string> = {
   isv: "International Standard Version",
   gw: "GOD'S WORD Translation",
   leb: "Lexham English Bible",
+  voice: "The Voice",
+  message: "The Message",
 };
 
 const BOX_H = 24;
@@ -158,19 +160,21 @@ const nodes: Node[] = [
 // The eleven with no documented lineage of their own: not part of the real
 // tree (no edges, no shared year rank — see file header), just stacked in
 // their own column at a fixed pitch, sorted by year for a sensible reading
-// order top to bottom. Two get a wider box for their longer full-name label.
+// order top to bottom. Every label is the site's own abbreviation for it —
+// MSG and VOICE included, not their full names — matching every other node;
+// hover any of them for the full name, same as everywhere else in the tree.
 const INDEP_CX = 75;
 const independents: Node[] = [
   { id: "gnt", label: "GNT", year: 1976, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "cev", label: "CEV", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "gw", label: "GW", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
   { id: "nlt", label: "NLT", year: 1996, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "message", label: "The Message", year: 2002, cx: INDEP_CX, w: 112, current: true, basis: "CT", phil: "Paraphrase" },
+  { id: "message", label: "MSG", year: 2002, cx: INDEP_CX, current: true, basis: "CT", phil: "Paraphrase" },
   { id: "net", label: "NET", year: 2005, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
   { id: "ceb", label: "CEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "isv", label: "ISV", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
   { id: "leb", label: "LEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Formal" },
-  { id: "voice", label: "The Voice", year: 2012, cx: INDEP_CX, w: 100, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "voice", label: "VOICE", year: 2012, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "csb", label: "CSB", year: 2017, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
 ].sort((a, b) => a.year - b.year) as Node[];
 
@@ -178,8 +182,8 @@ const independents: Node[] = [
 // roughly centered on the NIV/NIrV pair beside it, not tied to PITCH/TOP.
 const INDEP_FIRST_Y = 188;
 const INDEP_PITCH = 28;
-// The box drawn around the independents column: wide enough for "The
-// Message" (its widest label) plus padding, tall enough for the
+// The box drawn around the independents column: wide enough for the widest
+// label plus its year and textual-basis code, plus padding, tall enough for the
 // "Independents" title plus all eleven rows plus padding.
 const INDEP_LABEL_Y = 172;
 const INDEP_BOX = { x: 9, y: 156, w: 132, h: 344 };

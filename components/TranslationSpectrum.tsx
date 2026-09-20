@@ -45,13 +45,15 @@ const FULL_NAME: Record<string, string> = {
   NLT: "New Living Translation",
   GNT: "Good News Translation",
   CEV: "Contemporary English Version",
+  VOICE: "The Voice",
+  MSG: "The Message",
 };
 
 /**
  * The site's translation-method spectrum, extended 2026-09-18 from the
  * original twelve markers to all twenty-six, once the other fourteen (BSB,
- * WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, The Voice, LSV, MSB, The
- * Message) were added to the site for real. Four bands, word-for-word
+ * WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, VOICE, LSV, MSB,
+ * MSG) were added to the site for real. Four bands, word-for-word
  * (Formal) on the left to thought-for-thought (Dynamic) toward the right,
  * plus The Message alone in its own Paraphrase zone (The Passion and the
  * Living Bible, both reference-only and never profiled here, were dropped
@@ -106,10 +108,10 @@ const MARKERS: Marker[] = [
   { label: "NLT", pos: 79, above: false },
   { label: "GNT", pos: 82.5, above: true },
   { label: "CEV", pos: 86, above: false },
-  { label: "The Voice", pos: 89.5, above: true },
+  { label: "VOICE", pos: 89.5, above: true },
   // Paraphrase — the one translation this site profiles at this end of the
   // spectrum.
-  { label: "The Message", pos: 97, above: false },
+  { label: "MSG", pos: 97, above: false },
 ];
 
 export default function TranslationSpectrum({
@@ -125,7 +127,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 860 140"
           className="mx-auto block h-auto w-full max-w-[860px]"
           role="img"
-          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, LEB, NASB, ESV, WEB, KJV, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, CEV, and The Voice. The Message sits alone in its own Paraphrase zone."
+          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, LEB, NASB, ESV, WEB, KJV, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, CEV, and VOICE. MSG sits alone in its own Paraphrase zone."
         >
           {BANDS.map((band) => {
             const x = px(band.from);
