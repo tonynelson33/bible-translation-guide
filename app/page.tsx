@@ -29,19 +29,24 @@ const orderedTranslations = [...translations].sort(
 
 const entryCards = [
   {
+    href: "/verses",
+    title: "Read a verse in every version",
+    body: "Pick a popular passage and read all twenty-six side by side, ordered word-for-word to thought-for-thought.",
+  },
+  {
     href: "/rankings",
     title: "Rankings, by purpose",
     body: "Best for daily reading, preaching, memorization, or serious study — each use ranked and explained, not just listed.",
   },
   {
+    href: "/history#tree",
+    title: "Bible Translation Tree",
+    body: "A third of the twenty-six descend from the King James Version, the rest are independent work — laid out as one diagram of how they all connect.",
+  },
+  {
     href: "/compare",
     title: "Full comparison",
     body: "The full table — philosophy, reading level, textual basis, publisher, and more, sortable by any column.",
-  },
-  {
-    href: "/verses",
-    title: "Read a verse in every version",
-    body: "Pick a popular passage and read all twenty-six side by side, ordered word-for-word to thought-for-thought.",
   },
   {
     href: "/church-finder",
@@ -115,33 +120,24 @@ export default function HomePage() {
       {/* Entry cards */}
       <section className="mx-auto mt-12 max-w-3xl">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {entryCards.map((card, index) => {
-            // Odd card count leaves the last one alone in its row, pinned left by
-            // the grid — center it at the same width as its siblings instead of
-            // leaving a lopsided gap. Keyed off the count, not this specific card,
-            // so it stays correct if a card is ever added or removed.
-            const isLastOfOddRow = entryCards.length % 2 === 1 && index === entryCards.length - 1;
-            return (
-              <Link
-                key={card.href}
-                href={card.href}
-                className={`group rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-gild-300 hover:bg-gild-50/40 ${
-                  isLastOfOddRow ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.5rem)]" : ""
-                }`}
-              >
-                <h2 className="font-display text-lg font-semibold text-brand-900">
-                  {card.title}
-                  <span
-                    aria-hidden="true"
-                    className="ml-1 inline-block text-gild-600 transition-transform group-hover:translate-x-0.5"
-                  >
-                    &rarr;
-                  </span>
-                </h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{card.body}</p>
-              </Link>
-            );
-          })}
+          {entryCards.map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="group rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-gild-300 hover:bg-gild-50/40"
+            >
+              <h2 className="font-display text-lg font-semibold text-brand-900">
+                {card.title}
+                <span
+                  aria-hidden="true"
+                  className="ml-1 inline-block text-gild-600 transition-transform group-hover:translate-x-0.5"
+                >
+                  &rarr;
+                </span>
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{card.body}</p>
+            </Link>
+          ))}
         </div>
       </section>
 

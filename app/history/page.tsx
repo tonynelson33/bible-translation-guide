@@ -190,7 +190,10 @@ export default function HistoryPage() {
       {/* Family tree — deliberately breaks out wider than the page's own
           max-w-3xl prose column, since a 26-node diagram needs real room
           left to right that a readable paragraph width doesn't. */}
-      <div className="mt-14 border-t border-neutral-200 pt-10 md:-mx-12 lg:-mx-32 xl:-mx-56 2xl:-mx-80">
+      <div
+        id="tree"
+        className="mt-14 scroll-mt-20 border-t border-neutral-200 pt-10 md:-mx-12 lg:-mx-32 xl:-mx-56 2xl:-mx-80"
+      >
         <h2 className="font-display text-2xl font-semibold text-brand-900">
           Bible Translation Tree
         </h2>
