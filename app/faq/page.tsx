@@ -140,18 +140,21 @@ const groups: Group[] = [
             </p>
             <p>
               The Living Bible (1971) was Kenneth Taylor paraphrasing the 1901 American Standard
-              Version for his children; The Message (2002) was Eugene Peterson&rsquo;s idiomatic
-              retelling. These can be vivid for reading, but they drift further from the wording of
-              the original and aren&rsquo;t suited to study. The Passion Translation is a separate
-              case &mdash; it&rsquo;s marketed as a translation but was produced largely by one person
-              and adds interpretive material, and most scholars don&rsquo;t recommend it. This site
-              profiles <Link href="/compare">twenty-six committee translations</Link> and doesn&rsquo;t
-              cover paraphrases.
+              Version for his children. These can be vivid for reading, but they drift further
+              from the wording of the original and aren&rsquo;t suited to study. The Passion
+              Translation is a separate case &mdash; it&rsquo;s marketed as a translation but was
+              produced largely by one person and adds interpretive material, and most scholars
+              don&rsquo;t recommend it. Of the{" "}
+              <Link href="/compare">twenty-six translations</Link> this site profiles,
+              twenty-five are committee translations; the exception is The Message (2002),
+              Eugene Peterson&rsquo;s own idiomatic retelling of the Hebrew, Aramaic, and Greek
+              &mdash; kept for its real scholarly review and wide readership, but classified
+              separately as a Paraphrase rather than folded in with the other twenty-five.
             </p>
           </>
         ),
         plain:
-          "A translation works from the Hebrew, Aramaic, and Greek. A paraphrase restates an existing English translation in looser words, usually one author's phrasing rather than a committee's — the Living Bible and The Message are the best known. Paraphrases can be vivid for reading but drift from the original wording and are not suited to study. The Passion Translation is marketed as a translation but was produced mainly by one person with added interpretive content, and most scholars do not recommend it.",
+          "A translation works from the Hebrew, Aramaic, and Greek. A paraphrase restates an existing English translation in looser words, usually one author's phrasing rather than a committee's — the Living Bible is the best-known example, and this site does not profile it. Paraphrases can be vivid for reading but drift from the original wording and are not suited to study. The Passion Translation is marketed as a translation but was produced mainly by one person with added interpretive content, and most scholars do not recommend it. Of the twenty-six translations this site profiles, twenty-five are committee translations; the exception is The Message, Eugene Peterson's own idiomatic retelling, kept as this site's one deliberate paraphrase.",
       },
     ],
   },

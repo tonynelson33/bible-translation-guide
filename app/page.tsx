@@ -179,7 +179,7 @@ export default function HomePage() {
                 <span className="flex-shrink-0 font-display text-lg font-semibold text-brand-900">
                   {t.abbreviation}
                 </span>
-                <span className="min-w-0 flex-1 truncate text-sm text-neutral-600">{t.name}</span>
+                <span className="min-w-0 flex-1 text-sm text-neutral-600">{t.name}</span>
                 <span
                   className={`flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${philosophyGlossary[t.philosophy].className}`}
                 >

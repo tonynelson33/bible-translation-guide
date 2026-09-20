@@ -82,10 +82,11 @@ const sections: { title: string; body: ReactNode }[] = [
     title: "What’s not here",
     body: (
       <p>
-        Deliberately left out: paraphrases (The Message, The Passion Translation); Catholic and
-        Orthodox editions (Douay-Rheims, NABRE, RSV-2CE); readability editions with little pulpit
-        use (the Good News Translation, the CEV); the public-domain WEB; and the 1952 RSV, which
-        the ESV and NRSVue have superseded. The reasoning for the set is in the{" "}
+        Deliberately left out: The Passion Translation (produced largely by one person, with
+        added interpretive material most scholars don&rsquo;t recommend); Catholic and Orthodox
+        editions (Douay-Rheims, NABRE, RSV-2CE); and older texts superseded by translations
+        already profiled here &mdash; the 1952 RSV (by the ESV and NRSVue) and the 1971 Living
+        Bible (by the NLT). The reasoning for the set is in the{" "}
         <Link href="/faq">FAQ</Link>.
       </p>
     ),
