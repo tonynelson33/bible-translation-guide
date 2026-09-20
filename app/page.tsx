@@ -65,7 +65,7 @@ const goDeeperCards = [
   },
   {
     href: "/differences",
-    title: "Where translations disagree",
+    title: "Where translations differ",
     body: "The specific verses where the wording visibly differs, and why — bracketed passages, the Textus Receptus, and more.",
   },
   {
