@@ -121,7 +121,7 @@ export default function Nav() {
   const learnActive = learnLinks.some((l) => isActive(l.href));
 
   const dropdownItemClass =
-    "block whitespace-nowrap px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800";
+    "block px-4 py-1.5 text-sm text-neutral-700 hover:bg-brand-50 hover:text-brand-800";
 
   return (
     <header className="sticky top-0 z-40 border-b border-neutral-200 bg-paper/95 backdrop-blur">
@@ -146,11 +146,18 @@ export default function Nav() {
           <NavDropdown
             label="Translations"
             active={isActive("/translations")}
-            width="w-72"
+            width="w-96"
           >
+            <Link
+              href="/translations"
+              className={`${dropdownItemClass} border-b border-neutral-100 font-medium text-brand-700`}
+            >
+              See all 26, with a summary →
+            </Link>
             {sortedTranslations.map((t) => (
               <Link key={t.id} href={`/translations/${t.id}`} className={dropdownItemClass}>
-                {t.abbreviation} — {t.name}
+                {t.abbreviation}
+                {t.abbreviation !== t.name && ` — ${t.name}`}
               </Link>
             ))}
           </NavDropdown>
