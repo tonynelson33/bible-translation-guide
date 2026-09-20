@@ -343,6 +343,39 @@ const groups: Group[] = [
         plain:
           "The Apocrypha, or deuterocanonical books — Tobit, Judith, Sirach, 1-2 Maccabees, and others — appear in Catholic and Orthodox Bibles but not in Protestant ones. They were in the original 1611 King James Version between the Testaments, and some translations still publish editions that include them. This site covers the 66-book Protestant canon and the translations most used in Protestant churches, which is a scope decision, not necessarily a judgment about other traditions.",
       },
+      {
+        id: "koine-greek",
+        q: "The New Testament was written in Koine Greek — what does that mean, and does it favor plainer translations?",
+        a: (
+          <>
+            <p>
+              Koine (&ldquo;common&rdquo;) Greek was the everyday, marketplace Greek spoken across
+              the eastern Mediterranean after Alexander the Great &mdash; not the polished literary
+              Greek of classical Athens. Twentieth-century discoveries of ordinary Greek papyri from
+              Egypt &mdash; personal letters, receipts, contracts &mdash; confirmed that New
+              Testament Greek reads like those documents, not like formal literature. One
+              author&rsquo;s Greek can still be noticeably more polished than another&rsquo;s
+              &mdash; Luke and Hebrews are the most literary books in the New Testament; Mark and
+              Revelation are the roughest &mdash; but none of it was written in an elevated or
+              specially &ldquo;sacred&rdquo; register.
+            </p>
+            <p>
+              That&rsquo;s a real point in favor of plain, contemporary-language translations like
+              the <Link href="/translations/nlt">NLT</Link> or the{" "}
+              <Link href="/translations/cev">CEV</Link>: the original readers heard this text in
+              their own everyday speech, so a modern vernacular translation can be argued to match
+              the text&rsquo;s own register more closely than a formal or archaic one does &mdash;
+              part of the reasoning several of the more readable translations on this site give for
+              their own approach. It doesn&rsquo;t settle the question, though: Koine still has real
+              grammatical precision a translator has to represent somehow, and a
+              formal-equivalence translation isn&rsquo;t getting the language wrong so much as
+              prioritizing that structural accuracy over conversational tone.
+            </p>
+          </>
+        ),
+        plain:
+          "Koine (\"common\") Greek was the everyday, marketplace Greek spoken across the eastern Mediterranean after Alexander the Great, not the polished literary Greek of classical Athens — twentieth-century discoveries of ordinary Greek papyri (letters, receipts, contracts) confirmed New Testament Greek reads like those documents. Some New Testament authors write more polished Greek than others (Luke and Hebrews are the most literary; Mark and Revelation the roughest), but none of it is an elevated or \"sacred\" register. That favors plain, contemporary translations like the NLT or CEV, since the original readers heard the text in their own everyday speech — part of the reasoning those translations give for their approach. It doesn't settle the question, though: Koine still has real grammatical precision, and a formal-equivalence translation is prioritizing structural accuracy over conversational tone, not getting the language wrong.",
+      },
     ],
   },
   {

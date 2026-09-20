@@ -205,7 +205,7 @@ export default function Nav() {
 
       {/* Mobile panel */}
       {mobileOpen && (
-        <nav className="border-t border-neutral-200 bg-paper px-4 py-3 lg:hidden">
+        <nav className="max-h-[70vh] overflow-y-auto border-t border-neutral-200 bg-paper px-4 py-3 lg:hidden">
           <ul className="flex flex-col gap-1">
             {[...beforeTranslations, ...afterTranslations, ...afterLearn].map((link) => (
               <li key={link.href}>
@@ -242,6 +242,13 @@ export default function Nav() {
               <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-neutral-400">
                 Translations
               </p>
+              <Link
+                href="/translations"
+                onClick={() => setMobileOpen(false)}
+                className="block rounded px-2 py-1.5 text-sm font-medium text-brand-700 hover:bg-brand-50"
+              >
+                See all 26, with a summary →
+              </Link>
               <ul className="grid grid-cols-2 gap-1">
                 {sortedTranslations.map((t) => (
                   <li key={t.id}>

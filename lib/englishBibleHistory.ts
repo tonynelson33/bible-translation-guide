@@ -155,9 +155,9 @@ export const historyImages: Record<string, HistoryImage> = {
     src: "/history/kjv-1611-genesis.jpg",
     width: 680,
     height: 978,
-    alt: "The first page of Genesis in the 1611 King James Bible: a woodcut headpiece over “THE FIRST BOOKE OF MOSES, called GENESIS,” a large decorated initial, and two columns of black-letter type with cross-references down the centre.",
+    alt: "The first page of Genesis in the 1611 King James Bible: a woodcut headpiece over “THE FIRST BOOKE OF MOSES, called GENESIS,” a large decorated initial, and two columns of black-letter type with cross-references filling the outer margins.",
     caption:
-      "And the inside: the first page of Genesis in the 1611 edition — black-letter type, a decorated “In the beginning,” and cross-references running down the middle.",
+      "And the inside: the first page of Genesis in the 1611 edition — black-letter type, a decorated “In the beginning,” and cross-references crowding the margins on either side.",
     credit: "Printed by Robert Barker, London, 1611 — public domain.",
   },
   codexSinaiticus: {
