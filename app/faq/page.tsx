@@ -360,21 +360,23 @@ const groups: Group[] = [
               specially &ldquo;sacred&rdquo; register.
             </p>
             <p>
-              That&rsquo;s a real point in favor of plain, contemporary-language translations like
-              the <Link href="/translations/nlt">NLT</Link> or the{" "}
-              <Link href="/translations/cev">CEV</Link>: the original readers heard this text in
-              their own everyday speech, so a modern vernacular translation can be argued to match
-              the text&rsquo;s own register more closely than a formal or archaic one does &mdash;
-              part of the reasoning several of the more readable translations on this site give for
-              their own approach. It doesn&rsquo;t settle the question, though: Koine still has real
-              grammatical precision a translator has to represent somehow, and a
-              formal-equivalence translation isn&rsquo;t getting the language wrong so much as
-              prioritizing that structural accuracy over conversational tone.
+              That reasoning isn&rsquo;t just for the most colloquial translations on this site,
+              either &mdash; it&rsquo;s part of the case across a real range, from the{" "}
+              <Link href="/translations/csb">CSB</Link>&rsquo;s comparatively moderate
+              &ldquo;optimal equivalence&rdquo; to the <Link href="/translations/nlt">NLT</Link>
+              &rsquo;s or <Link href="/translations/cev">CEV</Link>&rsquo;s much more thoroughgoing
+              readability. Since the original readers heard this text in their own everyday speech,
+              a natural, contemporary-English rendering can be argued to match that register, not
+              just make the text easier to read. It&rsquo;s one consideration among several, though,
+              not a settled case: Koine still has real grammatical precision a translator has to
+              represent somehow, and a formal-equivalence translation is prioritizing that
+              structural precision over matching the register &mdash; a different, equally real
+              goal, not a mistake.
             </p>
           </>
         ),
         plain:
-          "Koine (\"common\") Greek was the everyday, marketplace Greek spoken across the eastern Mediterranean after Alexander the Great, not the polished literary Greek of classical Athens — twentieth-century discoveries of ordinary Greek papyri (letters, receipts, contracts) confirmed New Testament Greek reads like those documents. Some New Testament authors write more polished Greek than others (Luke and Hebrews are the most literary; Mark and Revelation the roughest), but none of it is an elevated or \"sacred\" register. That favors plain, contemporary translations like the NLT or CEV, since the original readers heard the text in their own everyday speech — part of the reasoning those translations give for their approach. It doesn't settle the question, though: Koine still has real grammatical precision, and a formal-equivalence translation is prioritizing structural accuracy over conversational tone, not getting the language wrong.",
+          "Koine (\"common\") Greek was the everyday, marketplace Greek spoken across the eastern Mediterranean after Alexander the Great, not the polished literary Greek of classical Athens — twentieth-century discoveries of ordinary Greek papyri (letters, receipts, contracts) confirmed New Testament Greek reads like those documents. Some New Testament authors write more polished Greek than others (Luke and Hebrews are the most literary; Mark and Revelation the roughest), but none of it is an elevated or \"sacred\" register. That reasoning isn't just for the most colloquial translations — it's part of the case for translations across a real range, from the CSB's moderate \"optimal equivalence\" to the NLT's or CEV's more thoroughgoing readability, since the original readers heard the text in their own everyday speech. It's one consideration among several, though, not a settled case: a formal-equivalence translation is prioritizing grammatical precision over matching the register, a different and equally real goal.",
       },
     ],
   },
