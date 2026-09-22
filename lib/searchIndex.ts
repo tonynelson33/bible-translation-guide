@@ -225,6 +225,18 @@ const pageItems: SearchItem[] = [
     subtitle: "What this is, the perspective behind it, and how it's made.",
     href: "/about",
   },
+  {
+    type: "Page",
+    title: "Privacy Policy",
+    subtitle: "What this site collects (almost nothing) and what it doesn't.",
+    href: "/privacy",
+  },
+  {
+    type: "Page",
+    title: "Terms of Use",
+    subtitle: "The terms for using this site.",
+    href: "/terms",
+  },
 ];
 
 export const searchIndex: SearchItem[] = [

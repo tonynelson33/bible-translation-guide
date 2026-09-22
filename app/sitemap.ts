@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/church-finder",
     "/buy",
+    "/privacy",
+    "/terms",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
   }));

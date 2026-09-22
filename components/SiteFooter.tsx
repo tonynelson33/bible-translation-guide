@@ -77,10 +77,20 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        <p className="mt-10 border-t border-neutral-200 pt-6 text-sm text-neutral-500">
-          &copy; {new Date().getFullYear()} BibleTranslationGuide. Scripture quotations remain the
-          property of their respective publishers.
-        </p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-neutral-200 pt-6 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} BibleTranslationGuide. Scripture quotations remain
+            the property of their respective publishers.
+          </p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="hover:text-brand-700">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-brand-700">
+              Terms of Use
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
