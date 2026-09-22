@@ -425,13 +425,12 @@ const groups: Group[] = [
         a: (
           <>
             <p>
-              Not because they&rsquo;re the twenty-six most popular, and not because
-              they&rsquo;re the twenty-six most respected &mdash; either of those lists would
-              look different, clustering around a handful of familiar names and skipping
-              anything smaller. This one is closer to a cross-section: one real representative
-              for each meaningful point on the map, so a comparison across philosophy, textual
-              basis, or reading level actually has range to show, instead of twenty-six versions
-              of the same three or four approaches.
+              These aren&rsquo;t the twenty-six most popular English translations, and they
+              aren&rsquo;t the twenty-six most respected ones either. A list built either way
+              would look different: it would cluster around a handful of familiar names and
+              skip anything smaller. This one is closer to a cross-section. It gives one real
+              representative to each meaningful point on the map, so a comparison across
+              philosophy, textual basis, or reading level actually has range to show.
             </p>
             <p>In practice that means the set covers:</p>
             <ul>
@@ -457,15 +456,15 @@ const groups: Group[] = [
               </li>
             </ul>
             <p>
-              The floor for inclusion is legitimacy, not fame: every translation here is a
-              committee&rsquo;s work, or &mdash; in{" "}
-              <Link href="/translations/message">The Message</Link>&rsquo;s one case &mdash; a
-              single translator&rsquo;s work that still went through real scholarly review. A
+              The floor for inclusion is legitimacy, not fame. Every translation here is a
+              committee&rsquo;s work. The one exception is{" "}
+              <Link href="/translations/message">The Message</Link>: a single
+              translator&rsquo;s work, but one that still went through real scholarly review. A
               translation can be popular and still miss that bar &mdash;{" "}
               <Link href="/faq#paraphrase">translation versus paraphrase</Link> goes into why
               something like The Passion Translation isn&rsquo;t included. The scope here is
-              narrower than &ldquo;everything legitimate,&rdquo; too:{" "}
-              <Link href="/faq#apocrypha">the Apocrypha question</Link> explains why you
+              narrower than &ldquo;everything legitimate,&rdquo; too.{" "}
+              <Link href="/faq#apocrypha">The Apocrypha question</Link> explains why you
               won&rsquo;t find a Catholic or Orthodox edition here either.
             </p>
             <p>
@@ -476,7 +475,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Not because they are the twenty-six most popular or the twenty-six most respected English translations — either of those lists would look different. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, KJV) through mediating translations (CSB, BSB) to the freest reading (NLT) and one deliberate paraphrase (The Message); all three textual traditions behind the New Testament (Critical Text, Textus Receptus, and Majority Text); and reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame — every translation is a committee's work, or, in The Message's case, a single translator's work that still went through real scholarly review — and the set is scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
+          "These aren't the twenty-six most popular English translations, and they aren't the twenty-six most respected ones either. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, KJV) through mediating translations (CSB, BSB) to the freest reading (NLT) and one deliberate paraphrase (The Message). It covers all three textual traditions behind the New Testament: Critical Text, Textus Receptus, and Majority Text. And it covers reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame. Every translation is a committee's work, except The Message, which is one translator's work that still went through real scholarly review. The set is also scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
       },
       {
         id: "kjv-only",

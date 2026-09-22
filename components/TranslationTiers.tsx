@@ -27,7 +27,7 @@ const rawTiers: Tier[] = [
     number: 2,
     name: "Named specialists",
     description:
-      "Never in a casual top five, but any content that goes one level deeper reaches for these by name, each for one specific, real reason.",
+      "Never in a casual top five. Content that goes one level deeper reaches for these by name — each for one specific, real reason.",
     ids: ["nrsvue", "net", "lsb", "amp", "ceb"],
   },
   {
@@ -41,7 +41,7 @@ const rawTiers: Tier[] = [
     number: 4,
     name: "Purpose-built, not general-purpose",
     description:
-      "Always recommended for one particular use — a kids’ Bible, an ESL ministry, a new believer, a devotional read-through — and genuinely well known within that lane, but never someone’s general or study Bible.",
+      "Always recommended for one particular use — a kids’ Bible, an ESL ministry, a new believer, a devotional read-through. Genuinely well known within that lane. Never someone’s general or study Bible.",
     ids: ["nirv", "ncv", "cev", "gnt", "message"],
   },
 ];
