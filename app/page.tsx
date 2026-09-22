@@ -96,7 +96,7 @@ export default function HomePage() {
           site lays out twenty-six major English translations: how literally each renders the original,
           how it reads, where its text comes from, and who it might be best for.
         </p>
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
           <Link
             href="/compare"
             className="rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
@@ -108,6 +108,12 @@ export default function HomePage() {
             className="rounded-lg border border-gild-300 bg-gild-50 px-5 py-2.5 text-sm font-semibold text-gild-800 transition-colors hover:bg-gild-100"
           >
             Find your church
+          </Link>
+          <Link
+            href="/why-these-26"
+            className="text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800 hover:underline"
+          >
+            Why these 26 translations?
           </Link>
         </div>
       </section>

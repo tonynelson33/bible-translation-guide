@@ -36,6 +36,10 @@ export default function TranslationsPage() {
         <Link href="/rankings" className="font-medium text-brand-700 hover:underline">
           rankings
         </Link>
+        . Curious why these twenty-six in particular?{" "}
+        <Link href="/why-these-26" className="font-medium text-brand-700 hover:underline">
+          Here&rsquo;s why
+        </Link>
         .
       </p>
 

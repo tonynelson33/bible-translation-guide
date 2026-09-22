@@ -155,6 +155,12 @@ const pageItems: SearchItem[] = [
   },
   {
     type: "Page",
+    title: "Why These 26 Translations",
+    subtitle: "The range they cover, and how often each one actually gets named.",
+    href: "/why-these-26",
+  },
+  {
+    type: "Page",
     title: "Verses",
     subtitle: "Read a popular passage side by side in all twenty-six translations.",
     href: "/verses",

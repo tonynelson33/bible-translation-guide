@@ -468,6 +468,11 @@ const groups: Group[] = [
               <Link href="/faq#apocrypha">the Apocrypha question</Link> explains why you
               won&rsquo;t find a Catholic or Orthodox edition here either.
             </p>
+            <p>
+              For a fuller breakdown &mdash; including how each translation&rsquo;s real-world
+              recognition differs from its formal category &mdash; see{" "}
+              <Link href="/why-these-26">Why these twenty-six translations</Link>.
+            </p>
           </>
         ),
         plain:

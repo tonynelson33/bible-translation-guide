@@ -17,6 +17,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
       { href: "/differences", label: "Translation Differences" },
       { href: "/blog", label: "Videos" },
       { href: "/faq", label: "FAQ" },
+      { href: "/why-these-26", label: "Why These 26 Translations" },
       { href: "/glossary", label: "Glossary" },
     ],
   },
