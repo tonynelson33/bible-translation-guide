@@ -47,12 +47,17 @@ export default async function ChurchFinderPage({
   const initialPage = Math.max(1, Number(str(searchParams.page)) || 1);
   const canSearch = validateSearchParams(initialParams) === null;
 
-  const initialResult = canSearch
-    ? await searchChurches(initialParams)
-    : { churches: [], total: 0 };
-  const [denominationCounts, translationCounts, totalChurchCount] = supabase
-    ? await Promise.all([getDenominationCounts(), getTranslationCounts(), getTotalChurchCount()])
-    : [[], [], null];
+  // All four independent Supabase queries in parallel — this used to await
+  // the search first and only then run the other three, serializing two
+  // round-trips that don't depend on each other. Same freshness guarantee
+  // either way (still no caching anywhere), just less wall-clock time.
+  const [initialResult, denominationCounts, translationCounts, totalChurchCount] =
+    await Promise.all([
+      canSearch ? searchChurches(initialParams) : Promise.resolve({ churches: [], total: 0 }),
+      supabase ? getDenominationCounts() : Promise.resolve([]),
+      supabase ? getTranslationCounts() : Promise.resolve([]),
+      supabase ? getTotalChurchCount() : Promise.resolve(null),
+    ]);
   const countPhrase = totalChurchCount ? `~${roundToNearestThousand(totalChurchCount)}` : "hundreds of thousands of";
 
   return (
