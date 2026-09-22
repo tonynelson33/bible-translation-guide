@@ -75,6 +75,11 @@ const faqQuestions: { id: string; q: string; group: string }[] = [
   },
   { id: "why-so-many", q: "Why are there so many English translations?", group: "The bigger picture" },
   {
+    id: "why-these-26",
+    q: "Why these twenty-six translations, and not others?",
+    group: "The bigger picture",
+  },
+  {
     id: "kjv-only",
     q: "What is KJV-onlyism? Is the King James the only reliable Bible?",
     group: "The bigger picture",

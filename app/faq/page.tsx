@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many, whether modern Bibles removed verses, KJV-onlyism, the 1611 King James versus today's, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
+    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many and why this site covers these particular twenty-six, whether modern Bibles removed verses, KJV-onlyism, the 1611 King James versus today's, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
   alternates: { canonical: "/faq" },
 };
 
@@ -418,6 +418,60 @@ const groups: Group[] = [
         ),
         plain:
           "Several reasons: English keeps changing, so older translations need updating; manuscript discoveries like the Dead Sea Scrolls gave later translators better source texts; scholars disagree about how literal a translation should be and how to handle gender language; and most major translations are owned by a publisher with an interest in having its own. Most English translations since about 1970 belong to a few families descending from the King James Version and the 1952 Revised Standard Version.",
+      },
+      {
+        id: "why-these-26",
+        q: "Why these twenty-six translations, and not others?",
+        a: (
+          <>
+            <p>
+              Not because they&rsquo;re the twenty-six most popular, and not because
+              they&rsquo;re the twenty-six most respected &mdash; either of those lists would
+              look different, clustering around a handful of familiar names and skipping
+              anything smaller. This one is closer to a cross-section: one real representative
+              for each meaningful point on the map, so a comparison across philosophy, textual
+              basis, or reading level actually has range to show, instead of twenty-six versions
+              of the same three or four approaches.
+            </p>
+            <p>In practice that means the set covers:</p>
+            <ul>
+              <li>
+                <strong>Every point on the translation-philosophy spectrum</strong>, not just the
+                crowded middle &mdash; from the most literal (
+                <Link href="/translations/lsv">LSV</Link>,{" "}
+                <Link href="/translations/kjv">KJV</Link>) through the mediating translations (
+                <Link href="/translations/csb">CSB</Link>,{" "}
+                <Link href="/translations/bsb">BSB</Link>) to the freest reading (
+                <Link href="/translations/nlt">NLT</Link>) and this site&rsquo;s one deliberate
+                paraphrase (<Link href="/translations/message">The Message</Link>).
+              </li>
+              <li>
+                <strong>All three textual traditions behind the New Testament</strong> &mdash;
+                the Critical Text most modern translations use, the Textus Receptus behind the
+                King James line, and the Majority Text &mdash; not just the dominant one.
+              </li>
+              <li>
+                <strong>Reading levels from about third grade to twelfth</strong>, so a
+                translation picked for a child and one picked for seminary study are both
+                actually here.
+              </li>
+            </ul>
+            <p>
+              The floor for inclusion is legitimacy, not fame: every translation here is a
+              committee&rsquo;s work, or &mdash; in{" "}
+              <Link href="/translations/message">The Message</Link>&rsquo;s one case &mdash; a
+              single translator&rsquo;s work that still went through real scholarly review. A
+              translation can be popular and still miss that bar &mdash;{" "}
+              <Link href="/faq#paraphrase">translation versus paraphrase</Link> goes into why
+              something like The Passion Translation isn&rsquo;t included. The scope here is
+              narrower than &ldquo;everything legitimate,&rdquo; too:{" "}
+              <Link href="/faq#apocrypha">the Apocrypha question</Link> explains why you
+              won&rsquo;t find a Catholic or Orthodox edition here either.
+            </p>
+          </>
+        ),
+        plain:
+          "Not because they are the twenty-six most popular or the twenty-six most respected English translations — either of those lists would look different. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, KJV) through mediating translations (CSB, BSB) to the freest reading (NLT) and one deliberate paraphrase (The Message); all three textual traditions behind the New Testament (Critical Text, Textus Receptus, and Majority Text); and reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame — every translation is a committee's work, or, in The Message's case, a single translator's work that still went through real scholarly review — and the set is scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
       },
       {
         id: "kjv-only",
