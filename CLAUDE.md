@@ -390,6 +390,16 @@ All call helpers in `lib/churchSuggestions.ts`. Review all four types by hand in
 dashboard (`select … where status = 'pending'`); `site_correction` rows put the page hint at
 the front of `note` as `[page] …`.
 
+**Email notification on new submissions** (added 2026-09-21, confirmed live same day): a
+Postgres trigger (`add_church_suggestion_email_notification` migration; `pg_net`, async, so it
+never blocks the visitor's own submit) fires on every `church_suggestions` insert, POSTing the
+row to `app/api/notify-submission/route.ts`, which emails a summary to the site owner via
+Resend (from Resend's shared `onboarding@resend.dev` sandbox address — no custom domain
+verified yet). The route checks a shared secret header (`SUBMISSION_WEBHOOK_SECRET`, matched
+against the value hardcoded in the trigger function) before doing anything; without
+`RESEND_API_KEY` set it just logs and no-ops, so a submission's own success never depends on
+this working.
+
 **`website`** (added 2026-08-30, nullable, on both `churches` and `church_suggestions`): an
 optional church homepage. Stored as a full `https://…` URL. `lib/website.ts` `normalizeWebsite()`
 does the "https:// assumed" bit — strips any scheme the submitter typed and prepends `https://`,
