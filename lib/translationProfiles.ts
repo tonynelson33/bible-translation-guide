@@ -458,12 +458,12 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "GOD'S WORD Translation was published in 1995 by what was then the World Bible Translation Center (now God's Word to the Nations Mission Society), after the organization scrapped an earlier New Testament project in 1992 and started over with an entirely fresh translation from the Hebrew, Aramaic, and Greek. Five staff scholars, seventeen technical reviewers, and four English style reviewers worked on the text; publishing rights have since passed to Green Key Books and then Baker Publishing Group, though the translation itself is still copyrighted by God's Word to the Nations.",
       "GW's stated method, \"closest natural equivalence,\" sits between strict word-for-word translation and freer thought-for-thought paraphrase: the goal is the most natural English rendering that still corresponds closely to the structure and meaning of the original text, verse by verse, rather than committing wholesale to either extreme.",
       "On gender language, GW takes a moderate approach: generic references to people are usually rendered inclusively — \"humans\" rather than \"man\" in Genesis 1, \"brothers and sisters\" rather than plain \"brothers\" in the New Testament letters — while keeping masculine language for God and clearly male-specific passages.",
-      "GW is written at a notably easy reading level, roughly third to fourth grade, achieved less through vocabulary simplification alone than through careful attention to natural English sentence rhythm and phrasing during the translation and review process.",
+      "GW is written at a notably easy reading level, roughly fifth grade, achieved less through vocabulary simplification alone than through careful attention to natural English sentence rhythm and phrasing during the translation and review process.",
     ],
     distinctives: [
       "Uses a self-described \"closest natural equivalence\" method, aiming for the most natural English that still tracks the original text's own structure and meaning.",
       "Produced by an independent Bible-translation nonprofit (God's Word to the Nations Mission Society) rather than a denominational publisher, using dedicated staff scholars plus outside technical and style reviewers.",
-      "One of the most readable translations on this site, at roughly a third-to-fourth-grade level, comparable to the NLT and CEV.",
+      "One of the most readable translations on this site, at roughly a fifth-grade level, comparable to the NCV and NLT.",
       "Its permitted-quotation limit (250 verses without written permission) is tighter than most other translations on this site, which mostly allow 500.",
     ],
     goodFor: [
