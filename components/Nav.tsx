@@ -8,15 +8,17 @@ import SiteSearch from "./SiteSearch";
 
 type NavLink = { href: string; label: string };
 
-// Desktop order: Home · Full Comparison · Church Finder · Translations ▾ · Verses · Rankings · Learn ▾ · Buy.
-// The logo also links home; the explicit "Home" is there because people look for
-// it. Church Finder rides high because it's the most distinctive feature; the
-// learning pages are grouped under one menu so the bar stays short. "Verses"
-// stays short here; the page itself is titled "Comparison of Popular Verses".
+// Desktop order: Home · Full Comparison · Translations ▾ · Verses · Rankings · Learn ▾ ·
+// Church Finder · Buy — three zones: compare/use the translations, learn more, then two
+// practical-action items. Church Finder moved out of the compare zone 2026-09-21 (owner
+// call: it's a church-directory lookup, not a translation-comparison tool, and rode too
+// high for a first impression) — the footer's "More" column already grouped it with
+// Buy/About, so this just brings the top nav in line with that. The logo also links home;
+// the explicit "Home" is there because people look for it. "Verses" stays short here; the
+// page itself is titled "Comparison of Popular Verses".
 const beforeTranslations: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/compare", label: "Full Comparison" },
-  { href: "/church-finder", label: "Church Finder" },
 ];
 
 const afterTranslations: NavLink[] = [
@@ -34,7 +36,10 @@ const learnLinks: NavLink[] = [
   { href: "/about", label: "About This Site" },
 ];
 
-const afterLearn: NavLink[] = [{ href: "/buy", label: "Where to Buy" }];
+const afterLearn: NavLink[] = [
+  { href: "/church-finder", label: "Church Finder" },
+  { href: "/buy", label: "Where to Buy" },
+];
 
 const sortedTranslations = [...translations].sort((a, b) =>
   a.abbreviation.localeCompare(b.abbreviation),

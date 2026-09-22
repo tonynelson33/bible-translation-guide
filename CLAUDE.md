@@ -39,9 +39,13 @@ back to `ComingSoon`), and `lib/rankings.ts` (a placement in all 7 ranking categ
 **Site structure (rebuilt 2026-09-07 "site-overhaul" branch)**: `/` is a **landing page**
 (`app/page.tsx`) — hero, four entry cards, the `TranslationSpectrum`, a "the twelve" grid; the
 sortable comparison table moved to **`/compare`** (`app/compare/page.tsx`). The nav
-(`components/Nav.tsx`) is `Home · Full Comparison · Church Finder · Translations ▾ · Verses ·
-Rankings · Learn ▾ · Where to Buy`; the logo also links to `/` (the explicit "Home" was added
-2026-09-11 — owner ask, "it looks cleaner"); a reusable `NavDropdown` powers both the
+(`components/Nav.tsx`) is `Home · Full Comparison · Translations ▾ · Verses · Rankings ·
+Learn ▾ · Church Finder · Where to Buy` (Church Finder moved from 3rd to 2nd-to-last
+2026-09-21 — owner felt it rode too high for a first impression, given it's a church-directory
+lookup rather than a translation-comparison tool; the footer's "More" column already grouped
+it with Buy/About, so this brings the top nav in line with that); the logo also links to `/`
+(the explicit "Home" was added 2026-09-11 — owner ask, "it looks cleaner"); a reusable
+`NavDropdown` powers both the
 Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/blog`,
 `/faq`, `/glossary`, `/about` — `/blog`/`/faq`/`/glossary`/`/about` order set 2026-09-11, Videos
 before FAQ; `/about` and `/glossary` are deliberately *only* in the Learn dropdown + footer, not

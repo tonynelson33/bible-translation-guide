@@ -104,12 +104,6 @@ export default function HomePage() {
             See the full comparison
           </Link>
           <Link
-            href="/church-finder"
-            className="rounded-lg border border-gild-300 bg-gild-50 px-5 py-2.5 text-sm font-semibold text-gild-800 transition-colors hover:bg-gild-100"
-          >
-            Find your church
-          </Link>
-          <Link
             href="/why-these-26"
             className="text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800 hover:underline"
           >
