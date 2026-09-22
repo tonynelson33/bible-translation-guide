@@ -16,17 +16,30 @@ export default function WhyThese26Page() {
         Why these twenty-six translations
       </h1>
       <p className="mt-3 max-w-2xl leading-relaxed text-neutral-700">
-        Not because they&rsquo;re the twenty-six most popular, and not because they&rsquo;re the
-        twenty-six most respected &mdash; either of those lists would look different, clustering
-        around a handful of familiar names and skipping anything smaller. This one is closer to a
-        cross-section: one real representative for each meaningful point on the map, so a
-        comparison across philosophy, textual basis, or reading level actually has range to show,
-        instead of twenty-six versions of the same three or four approaches.
+        Not a quality ranking &mdash; a recognition one. Roughly where each of the twenty-six
+        actually lands if you picture every video or site that reviews Bible translations at
+        once, from the names everyone already knows to the ones only a comparison this thorough
+        would mention. Why these twenty-six specifically, the fuller case, is further down the
+        page.
       </p>
 
-      <section className="mt-10">
-        <h2 className="font-display text-2xl font-semibold text-brand-900">The three axes</h2>
+      <div className="mt-8">
+        <TranslationTiers />
+      </div>
+
+      <section className="mt-12 border-t border-neutral-200 pt-10">
+        <h2 className="font-display text-2xl font-semibold text-brand-900">
+          Why these twenty-six, not some other set
+        </h2>
         <p className="mt-2 max-w-2xl leading-relaxed text-neutral-700">
+          Not because they&rsquo;re the twenty-six most popular, and not because they&rsquo;re
+          the twenty-six most respected &mdash; either of those lists would look different,
+          clustering around a handful of familiar names and skipping anything smaller. This one
+          is closer to a cross-section: one real representative for each meaningful point on the
+          map, so a comparison across philosophy, textual basis, or reading level actually has
+          range to show, instead of twenty-six versions of the same three or four approaches.
+        </p>
+        <p className="mt-3 max-w-2xl leading-relaxed text-neutral-700">
           In practice that means the set covers every point on the{" "}
           <Link href="/rankings" className="font-medium text-brand-700 hover:underline">
             translation-philosophy spectrum
@@ -43,23 +56,6 @@ export default function WhyThese26Page() {
           </Link>{" "}
           shows how a third of them relate by descent; the rest are independent work.
         </p>
-      </section>
-
-      <section className="mt-12 border-t border-neutral-200 pt-10">
-        <h2 className="font-display text-2xl font-semibold text-brand-900">
-          Where each one actually sits, in the real world
-        </h2>
-        <p className="mt-2 max-w-2xl leading-relaxed text-neutral-700">
-          Coverage is one axis; recognition is a completely different one. A translation can fill
-          a real gap on the map above and still be one almost nobody has heard of &mdash; and a
-          few familiar names cover more than one gap at once. Here&rsquo;s roughly where the
-          twenty-six actually land if you picture every video or site that reviews Bible
-          translations at once &mdash; not by method, but by how often each one actually gets
-          named.
-        </p>
-        <div className="mt-8">
-          <TranslationTiers />
-        </div>
       </section>
 
       <section className="mt-12 border-t border-neutral-200 pt-10">

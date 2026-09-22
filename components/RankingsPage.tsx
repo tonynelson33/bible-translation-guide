@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { RankingCategory, RankingEntry } from "@/lib/rankings";
 import { getTranslation } from "@/lib/data";
 import TranslationSpectrum from "./TranslationSpectrum";
+import Tooltip from "./Tooltip";
 
 // The "not sure where to start?" guide — routes into the categories below.
 // The named translation is read from the category's own #1 entry, so it can
@@ -62,12 +63,14 @@ function CompactEntry({ rank, entry }: { rank: number; entry: RankingEntry }) {
   return (
     <li className="flex items-center gap-3 border-b border-neutral-100 px-4 py-2.5 last:border-b-0">
       <RankBadge rank={rank} />
-      <Link
-        href={`/translations/${translation.id}`}
-        className="flex-shrink-0 font-semibold text-brand-800 hover:underline"
-      >
-        {translation.abbreviation}
-      </Link>
+      <Tooltip text={translation.name}>
+        <Link
+          href={`/translations/${translation.id}`}
+          className="flex-shrink-0 font-semibold text-brand-800 hover:underline"
+        >
+          {translation.abbreviation}
+        </Link>
+      </Tooltip>
       <p className="min-w-0 text-sm leading-snug text-neutral-600">{entry.blurb}</p>
     </li>
   );

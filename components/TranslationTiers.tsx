@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getTranslation } from "@/lib/data";
+import { rankingCategories } from "@/lib/rankings";
+import Tooltip from "./Tooltip";
 
 type Tier = {
   number: number;
@@ -13,7 +15,7 @@ type Tier = {
 // comparison videos/sites/articles), a different axis from the philosophy
 // spectrum or the family tree. Every id must appear in exactly one tier; the
 // four lists together are the full twenty-six.
-const tiers: Tier[] = [
+const rawTiers: Tier[] = [
   {
     number: 1,
     name: "The default seven",
@@ -44,47 +46,62 @@ const tiers: Tier[] = [
   },
 ];
 
-// Visual weight steps down from tier 1 to tier 4 (darkest, boldest card
-// first; quietest, dashed-border card last), and each card indents further
-// right on sm+ so the stack reads as a literal staircase — narrower and less
-// prominent the further you read. Deliberately not the philosophy spectrum's
-// indigo/teal/amber palette: this is a different axis (recognition, not
-// translation method), and reusing those colors would wrongly imply a link
-// between the two.
+// Within each tier, chips run in the site's usual most-literal-to-freest
+// order (the same "literal" ranking that /, /verses, and the family tree all
+// key off), not the arbitrary order they happened to be typed in.
+const literalOrder =
+  rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
+const literalRank = (id: string) => {
+  const i = literalOrder.indexOf(id);
+  return i === -1 ? literalOrder.length : i;
+};
+const tiers: Tier[] = rawTiers.map((tier) => ({
+  ...tier,
+  ids: [...tier.ids].sort((a, b) => literalRank(a) - literalRank(b)),
+}));
+
+// Visual weight steps down from tier 1 to tier 4 through a left accent bar
+// (thick gold, to thick navy, to thin navy, to a plain dashed outline) plus a
+// matching badge and heading size — several small signals rather than one
+// blunt one, so the step-down doesn't hinge entirely on how dark a card's
+// fill is. All four cards stay white/near-white: a full-bleed dark card read
+// as overpowering, especially next to how much navy text the rest of the
+// site already uses for translation names and headings. Deliberately not the
+// philosophy spectrum's indigo/teal/amber palette either — this is a
+// different axis (recognition, not translation method).
 const styles = [
   {
     indent: "",
-    card: "bg-brand-800 border border-brand-800",
-    numeral: "text-brand-600",
-    heading: "text-white",
-    body: "text-brand-100",
-    chip: "border-white/20 bg-white/10 text-white hover:border-white/40 hover:bg-white/20",
+    card: "border border-neutral-200 border-l-[6px] border-l-gild-500 bg-white shadow-sm",
+    badge: "bg-gild-600 text-white",
+    heading: "text-xl text-brand-900",
+    body: "text-neutral-600",
   },
   {
     indent: "sm:ml-6",
-    card: "bg-brand-50 border border-brand-200",
-    numeral: "text-brand-300",
-    heading: "text-brand-900",
-    body: "text-brand-800",
-    chip: "border-brand-200 bg-white text-brand-800 hover:border-gild-300 hover:bg-gild-50",
+    card: "border border-neutral-200 border-l-[6px] border-l-brand-500 bg-white",
+    badge: "bg-brand-600 text-white",
+    heading: "text-lg text-brand-900",
+    body: "text-neutral-600",
   },
   {
     indent: "sm:ml-12",
-    card: "bg-white border border-neutral-200",
-    numeral: "text-neutral-300",
-    heading: "text-brand-900",
+    card: "border border-neutral-200 border-l-4 border-l-brand-200 bg-white",
+    badge: "border border-brand-200 bg-brand-50 text-brand-700",
+    heading: "text-lg text-brand-900",
     body: "text-neutral-600",
-    chip: "border-neutral-200 bg-neutral-50 text-neutral-700 hover:border-gild-300 hover:bg-gild-50",
   },
   {
     indent: "sm:ml-[4.5rem]",
-    card: "bg-neutral-50/70 border border-dashed border-neutral-300",
-    numeral: "text-neutral-300",
-    heading: "text-brand-900",
+    card: "border border-dashed border-neutral-300 bg-neutral-50/60",
+    badge: "border border-neutral-300 bg-white text-neutral-400",
+    heading: "text-base text-brand-900",
     body: "text-neutral-500",
-    chip: "border-neutral-200 bg-white/70 text-neutral-600 hover:border-gild-300 hover:bg-gild-50",
   },
 ];
+
+const chipClass =
+  "rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-brand-900 transition-colors hover:border-gild-300 hover:bg-gild-50";
 
 export default function TranslationTiers() {
   return (
@@ -93,36 +110,29 @@ export default function TranslationTiers() {
         const s = styles[i];
         return (
           <div key={tier.number} className={s.indent}>
-            <div className={`rounded-xl px-5 py-5 sm:px-7 sm:py-6 ${s.card}`}>
-              <div className="flex items-start gap-4">
-                <span
-                  aria-hidden="true"
-                  className={`font-display text-4xl font-light leading-none sm:text-5xl ${s.numeral}`}
-                >
-                  {tier.number}
-                </span>
-                <div className="min-w-0 flex-1 pt-1">
-                  <h3 className={`font-display text-lg font-semibold sm:text-xl ${s.heading}`}>
-                    {tier.name}
-                  </h3>
-                  <p className={`mt-1.5 max-w-xl text-sm leading-relaxed ${s.body}`}>
-                    {tier.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {tier.ids.map((id) => {
-                      const t = getTranslation(id);
-                      if (!t) return null;
-                      return (
-                        <Link
-                          key={id}
-                          href={`/translations/${id}`}
-                          className={`rounded-full border px-3 py-1 text-sm font-medium transition-colors ${s.chip}`}
-                        >
+            <div className={`flex items-start gap-4 rounded-xl p-5 sm:p-6 ${s.card}`}>
+              <span
+                className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-display text-base font-semibold ${s.badge}`}
+              >
+                {tier.number}
+              </span>
+              <div className="min-w-0 flex-1">
+                <h3 className={`font-display font-semibold ${s.heading}`}>{tier.name}</h3>
+                <p className={`mt-1.5 max-w-xl text-sm leading-relaxed ${s.body}`}>
+                  {tier.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {tier.ids.map((id) => {
+                    const t = getTranslation(id);
+                    if (!t) return null;
+                    return (
+                      <Tooltip key={id} text={t.name}>
+                        <Link href={`/translations/${id}`} className={chipClass}>
                           {t.abbreviation}
                         </Link>
-                      );
-                    })}
-                  </div>
+                      </Tooltip>
+                    );
+                  })}
                 </div>
               </div>
             </div>
