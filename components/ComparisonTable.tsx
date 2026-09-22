@@ -143,7 +143,12 @@ const columns: ColumnDef[] = [
     sortValue: (t) => t.redLetter,
     align: "center",
     minWidth: "6rem",
-    render: (t) => <YesNoIcon value={t.redLetter} label="Red letter edition available" />,
+    render: (t) => (
+      <span className="inline-flex items-center">
+        <YesNoIcon value={t.redLetter} label="Red letter edition available" />
+        {verifyMark(t, "redLetter")}
+      </span>
+    ),
   },
   {
     key: "otMarking",
@@ -167,7 +172,10 @@ const columns: ColumnDef[] = [
     align: "center",
     minWidth: "8.5rem",
     render: (t) => (
-      <YesNoIcon value={t.italicizesTranslatorWords} label="Italicizes translator-supplied words" />
+      <span className="inline-flex items-center">
+        <YesNoIcon value={t.italicizesTranslatorWords} label="Italicizes translator-supplied words" />
+        {verifyMark(t, "italicizesTranslatorWords")}
+      </span>
     ),
   },
   {

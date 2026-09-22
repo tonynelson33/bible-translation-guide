@@ -243,10 +243,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "bsb",
@@ -277,7 +274,7 @@
     "abbreviation": "WEB",
     "latestRevisionYear": 2020,
     "firstPublishedYear": 1997,
-    "gradeLevel": "9-10",
+    "gradeLevel": "12",
     "philosophy": "Formal",
     "textualBasis": "Majority Text",
     "publisher": "Rainbow Missions",
@@ -289,10 +286,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "gnt",
@@ -300,7 +294,7 @@
     "abbreviation": "GNT",
     "latestRevisionYear": 1992,
     "firstPublishedYear": 1976,
-    "gradeLevel": "5-6",
+    "gradeLevel": "7",
     "philosophy": "Dynamic",
     "textualBasis": "Critical Text",
     "publisher": "American Bible Society",
@@ -312,11 +306,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel",
-      "italicizesTranslatorWords"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "cev",
@@ -336,11 +326,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "redLetter",
-      "italicizesTranslatorWords"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "nirv",
@@ -385,7 +371,6 @@
     "capitalizesDeityPronouns": false,
     "quotationMarksForDialogue": true,
     "verifyFields": [
-      "redLetter",
       "italicizesTranslatorWords"
     ]
   },
@@ -395,7 +380,7 @@
     "abbreviation": "GW",
     "latestRevisionYear": 1995,
     "firstPublishedYear": 1995,
-    "gradeLevel": "3-4",
+    "gradeLevel": "5",
     "philosophy": "Optimal",
     "textualBasis": "Critical Text",
     "publisher": "God's Word to the Nations / Baker Publishing Group",
@@ -407,12 +392,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel",
-      "redLetter",
-      "italicizesTranslatorWords"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "ncv",
@@ -432,10 +412,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "italicizesTranslatorWords"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "mev",
@@ -443,7 +420,7 @@
     "abbreviation": "MEV",
     "latestRevisionYear": 2014,
     "firstPublishedYear": 2014,
-    "gradeLevel": "7",
+    "gradeLevel": "11",
     "philosophy": "Formal",
     "textualBasis": "Textus Receptus",
     "publisher": "Passio / Charisma House",
@@ -455,10 +432,7 @@
     },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "leb",
@@ -478,10 +452,7 @@
     },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "voice",
@@ -501,11 +472,7 @@
     },
     "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": false,
-    "verifyFields": [
-      "gradeLevel",
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": false
   },
   {
     "id": "lsv",
@@ -525,10 +492,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "msb",
@@ -559,7 +523,7 @@
     "abbreviation": "MSG",
     "latestRevisionYear": 2002,
     "firstPublishedYear": 2002,
-    "gradeLevel": "5-6",
+    "gradeLevel": "4-5",
     "philosophy": "Paraphrase",
     "textualBasis": "Critical Text",
     "publisher": "NavPress",
@@ -571,10 +535,6 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "gradeLevel",
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": true
   }
 ]
