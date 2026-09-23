@@ -81,21 +81,31 @@ marker.
 **Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
 `/verses` compares a **fixed** set of **42** sample verses (`data/verses.json`, Bible order —
 was 5 until 2026-09-10), so their text is **cached, not fetched live**. `data/cachedVerses.json`
-holds `{ [translationId]: { attribution, verses: { [reference]: text } } }` for all 12
-translations, and `lib/verseProviders.ts`'s `fetchVerseForTranslation` is a plain synchronous
-lookup — no API keys, no rate limits, no network. A translation with no entry for a verse
-returns `status: "unavailable"`, never throws.
+holds `{ [translationId]: { attribution, verses: { [reference]: text } } }` for all **26**
+translations (all at 42/42 as of the 2026-09-18 expansion), and `lib/verseProviders.ts`'s
+`fetchVerseForTranslation` is a plain synchronous lookup — no API keys, no rate limits, no
+network. A translation with no entry for a verse returns `status: "unavailable"`, never throws.
 
-`/verses` layout (rewritten 2026-09-07): a `<select>` verse picker (`components/VersePicker.tsx`)
-above a single-column list, one row per translation, `max-w-6xl`, ordered **most literal →
-freest** — the order is derived at module load from the `literal` category in `lib/rankings.ts`
-(`rankingCategories.find(c => c.slug === "literal")`), so it self-syncs. The picker groups its 42
-options into Old Testament / Gospels / Acts & the Letters via `referenceSection()` in
-`lib/bibleOrder.ts` (`compareReferences` there also drives the Bible-order sort; page defaults to
-John 3:16). Each row is a `[abbr | verse text]` grid (stacks on mobile); attributions are
-collected into one fine-print block at the foot of the page (still on-page = licence notice
-satisfied). `VerseCard.tsx` is **no longer used here** — it survives only as the single-verse
-card on `/translations/[slug]`.
+`/verses` layout (rewritten 2026-09-07, widened + restyled 2026-09-22): a `<select>` verse picker
+(`components/VersePicker.tsx`, its `onChange` passes `{ scroll: false }` to `router.push` so
+picking a new verse doesn't jump the page back to the top) and text-size controls (`A`/`A`
+buttons, 11–19px in 2px steps, defaults to 15px) sit above a checkbox panel for narrowing which of
+the 26 show (added once there were 26 rows to scroll through; alphabetical by abbreviation, unlike
+the rows themselves) — both built in `components/VerseComparisonList.tsx`, the page's whole
+interactive body. Below that, a single-column list, one row per translation, `max-w-7xl` (the page
+container; the rows themselves run its full width, not their own narrower cap), ordered **most
+literal → freest** — the order is derived at module load from the `literal` category in
+`lib/rankings.ts` (`rankingCategories.find(c => c.slug === "literal")`), so it self-syncs. The
+picker groups its 42 options into Old Testament / Gospels / Acts & the Letters via
+`referenceSection()` in `lib/bibleOrder.ts` (`compareReferences` there also drives the Bible-order
+sort; page defaults to John 3:16). Each row is a `[abbr | verse text]` grid, vertically centered
+(`sm:items-center`, so the abbreviation centers next to multi-line verse text) and stacked on
+mobile; the abbreviation is colored by philosophy (`textOnlyClass`, no background — the column's
+too narrow for a filled pill) and sized off its own `abbrFontPx()` — tracks the verse text size
+1:1 above the default but floors at its own default (14px) rather than shrinking further when the
+verse text is dialed down. Attributions are collected into one fine-print block at the foot of the
+page (still on-page = licence notice satisfied). `VerseCard.tsx` is **no longer used here** — it
+survives only as the single-verse card on `/translations/[slug]`.
 
 - **Fidelity**: verse **words and punctuation are exact** — every quotation mark and dash as
   the source publishes it (John 3:16 keeps its opening `"` in ESV/NLT/NASB/LSB, has none in
@@ -486,6 +496,17 @@ privileges unless told otherwise, which would silently bypass `churches`' RLS po
 `security_invoker` makes them respect the same public-SELECT policy as the table itself. Get
 this wrong and Supabase's security advisor flags it immediately (`security_definer_view`,
 ERROR level) — worth re-running `get_advisors` after any new view.
+
+**`CountTable.tsx` gotcha**: `table-fixed` + explicit `w-*` on the Count/% `<th>`s + `truncate`
+(ellipsis, full label in `title`) on the Name `<td>` means the table can never need more than
+100% of its container — don't wrap it back in `overflow-x-auto`. An earlier version did, plus
+`whitespace-nowrap` on Name instead of truncating it, which forced the table wider than its
+container on long denomination names and scrolled `%` out of view; a later pass tried
+`overflow-x-auto` alone as the fix, which stopped the cutoff but still rendered a visible
+scrollbar from sub-pixel rounding even though the table never actually overflowed. Both wrapper
+divs are now `lg:w-80 xl:w-96 2xl:w-[28rem]` (Denominations) / `lg:w-72 xl:w-80 2xl:w-96`
+(Translations) in `app/church-finder/page.tsx`, growing on wider screens so truncation kicks in
+less often — but the truncate-with-ellipsis is the actual guarantee, not the width.
 
 **`churches.category_confidence`** (added 2026-09-11): provenance tier for how `category` (and,
 where set, `bible_translation`) was established — `'directory'` (matched against the
