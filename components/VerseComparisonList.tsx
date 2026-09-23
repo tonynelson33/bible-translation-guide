@@ -13,8 +13,16 @@ type Row = { translation: Translation; result: VerseFetchResult };
 
 const MIN_FONT_PX = 11;
 const MAX_FONT_PX = 19;
-const DEFAULT_FONT_PX = 13;
+const DEFAULT_FONT_PX = 15;
 const FONT_STEP_PX = 2;
+
+// The abbreviation link's own size — one step above its old flat text-xs
+// default. It tracks increases to the verse text size 1:1 (so it keeps
+// pace visually) but has a floor at its own default: dialing the verse
+// text down shouldn't shrink the abbreviation past a legible size just
+// because it's sitting next to smaller text.
+const ABBR_DEFAULT_FONT_PX = 14;
+const abbrFontPx = (fontPx: number) => ABBR_DEFAULT_FONT_PX + Math.max(0, fontPx - DEFAULT_FONT_PX);
 
 /**
  * The /verses page's whole interactive body: the verse picker and text-size
@@ -134,11 +142,12 @@ export default function VerseComparisonList({
       ) : (
         <div className="divide-y divide-neutral-200 border-y border-neutral-200">
           {shownRows.map(({ translation: t, result }) => (
-            <div key={t.id} className="py-0.5 sm:grid sm:grid-cols-[3rem_1fr] sm:gap-x-3">
+            <div key={t.id} className="py-0.5 sm:grid sm:grid-cols-[3rem_1fr] sm:items-center sm:gap-x-3">
               <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
                 <Link
                   href={`/translations/${t.id}`}
-                  className={`text-xs font-semibold hover:underline ${textOnlyClass(philosophyGlossary[t.philosophy].className)}`}
+                  style={{ fontSize: abbrFontPx(fontPx) }}
+                  className={`font-semibold hover:underline ${textOnlyClass(philosophyGlossary[t.philosophy].className)}`}
                 >
                   {t.abbreviation}
                 </Link>
