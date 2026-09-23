@@ -97,7 +97,11 @@ const styles = [
   },
   {
     indent: "sm:ml-[4.5rem]",
-    card: "border border-dashed border-neutral-300 bg-neutral-50/60",
+    // Same dashed-outline language as the rest of the card, but the left
+    // edge gets its own heavier width (still dashed, still neutral) so the
+    // left-accent-bar pattern the other three tiers use doesn't just vanish
+    // on the last one.
+    card: "border border-dashed border-neutral-300 border-l-4 border-l-neutral-400 bg-neutral-50/60",
     badge: "border border-neutral-300 bg-white text-neutral-400",
     heading: "text-base text-brand-900",
     body: "text-neutral-500",

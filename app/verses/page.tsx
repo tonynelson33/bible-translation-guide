@@ -69,7 +69,7 @@ export default function VersesPage({
 
       <VerseComparisonList rows={rows} verses={versesInBibleOrder} selectedVerseId={verse.id} />
 
-      <div className="mt-8 max-w-3xl space-y-1 text-xs leading-snug text-neutral-400">
+      <div className="mt-8 space-y-1 text-xs leading-snug text-neutral-400">
         <p>
           Each translation is quoted under its publisher&apos;s permissions for non-commercial
           use, with the required copyright notice below.

@@ -27,7 +27,7 @@ export default function VersePicker({
       Choose a verse
       <select
         value={selectedId}
-        onChange={(e) => router.push(`/verses?verse=${e.target.value}`)}
+        onChange={(e) => router.push(`/verses?verse=${e.target.value}`, { scroll: false })}
         className="w-full max-w-xs rounded-md border border-neutral-300 bg-white px-3 py-2 text-base text-neutral-900 shadow-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600 sm:text-sm"
       >
         {groups.map((group) => (

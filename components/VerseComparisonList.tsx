@@ -132,11 +132,7 @@ export default function VerseComparisonList({
           No translations selected — check at least one above to compare.
         </p>
       ) : (
-        // Capped at max-w-3xl even though the page itself runs wider — the
-        // picker and checkbox panel above benefit from the extra room, but a
-        // serif verse line stretched past ~75 characters gets harder to read,
-        // not easier.
-        <div className="max-w-3xl divide-y divide-neutral-200 border-y border-neutral-200">
+        <div className="divide-y divide-neutral-200 border-y border-neutral-200">
           {shownRows.map(({ translation: t, result }) => (
             <div key={t.id} className="py-0.5 sm:grid sm:grid-cols-[3rem_1fr] sm:gap-x-3">
               <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
