@@ -62,10 +62,11 @@ const tiers: Tier[] = rawTiers.map((tier) => ({
 }));
 
 // Visual weight steps down from tier 1 to tier 4 through a left accent bar
-// (thick gold, to thick navy, to thin navy, to a plain dashed outline) plus a
-// matching badge and heading size — several small signals rather than one
-// blunt one, so the step-down doesn't hinge entirely on how dark a card's
-// fill is. All four cards stay white/near-white: a full-bleed dark card read
+// (thick gold, to thick navy, to thin navy, to thin neutral grey — color
+// draining out entirely by the last tier) plus a matching badge and heading
+// size — several small signals rather than one blunt one, so the step-down
+// doesn't hinge entirely on how dark a card's fill is. All four cards stay
+// white/near-white: a full-bleed dark card read
 // as overpowering, especially next to how much navy text the rest of the
 // site already uses for translation names and headings. Deliberately not the
 // philosophy spectrum's palette for the card itself — recognition tier and
@@ -97,11 +98,10 @@ const styles = [
   },
   {
     indent: "sm:ml-[4.5rem]",
-    // Same dashed-outline language as the rest of the card, but the left
-    // edge gets its own heavier width (still dashed, still neutral) so the
-    // left-accent-bar pattern the other three tiers use doesn't just vanish
-    // on the last one.
-    card: "border border-dashed border-neutral-300 border-l-4 border-l-neutral-400 bg-neutral-50/60",
+    // Same solid border + white card as tiers 1-3, just with no color left to
+    // accent — grey standing in for gild/brand/brand is what "one step
+    // further down" looks like once the palette runs out.
+    card: "border border-neutral-200 border-l-4 border-l-neutral-400 bg-white",
     badge: "border border-neutral-300 bg-white text-neutral-400",
     heading: "text-base text-brand-900",
     body: "text-neutral-500",
