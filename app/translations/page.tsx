@@ -20,11 +20,11 @@ const sortedTranslations = [...translations].sort((a, b) =>
 
 export default function TranslationsPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         All twenty-six translations
       </h1>
-      <p className="mt-3 leading-relaxed text-neutral-700">
+      <p className="mt-3 max-w-2xl leading-relaxed text-neutral-700">
         In alphabetical order, with a one-sentence summary of each, so you don&rsquo;t have to
         open all twenty-six to get the gist. Tap any one for its full profile &mdash; history,
         distinctives, who it&rsquo;s a good fit for, and a sample verse. Sorted word-for-word to
@@ -43,7 +43,7 @@ export default function TranslationsPage() {
         .
       </p>
 
-      <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sortedTranslations.map((t) => {
           const tagline = translationProfiles[t.id]?.tagline;
           return (

@@ -1,3 +1,8 @@
+"use client";
+
+import { useHoverTooltip } from "@/lib/useHoverTooltip";
+import TooltipBubble from "./TooltipBubble";
+
 const X0 = 30;
 const SPAN = 800; // position 0 -> x=30, position 100 -> x=830
 const px = (pos: number) => X0 + (pos / 100) * SPAN;
@@ -67,11 +72,20 @@ const FULL_NAME: Record<string, string> = {
  * Marker spacing within each band is deliberately uneven, not a mechanical
  * even split — translations that read as genuinely close together (e.g.
  * ESV/KJV/WEB) sit tighter than ones with more real daylight between them
- * (e.g. AMP's bracketed expansions, or NRSVue easing toward Mediating).
+ * (e.g. AMP's bracketed expansions, or NRSVue easing toward Balanced).
+ *
+ * Each marker is hand-hovered (mouse enter/leave on its own `<g>`, driven by
+ * `useHoverTooltip`) rather than relying on a native SVG `<title>` alone —
+ * a native title's ~1s OS hover delay read as sluggish next to the rest of
+ * the site's instant `Tooltip` popups. The `<title>` stays in the markup too
+ * (screen readers and keyboard users still get it); the custom popup is
+ * purely a faster visual layer for mouse users, styled to match the light,
+ * white-on-paper look already used here rather than the dark chip tooltip
+ * used elsewhere on the site.
  */
 const BANDS: Band[] = [
-  { label: "Formal", sub: "word-for-word", from: 0, to: 44, fill: "#eef2ff", stroke: "#c7d2fe" },
-  { label: "Mediating", sub: "optimal + mixed", from: 46.5, to: 63, fill: "#f0fdfa", stroke: "#99f6e4" },
+  { label: "Formal", sub: "word-for-word", from: 0, to: 44, fill: "#eff6ff", stroke: "#bfdbfe" },
+  { label: "Balanced", sub: "optimal + mixed", from: 46.5, to: 63, fill: "#f0fdfa", stroke: "#99f6e4" },
   { label: "Dynamic", sub: "thought-for-thought", from: 65.5, to: 91.5, fill: "#fffbeb", stroke: "#fde68a" },
   { label: "Paraphrase", sub: "freely restated", from: 94, to: 100, fill: "#f1f5f9", stroke: "#cbd5e1" },
 ];
@@ -89,7 +103,7 @@ const MARKERS: Marker[] = [
   { label: "MEV", pos: 27.5, above: true },
   { label: "AMP *", pos: 32, above: false },
   { label: "NRSVue", pos: 36.5, above: true },
-  // Mediating — order here (BSB, MSB, ISV, CSB, GW, NET) matches the
+  // Balanced — order here (BSB, MSB, ISV, CSB, GW, NET) matches the
   // "Most Literal" ranking's own most-to-least-literal sequence for this
   // cluster, not just an even split; NET in particular lands after GW
   // because its literal renderings live in its footnotes, not its main
@@ -120,6 +134,8 @@ export default function TranslationSpectrum({
   /** True when the chart isn't sitting directly below the ranked list. */
   standalone?: boolean;
 }) {
+  const { state, show, hide } = useHoverTooltip();
+
   return (
     <div className="mt-5">
       <div className="overflow-x-auto">
@@ -127,7 +143,7 @@ export default function TranslationSpectrum({
           viewBox="0 0 860 140"
           className="mx-auto block h-auto w-full max-w-[860px]"
           role="img"
-          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, LEB, NASB, ESV, WEB, KJV, NKJV, MEV, AMP, and NRSVue. Mediating: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, CEV, and VOICE. MSG sits alone in its own Paraphrase zone."
+          aria-label="Translation spectrum for all twenty-six translations on the site. Formal, word-for-word: LSV, LSB, LEB, NASB, ESV, WEB, KJV, NKJV, MEV, AMP, and NRSVue. Balanced: BSB, MSB, ISV, CSB, GW, and NET. Dynamic, thought-for-thought: NIV, NIrV, CEB, NCV, NLT, GNT, CEV, and VOICE. MSG sits alone in its own Paraphrase zone."
         >
           {BANDS.map((band) => {
             const x = px(band.from);
@@ -147,9 +163,17 @@ export default function TranslationSpectrum({
           })}
           {MARKERS.map((marker) => {
             const x = px(marker.pos);
+            const fullName = FULL_NAME[marker.label];
             return (
-              <g key={marker.label}>
-                {FULL_NAME[marker.label] && <title>{FULL_NAME[marker.label]}</title>}
+              <g
+                key={marker.label}
+                className={fullName ? "cursor-help" : undefined}
+                onMouseEnter={
+                  fullName ? (e) => show(e.currentTarget.getBoundingClientRect(), fullName) : undefined
+                }
+                onMouseLeave={fullName ? hide : undefined}
+              >
+                {fullName && <title>{fullName}</title>}
                 <line
                   x1={x}
                   y1={TRACK_Y - 4}
@@ -172,6 +196,7 @@ export default function TranslationSpectrum({
           })}
         </svg>
       </div>
+      <TooltipBubble state={state} variant="light" />
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-500">
         {standalone
           ? "The translations in translation-method order, "

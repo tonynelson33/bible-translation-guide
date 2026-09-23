@@ -112,13 +112,16 @@ export default async function ChurchFinderPage({
             />
           </div>
 
-          {/* denomination counts */}
-          <div className="lg:w-80 lg:shrink-0">
+          {/* denomination counts — grows past its lg baseline on wider
+              screens so long denomination names (e.g. "Southern Baptist
+              Convention") stop wrapping to a second line. */}
+          <div className="lg:w-80 lg:shrink-0 xl:w-96 2xl:w-[28rem]">
             <CountTable title="Denominations" rows={denominationCounts} />
           </div>
 
-          {/* bible translation counts */}
-          <div className="lg:w-72 lg:shrink-0">
+          {/* bible translation counts — same idea, less room needed since
+              translation names are shorter. */}
+          <div className="lg:w-72 lg:shrink-0 xl:w-80 2xl:w-96">
             <CountTable title="Bible Translations" rows={translationCounts} />
           </div>
         </div>

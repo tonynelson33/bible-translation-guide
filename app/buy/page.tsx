@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const monogramStyles: Record<Philosophy, string> = {
-  Formal: "bg-indigo-600",
+  Formal: "bg-blue-600",
   Dynamic: "bg-amber-600",
   Optimal: "bg-teal-600",
   Mixed: "bg-teal-600",

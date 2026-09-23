@@ -20,7 +20,7 @@ export default function CountTable({ title, rows }: { title: string; rows: Count
           <tbody>
             {rows.map((row, i) => (
               <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-neutral-50/50"}>
-                <td className="px-3 py-1.5 text-neutral-700">{row.label}</td>
+                <td className="whitespace-nowrap px-3 py-1.5 text-neutral-700">{row.label}</td>
                 <td className="px-3 py-1.5 text-right tabular-nums text-neutral-700">
                   {row.count.toLocaleString()}
                 </td>

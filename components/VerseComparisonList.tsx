@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import VersePicker from "@/components/VersePicker";
+import Tooltip from "@/components/Tooltip";
+import { philosophyGlossary, textOnlyClass } from "@/lib/glossary";
 import type { SampleVerse } from "@/lib/data";
 import type { Translation } from "@/lib/types";
 import type { VerseFetchResult } from "@/lib/verseProviders";
@@ -109,19 +111,17 @@ export default function VerseComparisonList({
           </label>
           <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(82px,1fr))] gap-x-3 gap-y-1.5">
             {pickerRows.map(({ translation: t }) => (
-              <label
-                key={t.id}
-                title={t.name}
-                className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900"
-              >
-                <input
-                  type="checkbox"
-                  checked={visible.has(t.id)}
-                  onChange={() => toggle(t.id)}
-                  className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
-                />
-                {t.abbreviation}
-              </label>
+              <Tooltip key={t.id} text={t.name} variant="light">
+                <label className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900">
+                  <input
+                    type="checkbox"
+                    checked={visible.has(t.id)}
+                    onChange={() => toggle(t.id)}
+                    className="h-3.5 w-3.5 rounded border-neutral-300 text-brand-700 focus:ring-brand-600"
+                  />
+                  {t.abbreviation}
+                </label>
+              </Tooltip>
             ))}
           </div>
         </div>
@@ -132,16 +132,21 @@ export default function VerseComparisonList({
           No translations selected — check at least one above to compare.
         </p>
       ) : (
-        <div className="divide-y divide-neutral-100 border-y border-neutral-200">
+        // Capped at max-w-3xl even though the page itself runs wider — the
+        // picker and checkbox panel above benefit from the extra room, but a
+        // serif verse line stretched past ~75 characters gets harder to read,
+        // not easier.
+        <div className="max-w-3xl divide-y divide-neutral-200 border-y border-neutral-200">
           {shownRows.map(({ translation: t, result }) => (
             <div key={t.id} className="py-0.5 sm:grid sm:grid-cols-[3rem_1fr] sm:gap-x-3">
-              <Link
-                href={`/translations/${t.id}`}
-                title={t.name}
-                className="text-xs font-semibold text-brand-800 hover:underline"
-              >
-                {t.abbreviation}
-              </Link>
+              <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
+                <Link
+                  href={`/translations/${t.id}`}
+                  className={`text-xs font-semibold hover:underline ${textOnlyClass(philosophyGlossary[t.philosophy].className)}`}
+                >
+                  {t.abbreviation}
+                </Link>
+              </Tooltip>
               {result.status === "ok" && result.text ? (
                 <p
                   className="font-serif leading-tight text-neutral-800"

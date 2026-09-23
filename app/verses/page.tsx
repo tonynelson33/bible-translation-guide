@@ -56,12 +56,12 @@ export default function VersesPage({
   }));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
         <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
           Comparison of Popular Verses
         </h1>
-        <p className="mt-3 text-neutral-600">
+        <p className="mt-3 max-w-2xl text-neutral-600">
           Pick a well-known passage and read down the list. It runs word-for-word at the top to
           thought-for-thought at the bottom, so the rows closest together are the ones most alike.
         </p>
@@ -69,7 +69,7 @@ export default function VersesPage({
 
       <VerseComparisonList rows={rows} verses={versesInBibleOrder} selectedVerseId={verse.id} />
 
-      <div className="mt-8 space-y-1 text-xs leading-snug text-neutral-400">
+      <div className="mt-8 max-w-3xl space-y-1 text-xs leading-snug text-neutral-400">
         <p>
           Each translation is quoted under its publisher&apos;s permissions for non-commercial
           use, with the required copyright notice below.

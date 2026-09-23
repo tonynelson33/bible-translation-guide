@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
 import ImageZoom from "@/components/ImageZoom";
+import Tooltip from "@/components/Tooltip";
 import { translations } from "@/lib/data";
+import { rankingCategories } from "@/lib/rankings";
+import { philosophyGlossary } from "@/lib/glossary";
+import type { Translation } from "@/lib/types";
 import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/englishBibleHistory";
 
 /**
@@ -14,27 +18,41 @@ import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/engl
  * edition, a papyrus, a Byzantine codex); see lib/englishBibleHistory.ts.
  */
 
+// Same most-literal-to-freest order as /, /verses, and the tiers — not the
+// arbitrary order translations.json happens to list them in.
+const literalOrder =
+  rankingCategories.find((c) => c.slug === "literal")?.entries.map((e) => e.id) ?? [];
+const literalRank = (id: string) => {
+  const i = literalOrder.indexOf(id);
+  return i === -1 ? literalOrder.length : i;
+};
+const byLiteralRank = (a: Translation, b: Translation) => literalRank(a.id) - literalRank(b.id);
+
 const tr = translations
   .filter((t) => t.textualBasis === "Textus Receptus" || t.textualBasis === "Textus Receptus / Majority Text")
-  .map((t) => t.abbreviation);
-const critical = translations
-  .filter((t) => t.textualBasis === "Critical Text")
-  .map((t) => t.abbreviation);
+  .sort(byLiteralRank);
+const critical = translations.filter((t) => t.textualBasis === "Critical Text").sort(byLiteralRank);
 const majorityText = translations
   .filter((t) => t.textualBasis === "Majority Text" || t.textualBasis === "Textus Receptus / Majority Text")
-  .map((t) => t.abbreviation);
+  .sort(byLiteralRank);
 
 const IMG_FILTER = "[filter:sepia(0.24)_saturate(0.86)_contrast(1.03)]";
 
-function AbbrRow({ items }: { items: string[] }) {
+// Colored by philosophy, same as the tree and the tiers, so which zone a
+// textual-basis bucket leans toward is visible at a glance; the tooltip
+// spells out the philosophy too since color is the only cue this row gives.
+function AbbrRow({ items }: { items: Translation[] }) {
   return (
     <ul className="mt-2 flex flex-wrap gap-1.5">
-      {items.map((a) => (
-        <li
-          key={a}
-          className="rounded bg-brand-50 px-1.5 py-0.5 text-xs font-semibold text-brand-800"
-        >
-          {a}
+      {items.map((t) => (
+        <li key={t.id}>
+          <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
+            <span
+              className={`inline-block rounded px-1.5 py-0.5 text-xs font-semibold ${philosophyGlossary[t.philosophy].className}`}
+            >
+              {t.abbreviation}
+            </span>
+          </Tooltip>
         </li>
       ))}
     </ul>
@@ -52,7 +70,7 @@ function Card({
   heading: string;
   sub: string;
   body: string;
-  usedBy?: string[];
+  usedBy?: Translation[];
   image?: HistoryImageData;
   children?: React.ReactNode;
 }) {

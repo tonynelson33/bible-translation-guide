@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import type { RankingCategory, RankingEntry } from "@/lib/rankings";
 import { getTranslation } from "@/lib/data";
+import { philosophyGlossary } from "@/lib/glossary";
 import TranslationSpectrum from "./TranslationSpectrum";
 import Tooltip from "./Tooltip";
 
@@ -44,13 +45,20 @@ function TopEntry({ rank, entry }: { rank: number; entry: RankingEntry }) {
     <li className="flex gap-3 rounded-lg border border-neutral-200 bg-white p-4">
       <RankBadge rank={rank} />
       <div className="min-w-0">
-        <Link
-          href={`/translations/${translation.id}`}
-          className="font-semibold text-brand-800 hover:underline"
-        >
-          {translation.abbreviation}
-          <span className="font-normal text-neutral-500"> — {translation.name}</span>
-        </Link>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <Link
+            href={`/translations/${translation.id}`}
+            className="font-semibold text-brand-800 hover:underline"
+          >
+            {translation.abbreviation}
+            <span className="font-normal text-neutral-500"> — {translation.name}</span>
+          </Link>
+          <span
+            className={`flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${philosophyGlossary[translation.philosophy].className}`}
+          >
+            {translation.philosophy}
+          </span>
+        </div>
         <p className="mt-1 text-sm leading-relaxed text-neutral-700">{entry.blurb}</p>
       </div>
     </li>
@@ -71,6 +79,11 @@ function CompactEntry({ rank, entry }: { rank: number; entry: RankingEntry }) {
           {translation.abbreviation}
         </Link>
       </Tooltip>
+      <span
+        className={`hidden flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium sm:inline-block ${philosophyGlossary[translation.philosophy].className}`}
+      >
+        {translation.philosophy}
+      </span>
       <p className="min-w-0 text-sm leading-snug text-neutral-600">{entry.blurb}</p>
     </li>
   );
@@ -128,7 +141,7 @@ export default function RankingsPage({
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="text-center font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         Rankings
       </h1>

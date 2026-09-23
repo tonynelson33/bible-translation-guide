@@ -157,9 +157,16 @@ text) neutrals. Three fonts via `next/font/google` in `app/layout.tsx`: **Inter*
 (`font-sans`, default), **Newsreader** for all headings (`font-display` — `adjustFontFallback:
 false`, next/font has no metric data for it), and **Lora** for quoted Scripture only
 (`font-serif`). Sweep any new heading to `font-display`; keep `font-serif` for verse text.
-Philosophy pills (`lib/glossary.ts`) — **three** zones, not four: indigo (Formal), teal (Optimal
-*and* Mixed — they share the mediating middle), amber (Dynamic). Used consistently on `/`, the
-profiles, `ComparisonTable`, `/buy` monograms, and both spectrum components.
+Philosophy pills (`lib/glossary.ts`) — **three** zones, not four: blue (Formal), teal (Optimal
+*and* Mixed — they share the "Balanced" middle, the diagrams' display label for that merged
+zone), amber (Dynamic). Used consistently on `/`, the profiles, `ComparisonTable`, `/buy`
+monograms, both spectrum components, the rankings, the tiers' chips, and the family tree's
+`Philosophy` type (its own local 4-zone version — Formal/Balanced/Dynamic/Paraphrase — colored to
+match). Gender-approach pills (also `lib/glossary.ts`) echo the same blue/green/amber run —
+Traditional/Moderate/Inclusive — deliberately green rather than teal so the two pills never
+coincidentally match when shown side by side. `lib/glossary.ts`'s `textOnlyClass()` strips the
+`bg-*` token from a pill's className for the one spot too width-constrained for a filled pill (the
+`/verses` row label).
 `components/TranslationSpectrum.tsx` (the full SVG, `/rankings` "Most Literal" tab + `/` — pass
 `standalone` when it's not under a ranked list); `components/SpectrumStrip.tsx` (the slim
 label-free three-band motif; footer + landing; caller sets the height class).

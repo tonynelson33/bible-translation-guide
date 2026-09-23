@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getTranslation } from "@/lib/data";
 import { rankingCategories } from "@/lib/rankings";
+import { philosophyGlossary } from "@/lib/glossary";
 import Tooltip from "./Tooltip";
 
 type Tier = {
@@ -67,8 +68,11 @@ const tiers: Tier[] = rawTiers.map((tier) => ({
 // fill is. All four cards stay white/near-white: a full-bleed dark card read
 // as overpowering, especially next to how much navy text the rest of the
 // site already uses for translation names and headings. Deliberately not the
-// philosophy spectrum's indigo/teal/amber palette either — this is a
-// different axis (recognition, not translation method).
+// philosophy spectrum's palette for the card itself — recognition tier and
+// translation method are different axes. The chips inside each card are a
+// different story: they're colored by philosophy (see chipClass below), same
+// as everywhere else on the site, so both axes read at a glance without the
+// card's own tier styling conflating them.
 const styles = [
   {
     indent: "",
@@ -101,7 +105,7 @@ const styles = [
 ];
 
 const chipClass =
-  "rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm font-medium text-brand-900 transition-colors hover:border-gild-300 hover:bg-gild-50";
+  "rounded-full px-3 py-1 text-sm font-medium transition-shadow hover:shadow-sm hover:ring-1 hover:ring-inset hover:ring-black/10";
 
 export default function TranslationTiers() {
   return (
@@ -126,8 +130,11 @@ export default function TranslationTiers() {
                     const t = getTranslation(id);
                     if (!t) return null;
                     return (
-                      <Tooltip key={id} text={t.name}>
-                        <Link href={`/translations/${id}`} className={chipClass}>
+                      <Tooltip key={id} text={`${t.name} — ${t.philosophy}`}>
+                        <Link
+                          href={`/translations/${id}`}
+                          className={`${chipClass} ${philosophyGlossary[t.philosophy].className}`}
+                        >
                           {t.abbreviation}
                         </Link>
                       </Tooltip>

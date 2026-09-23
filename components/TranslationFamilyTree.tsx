@@ -1,10 +1,15 @@
+"use client";
+
+import { useHoverTooltip } from "@/lib/useHoverTooltip";
+import TooltipBubble from "./TooltipBubble";
+
 /**
  * A family tree for /history: how the site's twenty-six English Bible
  * translations descend (or don't) from the King James Version. Extended
  * 2026-09-18 from the original twelve to all twenty-six, once the other
  * fourteen (BSB, WEB, GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, VOICE,
  * LSV, MSB, MSG) were added to the site for real. Every box is
- * colored by its translation philosophy (indigo/teal/amber — the same
+ * colored by its translation philosophy (blue/teal/amber — the same
  * colors as lib/glossary.ts and the spectrum; a fourth stone tone marks
  * The Message as a paraphrase, off that axis entirely): filled with that
  * color, it's one of the twenty-six; white (same border, same weight —
@@ -46,19 +51,22 @@
  *
  * A short code after the year marks New Testament textual basis (TR/CT/MT).
  * Every abbreviation carries a native SVG <title> tooltip spelling out the
- * full name on hover.
+ * full name on hover (kept for screen readers and keyboard users) plus a
+ * hand-hovered fast popup on top (mouse enter/leave via `useHoverTooltip`) —
+ * a native title alone has a slow, OS-level hover delay that read as
+ * sluggish next to the rest of the site's instant tooltips.
  */
 
-type Philosophy = "Formal" | "Mediating" | "Dynamic" | "Paraphrase";
+type Philosophy = "Formal" | "Balanced" | "Dynamic" | "Paraphrase";
 type TextualBasis = "TR" | "CT" | "MT" | "TR/MT";
 
-// Same four hues as lib/glossary.ts's philosophy pills (indigo/teal/amber,
+// Same four hues as lib/glossary.ts's philosophy pills (blue/teal/amber,
 // plus stone for the paraphrase) — its own map since SVG needs fill-*/
 // stroke-* classes rather than glossary's bg-*/text-*, but the colors
 // match on purpose.
 const PHIL: Record<Philosophy, { fill: string; text: string; border: string }> = {
-  Formal: { fill: "fill-indigo-50", text: "fill-indigo-700", border: "stroke-indigo-500" },
-  Mediating: { fill: "fill-teal-50", text: "fill-teal-700", border: "stroke-teal-500" },
+  Formal: { fill: "fill-blue-50", text: "fill-blue-700", border: "stroke-blue-500" },
+  Balanced: { fill: "fill-teal-50", text: "fill-teal-700", border: "stroke-teal-500" },
   Dynamic: { fill: "fill-amber-50", text: "fill-amber-700", border: "stroke-amber-500" },
   Paraphrase: { fill: "fill-stone-100", text: "fill-stone-700", border: "stroke-stone-500" },
 };
@@ -136,7 +144,7 @@ const nodes: Node[] = [
   { id: "nrsv", label: "NRSV", year: 1989, cx: 540, basis: "CT", phil: "Formal" },
   { id: "lsb", label: "LSB", year: 2021, cx: 660, current: true, basis: "CT", phil: "Formal" },
   { id: "nrsvue", label: "NRSVue", year: 2021, cx: 540, w: 84, current: true, basis: "CT", phil: "Formal" },
-  { id: "bsb", label: "BSB", year: 2023, cx: 660, current: true, basis: "CT", phil: "Mediating" },
+  { id: "bsb", label: "BSB", year: 2023, cx: 660, current: true, basis: "CT", phil: "Balanced" },
 
   // The KJV's own TR spine: Tyndale -> KJV -> {RV (left), NKJV, MEV}. The
   // MEV's own FAQ (modernenglishversion.com/faq) calls it in so many words
@@ -154,7 +162,7 @@ const nodes: Node[] = [
   { id: "ylt", label: "YLT", year: 1862, cx: 1000, basis: "TR", phil: "Formal" },
   { id: "lsv", label: "LSV", year: 2020, cx: 1050, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
   { id: "web", label: "WEB", year: 2020, cx: 1170, current: true, basis: "MT", phil: "Formal" },
-  { id: "msb", label: "MSB", year: 2023, cx: 1170, current: true, basis: "MT", phil: "Mediating" },
+  { id: "msb", label: "MSB", year: 2023, cx: 1170, current: true, basis: "MT", phil: "Balanced" },
 ];
 
 // The eleven with no documented lineage of their own: not part of the real
@@ -167,15 +175,15 @@ const INDEP_CX = 75;
 const independents: Node[] = [
   { id: "gnt", label: "GNT", year: 1976, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "cev", label: "CEV", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "gw", label: "GW", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "gw", label: "GW", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
   { id: "nlt", label: "NLT", year: 1996, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "message", label: "MSG", year: 2002, cx: INDEP_CX, current: true, basis: "CT", phil: "Paraphrase" },
-  { id: "net", label: "NET", year: 2005, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "net", label: "NET", year: 2005, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
   { id: "ceb", label: "CEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "isv", label: "ISV", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "isv", label: "ISV", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
   { id: "leb", label: "LEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Formal" },
   { id: "voice", label: "VOICE", year: 2012, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "csb", label: "CSB", year: 2017, cx: INDEP_CX, current: true, basis: "CT", phil: "Mediating" },
+  { id: "csb", label: "CSB", year: 2017, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
 ].sort((a, b) => a.year - b.year) as Node[];
 
 // Independents' own vertical rhythm — chosen so the eleven-row stack lands
@@ -288,16 +296,22 @@ function BracketRow({ bandTop }: { bandTop: number }) {
 }
 
 function NodeBox({
-  x, y, w, cx, current, label, year, basis, phil, title,
+  x, y, w, cx, current, label, year, basis, phil, title, onHover, onLeave,
 }: {
   x: number; y: number; w: number; cx: number; current?: boolean;
   label: string; year: string; basis: TextualBasis; phil: Philosophy; title?: string;
+  onHover?: (rect: DOMRect, text: string) => void;
+  onLeave?: () => void;
 }) {
   const style = PHIL[phil];
   const labelColor = current ? style.text : "fill-neutral-700";
   const metaColor = current ? style.text : "fill-neutral-400";
   return (
-    <g>
+    <g
+      className={title ? "cursor-help" : undefined}
+      onMouseEnter={title && onHover ? (e) => onHover(e.currentTarget.getBoundingClientRect(), title) : undefined}
+      onMouseLeave={title ? onLeave : undefined}
+    >
       <rect
         x={x} y={y} width={w} height={BOX_H} rx="5"
         strokeWidth={1.5}
@@ -314,9 +328,11 @@ function NodeBox({
 }
 
 export default function TranslationFamilyTree() {
+  const { state, show, hide } = useHoverTooltip();
+
   return (
     <figure className="mt-6">
-      <div className="rounded-lg border border-neutral-200 bg-paper p-4">
+      <div className="rounded-lg border-2 border-brand-900 bg-paper p-4">
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
           className="mx-auto block h-auto w-full max-w-[1240px]"
@@ -365,7 +381,7 @@ export default function TranslationFamilyTree() {
             const p = box(n.id);
             return (
               <g key={n.id}>
-                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
+                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} onHover={show} onLeave={hide} />
               </g>
             );
           })}
@@ -373,20 +389,21 @@ export default function TranslationFamilyTree() {
             const p = box(n.id);
             return (
               <g key={n.id}>
-                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} />
+                <NodeBox {...p} current={n.current} label={n.label} year={String(n.year)} basis={n.basis} phil={n.phil} title={FULL_NAME[n.id]} onHover={show} onLeave={hide} />
               </g>
             );
           })}
         </svg>
       </div>
+      <TooltipBubble state={state} variant="light" />
 
       <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-neutral-200 pt-3 text-[11px] text-neutral-500">
         <span className="font-semibold text-neutral-600">Fill = philosophy:</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-indigo-500 bg-indigo-50" />Formal</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-teal-500 bg-teal-50" />Mediating</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-blue-500 bg-blue-50" />Formal</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-teal-500 bg-teal-50" />Balanced</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-amber-500 bg-amber-50" />Dynamic</span>
         <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-stone-500 bg-stone-100" />Paraphrase</span>
-        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-neutral-400 bg-white" />White fill = not one of the twenty-six</span>
+        <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm border border-neutral-400 bg-white" />White fill = not one of the site&rsquo;s twenty-six</span>
         <span className="font-semibold text-neutral-600">Hover any abbreviation for its full name.</span>
       </div>
 

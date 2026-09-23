@@ -1,8 +1,8 @@
 /**
  * The four translation-philosophy zones as a slim bar — the site's recurring
- * visual motif. Formal (indigo), the mediating middle that holds both
- * Optimal and Mixed (teal, still one zone, not split — they share the
- * mediating middle by design), Dynamic (amber), and Paraphrase (stone, added
+ * visual motif. Formal (blue), the balanced middle that holds both Optimal
+ * and Mixed (teal, still one zone, not split — they share the balanced
+ * middle by design), Dynamic (amber), and Paraphrase (stone, added
  * 2026-09-18 alongside The Message). Widths echo how the twenty-six cluster
  * on the full spectrum (components/TranslationSpectrum.tsx). The bar itself
  * stays decorative (aria-hidden); pass `showLabels` to add the zone names
@@ -11,8 +11,8 @@
  * strip.
  */
 const ZONES = [
-  { name: "Formal", method: "word-for-word", flex: 3, bg: "bg-indigo-300" },
-  { name: "Mediating", method: "optimal + mixed", flex: 2.1, bg: "bg-teal-300" },
+  { name: "Formal", method: "word-for-word", flex: 3, bg: "bg-blue-300" },
+  { name: "Balanced", method: "optimal + mixed", flex: 2.1, bg: "bg-teal-300" },
   { name: "Dynamic", method: "thought-for-thought", flex: 2.4, bg: "bg-amber-300" },
   { name: "Paraphrase", method: "freely restated", flex: 0.6, bg: "bg-stone-300" },
 ];
