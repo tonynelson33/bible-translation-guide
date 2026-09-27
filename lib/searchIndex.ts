@@ -75,6 +75,11 @@ const faqQuestions: { id: string; q: string; group: string }[] = [
   },
   { id: "why-so-many", q: "Why are there so many English translations?", group: "The bigger picture" },
   {
+    id: "inerrancy",
+    q: "If there are twenty-six different translations, how can the Bible be inerrant?",
+    group: "The bigger picture",
+  },
+  {
     id: "why-these-26",
     q: "Why these twenty-six translations, and not others?",
     group: "The bigger picture",

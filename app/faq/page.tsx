@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many and why this site covers these particular twenty-six, whether modern Bibles removed verses, KJV-onlyism, the 1611 King James versus today's, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
+    "Straight answers to the common questions about English Bible translations — the most accurate translation, why there are so many and why this site covers these particular twenty-six, whether that many translations threatens inerrancy, whether modern Bibles removed verses, KJV-onlyism, the 1611 King James versus today's, paraphrases, which translations use the Majority Text, and the manuscripts behind the text.",
   alternates: { canonical: "/faq" },
 };
 
@@ -418,6 +418,41 @@ const groups: Group[] = [
         ),
         plain:
           "Several reasons: English keeps changing, so older translations need updating; manuscript discoveries like the Dead Sea Scrolls gave later translators better source texts; scholars disagree about how literal a translation should be and how to handle gender language; and most major translations are owned by a publisher with an interest in having its own. Most English translations since about 1970 belong to a few families descending from the King James Version and the 1952 Revised Standard Version.",
+      },
+      {
+        id: "inerrancy",
+        q: "If there are twenty-six different translations, how can the Bible be inerrant?",
+        a: (
+          <>
+            <p>
+              Inerrancy, in the way most churches that use the term define it, applies to the
+              Bible&rsquo;s original manuscripts as the biblical authors wrote them. It doesn&rsquo;t
+              apply to any particular copy or translation. Statements of the doctrine, like the
+              widely cited Chicago Statement on Biblical Inerrancy, are explicit on this point:
+              inspiration belongs to the autographic text, and a translation carries that authority
+              only so far as it faithfully represents it.
+            </p>
+            <p>
+              This isn&rsquo;t a problem that having twenty-six English options created. No
+              autograph of any biblical book survives, in any language.{" "}
+              <Link href="/history#manuscripts">Every Bible anyone has ever read has been a
+              copy, or a translation of a copy</Link>. That&rsquo;s been true for two thousand
+              years, not just since this site had options to compare. Textual criticism
+              and careful translation exist for exactly this reason: to recover and render that
+              original text as faithfully as the evidence allows.
+            </p>
+            <p>
+              What twenty-six translations actually show, set side by side, is how little room
+              there is left to disagree. <Link href="/differences">The differences page</Link>{" "}
+              catalogs the visible ones, and nearly all of them are about clarity of expression,
+              not about what happened or what was taught. Two committees choosing different
+              English words and still landing on the same meaning is evidence the underlying text
+              held together, not evidence it didn&rsquo;t.
+            </p>
+          </>
+        ),
+        plain:
+          "Inerrancy, in the way most churches that use the term define it, applies to the Bible's original manuscripts as written, not to any copy or translation. Statements of the doctrine, including the widely cited Chicago Statement on Biblical Inerrancy, are explicit on this point. No autograph of any biblical book survives in any language, so every Bible ever read has always been a copy or a translation of a copy. That has been true for two thousand years; it isn't a new problem created by having twenty-six English options. Textual criticism and careful translation exist to recover and render that original text as faithfully as the evidence allows. Comparing translations shows how little room there actually is to disagree: differences between them are almost always about clarity of expression, not about what happened or what was taught.",
       },
       {
         id: "why-these-26",
