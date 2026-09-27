@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://bibletranslationguide.vercel.app/sitemap.xml",
+    sitemap: "https://bibletranslationguide.com/sitemap.xml",
   };
 }

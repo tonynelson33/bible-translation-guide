@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { translations } from "@/lib/data";
 
-const baseUrl = "https://bibletranslationguide.vercel.app";
+const baseUrl = "https://bibletranslationguide.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

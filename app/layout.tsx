@@ -37,7 +37,7 @@ const siteDescription =
   "A clear, side-by-side comparison of twenty-six English Bible translations — from the KJV to the NLT — covering translation philosophy, reading level, textual basis, and more.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bibletranslationguide.vercel.app"),
+  metadataBase: new URL("https://bibletranslationguide.com"),
   title: {
     default: "BibleTranslationGuide — Compare Bible Translations",
     template: "%s — BibleTranslationGuide",
