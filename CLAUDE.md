@@ -407,15 +407,27 @@ All call helpers in `lib/churchSuggestions.ts`. Review all four types by hand in
 dashboard (`select … where status = 'pending'`); `site_correction` rows put the page hint at
 the front of `note` as `[page] …`.
 
-**Email notification on new submissions** (added 2026-09-21, confirmed live same day): a
-Postgres trigger (`add_church_suggestion_email_notification` migration; `pg_net`, async, so it
-never blocks the visitor's own submit) fires on every `church_suggestions` insert, POSTing the
-row to `app/api/notify-submission/route.ts`, which emails a summary to the site owner via
-Resend (from Resend's shared `onboarding@resend.dev` sandbox address — no custom domain
-verified yet). The route checks a shared secret header (`SUBMISSION_WEBHOOK_SECRET`, matched
-against the value hardcoded in the trigger function) before doing anything; without
-`RESEND_API_KEY` set it just logs and no-ops, so a submission's own success never depends on
-this working.
+**Email notification on new submissions** (added 2026-09-21, confirmed live same day; webhook
+URL repointed to the custom domain and burst-capped 2026-09-27): a Postgres trigger
+(`notify_new_church_suggestion` function, most recently replaced by the
+`cap_notification_emails_during_submission_bursts` migration; `pg_net`, async, so it never blocks
+the visitor's own submit) fires on every `church_suggestions` insert, POSTing the row to
+`app/api/notify-submission/route.ts`, which emails a summary to the site owner via Resend (from
+Resend's shared `onboarding@resend.dev` sandbox address — no custom domain verified yet). The
+route checks a shared secret header (`SUBMISSION_WEBHOOK_SECRET`, matched against the value
+hardcoded in the trigger function) before doing anything; without `RESEND_API_KEY` set it just
+logs and no-ops, so a submission's own success never depends on this working. **Burst cap**: the
+trigger counts `church_suggestions` rows from the last 10 minutes before emailing, and skips the
+`net.http_post` call (not the insert — the row still saves normally either way) once that count
+passes 5. Sliding window, so it recovers on its own once a burst passes; no manual reset. This is
+the actual rate-limiting on this form — the honeypot in `SiteCorrectionForm`/`AddChurchForm`
+catches naive bots, but does nothing against a script that skips hidden fields or a human
+double-submitting, and unlike a raw insert-flood (harmless — RLS already blocks anon from reading
+its own spam back out), an *email* flood is real, immediate annoyance to the owner. True
+per-source rate-limiting on the insert itself would mean moving the form's write off the direct
+browser→Supabase path and through a Next.js API route with a real limiter (e.g. Upstash) —
+deliberately not done, since RLS already caps the actual damage a flood of rows can do and this is
+a bigger architectural change than the risk currently justifies.
 
 **`website`** (added 2026-08-30, nullable, on both `churches` and `church_suggestions`): an
 optional church homepage. Stored as a full `https://…` URL. `lib/website.ts` `normalizeWebsite()`
