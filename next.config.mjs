@@ -25,6 +25,11 @@ const nextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          // Added once the real domain's HTTPS was confirmed stable
+          // (2026-09-27). No `preload` — that means submitting to
+          // browsers' built-in preload lists, which takes months to undo
+          // if this domain ever needs to serve plain HTTP again.
+          { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
         ],
       },
     ];
