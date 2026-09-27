@@ -100,7 +100,10 @@ const sections: { title: string; body: ReactNode }[] = [
           &ldquo;update information&rdquo; link, and there&rsquo;s a form to add one that&rsquo;s
           missing. For anything else &mdash; a wrong date, a misquoted verse, an out-of-step
           permission figure, a broken link &mdash; use the form below. It goes to a review queue,
-          not straight onto the page.
+          not straight onto the page. For anything that doesn&rsquo;t fit a form, or that needs a
+          reply, email{" "}
+          <a href="mailto:contact@bibletranslationguide.com">contact@bibletranslationguide.com</a>{" "}
+          directly.
         </p>
         <SiteCorrectionForm />
       </>

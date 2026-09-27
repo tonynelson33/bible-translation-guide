@@ -104,9 +104,9 @@ const sections: { title: string; body: ReactNode }[] = [
     title: "Copyright concerns",
     body: (
       <p>
-        If you believe something on this site infringes a copyright you hold, use the{" "}
-        <Link href="/about">correction form on the About page</Link> to describe the issue
-        &mdash; including what&rsquo;s affected and where &mdash; and it&rsquo;ll be looked at.
+        If you believe something on this site infringes a copyright you hold, email{" "}
+        <a href="mailto:contact@bibletranslationguide.com">contact@bibletranslationguide.com</a>{" "}
+        with what&rsquo;s affected and where, and it&rsquo;ll be looked at.
       </p>
     ),
   },

@@ -96,9 +96,9 @@ const sections: { title: string; body: ReactNode }[] = [
     title: "Questions",
     body: (
       <p>
-        The <Link href="/about">correction form on the About page</Link> reaches the person who
-        runs this site &mdash; that&rsquo;s the fastest way to ask a question about anything
-        here.
+        Email <a href="mailto:contact@bibletranslationguide.com">contact@bibletranslationguide.com</a>,
+        or use the <Link href="/about">correction form on the About page</Link> for anything about
+        a specific listing &mdash; either reaches the person who runs this site.
       </p>
     ),
   },
