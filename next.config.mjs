@@ -3,6 +3,18 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      // The old bibletranslationguide.vercel.app address (the site's home until
+      // the custom domain went live 2026-09-27) still resolves, but forwards to
+      // the real domain instead of serving a second full copy of every page.
+      // Matches that one production host only, so branch/preview deployments
+      // (their own *.vercel.app hosts) are untouched. Listed first so a legacy
+      // path like /choose forwards to the real domain before its own rule runs.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "bibletranslationguide\\.vercel\\.app" }],
+        destination: "https://bibletranslationguide.com/:path*",
+        permanent: true,
+      },
       // The profiled translation is the 2021 Updated Edition; the old slug still
       // gets shared around, and the church-finder stores "NRSV".
       { source: "/translations/nrsv", destination: "/translations/nrsvue", permanent: true },

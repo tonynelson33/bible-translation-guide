@@ -60,7 +60,11 @@ longer "Popular Verses" pushed the bar into the logo near 1024px) but its h1/tit
 "Comparison of Popular Verses" and the footer says "Popular verses side by side".
 Footer (`components/SiteFooter.tsx`) is a four-column layout led by a `SpectrumStrip`. When you
 add a route to the nav/footer, add it to `app/sitemap.ts` too. `next.config.mjs` has the
-redirects: `/translations/nrsv` → `/translations/nrsvue`, `/choose` → `/rankings`.
+redirects: `/translations/nrsv` → `/translations/nrsvue`, `/choose` → `/rankings`, and (added
+2026-10-07, listed first) the old `bibletranslationguide.vercel.app` host → the `.com`, so
+Google can't treat the two addresses as duplicate copies. It's a host-matched rule on that one
+production alias only, so branch/preview deployments (their own `*.vercel.app` hosts) still work
+for review.
 
 The current 12: CSB, ESV, KJV, NIV, NLT, LSB, NKJV, NASB, NET (the original 9), plus NRSVue, CEB,
 AMP (added 2026-09-06 — NRSVue as `nrsv`, renamed 2026-09-08 since the verse text is the 2021
