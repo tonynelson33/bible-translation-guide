@@ -1005,6 +1005,16 @@ export default function ManuscriptsPage() {
           reading, and use that instead, usually with a footnote. Translations disagree about which
           verses those should be.
         </InShort>
+        <div className="mt-5 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
+          <h3 className="font-semibold text-brand-900">Why no rival Old Testament text?</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            Because the Masoretic Text is the only complete Hebrew Old Testament. The Dead Sea
+            Scrolls are mostly fragments, and the Septuagint is a Greek translation, so neither can
+            replace it, only correct it in individual verses. That is why New Testament
+            translations can differ in thousands of places, while Old Testament translations
+            differ in a much smaller number of verses.
+          </p>
+        </div>
         <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
           <p>
             This is where the Dead Sea Scrolls matter. They are about a thousand years older than
