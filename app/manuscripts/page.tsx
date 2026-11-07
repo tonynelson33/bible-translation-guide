@@ -70,6 +70,11 @@ function Section({ id, children }: { id: string; children: React.ReactNode }) {
     <section id={id} className="mt-14 scroll-mt-20 border-t border-neutral-200 pt-10">
       <SectionHeading id={id} />
       {children}
+      <p className="mt-6 text-right text-sm">
+        <a href="#top" className="text-neutral-500 hover:text-brand-700 hover:underline">
+          ↑ Back to top
+        </a>
+      </p>
     </section>
   );
 }
@@ -489,7 +494,7 @@ const deskRows: { topic: string; kjv: string; today: string }[] = [
   },
   {
     topic: "How they see the evidence",
-    kjv: "A few printed books. Editions that list how other manuscripts differ didn’t exist yet.",
+    kjv: "A few printed books. Estienne’s 1550 edition was the first to note differing readings in its margins, from about 15 manuscripts. Beza’s editions added a few more.",
     today:
       "Printed editions whose footnotes (the apparatus) list where thousands of copies disagree and which ones say what.",
   },
@@ -497,7 +502,7 @@ const deskRows: { topic: string; kjv: string; today: string }[] = [
 
 export default function ManuscriptsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+    <div id="top" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         Bible Manuscripts 101
       </h1>
@@ -533,8 +538,9 @@ export default function ManuscriptsPage() {
         </InShort>
         <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
           <p>
-            The books of the Bible were written over many centuries. The originals were written
-            by hand, and they wore out. None of them survives today.
+            The Old Testament was written over more than a thousand years. The New Testament was
+            written in about AD 50–100. The originals were written by hand, and they wore out. None
+            of them survives today.
           </p>
           <p>
             What survives are copies, and copies of copies. Before printing, every Bible was
@@ -542,6 +548,12 @@ export default function ManuscriptsPage() {
             a skipped line or a misspelled word. Because so many copies survive, scholars can
             compare them and usually work out the original wording. That work is called{" "}
             <strong>textual criticism</strong>.
+          </p>
+          <p>
+            How close are the copies to the originals? The oldest New Testament copies were made
+            within about 100 to 300 years of the originals. For the Old Testament the gap is
+            longer: even the Dead Sea Scrolls were copied centuries after most of its books were
+            written.
           </p>
           <p>
             These old handwritten copies are called <strong>manuscripts</strong>. The rest of
@@ -676,10 +688,6 @@ export default function ManuscriptsPage() {
           rowKey={(m) => m.id}
           columns={manuscriptColumns(false)}
         />
-        <div className="mt-6 grid gap-5 sm:grid-cols-2">
-          <Pic image={historyImages.leningrad} label="Leningrad Codex" sub="The oldest complete Hebrew Bible, AD 1008" />
-          <Pic image={historyImages.isaiahScroll} label="Great Isaiah Scroll" sub="A Dead Sea Scroll, about 125 BC" />
-        </div>
       </Section>
 
       {/* 5 */}
@@ -734,10 +742,17 @@ export default function ManuscriptsPage() {
           rowKey={(m) => m.id}
           columns={manuscriptColumns(true)}
         />
-        <div className="mt-6 grid gap-5 sm:grid-cols-3">
-          <Pic image={historyImages.papyrus52} label="Papyrus 52" sub="AD 100s" />
-          <Pic image={historyImages.codexSinaiticus} label="Codex Sinaiticus" sub="About AD 330–360 (shown in an 1862 facsimile)" />
-          <Pic image={historyImages.codexWashingtonianus} label="Codex Washingtonianus" sub="About AD 400" />
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <Pic
+            image={historyImages.codexSinaiticus}
+            label="Codex Sinaiticus (Alexandrian family)"
+            sub="About AD 330–360, shown in an 1862 facsimile"
+          />
+          <Pic
+            image={historyImages.boreelianus}
+            label="Codex Boreelianus (Byzantine family)"
+            sub="A Gospel book from the AD 800s"
+          />
         </div>
       </Section>
 
@@ -860,6 +875,12 @@ export default function ManuscriptsPage() {
           the manuscripts where the copies disagree.
         </InShort>
         <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
+          Think of each one as a book on a translator’s desk. Translators translate from one of
+          these printed books, not from the manuscripts themselves. The Textus Receptus is the
+          printed text Erasmus first made from his handful of manuscripts. The Critical Text and
+          Majority Text are each a method, plus the printed books that method produces.
+        </p>
+        <p className="mt-3 max-w-3xl leading-relaxed text-neutral-700">
           The Dead Sea Scrolls play no part here, because they are Hebrew copies of the Old
           Testament. The Old Testament faces the same kind of question in its own way, covered in
           section 10.
@@ -901,7 +922,10 @@ export default function ManuscriptsPage() {
               </ul>
             </div>
             <HistoryImage
-              image={historyImages.erasmus1516}
+              image={{
+                ...historyImages.erasmus1516,
+                caption: "The last page of Erasmus’s 1516 Greek New Testament: his Greek beside his own Latin.",
+              }}
               className="mt-5 max-w-[14rem] sm:mt-0 sm:max-w-none"
               sizes="(max-width: 639px) 14rem, 12rem"
             />
@@ -924,7 +948,7 @@ export default function ManuscriptsPage() {
             oneLine="A Greek New Testament rebuilt verse by verse by weighing all the evidence."
             kind="Both a method and the printed text it produces. The method is to compare all the evidence and judge, in each disputed spot, which wording is most likely original."
             how="Editors weigh how old each reading is, how widely it spread, and which reading best explains how the others came about."
-            builtFrom="The whole body of evidence: about 5,700 Greek manuscripts, the early translations, and quotations by early church writers. In practice, the oldest copies carry the most weight, and most of those are Alexandrian. The first major edition was by Westcott and Hort in 1881."
+            builtFrom="The whole body of evidence: about 5,700 Greek manuscripts, the early translations, and quotations by early church writers. In practice, the oldest copies carry the most weight, and most of those are Alexandrian. Its best-known early edition was by Westcott and Hort in 1881."
             leans="Alexandrian"
             printed="Nestle-Aland 28th edition (2012) and United Bible Societies 5th edition (2014). Both print the same text."
             usedBy={ctTranslations}
@@ -988,6 +1012,11 @@ export default function ManuscriptsPage() {
             have to choose.
           </p>
           <p>
+            Translators also check early translations of the Old Testament, such as the Latin
+            Vulgate, the Syriac Peshitta and the Aramaic paraphrases called Targums. They show
+            what the Hebrew copies of their day said.
+          </p>
+          <p>
             Some translations keep the Masoretic reading more often, and others adopt the older
             readings more often. But no translation does either every time. Here are three real
             examples across ten widely used translations.
@@ -1028,6 +1057,15 @@ export default function ManuscriptsPage() {
             and the woman caught in adultery (John 7:53–8:11). But they are a small share of the
             whole. Christians on every side of these debates generally agree that no core belief
             depends on a disputed reading.
+          </p>
+          <p>
+            One famous case shows how a difference can arise. 1 John 5:7 in the KJV reads “For
+            there are three that bear record in heaven, the Father, the Word, and the Holy Ghost:
+            and these three are one.” That sentence is in many later copies of the Latin Vulgate,
+            but only a handful of Greek manuscripts have it, all of them late. Erasmus left it out of his first edition in 1516. He added it in
+            his third edition, in 1522, after a single Greek manuscript with the sentence was
+            produced. From there it passed into the Textus Receptus and the KJV. Most modern
+            translations leave it out or put it in a footnote.
           </p>
           <p>
             To see the differences for yourself, the{" "}

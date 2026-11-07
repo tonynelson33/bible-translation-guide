@@ -69,7 +69,7 @@ export const otManuscripts: ManuscriptRow[] = [
   {
     id: "dead-sea-scrolls",
     name: "Dead Sea Scrolls",
-    what: "Jewish scrolls hidden in caves near the Dead Sea. The oldest Old Testament copies ever found.",
+    what: "Jewish scrolls hidden in caves near the Dead Sea. The oldest Old Testament manuscripts of any real size ever found.",
     language: "Mostly Hebrew; some Aramaic and Greek",
     contains:
       "About 230 biblical scrolls, mostly fragments, out of over 900 scrolls in all. Every book except Esther.",
@@ -80,7 +80,7 @@ export const otManuscripts: ManuscriptRow[] = [
   {
     id: "septuagint",
     name: "Septuagint",
-    what: "A Greek translation of the Hebrew Scriptures, made by Jews in Egypt before the time of Jesus. New Testament writers often quote it.",
+    what: "A Greek translation of the Hebrew Scriptures, begun by Jews in Egypt before the time of Jesus. The name means “seventy,” from an old story about 70 translators, so it is often written LXX. New Testament writers often quote it.",
     language: "Greek",
     contains:
       "The whole Old Testament. Over 1,500 copies and fragments were catalogued by 1914. The fullest are inside Vaticanus, Sinaiticus and Alexandrinus.",
@@ -131,7 +131,7 @@ export const ntKinds: ManuscriptKind[] = [
     name: "Majuscules",
     count: "about 280",
     description:
-      "Copies on parchment written in all capital letters, mostly from the AD 300s to 900s. Some are nearly complete Bibles.",
+      "Also called uncials. Copies on parchment written in all capital letters, mostly from the AD 300s to 900s. Some are nearly complete Bibles.",
   },
   {
     name: "Minuscules",
@@ -173,7 +173,7 @@ export const ntManuscripts: ManuscriptRow[] = [
   {
     id: "p66",
     name: "Papyrus 66",
-    what: "An early copy of John in book form.",
+    what: "One of the earliest copies of John’s Gospel.",
     family: "Alexandrian",
     language: "Greek",
     contains: "Most of John",
