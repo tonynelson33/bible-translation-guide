@@ -999,10 +999,11 @@ export default function ManuscriptsPage() {
       {/* 10 */}
       <Section id="ot-choices">
         <InShort>
-          The Old Testament has no TR/CT/MT split, because every translation starts from the same
-          Hebrew text, the Masoretic Text. But there is a real debate: where a Dead Sea Scroll or
-          the Septuagint reads differently, should a translation follow it? Each committee decides
-          verse by verse.
+          Every translation uses the Masoretic Text as its base, and for nearly every verse it
+          simply translates the Masoretic Hebrew. But in a small number of verses, translators
+          decide an older witness, a Dead Sea Scroll or the Septuagint, preserves the better
+          reading, and use that instead, usually with a footnote. Translations disagree about which
+          verses those should be.
         </InShort>
         <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
           <p>
