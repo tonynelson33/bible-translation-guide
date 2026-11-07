@@ -499,9 +499,12 @@ export default function ManuscriptsPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-        Bible manuscripts 101: the copies behind every translation
+        Bible Manuscripts 101
       </h1>
-      <p className="mt-3 max-w-3xl leading-relaxed text-neutral-700">
+      <p className="mt-1 font-display text-xl text-neutral-600 sm:text-2xl">
+        The copies behind every translation
+      </p>
+      <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
         Every English Bible is a translation of something. This page explains what that
         something is: the old handwritten copies of the Bible, what language they are in, how
         many survive, and when they were written and found. With that background, the debate
