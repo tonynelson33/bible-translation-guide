@@ -79,14 +79,16 @@ function Card({
       {image && (
         <ImageZoom
           image={image}
-          className="relative block h-28 w-full border-b border-neutral-200 bg-paper"
+          className="relative block h-72 w-full border-b border-neutral-200 bg-paper"
         >
+          {/* `object-contain`, not `cover`: all three scans are portrait, so a crop showed
+              only a sliver. One fixed height keeps the three cards level. */}
           <Image
             src={image.src}
             alt={image.alt}
             fill
             sizes="(max-width: 640px) 92vw, 260px"
-            className={`object-cover object-top ${IMG_FILTER}`}
+            className={`object-contain p-3 ${IMG_FILTER}`}
           />
         </ImageZoom>
       )}
