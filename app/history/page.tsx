@@ -152,7 +152,7 @@ export default function HistoryPage() {
           page assumes you know. For the full story of the manuscripts themselves &mdash; what
           survives, how old it is, and when it was found &mdash; see{" "}
           <Link href="/manuscripts" className="font-medium text-brand-700 hover:underline">
-            Bible Manuscripts
+            Bible Manuscripts 101
           </Link>
           .
         </p>

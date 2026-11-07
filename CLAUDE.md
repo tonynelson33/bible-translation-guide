@@ -243,7 +243,7 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   under their own label — deliberately outside the diagram since they connect to nothing. All
   twelve are navy (owner ask). If you edit node positions, re-check that edges don't cross and
   the aria-label still matches.
-- **`/manuscripts`** ("Bible Manuscripts", added 2026-11, Learn dropdown + footer, right after
+- **`/manuscripts`** ("Bible Manuscripts 101", added 2026-11, Learn dropdown + footer, right after
   `/history`) — a plain-language walk through the manuscripts behind every translation, built
   for a first-time reader: languages → materials → OT manuscripts → NT manuscripts → families
   (text-types) → a written-vs-access timeline → the translator's desk → TR/CT/MT → OT verse

@@ -1,5 +1,5 @@
 /**
- * Content for /manuscripts ("Bible Manuscripts"). Kept as data so the page component
+ * Content for /manuscripts ("Bible Manuscripts 101"). Kept as data so the page component
  * stays presentational.
  *
  * House rules for this page (the owner asked for it to be readable by someone meeting

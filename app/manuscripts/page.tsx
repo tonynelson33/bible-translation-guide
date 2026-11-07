@@ -23,7 +23,7 @@ import {
 import type { Translation } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Bible Manuscripts: Where the Text Comes From",
+  title: "Bible Manuscripts 101: The Copies Behind Every Translation",
   description:
     "A plain-language guide to the Bible's manuscripts: the Hebrew, Aramaic and Greek copies behind every translation, what they were written on, how many survive, when they were written and found, the manuscript families, and what the Textus Receptus, Critical Text and Majority Text actually are.",
   alternates: { canonical: "/manuscripts" },
@@ -499,7 +499,7 @@ export default function ManuscriptsPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
-        Bible manuscripts: where the text comes from
+        Bible manuscripts 101: the copies behind every translation
       </h1>
       <p className="mt-3 max-w-3xl leading-relaxed text-neutral-700">
         Every English Bible is a translation of something. This page explains what that

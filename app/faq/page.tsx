@@ -234,7 +234,7 @@ const groups: Group[] = [
             <p>
               For the full background &mdash; which manuscripts exist, how old they are, when they
               were found, and what each of the three is built from &mdash; see{" "}
-              <Link href="/manuscripts">Bible Manuscripts</Link>.
+              <Link href="/manuscripts">Bible Manuscripts 101</Link>.
             </p>
           </>
         ),

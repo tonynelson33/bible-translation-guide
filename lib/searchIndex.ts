@@ -196,7 +196,7 @@ const pageItems: SearchItem[] = [
   },
   {
     type: "Page",
-    title: "Bible Manuscripts",
+    title: "Bible Manuscripts 101",
     subtitle: "The Hebrew and Greek copies behind every Bible, and what the TR, CT and MT are.",
     href: "/manuscripts",
     keywords:
