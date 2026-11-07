@@ -64,6 +64,11 @@ const entryCards = [
 // placed near the bottom so the four above still read as the main entry points.
 const goDeeperCards = [
   {
+    href: "/manuscripts",
+    title: "Bible Manuscripts 101",
+    body: "The handwritten copies behind every translation: what survives, how old it is, and what the Textus Receptus, Critical Text and Majority Text really are.",
+  },
+  {
     href: "/history",
     title: "How we got the English Bible",
     body: "Tyndale's martyrdom, the King James Version, and the six-hundred-year story behind the translations above.",
@@ -189,7 +194,7 @@ export default function HomePage() {
 
       {/* Go deeper */}
       <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {goDeeperCards.map((card) => (
             <Link
               key={card.href}
