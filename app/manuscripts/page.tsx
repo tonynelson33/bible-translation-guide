@@ -40,7 +40,7 @@ const sections = [
   { id: "translators-desk", title: "The translator’s desk, then and now" },
   { id: "tr-ct-mt", title: "Textus Receptus, Critical Text, Majority Text" },
   { id: "ot-choices", title: "The Old Testament’s version of the question" },
-  { id: "how-much", title: "How much do they differ?" },
+  { id: "how-much", title: "How much do the manuscripts differ?" },
 ];
 
 const link = "font-medium text-brand-700 hover:underline";
