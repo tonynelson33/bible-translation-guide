@@ -221,6 +221,8 @@ export default function ComparisonTable({ translations }: { translations: Transl
   // sticky nav, keeping the headings in view while you read down the rows.
   // Horizontal position is untouched, so it still tracks the wrapper's own
   // left-scroll, and with JS off the headers just scroll away normally.
+  // The transform goes on each <th>, not the <thead>: iOS Safari doesn't carry a
+  // <thead> transform onto the `position: sticky` name cell, which then scrolled away.
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const thead = theadRef.current;
@@ -233,7 +235,8 @@ export default function ComparisonTable({ translations }: { translations: Transl
       const navH = header?.offsetHeight ?? 0;
       const rect = wrapper.getBoundingClientRect();
       const pinned = rect.top < navH && rect.bottom > navH + thead.offsetHeight;
-      thead.style.transform = pinned ? `translateY(${navH - rect.top}px)` : "";
+      const transform = pinned ? `translateY(${navH - rect.top}px)` : "";
+      for (const th of thead.querySelectorAll("th")) th.style.transform = transform;
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -284,7 +287,7 @@ export default function ComparisonTable({ translations }: { translations: Transl
         className="min-w-full table-fixed border-collapse text-sm [--name-col:8rem] sm:[--name-col:13rem]"
         style={{ width: `calc(var(--name-col) + ${otherColumnsWidth}rem)` }}
       >
-        <thead ref={theadRef} className="relative z-20 [will-change:transform]">
+        <thead ref={theadRef} className="relative z-20">
           <tr className="bg-neutral-50">
             {columns.map((col, i) => {
               const isSticky = i === 0;
@@ -294,7 +297,7 @@ export default function ComparisonTable({ translations }: { translations: Transl
                   key={col.key}
                   scope="col"
                   style={{ width: i === 0 ? "var(--name-col)" : `${col.width}rem` }}
-                  className={`border-b border-neutral-200 bg-neutral-50 px-2 py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
+                  className={`border-b border-neutral-200 bg-neutral-50 px-2 [will-change:transform] py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
                     isSticky
                       ? "sticky left-0 z-20 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1),0_5px_6px_-6px_rgba(0,0,0,0.18)]"
                       : "shadow-[0_5px_6px_-6px_rgba(0,0,0,0.18)]"
