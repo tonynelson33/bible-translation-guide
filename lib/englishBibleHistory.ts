@@ -169,6 +169,15 @@ export const historyImages: Record<string, HistoryImage> = {
       "A page of Codex Sinaiticus, a Greek Bible copied in the fourth century — one of the two oldest substantially complete copies that survive. Shown in Tischendorf’s line-for-line facsimile.",
     credit: "Constantin von Tischendorf, facsimile edition, 1862 — public domain.",
   },
+  codexWashingtonianus: {
+    src: "/history/codex-washingtonianus.jpg",
+    width: 960,
+    height: 733,
+    alt: "Two facing parchment pages of Codex Washingtonianus, worn and browned at the edges, each filled with a single column of Greek capital letters.",
+    caption:
+      "Two facing pages of Codex Washingtonianus, a Gospel book copied around AD 400 — a codex: pages stacked and sewn like a modern book.",
+    credit: "Freer Gallery of Art, Smithsonian Institution, Washington, D.C. — public domain.",
+  },
   isaiahScroll: {
     src: "/history/great-isaiah-scroll.jpg",
     width: 1280,
@@ -210,7 +219,7 @@ export const timeline: TimelineEntry[] = [
     year: "1516 · Basel, Switzerland",
     title: "Erasmus prints the Greek New Testament",
     detail:
-      "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
+      "For the first time the Greek text is available in print. Erasmus worked from about seven medieval manuscripts, with only one incomplete copy of Revelation; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
     images: [historyImages.erasmus1516],
   },
   {

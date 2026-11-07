@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
+import ImageZoom from "@/components/ImageZoom";
 import { translations } from "@/lib/data";
-import { historyImages } from "@/lib/englishBibleHistory";
+import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/englishBibleHistory";
 import {
-  families,
+  KJV_YEAR,
+  mainFamilies,
+  minorFamilies,
   ntKinds,
   ntManuscripts,
   otExamples,
   otManuscripts,
-  KJV_YEAR,
   timelineRows,
+  unsortedRow,
   type Family,
+  type FamilyRow,
   type KjvHad,
-  type ManuscriptEntry,
+  type ManuscriptRow,
 } from "@/lib/manuscripts";
 import type { Translation } from "@/lib/types";
 
@@ -32,13 +37,14 @@ const sections = [
   { id: "new-testament", title: "New Testament manuscripts" },
   { id: "families", title: "Manuscript families" },
   { id: "timeline", title: "Written vs. found" },
-  { id: "translators-desk", title: "The translator’s desk" },
+  { id: "translators-desk", title: "The translator’s desk, then and now" },
   { id: "tr-ct-mt", title: "Textus Receptus, Critical Text, Majority Text" },
-  { id: "ot-choices", title: "Old Testament choices" },
+  { id: "ot-choices", title: "The Old Testament’s version of the question" },
   { id: "how-much", title: "How much does it change?" },
 ];
 
 const link = "font-medium text-brand-700 hover:underline";
+const IMG_FILTER = "[filter:sepia(0.24)_saturate(0.86)_contrast(1.03)]";
 
 function SectionHeading({ id }: { id: string }) {
   const n = sections.findIndex((s) => s.id === id);
@@ -80,9 +86,9 @@ const familyClass: Record<Family, string> = {
 function FamilyChip({ family }: { family: Family }) {
   return (
     <span
-      className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${familyClass[family]}`}
+      className={`inline-block whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-semibold ${familyClass[family]}`}
     >
-      {family === "Mixed" || family === "Too small to tell" ? family : `${family} family`}
+      {family}
     </span>
   );
 }
@@ -93,55 +99,125 @@ const kjvClass: Record<KjvHad, string> = {
   Partly: "bg-amber-50 text-amber-800 border-amber-200",
 };
 
-function Fact({ label, children }: { label: string; children: React.ReactNode }) {
+function KjvCell({ m }: { m: ManuscriptRow }) {
   return (
-    <div className="sm:grid sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-3">
-      <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:pt-0.5">
-        {label}
-      </dt>
-      <dd className="mt-0.5 text-sm leading-relaxed text-neutral-800 sm:mt-0">{children}</dd>
-    </div>
+    <>
+      <span className={`inline-block rounded border px-1.5 py-0.5 text-xs font-bold ${kjvClass[m.kjv]}`}>
+        {m.kjv}
+      </span>
+      {m.kjvNote && <span className="mt-1 block text-xs text-neutral-500">{m.kjvNote}</span>}
+    </>
   );
 }
 
-function ManuscriptCard({ m }: { m: ManuscriptEntry }) {
+/**
+ * One data set, two layouts: a real table from `md` up, and compact stacked rows on a
+ * phone, where six columns can't fit. The first column is the row's heading in both.
+ */
+interface Column<T> {
+  label: string;
+  className?: string;
+  render: (row: T) => React.ReactNode;
+}
+
+function DataTable<T>({
+  rows,
+  columns,
+  rowKey,
+  caption,
+  rowClass,
+}: {
+  rows: T[];
+  columns: Column<T>[];
+  rowKey: (row: T) => string;
+  caption: string;
+  rowClass?: (row: T) => string;
+}) {
+  const [head, ...rest] = columns;
   return (
-    <article className="rounded-lg border border-neutral-200 bg-white p-5">
-      <div className={m.image ? "gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_12rem]" : undefined}>
-        <div>
-          <h3 className="font-display text-xl font-semibold text-brand-900">{m.name}</h3>
-          {m.family && (
-            <p className="mt-1.5 flex flex-wrap items-center gap-2">
-              <FamilyChip family={m.family} />
-              {m.familyNote && <span className="text-xs text-neutral-500">{m.familyNote}</span>}
-            </p>
-          )}
-          <p className="mt-2 leading-relaxed text-neutral-700">{m.what}</p>
-          <dl className="mt-4 space-y-3">
-            <Fact label="Language">{m.language}</Fact>
-            <Fact label="Written on">{m.material}</Fact>
-            <Fact label="Contains">{m.contains}</Fact>
-            <Fact label="Written">{m.written}</Fact>
-            <Fact label="Scholars got access">{m.access}</Fact>
-            <Fact label="Did the KJV translators have it?">
-              <span
-                className={`mr-2 inline-block rounded border px-1.5 py-0.5 text-xs font-bold ${kjvClass[m.kjv]}`}
-              >
-                {m.kjv}
-              </span>
-              {m.kjvNote}
-            </Fact>
-          </dl>
-        </div>
-        {m.image && (
-          <HistoryImage
-            image={m.image}
-            className="mt-5 max-w-[16rem] sm:mt-0 sm:max-w-none"
-            sizes="(max-width: 639px) 16rem, 12rem"
-          />
-        )}
+    <>
+      <div className="mt-5 hidden overflow-hidden rounded-lg border border-neutral-200 md:block">
+        <table className="w-full border-collapse bg-white text-sm">
+          <caption className="sr-only">{caption}</caption>
+          <thead>
+            <tr className="bg-neutral-50">
+              {columns.map((c) => (
+                <th
+                  key={c.label}
+                  scope="col"
+                  className={`border-b border-neutral-200 px-3 py-2 text-left align-bottom text-xs font-semibold uppercase tracking-wide text-neutral-600 ${c.className ?? ""}`}
+                >
+                  {c.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={rowKey(r)} className={`border-b border-neutral-100 last:border-0 ${rowClass?.(r) ?? ""}`}>
+                <th scope="row" className={`px-3 py-3 text-left align-top font-normal ${head.className ?? ""}`}>
+                  {head.render(r)}
+                </th>
+                {rest.map((c) => (
+                  <td key={c.label} className={`px-3 py-3 align-top leading-snug text-neutral-800 ${c.className ?? ""}`}>
+                    {c.render(r)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </article>
+
+      <ul className="mt-5 space-y-3 md:hidden">
+        {rows.map((r) => (
+          <li key={rowKey(r)} className={`rounded-lg border border-neutral-200 bg-white p-4 ${rowClass?.(r) ?? ""}`}>
+            <div>{head.render(r)}</div>
+            <dl className="mt-3 grid grid-cols-[7rem_minmax(0,1fr)] gap-x-3 gap-y-2 text-sm">
+              {rest.map((c) => (
+                <div key={c.label} className="contents">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{c.label}</dt>
+                  <dd className="leading-snug text-neutral-800">{c.render(r)}</dd>
+                </div>
+              ))}
+            </dl>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+function NameCell({ name, what }: { name: string; what: string }) {
+  return (
+    <>
+      <span className="block font-display text-base font-semibold text-brand-900">{name}</span>
+      <span className="mt-1 block text-xs leading-snug text-neutral-600">{what}</span>
+    </>
+  );
+}
+
+/** A small, captioned, click-to-zoom picture for the image rows. */
+function Pic({ image, label, sub }: { image: HistoryImageData; label: string; sub?: string }) {
+  return (
+    <figure>
+      <ImageZoom
+        image={image}
+        className="relative block h-44 w-full overflow-hidden rounded-md border border-neutral-200 bg-paper"
+      >
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes="(max-width: 640px) 92vw, 240px"
+          className={`object-contain p-2 ${IMG_FILTER}`}
+        />
+      </ImageZoom>
+      <figcaption className="mt-1.5 text-sm leading-snug">
+        <span className="font-semibold text-brand-900">{label}</span>
+        {sub && <span className="block text-xs text-neutral-500">{sub}</span>}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -219,6 +295,13 @@ function Timeline() {
           return (
             <li key={row.label}>
               <p className="text-sm font-semibold text-brand-900">
+                <span
+                  className={`mr-1.5 inline-block rounded px-1 py-px text-[10px] font-bold ${
+                    row.testament === "OT" ? "bg-gild-100 text-gild-800" : "bg-brand-100 text-brand-800"
+                  }`}
+                >
+                  {row.testament}
+                </span>
                 {row.label}
                 <span className="ml-2 font-normal text-neutral-500">
                   written {row.writtenLabel} · {row.accessLabel}
@@ -248,7 +331,6 @@ function Timeline() {
         })}
       </ol>
 
-      {/* Axis */}
       <div className="relative mt-3 h-10 border-t border-neutral-300" aria-hidden="true">
         {ticks.map((t) => (
           <span
@@ -271,6 +353,17 @@ function Timeline() {
   );
 }
 
+function Fact({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="sm:grid sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-3">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:pt-0.5">
+        {label}
+      </dt>
+      <dd className="mt-0.5 text-sm leading-relaxed text-neutral-800 sm:mt-0">{children}</dd>
+    </div>
+  );
+}
+
 function TextCard({
   name,
   oneLine,
@@ -280,57 +373,131 @@ function TextCard({
   leans,
   printed,
   usedBy,
-  image,
 }: {
   name: string;
   oneLine: string;
   kind: string;
-  how: React.ReactNode;
-  builtFrom: React.ReactNode;
+  how: string;
+  builtFrom: string;
   leans: Family;
   printed: string;
   usedBy: Translation[];
-  image?: (typeof historyImages)[string];
 }) {
   return (
     <article className="rounded-lg border border-neutral-200 bg-white p-5">
-      <div className={image ? "gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_11rem]" : undefined}>
-        <div>
-          <h3 className="font-display text-xl font-semibold text-brand-900">{name}</h3>
-          <p className="mt-1 font-medium text-neutral-800">{oneLine}</p>
-          <dl className="mt-4 space-y-3">
-            <Fact label="What kind of thing">{kind}</Fact>
-            <Fact label="How it decides">{how}</Fact>
-            <Fact label="Built from">{builtFrom}</Fact>
-            <Fact label="Leans toward">
-              <FamilyChip family={leans} />
-            </Fact>
-            <Fact label="Printed today as">{printed}</Fact>
-            <Fact label="Used on this site by">
-              <TranslationChips items={usedBy} />
-              {usedBy.some((t) => t.textualBasis === "Textus Receptus / Majority Text") && (
-                <p className="mt-1.5 text-xs text-neutral-500">
-                  The LSV draws on both the Textus Receptus and the Majority Text.
-                </p>
-              )}
-            </Fact>
-          </dl>
-        </div>
-        {image && (
-          <HistoryImage
-            image={image}
-            className="mt-5 max-w-[14rem] sm:mt-0 sm:max-w-none"
-            sizes="(max-width: 639px) 14rem, 11rem"
-          />
-        )}
-      </div>
+      <h3 className="font-display text-xl font-semibold text-brand-900">{name}</h3>
+      <p className="mt-1 font-medium text-neutral-800">{oneLine}</p>
+      <dl className="mt-4 space-y-3">
+        <Fact label="What kind of thing">{kind}</Fact>
+        <Fact label="How it decides">{how}</Fact>
+        <Fact label="Built from">{builtFrom}</Fact>
+        <Fact label="Leans toward">
+          <FamilyChip family={leans} /> <span className="text-neutral-600">family</span>
+        </Fact>
+        <Fact label="Printed today as">{printed}</Fact>
+        <Fact label="Used on this site by">
+          <TranslationChips items={usedBy} />
+          {usedBy.some((t) => t.textualBasis === "Textus Receptus / Majority Text") && (
+            <p className="mt-1.5 text-xs text-neutral-500">
+              The LSV draws on both the Textus Receptus and the Majority Text.
+            </p>
+          )}
+        </Fact>
+      </dl>
     </article>
   );
 }
 
+const manuscriptColumns = (nt: boolean): Column<ManuscriptRow>[] => [
+  {
+    label: nt ? "Manuscript" : "Source",
+    className: "w-[24%]",
+    render: (m) => <NameCell name={m.name} what={m.what} />,
+  },
+  nt
+    ? {
+        label: "Family",
+        className: "w-[12%]",
+        render: (m) =>
+          m.family && (
+            <>
+              <FamilyChip family={m.family} />
+              {m.familyNote && <span className="mt-1 block text-xs text-neutral-500">{m.familyNote}</span>}
+            </>
+          ),
+      }
+    : { label: "Language", className: "w-[13%]", render: (m) => m.language },
+  { label: nt ? "Contains" : "What survives", render: (m) => m.contains },
+  { label: "Written", className: "w-[13%]", render: (m) => m.written },
+  { label: "Scholars got access", className: "w-[15%]", render: (m) => m.access },
+  { label: "KJV translators had it?", className: "w-[11%]", render: (m) => <KjvCell m={m} /> },
+];
+
+const familyColumns: Column<FamilyRow>[] = [
+  {
+    label: "Family",
+    className: "w-[15%]",
+    render: (f) => (
+      <span className="flex flex-col items-start gap-1">
+        <span className="font-display text-base font-semibold text-brand-900">{f.name}</span>
+        {f.family === "Caesarean" && (
+          <span className="rounded-full border border-neutral-300 px-2 py-0.5 text-[11px] font-semibold text-neutral-600">
+            disputed
+          </span>
+        )}
+      </span>
+    ),
+  },
+  { label: "How many copies", className: "w-[17%] font-semibold", render: (f) => f.howMany },
+  { label: "Where", render: (f) => f.where },
+  { label: "Oldest copies", render: (f) => f.oldest },
+  { label: "Best-known examples", render: (f) => f.examples },
+  { label: "Its wording", render: (f) => f.style },
+];
+
+const familyRowClass = (f: FamilyRow) =>
+  f.name === unsortedRow.name ? "bg-neutral-50" : "";
+
+const deskRows: { topic: string; kjv: string; today: string }[] = [
+  {
+    topic: "Old Testament text",
+    kjv: "A printed Hebrew Bible (Venice, 1524–25), made from medieval copies of the Masoretic Text.",
+    today:
+      "Biblia Hebraica Stuttgartensia (1977), a printing of the Leningrad Codex (AD 1008). A newer edition, Biblia Hebraica Quinta, is in progress.",
+  },
+  {
+    topic: "New Testament text",
+    kjv: "Printed Textus Receptus editions, mainly Beza’s (1588–89 and 1598) and Estienne’s (1550).",
+    today:
+      "Most translations: Nestle-Aland 28 (2012) or UBS 5 (2014), the Critical Text. KJV-line translations: a Textus Receptus edition. A few: a Majority Text edition.",
+  },
+  {
+    topic: "Other sources they checked",
+    kjv: "The Septuagint, the Latin Vulgate, and earlier English Bibles.",
+    today:
+      "The Dead Sea Scrolls, the Septuagint, early translations (Latin, Syriac, Coptic) and Bible quotations by early church writers.",
+  },
+  {
+    topic: "Oldest Old Testament copies in reach",
+    kjv: "Medieval Hebrew copies, through the printed edition.",
+    today: "Dead Sea Scrolls from as early as about 250 BC.",
+  },
+  {
+    topic: "Oldest New Testament copies in reach",
+    kjv: "Medieval copies from about AD 900–1500, through the printed editions. No papyri, no Sinaiticus or Alexandrinus, and no usable copy of Vaticanus.",
+    today: "Papyri from the AD 100s and 200s, and the great codices of the AD 300s.",
+  },
+  {
+    topic: "How they see the evidence",
+    kjv: "A few printed books. Editions that list how other manuscripts differ didn’t exist yet.",
+    today:
+      "Printed editions whose footnotes (the apparatus) list where thousands of copies disagree and which ones say what.",
+  },
+];
+
 export default function ManuscriptsPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">
         Bible manuscripts: where the text comes from
       </h1>
@@ -342,7 +509,7 @@ export default function ManuscriptsPage() {
         to follow.
       </p>
 
-      <nav aria-label="On this page" className="mt-6 rounded-lg border border-neutral-200 bg-white p-4">
+      <nav aria-label="On this page" className="mt-6 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">On this page</p>
         <ol className="mt-2 text-sm sm:columns-2 sm:gap-x-6">
           {sections.map((s, i) => (
@@ -361,7 +528,7 @@ export default function ManuscriptsPage() {
           The first copy of each Bible book, as its author wrote it, is long gone. Every Bible
           today is translated from later copies, and thousands of them survive.
         </InShort>
-        <div className="mt-4 space-y-3 leading-relaxed text-neutral-700">
+        <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
           <p>
             The books of the Bible were written over many centuries. The originals were written
             by hand, and they wore out. None of them survives today.
@@ -423,52 +590,80 @@ export default function ManuscriptsPage() {
           Early copies were written on papyrus, a paper made from a reed, or on parchment, made
           from animal skin. Some were scrolls. Most Christian copies were books with pages.
         </InShort>
-        <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               term: "Papyrus",
-              def: "Sheets made from strips of the papyrus reed, which grows in Egypt. It was cheap but fragile. It survives mainly where the ground is very dry, so most papyrus copies come from Egypt.",
+              def: "Sheets made from strips of the papyrus reed, which grows in Egypt. Cheap but fragile. It survives mainly in Egypt’s dry ground.",
+              image: historyImages.papyrus52,
+              label: "Papyrus 52",
+              sub: "A papyrus scrap of John, AD 100s",
             },
             {
               term: "Parchment",
-              def: "Specially prepared animal skin, usually from sheep, goats or calves. It was expensive but tough. Most of the big, complete Bible manuscripts are parchment.",
+              def: "Specially prepared animal skin, usually from sheep, goats or calves. Expensive but tough. Most big, complete Bibles are parchment.",
+              image: historyImages.leningrad,
+              label: "Leningrad Codex",
+              sub: "A parchment page of the Hebrew Bible, AD 1008",
             },
             {
               term: "Scroll",
-              def: "One long strip, rolled up. Jewish Scripture was traditionally copied on scrolls, as the Dead Sea Scrolls show.",
+              def: "One long strip, rolled up. Jewish Scripture was traditionally copied on scrolls.",
+              image: historyImages.isaiahScroll,
+              label: "Great Isaiah Scroll",
+              sub: "The whole of Isaiah on one scroll, about 125 BC",
             },
             {
               term: "Codex",
-              def: "Pages folded, stacked and sewn together: the ancestor of the modern book. Christians took to it very early, so most New Testament manuscripts are codices.",
+              def: "Pages stacked and sewn together: the ancestor of the modern book. Christians took to it early, so most New Testament copies are codices.",
+              image: historyImages.codexWashingtonianus,
+              label: "Codex Washingtonianus",
+              sub: "Two facing pages of a Gospel book, about AD 400",
             },
           ].map((d) => (
-            <div key={d.term} className="rounded-lg border border-neutral-200 bg-white p-4">
-              <dt className="font-display text-lg font-semibold text-brand-900">{d.term}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-neutral-700">{d.def}</dd>
+            <div key={d.term} className="flex flex-col rounded-lg border border-neutral-200 bg-white p-4">
+              <h3 className="font-display text-lg font-semibold text-brand-900">{d.term}</h3>
+              <p className="mt-1 flex-1 text-sm leading-relaxed text-neutral-700">{d.def}</p>
+              <div className="mt-3">
+                <Pic image={d.image} label={d.label} sub={d.sub} />
+              </div>
             </div>
           ))}
-        </dl>
+        </div>
         <p className="mt-4 text-sm leading-relaxed text-neutral-600">
-          In the later Middle Ages, paper came into use as well.
+          In the later Middle Ages, paper came into use as well. Click any picture to enlarge it.
         </p>
       </Section>
 
       {/* 4 */}
       <Section id="old-testament">
         <InShort>
-          The main Hebrew text, the Masoretic Text, survives in medieval copies. The Dead Sea
-          Scrolls, found in the 1940s and 50s, are about a thousand years older, and they mostly
-          agree with it. The Septuagint is an early Greek translation.
+          The main Hebrew text, the Masoretic Text, survives in thousands of medieval copies. The
+          Dead Sea Scrolls, found in the 1940s and 50s, are about a thousand years older, and they
+          mostly agree with it. The Septuagint is an early Greek translation.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
-          Each card answers the same questions, in the same order. The last line answers one
-          question that matters later: did the translators of the King James Version (1611) have
-          this to work from?
-        </p>
-        <div className="mt-6 space-y-5">
-          {otManuscripts.map((m) => (
-            <ManuscriptCard key={m.id} m={m} />
-          ))}
+        <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
+          <p>
+            <strong>How many Old Testament copies are there?</strong> Nobody keeps one official
+            count, the way the New Testament has (section 5). Scholars estimate that Hebrew
+            manuscripts and fragments run into the <strong>tens of thousands</strong>, most of
+            them small pieces from the Cairo Geniza. On top of that come about 230 biblical Dead
+            Sea Scrolls and over 1,500 copies of the Greek Septuagint.
+          </p>
+          <p>
+            The last column answers a question that matters later on this page: did the
+            translators of the King James Version (1611) have it to work from?
+          </p>
+        </div>
+        <DataTable
+          caption="The main sources for the Old Testament text"
+          rows={otManuscripts}
+          rowKey={(m) => m.id}
+          columns={manuscriptColumns(false)}
+        />
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <Pic image={historyImages.leningrad} label="Leningrad Codex" sub="The oldest complete Hebrew Bible, AD 1008" />
+          <Pic image={historyImages.isaiahScroll} label="Great Isaiah Scroll" sub="A Dead Sea Scroll, about 125 BC" />
         </div>
       </Section>
 
@@ -479,12 +674,12 @@ export default function ManuscriptsPage() {
           book. The oldest are from the AD 100s and 200s. Scholars got access to most of the
           oldest ones only after 1611.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
+        <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
           The Institute for New Testament Textual Research in Münster, Germany, keeps the official
           list of Greek New Testament manuscripts. In 2023 it counted 5,700. They come in four
           kinds:
         </p>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {ntKinds.map((k) => (
             <div key={k.name} className="rounded-lg border border-neutral-200 bg-white p-4">
               <p className="font-display text-2xl font-semibold text-brand-900">{k.count}</p>
@@ -493,7 +688,18 @@ export default function ManuscriptsPage() {
             </div>
           ))}
         </div>
-        <p className="mt-4 text-sm leading-relaxed text-neutral-600">
+
+        <div className="mt-5 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
+          <h3 className="font-semibold text-brand-900">Which copies count?</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            Only copies written by hand, before printing took over. The ones on the official list
+            run from the AD 100s to the 1700s. Once printed Greek New Testaments appeared (the
+            first in 1516), new copies were usually made from printed books. A copy of a printed
+            book adds no new evidence about the original wording, so later copies, and any copy
+            made today, aren’t counted.
+          </p>
+        </div>
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600">
           Besides the Greek copies, there are early translations into Latin, Syriac, Coptic and
           other languages. Early church writers also quoted the New Testament constantly. Both
           help show what the text said in their time and place.
@@ -502,69 +708,66 @@ export default function ManuscriptsPage() {
         <h3 className="mt-10 font-display text-xl font-semibold text-brand-900">
           The best-known New Testament manuscripts
         </h3>
-        <p className="mt-2 leading-relaxed text-neutral-700">
-          Each one belongs to a manuscript <strong>family</strong>, shown by the colored label.
-          Section 6 explains the families.
+        <p className="mt-2 max-w-3xl leading-relaxed text-neutral-700">
+          All are in Greek (Codex Bezae also has Latin). The papyri are on papyrus; the codices are
+          on parchment. The colored label is the manuscript’s <strong>family</strong>, explained in
+          section 6.
         </p>
-        <div className="mt-5 space-y-5">
-          {ntManuscripts.map((m) => (
-            <ManuscriptCard key={m.id} m={m} />
-          ))}
+        <DataTable
+          caption="The best-known New Testament manuscripts"
+          rows={ntManuscripts}
+          rowKey={(m) => m.id}
+          columns={manuscriptColumns(true)}
+        />
+        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          <Pic image={historyImages.papyrus52} label="Papyrus 52" sub="AD 100s" />
+          <Pic image={historyImages.codexSinaiticus} label="Codex Sinaiticus" sub="About AD 330–360 (shown in an 1862 facsimile)" />
+          <Pic image={historyImages.codexWashingtonianus} label="Codex Washingtonianus" sub="About AD 400" />
         </div>
       </Section>
 
       {/* 6 */}
       <Section id="families">
         <InShort>
-          Copies made in the same region tended to share the same wording, so scholars group
-          them into families. The Byzantine family has by far the most copies. The Alexandrian
-          family has the oldest.
+          Copies made in the same region tended to share the same wording, so scholars group them
+          into families. Two matter most: the <strong>Byzantine</strong> family has by far the most
+          copies, and the <strong>Alexandrian</strong> family has the oldest.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
-          When a scribe copied a manuscript, any small changes passed on to every copy made from
-          it. Over time, each region ended up with its own recognizable wording. These groups are
-          called families, or <strong>text-types</strong>. Scholars count four, though one is
-          disputed.
+        <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
+          When a scribe copied a manuscript, any small changes passed on to every copy made from it.
+          Over time, each region ended up with its own recognizable wording. These groups are called
+          families, or <strong>text-types</strong>.
         </p>
-        <div className="mt-6 space-y-5">
-          {families.map((f) => (
-            <article key={f.name} className="rounded-lg border border-neutral-200 bg-white p-5">
-              <div className={f.image ? "gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_11rem]" : undefined}>
-                <div>
-                  <h3 className="flex flex-wrap items-center gap-2 font-display text-xl font-semibold text-brand-900">
-                    {f.name}
-                    <FamilyChip family={f.name} />
-                    {f.disputed && (
-                      <span className="rounded-full border border-neutral-300 px-2 py-0.5 font-sans text-xs font-semibold text-neutral-600">
-                        disputed
-                      </span>
-                    )}
-                  </h3>
-                  <dl className="mt-4 space-y-3">
-                    <Fact label="Where">{f.where}</Fact>
-                    <Fact label="Oldest copies">{f.oldest}</Fact>
-                    <Fact label="Language">{f.language}</Fact>
-                    <Fact label="How many copies">{f.howMany}</Fact>
-                    <Fact label="Best-known examples">{f.examples}</Fact>
-                    <Fact label="Its wording">{f.style}</Fact>
-                  </dl>
-                </div>
-                {f.image && (
-                  <HistoryImage
-                    image={f.image}
-                    className="mt-5 max-w-[14rem] sm:mt-0 sm:max-w-none"
-                    sizes="(max-width: 639px) 14rem, 11rem"
-                  />
-                )}
-              </div>
-            </article>
-          ))}
+
+        <h3 className="mt-8 font-display text-xl font-semibold text-brand-900">The two main families</h3>
+        <DataTable
+          caption="The two main manuscript families"
+          rows={mainFamilies}
+          rowKey={(f) => f.name}
+          columns={familyColumns}
+        />
+
+        <h3 className="mt-8 font-display text-xl font-semibold text-brand-900">
+          The smaller families, and the rest
+        </h3>
+        <DataTable
+          caption="The smaller manuscript families and unsorted copies"
+          rows={[...minorFamilies, unsortedRow]}
+          rowKey={(f) => f.name}
+          columns={familyColumns}
+          rowClass={familyRowClass}
+        />
+
+        <div className="mt-5 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
+          <h3 className="font-semibold text-brand-900">How does that add up to 5,700?</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            Roughly 4,500 to 5,000 Byzantine copies, plus about a hundred in the other families put
+            together, leaves roughly 500 to 1,000 more. Those are copies that mix families, scraps
+            too short to judge, and copies no one has studied closely enough to sort. All of these
+            numbers are estimates. Many scholars today treat the families as rough groupings
+            rather than sharp categories.
+          </p>
         </div>
-        <p className="mt-4 text-sm leading-relaxed text-neutral-600">
-          The counts are estimates. Not every copy has been studied closely enough to sort it
-          into a family, and many copies mix families. Today many scholars treat the families as
-          rough groupings rather than sharp categories.
-        </p>
       </Section>
 
       {/* 7 */}
@@ -573,10 +776,12 @@ export default function ManuscriptsPage() {
           Most of the oldest manuscripts were written long before the King James Version, but
           scholars only got access to them long after it.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
+        <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
           This explains much of the debate. The translators in 1611 weren’t careless. Most of the
-          oldest copies simply hadn’t surfaced yet. Each row below shows when a manuscript was
-          written (the dark bar) and when scholars could study it (the gold dot).
+          oldest copies simply hadn’t surfaced yet. The chart shows a <strong>few famous
+          examples</strong>, not every manuscript, marked <strong>OT</strong> or{" "}
+          <strong>NT</strong>. Each row shows when a manuscript was written (the dark bar) and when
+          scholars could study it (the gold dot).
         </p>
         <Timeline />
       </Section>
@@ -584,111 +789,126 @@ export default function ManuscriptsPage() {
       {/* 8 */}
       <Section id="translators-desk">
         <InShort>
-          Translators don’t work from the old manuscripts directly. They use printed editions
-          that collect the evidence from thousands of copies in one place.
+          Translators don’t work from the old manuscripts directly. They use printed editions. The
+          KJV translators had a few printed books made from medieval copies. Translators today have
+          editions that gather the evidence from thousands of copies, including the oldest ones.
         </InShort>
-        <div className="mt-4 space-y-3 leading-relaxed text-neutral-700">
-          <p>
-            A printed edition gives the text the editors judge most likely to be original. Its
-            footnotes list where the manuscripts disagree and which ones say what. (Scholars
-            call those footnotes the <strong>apparatus</strong>.) A translation committee uses
-            these editions, then decides for itself in the places that matter.
-          </p>
+        <div className="mt-5 hidden overflow-hidden rounded-lg border border-neutral-200 md:block">
+          <table className="w-full border-collapse bg-white text-sm">
+            <caption className="sr-only">What the KJV translators worked from, compared with translators today</caption>
+            <thead>
+              <tr className="bg-neutral-50">
+                <td className="w-[20%] border-b border-neutral-200 px-3 py-2" />
+                <th scope="col" className="w-[40%] border-b border-neutral-200 px-3 py-2 text-left font-display text-base font-semibold text-brand-900">
+                  KJV translators (1604–1611)
+                </th>
+                <th scope="col" className="w-[40%] border-b border-neutral-200 px-3 py-2 text-left font-display text-base font-semibold text-brand-900">
+                  Translators today
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {deskRows.map((r) => (
+                <tr key={r.topic} className="border-b border-neutral-100 last:border-0">
+                  <th scope="row" className="px-3 py-3 text-left align-top text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                    {r.topic}
+                  </th>
+                  <td className="px-3 py-3 align-top leading-snug text-neutral-800">{r.kjv}</td>
+                  <td className="px-3 py-3 align-top leading-snug text-neutral-800">{r.today}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-neutral-200 bg-white p-5">
-            <h3 className="font-display text-lg font-semibold text-brand-900">
-              A translator’s desk today
-            </h3>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-700">
-              <li>
-                <strong>Old Testament:</strong> <em>Biblia Hebraica Stuttgartensia</em> (1977), a
-                printing of the Leningrad Codex. Its footnotes show where the Dead Sea Scrolls,
-                the Septuagint and other copies differ. A newer edition, <em>Biblia Hebraica
-                Quinta</em>, is in progress.
-              </li>
-              <li>
-                <strong>New Testament:</strong> the Nestle-Aland 28th edition (2012) or the
-                matching United Bible Societies 5th edition (2014). These print the Critical Text.
-                Translations in the King James line use a Textus Receptus edition instead. A few
-                use a Majority Text edition.
-              </li>
-              <li>
-                <strong>Languages:</strong> Hebrew, Aramaic and Koine Greek. Committees also
-                draw on experts in Latin, Syriac and Coptic, because the early translations into
-                those languages are evidence too.
-              </li>
-            </ul>
-          </div>
-          <div className="rounded-lg border border-neutral-200 bg-white p-5">
-            <h3 className="font-display text-lg font-semibold text-brand-900">
-              The KJV translators’ desk (1604–1611)
-            </h3>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-700">
-              <li>
-                <strong>Old Testament:</strong> a printed Hebrew Bible published in Venice in
-                1524–25, made from medieval copies of the Masoretic Text.
-              </li>
-              <li>
-                <strong>New Testament:</strong> printed editions of the Textus Receptus, mainly
-                Theodore Beza’s (1588–89 and 1598) and Robert Estienne’s (1550).
-              </li>
-              <li>
-                <strong>Also consulted:</strong> the Septuagint, the Latin Vulgate, and earlier
-                English Bibles.
-              </li>
-              <li>
-                <strong>Not available yet:</strong> the Dead Sea Scrolls, the papyri, Codex
-                Sinaiticus, Codex Alexandrinus, and any usable copy of Codex Vaticanus.
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ul className="mt-5 space-y-3 md:hidden">
+          {deskRows.map((r) => (
+            <li key={r.topic} className="rounded-lg border border-neutral-200 bg-white p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{r.topic}</p>
+              <p className="mt-2 text-sm font-semibold text-brand-900">KJV translators (1604–1611)</p>
+              <p className="text-sm leading-snug text-neutral-800">{r.kjv}</p>
+              <p className="mt-2 text-sm font-semibold text-brand-900">Translators today</p>
+              <p className="text-sm leading-snug text-neutral-800">{r.today}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600">
+          The languages haven’t changed: Hebrew, Aramaic and Greek. Committees today also draw on
+          experts in Latin, Syriac and Coptic, because the early translations into those languages
+          are evidence too.
+        </p>
       </Section>
 
       {/* 9 */}
       <Section id="tr-ct-mt">
         <InShort>
-          None of the three is a set of manuscripts. Each one is a printed Greek New Testament.
-          They differ in how their editors chose between the manuscripts where the copies
-          disagree.
+          These three names belong to the New Testament. None of them is a set of manuscripts. Each
+          one is a printed Greek New Testament, and they differ in how their editors chose between
+          the manuscripts where the copies disagree.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
-          This question only applies to the New Testament. Where the Greek copies disagree,
-          someone has to decide which wording to print. These are three different answers.
+        <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
+          The Dead Sea Scrolls play no part here, because they are Hebrew copies of the Old
+          Testament. The Old Testament faces the same kind of question in its own way, covered in
+          section 10.
         </p>
+
+        <div className="mt-6 rounded-lg border-2 border-gild-300 bg-white p-5">
+          <div className="gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_12rem]">
+            <div>
+              <h3 className="font-display text-xl font-semibold text-brand-900">
+                Where it started: what Erasmus had in 1516
+              </h3>
+              <p className="mt-1 leading-relaxed text-neutral-700">
+                The Dutch scholar Erasmus published the first Greek New Testament in 1516. It
+                became the Textus Receptus, the text behind the KJV. Here is what he had to work
+                with:
+              </p>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-neutral-800">
+                <li>
+                  <strong>About seven Greek manuscripts</strong>. Most were lent to him by a
+                  monastery library in Basel, Switzerland, where he was working.
+                </li>
+                <li>
+                  All were <strong>medieval</strong>, copied between about AD 900 and 1500. Most
+                  were Byzantine.
+                </li>
+                <li>
+                  He had only a few copies of each part of the New Testament, and for{" "}
+                  <strong>Revelation just one</strong>. That copy was missing its last page.
+                </li>
+                <li>
+                  So for the last six verses of Revelation (22:16–21), he translated the{" "}
+                  <strong>Latin back into Greek</strong> himself. A few words of that
+                  back-translation are still in the Textus Receptus and the KJV. For example,
+                  Revelation 22:19 says “book of life” in the KJV, where the Greek manuscripts say
+                  “tree of life.”
+                </li>
+              </ul>
+            </div>
+            <HistoryImage
+              image={historyImages.erasmus1516}
+              className="mt-5 max-w-[14rem] sm:mt-0 sm:max-w-none"
+              sizes="(max-width: 639px) 14rem, 12rem"
+            />
+          </div>
+        </div>
+
         <div className="mt-6 space-y-5">
           <TextCard
             name="Textus Receptus"
             oneLine="The first published Greek New Testament, lightly revised by later editors."
             kind="A specific printed text. Strictly, it is a family of closely related editions, from Erasmus (1516) through Estienne, Beza and the Elzevir brothers (1633). The name means “received text.” It comes from a line in the 1633 edition’s preface."
             how="Erasmus mostly printed what his manuscripts said, correcting them in places from other copies and from the Latin. Later editors made small changes."
-            builtFrom={
-              <>
-                About seven medieval Greek manuscripts that Erasmus borrowed in Basel,
-                Switzerland. They were copied between about AD 900 and 1500, and most are
-                Byzantine. For Revelation he had only one copy, and it was missing its last page.
-                He translated the last six verses back into Greek from the Latin.
-              </>
-            }
+            builtFrom="Erasmus’s seven or so medieval manuscripts (see the box above), with small changes from a few more copies by later editors."
             leans="Byzantine"
             printed="Scrivener’s edition (1881, reprinted 1894). It reconstructs the Greek text behind the KJV."
             usedBy={trTranslations}
-            image={historyImages.erasmus1516}
           />
           <TextCard
             name="Critical Text"
             oneLine="A Greek New Testament rebuilt verse by verse by weighing all the evidence."
             kind="Both a method and the printed text it produces. The method is to compare all the evidence and judge, in each disputed spot, which wording is most likely original."
             how="Editors weigh how old each reading is, how widely it spread, and which reading best explains how the others came about."
-            builtFrom={
-              <>
-                The whole body of evidence: about 5,700 Greek manuscripts, the early translations,
-                and quotations by early church writers. In practice, the oldest copies carry the
-                most weight, and most of those are Alexandrian. The first major edition was by
-                Westcott and Hort in 1881.
-              </>
-            }
+            builtFrom="The whole body of evidence: about 5,700 Greek manuscripts, the early translations, and quotations by early church writers. In practice, the oldest copies carry the most weight, and most of those are Alexandrian. The first major edition was by Westcott and Hort in 1881."
             leans="Alexandrian"
             printed="Nestle-Aland 28th edition (2012) and United Bible Societies 5th edition (2014). Both print the same text."
             usedBy={ctTranslations}
@@ -698,13 +918,7 @@ export default function ManuscriptsPage() {
             oneLine="A Greek New Testament that prints, at each spot, the reading found in the most manuscripts."
             kind="Both a principle and the editions built on it. The principle is to count the manuscripts and go with the majority."
             how="Wherever the copies disagree, follow what most of them say."
-            builtFrom={
-              <>
-                In effect, the Byzantine copies, since they are 80–90% or more of all
-                manuscripts. The editors could not compare all 5,700 copies word by word. They
-                relied heavily on samples and on earlier scholars’ surveys.
-              </>
-            }
+            builtFrom="In effect, the Byzantine copies, since they are 80–90% or more of all manuscripts. The editors could not compare all 5,700 copies word by word. They relied heavily on samples and on earlier scholars’ surveys."
             leans="Byzantine"
             printed="Hodges and Farstad (1982), and Robinson and Pierpont (first edition 1991)."
             usedBy={mtTranslations}
@@ -714,20 +928,18 @@ export default function ManuscriptsPage() {
         <div className="mt-6 rounded-lg border border-neutral-200 bg-white p-5">
           <h3 className="font-display text-lg font-semibold text-brand-900">How different are they?</h3>
           <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed text-neutral-700">
+            <li>The New Testament has about 7,950 verses.</li>
             <li>
-              The New Testament has about 7,950 verses.
+              The <strong>Textus Receptus and Majority Text</strong> differ in about 1,800 places.
+              They are close cousins, since both rest on Byzantine copies.
             </li>
             <li>
-              The <strong>Textus Receptus and Majority Text</strong> differ in about 1,800
-              places. They are close cousins, since both rest on Byzantine copies.
+              The <strong>Critical Text and Majority Text</strong> differ in more than 6,000 places.
+              One widely cited count is about 6,500.
             </li>
             <li>
-              The <strong>Critical Text and Majority Text</strong> differ in more than 6,000
-              places. One widely cited count is about 6,500.
-            </li>
-            <li>
-              Most of these differences are tiny: spelling, word order, or a small word like
-              “the” or “and.” Many don’t show up in English at all.
+              Most of these differences are tiny: spelling, word order, or a small word like “the”
+              or “and.” Many don’t show up in English at all.
             </li>
           </ul>
           <p className="mt-3 text-sm leading-relaxed text-neutral-600">
@@ -747,20 +959,29 @@ export default function ManuscriptsPage() {
       {/* 10 */}
       <Section id="ot-choices">
         <InShort>
-          Every translation’s Old Testament starts from the Masoretic Text. Where an older witness
-          reads differently, each committee decides verse by verse which to follow.
+          The Old Testament has no TR/CT/MT split, because every translation starts from the same
+          Hebrew text, the Masoretic Text. But there is a real debate: where a Dead Sea Scroll or
+          the Septuagint reads differently, should a translation follow it? Each committee decides
+          verse by verse.
         </InShort>
-        <p className="mt-4 leading-relaxed text-neutral-700">
-          The Old Testament has no TR/CT/MT debate. Instead, translators choose case by case
-          whether to follow a Dead Sea Scroll or the Septuagint over the Masoretic Text. Here are
-          three real examples across ten widely used translations. The same translation can
-          follow the Hebrew in one verse and an older witness in the next.
-        </p>
-        <div className="mt-6 space-y-5">
+        <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
+          <p>
+            This is where the Dead Sea Scrolls matter. They are about a thousand years older than
+            the oldest complete Masoretic copy. Most of the time they agree with it, which is
+            strong confirmation that the Hebrew was copied carefully. Where they differ, translators
+            have to choose.
+          </p>
+          <p>
+            Some translations keep the Masoretic reading more often, and others adopt the older
+            readings more often. But no translation does either every time. Here are three real
+            examples across ten widely used translations.
+          </p>
+        </div>
+        <div className="mt-6 grid gap-5 lg:grid-cols-3">
           {otExamples.map((ex) => (
             <article key={ex.ref} className="rounded-lg border border-neutral-200 bg-white p-5">
               <h3 className="font-display text-xl font-semibold text-brand-900">{ex.ref}</h3>
-              <p className="mt-1 leading-relaxed text-neutral-700">{ex.difference}</p>
+              <p className="mt-1 text-sm leading-relaxed text-neutral-700">{ex.difference}</p>
               <dl className="mt-4 space-y-3">
                 {ex.groups.map((g) => (
                   <div key={g.label}>
@@ -785,7 +1006,7 @@ export default function ManuscriptsPage() {
           The manuscripts agree on the great majority of the text. The well-known differences are
           marked in the footnotes of most modern Bibles.
         </InShort>
-        <div className="mt-4 space-y-3 leading-relaxed text-neutral-700">
+        <div className="mt-4 max-w-3xl space-y-3 leading-relaxed text-neutral-700">
           <p>
             The differences are real, and some are well known, such as the ending of Mark (16:9–20)
             and the woman caught in adultery (John 7:53–8:11). But they are a small share of the

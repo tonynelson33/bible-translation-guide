@@ -249,9 +249,13 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   (text-types) → a written-vs-access timeline → the translator's desk → TR/CT/MT → OT verse
   choices → how much it changes. Content in `lib/manuscripts.ts`; its header comment lists the
   sources for every figure (INTF 2023 tally of 5,700 Greek NT manuscripts, etc.). House rules
-  there: every estimate says "about", every date carries AD/BC, and every manuscript card
+  there: every estimate says "about", every date carries AD/BC, and every manuscript row
   answers the same questions in the same order, ending with "Did the KJV translators have
-  it?". The "Scholars got access" field is deliberately not "found" — Vaticanus and the
+  it?". Owner asked for tables over long cards (readers skim cards): `DataTable` in the page
+  renders a real table from `md` up and compact stacked rows on phones, from the same data.
+  Families lead with Byzantine + Alexandrian and end with a "Mixed or unsorted" row so the
+  counts visibly add up to 5,700. Section 9 has an Erasmus callout (about seven manuscripts,
+  one incomplete Revelation copy, Rev 22:16–21 back-translated from Latin, "book of life"). The "Scholars got access" field is deliberately not "found" — Vaticanus and the
   Byzantine copies were never lost. The three OT example verses (1 Sam 10:27, Deut 32:8,
   Ps 22:16) were checked against each listed translation on Bible Gateway — re-check if a
   translation is revised. The TR/CT/MT "used by" chips derive from `textualBasis`. The FAQ
