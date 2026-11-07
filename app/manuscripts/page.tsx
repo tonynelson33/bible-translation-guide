@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
+import ManuscriptMap from "@/components/ManuscriptMap";
 import ImageZoom from "@/components/ImageZoom";
 import { translations } from "@/lib/data";
 import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/englishBibleHistory";
@@ -193,10 +194,17 @@ function DataTable<T>({
   );
 }
 
-function NameCell({ name, what }: { name: string; what: string }) {
+function NameCell({ name, what, num }: { name: string; what: string; num?: number }) {
   return (
     <>
-      <span className="block font-display text-base font-semibold text-brand-900">{name}</span>
+      <span className="flex items-start gap-2 font-display text-base font-semibold text-brand-900">
+        {num !== undefined && (
+          <span className="mt-0.5 inline-flex h-5 min-w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-800 px-1 font-sans text-[11px] font-bold text-white">
+            {num}
+          </span>
+        )}
+        {name}
+      </span>
       <span className="mt-1 block text-xs leading-snug text-neutral-600">{what}</span>
     </>
   );
@@ -417,7 +425,13 @@ const manuscriptColumns = (nt: boolean): Column<ManuscriptRow>[] => [
   {
     label: nt ? "Manuscript" : "Source",
     className: "w-[24%]",
-    render: (m) => <NameCell name={m.name} what={m.what} />,
+    render: (m) => (
+      <NameCell
+        name={m.name}
+        what={m.what}
+        num={(nt ? ntManuscripts : otManuscripts).findIndex((x) => x.id === m.id) + 1}
+      />
+    ),
   },
   nt
     ? {
@@ -798,6 +812,8 @@ export default function ManuscriptsPage() {
             rather than sharp categories.
           </p>
         </div>
+
+        <ManuscriptMap />
       </Section>
 
       {/* 7 */}

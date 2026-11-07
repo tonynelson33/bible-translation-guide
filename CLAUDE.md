@@ -255,7 +255,14 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   renders a real table from `md` up and compact stacked rows on phones, from the same data.
   Families lead with Byzantine + Alexandrian and end with a "Mixed or unsorted" row so the
   counts visibly add up to 5,700. Section 9 has an Erasmus callout (about seven manuscripts,
-  one incomplete Revelation copy, Rev 22:16–21 back-translated from Latin, "book of life"). The "Scholars got access" field is deliberately not "found" — Vaticanus and the
+  one incomplete Revelation copy, Rev 22:16–21 back-translated from Latin, "book of life").
+  Section 6 ends with `components/ManuscriptMap.tsx` ("Where they come from", NT/OT toggle;
+  data in `lib/manuscriptMap.ts`, hand-simplified coastlines). Owner's rules: every dot is a
+  row from the page's tables and every row has a dot (the minuscules get a shaded area);
+  dots go where a manuscript was made if known, otherwise where it was found, and each
+  dot's note says which; table rows carry number badges that match the dots (numbers are
+  derived from array order, so reordering a table renumbers the map automatically). On
+  phones the map shows only big numbered dots; the list under it carries the names. The "Scholars got access" field is deliberately not "found" — Vaticanus and the
   Byzantine copies were never lost. The three OT example verses (1 Sam 10:27, Deut 32:8,
   Ps 22:16) were checked against each listed translation on Bible Gateway — re-check if a
   translation is revised. The TR/CT/MT "used by" chips derive from `textualBasis`. The FAQ
