@@ -17,7 +17,8 @@ interface ColumnDef {
   sortValue: (t: Translation) => string | number | boolean;
   render: (t: Translation) => React.ReactNode;
   align?: "left" | "center";
-  minWidth?: string;
+  /** Column width in rem. The table's own width is the sum of these (see `otherColumnsWidth`). */
+  width: number;
 }
 
 function verifyMark(t: Translation, field: string) {
@@ -40,13 +41,18 @@ const columns: ColumnDef[] = [
     label: "Translation",
     sortValue: (t) => t.name,
     align: "left",
-    minWidth: "13rem",
+    // Not read: the real width is `--name-col` on the <table>, 8rem on phones and 13rem
+    // from `sm`. This column is sticky, so on a phone every pixel it takes is one the
+    // scrolling columns lose.
+    width: 13,
     render: (t) => (
       <Link href={`/translations/${t.id}`} className="block">
         <span className="block whitespace-nowrap text-base font-extrabold text-brand-900">
           {t.abbreviation}
         </span>
-        <span className="block whitespace-nowrap text-xs text-neutral-500">{t.name}</span>
+        <span className="block text-[11px] leading-tight text-neutral-500 sm:whitespace-nowrap sm:text-xs">
+          {t.name}
+        </span>
       </Link>
     ),
   },
@@ -54,21 +60,21 @@ const columns: ColumnDef[] = [
     key: "firstPublishedYear",
     label: "First Published",
     sortValue: (t) => t.firstPublishedYear,
-    minWidth: "7rem",
+    width: 7,
     render: (t) => <span className="text-neutral-700">{t.firstPublishedYear}</span>,
   },
   {
     key: "latestRevisionYear",
     label: "Latest Revision",
     sortValue: (t) => t.latestRevisionYear,
-    minWidth: "6.5rem",
+    width: 6.5,
     render: (t) => <span className="font-normal text-neutral-700">{t.latestRevisionYear}</span>,
   },
   {
     key: "gradeLevel",
     label: "Reading Grade Level",
     sortValue: (t) => gradeLevelSortValue(t.gradeLevel),
-    minWidth: "6rem",
+    width: 6,
     render: (t) => (
       <span>
         {t.gradeLevel}
@@ -80,14 +86,14 @@ const columns: ColumnDef[] = [
     key: "textualBasis",
     label: "NT Textual Basis",
     sortValue: (t) => t.textualBasis,
-    minWidth: "7rem",
+    width: 8.5,
     render: (t) => <span>{t.textualBasis}</span>,
   },
   {
     key: "philosophy",
     label: "Translation Philosophy",
     sortValue: (t) => t.philosophy,
-    minWidth: "8.5rem",
+    width: 8.5,
     render: (t) => (
       <Tooltip text={philosophyGlossary[t.philosophy].description}>
         <span
@@ -107,7 +113,7 @@ const columns: ColumnDef[] = [
       </span>
     ),
     sortValue: (t) => t.genderApproach,
-    minWidth: "8.5rem",
+    width: 8.5,
     render: (t) => (
       <Tooltip text={genderApproachGlossary[t.genderApproach].description}>
         <span
@@ -122,14 +128,14 @@ const columns: ColumnDef[] = [
     key: "publisher",
     label: "Publisher",
     sortValue: (t) => t.publisher,
-    minWidth: "8rem",
+    width: 11,
     render: (t) => <span>{t.publisher}</span>,
   },
   {
     key: "quoteLimit",
     label: "Quote Limit w/o Permission",
     sortValue: (t) => quoteLimitSortValue(t.quoteLimit),
-    minWidth: "7.5rem",
+    width: 7.5,
     render: (t) => (
       <span>
         {t.quoteLimit}
@@ -142,7 +148,7 @@ const columns: ColumnDef[] = [
     label: "Red Letter Edition",
     sortValue: (t) => t.redLetter,
     align: "center",
-    minWidth: "6rem",
+    width: 6,
     render: (t) => (
       <span className="inline-flex items-center">
         <YesNoIcon value={t.redLetter} label="Red letter edition available" />
@@ -155,7 +161,7 @@ const columns: ColumnDef[] = [
     label: "Marks OT Quotations in NT",
     sortValue: (t) => t.otMarking.marks,
     align: "center",
-    minWidth: "8rem",
+    width: 8,
     render: (t) => (
       <div className="flex flex-col items-center">
         <YesNoIcon value={t.otMarking.marks} label="Marks OT quotations in NT" />
@@ -170,7 +176,7 @@ const columns: ColumnDef[] = [
     label: "Italicizes Translator-Supplied Words",
     sortValue: (t) => t.italicizesTranslatorWords,
     align: "center",
-    minWidth: "8.5rem",
+    width: 8.5,
     render: (t) => (
       <span className="inline-flex items-center">
         <YesNoIcon value={t.italicizesTranslatorWords} label="Italicizes translator-supplied words" />
@@ -183,7 +189,7 @@ const columns: ColumnDef[] = [
     label: "Capitalizes Deity Pronouns",
     sortValue: (t) => t.capitalizesDeityPronouns,
     align: "center",
-    minWidth: "8rem",
+    width: 8,
     render: (t) => (
       <YesNoIcon value={t.capitalizesDeityPronouns} label="Capitalizes deity pronouns" />
     ),
@@ -193,12 +199,15 @@ const columns: ColumnDef[] = [
     label: "Uses Quotation Marks for Dialogue",
     sortValue: (t) => t.quotationMarksForDialogue,
     align: "center",
-    minWidth: "7.5rem",
+    width: 7.5,
     render: (t) => (
       <YesNoIcon value={t.quotationMarksForDialogue} label="Uses quotation marks for dialogue" />
     ),
   },
 ];
+
+// The rem width of every column except the sticky name column.
+const otherColumnsWidth = columns.slice(1).reduce((sum, c) => sum + c.width, 0);
 
 export default function ComparisonTable({ translations }: { translations: Translation[] }) {
   const [sortKey, setSortKey] = useState<string | null>("firstPublishedYear");
@@ -264,9 +273,17 @@ export default function ComparisonTable({ translations }: { translations: Transl
   return (
     <div
       ref={wrapperRef}
-      className="w-full min-w-0 overflow-x-auto rounded-lg border border-neutral-200"
+      // `relative` makes this scroll box the containing block for the YesNoIcon `sr-only`
+      // labels (position: absolute). Without it they escape the overflow clip and widen
+      // the whole page on mobile.
+      className="relative w-full min-w-0 overflow-x-auto rounded-lg border border-neutral-200"
     >
-      <table className="min-w-full table-fixed border-collapse text-sm">
+      {/* `table-fixed` only takes effect with an explicit table width. Without one the
+          browser squeezes every column to its narrowest content and ignores the widths. */}
+      <table
+        className="min-w-full table-fixed border-collapse text-sm [--name-col:8rem] sm:[--name-col:13rem]"
+        style={{ width: `calc(var(--name-col) + ${otherColumnsWidth}rem)` }}
+      >
         <thead ref={theadRef} className="relative z-20 [will-change:transform]">
           <tr className="bg-neutral-50">
             {columns.map((col, i) => {
@@ -276,7 +293,7 @@ export default function ComparisonTable({ translations }: { translations: Transl
                 <th
                   key={col.key}
                   scope="col"
-                  style={col.minWidth ? { width: col.minWidth } : undefined}
+                  style={{ width: i === 0 ? "var(--name-col)" : `${col.width}rem` }}
                   className={`border-b border-neutral-200 bg-neutral-50 px-2 py-2 text-left align-bottom text-xs font-bold uppercase tracking-wide text-neutral-600 sm:px-3 ${
                     isSticky
                       ? "sticky left-0 z-20 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1),0_5px_6px_-6px_rgba(0,0,0,0.18)]"
@@ -314,7 +331,13 @@ export default function ComparisonTable({ translations }: { translations: Transl
                     key={col.key}
                     className={`border-b border-neutral-100 px-2 py-1.5 align-middle text-neutral-700 sm:px-3 ${
                       col.align === "center" ? "text-center" : "text-left"
-                    } ${isSticky ? "sticky left-0 z-10 bg-white shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]" : ""}`}
+                    } ${
+                      isSticky
+                        ? // Opaque stand-in for the row stripe (neutral-50 at 50% over white),
+                          // so scrolled cells can't show through the sticky column.
+                          `sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${rowIdx % 2 === 0 ? "bg-white" : "bg-[#fdfdfd]"}`
+                        : ""
+                    }`}
                   >
                     {col.render(t)}
                   </td>
