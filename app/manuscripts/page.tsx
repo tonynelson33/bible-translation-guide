@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 const sections = [
-  { id: "start", title: "Start here" },
+  { id: "start", title: "The originals" },
   { id: "languages", title: "The three languages" },
   { id: "materials", title: "What they wrote on" },
   { id: "old-testament", title: "Old Testament manuscripts" },
@@ -40,7 +40,7 @@ const sections = [
   { id: "translators-desk", title: "The translator’s desk, then and now" },
   { id: "tr-ct-mt", title: "Textus Receptus, Critical Text, Majority Text" },
   { id: "ot-choices", title: "The Old Testament’s version of the question" },
-  { id: "how-much", title: "How much does it change?" },
+  { id: "how-much", title: "How much do they differ?" },
 ];
 
 const link = "font-medium text-brand-700 hover:underline";
@@ -585,6 +585,18 @@ export default function ManuscriptsPage() {
             </p>
           </div>
         </div>
+        <div className="mt-5 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
+          <h3 className="font-semibold text-brand-900">Why translators also know Latin, Syriac and Coptic</h3>
+          <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            Nobody translates the Bible from these languages. But very early on, Christians
+            translated the Greek New Testament into <strong>Latin</strong> (for the western Roman
+            Empire), <strong>Syriac</strong> (for the Middle East) and <strong>Coptic</strong> (for
+            Egypt). Some of those translations were made in the AD 100s to 300s, from Greek copies
+            that no longer exist. Reading them shows what those lost Greek copies said. The most
+            famous is the <strong>Latin Vulgate</strong>, made by Jerome around AD 400. It was the
+            standard Bible of the Western church for over a thousand years.
+          </p>
+        </div>
       </Section>
 
       {/* 3 */}
@@ -836,8 +848,7 @@ export default function ManuscriptsPage() {
         </ul>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600">
           The languages haven’t changed: Hebrew, Aramaic and Greek. Committees today also draw on
-          experts in Latin, Syriac and Coptic, because the early translations into those languages
-          are evidence too.
+          experts in Latin, Syriac and Coptic, for the reason explained in section 2.
         </p>
       </Section>
 
@@ -879,8 +890,10 @@ export default function ManuscriptsPage() {
                   <strong>Revelation just one</strong>. That copy was missing its last page.
                 </li>
                 <li>
-                  So for the last six verses of Revelation (22:16–21), he translated the{" "}
-                  <strong>Latin back into Greek</strong> himself. A few words of that
+                  So for the last six verses of Revelation (22:16–21), he used the{" "}
+                  <strong>Latin Vulgate</strong>, the standard Latin Bible of his day, and
+                  translated those verses <strong>from Latin into Greek</strong> himself. A few
+                  words of that
                   back-translation are still in the Textus Receptus and the KJV. For example,
                   Revelation 22:19 says “book of life” in the KJV, where the Greek manuscripts say
                   “tree of life.”
@@ -900,7 +913,7 @@ export default function ManuscriptsPage() {
             name="Textus Receptus"
             oneLine="The first published Greek New Testament, lightly revised by later editors."
             kind="A specific printed text. Strictly, it is a family of closely related editions, from Erasmus (1516) through Estienne, Beza and the Elzevir brothers (1633). The name means “received text.” It comes from a line in the 1633 edition’s preface."
-            how="Erasmus mostly printed what his manuscripts said, correcting them in places from other copies and from the Latin. Later editors made small changes."
+            how="Erasmus mostly printed what his manuscripts said, correcting them in places from other copies and from the Latin Vulgate. Later editors made small changes."
             builtFrom="Erasmus’s seven or so medieval manuscripts (see the box above), with small changes from a few more copies by later editors."
             leans="Byzantine"
             printed="Scrivener’s edition (1881, reprinted 1894). It reconstructs the Greek text behind the KJV."
