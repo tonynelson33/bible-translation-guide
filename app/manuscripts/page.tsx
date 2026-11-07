@@ -808,7 +808,7 @@ export default function ManuscriptsPage() {
         </InShort>
         <p className="mt-4 max-w-3xl leading-relaxed text-neutral-700">
           This explains much of the debate. The translators in 1611 weren’t careless. Most of the
-          oldest copies simply hadn’t surfaced yet. The chart shows a <strong>few famous
+          oldest copies simply weren’t available yet. The chart shows a <strong>few famous
           examples</strong>, not every manuscript, marked <strong>OT</strong> or{" "}
           <strong>NT</strong>. Each row shows when a manuscript was written (the dark bar) and when
           scholars could study it (the gold dot).
@@ -1001,7 +1001,7 @@ export default function ManuscriptsPage() {
         <InShort>
           Every translation uses the Masoretic Text as its base, and for nearly every verse it
           simply translates the Masoretic Hebrew. But in a small number of verses, translators
-          decide an older witness, a Dead Sea Scroll or the Septuagint, preserves the better
+          decide that an older source (a Dead Sea Scroll or the Septuagint) has the better
           reading, and use that instead, usually with a footnote. Translations disagree about which
           verses those should be.
         </InShort>

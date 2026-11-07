@@ -46,7 +46,7 @@ lookup rather than a translation-comparison tool; the footer's "More" column alr
 it with Buy/About, so this brings the top nav in line with that); the logo also links to `/`
 (the explicit "Home" was added 2026-09-11 — owner ask, "it looks cleaner"); a reusable
 `NavDropdown` powers both the
-Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/blog`,
+Translations menu (all 12 profiles) and the **Learn** menu (`/manuscripts` (first, added 2026-11), `/history`, `/differences`, `/blog`,
 `/faq`, `/glossary`, `/about` — `/blog`/`/faq`/`/glossary`/`/about` order set 2026-09-11, Videos
 before FAQ; `/about` and `/glossary` are deliberately *only* in the Learn dropdown + footer, not
 top-level, per owner "the site is about maxed out"). `/compare` was labelled "Compare" until
@@ -243,8 +243,8 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   under their own label — deliberately outside the diagram since they connect to nothing. All
   twelve are navy (owner ask). If you edit node positions, re-check that edges don't cross and
   the aria-label still matches.
-- **`/manuscripts`** ("Bible Manuscripts 101", added 2026-11, Learn dropdown + footer, right after
-  `/history`) — a plain-language walk through the manuscripts behind every translation, built
+- **`/manuscripts`** ("Bible Manuscripts 101", added 2026-11, first in the Learn dropdown and
+  the footer's Learn column, ahead of `/history` — owner call) — a plain-language walk through the manuscripts behind every translation, built
   for a first-time reader: languages → materials → OT manuscripts → NT manuscripts → families
   (text-types) → a written-vs-access timeline → the translator's desk → TR/CT/MT → OT verse
   choices → how much it changes. Content in `lib/manuscripts.ts`; its header comment lists the

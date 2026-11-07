@@ -57,7 +57,7 @@ export const otManuscripts: ManuscriptRow[] = [
   {
     id: "masoretic",
     name: "Masoretic Text",
-    what: "The standard Hebrew text, copied by Jewish scribes. Every translation on this site starts from it.",
+    what: "The standard Hebrew text, copied by Jewish scribes. Every translation on this site uses it as its base.",
     language: "Hebrew (a few chapters in Aramaic)",
     contains:
       "The whole Old Testament. Thousands of medieval copies. Best known: the Leningrad Codex (complete) and the Aleppo Codex (about 60% survives).",

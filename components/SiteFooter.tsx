@@ -13,8 +13,8 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
   {
     heading: "Learn",
     links: [
-      { href: "/history", label: "How We Got the English Bible" },
       { href: "/manuscripts", label: "Bible Manuscripts 101" },
+      { href: "/history", label: "How We Got the English Bible" },
       { href: "/why-these-26", label: "Why These 26 Translations" },
       { href: "/differences", label: "Translation Differences" },
       { href: "/blog", label: "Videos" },
