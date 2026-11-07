@@ -243,6 +243,20 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   under their own label — deliberately outside the diagram since they connect to nothing. All
   twelve are navy (owner ask). If you edit node positions, re-check that edges don't cross and
   the aria-label still matches.
+- **`/manuscripts`** ("Bible Manuscripts", added 2026-11, Learn dropdown + footer, right after
+  `/history`) — a plain-language walk through the manuscripts behind every translation, built
+  for a first-time reader: languages → materials → OT manuscripts → NT manuscripts → families
+  (text-types) → a written-vs-access timeline → the translator's desk → TR/CT/MT → OT verse
+  choices → how much it changes. Content in `lib/manuscripts.ts`; its header comment lists the
+  sources for every figure (INTF 2023 tally of 5,700 Greek NT manuscripts, etc.). House rules
+  there: every estimate says "about", every date carries AD/BC, and every manuscript card
+  answers the same questions in the same order, ending with "Did the KJV translators have
+  it?". The "Scholars got access" field is deliberately not "found" — Vaticanus and the
+  Byzantine copies were never lost. The three OT example verses (1 Sam 10:27, Deut 32:8,
+  Ps 22:16) were checked against each listed translation on Bible Gateway — re-check if a
+  translation is revised. The TR/CT/MT "used by" chips derive from `textualBasis`. The FAQ
+  `#text-types` answer and `/history`'s text section both link here; the site-wide manuscript
+  count is "about 5,700" (glossary, `/history`), not the older 5,800.
 - **`/about`** ("About This Site", added 2026-09-10, Learn dropdown + footer only) — static, all
   content inline in `app/about/page.tsx` as a `sections` array: what it is, the perspective
   (descriptive not prescriptive, written from within Protestantism), how the data is made,

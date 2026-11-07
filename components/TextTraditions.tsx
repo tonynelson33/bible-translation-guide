@@ -134,7 +134,7 @@ export default function TextTraditions() {
           <Card
             heading="Textus Receptus"
             sub="the later, Byzantine copies"
-            body="Compiled by Erasmus in 1516 from about six late medieval manuscripts, lightly revised afterwards. The Greek text behind the KJV tradition."
+            body="Compiled by Erasmus in 1516 from about seven medieval manuscripts, lightly revised afterwards. The Greek text behind the KJV tradition."
             image={historyImages.estienne1551}
             usedBy={tr}
           />

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/rankings",
     "/differences",
     "/history",
+    "/manuscripts",
     "/blog",
     "/faq",
     "/why-these-26",

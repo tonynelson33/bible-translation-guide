@@ -84,7 +84,7 @@ export const historyImages: Record<string, HistoryImage> = {
     height: 549,
     alt: "Rylands Papyrus 52: a small, ragged fragment of brown papyrus with a few lines of Greek visible along each broken edge.",
     caption:
-      "Rylands Papyrus 𝔓52, a fragment of John usually dated to the first half of the second century — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
+      "Rylands Papyrus 𝔓52, a fragment of John usually dated to the second century (the AD 100s) — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
     credit: "John Rylands Library, Manchester — public domain.",
   },
   boreelianus: {
@@ -309,7 +309,7 @@ export const textPrimer: HistorySection[] = [
     id: "manuscripts",
     heading: "Nobody has the originals",
     paragraphs: [
-      "No original manuscript of any biblical book survives. What survives are copies — for the New Testament, around 5,800 in Greek alone, plus ancient translations and quotations in early Christian writers. They were copied by hand for over a thousand years before printing, and hand-copying introduces small differences: a repeated line, a slip of spelling, an explanatory note that a later scribe folds into the text.",
+      "No original manuscript of any biblical book survives. What survives are copies — for the New Testament, around 5,700 in Greek alone, plus ancient translations and quotations in early Christian writers. They were copied by hand for over a thousand years before printing, and hand-copying introduces small differences: a repeated line, a slip of spelling, an explanatory note that a later scribe folds into the text.",
       "The work of comparing those copies to reconstruct the earliest recoverable wording is called textual criticism. It is the reason a modern Bible has footnotes like “some manuscripts read…”. The differences are real, but they are also mapped in detail, and none of them puts a core Christian teaching in doubt.",
     ],
     image: historyImages.codexSinaiticus,

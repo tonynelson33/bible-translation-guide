@@ -56,7 +56,7 @@ const groups: Group[] = [
       },
       {
         term: "Manuscript",
-        def: "A hand-written copy of a biblical text or part of one. For the New Testament there are around 5,800 in Greek alone, ranging from small papyrus scraps of the 100s to complete medieval codices.",
+        def: "A hand-written copy of a biblical text or part of one. For the New Testament there are around 5,700 in Greek alone, ranging from small papyrus scraps of the 100s to complete medieval codices.",
       },
       {
         term: "Textus Receptus",

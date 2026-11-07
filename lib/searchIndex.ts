@@ -196,6 +196,14 @@ const pageItems: SearchItem[] = [
   },
   {
     type: "Page",
+    title: "Bible Manuscripts",
+    subtitle: "The Hebrew and Greek copies behind every Bible, and what the TR, CT and MT are.",
+    href: "/manuscripts",
+    keywords:
+      "textus receptus critical text majority text dead sea scrolls codex papyrus septuagint masoretic alexandrian byzantine",
+  },
+  {
+    type: "Page",
     title: "Translation Differences",
     subtitle: "The specific verses where translations visibly differ, and why.",
     href: "/differences",
