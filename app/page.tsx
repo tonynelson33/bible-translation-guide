@@ -56,7 +56,7 @@ const entryCards = [
   {
     href: "/faq",
     title: "Common questions",
-    body: "What “accurate” means, why there are so many, what the manuscripts are, what changed since the KJV.",
+    body: "What “accurate” means, why there are so many, and what changed since the KJV.",
   },
 ];
 

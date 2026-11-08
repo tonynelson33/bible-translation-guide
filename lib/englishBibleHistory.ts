@@ -300,27 +300,3 @@ export const timeline: TimelineEntry[] = [
     major: true,
   },
 ];
-
-export interface HistorySection {
-  id: string;
-  heading: string;
-  paragraphs: string[];
-  image?: HistoryImage;
-}
-
-/**
- * One conceptual section; the NT / OT specifics are the two diagrams in
- * components/TextTraditions.tsx (kept there so the translation buckets stay
- * data-driven), which sit above this on the page.
- */
-export const textPrimer: HistorySection[] = [
-  {
-    id: "manuscripts",
-    heading: "Nobody has the originals",
-    paragraphs: [
-      "No original manuscript of any biblical book survives. What survives are copies — for the New Testament, around 5,700 in Greek alone, plus ancient translations and quotations in early Christian writers. They were copied by hand for over a thousand years before printing, and hand-copying introduces small differences: a repeated line, a slip of spelling, an explanatory note that a later scribe folds into the text.",
-      "The work of comparing those copies to reconstruct the earliest recoverable wording is called textual criticism. It is the reason a modern Bible has footnotes like “some manuscripts read…”. The differences are real, but they are also mapped in detail, and none of them puts a core Christian teaching in doubt.",
-    ],
-    image: historyImages.codexSinaiticus,
-  },
-];

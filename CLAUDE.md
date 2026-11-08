@@ -195,8 +195,8 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
 **Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
 - **`/faq`** — 13 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
   (rich answer + a self-contained `plain` string for the structured data). The "why no
-  translation uses the Majority Text" answer is the one `components/TextTraditions.tsx`
-  deep-links to (`/faq#majority-text`). The 3 group `<h2>`s carry a `border-t-2 border-gild-300`
+  translation uses the Majority Text" answer (`/faq#majority-text`) is linked from
+  `/manuscripts` section 9. The 3 group `<h2>`s carry a `border-t-2 border-gild-300`
   rule + bump to `sm:text-3xl` (2026-09-09) so the sections read as sections. `#kjv-1611-vs-today`
   (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
   quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
@@ -205,18 +205,17 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   step if the rankings move.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
-  timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
-  ("Nobody has the originals" — textual criticism in general) followed by
-  `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
-  `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
-  to sit here was cut 2026-09-08 as redundant with the diagrams. Each timeline `year` string
+  timeline, a Tyndale narrative, and a short "where the text comes from" section (`id="manuscripts"`)
+  that summarizes in two paragraphs and links to `/manuscripts`. Until 2026-11 that section held
+  its own primer (`textPrimer`) and the `TextTraditions` NT/OT diagrams; both were removed as
+  redundant once `/manuscripts` covered the same ground in full (owner call). Each timeline `year` string
   carries a place (`"1516 · Basel, Switzerland"`); the four foreign cities (Basel, Worms, Antwerp,
   Geneva) name their modern country (2026-09-11 — anachronistic in the strict sense, but it's how
   readers locate them). Coverdale is "Antwerp" — disputed, but the current scholarly consensus.
   **Images** (added 2026-09-09, the only images on the site): 19 public-domain manuscript /
   title-page / text-page / portrait scans — one per timeline entry through 1611 (`images:
   HistoryImage[]` on each entry — KJV and Geneva carry two, a title image + a page of text,
-  rendered as a 2-up row), one on each `TextTraditions` card, plus a Tyndale portrait
+  rendered as a 2-up row), plus a Tyndale portrait
   (`tyndalePortrait`, a hand-coloured engraving after the Hertford College painting) in the
   "through-line: Tyndale" narrative, which is a text-left / portrait-right grid. Data
   (src/dims/alt/caption/credit + provenance) is in `historyImages` in
@@ -225,7 +224,7 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   via `components/ImageZoom.tsx` (2026-09-10) — a client component that opens the **raw source
   file** (a plain `<img>`, not a `next/image` variant, and no sepia filter) in a full-screen
   overlay; backdrop / ✕ / Esc close it, body scroll is locked while open. `HistoryImage` and the
-  `TextTraditions` banner both wrap their `<Image>` in it. The trigger must stay valid inside a
+  `/manuscripts` picture cards both wrap their `<Image>` in it. The trigger must stay valid inside a
   `<button>` (an `<img>` is; a `<figure>` is not — `HistoryImage` keeps its `<figcaption>`
   outside the zoom button).
   Files in `public/history/`; raw downloads (from Wikimedia Commons + the Internet Archive)

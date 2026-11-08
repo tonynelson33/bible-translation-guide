@@ -442,7 +442,7 @@ const groups: Group[] = [
             <p>
               This isn&rsquo;t a problem that having twenty-six English options created. No
               autograph of any biblical book survives, in any language.{" "}
-              <Link href="/history#manuscripts">Every Bible anyone has ever read has been a
+              <Link href="/manuscripts">Every Bible anyone has ever read has been a
               copy, or a translation of a copy</Link>. That&rsquo;s been true for two thousand
               years, not just since this site had options to compare. Textual criticism
               and careful translation exist for exactly this reason: to recover and render that
