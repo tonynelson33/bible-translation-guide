@@ -56,13 +56,18 @@ const entryCards = [
   {
     href: "/faq",
     title: "Common questions",
-    body: "What “accurate” means, why there are so many, what the manuscripts are, what changed since the KJV.",
+    body: "What “accurate” means, why there are so many, and what changed since the KJV.",
   },
 ];
 
 // A second, lighter row — content to go deeper on rather than core site tools,
 // placed near the bottom so the four above still read as the main entry points.
 const goDeeperCards = [
+  {
+    href: "/manuscripts",
+    title: "Bible Manuscripts 101",
+    body: "The handwritten copies behind every translation: what survives, how old it is, and what the Textus Receptus, Critical Text and Majority Text really are.",
+  },
   {
     href: "/history",
     title: "How we got the English Bible",
@@ -189,7 +194,7 @@ export default function HomePage() {
 
       {/* Go deeper */}
       <section className="mx-auto mt-16 max-w-3xl border-t border-neutral-200 pt-10">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {goDeeperCards.map((card) => (
             <Link
               key={card.href}

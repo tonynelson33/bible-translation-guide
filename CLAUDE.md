@@ -46,7 +46,7 @@ lookup rather than a translation-comparison tool; the footer's "More" column alr
 it with Buy/About, so this brings the top nav in line with that); the logo also links to `/`
 (the explicit "Home" was added 2026-09-11 — owner ask, "it looks cleaner"); a reusable
 `NavDropdown` powers both the
-Translations menu (all 12 profiles) and the **Learn** menu (`/history`, `/differences`, `/blog`,
+Translations menu (all 12 profiles) and the **Learn** menu (`/manuscripts` (first, added 2026-11), `/history`, `/differences`, `/blog`,
 `/faq`, `/glossary`, `/about` — `/blog`/`/faq`/`/glossary`/`/about` order set 2026-09-11, Videos
 before FAQ; `/about` and `/glossary` are deliberately *only* in the Learn dropdown + footer, not
 top-level, per owner "the site is about maxed out"). `/compare` was labelled "Compare" until
@@ -195,8 +195,8 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
 **Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
 - **`/faq`** — 13 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
   (rich answer + a self-contained `plain` string for the structured data). The "why no
-  translation uses the Majority Text" answer is the one `components/TextTraditions.tsx`
-  deep-links to (`/faq#majority-text`). The 3 group `<h2>`s carry a `border-t-2 border-gild-300`
+  translation uses the Majority Text" answer (`/faq#majority-text`) is linked from
+  `/manuscripts` section 9. The 3 group `<h2>`s carry a `border-t-2 border-gild-300`
   rule + bump to `sm:text-3xl` (2026-09-09) so the sections read as sections. `#kjv-1611-vs-today`
   (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
   quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
@@ -205,18 +205,17 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   step if the rankings move.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
-  timeline, a Tyndale narrative, and a "where the text comes from" section: the `textPrimer`
-  ("Nobody has the originals" — textual criticism in general) followed by
-  `components/TextTraditions.tsx`, the two data-driven diagrams (NT text-forms bucketed by
-  `textualBasis`; OT Masoretic base + Septuagint + Dead Sea Scrolls). The NT/OT prose that used
-  to sit here was cut 2026-09-08 as redundant with the diagrams. Each timeline `year` string
+  timeline, a Tyndale narrative, and a short "where the text comes from" section (`id="manuscripts"`)
+  that summarizes in two paragraphs and links to `/manuscripts`. Until 2026-11 that section held
+  its own primer (`textPrimer`) and the `TextTraditions` NT/OT diagrams; both were removed as
+  redundant once `/manuscripts` covered the same ground in full (owner call). Each timeline `year` string
   carries a place (`"1516 · Basel, Switzerland"`); the four foreign cities (Basel, Worms, Antwerp,
   Geneva) name their modern country (2026-09-11 — anachronistic in the strict sense, but it's how
   readers locate them). Coverdale is "Antwerp" — disputed, but the current scholarly consensus.
   **Images** (added 2026-09-09, the only images on the site): 19 public-domain manuscript /
   title-page / text-page / portrait scans — one per timeline entry through 1611 (`images:
   HistoryImage[]` on each entry — KJV and Geneva carry two, a title image + a page of text,
-  rendered as a 2-up row), one on each `TextTraditions` card, plus a Tyndale portrait
+  rendered as a 2-up row), plus a Tyndale portrait
   (`tyndalePortrait`, a hand-coloured engraving after the Hertford College painting) in the
   "through-line: Tyndale" narrative, which is a text-left / portrait-right grid. Data
   (src/dims/alt/caption/credit + provenance) is in `historyImages` in
@@ -225,7 +224,7 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   via `components/ImageZoom.tsx` (2026-09-10) — a client component that opens the **raw source
   file** (a plain `<img>`, not a `next/image` variant, and no sepia filter) in a full-screen
   overlay; backdrop / ✕ / Esc close it, body scroll is locked while open. `HistoryImage` and the
-  `TextTraditions` banner both wrap their `<Image>` in it. The trigger must stay valid inside a
+  `/manuscripts` picture cards both wrap their `<Image>` in it. The trigger must stay valid inside a
   `<button>` (an `<img>` is; a `<figure>` is not — `HistoryImage` keeps its `<figcaption>`
   outside the zoom button).
   Files in `public/history/`; raw downloads (from Wikimedia Commons + the Internet Archive)
@@ -243,6 +242,24 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   under their own label — deliberately outside the diagram since they connect to nothing. All
   twelve are navy (owner ask). If you edit node positions, re-check that edges don't cross and
   the aria-label still matches.
+- **`/manuscripts`** ("Bible Manuscripts 101", added 2026-11, first in the Learn dropdown and
+  the footer's Learn column, ahead of `/history` — owner call) — a plain-language walk through the manuscripts behind every translation, built
+  for a first-time reader: languages → materials → OT manuscripts → NT manuscripts → families
+  (text-types) → a written-vs-access timeline → the translator's desk → TR/CT/MT → OT verse
+  choices → how much it changes. Content in `lib/manuscripts.ts`; its header comment lists the
+  sources for every figure (INTF 2023 tally of 5,700 Greek NT manuscripts, etc.). House rules
+  there: every estimate says "about", every date carries AD/BC, and every manuscript row
+  answers the same questions in the same order, ending with "Did the KJV translators have
+  it?". Owner asked for tables over long cards (readers skim cards): `DataTable` in the page
+  renders a real table from `md` up and compact stacked rows on phones, from the same data.
+  Families lead with Byzantine + Alexandrian and end with a "Mixed or unsorted" row so the
+  counts visibly add up to 5,700. Section 9 has an Erasmus callout (about seven manuscripts,
+  one incomplete Revelation copy, Rev 22:16–21 back-translated from Latin, "book of life"). The "Scholars got access" field is deliberately not "found" — Vaticanus and the
+  Byzantine copies were never lost. The three OT example verses (1 Sam 10:27, Deut 32:8,
+  Ps 22:16) were checked against each listed translation on Bible Gateway — re-check if a
+  translation is revised. The TR/CT/MT "used by" chips derive from `textualBasis`. The FAQ
+  `#text-types` answer and `/history`'s text section both link here; the site-wide manuscript
+  count is "about 5,700" (glossary, `/history`), not the older 5,800.
 - **`/about`** ("About This Site", added 2026-09-10, Learn dropdown + footer only) — static, all
   content inline in `app/about/page.tsx` as a `sections` array: what it is, the perspective
   (descriptive not prescriptive, written from within Protestantism), how the data is made,

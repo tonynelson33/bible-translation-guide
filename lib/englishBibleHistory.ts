@@ -84,7 +84,7 @@ export const historyImages: Record<string, HistoryImage> = {
     height: 549,
     alt: "Rylands Papyrus 52: a small, ragged fragment of brown papyrus with a few lines of Greek visible along each broken edge.",
     caption:
-      "Rylands Papyrus 𝔓52, a fragment of John usually dated to the first half of the second century — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
+      "Rylands Papyrus 𝔓52, a fragment of John usually dated to the second century (the AD 100s) — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
     credit: "John Rylands Library, Manchester — public domain.",
   },
   boreelianus: {
@@ -169,6 +169,15 @@ export const historyImages: Record<string, HistoryImage> = {
       "A page of Codex Sinaiticus, a Greek Bible copied in the fourth century — one of the two oldest substantially complete copies that survive. Shown in Tischendorf’s line-for-line facsimile.",
     credit: "Constantin von Tischendorf, facsimile edition, 1862 — public domain.",
   },
+  codexWashingtonianus: {
+    src: "/history/codex-washingtonianus.jpg",
+    width: 960,
+    height: 733,
+    alt: "Two facing parchment pages of Codex Washingtonianus, worn and browned at the edges, each filled with a single column of Greek capital letters.",
+    caption:
+      "Two facing pages of Codex Washingtonianus, a Gospel book copied around AD 400 — a codex: pages stacked and sewn like a modern book.",
+    credit: "Freer Gallery of Art, Smithsonian Institution, Washington, D.C. — public domain.",
+  },
   isaiahScroll: {
     src: "/history/great-isaiah-scroll.jpg",
     width: 1280,
@@ -210,7 +219,7 @@ export const timeline: TimelineEntry[] = [
     year: "1516 · Basel, Switzerland",
     title: "Erasmus prints the Greek New Testament",
     detail:
-      "For the first time the Greek text is available in print. Erasmus worked from a handful of late medieval manuscripts; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
+      "For the first time the Greek text is available in print. Erasmus worked from about seven medieval manuscripts, with only one incomplete copy of Revelation; his text, lightly revised, became known as the Textus Receptus and stood behind every Protestant translation for the next 350 years.",
     images: [historyImages.erasmus1516],
   },
   {
@@ -289,29 +298,5 @@ export const timeline: TimelineEntry[] = [
     detail:
       "The NASB (1971), NIV (1978), NKJV (1982), NRSV (1989), NLT (1996), ESV (2001), and CSB (2017) arrive in quick succession, and new translations keep coming — the product of better manuscripts, changing English, competing translation philosophies, and a competitive publishing market.",
     major: true,
-  },
-];
-
-export interface HistorySection {
-  id: string;
-  heading: string;
-  paragraphs: string[];
-  image?: HistoryImage;
-}
-
-/**
- * One conceptual section; the NT / OT specifics are the two diagrams in
- * components/TextTraditions.tsx (kept there so the translation buckets stay
- * data-driven), which sit above this on the page.
- */
-export const textPrimer: HistorySection[] = [
-  {
-    id: "manuscripts",
-    heading: "Nobody has the originals",
-    paragraphs: [
-      "No original manuscript of any biblical book survives. What survives are copies — for the New Testament, around 5,800 in Greek alone, plus ancient translations and quotations in early Christian writers. They were copied by hand for over a thousand years before printing, and hand-copying introduces small differences: a repeated line, a slip of spelling, an explanatory note that a later scribe folds into the text.",
-      "The work of comparing those copies to reconstruct the earliest recoverable wording is called textual criticism. It is the reason a modern Bible has footnotes like “some manuscripts read…”. The differences are real, but they are also mapped in detail, and none of them puts a core Christian teaching in doubt.",
-    ],
-    image: historyImages.codexSinaiticus,
   },
 ];

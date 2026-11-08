@@ -192,25 +192,27 @@ const groups: Group[] = [
         a: (
           <>
             <p>
-              Three answers to one question: which Greek manuscripts should the New Testament be
-              translated from?
+              All three are printed Greek New Testaments, not collections of manuscripts. The
+              handwritten copies of the New Testament disagree in places, and each of the three
+              is a different way of deciding which wording to print.
             </p>
             <ul>
               <li>
-                <strong>Textus Receptus</strong> &mdash; the text assembled by Erasmus in the 1500s
-                from a few late medieval manuscripts. It underlies the{" "}
-                <Link href="/translations/kjv">KJV</Link> and{" "}
+                <strong>Textus Receptus</strong> &mdash; a printed text. Erasmus first published
+                it in 1516 from a handful of medieval manuscripts, and later editors lightly
+                revised it. It underlies the <Link href="/translations/kjv">KJV</Link> and{" "}
                 <Link href="/translations/nkjv">NKJV</Link>.
               </li>
               <li>
                 <strong>Critical Text</strong> (also called Nestle-Aland or the
-                &ldquo;eclectic&rdquo; text) &mdash; reconstructed by weighing all known manuscripts,
-                including papyri from the 100s&ndash;300s found in the last two centuries. Nearly
-                every modern translation uses it.
+                &ldquo;eclectic&rdquo; text) &mdash; both a method and the text it produces. Its
+                editors weigh all known manuscripts, including papyri from the 100s&ndash;300s
+                found in the last two centuries. Nearly every modern translation uses it.
               </li>
               <li>
-                <strong>Majority Text</strong> &mdash; follows the reading found in the greatest
-                number of surviving manuscripts, most of them Byzantine and medieval.
+                <strong>Majority Text</strong> &mdash; both a principle and the editions built on
+                it: at each spot, print the reading found in the most surviving manuscripts. Most
+                of those are Byzantine and medieval.
               </li>
             </ul>
             <p>
@@ -229,10 +231,15 @@ const groups: Group[] = [
               The differences among the three affect a small fraction of the New Testament and no
               major doctrine. <Link href="/differences">The differences page</Link> has the detail.
             </p>
+            <p>
+              For the full background &mdash; which manuscripts exist, how old they are, when they
+              were found, and what each of the three is built from &mdash; see{" "}
+              <Link href="/manuscripts">Bible Manuscripts 101</Link>.
+            </p>
           </>
         ),
         plain:
-          "These are three approaches to choosing which Greek manuscripts the New Testament is translated from. The Textus Receptus, compiled by Erasmus in the 1500s from a few late manuscripts, underlies the KJV, NKJV, and MEV. The Critical Text (or eclectic text) is reconstructed by weighing all known manuscripts, including early papyri found in the last two centuries, and is used by most translations on this site. The Majority Text follows the reading found in the most surviving manuscripts, and underlies the WEB and MSB directly, with the LSV drawing on both it and the Textus Receptus. The differences among the three are small and affect no major doctrine.",
+          "All three are printed Greek New Testaments, not collections of manuscripts; each is a different way of deciding which wording to print where the handwritten copies disagree. The Textus Receptus, first published by Erasmus in 1516 from a handful of medieval manuscripts and lightly revised afterward, underlies the KJV, NKJV, and MEV. The Critical Text (or eclectic text) is both a method and the text it produces: its editors weigh all known manuscripts, including early papyri found in the last two centuries, and is used by most translations on this site. The Majority Text is a principle and the editions built on it: print the reading found in the most surviving manuscripts. It underlies the WEB and MSB directly, with the LSV drawing on both it and the Textus Receptus. The differences among the three are small and affect no major doctrine.",
       },
       {
         id: "majority-text",
@@ -435,7 +442,7 @@ const groups: Group[] = [
             <p>
               This isn&rsquo;t a problem that having twenty-six English options created. No
               autograph of any biblical book survives, in any language.{" "}
-              <Link href="/history#manuscripts">Every Bible anyone has ever read has been a
+              <Link href="/manuscripts">Every Bible anyone has ever read has been a
               copy, or a translation of a copy</Link>. That&rsquo;s been true for two thousand
               years, not just since this site had options to compare. Textual criticism
               and careful translation exist for exactly this reason: to recover and render that

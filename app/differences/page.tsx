@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import DiffVerseCard from "@/components/DiffVerseCard";
 import {
   ATTRIBUTIONS,
@@ -26,7 +27,11 @@ export default function DifferencesPage() {
           differences are visible enough that people notice — a verse in brackets, a footnote, a
           familiar phrase that&apos;s shorter than they remember. Those differences come from two
           things: which ancient copies a translation follows, and which English words the
-          translators chose.
+          translators chose. For background on those ancient copies, see{" "}
+          <Link href="/manuscripts" className="font-medium text-brand-700 hover:underline">
+            Bible Manuscripts 101
+          </Link>
+          .
         </p>
         <p className="mt-3 leading-relaxed text-neutral-700">
           &ldquo;Two well-known passages&rdquo; and &ldquo;Whole verses&rdquo; below are complete

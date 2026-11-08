@@ -56,7 +56,39 @@ const groups: Group[] = [
       },
       {
         term: "Manuscript",
-        def: "A hand-written copy of a biblical text or part of one. For the New Testament there are around 5,800 in Greek alone, ranging from small papyrus scraps of the 100s to complete medieval codices.",
+        def: "A hand-written copy of a biblical text or part of one. For the New Testament there are around 5,700 in Greek alone, ranging from small papyrus scraps of the 100s to complete medieval codices.",
+      },
+      {
+        term: "Papyrus",
+        def: "A paper-like writing material made from strips of the papyrus reed, which grows in Egypt. Also the name for the earliest New Testament manuscripts written on it — about 135 of them, some from the AD 100s and 200s.",
+      },
+      {
+        term: "Codex",
+        def: "A book made of pages stacked and sewn together, the ancestor of the modern book, as opposed to a scroll. Christians adopted it early, so most New Testament manuscripts are codices.",
+      },
+      {
+        term: "Majuscule (uncial)",
+        def: "A Greek manuscript written in all capital letters, usually with no spaces between words. Most date from the AD 300s to 900s; they include the great early Bibles such as Codex Sinaiticus and Codex Vaticanus.",
+      },
+      {
+        term: "Minuscule",
+        def: "A Greek manuscript written in the faster lower-case handwriting that took over from the AD 800s. About 2,860 New Testament manuscripts are minuscules, most of them medieval and Byzantine.",
+      },
+      {
+        term: "Manuscript family (text-type)",
+        def: "A group of manuscripts that share the same distinctive wording, usually because they were copied in the same region. The main two are the Alexandrian and the Byzantine; scholars also speak of a Western and a disputed Caesarean family.",
+      },
+      {
+        term: "Alexandrian text",
+        def: "The manuscript family associated with Egypt. Only a few dozen copies, but they include most of the oldest, such as Papyrus 75 and Codex Vaticanus. The Critical Text leans on it.",
+      },
+      {
+        term: "Byzantine text",
+        def: "The manuscript family of the Greek-speaking East, centered on Constantinople. It makes up about 80–90% of all surviving copies, most of them from AD 800 on. The Majority Text follows it, and the Textus Receptus is close to it.",
+      },
+      {
+        term: "Apparatus",
+        def: "The footnotes in a scholarly edition of the Greek or Hebrew text that list where the manuscripts disagree and which manuscripts support each reading. It is what translators work from instead of the manuscripts themselves.",
       },
       {
         term: "Textus Receptus",
@@ -69,6 +101,10 @@ const groups: Group[] = [
       {
         term: "Majority Text",
         def: "A Greek New Testament that follows, at each point, the reading found in the greatest number of surviving manuscripts — most of them Byzantine and medieval. No major English translation is based on it; a few small ones are.",
+      },
+      {
+        term: "Masoretes",
+        def: "Jewish scribes who, between roughly AD 500 and 1000, guarded the Hebrew text of the Old Testament and added marks for its vowels, which had not been written before. The text they handed down is the Masoretic Text.",
       },
       {
         term: "Masoretic Text",
@@ -105,7 +141,7 @@ const groups: Group[] = [
       },
       {
         term: "Lectionary",
-        def: "A schedule of Bible readings assigned to each Sunday and feast day of the church year. Many mainline denominations specify which translation is read aloud from the lectionary — the NRSV across much of Episcopal, Lutheran, and Methodist worship, for instance.",
+        def: "Two related meanings. (1) A schedule of Bible readings assigned to each Sunday and feast day of the church year. Many mainline denominations specify which translation is read aloud from the lectionary — the NRSV across much of Episcopal, Lutheran, and Methodist worship, for instance. (2) In manuscript studies, a handwritten church reading book that arranges Bible passages by the day they are read, rather than in book order. About 2,420 Greek New Testament manuscripts are lectionaries.",
       },
       {
         term: "Deuterocanonical books (the Apocrypha)",

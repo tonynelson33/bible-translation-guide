@@ -27,6 +27,7 @@ const afterTranslations: NavLink[] = [
 ];
 
 const learnLinks: NavLink[] = [
+  { href: "/manuscripts", label: "Bible Manuscripts 101" },
   { href: "/history", label: "How We Got the English Bible" },
   { href: "/why-these-26", label: "Why These 26 Translations" },
   { href: "/differences", label: "Translation Differences" },

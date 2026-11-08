@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
-import TextTraditions from "@/components/TextTraditions";
 import TranslationFamilyTree from "@/components/TranslationFamilyTree";
-import { timeline, textPrimer, historyImages } from "@/lib/englishBibleHistory";
+import { timeline, historyImages } from "@/lib/englishBibleHistory";
 
 export const metadata: Metadata = {
   title: "How We Got the English Bible",
@@ -138,53 +137,34 @@ export default function HistoryPage() {
         </div>
       </div>
 
-      {/* Text primer */}
-      <div className="mt-14 border-t border-neutral-200 pt-10">
+      {/* Text primer — the full story lives on /manuscripts */}
+      <div id="manuscripts" className="mt-14 scroll-mt-20 border-t border-neutral-200 pt-10">
         <h2 className="font-display text-2xl font-semibold text-brand-900">
           Where the text itself comes from
         </h2>
-        <p className="mt-3 leading-relaxed text-neutral-700">
-          A translation is only as good as the source text behind it, and the source text is itself
-          the product of careful reconstruction. This is the part that the{" "}
-          <Link href="/differences" className="font-medium text-brand-700 hover:underline">
-            translation differences
-          </Link>{" "}
-          page assumes you know.
-        </p>
-
-        {textPrimer.map((section) => (
-          <div key={section.id} id={section.id} className="mt-8 scroll-mt-20">
-            <div
-              className={
-                section.image
-                  ? "gap-6 sm:grid sm:grid-cols-[minmax(0,1fr)_14rem] sm:items-start"
-                  : undefined
-              }
-            >
-              <div>
-                <h3 className="font-display text-xl font-semibold text-brand-900">
-                  {section.heading}
-                </h3>
-                <div className="mt-2 space-y-3 leading-relaxed text-neutral-700">
-                  {section.paragraphs.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-              </div>
-              {section.image && (
-                <HistoryImage
-                  image={section.image}
-                  className="mt-4 max-w-[16rem] sm:mt-1 sm:max-w-none"
-                  sizes="(max-width: 639px) 16rem, 14rem"
-                />
-              )}
-            </div>
-          </div>
-        ))}
-
-        <div className="mt-10">
-          <TextTraditions />
+        <div className="mt-3 space-y-3 leading-relaxed text-neutral-700">
+          <p>
+            Every translator above worked from copies. No original manuscript of any biblical book
+            survives; what survives are thousands of handwritten copies in Hebrew, Aramaic and
+            Greek, made over more than a thousand years. Comparing them to recover the original
+            wording is called textual criticism, and it is why a modern Bible has footnotes like
+            &ldquo;some manuscripts read&hellip;&rdquo;.
+          </p>
+          <p>
+            Tyndale and the King James translators had only a handful of late medieval copies.
+            Most of the oldest manuscripts only became available long after 1611.
+          </p>
         </div>
+        <Link
+          href="/manuscripts"
+          className="mt-5 inline-block rounded-lg border border-gild-300 bg-gild-50 px-4 py-2.5 text-sm font-semibold text-gild-800 transition-colors hover:bg-gild-100"
+        >
+          Read Bible Manuscripts 101 &rarr;
+        </Link>
+        <p className="mt-2 text-sm text-neutral-500">
+          What survives, how old it is, when it was found, and what the Textus Receptus, Critical
+          Text and Majority Text really are.
+        </p>
       </div>
 
       {/* Family tree — deliberately breaks out wider than the page's own
