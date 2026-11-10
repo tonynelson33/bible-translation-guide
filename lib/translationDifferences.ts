@@ -132,9 +132,9 @@ export const differenceParts: DiffPart[] = [
         shown: [
           { reference: "Matthew 6:13", show: ["kjv", "esv"], note: "The closing doxology of the Lord’s Prayer — “For thine is the kingdom, and the power, and the glory.” The ESV footnotes it; it echoes 1 Chronicles 29:11." },
           { reference: "Luke 4:4", show: ["kjv", "esv"], note: "“but by every word of God” — the full quotation of Deuteronomy 8:3, uncontested in the Matthew 4:4 parallel." },
-          { reference: "Luke 4:8", show: ["kjv", "esv"], note: "KJV adds “Get thee behind me, Satan”; the rebuke is uncontested in Matthew 4:10 and Matthew 16:23." },
+          { reference: "Luke 4:8", show: ["kjv", "esv"], note: "KJV adds “Get thee behind me, Satan.” Those exact words are uncontested in Matthew 16:23, where Jesus says them to Peter; in the Matthew 4:10 parallel to this temptation he says “Get thee hence, Satan.”" },
           { reference: "Luke 9:55-56", show: ["kjv", "esv"], note: "“Ye know not what manner of spirit ye are of. For the Son of man is not come to destroy men’s lives, but to save them.”" },
-          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” Both keep it, but the ESV footnotes it — “Some manuscripts omit verses 43 and 44” — and its print edition sets the verses in double brackets. The manuscript evidence is genuinely divided." },
+          { reference: "Luke 22:43-44", show: ["kjv", "esv"], note: "The angel strengthening Jesus and his sweat “like great drops of blood.” Both keep it, but the ESV footnotes it — “Some manuscripts omit verses 43 and 44.” The manuscript evidence is genuinely divided." },
           { reference: "Luke 23:34", show: ["kjv", "esv"], note: "“Father, forgive them; for they know not what they do.” Kept in the main text of most translations, usually with a note that some early manuscripts lack it." },
           { reference: "Luke 24:12", show: ["kjv", "esv"], note: "Peter running to the empty tomb; kept in most modern texts, footnoted in a few." },
           { reference: "Acts 9:5-6", show: ["kjv", "esv"], note: "“It is hard for thee to kick against the pricks,” and the exchange that follows. The “goads” saying is uncontested in Acts 26:14." },
@@ -151,7 +151,7 @@ export const differenceParts: DiffPart[] = [
           { reference: "Matthew 27:35", show: ["kjv", "esv"], note: "KJV adds the quotation of Psalm 22:18 (“they parted my garments…”); the fulfilment is stated in John 19:24." },
           { reference: "Mark 1:2", show: ["kjv", "esv"], note: "KJV: “in the prophets.” Critical Text: “in Isaiah the prophet.” The quotation that follows blends Malachi 3:1 with Isaiah 40:3." },
           { reference: "Mark 9:29", show: ["kjv", "esv"], note: "KJV and NKJV: this kind comes out only “by prayer and fasting.” The Critical Text has “by prayer.”" },
-          { reference: "Luke 11:2-4", show: ["kjv", "esv"], note: "Luke’s form of the Lord’s Prayer is shorter than the KJV’s — the Critical Text is shorter still, distinct from Matthew’s fuller version." },
+          { reference: "Luke 11:2-4", show: ["kjv", "esv"], note: "In the KJV, Luke’s Lord’s Prayer includes lines that are also in Matthew’s version — “which art in heaven,” “Thy will be done, as in heaven, so in earth,” and “but deliver us from evil.” The Critical Text’s Luke has none of them, so it reads as a shorter prayer than Matthew’s." },
           { reference: "Romans 14:10", show: ["kjv", "esv"], note: "KJV: “the judgment seat of Christ.” Critical Text: “of God.” “Judgment seat of Christ” is uncontested in 2 Corinthians 5:10." },
           { reference: "1 Corinthians 15:47", show: ["kjv", "esv"], note: "KJV: “the second man is the Lord from heaven.” Critical Text: “the second man is from heaven.”" },
           { reference: "Revelation 22:19", show: ["kjv", "esv"], note: "KJV: “book of life.” Critical Text: “tree of life.” Every Greek manuscript reads “tree” here; “book” entered when Erasmus reconstructed the end of Revelation from Latin." },
@@ -168,7 +168,7 @@ export const differenceParts: DiffPart[] = [
             reference: "1 John 5:7",
             show: ["kjv", "esv"],
             note:
-              "The “Johannine Comma.” The words naming the Father, the Word, and the Holy Spirit as “one” appear in no Greek manuscript before the 1400s and in none of the ancient ones; they entered the printed Greek text through Erasmus’s third edition. KJV-tradition readers value the verse as a plain statement of the Trinity — which the rest of Scripture teaches regardless. The Critical Text (shown here, with verse 8) reads simply that the Spirit, the water, and the blood testify.",
+              "The “Johannine Comma.” The words naming the Father, the Word, and the Holy Spirit as “one” appear in no Greek manuscript before the 1300s and in none of the ancient ones; they entered the printed Greek text through Erasmus’s third edition. KJV-tradition readers value the verse as a plain statement of the Trinity — which the rest of Scripture teaches regardless. The Critical Text (shown here) reads simply “For there are three that testify,” and verse 8 names them: the Spirit, the water, and the blood.",
           },
           {
             reference: "1 Timothy 3:16",
@@ -202,9 +202,9 @@ export const differenceParts: DiffPart[] = [
         intro:
           "The Old Testament’s standard Hebrew text — the Masoretic Text, standardized around AD 1000 — is occasionally shorter, damaged, or simply different from the older evidence: the Greek Septuagint (roughly 200 BC) and the Dead Sea Scrolls (roughly 250 BC to AD 68). Unlike the New Testament sections, this isn’t about keeping or dropping a verse — it’s about which reading a translation follows when the two disagree. Each note says who follows what.",
         shown: [
-          { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment and the Septuagint: “the sons of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
-          { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew of Saul’s age is incomplete — literally “Saul was … years old.” KJV renders it woodenly; the ESV brackets a guess; the NIV fills in numbers from the Septuagint and Acts 13:21." },
-          { reference: "Psalm 22:16", show: ["kjv", "esv", "net"], note: "KJV, NKJV, ESV, and NIV read “they pierced my hands and my feet,” following the Septuagint and a Dead Sea Scrolls fragment. The Masoretic text reads “like a lion” — the reading the NET keeps in its main text." },
+          { reference: "Deuteronomy 32:8", show: ["kjv", "esv"], note: "Masoretic text: “the number of the children of Israel.” A Dead Sea Scrolls fragment reads “the sons of God,” and the Septuagint “the angels of God.” The ESV follows the older reading; KJV, NKJV, and NIV keep the Masoretic." },
+          { reference: "1 Samuel 13:1", show: ["kjv", "esv"], note: "The Hebrew appears to have lost Saul’s age and the length of his reign; as it stands it says he was a year old and reigned two years. The KJV reads it as “Saul reigned one year,” and the ESV as “Saul lived for one year and then became king,” with the Hebrew in a footnote. The NIV fills in “thirty” and “forty-two,” drawing on a few Septuagint manuscripts and Acts 13:21." },
+          { reference: "Psalm 22:16", show: ["kjv", "esv", "net"], note: "KJV, NKJV, ESV, and NIV read “pierced” (the NIV “pierce”), following the Septuagint and a Dead Sea Scrolls fragment. The Masoretic text reads “like a lion” — the reading the NET keeps in its main text." },
           { reference: "Psalm 8:5", show: ["kjv", "esv"], note: "KJV: “a little lower than the angels,” following the Septuagint — which is how Hebrews 2:7 quotes it. The Hebrew is “lower than elohim,” rendered “God” or “heavenly beings” by others." },
           { reference: "Zechariah 12:10", show: ["kjv", "esv"], note: "“They shall look upon me whom they have pierced.” A few Hebrew manuscripts read “on him,” and translations split between “me” and “him.” Applied to Christ in John 19:37 and Revelation 1:7." },
         ],
@@ -227,7 +227,7 @@ export const differenceParts: DiffPart[] = [
             reference: "Isaiah 7:14",
             show: ["kjv", "esv", "net"],
             note:
-              "KJV, NKJV, ESV, and NIV read “the virgin.” The NET reads “this young woman,” with a note on the New Testament use. The RSV’s “young woman” in 1952 set off decades of this argument; most translations since have kept “virgin,” and the virgin birth is stated plainly in Matthew 1 and Luke 1 regardless.",
+              "The KJV reads “a virgin”; the NKJV, ESV, and NIV “the virgin.” The NET reads “this young woman,” with a note on the New Testament use. The RSV’s “young woman” in 1952 set off decades of this argument; most translations since have kept “virgin,” and the virgin birth is stated plainly in Matthew 1 and Luke 1 regardless.",
           },
         ],
       },

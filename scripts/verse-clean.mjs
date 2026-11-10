@@ -12,8 +12,14 @@
 // Psalm superscriptions the text APIs sometimes prepend to verse 1: the long
 // form ("A Psalm of David.", "To the choirmaster. A Maskil of David.") and the
 // bare forms the ESV ("Of David.") and NET ("By David.") use.
+//
+// The long form must name a psalm genre right after "A". An earlier, looser
+// pattern (any text starting with "A" and later reaching "of David") also ate
+// "And I will pour upon the house of David" off the front of Zechariah 12:10
+// (KJV), leaving the cached verse starting at ", and upon the inhabitants…".
+// Case-sensitive on purpose: superscriptions are always capitalized.
 const SUPERSCRIPTION =
-  /^(?:(?:A|To the choirmaster\.?)[^.]*\bof David\.?|(?:Of|By) David\.)\s*/i;
+  /^(?:(?:To the choirmaster\.\s*)?A (?:Psalm|Song|Maskil|Miktam|Prayer)\b[^.]*\bof David\.|(?:To the choirmaster\.\s*)?(?:Of|By) David\.)\s*/;
 
 /** bible-api.com (KJV), labs.bible.org (NET), api.scripture.api.bible */
 export function cleanPlain(raw) {

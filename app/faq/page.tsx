@@ -264,7 +264,7 @@ const groups: Group[] = [
               <Link href="/translations/mev">MEV</Link> follow the{" "}
               <strong>Textus Receptus</strong>, which is a related but different text. It disagrees
               with the Majority Text in roughly 1,800 places, and it carries a handful of readings
-              almost no Greek manuscript has &mdash; the &ldquo;three that bear witness in
+              almost no Greek manuscript has &mdash; the &ldquo;three that bear record in
               heaven&rdquo; of 1&nbsp;John 5:7 among them.
             </p>
             <p>The Majority Text stayed a niche choice, rather than a mainstream one, for reasons that stack up:</p>
