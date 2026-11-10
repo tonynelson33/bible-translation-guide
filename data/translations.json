@@ -3,7 +3,7 @@
     "id": "esv",
     "name": "English Standard Version",
     "abbreviation": "ESV",
-    "latestRevisionYear": 2016,
+    "latestRevisionYear": 2025,
     "firstPublishedYear": 2001,
     "gradeLevel": "10",
     "philosophy": "Formal",
@@ -134,7 +134,7 @@
     "philosophy": "Formal",
     "textualBasis": "Textus Receptus",
     "publisher": "Thomas Nelson",
-    "quoteLimit": "1,000 verses",
+    "quoteLimit": "500 verses",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -179,7 +179,8 @@
     "genderApproach": "Moderate",
     "redLetter": false,
     "otMarking": {
-      "marks": false
+      "marks": true,
+      "method": "Bold italic"
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
@@ -219,7 +220,8 @@
     "genderApproach": "Inclusive",
     "redLetter": true,
     "otMarking": {
-      "marks": false
+      "marks": true,
+      "method": "Italics"
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
@@ -239,9 +241,10 @@
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
-      "marks": false
+      "marks": true,
+      "method": "Small caps"
     },
-    "italicizesTranslatorWords": false,
+    "italicizesTranslatorWords": true,
     "capitalizesDeityPronouns": true,
     "quotationMarksForDialogue": true
   },
@@ -249,8 +252,8 @@
     "id": "bsb",
     "name": "Berean Standard Bible",
     "abbreviation": "BSB",
-    "latestRevisionYear": 2023,
-    "firstPublishedYear": 2022,
+    "latestRevisionYear": 2022,
+    "firstPublishedYear": 2016,
     "gradeLevel": "8-9",
     "philosophy": "Optimal",
     "textualBasis": "Critical Text",
@@ -280,7 +283,7 @@
     "publisher": "Rainbow Missions",
     "quoteLimit": "Unlimited",
     "genderApproach": "Traditional",
-    "redLetter": false,
+    "redLetter": true,
     "otMarking": {
       "marks": false
     },
@@ -306,15 +309,18 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "redLetter"
+    ]
   },
   {
     "id": "cev",
     "name": "Contemporary English Version",
     "abbreviation": "CEV",
-    "latestRevisionYear": 1995,
+    "latestRevisionYear": 2006,
     "firstPublishedYear": 1995,
-    "gradeLevel": "4",
+    "gradeLevel": "5",
     "philosophy": "Dynamic",
     "textualBasis": "Critical Text",
     "publisher": "American Bible Society",
@@ -342,7 +348,8 @@
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
-      "marks": false
+      "marks": true,
+      "method": "Reference in parentheses"
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
@@ -371,19 +378,20 @@
     "capitalizesDeityPronouns": false,
     "quotationMarksForDialogue": true,
     "verifyFields": [
-      "italicizesTranslatorWords"
+      "italicizesTranslatorWords",
+      "quoteLimit"
     ]
   },
   {
     "id": "gw",
     "name": "GOD'S WORD Translation",
     "abbreviation": "GW",
-    "latestRevisionYear": 1995,
+    "latestRevisionYear": 2020,
     "firstPublishedYear": 1995,
     "gradeLevel": "5",
     "philosophy": "Optimal",
     "textualBasis": "Critical Text",
-    "publisher": "God's Word to the Nations / Baker Publishing Group",
+    "publisher": "God's Word to the Nations Mission Society",
     "quoteLimit": "250 verses",
     "genderApproach": "Moderate",
     "redLetter": false,
@@ -400,7 +408,7 @@
     "abbreviation": "NCV",
     "latestRevisionYear": 1991,
     "firstPublishedYear": 1987,
-    "gradeLevel": "5",
+    "gradeLevel": "3",
     "philosophy": "Dynamic",
     "textualBasis": "Critical Text",
     "publisher": "Thomas Nelson",
@@ -440,7 +448,7 @@
     "abbreviation": "LEB",
     "latestRevisionYear": 2012,
     "firstPublishedYear": 2011,
-    "gradeLevel": "10-11",
+    "gradeLevel": "11",
     "philosophy": "Formal",
     "textualBasis": "Critical Text",
     "publisher": "Lexham Press / Logos Bible Software",
@@ -464,7 +472,7 @@
     "philosophy": "Dynamic",
     "textualBasis": "Critical Text",
     "publisher": "Thomas Nelson / Ecclesia Bible Society",
-    "quoteLimit": "250 verses",
+    "quoteLimit": "500 verses",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {
@@ -521,7 +529,7 @@
     "id": "message",
     "name": "The Message",
     "abbreviation": "MSG",
-    "latestRevisionYear": 2002,
+    "latestRevisionYear": 2018,
     "firstPublishedYear": 2002,
     "gradeLevel": "4-5",
     "philosophy": "Paraphrase",

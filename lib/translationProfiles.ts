@@ -48,7 +48,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
   esv: {
     tagline: "A formal, word-for-word translation designed for close study, without losing its literary voice.",
     overview: [
-      "The English Standard Version is published by Crossway and produced by a translation oversight committee of evangelical scholars. First released in 2001 and most recently revised in 2016, it was built as a revision of the 1971 edition of the Revised Standard Version (RSV) — reworked line by line to align it with a more formal, “essentially literal” translation philosophy while keeping much of the RSV's literary quality.",
+      "The English Standard Version is published by Crossway and produced by a translation oversight committee of evangelical scholars. First released in 2001 and revised in 2007, 2011, 2016 and 2025, it was built as a revision of the 1971 edition of the Revised Standard Version (RSV) — reworked line by line to align it with a more formal, “essentially literal” translation philosophy while keeping much of the RSV's literary quality.",
       "The ESV aims to be as literal as it can be while still reading as natural English — favoring word-for-word correspondence to the original Hebrew, Aramaic, and Greek wherever that's readable, and adjusting only where a strictly literal rendering would be genuinely unclear to a modern reader.",
       "On gender language, the ESV takes a traditional approach: it predominantly translates generic masculine terms — “brothers,” “man,” “he” — as they appear in the original text, rather than systematically adding inclusive alternatives like “brothers and sisters” (a small number of exceptions exist where the ESV does use gender-inclusive wording for a clearly mixed audience). The idea is to let the English wording match the original wording as closely as possible and leave it to the reader, in context, to recognize when a passage is addressing everyone.",
       "The ESV has become one of the most widely used translations in English-speaking evangelicalism since its release, especially in Reformed and broadly Reformed circles, and is the base text for the popular ESV Study Bible and a large library of ESV-based commentaries and devotionals.",
@@ -65,7 +65,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
       "Households and churches already using the ESV Study Bible or other ESV-based study and devotional resources, since so much of that library is built around this specific text.",
     ],
     worthKnowing: [
-      "In the summer of 2016, Crossway announced that the ESV's wording would become permanently fixed from then on — unchanging in all future printings, similar to how the KJV has stood since 1769. About a month later, Crossway reversed course and said the ESV would remain open to future revisions after all, keeping the door open for the kind of periodic updates most other translations receive.",
+      "In the summer of 2016, Crossway announced that the ESV's wording would become permanently fixed from then on — unchanging in all future printings, similar to how the KJV has stood since 1769. About a month later, Crossway reversed course and said the ESV would remain open to future revisions after all, keeping the door open for the kind of periodic updates most other translations receive. The first such update came in 2025: 68 word changes across 42 verses, including Genesis 3:16 and 4:7 (where \"contrary to\" went back to the 2001 wording, \"for\") and John 1:18 (\"the only God\" became \"God the only Son\"). Crossway expected the new text to reach almost all print editions by fall 2026.",
     ],
   },
 
@@ -390,21 +390,21 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
   },
 
   cev: {
-    tagline: "A 4th-grade-level translation written to be read aloud clearly, for readers with little or no church background.",
+    tagline: "A 5th-grade-level translation written to be read aloud clearly, for readers with little or no church background.",
     overview: [
-      "The Contemporary English Version grew out of research Dr. Barclay M. Newman began in 1984 for the American Bible Society, studying how ordinary English is actually spoken and heard — in books, magazines, television, and everyday conversation — rather than how it's written for silent, literate readers. The New Testament was published in 1991, for the American Bible Society's 175th anniversary, and the complete Bible followed in 1995.",
+      "The Contemporary English Version grew out of research Dr. Barclay M. Newman began in 1984 for the American Bible Society, studying how ordinary English is actually spoken and heard — in books, magazines, television, and everyday conversation — rather than how it's written for silent, literate readers. The New Testament was published in 1991, for the American Bible Society's 175th anniversary, and the complete Bible followed in 1995. A lightly revised second edition followed in 2006.",
       "The CEV's guiding principle, in Newman's own words, was that the text \"must be understood by people without stumbling in speech\" when read aloud, and \"must be understood by those with little or no comprehension of 'Bible' language.\" That put oral clarity — not just silent readability — at the center of the translation process in a way most other translations don't emphasize as explicitly; drafts were tested by reading them aloud to listeners, including children, rather than only checked on the page.",
       "Like its ABS sibling the Good News Translation, the CEV uses a dynamic, thought-for-thought approach, and was produced by a team of more than a hundred scholars across the original languages, linguistics, and English style, drawn from a range of church traditions.",
       "On gender language, the CEV takes an inclusive approach, translating generic references to people — “everyone,” “humans,” “men and women” — rather than defaulting to generic masculine terms wherever the original addresses people in general rather than a specific man.",
     ],
     distinctives: [
-      "Targets a 4th-grade reading level — the most elementary reading level of any translation on this site — while still translating from the Hebrew, Aramaic, and Greek rather than paraphrasing an existing English Bible.",
+      "Pitched at about a 5th-grade reading level, among the easiest on this site, while still translating from the Hebrew, Aramaic, and Greek rather than paraphrasing an existing English Bible.",
       "Specifically designed and tested for being read aloud clearly, not just read silently — an explicit design goal that shaped its translation process from the start.",
       "Shares its dynamic-equivalence approach and American Bible Society origin with the Good News Translation, though the two were produced years apart with different lead translators and a lower target reading level for the CEV.",
       "Uses inclusive, gender-neutral language for generic references to people throughout.",
     ],
     goodFor: [
-      "Children, new readers, and adults with limited literacy or English proficiency, where a 4th-grade reading level removes the biggest barrier to reading Scripture at all.",
+      "Children, new readers, and adults with limited literacy or English proficiency, where a 5th-grade reading level removes the biggest barrier to reading Scripture at all.",
       "Reading aloud in group settings — children's ministry, congregational call-and-response, audio Bibles — where its oral-clarity design goal was built for exactly this use.",
       "First exposure to the Bible for readers with no prior church background or familiarity with traditional biblical vocabulary.",
     ],
@@ -420,7 +420,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     ],
     distinctives: [
       "A simplified edition of the NIV itself, not an independent translation — same publisher, same underlying philosophy and source texts, adapted for a third-grade reading level.",
-      "The most elementary-reading-level translation on this site apart from the CEV, aimed specifically at children, developing readers, and English-language learners.",
+      "Tied with the NCV for the easiest reading level on this site (3rd grade), aimed specifically at children, developing readers, and English-language learners.",
       "Updated in 2014 to match the current NIV's gender-language approach, keeping the two translations in step with each other.",
       "Popular in children's ministry, ESL Bible study, and literacy-focused outreach precisely because it carries the NIV's mainstream reputation into a much easier reading level.",
     ],
@@ -455,7 +455,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
   gw: {
     tagline: "A \"closest natural equivalence\" translation built to avoid both stiff literalism and loose paraphrase.",
     overview: [
-      "GOD'S WORD Translation was published in 1995 by what was then the World Bible Translation Center (now God's Word to the Nations Mission Society), after the organization scrapped an earlier New Testament project in 1992 and started over with an entirely fresh translation from the Hebrew, Aramaic, and Greek. Five staff scholars, seventeen technical reviewers, and four English style reviewers worked on the text; publishing rights have since passed to Green Key Books and then Baker Publishing Group, though the translation itself is still copyrighted by God's Word to the Nations.",
+      "GOD'S WORD Translation was produced by God's Word to the Nations Bible Society (now God's Word to the Nations Mission Society) in Cleveland, Ohio, and first published in 1995, after the organization scrapped an earlier New Testament project in 1992 and started over with an entirely fresh translation from the Hebrew, Aramaic, and Greek. Five staff scholars, seventeen technical reviewers, and four English style reviewers worked on the text; publishing rights later passed to Green Key Books and then Baker Publishing Group, until the Mission Society took the translation back in-house in 2016. Its most recent edition is dated 2020.",
       "GW's stated method, \"closest natural equivalence,\" sits between strict word-for-word translation and freer thought-for-thought paraphrase: the goal is the most natural English rendering that still corresponds closely to the structure and meaning of the original text, verse by verse, rather than committing wholesale to either extreme.",
       "On gender language, GW takes a moderate approach: generic references to people are usually rendered inclusively — \"humans\" rather than \"man\" in Genesis 1, \"brothers and sisters\" rather than plain \"brothers\" in the New Testament letters — while keeping masculine language for God and clearly male-specific passages.",
       "GW is written at a notably easy reading level, roughly fifth grade, achieved less through vocabulary simplification alone than through careful attention to natural English sentence rhythm and phrasing during the translation and review process.",
@@ -463,7 +463,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     distinctives: [
       "Uses a self-described \"closest natural equivalence\" method, aiming for the most natural English that still tracks the original text's own structure and meaning.",
       "Produced by an independent Bible-translation nonprofit (God's Word to the Nations Mission Society) rather than a denominational publisher, using dedicated staff scholars plus outside technical and style reviewers.",
-      "One of the most readable translations on this site, at roughly a fifth-grade level, comparable to the NCV and NLT.",
+      "One of the most readable translations on this site, at roughly a fifth-grade level, comparable to the CEV.",
       "Its permitted-quotation limit (250 verses without written permission) is tighter than most other translations on this site, which mostly allow 500.",
     ],
     goodFor: [
@@ -483,7 +483,7 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
     ],
     distinctives: [
       "Descends from the English Version for the Deaf (1978) and the International Children's Bible (1986) — a lineage built for readers who couldn't be assumed to know churchy vocabulary, rather than a simplification of an existing adult translation.",
-      "At a 5th-grade reading level, it sits between the CEV/NLT and more standard translations like the NIV — easy without being the most elementary option on this site.",
+      "At a 3rd-grade reading level, it ties the NIrV as the easiest translation on this site, and unlike the NIrV it is an independent translation rather than a simplified edition of another one.",
       "Produced by around 50 scholars, several of whom also worked on the NIV, NKJV, or NASB.",
       "Marketed by Thomas Nelson as \"the easiest-to-understand translation\" and also sold under the names The Everyday Bible and The Youth Bible.",
     ],
@@ -604,15 +604,15 @@ export const translationProfiles: Partial<Record<string, TranslationProfile>> = 
   message: {
     tagline: "A paraphrase, not a translation in the same sense as the rest of this list — but one built directly from the Hebrew and Greek rather than from an existing English Bible.",
     overview: [
-      "The Message is Eugene Peterson's rendering of the Bible into contemporary, conversational American English, published by NavPress. The New Testament appeared in 1993, and the complete Bible — a project that took Peterson roughly ten years altogether — was finished in 2002. Peterson was a pastor, seminary professor, and poet who had spent decades teaching and preaching before beginning the project, aiming to recapture, in his words, the tone and conversational energy of the original Greek and Hebrew for readers who found Scripture either too distant or too familiar to really hear anymore.",
+      "The Message is Eugene Peterson's rendering of the Bible into contemporary, conversational American English, published by NavPress. The New Testament appeared in 1993, and the complete Bible — a project that took Peterson roughly ten years altogether — was finished in 2002. A light revision, authorized by Peterson, followed in 2018. Peterson was a pastor, seminary professor, and poet who had spent decades teaching and preaching before beginning the project, aiming to recapture, in his words, the tone and conversational energy of the original Greek and Hebrew for readers who found Scripture either too distant or too familiar to really hear anymore.",
       "What sets The Message apart from this site's other translations is category, not just style: it's a genuine paraphrase, restating the text's meaning in Peterson's own words well past the point of thought-for-thought translation, rather than tracking the original wording and structure the way even the freest translations here do. That puts it in a different bucket from every other entry on this site, which is why its Philosophy classification is \"Paraphrase\" rather than a place further along the Formal-to-Dynamic scale.",
       "It's also a different kind of paraphrase than most: Peterson worked directly from the Hebrew, Aramaic, and Greek himself rather than restating an existing English translation the way, for instance, the 1971 Living Bible restated the 1901 ASV. His work was then reviewed by a team of twenty Old and New Testament scholars from major evangelical seminaries for faithfulness to the original languages — a level of scholarly oversight most paraphrases don't have.",
-      "On gender language, The Message generally uses inclusive phrasing for people in general — \"human beings\" rather than \"man\" — consistent with its overall goal of natural, contemporary English. Formatted as continuous prose in a single column, without verse-by-verse line breaks, it reads more like a book than a reference text.",
+      "On gender language, The Message generally uses inclusive phrasing for people in general — \"human beings\" rather than \"man\" — consistent with its overall goal of natural, contemporary English. It was designed as continuous prose in a single column, without verse-by-verse line breaks, so it reads more like a book than a reference text, though verse-numbered editions are also sold.",
     ],
     distinctives: [
       "A genuine paraphrase — restating meaning in Peterson's own words — rather than a translation in the formal, optimal, or dynamic sense every other entry on this site uses; classified separately as \"Paraphrase\" for exactly that reason.",
       "Unlike most paraphrases, translated directly from the Hebrew, Aramaic, and Greek by a single scholar-translator, then reviewed by twenty Old and New Testament scholars for faithfulness — not a restatement of an existing English Bible.",
-      "Formatted as continuous prose without verse-by-verse line breaks, designed to be read like a book rather than consulted like a reference.",
+      "Designed as continuous prose without verse-by-verse line breaks, to be read like a book rather than consulted like a reference (verse-numbered editions are also sold).",
       "Its very free style has drawn real criticism from some conservative reviewers over specific word choices and added phrases in a handful of passages — worth knowing going in, alongside its real scholarly credentials.",
     ],
     goodFor: [

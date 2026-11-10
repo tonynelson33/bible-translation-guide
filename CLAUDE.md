@@ -124,9 +124,11 @@ survives only as the single-verse card on `/translations/[slug]`.
   NLT/NASB/NRSVue/CEB/AMP→Bible Gateway by hand, LSB→read.lsbible.org by hand (no API keeps
   their small-caps + quotes). NASB is the 2020 edition (matches `latestRevisionYear`).
 - **Why it's legal**: 42 verses per translation is well inside every publisher's
-  quote-without-permission ceiling (verified 2026-09-09: 500 for ESV/NIV/NLT/NRSVue/CEB;
-  1,000 for CSB/NKJV/NASB/LSB/AMP — all Lockman titles are 1,000; KJV public domain; NET text
-  has **no limit for non-commercial use**). On a **non-commercial** site, with the required
+  quote-without-permission ceiling (re-verified 2026-11-09 against each publisher's own notice: 500 for ESV/NIV/NLT/NRSVue/CEB/
+  NKJV/NCV/Voice/MEV/MSG/GNT/CEV; 1,000 for CSB/NASB/LSB/AMP — all Lockman titles are 1,000;
+  250 for GW; KJV/WEB/BSB/MSB public domain; LSV CC BY-SA; NET text has **no limit for
+  non-commercial use**. The NKJV was wrongly listed as 1,000 until then — Thomas Nelson/HarperCollins
+  allow 500). On a **non-commercial** site, with the required
   notice shown on the page.
 - **Non-commercial still matters**: several of those permissions (ESV especially) are
   *non-commercial only*. Owner confirmed 2026-08-29 the site stays non-commercial and `/buy`
