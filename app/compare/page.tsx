@@ -27,12 +27,18 @@ export default function ComparePage() {
 
       <div className="mt-3 space-y-1 text-sm text-neutral-500">
         <p>
-          <sup className="text-brand-600">†</sup> A value marked with a dagger could not be fully
-          confirmed against the publisher&rsquo;s own documentation, so treat it as approximate.
+          <sup className="text-brand-600">†</sup> An estimate. No publisher or reference list gives
+          a reading level for these translations, so theirs is judged from their style and their
+          closest relatives.
+        </p>
+        <p>
+          &ldquo;First Published&rdquo; is the year each complete Bible was first published and
+          available to use, not an earlier partial release or draft.
         </p>
         <p>
           &ldquo;NRSVue&rdquo; is the 2021 Updated Edition of the NRSV, which most publishers now
-          serve as the current &ldquo;NRSV.&rdquo; See{" "}
+          serve as the current &ldquo;NRSV.&rdquo; Its First Published year is the NRSV&rsquo;s own,
+          1989, since the two are one translation under a new name. See{" "}
           <Link href="/translations/nrsvue" className="text-brand-600 hover:underline">
             its profile
           </Link>

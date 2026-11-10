@@ -77,6 +77,11 @@ temperance"); that is how the KJV prints, so it is kept.
   the verse text and returns The Message's multi-verse paragraphs whole; only
   the referenced verse's own words are kept.
 
+**Re-checking:** `npm run check:verses` (`scripts/check-verse-text.mjs`) re-runs this whole
+comparison — every `/verses` and `/differences` verse against the sources above — and exits
+non-zero on any word difference (`-- --punct` adds punctuation; `-- web net` limits it to those
+ids). Read-only; about 25 minutes. Run it whenever a translation publishes a new edition.
+
 **Verification (2026-11-09):** every verse was re-checked word by word and by
 punctuation against Bible Gateway (23 translations) and the publishers' own
 texts (WEB, LSV, BSB, MSB). Remaining known differences are deliberate: the

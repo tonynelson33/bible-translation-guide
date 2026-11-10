@@ -50,7 +50,7 @@ const columns: ColumnDef[] = [
         <span className="block whitespace-nowrap text-base font-extrabold text-brand-900">
           {t.abbreviation}
         </span>
-        <span className="block text-[11px] leading-tight text-neutral-500 sm:whitespace-nowrap sm:text-xs">
+        <span className="block text-[11px] leading-tight text-neutral-500 sm:text-xs">
           {t.name}
         </span>
       </Link>
@@ -61,7 +61,14 @@ const columns: ColumnDef[] = [
     label: "First Published",
     sortValue: (t) => t.firstPublishedYear,
     width: 7,
-    render: (t) => <span className="text-neutral-700">{t.firstPublishedYear}</span>,
+    // NRSVue's year is the NRSV's (1989): one translation under a new name. Labelled so the
+    // 1989 doesn't read as an error next to its 2021 latest revision.
+    render: (t) => (
+      <span className="whitespace-nowrap text-neutral-700">
+        {t.firstPublishedYear}
+        {t.id === "nrsvue" && <span className="text-xs text-neutral-500"> (as NRSV)</span>}
+      </span>
+    ),
   },
   {
     key: "latestRevisionYear",

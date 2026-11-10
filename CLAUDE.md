@@ -10,6 +10,7 @@ npm run dev     # start dev server (localhost:3000)
 npm run build   # production build
 npm run start   # run the production build locally
 npm run lint    # next lint
+npm run check:verses   # re-check every cached verse against its source (~25 min; -- --punct, -- <ids>)
 ```
 
 No unit-test suite. CI (`.github/workflows/ci.yml`) runs `tsc --noEmit`, `npm run lint`, and
@@ -80,7 +81,12 @@ for "Serious Study" is unchanged (that's the 60,000 notes, not the main text).
 
 Each translation's `verifyFields` array (e.g. `["quoteLimit"]`) flags which values were not
 fully confirmed against publisher documentation; `ComparisonTable` renders those with a `†`
-marker.
+marker. As of 2026-11-10 the only ones left are the reading levels of the LSB, BSB, MSB and LSV
+— no publisher or reference list gives one, so they're labelled "(est.)" and the table footnote
+says so. (GNT red letter → No: every current US edition is black letter; NIrV red letter
+confirmed; ISV red letter → Yes, italics No, 500-verse limit per isvbible.org/legal.)
+"First Published" = the year the complete Bible was first published and available (owner rule),
+except NRSVue, which shows the NRSV's 1989 with an "(as NRSV)" label.
 
 **Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
 `/verses` compares a **fixed** set of **42** sample verses (`data/verses.json`, Bible order —
@@ -202,9 +208,12 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   rule + bump to `sm:text-3xl` (2026-09-09) so the sections read as sections. `#kjv-1611-vs-today`
   (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
   quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
-  "which translation should I use" answer mirrors the top 3 of the matching `rankings` category
-  (study→NET/LEB/NASB, devotions→NLT/NCV/CEV, congregation via preaching→CSB/ESV/NIV; child→NIrV/NCV, the
-  two 3rd-grade translations, re-synced 2026-11-09) — keep it in step if the rankings move.
+  "which translation should I use" answer is **computed** (2026-11-10): study / daily reading /
+  congregation are the top 3 of the `study` / `devotions` / `preaching` rankings, and the child
+  pick is every translation tied for the lowest `gradeLevel` — so it can't drift from the
+  rankings again (it had, after the 26-translation expansion). Per-translation reasons for the
+  study picks live in `studyNote` in `app/faq/page.tsx`; a new top-3 entry without one is just
+  listed by name.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, a Tyndale narrative, and a short "where the text comes from" section (`id="manuscripts"`)

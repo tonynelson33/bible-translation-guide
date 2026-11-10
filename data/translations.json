@@ -254,7 +254,7 @@
     "abbreviation": "BSB",
     "latestRevisionYear": 2022,
     "firstPublishedYear": 2016,
-    "gradeLevel": "8-9",
+    "gradeLevel": "8-9 (est.)",
     "philosophy": "Optimal",
     "textualBasis": "Critical Text",
     "publisher": "Bible Hub",
@@ -303,16 +303,13 @@
     "publisher": "American Bible Society",
     "quoteLimit": "500 verses",
     "genderApproach": "Inclusive",
-    "redLetter": true,
+    "redLetter": false,
     "otMarking": {
       "marks": false
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "cev",
@@ -353,10 +350,7 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "redLetter"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "isv",
@@ -370,17 +364,13 @@
     "publisher": "ISV Foundation",
     "quoteLimit": "500 verses",
     "genderApproach": "Traditional",
-    "redLetter": false,
+    "redLetter": true,
     "otMarking": {
       "marks": false
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": false,
-    "quotationMarksForDialogue": true,
-    "verifyFields": [
-      "italicizesTranslatorWords",
-      "quoteLimit"
-    ]
+    "quotationMarksForDialogue": true
   },
   {
     "id": "gw",
@@ -488,7 +478,7 @@
     "abbreviation": "LSV",
     "latestRevisionYear": 2020,
     "firstPublishedYear": 2020,
-    "gradeLevel": "10-11",
+    "gradeLevel": "10-11 (est.)",
     "philosophy": "Formal",
     "textualBasis": "Textus Receptus / Majority Text",
     "publisher": "Covenant Press",
@@ -511,7 +501,7 @@
     "abbreviation": "MSB",
     "latestRevisionYear": 2025,
     "firstPublishedYear": 2025,
-    "gradeLevel": "8-9",
+    "gradeLevel": "8-9 (est.)",
     "philosophy": "Optimal",
     "textualBasis": "Majority Text",
     "publisher": "Bible Hub",

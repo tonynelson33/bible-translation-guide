@@ -76,15 +76,20 @@ export default function WhyThese26Page() {
           The floor is legitimacy, not fame
         </h2>
         <p className="mt-2 max-w-2xl leading-relaxed text-neutral-700">
-          Every translation on this page is a committee&rsquo;s work. The one exception is{" "}
+          Almost every translation on this page is a committee&rsquo;s work. The two
+          exceptions still clear the bar in their own way.{" "}
           <Link
             href="/translations/message"
             className="font-medium text-brand-700 hover:underline"
           >
             The Message
-          </Link>
-          : a single translator&rsquo;s work, but one that still went through real scholarly
-          review. That&rsquo;s the actual floor for inclusion. A translation can be popular and
+          </Link>{" "}
+          is a single translator&rsquo;s work that went through review by twenty scholars. The{" "}
+          <Link href="/translations/web" className="font-medium text-brand-700 hover:underline">
+            WEB
+          </Link>{" "}
+          is a modernization of the committee-made 1901 ASV, carried out openly by volunteers
+          under one senior editor. That&rsquo;s the actual floor for inclusion. A translation can be popular and
           still miss it &mdash; see{" "}
           <Link href="/faq#paraphrase" className="font-medium text-brand-700 hover:underline">
             translation versus paraphrase

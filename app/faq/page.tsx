@@ -1,6 +1,52 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { rankingCategories } from "@/lib/rankings";
+import { translations } from "@/lib/data";
+import { gradeLevelSortValue } from "@/lib/sort";
+import type { Translation } from "@/lib/types";
+
+// "Which translation should I use?" is read straight from the rankings, so it can't drift
+// out of step with them (it did once, after the twenty-six-translation expansion).
+const topOf = (slug: string, n = 3): Translation[] =>
+  (rankingCategories.find((c) => c.slug === slug)?.entries ?? [])
+    .slice(0, n)
+    .map((e) => translations.find((t) => t.id === e.id))
+    .filter((t): t is Translation => Boolean(t));
+// Child / new reader: every translation tied for the lowest reading level in the table.
+const lowestGrade = Math.min(...translations.map((t) => gradeLevelSortValue(t.gradeLevel)));
+const easiest = translations.filter((t) => gradeLevelSortValue(t.gradeLevel) === lowestGrade);
+const gradeWord: Record<number, string> = { 1: "first", 2: "second", 3: "third", 4: "fourth", 5: "fifth", 6: "sixth" };
+const easiestGrade = gradeWord[lowestGrade] ?? `${lowestGrade}th`;
+// Short reasons shown beside a pick, where there's one worth giving. A translation that
+// moves into a top three without an entry here is simply listed by name.
+const studyNote: Record<string, string> = {
+  net: "its 60,000 translators' notes",
+  leb: "built to be read alongside the Hebrew and Greek",
+  nasb: "word-for-word precision",
+  esv: "the largest study-Bible library",
+  lsb: "consistent, literal renderings",
+};
+const study = topOf("study");
+const daily = topOf("devotions");
+const pulpit = topOf("preaching");
+const orList = (ts: Translation[]) =>
+  ts.length < 2 ? ts.map((t) => t.abbreviation).join("") :
+  `${ts.slice(0, -1).map((t) => t.abbreviation).join(", ")}${ts.length > 2 ? "," : ""} or ${ts[ts.length - 1].abbreviation}`;
+function OrLinks({ ts, note }: { ts: Translation[]; note?: Record<string, string> }) {
+  return (
+    <>
+      {ts.map((t, i) => (
+        <span key={t.id}>
+          {i > 0 && (i === ts.length - 1 ? (ts.length > 2 ? ", or " : " or ") : ", ")}
+          the <Link href={`/translations/${t.id}`}>{t.abbreviation}</Link>
+          {note?.[t.id] && <> ({note[t.id]})</>}
+        </span>
+      ))}
+    </>
+  );
+}
+const studyPlain = study.map((t) => `the ${t.abbreviation}${studyNote[t.id] ? ` (${studyNote[t.id]})` : ""}`);
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
@@ -94,29 +140,19 @@ const groups: Group[] = [
             </p>
             <ul>
               <li>
-                <strong>Close study:</strong> the <Link href="/translations/net">NET</Link> (its
-                60,000 notes), the <Link href="/translations/leb">LEB</Link> (built to be read
-                alongside the Hebrew and Greek), and the{" "}
-                <Link href="/translations/nasb">NASB</Link> (word-for-word precision) &mdash;
+                <strong>Close study:</strong> <OrLinks ts={study} note={studyNote} /> &mdash;
                 ideally with a readable one open alongside.
               </li>
               <li>
-                <strong>Daily reading:</strong> the <Link href="/translations/nlt">NLT</Link>,{" "}
-                <Link href="/translations/ncv">NCV</Link>, or{" "}
-                <Link href="/translations/cev">CEV</Link> &mdash; plain, clear English that is easy
-                to read for long stretches.
+                <strong>Daily reading:</strong> <OrLinks ts={daily} /> &mdash; clear English
+                that is easy to read for long stretches.
               </li>
               <li>
-                <strong>A child or someone new to the Bible:</strong> the{" "}
-                <Link href="/translations/nirv">NIrV</Link> or the{" "}
-                <Link href="/translations/ncv">NCV</Link>, both written at about a third-grade
-                level, or the <Link href="/translations/nlt">NLT</Link> at about sixth grade.
+                <strong>A child or someone new to the Bible:</strong> <OrLinks ts={easiest} />,
+                written at about a {easiestGrade}-grade level, the easiest on this site.
               </li>
               <li>
-                <strong>Reading aloud in a congregation:</strong> the{" "}
-                <Link href="/translations/csb">CSB</Link>,{" "}
-                <Link href="/translations/esv">ESV</Link>, or{" "}
-                <Link href="/translations/niv">NIV</Link>.
+                <strong>Reading aloud in a congregation:</strong> <OrLinks ts={pulpit} />.
               </li>
             </ul>
             <p>
@@ -127,7 +163,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Following the top of each ranking: for close study, the NET (its 60,000 notes), the LEB (built to be read alongside the Hebrew and Greek), and the NASB (word-for-word precision) — ideally with a readable one alongside. For daily reading, the NLT, NCV, or CEV. For a child or a new reader, the NIrV or NCV (both about a third-grade reading level) or the NLT (about sixth grade). For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
+          `Following the top of each ranking: for close study, ${studyPlain.slice(0, -1).join(", ")}, or ${studyPlain[studyPlain.length - 1]} — ideally with a readable one alongside. For daily reading, the ${orList(daily)}. For a child or a new reader, the ${orList(easiest)}, written at about a ${easiestGrade}-grade level. For reading aloud in a congregation, the ${orList(pulpit)}. The rankings page explains the ordering for each.`,
       },
       {
         id: "paraphrase",
@@ -147,15 +183,18 @@ const groups: Group[] = [
               produced largely by one person and adds interpretive material, and most scholars
               don&rsquo;t recommend it. Of the{" "}
               <Link href="/compare">twenty-six translations</Link> this site profiles,
-              twenty-five are committee translations; the exception is The Message (2002),
-              Eugene Peterson&rsquo;s own idiomatic retelling of the Hebrew, Aramaic, and Greek
-              &mdash; kept for its real scholarly review and wide readership, but classified
-              separately as a Paraphrase rather than folded in with the other twenty-five.
+              almost all are committee translations. One of the two exceptions is The Message
+              (2002), Eugene Peterson&rsquo;s own idiomatic retelling of the Hebrew, Aramaic, and
+              Greek &mdash; kept for its real scholarly review and wide readership, but classified
+              separately as a Paraphrase rather than folded in with the other twenty-five. The
+              other is the <Link href="/translations/web">WEB</Link>, a translation rather than a
+              paraphrase: a modernization of the committee-made 1901 ASV, carried out by
+              volunteers under one senior editor.
             </p>
           </>
         ),
         plain:
-          "A translation works from the Hebrew, Aramaic, and Greek. A paraphrase restates an existing English translation in looser words, usually one author's phrasing rather than a committee's — the Living Bible is the best-known example, and this site does not profile it. Paraphrases can be vivid for reading but drift from the original wording and are not suited to study. The Passion Translation is marketed as a translation but was produced mainly by one person with added interpretive content, and most scholars do not recommend it. Of the twenty-six translations this site profiles, twenty-five are committee translations; the exception is The Message, Eugene Peterson's own idiomatic retelling, kept as this site's one deliberate paraphrase.",
+          "A translation works from the Hebrew, Aramaic, and Greek. A paraphrase restates an existing English translation in looser words, usually one author's phrasing rather than a committee's — the Living Bible is the best-known example, and this site does not profile it. Paraphrases can be vivid for reading but drift from the original wording and are not suited to study. The Passion Translation is marketed as a translation but was produced mainly by one person with added interpretive content, and most scholars do not recommend it. Of the twenty-six translations this site profiles, almost all are committee translations. The two exceptions are The Message, Eugene Peterson's own idiomatic retelling, kept as this site's one deliberate paraphrase, and the WEB, a modernization of the committee-made 1901 ASV carried out by volunteers under one senior editor.",
       },
     ],
   },
@@ -500,10 +539,12 @@ const groups: Group[] = [
               </li>
             </ul>
             <p>
-              The floor for inclusion is legitimacy, not fame. Every translation here is a
-              committee&rsquo;s work. The one exception is{" "}
-              <Link href="/translations/message">The Message</Link>: a single
-              translator&rsquo;s work, but one that still went through real scholarly review. A
+              The floor for inclusion is legitimacy, not fame. Almost every translation here is
+              a committee&rsquo;s work. The two exceptions still clear the bar in their own way:{" "}
+              <Link href="/translations/message">The Message</Link> is a single
+              translator&rsquo;s work that went through review by twenty scholars, and the{" "}
+              <Link href="/translations/web">WEB</Link> is a modernization of the committee-made
+              1901 ASV, carried out openly by volunteers under one senior editor. A
               translation can be popular and still miss that bar &mdash;{" "}
               <Link href="/faq#paraphrase">translation versus paraphrase</Link> goes into why
               something like The Passion Translation isn&rsquo;t included. The scope here is
@@ -519,7 +560,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "These aren't the twenty-six most popular English translations, and they aren't the twenty-six most respected ones either. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, LSB) through mediating translations (CSB, BSB) to the freest (CEV, The Voice) and one deliberate paraphrase (The Message). It covers all three textual traditions behind the New Testament: Critical Text, Textus Receptus, and Majority Text. And it covers reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame. Every translation is a committee's work, except The Message, which is one translator's work that still went through real scholarly review. The set is also scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
+          "These aren't the twenty-six most popular English translations, and they aren't the twenty-six most respected ones either. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, LSB) through mediating translations (CSB, BSB) to the freest (CEV, The Voice) and one deliberate paraphrase (The Message). It covers all three textual traditions behind the New Testament: Critical Text, Textus Receptus, and Majority Text. And it covers reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame. Almost every translation is a committee's work. The two exceptions are The Message, one translator's work that went through review by twenty scholars, and the WEB, a modernization of the committee-made 1901 ASV carried out openly by volunteers under one senior editor. The set is also scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
       },
       {
         id: "kjv-only",
