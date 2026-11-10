@@ -157,7 +157,7 @@ const columns: ColumnDef[] = [
     sortValue: (t) => printEditionSortValue(t.printEdition),
     align: "center",
     width: 6.5,
-    render: (t) => <PrintEditionMark value={t.printEdition} />,
+    render: (t) => <PrintEditionMark value={t.printEdition} label={t.printEditionLabel} />,
   },
   {
     key: "redLetter",

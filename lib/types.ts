@@ -21,6 +21,8 @@ export interface Translation {
   publisher: string;
   quoteLimit: string;
   printEdition: PrintEdition;
+  /** Short qualifier shown under the print-edition mark, e.g. "Planned 2027". */
+  printEditionLabel?: string;
   genderApproach: GenderApproach;
   genderApproachLabel?: string; // display override for the pill, when the bare bucket name needs qualifying
   redLetter: boolean;

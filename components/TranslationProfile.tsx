@@ -104,7 +104,12 @@ export default function TranslationProfile({
             {verifyMark(translation, "quoteLimit")}
           </StatCard>
           <StatCard label="Print Edition">
-            <PrintEditionMark value={translation.printEdition} />
+            <span className="inline-flex items-center gap-1.5">
+              <PrintEditionMark value={translation.printEdition} />
+              {translation.printEditionLabel && (
+                <span className="text-xs text-neutral-500">({translation.printEditionLabel})</span>
+              )}
+            </span>
           </StatCard>
           <StatCard label="Red Letter Edition">
             <YesNoIcon value={translation.redLetter} label="Red letter edition available" />
