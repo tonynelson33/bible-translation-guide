@@ -158,13 +158,16 @@ const nodes: Node[] = [
   { id: "mev", label: "MEV", year: 2014, cx: 860, current: true, basis: "TR", phil: "Formal" },
 
   // Majority Text, on the right: YLT -> LSV (standalone), and separately
-  // WEB / MSB (MSB is BSB's MT sibling, over on the CT side). Years are
-  // each translation's first publication, as in the comparison table: the
-  // WEB's first full draft went online in 1997, the MSB's in 2022.
+  // WEB / MSB (MSB is BSB's MT sibling, over on the CT side). Every year in
+  // the tree is when the complete Bible (NT only for Tyndale) was first
+  // published and available to buy or use — not a partial release or a
+  // draft (owner rule, 2026-11-09). So the WEB is 2020 (a working draft from
+  // 1997, declared complete in 2020) and the MSB is 2025 (a draft open to
+  // comment from 2022, declared a stable text in 2025).
   { id: "ylt", label: "YLT", year: 1862, cx: 1000, basis: "TR", phil: "Formal" },
   { id: "lsv", label: "LSV", year: 2020, cx: 1050, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
-  { id: "web", label: "WEB", year: 1997, cx: 1170, current: true, basis: "MT", phil: "Formal" },
-  { id: "msb", label: "MSB", year: 2022, cx: 1170, current: true, basis: "MT", phil: "Balanced" },
+  { id: "web", label: "WEB", year: 2020, cx: 1170, current: true, basis: "MT", phil: "Formal" },
+  { id: "msb", label: "MSB", year: 2025, cx: 1170, current: true, basis: "MT", phil: "Balanced" },
 ];
 
 // The eleven with no documented lineage of their own: not part of the real
@@ -418,8 +421,8 @@ export default function TranslationFamilyTree() {
         <strong>MSB</strong>, is the same translation and team with its New Testament swapped to
         the Majority Text. The <strong>NIrV</strong> is the NIV simplified to a third-grade
         reading level; the <strong>NCV</strong> descends from the International Children&rsquo;s
-        Bible. Years are each translation&rsquo;s first publication. Hover any abbreviation
-        for its full name.
+        Bible. Years are when each complete Bible was first published and available to use.
+        Hover any abbreviation for its full name.
       </figcaption>
     </figure>
   );
