@@ -207,7 +207,7 @@ export const rankingCategories: RankingCategory[] = [
       },
       {
         id: "cev",
-        blurb: "One of the easiest reading levels on this site (about 5th grade), and specifically tested by reading it aloud to real listeners — a strong claim on exactly what this category measures, even though its devotional following is smaller than the NLT's.",
+        blurb: "One of the easiest reading levels on this site (about 5th grade), and specifically designed to be read aloud — a strong claim on exactly what this category measures, even though its devotional following is smaller than the NLT's.",
       },
       {
         id: "gw",
@@ -241,7 +241,7 @@ export const rankingCategories: RankingCategory[] = [
       { id: "web", blurb: "A formal, ASV-descended reading level (12th grade, tied with the KJV) — the densest translation on this list after the KJV itself, and denser than any of the Dynamic or Optimal translations above it." },
       { id: "nasb", blurb: "Its precision is better suited to study than to easy daily reading — a dense, formal text at an 11th-grade level." },
       { id: "mev", blurb: "A denser daily read than its KJV-tradition cousin the NKJV — fully contemporary grammar doesn't change that it measures closer to the NASB's 11th-grade level than the NKJV's 7th." },
-      { id: "lsb", blurb: "The newest and most literal translation here, with the fewest devotional resources — reading plans, daily-verse apps — built around it so far." },
+      { id: "lsb", blurb: "One of the newest and most literal translations here, with the fewest devotional resources — reading plans, daily-verse apps — built around it so far." },
       { id: "msb", blurb: "Shares the BSB's moderate reading level, with an even smaller devotional following given how new and niche it is." },
       { id: "leb", blurb: "Built for study alongside the Hebrew and Greek, not for sitting and reading — corner brackets and italics throughout work against a natural devotional flow." },
       { id: "lsv", blurb: "Its maximally literal, present-tense narrative style makes for a genuinely unusual daily-reading experience — a high reading level and a real departure from how most devotional prose flows." },
