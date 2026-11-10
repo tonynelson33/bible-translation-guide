@@ -282,7 +282,7 @@ export const timeline: TimelineEntry[] = [
     year: "1901 · United States",
     title: "The American Standard Version",
     detail:
-      "The American members of the Revised Version's translation committee publish their own preferred edition — restoring “Jehovah” for the divine name, American spelling and idiom — once the 14-year agreement not to compete with the British edition expires. Barely read on its own, but its literal, precise style becomes the base text for the NASB, the Amplified Bible, and the RSV. Close to half the translations on this site trace back to this one 1901 revision.",
+      "The American members of the Revised Version's translation committee publish their own preferred edition — restoring “Jehovah” for the divine name, American spelling and idiom — once the 14-year agreement not to compete with the British edition expires. Barely read on its own, but its literal, precise style becomes the base text for the NASB, the Amplified Bible, and the RSV. Six of the translations on this site descend from it: the NASB, LSB, Amplified, ESV, NRSVue, and WEB.",
     major: true,
   },
   {

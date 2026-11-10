@@ -152,7 +152,7 @@ export default function HomePage() {
         <p className="mt-2 max-w-2xl text-neutral-700">
           Translations sit on a spectrum from word-for-word to thought-for-thought. It&rsquo;s a
           choice of method, not a measure of quality &mdash; every translation here is a serious work
-          by a scholarly committee.
+          of scholarship.
         </p>
         <TranslationSpectrum standalone />
         <Link

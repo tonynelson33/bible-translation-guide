@@ -27,9 +27,8 @@ export default function ComparePage() {
 
       <div className="mt-3 space-y-1 text-sm text-neutral-500">
         <p>
-          <sup className="text-brand-600">†</sup> Quote limits and some fields marked
-          &ldquo;verify&rdquo; should be confirmed against current publisher documentation before
-          relying on them.
+          <sup className="text-brand-600">†</sup> A value marked with a dagger could not be fully
+          confirmed against the publisher&rsquo;s own documentation, so treat it as approximate.
         </p>
         <p>
           &ldquo;NRSVue&rdquo; is the 2021 Updated Edition of the NRSV, which most publishers now

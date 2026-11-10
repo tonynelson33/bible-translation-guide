@@ -182,7 +182,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   gnt: {
     buy: [
-      { label: "Bibles.com (American Bible Society, official)", url: "https://www.bibles.com/good-news-translation-gnt-bible-5.html" },
+      { label: "Bibles.com (American Bible Society, official)", url: "https://bibles.com/search?q=good+news+translation" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=Good+News+Translation+Bible" },
       { label: "Christianbook.com", url: "https://www.christianbook.com/page/bibles/translations/gnt" },
     ],

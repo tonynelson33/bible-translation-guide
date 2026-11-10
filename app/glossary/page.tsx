@@ -39,7 +39,7 @@ const groups: Group[] = [
       },
       {
         term: "Paraphrase",
-        def: "A restatement of an existing English translation in looser, fresher words — usually one author’s phrasing rather than a committee’s. The Living Bible and The Message are the best known. Vivid for reading, but not built from the original languages and not suited to study.",
+        def: "A restatement of an existing English translation in looser, fresher words — usually one author’s phrasing rather than a committee’s. The Living Bible is the best-known example. Vivid for reading, but not built from the original languages and not suited to study. The Message is usually called a paraphrase too, though Eugene Peterson worked from the Hebrew and Greek rather than from an English Bible.",
       },
     ],
   },
@@ -92,7 +92,7 @@ const groups: Group[] = [
       },
       {
         term: "Textus Receptus",
-        def: "The Greek New Testament text assembled by Erasmus in the 1500s from a few late medieval manuscripts, lightly revised afterward. It stands behind the KJV and NKJV. Part of the broader Byzantine tradition, but not identical to the Majority Text.",
+        def: "The Greek New Testament text assembled by Erasmus in the 1500s from a few late medieval manuscripts, lightly revised afterward. It stands behind the KJV, NKJV, and MEV. Part of the broader Byzantine tradition, but not identical to the Majority Text.",
       },
       {
         term: "Critical Text",

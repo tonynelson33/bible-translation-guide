@@ -203,8 +203,8 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   (added 2026-09-09) quotes the 1611 John 3:16 in original spelling — KJV is public domain, so no
   quote-limit concern; it's the one hard-coded scripture quote outside the cached datasets. The
   "which translation should I use" answer mirrors the top 3 of the matching `rankings` category
-  (study→NET/NASB/ESV, devotions→NLT/CEB/CSB, congregation via preaching→CSB/ESV/NIV) — keep it in
-  step if the rankings move.
+  (study→NET/LEB/NASB, devotions→NLT/NCV/CEV, congregation via preaching→CSB/ESV/NIV; child→NIrV/NCV, the
+  two 3rd-grade translations, re-synced 2026-11-09) — keep it in step if the rankings move.
 - **`/history`** ("How We Got the English Bible") — `lib/englishBibleHistory.ts`: a `timeline`
   array (Wycliffe → modern, `major` flags the load-bearing entries) rendered as a vertical
   timeline, a Tyndale narrative, and a short "where the text comes from" section (`id="manuscripts"`)

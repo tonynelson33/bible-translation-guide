@@ -25,6 +25,10 @@ const monogramStyles: Record<Philosophy, string> = {
 const officiallyFree: Record<string, string> = {
   kjv: "public domain in the US — free to read, copy, and print there without permission",
   net: "the full text and all 60,000 translator's notes, free by design at bible.org",
+  bsb: "public domain worldwide since 2023 — free to read, copy, and print without permission",
+  msb: "public domain worldwide since 2023 — free to read, copy, and print without permission",
+  web: "public domain worldwide — free to read, copy, and print without permission",
+  lsv: "released under a Creative Commons license — free to copy and share with attribution",
 };
 
 function Monogram({ abbreviation, philosophy }: { abbreviation: string; philosophy: Philosophy }) {

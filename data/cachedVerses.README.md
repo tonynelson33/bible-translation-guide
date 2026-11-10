@@ -50,7 +50,9 @@ temperance"); that is how the KJV prints, so it is kept.
 - **NIV, NKJV, CSB** — api.scripture.api.bible, HTML mode so footnote / cross-
   reference markers can be stripped cleanly (text mode welds the words on either
   side of a dropped marker). `scripts/fetch-sample-verses.mjs`.
-- **NET** — labs.bible.org (no key). `scripts/fetch-sample-verses.mjs`.
+- **NET** — labs.bible.org (no key). `scripts/fetch-sample-verses.mjs`. Caveat:
+  labs.bible.org can lag the current (2019) NET text — two commas it dropped
+  (Ps 119:105, Matt 11:29) were corrected against Bible Gateway on 2026-11-09.
 - **NLT, NASB, NRSVue, CEB, AMP** — sourced by hand from Bible Gateway passage
   pages in a browser session (no API preserves their small-caps and quotation
   marks), then pasted in. The `nrsvue` entry is the NRSV Updated Edition (2021)
@@ -61,6 +63,28 @@ temperance"); that is how the KJV prints, so it is kept.
   (one reference per page load). Uses "Yahweh" for the divine name, so the
   `LORD` restoration above does not apply to it.
 - NASB is the 2020 edition. (EHV was added 2026-09-06, then removed 2026-09-07.)
+- **WEB** — ebible.org's current classic WEB (`ebible.org/eng-web/<BOOK><CH>.htm`),
+  the publisher's own text. **Not bible-api.com**: its WEB is an older text
+  (e.g. John 3:16 "one and only Son" where the current WEB reads "only born
+  Son"); 13 verses were replaced with the ebible.org text on 2026-11-09.
+- **BSB / MSB** — the publishers' full-text files, `bereanbible.com/bsb.txt` and
+  `majoritybible.com/msb.txt` (the MSB file is Windows-1252, not UTF-8). Their
+  Psalm 23:1 / 27:1 lines carry the superscription, which is dropped here.
+- **LSV** — ebible.org (`ebible.org/englsv/`). Keeps its `[ ]` for supplied
+  words; its `||` poetry line breaks are flattened like any other.
+- **GNT, CEV, NIrV, ISV, GW, NCV, MEV, LEB, VOICE, MSG** — Bible Gateway passage
+  pages, exactly as published. Bible Gateway runs The Voice's study notes into
+  the verse text and returns The Message's multi-verse paragraphs whole; only
+  the referenced verse's own words are kept.
+
+**Verification (2026-11-09):** every verse was re-checked word by word and by
+punctuation against Bible Gateway (23 translations) and the publishers' own
+texts (WEB, LSV, BSB, MSB). Remaining known differences are deliberate: the
+KJV here is the standard 1769 text ("alway", "throughly", "JESUS" in Matt 1:25),
+where Bible Gateway's KJV modernizes a few spellings; the NASB/LSB asterisk on
+historical-present verbs ("Jesus *said") is an editorial marker and is dropped
+like a footnote mark; and WEB Ps 46:10 follows ebible.org ("on the earth")
+where Bible Gateway's WEB still has "in the earth".
 
 The set is **42 references** as of 2026-09-10 (was 5). They were chosen as the
 "greatest hits" — the verses people actually look up — drawn from the 61
@@ -77,14 +101,16 @@ without written permission, on a **non-commercial** site, with the copyright
 notice shown and the quotation not amounting to a whole book / large fraction
 of the work:
 
-| Translation | Free quotation ceiling (verified 2026-09-09) |
+| Translation | Free quotation ceiling (re-verified 2026-11-09) |
 | --- | --- |
-| ESV, NIV, NLT, NRSVue, CEB | 500 verses |
-| CSB, NKJV, NASB, LSB, AMP | 1,000 verses (the three Lockman titles — NASB/LSB/AMP — are all 1,000) |
-| KJV | public domain |
-| NET | no verse limit for non-commercial use; permission notice required |
+| ESV, NIV, NLT, NRSVue, CEB, NKJV, NCV, Voice, MEV, MSG, GNT, CEV, NIrV, ISV | 500 verses |
+| CSB, NASB, LSB, AMP | 1,000 verses (the Lockman titles — NASB/LSB/AMP — are all 1,000) |
+| GW | 250 verses |
+| KJV, WEB, BSB, MSB | public domain |
+| LSV | CC BY-SA |
+| NET, LEB | no verse limit for non-commercial use; notice required |
 
-42 verses per translation is well inside all of these (500 is the lowest
+42 verses per translation is well inside all of these (250 is the lowest
 ceiling). Each notice is in its `attribution` string and renders in the
 fine-print block at the foot of `/verses` and under the verse on a
 translation-profile page.
@@ -94,12 +120,13 @@ translation-profile page.
 1. Add the reference to `data/verses.json` (keep Bible order) **and** to the
    `REFS` array in `scripts/fetch-sample-verses.mjs`.
 2. Run `node scripts/fetch-sample-verses.mjs` to fill KJV/ESV/NIV/NKJV/CSB/NET.
-3. Hand-source NLT/NASB/NRSVue/CEB/AMP from Bible Gateway and LSB from
-   read.lsbible.org, exactly as published (only dropping the furniture listed
+3. Hand-source the rest from the sources listed above (Bible Gateway, LSB from
+   read.lsbible.org, WEB/LSV from ebible.org, BSB/MSB from the publishers'
+   text files), exactly as published (only dropping the furniture listed
    above).
 4. If the reference contains YHWH and isn't LSB, add it to `YHWH_VERSES` in the
    fetch script first (and check no ordinary "Lord" in that verse would be
    wrongly upcased).
 
-Only add the reference to `data/verses.json` once **all 12** translations have
+Only add the reference to `data/verses.json` once **all 26** translations have
 text — a translation with no entry for a verse renders "Text unavailable".

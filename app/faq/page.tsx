@@ -94,22 +94,23 @@ const groups: Group[] = [
             </p>
             <ul>
               <li>
-                <strong>Close study:</strong> the translations with the most study help &mdash;
-                the <Link href="/translations/net">NET</Link> (its 60,000 notes), the{" "}
-                <Link href="/translations/nasb">NASB</Link> (word-for-word precision), and the{" "}
-                <Link href="/translations/esv">ESV</Link> (the largest study-Bible library) &mdash;
+                <strong>Close study:</strong> the <Link href="/translations/net">NET</Link> (its
+                60,000 notes), the <Link href="/translations/leb">LEB</Link> (built to be read
+                alongside the Hebrew and Greek), and the{" "}
+                <Link href="/translations/nasb">NASB</Link> (word-for-word precision) &mdash;
                 ideally with a readable one open alongside.
               </li>
               <li>
                 <strong>Daily reading:</strong> the <Link href="/translations/nlt">NLT</Link>,{" "}
-                <Link href="/translations/ceb">CEB</Link>, or{" "}
-                <Link href="/translations/csb">CSB</Link> &mdash; smooth to read for long stretches
-                without slipping into paraphrase.
+                <Link href="/translations/ncv">NCV</Link>, or{" "}
+                <Link href="/translations/cev">CEV</Link> &mdash; plain, clear English that is easy
+                to read for long stretches.
               </li>
               <li>
                 <strong>A child or someone new to the Bible:</strong> the{" "}
-                <Link href="/translations/nlt">NLT</Link>, which reads at about a sixth-grade level,
-                or the <Link href="/translations/ceb">CEB</Link>.
+                <Link href="/translations/nirv">NIrV</Link> or the{" "}
+                <Link href="/translations/ncv">NCV</Link>, both written at about a third-grade
+                level, or the <Link href="/translations/nlt">NLT</Link> at about sixth grade.
               </li>
               <li>
                 <strong>Reading aloud in a congregation:</strong> the{" "}
@@ -126,7 +127,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Following the top of each ranking: for close study, the translations with the most study help — the NET (its 60,000 notes), the NASB (word-for-word precision), and the ESV (the largest study-Bible library) — ideally with a readable one alongside. For daily reading, the NLT, CEB, or CSB. For a child or a new reader, the NLT (about a sixth-grade reading level) or the CEB. For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
+          "Following the top of each ranking: for close study, the NET (its 60,000 notes), the LEB (built to be read alongside the Hebrew and Greek), and the NASB (word-for-word precision) — ideally with a readable one alongside. For daily reading, the NLT, NCV, or CEV. For a child or a new reader, the NIrV or NCV (both about a third-grade reading level) or the NLT (about sixth grade). For reading aloud in a congregation, the CSB, ESV, or NIV. The rankings page explains the ordering for each.",
       },
       {
         id: "paraphrase",
@@ -174,7 +175,7 @@ const groups: Group[] = [
             </p>
             <p>
               The <Link href="/translations/kjv">King James</Link> New Testament was translated from a
-              small set of late Greek manuscripts. Since 1611, scholars have found many older copies
+              small set of late Greek manuscripts. Since 1611, scholars have gained access to many older copies
               &mdash; some more than a thousand years older &mdash; and in seventeen places those
               older copies don&rsquo;t contain a verse the KJV has. Modern translations follow the
               older evidence, usually keeping the verse in a footnote. Nothing that touches a core
@@ -184,7 +185,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Modern translations print fewer verses than the King James Version in seventeen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies found since 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
+          "Modern translations print fewer verses than the King James Version in seventeen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies that became available to scholars after 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
       },
       {
         id: "text-types",
@@ -424,7 +425,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "Several reasons: English keeps changing, so older translations need updating; manuscript discoveries like the Dead Sea Scrolls gave later translators better source texts; scholars disagree about how literal a translation should be and how to handle gender language; and most major translations are owned by a publisher with an interest in having its own. Most English translations since about 1970 belong to a few families descending from the King James Version and the 1952 Revised Standard Version.",
+          "Several reasons: English keeps changing, so older translations need updating; manuscript discoveries like the Dead Sea Scrolls gave later translators better source texts; scholars disagree about how literal a translation should be and how to handle gender language; and most major translations are owned by a publisher with an interest in having its own. Most English translations since about 1970 fall into a few families: the King James line, the 1952 Revised Standard Version line (ESV, NRSVue), and newer independent efforts (NIV, NLT, CSB).",
       },
       {
         id: "inerrancy",
@@ -480,10 +481,11 @@ const groups: Group[] = [
                 <strong>Every point on the translation-philosophy spectrum</strong>, not just the
                 crowded middle &mdash; from the most literal (
                 <Link href="/translations/lsv">LSV</Link>,{" "}
-                <Link href="/translations/kjv">KJV</Link>) through the mediating translations (
+                <Link href="/translations/lsb">LSB</Link>) through the mediating translations (
                 <Link href="/translations/csb">CSB</Link>,{" "}
-                <Link href="/translations/bsb">BSB</Link>) to the freest reading (
-                <Link href="/translations/nlt">NLT</Link>) and this site&rsquo;s one deliberate
+                <Link href="/translations/bsb">BSB</Link>) to the freest (
+                <Link href="/translations/cev">CEV</Link>,{" "}
+                <Link href="/translations/voice">The Voice</Link>) and this site&rsquo;s one deliberate
                 paraphrase (<Link href="/translations/message">The Message</Link>).
               </li>
               <li>
@@ -517,7 +519,7 @@ const groups: Group[] = [
           </>
         ),
         plain:
-          "These aren't the twenty-six most popular English translations, and they aren't the twenty-six most respected ones either. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, KJV) through mediating translations (CSB, BSB) to the freest reading (NLT) and one deliberate paraphrase (The Message). It covers all three textual traditions behind the New Testament: Critical Text, Textus Receptus, and Majority Text. And it covers reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame. Every translation is a committee's work, except The Message, which is one translator's work that still went through real scholarly review. The set is also scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
+          "These aren't the twenty-six most popular English translations, and they aren't the twenty-six most respected ones either. This is closer to a cross-section: one representative for each meaningful point on the map, so a comparison across philosophy, textual basis, or reading level has real range to show. The set covers the full translation-philosophy spectrum, from the most literal (LSV, LSB) through mediating translations (CSB, BSB) to the freest (CEV, The Voice) and one deliberate paraphrase (The Message). It covers all three textual traditions behind the New Testament: Critical Text, Textus Receptus, and Majority Text. And it covers reading levels from about third grade to twelfth. The floor for inclusion is legitimacy, not fame. Every translation is a committee's work, except The Message, which is one translator's work that still went through real scholarly review. The set is also scoped to the 66-book Protestant canon, the same scope as the rest of this site.",
       },
       {
         id: "kjv-only",
