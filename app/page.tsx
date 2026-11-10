@@ -56,7 +56,7 @@ const entryCards = [
   {
     href: "/faq",
     title: "Common questions",
-    body: "What “accurate” means, why there are so many, and what changed since the KJV.",
+    body: "Answers to the questions people ask most, such as which translation is most accurate, whether modern Bibles removed verses, and who translates the Bible.",
   },
 ];
 
