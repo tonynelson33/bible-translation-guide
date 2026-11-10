@@ -500,13 +500,16 @@
     },
     "italicizesTranslatorWords": false,
     "capitalizesDeityPronouns": true,
-    "quotationMarksForDialogue": true
+    "quotationMarksForDialogue": true,
+    "verifyFields": [
+      "gradeLevel"
+    ]
   },
   {
     "id": "msb",
     "name": "Majority Standard Bible",
     "abbreviation": "MSB",
-    "latestRevisionYear": 2023,
+    "latestRevisionYear": 2025,
     "firstPublishedYear": 2022,
     "gradeLevel": "8-9",
     "philosophy": "Optimal",
