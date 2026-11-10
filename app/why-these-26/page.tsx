@@ -67,8 +67,7 @@ export default function WhyThese26Page() {
           <Link href="/history#tree" className="font-medium text-brand-700 hover:underline">
             translation family tree
           </Link>{" "}
-          shows which of the twenty-six descend from an earlier Bible and which are independent
-          work.
+          shows how a third of the twenty-six relate by descent. The rest are independent work.
         </p>
       </section>
 

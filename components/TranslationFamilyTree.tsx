@@ -14,13 +14,10 @@ import TooltipBubble from "./TooltipBubble";
  * The Message as a paraphrase, off that axis entirely): filled with that
  * color, it's one of the twenty-six; white (same border, same weight —
  * only the fill differs), it's an older Bible (Tyndale, the Revised
- * Version, the ASV, Young's Literal Translation, The Living Bible, the
- * International Children's Bible, the HCSB) kept only to show the lineage.
- * 2026-11-09: years set to each translation's first publication (matching
- * the comparison table), and the Living Bible -> NLT and HCSB -> CSB
- * lineages added, moving NLT and CSB out of the independents.
+ * Version, the ASV, Young's Literal Translation, the International
+ * Children's Bible) kept only to show the lineage.
  *
- * Everything here — every node, both bracket rows, and the nine
+ * Everything here — every node, both bracket rows, and the eleven
  * translations with no documented lineage in their own bordered box on
  * the left — is one SVG, on purpose. An earlier version kept that box in
  * HTML beside the SVG, hand-tuned in pixels to line up with it; that only
@@ -94,8 +91,6 @@ const FULL_NAME: Record<string, string> = {
   ylt: "Young's Literal Translation",
   lsv: "Literal Standard Version",
   icb: "International Children's Bible",
-  tlb: "The Living Bible",
-  hcsb: "Holman Christian Standard Bible",
   ncv: "New Century Version",
   nlt: "New Living Translation",
   net: "New English Translation",
@@ -131,29 +126,18 @@ type Node = {
 // year order the way hand-picked y values silently did during an earlier
 // pass of this diagram (see the git history for that lesson).
 const nodes: Node[] = [
-  // Left of the KJV line, three short pairs with a real parent of their own:
-  // NIV -> NIrV (the NIV simplified), ICB -> NCV (the NCV adapts the
-  // International Children's Bible text), and HCSB -> CSB (the CSB is the
-  // 2017 revision of the HCSB). None of the three parents descends from the
-  // KJV. HCSB/CSB share the ICB/NCV column well below it, with no edge
-  // between the two pairs.
-  { id: "niv", label: "NIV", year: 1978, cx: 185, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "nirv", label: "NIrV", year: 1996, cx: 185, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "icb", label: "ICB", year: 1986, cx: 265, basis: "CT", phil: "Dynamic" },
-  { id: "ncv", label: "NCV", year: 1987, cx: 265, current: true, basis: "CT", phil: "Dynamic" },
-  { id: "hcsb", label: "HCSB", year: 2004, cx: 265, basis: "CT", phil: "Balanced" },
-  { id: "csb", label: "CSB", year: 2017, cx: 265, current: true, basis: "CT", phil: "Balanced" },
+  // NIV -> NIrV and ICB -> NCV: two small independent-of-KJV pairs, CT basis.
+  { id: "niv", label: "NIV", year: 1978, cx: 215, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "nirv", label: "NIrV", year: 1996, cx: 215, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "icb", label: "ICB", year: 1986, cx: 322, basis: "CT", phil: "Dynamic" },
+  { id: "ncv", label: "NCV", year: 1987, cx: 322, current: true, basis: "CT", phil: "Dynamic" },
 
   // The KJV tree's own CT-basis branch: RV -> ASV -> {RSV -> (ESV, NRSV ->
-  // NRSVue), NASB -> LSB, AMP, The Living Bible -> NLT}. Kenneth Taylor's
-  // Living Bible paraphrased the 1901 ASV; the NLT began as a revision of it,
-  // retranslated from the original languages. BSB stands on its own in this
-  // zone (its MT sibling MSB is over on the right).
+  // NRSVue), NASB -> LSB, AMP}, plus BSB hanging off on its own (its MT
+  // sibling MSB is over on the right).
   { id: "rv", label: "Revised Version", year: 1885, cx: 560, w: 140, basis: "CT", phil: "Formal" },
   { id: "asv", label: "ASV", year: 1901, cx: 560, basis: "CT", phil: "Formal" },
   { id: "rsv", label: "RSV", year: 1952, cx: 500, basis: "CT", phil: "Formal" },
-  { id: "tlb", label: "Living Bible", year: 1971, cx: 345, w: 110, basis: "CT", phil: "Paraphrase" },
-  { id: "nlt", label: "NLT", year: 1996, cx: 345, current: true, basis: "CT", phil: "Dynamic" },
   { id: "nasb", label: "NASB", year: 1971, cx: 620, current: true, basis: "CT", phil: "Formal" },
   { id: "amp", label: "AMP", year: 1965, cx: 740, current: true, basis: "CT", phil: "Formal" },
   { id: "esv", label: "ESV", year: 2001, cx: 430, current: true, basis: "CT", phil: "Formal" },
@@ -174,43 +158,45 @@ const nodes: Node[] = [
   { id: "mev", label: "MEV", year: 2014, cx: 860, current: true, basis: "TR", phil: "Formal" },
 
   // Majority Text, on the right: YLT -> LSV (standalone), and separately
-  // WEB / MSB (MSB is BSB's MT sibling, over on the CT side). Years are each
-  // translation's first publication, as in the comparison table: the WEB's
-  // first full draft went online in 1997; the MSB's in 2022.
+  // WEB / MSB (MSB is BSB's MT sibling, over on the CT side). Years are
+  // each translation's first publication, as in the comparison table: the
+  // WEB's first full draft went online in 1997, the MSB's in 2022.
   { id: "ylt", label: "YLT", year: 1862, cx: 1000, basis: "TR", phil: "Formal" },
   { id: "lsv", label: "LSV", year: 2020, cx: 1050, w: 96, current: true, basis: "TR/MT", phil: "Formal" },
   { id: "web", label: "WEB", year: 1997, cx: 1170, current: true, basis: "MT", phil: "Formal" },
   { id: "msb", label: "MSB", year: 2022, cx: 1170, current: true, basis: "MT", phil: "Balanced" },
 ];
 
-// The nine with no documented lineage of their own: not part of the real
+// The eleven with no documented lineage of their own: not part of the real
 // tree (no edges, no shared year rank — see file header), just stacked in
 // their own column at a fixed pitch, sorted by year for a sensible reading
 // order top to bottom. Every label is the site's own abbreviation for it —
 // MSG and VOICE included, not their full names — matching every other node;
 // hover any of them for the full name, same as everywhere else in the tree.
-const INDEP_CX = 72;
+const INDEP_CX = 75;
 const independents: Node[] = [
   { id: "gnt", label: "GNT", year: 1976, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "cev", label: "CEV", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "gw", label: "GW", year: 1995, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
+  { id: "nlt", label: "NLT", year: 1996, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "message", label: "MSG", year: 2002, cx: INDEP_CX, current: true, basis: "CT", phil: "Paraphrase" },
   { id: "net", label: "NET", year: 2005, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
   { id: "ceb", label: "CEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
   { id: "isv", label: "ISV", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
   { id: "leb", label: "LEB", year: 2011, cx: INDEP_CX, current: true, basis: "CT", phil: "Formal" },
   { id: "voice", label: "VOICE", year: 2012, cx: INDEP_CX, current: true, basis: "CT", phil: "Dynamic" },
+  { id: "csb", label: "CSB", year: 2017, cx: INDEP_CX, current: true, basis: "CT", phil: "Balanced" },
 ].sort((a, b) => a.year - b.year) as Node[];
 
-// Independents' own vertical rhythm — chosen so the nine-row stack lands
+// Independents' own vertical rhythm — chosen so the eleven-row stack lands
 // roughly centered on the NIV/NIrV pair beside it, not tied to PITCH/TOP.
-const INDEP_FIRST_Y = 228;
+const INDEP_FIRST_Y = 188;
 const INDEP_PITCH = 28;
 // The box drawn around the independents column: wide enough for the widest
 // label plus its year and textual-basis code, plus padding, tall enough for the
-// "Independents" title plus all nine rows plus padding.
-const INDEP_LABEL_Y = 212;
-const INDEP_BOX = { x: 6, y: 196, w: 132, h: 288 };
+// "Independents" title plus all eleven rows plus padding.
+const INDEP_LABEL_Y = 172;
+const INDEP_BOX = { x: 9, y: 156, w: 132, h: 344 };
 
 // Shared chronological rank: every distinct year among the real tree nodes
 // gets the next row down, in order — the one rule the tree itself must obey
@@ -248,9 +234,6 @@ function box(id: string) {
 const edges: { from: string; to: string; jogY?: number }[] = [
   { from: "niv", to: "nirv" },
   { from: "icb", to: "ncv" },
-  { from: "hcsb", to: "csb" },
-  { from: "asv", to: "tlb", jogY: 177 },
-  { from: "tlb", to: "nlt" },
   { from: "rv", to: "asv" },
   { from: "asv", to: "rsv", jogY: 177 },
   { from: "asv", to: "nasb", jogY: 200 },
@@ -354,7 +337,7 @@ export default function TranslationFamilyTree() {
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
           className="mx-auto block h-auto w-full max-w-[1240px]"
           role="img"
-          aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom for the real tree: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. The ASV also leads to The Living Bible, a paraphrase, which leads to the NLT. On the left, the NIV leads to the NIrV, the International Children's Bible to the NCV, and the Holman Christian Standard Bible to the CSB. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Nine translations with no documented lineage of their own sit in a bordered box on the left, labeled Independents, stacked in their own column beside the NIV and NIrV, inside the same Critical Text zone."
+          aria-label="Every translation on the site, laid out as a family tree with three loose zones left to right by New Testament textual basis — Critical Text, the King James Textus Receptus, Majority Text, labeled at both the top and bottom of the diagram — and a strict shared year axis top to bottom for the real tree: no node sits lower than another node with a later year, regardless of branch. The King James tree's own Critical-Text descendants — Revised Version, ASV, RSV, NASB, AMP, ESV, NRSV, NRSVue, LSB, and BSB — hang off their real KJV-line parents even though that reads as inside the Textus Receptus zone. Young's Literal Translation leads to the Literal Standard Version; the Berean Standard Bible's Majority Text sibling, the Majority Standard Bible, sits on the right with a long connector back to it. A red line connects the WEB directly back to the ASV, its real parent, crossing the full width of the diagram — the one connection here that crosses between zones. Eleven translations with no documented lineage of their own sit in a bordered box on the left, labeled Independents, stacked in their own column beside the NIV and NIrV, inside the same Critical Text zone."
         >
           <BracketRow bandTop={0} />
           <BracketRow bandTop={VIEW_H - 16} />
@@ -435,10 +418,8 @@ export default function TranslationFamilyTree() {
         <strong>MSB</strong>, is the same translation and team with its New Testament swapped to
         the Majority Text. The <strong>NIrV</strong> is the NIV simplified to a third-grade
         reading level; the <strong>NCV</strong> descends from the International Children&rsquo;s
-        Bible, and the <strong>CSB</strong> is the 2017 revision of the Holman Christian Standard
-        Bible. The <strong>NLT</strong> began as a revision of Kenneth Taylor&rsquo;s Living Bible, a
-        paraphrase of the ASV, retranslated from the original languages. Years are each
-        translation&rsquo;s first publication. Hover any abbreviation for its full name.
+        Bible. Years are each translation&rsquo;s first publication. Hover any abbreviation
+        for its full name.
       </figcaption>
     </figure>
   );
