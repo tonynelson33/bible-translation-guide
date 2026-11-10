@@ -74,7 +74,7 @@ const columns: ColumnDef[] = [
     key: "gradeLevel",
     label: "Reading Grade Level",
     sortValue: (t) => gradeLevelSortValue(t.gradeLevel),
-    width: 6,
+    width: 7,
     render: (t) => (
       <span>
         {t.gradeLevel}
@@ -308,7 +308,7 @@ export default function ComparisonTable({ translations }: { translations: Transl
                     onClick={() => handleSort(col.key)}
                     className="flex w-full items-center gap-1 normal-case tracking-normal text-neutral-600 hover:text-brand-800"
                   >
-                    <span className="min-w-0 flex-1 break-words text-xs font-bold uppercase leading-tight tracking-wide">
+                    <span className="min-w-0 flex-1 break-normal text-xs font-bold uppercase leading-tight tracking-wide">
                       {col.label}
                     </span>
                     <span className="flex h-3 w-3 flex-shrink-0 flex-col justify-center text-[8px] leading-none text-neutral-400">
