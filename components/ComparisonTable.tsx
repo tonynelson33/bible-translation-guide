@@ -6,6 +6,7 @@ import type { Translation } from "@/lib/types";
 import { compareValues, gradeLevelSortValue, quoteLimitSortValue } from "@/lib/sort";
 import { genderApproachGlossary, philosophyGlossary } from "@/lib/glossary";
 import YesNoIcon from "./YesNoIcon";
+import PrintEditionMark, { printEditionSortValue } from "./PrintEditionMark";
 import InfoTooltip from "./InfoTooltip";
 import Tooltip from "./Tooltip";
 
@@ -149,6 +150,14 @@ const columns: ColumnDef[] = [
         {verifyMark(t, "quoteLimit")}
       </span>
     ),
+  },
+  {
+    key: "printEdition",
+    label: "Print Edition Available",
+    sortValue: (t) => printEditionSortValue(t.printEdition),
+    align: "center",
+    width: 6.5,
+    render: (t) => <PrintEditionMark value={t.printEdition} />,
   },
   {
     key: "redLetter",

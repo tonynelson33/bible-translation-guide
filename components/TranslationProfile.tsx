@@ -5,6 +5,8 @@ import type { SampleVerse } from "@/lib/data";
 import type { VerseFetchResult } from "@/lib/verseProviders";
 import { genderApproachGlossary, philosophyGlossary } from "@/lib/glossary";
 import YesNoIcon from "./YesNoIcon";
+import PrintEditionMark from "./PrintEditionMark";
+import { translationLinks } from "@/lib/buyLinks";
 import Tooltip from "./Tooltip";
 import VerseCard from "./VerseCard";
 
@@ -91,7 +93,7 @@ export default function TranslationProfile({
       {/* At a glance */}
       <div className="mt-8">
         <h2 className="text-sm font-bold uppercase tracking-wide text-neutral-500">At a Glance</h2>
-        <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
           <StatCard label="Reading Level">
             {translation.gradeLevel}
             {verifyMark(translation, "gradeLevel")}
@@ -100,6 +102,9 @@ export default function TranslationProfile({
           <StatCard label="Quote Limit">
             {translation.quoteLimit}
             {verifyMark(translation, "quoteLimit")}
+          </StatCard>
+          <StatCard label="Print Edition">
+            <PrintEditionMark value={translation.printEdition} />
           </StatCard>
           <StatCard label="Red Letter Edition">
             <YesNoIcon value={translation.redLetter} label="Red letter edition available" />
@@ -131,10 +136,20 @@ export default function TranslationProfile({
             />
           </StatCard>
         </dl>
+        {translation.printEdition !== "Yes" && translationLinks[translation.id]?.printNote && (
+          <p className="mt-3 text-sm text-amber-800">
+            <strong className="font-semibold">Print edition:</strong>{" "}
+            {translationLinks[translation.id]?.printNote}{" "}
+            <Link href="/buy" className="font-medium underline hover:text-amber-900">
+              Where to buy
+            </Link>
+          </p>
+        )}
         {translation.verifyFields && translation.verifyFields.length > 0 && (
           <p className="mt-2 text-xs text-neutral-500">
-            <sup className="text-brand-600">†</sup> Flagged for manual verification against current
-            publisher documentation.
+            <sup className="text-brand-600">†</sup> An estimate. No publisher or reference list gives
+            a reading level for this translation, so it is judged from its style and its closest
+            relatives.
           </p>
         )}
       </div>

@@ -10,6 +10,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Crossway",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -30,6 +31,7 @@
     "textualBasis": "Textus Receptus",
     "publisher": "Public domain",
     "quoteLimit": "Unlimited",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -50,6 +52,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Biblica / Zondervan",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
@@ -70,6 +73,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Tyndale House",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
@@ -90,6 +94,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Holman / LifeWay (SBC)",
     "quoteLimit": "1,000 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
@@ -111,6 +116,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Lockman / Master's Seminary",
     "quoteLimit": "1,000 verses",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -135,6 +141,7 @@
     "textualBasis": "Textus Receptus",
     "publisher": "Thomas Nelson",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -155,6 +162,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Lockman Foundation",
     "quoteLimit": "1,000 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
@@ -176,6 +184,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Biblical Studies Press",
     "quoteLimit": "Unlimited (non-commercial)",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": false,
     "otMarking": {
@@ -197,6 +206,7 @@
     "textualBasis": "Critical Text",
     "publisher": "National Council of Churches",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {
@@ -217,6 +227,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Common English Bible (mainline alliance)",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": true,
     "otMarking": {
@@ -238,6 +249,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Lockman Foundation",
     "quoteLimit": "1,000 verses",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
@@ -259,6 +271,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Bible Hub",
     "quoteLimit": "Unlimited",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
@@ -282,6 +295,7 @@
     "textualBasis": "Majority Text",
     "publisher": "Rainbow Missions",
     "quoteLimit": "Unlimited",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -302,6 +316,7 @@
     "textualBasis": "Critical Text",
     "publisher": "American Bible Society",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {
@@ -322,6 +337,7 @@
     "textualBasis": "Critical Text",
     "publisher": "American Bible Society",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {
@@ -342,6 +358,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Biblica / Zondervan",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": true,
     "otMarking": {
@@ -363,6 +380,7 @@
     "textualBasis": "Critical Text",
     "publisher": "ISV Foundation",
     "quoteLimit": "500 verses",
+    "printEdition": "Limited",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -383,6 +401,7 @@
     "textualBasis": "Critical Text",
     "publisher": "God's Word to the Nations Mission Society",
     "quoteLimit": "250 verses",
+    "printEdition": "Yes",
     "genderApproach": "Moderate",
     "redLetter": false,
     "otMarking": {
@@ -403,6 +422,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Thomas Nelson",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": true,
     "otMarking": {
@@ -423,6 +443,7 @@
     "textualBasis": "Textus Receptus",
     "publisher": "Passio / Charisma House",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": true,
     "otMarking": {
@@ -443,6 +464,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Lexham Press / Logos Bible Software",
     "quoteLimit": "Unlimited",
+    "printEdition": "No",
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
@@ -463,6 +485,7 @@
     "textualBasis": "Critical Text",
     "publisher": "Thomas Nelson / Ecclesia Bible Society",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {
@@ -483,6 +506,7 @@
     "textualBasis": "Textus Receptus / Majority Text",
     "publisher": "Covenant Press",
     "quoteLimit": "Unlimited",
+    "printEdition": "Yes",
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
@@ -506,6 +530,7 @@
     "textualBasis": "Majority Text",
     "publisher": "Bible Hub",
     "quoteLimit": "Unlimited",
+    "printEdition": "No",
     "genderApproach": "Traditional",
     "redLetter": false,
     "otMarking": {
@@ -529,6 +554,7 @@
     "textualBasis": "Critical Text",
     "publisher": "NavPress",
     "quoteLimit": "500 verses",
+    "printEdition": "Yes",
     "genderApproach": "Inclusive",
     "redLetter": false,
     "otMarking": {

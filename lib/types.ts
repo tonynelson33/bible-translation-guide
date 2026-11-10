@@ -1,6 +1,8 @@
 export type Philosophy = "Formal" | "Dynamic" | "Optimal" | "Mixed" | "Paraphrase";
 export type TextualBasis = "Critical Text" | "Textus Receptus" | "Majority Text" | "Textus Receptus / Majority Text";
 export type GenderApproach = "Traditional" | "Moderate" | "Inclusive";
+/** Can a printed Bible be bought? "Limited" = out of print or hard to find (see printNote in lib/buyLinks.ts). */
+export type PrintEdition = "Yes" | "Limited" | "No";
 
 export interface OtMarking {
   marks: boolean;
@@ -18,6 +20,7 @@ export interface Translation {
   textualBasis: TextualBasis;
   publisher: string;
   quoteLimit: string;
+  printEdition: PrintEdition;
   genderApproach: GenderApproach;
   genderApproachLabel?: string; // display override for the pill, when the bare bucket name needs qualifying
   redLetter: boolean;

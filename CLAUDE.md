@@ -87,6 +87,11 @@ says so. (GNT red letter → No: every current US edition is black letter; NIrV 
 confirmed; ISV red letter → Yes, italics No, 500-verse limit per isvbible.org/legal.)
 "First Published" = the year the complete Bible was first published and available (owner rule),
 except NRSVue, which shows the NRSV's 1989 with an "(as NRSV)" label.
+`printEdition` ("Yes" | "Limited" | "No", added 2026-11-10, owner ask): can a printed Bible be
+bought? A table column just before Red Letter and a "Print Edition" card on each profile
+(`components/PrintEditionMark.tsx`). No = LEB (digital only) and MSB (publisher plans print for
+2027); Limited = ISV (Davidson Press editions out of print). The explanation for each lives once,
+in `printNote` in `lib/buyLinks.ts`, and shows on both `/buy` and the profile page.
 
 **Sample verses** (`/verses` page, and the sample-verse block on translation-profile pages):
 `/verses` compares a **fixed** set of **42** sample verses (`data/verses.json`, Bible order —
