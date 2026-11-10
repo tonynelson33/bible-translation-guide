@@ -8,6 +8,11 @@ export interface TranslationLinks {
   buy: ExternalLink[];
   /** Where to read the full text free online. */
   readFree: ExternalLink[];
+  /**
+   * Shown on /buy when a printed Bible is hard or impossible to get, so a "Buy" row (or the
+   * lack of one) doesn't imply a physical copy exists. Checked 2026-11-10.
+   */
+  printNote?: string;
 }
 
 /**
@@ -164,8 +169,11 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   bsb: {
     buy: [
+      { label: "Berean Bibles (official)", url: "https://bereanbibles.com/shop/" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=Berean+Standard+Bible" },
     ],
+    printNote:
+      "Printed copies come in limited print runs that have sold out between printings, so stock varies.",
     readFree: [
       { label: "Berean Bible (official)", url: "https://bereanbible.com/" },
       { label: "YouVersion", url: "https://www.bible.com/versions/3034-bsb-english-berean-standard-bible" },
@@ -173,6 +181,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   web: {
     buy: [
+      { label: "eBible.org store (official)", url: "https://ebible.org/store/" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=World+English+Bible" },
     ],
     readFree: [
@@ -215,6 +224,8 @@ export const translationLinks: Record<string, TranslationLinks> = {
     buy: [
       { label: "Amazon", url: "https://www.amazon.com/s?k=International+Standard+Version+Bible" },
     ],
+    printNote:
+      "Printed copies are hard to find. Davidson Press's editions appear to be out of print, and most copies for sale are used, many of them New Testaments only.",
     readFree: [
       { label: "ISV Foundation (official)", url: "https://isvbible.org/" },
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=ISV" },
@@ -222,6 +233,7 @@ export const translationLinks: Record<string, TranslationLinks> = {
   },
   gw: {
     buy: [
+      { label: "GOD'S WORD to the Nations (official)", url: "https://godsword.org/collections/all" },
       { label: "Amazon", url: "https://www.amazon.com/s?k=GOD%27S+WORD+Translation+Bible" },
     ],
     readFree: [
@@ -249,13 +261,16 @@ export const translationLinks: Record<string, TranslationLinks> = {
     ],
   },
   leb: {
-    buy: [
-      { label: "Lexham Press (official)", url: "https://lexhamenglishbible.com/" },
-    ],
+    // No printed LEB exists (Lexham Press: no plans for one). lexhamenglishbible.com now
+    // redirects to an unrelated bookstore search, so there is no buy link at all.
+    buy: [],
     readFree: [
       { label: "Bible Gateway", url: "https://www.biblegateway.com/passage/?search=John+3%3A16&version=LEB" },
       { label: "YouVersion", url: "https://www.bible.com/versions/90-leb-lexham-english-bible" },
+      { label: "Logos (free)", url: "https://www.logos.com/product/6162/lexham-english-bible-leb-with-audio" },
     ],
+    printNote:
+      "There is no printed edition to buy. The LEB has only ever been published digitally, and Lexham Press has said it has no plans for a print version.",
   },
   voice: {
     buy: [
@@ -276,13 +291,13 @@ export const translationLinks: Record<string, TranslationLinks> = {
     ],
   },
   msb: {
-    buy: [
-      { label: "Amazon", url: "https://www.amazon.com/s?k=Majority+Standard+Bible" },
-    ],
+    buy: [],
     readFree: [
       { label: "Majority Bible (official)", url: "https://majoritybible.com/" },
       { label: "YouVersion", url: "https://www.bible.com/versions/4754-msb-majority-standard-bible" },
     ],
+    printNote:
+      "There is no official printed edition yet. The publisher plans one for 2027; until then, only print-on-demand paperbacks from small sellers turn up.",
   },
   message: {
     buy: [

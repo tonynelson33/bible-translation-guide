@@ -186,6 +186,11 @@ export default function BuyPage() {
               {links && (
                 <div className="mt-4 space-y-2 sm:pl-[3.75rem]">
                   <LinkRow icon={<BuyIcon />} label="Buy" links={links.buy} />
+                  {links.printNote && (
+                    <p className="text-sm text-amber-800 sm:pl-[5.5rem]">
+                      <strong className="font-semibold">In print?</strong> {links.printNote}
+                    </p>
+                  )}
                   <LinkRow icon={<ReadIcon />} label="Read free" links={links.readFree} />
                   {free && (
                     <p className="pt-0.5 text-xs text-neutral-400 sm:pl-[5.5rem]">Free in full: {free}.</p>
