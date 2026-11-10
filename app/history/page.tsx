@@ -178,9 +178,9 @@ export default function HistoryPage() {
           Bible Translation Tree
         </h2>
         <p className="mt-3 max-w-2xl leading-relaxed text-neutral-700">
-          Of the twenty-six translations compared here, a third are branches of the same tree,
-          rooted in Tyndale and the King James Version &mdash; the rest are fresh, independent work
-          from the original languages.
+          Of the twenty-six translations compared here, ten are branches of one tree, rooted in
+          Tyndale and the King James Version. A few more grew out of an earlier Bible outside that
+          line, and the rest are fresh, independent work from the original languages.
         </p>
         <TranslationFamilyTree />
       </div>
