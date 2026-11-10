@@ -57,7 +57,15 @@ const KNOWN = [
   (id, ref, d) => id === "kjv" && d.every((w) => ["+always", "-alway", "+thoroughly", "-throughly"].includes(w)),
   // ebible.org (the WEB's publisher) reads "on the earth"; Bible Gateway's WEB still has "in".
   (id, ref, d) => id === "web" && ref === "Psalm 46:10" && d.join(" ") === "+in -on",
+  // Mark 9:44 and 9:46 are word-for-word identical, so /differences prints the text once.
+  (id, ref, d) => ref === "Mark 9:44 and 9:46" && d.every((w) => w.startsWith("+")),
 ];
+// Punctuation/capitalization differences that are the 1769 KJV's own printing, where Bible
+// Gateway's KJV is a modernized one ("JESUS", "most High", "spirit", colon vs. semicolon).
+const KNOWN_PUNCT = new Set([
+  "kjv|Lamentations 3:22-23", "kjv|1 Corinthians 15:47", "kjv|1 John 5:8", "kjv|John 1:18",
+  "kjv|Matthew 1:25", "kjv|Deuteronomy 32:8",
+]);
 
 /* ---------- normalizers ---------- */
 const words = (s) =>
@@ -65,7 +73,7 @@ const words = (s) =>
     .replace(/'(?![a-z])|(?<![a-z])'/g, " ").split(/\s+/).filter(Boolean);
 const punct = (s) =>
   s.replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/\s*[—–]\s*/g, "—").replace(/\s+/g, " ")
-    .replace(/\bLORD\b/g, "Lord").replace(/\bGOD\b/g, "God").replace(/(\w)\*(\w)/g, "$1$2").replace(/ \*(\w)/g, " $1").trim();
+    .replace(/\bLORD'S\b/g, "Lord's").replace(/\bLORD\b/g, "Lord").replace(/\bGOD\b/g, "God").replace(/(\w)\*(\w)/g, "$1$2").replace(/ \*(\w)/g, " $1").trim();
 // Psalm titles and acrostic letters the sources glue to the verse; the cache drops them.
 const stripFurniture = (s) =>
   s.replace(/^(?:A PSALM OF DAVID\.|BY DAVID\.|\[[A-Z]+\])\s*/, "")
@@ -191,7 +199,7 @@ for (const j of jobs) {
   if (d.length && !KNOWN.some((k) => k(j.id, j.ref, d))) {
     problems++;
     console.log(`WORDS ${j.page} ${j.id} ${j.ref}: ${d.join(" ")}\n  site:   ${j.text}\n  source: ${src}`);
-  } else if (!d.length && PUNCT && punct(j.text) !== punct(src)) {
+  } else if (!d.length && PUNCT && punct(j.text) !== punct(src) && !KNOWN_PUNCT.has(`${j.id}|${j.ref}`)) {
     punctOnly++;
     console.log(`PUNCT ${j.page} ${j.id} ${j.ref}\n  site:   ${j.text}\n  source: ${src}`);
   }
