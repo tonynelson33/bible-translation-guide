@@ -677,7 +677,8 @@ export default function ManuscriptsPage() {
             Empire), <strong>Syriac</strong> (for the Middle East) and <strong>Coptic</strong> (for
             Egypt). Some of those translations were made in the AD 100s to 300s, from Greek copies
             that no longer exist. Reading them shows what those lost Greek copies said. The most
-            famous is the <strong>Latin Vulgate</strong>, made by Jerome around AD 400. It was the
+            famous is the <strong>Latin Vulgate</strong>, made by Jerome around AD 400. It covers the
+            whole Bible: Jerome translated most of the Old Testament from the Hebrew. It was the
             standard Bible of the Western church for over a thousand years.
           </p>
           <LangSample

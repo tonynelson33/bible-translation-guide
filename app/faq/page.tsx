@@ -580,14 +580,16 @@ const groups: Group[] = [
             </p>
             <p>
               Other times the writer translates the Hebrew himself, quotes loosely, or combines two
-              passages: Mark 1:2–3 joins words from Malachi 3:1 and Isaiah 40:3. Translators leave
-              these differences in place rather than making the two Testaments agree, and a
-              footnote often says which source a quotation follows.
+              passages: Mark 1:2–3 joins words from Malachi 3:1 and Isaiah 40:3. Most modern
+              translations leave these differences in place rather than making the two Testaments
+              agree, and a footnote often says which source a quotation follows. (The KJV is an
+              exception in Psalm 8:5, where it follows the Septuagint&rsquo;s &ldquo;angels&rdquo;
+              too.)
             </p>
           </>
         ),
         plain:
-          "Usually because the New Testament writers were quoting the Greek Septuagint, the translation most of their readers knew, while English Old Testaments are translated from the Hebrew. When the Septuagint reads differently, the quotation does too. Hebrews 10:5 quotes Psalm 40:6 as \"a body hast thou prepared me,\" the Septuagint's wording, where the Hebrew reads \"mine ears hast thou opened.\" Hebrews 2:7 quotes Psalm 8:5 as \"a little lower than the angels,\" while many modern translations of the Psalm, following the Hebrew, say \"heavenly beings\" or \"God.\" Other times the writer translates the Hebrew himself, quotes loosely, or combines passages, as Mark 1:2–3 joins Malachi 3:1 and Isaiah 40:3. Translators leave these differences in place, and a footnote often says which source a quotation follows.",
+          "Usually because the New Testament writers were quoting the Greek Septuagint, the translation most of their readers knew, while English Old Testaments are translated from the Hebrew. When the Septuagint reads differently, the quotation does too. Hebrews 10:5 quotes Psalm 40:6 as \"a body hast thou prepared me,\" the Septuagint's wording, where the Hebrew reads \"mine ears hast thou opened.\" Hebrews 2:7 quotes Psalm 8:5 as \"a little lower than the angels,\" while many modern translations of the Psalm, following the Hebrew, say \"heavenly beings\" or \"God.\" Other times the writer translates the Hebrew himself, quotes loosely, or combines passages, as Mark 1:2–3 joins Malachi 3:1 and Isaiah 40:3. Most modern translations leave these differences in place, and a footnote often says which source a quotation follows; the KJV follows the Septuagint's \"angels\" in Psalm 8:5 itself.",
       },
       {
         id: "brothers-and-sisters",
@@ -703,14 +705,14 @@ const groups: Group[] = [
               title often counts as verse 1, so its verse numbers can run one ahead of an English
               Bible&rsquo;s, and the six verses of Malachi 4 in English Bibles are the end of
               Malachi 3 in Hebrew ones. It is also why some modern Bibles skip a verse number
-              entirely: the numbers were set in 1551 on a Greek text that included those verses, before
-              scholars could study the older manuscripts that lack them (see{" "}
+              entirely: the numbers were set in the 1500s on Greek texts that included those verses,
+              before scholars could study the older manuscripts that lack them (see{" "}
               <Link href="/faq#removed-verses">Did modern Bibles remove verses?</Link>).
             </p>
           </>
         ),
         plain:
-          "Not the biblical writers; the originals had no numbered chapters or verses. Stephen Langton, a teacher in Paris who later became Archbishop of Canterbury, divided the Latin Bible into chapters in the early 1200s, and his divisions are essentially the ones used today. Jewish scribes had marked the ends of verses in the Hebrew text for centuries, and those verses were numbered in the 1400s and 1500s. The printer Robert Estienne numbered the New Testament verses in his 1551 Greek New Testament, and in 1560 the Geneva Bible became the first complete English Bible with numbered verses. That is why numbering sometimes differs: in the Hebrew Bible a psalm's title often counts as verse 1, and Malachi 4 in English Bibles is the end of Malachi 3 in Hebrew ones. It is also why some modern Bibles skip a verse number: the numbers were set in 1551 on a Greek text that included those verses, before scholars could study the older manuscripts that lack them.",
+          "Not the biblical writers; the originals had no numbered chapters or verses. Stephen Langton, a teacher in Paris who later became Archbishop of Canterbury, divided the Latin Bible into chapters in the early 1200s, and his divisions are essentially the ones used today. Jewish scribes had marked the ends of verses in the Hebrew text for centuries, and those verses were numbered in the 1400s and 1500s. The printer Robert Estienne numbered the New Testament verses in his 1551 Greek New Testament, and in 1560 the Geneva Bible became the first complete English Bible with numbered verses. That is why numbering sometimes differs: in the Hebrew Bible a psalm's title often counts as verse 1, and Malachi 4 in English Bibles is the end of Malachi 3 in Hebrew ones. It is also why some modern Bibles skip a verse number: the numbers were set in the 1500s on Greek texts that included those verses, before scholars could study the older manuscripts that lack them.",
       },
     ],
   },
