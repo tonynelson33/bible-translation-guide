@@ -227,6 +227,68 @@ const groups: Group[] = [
           "Modern translations print fewer verses than the King James Version in seventeen places, but “removed” is misleading. The KJV New Testament was translated from a handful of late Greek manuscripts. Older copies that became available to scholars after 1611, some more than a thousand years older, do not contain those verses, so modern translations follow the older evidence and usually keep the verse in a footnote. No core Christian teaching depends on any of them.",
       },
       {
+        id: "where-extra-verses-came-from",
+        q: "Where did the verses and phrases found only in later manuscripts come from?",
+        a: (
+          <>
+            <p>
+              Scholars give two answers. They agree on the evidence: the verses are in most later
+              Greek copies, especially the <Link href="/manuscripts#families">Byzantine</Link>{" "}
+              ones, and missing from the oldest. They disagree about which side changed.
+            </p>
+            <p>
+              <strong>Most scholars think copyists added them, usually without meaning any
+              harm.</strong> Copying by hand over centuries, scribes tended to do a few things:
+            </p>
+            <ul>
+              <li>
+                <strong>Fill in from a parallel passage.</strong> A scribe who knew another Gospel
+                well might add its wording. Matthew 17:21, about prayer and fasting, matches Mark
+                9:29. Matthew 18:11 closely matches Luke 19:10.
+              </li>
+              <li>
+                <strong>Copy a note into the text.</strong> A reader might explain a passage in the
+                margin, and a later copyist might take the note for part of the text. John 5:4,
+                about an angel stirring the pool of Bethesda, is often thought to have started this
+                way. It accounts for why the sick man in verse 7 waited for the water to move.
+              </li>
+              <li>
+                <strong>Add words used in church.</strong> The ending of the Lord&rsquo;s Prayer,
+                &ldquo;For thine is the kingdom, and the power, and the glory,&rdquo; was prayed in
+                worship very early. A short form of it already appears in the{" "}
+                <em>Didache</em>, a church manual from about AD 100. Over time it entered copies of
+                Matthew 6:13.
+              </li>
+              <li>
+                <strong>Repeat a line.</strong> Mark 9:44 and 9:46 repeat verse 48 word for word.
+              </li>
+            </ul>
+            <p>
+              Because the Byzantine text became the standard Bible of the Greek-speaking church,
+              these readings were copied again and again. That is why they appear in the majority
+              of manuscripts.
+            </p>
+            <p>
+              <strong>Others think the oldest copies lost them.</strong> Scholars who favor the
+              Byzantine or Majority Text, and defenders of the Textus Receptus, argue that the
+              verses are original. In their view, the early copies that lack them dropped words by
+              accident or trimmed them on purpose. They point out that most of the oldest copies
+              survive from one region, Egypt, where the dry climate preserves papyrus. They also
+              note that some disputed verses were quoted early: Irenaeus quoted Acts 8:37 in the
+              late 100s, before most of our oldest manuscripts were made.
+            </p>
+            <p>
+              Either way, no teaching depends on these verses. Almost every one repeats something
+              the New Testament says elsewhere without dispute.{" "}
+              <Link href="/differences">The differences page</Link> gives each verse with its
+              parallel.
+            </p>
+          </>
+        ),
+        plain:
+          "Scholars agree on the evidence: these verses and phrases are in most later Greek copies, especially the Byzantine ones, and missing from the oldest. They disagree about which side changed. Most scholars think copyists added them, usually without meaning any harm: by filling in wording from a parallel passage (Matthew 17:21 matches Mark 9:29; Matthew 18:11 closely matches Luke 19:10), by copying a margin note into the text (often said of John 5:4, the angel stirring the pool), by adding words used in worship (the ending of the Lord's Prayer, a short form of which appears in the Didache from about AD 100), or by repeating a line (Mark 9:44 and 9:46 repeat verse 48). Because the Byzantine text became the standard Bible of the Greek-speaking church, these readings were copied again and again. Scholars who favor the Byzantine or Majority Text, and defenders of the Textus Receptus, argue instead that the verses are original and that the early copies lacking them dropped words by accident or on purpose. They note that most of the oldest copies survive from one region, Egypt, and that some disputed verses were quoted early, such as Acts 8:37 by Irenaeus in the late 100s. Either way, no teaching depends on these verses; almost every one repeats something the New Testament says elsewhere without dispute.",
+      },
+      {
         id: "text-types",
         q: "Textus Receptus, Critical Text, Majority Text — what are those?",
         a: (
