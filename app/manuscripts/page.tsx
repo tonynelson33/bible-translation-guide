@@ -238,14 +238,16 @@ function LangSample({
   sound,
   meaning,
   reference,
+  note,
   original,
 }: {
   text: string;
   lang: string;
   rtl?: boolean;
-  sound: string;
+  sound?: string;
   meaning: string;
   reference: string;
+  note?: string;
   original?: { label: string; text: string };
 }) {
   return (
@@ -253,10 +255,11 @@ function LangSample({
       <p lang={lang} dir={rtl ? "rtl" : "ltr"} className="text-xl leading-snug text-brand-900">
         {text}
       </p>
-      <p className="mt-1 text-sm italic text-neutral-600">{sound}</p>
+      {sound && <p className="mt-1 text-sm italic text-neutral-600">{sound}</p>}
       <p className="text-sm text-neutral-700">
         &ldquo;{meaning}&rdquo; <span className="text-neutral-500">({reference})</span>
       </p>
+      {note && <p className="mt-0.5 text-xs text-neutral-500">{note}</p>}
       {original && (
         <p className="mt-1.5 border-t border-neutral-200 pt-1.5 text-xs text-neutral-500">
           {original.label}:{" "}
@@ -677,6 +680,14 @@ export default function ManuscriptsPage() {
             famous is the <strong>Latin Vulgate</strong>, made by Jerome around AD 400. It was the
             standard Bible of the Western church for over a thousand years.
           </p>
+          <LangSample
+            text="In principio erat Verbum"
+            lang="la"
+            meaning="In the beginning was the Word"
+            reference="John 1:1, Latin Vulgate"
+            note="Compare the Greek above. Verbum, “word,” is where English “verb” comes from."
+            original={{ label: "As early Latin copies wrote it", text: "INPRINCIPIOERATVERBVM" }}
+          />
         </div>
       </Section>
 
