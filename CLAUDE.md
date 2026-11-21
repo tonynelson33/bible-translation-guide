@@ -206,7 +206,7 @@ scroll container, which silently kills `position: sticky` on the nav. Don't re-a
 The comparison table's own `overflow-x-auto` wrapper handles its horizontal scroll.
 
 **Learn pages** (all static server components, content in a `lib/*` file, added 2026-09-07):
-- **`/faq`** — 13 Q&As in 3 groups, content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
+- **`/faq`** — 23 Q&As in 4 groups ("Things you notice when reading" added 2026-11-20: LORD in capitals, italics, OT quotes that don't match, "brothers and sisters", "only begotten", chapter/verse numbers; plus "where the later-manuscript verses came from" after `#removed-verses`), content + `FAQPage` JSON-LD inline in `app/faq/page.tsx`
   (rich answer + a self-contained `plain` string for the structured data). The "why no
   translation uses the Majority Text" answer (`/faq#majority-text`) is linked from
   `/manuscripts` section 9. The 3 group `<h2>`s carry a `border-t-2 border-gild-300`

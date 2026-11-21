@@ -490,6 +490,229 @@ const groups: Group[] = [
     ],
   },
   {
+    title: "Things you notice when reading",
+    intro: "Questions that come up once you start reading closely, or comparing translations side by side.",
+    items: [
+      {
+        id: "lord-in-capitals",
+        q: "Why does my Bible print LORD in capital letters?",
+        a: (
+          <>
+            <p>
+              Because it stands for God&rsquo;s personal name. In the Hebrew Old Testament that name
+              is written with four letters, YHWH. Out of reverence, Jewish readers stopped saying it
+              aloud and read <em>Adonai</em>, &ldquo;Lord,&rdquo; in its place. The Greek Septuagint
+              and the Latin Vulgate did the same, and most English Bibles follow them.
+            </p>
+            <p>
+              So the capitals are a signal. <strong>LORD</strong> (usually in small capitals) means
+              the Hebrew has the name YHWH. <strong>Lord</strong> in ordinary type translates{" "}
+              <em>adonai</em>, a title meaning &ldquo;master&rdquo; or &ldquo;lord.&rdquo; Where the
+              two come together, many Bibles print &ldquo;Lord GOD&rdquo; rather than &ldquo;Lord
+              LORD.&rdquo; The New Testament has no such distinction, because it was written in
+              Greek, which uses one word, <em>kyrios</em>.
+            </p>
+            <p>
+              A few translations spell the name out instead. The{" "}
+              <Link href="/translations/lsb">LSB</Link>,{" "}
+              <Link href="/translations/web">WEB</Link>, and{" "}
+              <Link href="/translations/leb">LEB</Link> print &ldquo;Yahweh,&rdquo; the{" "}
+              <Link href="/translations/lsv">LSV</Link> prints &ldquo;YHWH,&rdquo; and{" "}
+              <Link href="/translations/voice">The Voice</Link> says &ldquo;the Eternal.&rdquo; The
+              1901 American Standard Version printed &ldquo;Jehovah,&rdquo; a form made by combining
+              the letters YHWH with the vowels of <em>Adonai</em>.
+            </p>
+          </>
+        ),
+        plain:
+          "Because it stands for God's personal name. In the Hebrew Old Testament the name is written with four letters, YHWH. Out of reverence, Jewish readers stopped saying it aloud and read Adonai, \"Lord,\" in its place; the Greek Septuagint and the Latin Vulgate did the same, and most English Bibles follow them. LORD in capitals (usually small capitals) means the Hebrew has the name YHWH; Lord in ordinary type translates adonai, a title meaning master or lord. Where the two come together, many Bibles print \"Lord GOD\" rather than \"Lord LORD.\" The New Testament, written in Greek, uses one word, kyrios. A few translations spell the name out: the LSB, WEB, and LEB print \"Yahweh,\" the LSV prints \"YHWH,\" The Voice says \"the Eternal,\" and the 1901 American Standard Version printed \"Jehovah,\" a form made by combining YHWH with the vowels of Adonai.",
+      },
+      {
+        id: "italics",
+        q: "Why are some words in italics?",
+        a: (
+          <>
+            <p>
+              In many Bibles, italics do not mean emphasis. They mark words the translators added
+              to make the English read properly, words with nothing directly behind them in the
+              Hebrew or Greek. Greek, for example, often leaves out &ldquo;is&rdquo; where English
+              needs it, so these Bibles print the added <em>is</em> in italics.
+            </p>
+            <p>
+              The <Link href="/translations/kjv">KJV</Link>,{" "}
+              <Link href="/translations/nkjv">NKJV</Link>,{" "}
+              <Link href="/translations/mev">MEV</Link>,{" "}
+              <Link href="/translations/nasb">NASB</Link>,{" "}
+              <Link href="/translations/lsb">LSB</Link>, Amplified, and{" "}
+              <Link href="/translations/leb">LEB</Link> all do this. The 1611 King James, printed in
+              heavy black-letter type, marked these words in a lighter roman type instead; modern
+              printings use italics. The <Link href="/translations/lsv">LSV</Link> marks them with
+              square brackets. <Link href="/translations/voice">The Voice</Link> uses italics
+              differently, for the narrative material it adds between passages. Most other modern
+              translations don&rsquo;t mark supplied words at all. The{" "}
+              <Link href="/compare">comparison table</Link> shows which do.
+            </p>
+          </>
+        ),
+        plain:
+          "In many Bibles, italics do not mean emphasis. They mark words the translators added to make the English read properly, with nothing directly behind them in the Hebrew or Greek. Greek, for example, often leaves out \"is\" where English needs it, so the added \"is\" is printed in italics. The KJV, NKJV, MEV, NASB, LSB, Amplified, and LEB all do this. The 1611 King James, printed in black-letter type, marked these words in a lighter roman type; modern printings use italics. The LSV uses square brackets instead, The Voice uses italics for the narrative material it adds, and most other modern translations don't mark supplied words at all.",
+      },
+      {
+        id: "ot-quotes-dont-match",
+        q: "Why don't the New Testament's quotations of the Old Testament match the Old Testament?",
+        a: (
+          <>
+            <p>
+              Usually because the New Testament writers were quoting the Greek{" "}
+              <Link href="/manuscripts#old-testament">Septuagint</Link>, the translation most of
+              their readers knew, while your English Old Testament is translated from the Hebrew.
+              When the Septuagint reads differently from the Hebrew, the quotation does too.
+            </p>
+            <p>
+              Hebrews 10:5 is a clear example. It quotes Psalm 40:6 as &ldquo;a body hast thou
+              prepared me,&rdquo; which is the Septuagint&rsquo;s wording. Translated from the
+              Hebrew, Psalm 40:6 reads &ldquo;mine ears hast thou opened.&rdquo; Similarly, Hebrews
+              2:7 quotes Psalm 8:5 as &ldquo;a little lower than the angels,&rdquo; while many
+              modern translations of the Psalm, following the Hebrew, say &ldquo;heavenly
+              beings&rdquo; or &ldquo;God.&rdquo;
+            </p>
+            <p>
+              Other times the writer translates the Hebrew himself, quotes loosely, or combines two
+              passages: Mark 1:2–3 joins words from Malachi 3:1 and Isaiah 40:3. Translators leave
+              these differences in place rather than making the two Testaments agree, and a
+              footnote often says which source a quotation follows.
+            </p>
+          </>
+        ),
+        plain:
+          "Usually because the New Testament writers were quoting the Greek Septuagint, the translation most of their readers knew, while English Old Testaments are translated from the Hebrew. When the Septuagint reads differently, the quotation does too. Hebrews 10:5 quotes Psalm 40:6 as \"a body hast thou prepared me,\" the Septuagint's wording, where the Hebrew reads \"mine ears hast thou opened.\" Hebrews 2:7 quotes Psalm 8:5 as \"a little lower than the angels,\" while many modern translations of the Psalm, following the Hebrew, say \"heavenly beings\" or \"God.\" Other times the writer translates the Hebrew himself, quotes loosely, or combines passages, as Mark 1:2–3 joins Malachi 3:1 and Isaiah 40:3. Translators leave these differences in place, and a footnote often says which source a quotation follows.",
+      },
+      {
+        id: "brothers-and-sisters",
+        q: "Why do some translations say “brothers and sisters”?",
+        a: (
+          <>
+            <p>
+              When Paul writes to a whole church, he usually addresses them as <em>adelphoi</em>.
+              The word is masculine, but in Greek a masculine plural covered a mixed group, the way
+              &ldquo;guys&rdquo; often does in English today. Everyone agrees the letters were
+              written to men and women alike. The question is how to put that into English.
+            </p>
+            <p>Translations fall into three broad groups:</p>
+            <ul>
+              <li>
+                <strong>Traditional</strong> keep &ldquo;brothers&rdquo; (or &ldquo;brethren&rdquo;)
+                and other masculine forms as they stand, trusting the reader to understand. The{" "}
+                <Link href="/translations/esv">ESV</Link>, for example, adds a footnote:
+                &ldquo;Or brothers and sisters.&rdquo; The KJV, NKJV, LSB, MEV, and BSB are in this
+                group.
+              </li>
+              <li>
+                <strong>Moderate</strong> say &ldquo;brothers and sisters&rdquo; where the original
+                plainly means everyone, but keep masculine wording for God and for passages about
+                men specifically. The <Link href="/translations/niv">NIV</Link>, NLT, CSB, and NET
+                are here. The <Link href="/translations/nasb">NASB</Link> (2020) adds &ldquo;and
+                sisters&rdquo; in italics, to show it is supplied.
+              </li>
+              <li>
+                <strong>Inclusive</strong> go further, also turning a generic &ldquo;he&rdquo; into
+                &ldquo;they&rdquo; and &ldquo;man&rdquo; into &ldquo;people&rdquo; where the original
+                means anyone. The <Link href="/translations/nrsvue">NRSVue</Link>, CEB, and GNT are
+                here.
+              </li>
+            </ul>
+            <p>
+              Every translation on this site keeps masculine language for God. The disagreement is
+              about people: one side holds that matching the original&rsquo;s form is more
+              faithful, the other that matching its meaning for today&rsquo;s reader is. The{" "}
+              <Link href="/compare">comparison table</Link> shows where each translation stands,
+              and <Link href="/differences#inclusive-language">the differences page</Link> has
+              examples.
+            </p>
+          </>
+        ),
+        plain:
+          "When Paul writes to a whole church he usually addresses them as adelphoi, a masculine plural that in Greek covered a mixed group. Everyone agrees the letters were written to men and women alike; the question is how to put that into English. Traditional translations (ESV, KJV, NKJV, LSB, MEV, BSB) keep \"brothers\" and other masculine forms, the ESV with a footnote \"Or brothers and sisters.\" Moderate translations (NIV, NLT, CSB, NET, NASB 2020) say \"brothers and sisters\" where the original plainly means everyone but keep masculine wording for God and for passages about men; the NASB adds \"and sisters\" in italics. Inclusive translations (NRSVue, CEB, GNT) also turn a generic \"he\" into \"they\" and \"man\" into \"people\" where the original means anyone. Every translation on this site keeps masculine language for God. The disagreement is whether matching the original's form or its meaning for today's reader is more faithful.",
+      },
+      {
+        id: "only-begotten",
+        q: "Why did “only begotten Son” become “one and only Son”?",
+        a: (
+          <>
+            <p>
+              The Greek word in John 3:16 is <em>monogen&#275;s</em>. For centuries it was
+              understood as &ldquo;only-begotten,&rdquo; from <em>monos</em>, &ldquo;only,&rdquo;
+              and a verb meaning &ldquo;to beget.&rdquo; Jerome&rsquo;s Latin Vulgate rendered it{" "}
+              <em>unigenitus</em> when it refers to Christ, and the King James followed.
+            </p>
+            <p>
+              Most scholars now trace it instead to <em>genos</em>, &ldquo;kind,&rdquo; giving
+              &ldquo;only,&rdquo; &ldquo;unique,&rdquo; or &ldquo;one of a kind.&rdquo; The way the
+              New Testament uses the word supports this. Luke uses it for a widow&rsquo;s only son
+              (Luke 7:12). Hebrews 11:17 uses it of Isaac, though Abraham had another son, Ishmael,
+              so the point there is that Isaac was the unique son of the promise, not his only
+              child. Some scholars have argued in recent years that the older
+              &ldquo;begotten&rdquo; sense was set aside too quickly, so the question is not
+              entirely closed.
+            </p>
+            <p>
+              The <Link href="/translations/kjv">KJV</Link>, NKJV, LSB, MEV, LSV, and Amplified
+              keep &ldquo;only begotten.&rdquo; Most others say &ldquo;only Son&rdquo; or
+              &ldquo;one and only Son&rdquo;; the WEB says &ldquo;only born&rdquo; and the ISV
+              &ldquo;uniquely existing.&rdquo; Either way, the difference is about one
+              word&rsquo;s meaning, not about who Christ is. The church&rsquo;s confession that the
+              Son is &ldquo;begotten of the Father,&rdquo; as the Nicene Creed puts it, does not
+              rest on this one word. <Link href="/verses">Compare John 3:16</Link> in every
+              translation.
+            </p>
+          </>
+        ),
+        plain:
+          "The Greek word in John 3:16 is monogenes. For centuries it was understood as \"only-begotten,\" from monos, \"only,\" and a verb meaning \"to beget\"; Jerome's Latin Vulgate rendered it unigenitus when it refers to Christ, and the King James followed. Most scholars now trace it instead to genos, \"kind,\" giving \"only,\" \"unique,\" or \"one of a kind.\" New Testament usage supports this: Luke uses it for a widow's only son (Luke 7:12), and Hebrews 11:17 uses it of Isaac, though Abraham also had Ishmael, so the point is that Isaac was the unique son of the promise. Some scholars have argued that the older sense was set aside too quickly. The KJV, NKJV, LSB, MEV, LSV, and Amplified keep \"only begotten\"; most others say \"only Son\" or \"one and only Son\"; the WEB says \"only born\" and the ISV \"uniquely existing.\" The difference is about one word's meaning, not about who Christ is; the confession that the Son is \"begotten of the Father,\" as the Nicene Creed puts it, does not rest on this one word.",
+      },
+      {
+        id: "chapters-and-verses",
+        q: "Who added the chapter and verse numbers?",
+        a: (
+          <>
+            <p>
+              Not the biblical writers. The originals had no numbered chapters or verses. They
+              were added much later, to make passages easier to find.
+            </p>
+            <ul>
+              <li>
+                <strong>Chapters:</strong> Stephen Langton, a teacher in Paris who later became
+                Archbishop of Canterbury, divided the Latin Bible into chapters in the early 1200s.
+                His divisions are essentially the ones used today.
+              </li>
+              <li>
+                <strong>Old Testament verses:</strong> Jewish scribes had marked the ends of verses
+                in the Hebrew text for centuries. The verses were numbered in the 1400s and 1500s.
+              </li>
+              <li>
+                <strong>New Testament verses:</strong> the printer Robert Estienne numbered them in
+                his 1551 Greek New Testament. His son later said he did much of the work while
+                traveling. In 1560 the Geneva Bible became the first complete English Bible with
+                numbered verses.
+              </li>
+            </ul>
+            <p>
+              That&rsquo;s why the numbering sometimes differs. In the Hebrew Bible a psalm&rsquo;s
+              title often counts as verse 1, so its verse numbers can run one ahead of an English
+              Bible&rsquo;s, and the six verses of Malachi 4 in English Bibles are the end of
+              Malachi 3 in Hebrew ones. It is also why some modern Bibles skip a verse number
+              entirely: the numbers were set in 1551 on a Greek text that included those verses, before
+              scholars could study the older manuscripts that lack them (see{" "}
+              <Link href="/faq#removed-verses">Did modern Bibles remove verses?</Link>).
+            </p>
+          </>
+        ),
+        plain:
+          "Not the biblical writers; the originals had no numbered chapters or verses. Stephen Langton, a teacher in Paris who later became Archbishop of Canterbury, divided the Latin Bible into chapters in the early 1200s, and his divisions are essentially the ones used today. Jewish scribes had marked the ends of verses in the Hebrew text for centuries, and those verses were numbered in the 1400s and 1500s. The printer Robert Estienne numbered the New Testament verses in his 1551 Greek New Testament, and in 1560 the Geneva Bible became the first complete English Bible with numbered verses. That is why numbering sometimes differs: in the Hebrew Bible a psalm's title often counts as verse 1, and Malachi 4 in English Bibles is the end of Malachi 3 in Hebrew ones. It is also why some modern Bibles skip a verse number: the numbers were set in 1551 on a Greek text that included those verses, before scholars could study the older manuscripts that lack them.",
+      },
+    ],
+  },
+  {
     title: "The bigger picture",
     intro: "Why the landscape looks the way it does.",
     items: [
