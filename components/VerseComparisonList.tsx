@@ -5,6 +5,7 @@ import Link from "next/link";
 import VersePicker from "@/components/VersePicker";
 import Tooltip from "@/components/Tooltip";
 import { philosophyGlossary, textOnlyClass } from "@/lib/glossary";
+import { referenceSection } from "@/lib/bibleOrder";
 import type { SampleVerse } from "@/lib/data";
 import type { Translation } from "@/lib/types";
 import type { VerseFetchResult } from "@/lib/verseProviders";
@@ -23,6 +24,16 @@ const FONT_STEP_PX = 2;
 // because it's sitting next to smaller text.
 const ABBR_DEFAULT_FONT_PX = 14;
 const abbrFontPx = (fontPx: number) => ABBR_DEFAULT_FONT_PX + Math.max(0, fontPx - DEFAULT_FONT_PX);
+
+// Short code for the Greek text a translation's New Testament follows, shown after the
+// abbreviation on New Testament verses only. Every translation here uses the Hebrew
+// Masoretic Text for the Old Testament, so a TR/CT/MT label there would mislead.
+const BASIS_CODE: Record<Translation["textualBasis"], string> = {
+  "Critical Text": "CT",
+  "Textus Receptus": "TR",
+  "Majority Text": "MT",
+  "Textus Receptus / Majority Text": "TR/MT",
+};
 
 /**
  * The /verses page's whole interactive body: the verse picker and text-size
@@ -73,6 +84,8 @@ export default function VerseComparisonList({
     a.translation.abbreviation.localeCompare(b.translation.abbreviation),
   );
   const shownRows = rows.filter((r) => visible.has(r.translation.id));
+  const selectedRef = verses.find((v) => v.id === selectedVerseId)?.reference ?? "";
+  const isNewTestament = selectedRef !== "" && referenceSection(selectedRef) !== "Old Testament";
 
   return (
     <>
@@ -140,18 +153,40 @@ export default function VerseComparisonList({
           No translations selected — check at least one above to compare.
         </p>
       ) : (
+        <>
+        {isNewTestament && (
+          <p className="mb-2 text-xs text-neutral-500">
+            After each name, the Greek text its New Testament follows: <strong>TR</strong> = Textus
+            Receptus · <strong>CT</strong> = Critical Text · <strong>MT</strong> = Majority Text.{" "}
+            <Link href="/faq#text-types" className="font-medium text-brand-700 hover:underline">
+              What these are
+            </Link>
+          </p>
+        )}
         <div className="divide-y divide-neutral-200 border-y border-neutral-200">
           {shownRows.map(({ translation: t, result }) => (
-            <div key={t.id} className="py-0.5 sm:grid sm:grid-cols-[3rem_1fr] sm:items-center sm:gap-x-3">
-              <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
-                <Link
-                  href={`/translations/${t.id}`}
-                  style={{ fontSize: abbrFontPx(fontPx) }}
-                  className={`font-semibold hover:underline ${textOnlyClass(philosophyGlossary[t.philosophy].className)}`}
-                >
-                  {t.abbreviation}
-                </Link>
-              </Tooltip>
+            <div
+              key={t.id}
+              className={`py-0.5 sm:grid sm:items-center sm:gap-x-3 ${
+                isNewTestament ? "sm:grid-cols-[6rem_1fr]" : "sm:grid-cols-[3rem_1fr]"
+              }`}
+            >
+              <span className="whitespace-nowrap">
+                <Tooltip text={`${t.name} — ${t.philosophy}`} variant="light">
+                  <Link
+                    href={`/translations/${t.id}`}
+                    style={{ fontSize: abbrFontPx(fontPx) }}
+                    className={`font-semibold hover:underline ${textOnlyClass(philosophyGlossary[t.philosophy].className)}`}
+                  >
+                    {t.abbreviation}
+                  </Link>
+                </Tooltip>
+                {isNewTestament && (
+                  <span className="ml-1 text-xs text-neutral-400" title={t.textualBasis}>
+                    ({BASIS_CODE[t.textualBasis]})
+                  </span>
+                )}
+              </span>
               {result.status === "ok" && result.text ? (
                 <p
                   className="font-serif leading-tight text-neutral-800"
@@ -167,6 +202,7 @@ export default function VerseComparisonList({
             </div>
           ))}
         </div>
+        </>
       )}
     </>
   );

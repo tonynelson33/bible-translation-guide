@@ -118,7 +118,11 @@ sort; page defaults to John 3:16). Each row is a `[abbr | verse text]` grid, ver
 mobile; the abbreviation is colored by philosophy (`textOnlyClass`, no background — the column's
 too narrow for a filled pill) and sized off its own `abbrFontPx()` — tracks the verse text size
 1:1 above the default but floors at its own default (14px) rather than shrinking further when the
-verse text is dialed down. Attributions are collected into one fine-print block at the foot of the
+verse text is dialed down. On **New Testament** verses only, each abbreviation is followed by a small
+grey textual-basis code — "(TR)", "(CT)", "(MT)", "(TR/MT)" — with a one-line key above the list
+linking to `/faq#text-types` (2026-11-20, owner ask); the label column widens 3rem → 6rem for it.
+Old Testament verses show no code, since every translation uses the Masoretic Text there.
+Attributions are collected into one fine-print block at the foot of the
 page (still on-page = licence notice satisfied). `VerseCard.tsx` is **no longer used here** — it
 survives only as the single-verse card on `/translations/[slug]`.
 
