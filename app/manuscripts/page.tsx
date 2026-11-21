@@ -229,6 +229,46 @@ function Pic({ image, label, sub }: { image: HistoryImageData; label: string; su
 
 const byId = new Map(translations.map((t) => [t.id, t]));
 
+// A short sample of one of the Bible's languages: the words in their own script, how they
+// sound, what they mean, and (optionally) how they looked as first written.
+function LangSample({
+  text,
+  lang,
+  rtl,
+  sound,
+  meaning,
+  reference,
+  original,
+}: {
+  text: string;
+  lang: string;
+  rtl?: boolean;
+  sound: string;
+  meaning: string;
+  reference: string;
+  original?: { label: string; text: string };
+}) {
+  return (
+    <div className="mt-4 rounded-md border border-neutral-200 bg-paper px-3 py-2.5">
+      <p lang={lang} dir={rtl ? "rtl" : "ltr"} className="text-xl leading-snug text-brand-900">
+        {text}
+      </p>
+      <p className="mt-1 text-sm italic text-neutral-600">{sound}</p>
+      <p className="text-sm text-neutral-700">
+        &ldquo;{meaning}&rdquo; <span className="text-neutral-500">({reference})</span>
+      </p>
+      {original && (
+        <p className="mt-1.5 border-t border-neutral-200 pt-1.5 text-xs text-neutral-500">
+          {original.label}:{" "}
+          <span lang={lang} dir={rtl ? "rtl" : "ltr"} className="text-sm tracking-wide text-neutral-700">
+            {original.text}
+          </span>
+        </p>
+      )}
+    </div>
+  );
+}
+
 function TranslationChips({ items }: { items: Translation[] }) {
   return (
     <ul className="mt-1.5 flex flex-wrap gap-1.5">
@@ -571,32 +611,59 @@ export default function ManuscriptsPage() {
           Testament was written in Greek. A translator needs all three languages.
         </InShort>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-4">
             <h3 className="font-display text-lg font-semibold text-brand-900">Hebrew</h3>
-            <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            <p className="mt-1 flex-1 text-sm leading-relaxed text-neutral-700">
               Almost all of the Old Testament. It is written from right to left. Originally only
               the consonants were written down, as if English were written “Gd s lv.” Before AD
               1000, Jewish scribes called the <strong>Masoretes</strong> added small marks for
               the vowels so the reading would never be lost.
             </p>
+            <LangSample
+              text="בְּרֵאשִׁית בָּרָא אֱלֹהִים"
+              lang="he"
+              rtl
+              sound="bereshit bara elohim"
+              meaning="In the beginning God created"
+              reference="Genesis 1:1"
+              original={{ label: "Consonants only, as first written", text: "בראשית ברא אלהים" }}
+            />
           </div>
-          <div className="rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-4">
             <h3 className="font-display text-lg font-semibold text-brand-900">Aramaic</h3>
-            <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            <p className="mt-1 flex-1 text-sm leading-relaxed text-neutral-700">
               A language closely related to Hebrew. It is used in about half of Daniel (2:4–7:28),
               two parts of Ezra (4:8–6:18 and 7:12–26), one verse of Jeremiah (10:11) and two
               words of Genesis (31:47). It was also the everyday language of Jesus. A few of his
-              Aramaic words survive in the Gospels, like “Talitha koum” (Mark 5:41).
+              Aramaic words survive in the Gospels, like “Talitha koum” (Mark 5:41). It is
+              written with the same letters as Hebrew.
             </p>
+            <LangSample
+              text="מַלְכָּא לְעָלְמִין חֱיִי"
+              lang="arc"
+              rtl
+              sound="malka le-alemin cheyi"
+              meaning="O king, live forever!"
+              reference="Daniel 2:4, where the book switches to Aramaic"
+              original={{ label: "Consonants only, as first written", text: "מלכא לעלמין חיי" }}
+            />
           </div>
-          <div className="rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-4">
             <h3 className="font-display text-lg font-semibold text-brand-900">Greek</h3>
-            <p className="mt-1 text-sm leading-relaxed text-neutral-700">
+            <p className="mt-1 flex-1 text-sm leading-relaxed text-neutral-700">
               The whole New Testament. It is written in <strong>Koine</strong> (“common”) Greek,
               the everyday language of the eastern Roman Empire. The early copies use only capital
               letters with no spaces between words, LIKETHIS. From the AD 800s, scribes switched to
               a faster lower-case handwriting.
             </p>
+            <LangSample
+              text="Ἐν ἀρχῇ ἦν ὁ λόγος"
+              lang="grc"
+              sound="en archē ēn ho logos"
+              meaning="In the beginning was the Word"
+              reference="John 1:1"
+              original={{ label: "As the early copies wrote it", text: "ΕΝΑΡΧΗΗΝΟΛΟΓΟΣ" }}
+            />
           </div>
         </div>
         <div className="mt-5 max-w-3xl rounded-lg border border-neutral-200 bg-white p-4">
