@@ -12,6 +12,8 @@ type Video = {
   title: string;
   creator: string;
   topic: string;
+  /** Optional in-page anchor, so other pages can link straight to this video (/blog#anchor). */
+  anchor?: string;
 };
 
 const startHere: Video[] = [
@@ -29,6 +31,7 @@ const startHere: Video[] = [
     title: "The Gospel of Mark Is Missing Its Ending? Let Me Explain",
     creator: "Wes Huff",
     topic: "How a manuscript difference is weighed: the ending of Mark",
+    anchor: "mark-ending", // linked from /faq#where-extra-verses-came-from and /differences
   },
   {
     id: "EwrxWIgNYZQ",
@@ -97,7 +100,7 @@ const goDeeper: Video[] = [
 
 function VideoCard({ video }: { video: Video }) {
   return (
-    <li className="flex flex-col">
+    <li id={video.anchor} className="flex scroll-mt-24 flex-col">
       <div className="relative aspect-video overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${video.id}`}

@@ -27,6 +27,8 @@ export interface ShownVerse {
 export interface ReferencedVerse {
   reference: string;
   note: string;
+  /** Optional follow-up link shown after the note. */
+  link?: { href: string; label: string };
 }
 
 export interface DiffSection {
@@ -97,6 +99,7 @@ export const differenceParts: DiffPart[] = [
             reference: "Mark 16:9 – 20",
             note:
               "The “longer ending” of Mark. The two oldest complete manuscripts end at 16:8; later manuscripts, the majority, have these twelve verses. KJV and NKJV include them plainly; most others bracket them with a note.",
+            link: { href: "/blog#mark-ending", label: "Watch: the ending of Mark, explained (Wes Huff)" },
           },
         ],
       },

@@ -93,7 +93,17 @@ export default function DifferencesPage() {
                   {section.referenced.map((r) => (
                     <div key={r.reference} className="mb-2">
                       <dt className="inline font-semibold text-brand-800">{r.reference} — </dt>
-                      <dd className="inline text-neutral-700">{r.note}</dd>
+                      <dd className="inline text-neutral-700">
+                        {r.note}
+                        {r.link && (
+                          <>
+                            {" "}
+                            <Link href={r.link.href} className="font-medium text-brand-700 hover:underline">
+                              {r.link.label} &rarr;
+                            </Link>
+                          </>
+                        )}
+                      </dd>
                     </div>
                   ))}
                 </dl>
