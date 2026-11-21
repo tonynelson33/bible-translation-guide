@@ -23,10 +23,12 @@ const startHere: Video[] = [
     topic: "History of the English Bible",
   },
   {
-    id: "iaub_Ch0Auo",
-    title: "Is the Bible We Have What the Original Authors Even Wrote?",
+    // Replaced 2026-11-20: Wes Huff's "Is the Bible We Have What the Original Authors Even
+    // Wrote?" (iaub_Ch0Auo) went private.
+    id: "B9RsHnb7huk",
+    title: "The Gospel of Mark Is Missing Its Ending? Let Me Explain",
     creator: "Wes Huff",
-    topic: "Answering the “telephone game” objection",
+    topic: "How a manuscript difference is weighed: the ending of Mark",
   },
   {
     id: "EwrxWIgNYZQ",

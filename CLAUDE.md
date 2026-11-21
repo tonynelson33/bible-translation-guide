@@ -323,8 +323,9 @@ FAQ "which translation" answer were updated to match (`balance` order itself did
 
 **`/blog`** (nav + footer label "Videos", grouped under the Learn menu) is a curated library of
 ~12 embedded YouTube videos on where the English Bible came from, how translations are made,
-Textus Receptus vs. Critical Text, whether the transmitted text is reliable (Wes Huff, "Is the
-Bible We Have What the Original Authors Even Wrote?", added 2026-09-09), gender language, and
+Textus Receptus vs. Critical Text, how a manuscript difference is weighed (Wes Huff, "The Gospel of
+Mark Is Missing Its Ending?", 2026-11-20 — it replaced his "Is the Bible We Have What the Original
+Authors Even Wrote?", which went private), gender language, and
 choosing a Bible — two tiers ("Start here" / "Go deeper"). Static server component, video list inlined in `app/blog/page.tsx`. Embeds
 use `youtube-nocookie.com` (no cookies until play) and `loading="lazy"`. The route stayed
 `/blog` to avoid churning nav/footer/sitemap. Videos are picked to be instructive and
