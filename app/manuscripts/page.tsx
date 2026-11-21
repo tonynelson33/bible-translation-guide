@@ -704,10 +704,13 @@ export default function ManuscriptsPage() {
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {ntKinds.map((k) => (
-            <div key={k.name} className="rounded-lg border border-neutral-200 bg-white p-4">
+            <div key={k.name} className="flex flex-col rounded-lg border border-neutral-200 bg-white p-4">
               <p className="font-display text-2xl font-semibold text-brand-900">{k.count}</p>
               <p className="mt-0.5 font-semibold text-brand-800">{k.name}</p>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-700">{k.description}</p>
+              <p className="mt-1 flex-1 text-sm leading-relaxed text-neutral-700">{k.description}</p>
+              <div className="mt-3">
+                <Pic image={historyImages[k.example.image]} label={k.example.label} sub={k.example.sub} />
+              </div>
             </div>
           ))}
         </div>

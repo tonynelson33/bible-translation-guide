@@ -117,6 +117,8 @@ export interface ManuscriptKind {
   name: string;
   count: string;
   description: string;
+  /** A pictured example: a key into `historyImages` (lib/englishBibleHistory.ts) plus its label. */
+  example: { image: string; label: string; sub: string };
 }
 
 /** INTF, 29 Sept 2023. Rounded the way the page states them. */
@@ -126,24 +128,28 @@ export const ntKinds: ManuscriptKind[] = [
     count: "about 135",
     description:
       "Copies on papyrus. They include the oldest New Testament copies we have, some from the AD 100s and 200s. Most are fragments, and almost all were found in Egypt.",
+    example: { image: "papyrus46", label: "Papyrus 46", sub: "Paul’s letters, about AD 200" },
   },
   {
     name: "Majuscules",
     count: "about 280",
     description:
       "Also called uncials. Copies on parchment written in all capital letters, mostly from the AD 300s to 900s. Some are nearly complete Bibles.",
+    example: { image: "vaticanus", label: "Codex Vaticanus", sub: "A Greek Bible, AD 300s" },
   },
   {
     name: "Minuscules",
     count: "about 2,860",
     description:
       "Copies in a faster lower-case handwriting that took over from the AD 800s. Most are from the Middle Ages.",
+    example: { image: "minuscule544", label: "Minuscule 544", sub: "A Gospel book, 1200s" },
   },
   {
     name: "Lectionaries",
     count: "about 2,420",
     description:
       "Church reading books. Instead of running in order, they arrange passages for each day’s service. Most are from the Middle Ages.",
+    example: { image: "lectionary241", label: "Lectionary 241", sub: "A church reading book, AD 1199" },
   },
 ];
 

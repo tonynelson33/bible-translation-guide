@@ -41,11 +41,21 @@ const TARGETS = {
   // drop the illuminated headpiece so the card banner shows the Greek text
   "codex-boreelianus.jpg": { width: 600, crop: { left: 0, top: 0.217, width: 1, height: 0.77 } },
   "leningrad-codex.jpg": { width: 660 },
+  // /manuscripts: one example under each of the four kinds of NT manuscript (2026-11-20)
+  "papyrus-46.jpg": { width: 560 },
+  "codex-vaticanus.jpg": { width: 600 },
+  "minuscule-544.jpg": { width: 600 },
+  "lectionary-241.jpg": { width: 600 },
 };
+
+// Optional: pass file names to process only those, e.g.
+//   node scripts/optimize-history-images.mjs papyrus-46.jpg codex-vaticanus.jpg
+const only = process.argv.slice(2);
 
 const exists = (p) => access(p).then(() => true).catch(() => false);
 
 for (const [name, cfg] of Object.entries(TARGETS)) {
+  if (only.length && !only.includes(name)) continue;
   const plain = join(DIR, name);
   let src = await findSrc(name);
   if (!src) {

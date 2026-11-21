@@ -275,7 +275,10 @@ The comparison table's own `overflow-x-auto` wrapper handles its horizontal scro
   Ps 22:16) were checked against each listed translation on Bible Gateway — re-check if a
   translation is revised. The TR/CT/MT "used by" chips derive from `textualBasis`. The FAQ
   `#text-types` answer and `/history`'s text section both link here; the site-wide manuscript
-  count is "about 5,700" (glossary, `/history`), not the older 5,800.
+  count is "about 5,700" (glossary, `/history`), not the older 5,800. Each of the four NT
+  "kinds" cards carries a pictured example (2026-11-20, owner ask): Papyrus 46 (2 Cor, ~AD 200,
+  Michigan), Codex Vaticanus (2 Thess/Heb, AD 300s), Minuscule 544 (Matt 22, 1200s, Michigan),
+  Lectionary 241 (dated 1199, Glasgow) — `example` on `ntKinds`, images in `historyImages`.
 - **`/about`** ("About This Site", added 2026-09-10, Learn dropdown + footer only) — static, all
   content inline in `app/about/page.tsx` as a `sections` array: what it is, the perspective
   (descriptive not prescriptive, written from within Protestantism), how the data is made,

@@ -87,6 +87,43 @@ export const historyImages: Record<string, HistoryImage> = {
       "Rylands Papyrus 𝔓52, a fragment of John usually dated to the second century (the AD 100s) — generally reckoned the oldest surviving scrap of any New Testament book, though the date is debated.",
     credit: "John Rylands Library, Manchester — public domain.",
   },
+  // /manuscripts — one example of each of the four kinds of Greek New Testament manuscript.
+  papyrus46: {
+    src: "/history/papyrus-46.jpg",
+    width: 560,
+    height: 886,
+    alt: "A tall, worn papyrus page from Papyrus 46, covered in closely written Greek capital letters, with ragged edges and holes.",
+    caption:
+      "Papyrus 46, a page of 2 Corinthians (11:33–12:9) from a collection of Paul’s letters copied about AD 200.",
+    credit: "About AD 200; University of Michigan Library — public domain.",
+  },
+  vaticanus: {
+    src: "/history/codex-vaticanus.jpg",
+    width: 600,
+    height: 620,
+    alt: "A parchment page of Codex Vaticanus: three narrow columns of evenly spaced Greek capital letters.",
+    caption:
+      "Codex Vaticanus, a 4th-century Bible in capital letters: the end of 2 Thessalonians and the start of Hebrews.",
+    credit: "AD 300s; Vatican Library — public domain.",
+  },
+  minuscule544: {
+    src: "/history/minuscule-544.jpg",
+    width: 600,
+    height: 820,
+    alt: "A parchment page of Minuscule 544: one column of small, joined-up Greek handwriting, with section numbers in red in the margin.",
+    caption:
+      "Minuscule 544, a 13th-century Gospel book in the faster lower-case hand: Matthew 22:32–44.",
+    credit: "13th century; University of Michigan Library — public domain.",
+  },
+  lectionary241: {
+    src: "/history/lectionary-241.jpg",
+    width: 600,
+    height: 833,
+    alt: "The first page of Lectionary 241: two columns of Greek, with a decorated band and red headings naming the day each reading is for.",
+    caption:
+      "Lectionary 241, a church reading book copied in 1199. The red heading names the day; the reading under it is from Ephesians 5.",
+    credit: "AD 1199; Glasgow University Library — public domain.",
+  },
   boreelianus: {
     src: "/history/codex-boreelianus.jpg",
     width: 600,
