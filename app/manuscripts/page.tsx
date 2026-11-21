@@ -4,6 +4,7 @@ import Link from "next/link";
 import HistoryImage from "@/components/HistoryImage";
 import ImageZoom from "@/components/ImageZoom";
 import { translations } from "@/lib/data";
+import { philosophyGlossary } from "@/lib/glossary";
 import { historyImages, type HistoryImage as HistoryImageData } from "@/lib/englishBibleHistory";
 import {
   KJV_YEAR,
@@ -235,8 +236,9 @@ function TranslationChips({ items }: { items: Translation[] }) {
         <li key={t.id}>
           <Link
             href={`/translations/${t.id}`}
-            title={t.name}
-            className="inline-block rounded border border-neutral-200 bg-white px-1.5 py-0.5 text-xs font-semibold text-brand-800 hover:border-brand-300"
+            title={`${t.name} — ${t.philosophy}`}
+            // Colored by translation philosophy, like the spectrum and every other chip on the site.
+            className={`inline-block rounded px-1.5 py-0.5 text-xs font-semibold hover:ring-1 hover:ring-inset hover:ring-black/10 ${philosophyGlossary[t.philosophy].className}`}
           >
             {t.abbreviation}
           </Link>
